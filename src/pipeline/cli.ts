@@ -1,0 +1,41 @@
+import { ingestResource } from './ingest.js';
+
+async function main() {
+  const args = process.argv.slice(2);
+
+  if (args.length === 0) {
+    console.log(`
+Uso de la herramienta CLI:
+  npm run add <URL o Enlace de GitHub o Tweet>
+  npm run add "https://github.com/jesseduffield/lazygit"
+  npm run add -- "https://x.com/.../status/..." "Texto descriptivo de la herramienta"
+`);
+    process.exit(1);
+  }
+
+  const firstArg = args[0];
+  const secondArg = args[1] || '';
+
+  const isUrl = firstArg.startsWith('http://') || firstArg.startsWith('https://');
+
+  try {
+    const result = await ingestResource({
+      url: isUrl ? firstArg : undefined,
+      rawText: isUrl ? secondArg : firstArg,
+      sourceTweet: firstArg.includes('x.com') || firstArg.includes('twitter.com') ? firstArg : undefined,
+    });
+
+    console.log('\n=======================================');
+    console.log(`🎉 Herramienta agregada: ${result.classification.name}`);
+    console.log(`📁 Categoría: ${result.classification.category}`);
+    console.log(`🏷️ Tags: ${result.classification.tags.join(', ')}`);
+    console.log(`🔗 URL: ${result.classification.canonicalUrl}`);
+    console.log(`📄 Archivo: ${result.filePath}`);
+    console.log('=======================================\n');
+  } catch (error) {
+    console.error('❌ Error procesando el recurso:', error);
+    process.exit(1);
+  }
+}
+
+main();
