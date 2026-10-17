@@ -1,5 +1,26 @@
+# Dependencies
 node_modules/
+
+# Production build outputs
 dist/
+
+# Environment and secrets (NUNCA subir claves o tokens)
 .env
-.DS_Store
+.env.*
+!.env.example
+
+# Raw Twitter/X data exports & downloads
+account-bookmark.js
+x_bookmarks.json
+data/
+*.zip
+
+# Logs
 *.log
+npm-debug.log*
+
+# System & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

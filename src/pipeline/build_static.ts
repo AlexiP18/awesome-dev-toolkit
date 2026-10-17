@@ -37,6 +37,9 @@ export function buildStaticSite(): void {
     fs.copyFileSync(bookmarkletInstall, path.join(distDir, 'bookmarklet.html'));
   }
 
+  // Create .nojekyll for GitHub Pages
+  fs.writeFileSync(path.join(distDir, '.nojekyll'), '', 'utf-8');
+
   // 4. Update README.md
   try {
     const readme = generateReadme();

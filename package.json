@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "tsx src/server/index.ts",
     "build": "tsx src/pipeline/build_static.ts",
+    "deploy": "npm run build && gh-pages -d dist -m 'deploy: update GitHub Pages catalog'",
     "add": "tsx src/pipeline/cli.ts",
     "parse:archive": "tsx src/parsers/x_archive_parser.ts",
     "build:readme": "tsx src/pipeline/generate_readme.ts"
@@ -33,6 +34,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.5",
+    "gh-pages": "^6.3.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
