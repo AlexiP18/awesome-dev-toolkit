@@ -10,7 +10,7 @@
   <div id="card" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 w-full max-w-md text-center shadow-2xl">
     <div id="spinner" class="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
     <h2 id="title" class="text-base font-bold text-slate-100 mb-1">⚡ Analizando con Gemini...</h2>
-    <p id="subtitle" class="text-xs text-slate-400">Extrayendo todas las herramientas del tweet</p>
+    <p id="subtitle" class="text-xs text-slate-400">Verificando duplicados y extrayendo herramientas</p>
     <div id="details" class="hidden mt-4 pt-3 border-t border-slate-800 text-left text-xs space-y-2 max-h-56 overflow-y-auto"></div>
   </div>
 
@@ -51,20 +51,39 @@
         spinner.className = 'hidden';
 
         if (data.success) {
-          const items = data.data?.items || (data.data?.classification ? [{ classification: data.data.classification }] : []);
-          title.className = 'text-base font-bold text-emerald-400 mb-1';
+          const items = data.data?.items || (data.data?.classification ? [{ classification: data.data.classification, alreadyExisted: data.data.alreadyExisted }] : []);
+          const addedCount = data.data?.addedCount ?? items.filter(i => !i.alreadyExisted).length;
+          const skippedCount = data.data?.skippedCount ?? items.filter(i => i.alreadyExisted).length;
 
           if (items.length > 1) {
-            title.innerText = `✅ ¡${items.length} herramientas guardadas!`;
-            subtitle.innerText = 'Todas las herramientas del tweet fueron añadidas por separado:';
+            if (addedCount === 0) {
+              title.className = 'text-base font-bold text-amber-400 mb-1';
+              title.innerText = `⏭️ Las ${skippedCount} herramientas ya existían`;
+              subtitle.innerText = 'Ninguna se duplicó en tu catálogo:';
+            } else if (skippedCount > 0) {
+              title.className = 'text-base font-bold text-emerald-400 mb-1';
+              title.innerText = `✅ ${addedCount} nueva(s) · ⏭️ ${skippedCount} omitida(s)`;
+              subtitle.innerText = 'Se omitieron las que ya tenías guardadas:';
+            } else {
+              title.className = 'text-base font-bold text-emerald-400 mb-1';
+              title.innerText = `✅ ¡${addedCount} herramientas guardadas!`;
+              subtitle.innerText = 'Todas las herramientas del tweet fueron añadidas:';
+            }
+
             details.classList.remove('hidden');
             details.innerHTML = items.map((item, idx) => {
               const info = item.classification || {};
+              const badge = item.alreadyExisted
+                ? `<span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">⏭️ Ya existía</span>`
+                : `<span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">🆕 Nueva</span>`;
               return `
                 <div class="p-2 rounded-lg bg-slate-950 border border-slate-800">
-                  <div class="flex justify-between items-center">
-                    <span class="font-bold text-slate-200">${idx + 1}. ${info.name || 'Herramienta'}</span>
-                    <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-400">${info.category || 'Other'}</span>
+                  <div class="flex justify-between items-center gap-2">
+                    <span class="font-bold text-slate-200 truncate">${idx + 1}. ${info.name || 'Herramienta'}</span>
+                    <div class="flex items-center gap-1 flex-shrink-0">
+                      ${badge}
+                      <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-400">${info.category || 'Other'}</span>
+                    </div>
                   </div>
                   <p class="text-[11px] text-slate-400 line-clamp-1 mt-0.5">${info.oneLiner || ''}</p>
                 </div>
@@ -75,9 +94,18 @@
               window.close();
             }, 3500);
           } else {
-            const info = items[0]?.classification || {};
-            title.innerText = '✅ ¡Guardado con éxito!';
-            subtitle.innerText = info.name || 'Herramienta añadida';
+            const firstItem = items[0] || {};
+            const info = firstItem.classification || {};
+
+            if (firstItem.alreadyExisted) {
+              title.className = 'text-base font-bold text-amber-400 mb-1';
+              title.innerText = '⏭️ Ya estaba en tu Toolkit';
+              subtitle.innerText = `${info.name || 'Esta herramienta'} ya existe (no se duplicó)`;
+            } else {
+              title.className = 'text-base font-bold text-emerald-400 mb-1';
+              title.innerText = '✅ ¡Guardado con éxito!';
+              subtitle.innerText = info.name || 'Herramienta añadida';
+            }
 
             details.classList.remove('hidden');
             details.innerHTML = `

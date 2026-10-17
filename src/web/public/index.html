@@ -562,6 +562,9 @@
           document.getElementById('ingestUrlInput').value = '';
           document.getElementById('ingestTextInput').value = '';
           await fetchTools();
+          if (data.data?.addedCount === 0 && data.data?.skippedCount > 0) {
+            alert(`⏭️ La herramienta "${data.data?.classification?.name || url}" ya existía en tu catálogo, por lo que no se duplicó.`);
+          }
         } else {
           alert('Error: ' + (data.error || 'No se pudo clasificar'));
         }
