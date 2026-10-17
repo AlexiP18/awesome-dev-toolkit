@@ -13,12 +13,23 @@ export function ensureToolsDirExists(): void {
 }
 
 export function slugify(text: string): string {
-  return text
+  const slug = text
     .toLowerCase()
     .trim()
     .replace(/[^\w\s-]/g, '')
     .replace(/[\s_-]+/g, '-')
     .replace(/^-+|-+$/g, '');
+  return slug || `recurso-${Date.now()}`;
+}
+
+function cleanFrontmatter(obj: Record<string, any>): Record<string, any> {
+  const cleaned: Record<string, any> = {};
+  for (const [key, value] of Object.entries(obj)) {
+    if (value !== undefined && value !== null && value !== '') {
+      cleaned[key] = value;
+    }
+  }
+  return cleaned;
 }
 
 export interface CreateNoteParams {
@@ -94,7 +105,7 @@ ${params.sourceTweet ? `- Tweet origen: [Ver en X](${params.sourceTweet})` : ''}
 `;
   }
 
-  const fileContent = matter.stringify(markdownBody.trim() + '\n', frontmatter);
+  const fileContent = matter.stringify(markdownBody.trim() + '\n', cleanFrontmatter(frontmatter));
   fs.writeFileSync(filePath, fileContent, 'utf-8');
 
   return { filePath, slug };
@@ -153,7 +164,7 @@ export function updateToolNote(slug: string, updates: {
     body = updates.notes;
   }
 
-  const newContent = matter.stringify(body, updatedFrontmatter);
+  const newContent = matter.stringify(body, cleanFrontmatter(updatedFrontmatter));
   fs.writeFileSync(filePath, newContent, 'utf-8');
   return true;
 }
