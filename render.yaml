@@ -2,6 +2,7 @@ services:
   - type: web
     name: awesome-dev-toolkit
     runtime: node
+    branch: main
     plan: free
     buildCommand: npm install
     startCommand: npm start
