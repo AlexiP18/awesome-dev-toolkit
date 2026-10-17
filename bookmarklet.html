@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Instalador del Bookmarklet - Awesome Dev Toolkit</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 650px;
+      margin: 40px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #0f172a;
+      color: #f1f5f9;
+    }
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+    }
+    .btn {
+      display: inline-block;
+      background: #3b82f6;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      margin: 20px 0;
+      cursor: grab;
+      border: 2px dashed #93c5fd;
+    }
+    .btn:hover {
+      background: #2563eb;
+    }
+    code {
+      background: #334155;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>📌 Bookmarklet: 1-Clic Guardar en Toolkit</h1>
+    <p>Para guardar cualquier tweet de <strong>X (Twitter)</strong> con un solo clic mientras navegas:</p>
+    
+    <ol>
+      <li>Asegúrate de tener visible la <strong>Barra de marcadores</strong> en tu navegador (<code>Ctrl + Shift + B</code> o <code>Cmd + Shift + B</code>).</li>
+      <li><strong>Arrastra el siguiente botón azul</strong> hacia tu barra de marcadores:</li>
+    </ol>
+
+    <div style="text-align: center;">
+      <a class="btn" href="javascript:(function(){const u=window.location.href;if(!u.includes('x.com')&&!u.includes('twitter.com')){alert('Usa este botón mientras navegas en x.com / Twitter');return;}const a=document.querySelector('article[data-testid=%22tweet%22]');let t='',au='',ls=[];if(a){const te=a.querySelector('div[data-testid=%22tweetText%22]');t=te?te.innerText:'';const ue=a.querySelector('div[data-testid=%22User-Name%22]');au=ue?ue.innerText.split('\n')[0]:'';ls=Array.from(a.querySelectorAll('a')).map(l=>l.href).filter(h=>h&&!h.includes('x.com')&&!h.includes('twitter.com')&&!h.startsWith('javascript:'));}const ts=document.createElement('div');ts.style.cssText='position:fixed;bottom:24px;right:24px;z-index:999999;background:#1e293b;color:#f8fafc;padding:12px 20px;border-radius:12px;font-family:sans-serif;font-size:14px;box-shadow:0 10px 25px rgba(0,0,0,0.5);border:1px solid #334155;';ts.innerText='⚡ Enviando a Dev Toolkit...';document.body.appendChild(ts);fetch('http://localhost:4000/api/ingest',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sourceTweet:u,rawText:t,author:au,url:ls[0]||undefined})}).then(r=>r.json()).then(d=>{if(d.success){ts.style.background='#065f46';ts.innerText='✅ ¡Guardado! '+(d.data?.classification?.name||'');}else{ts.style.background='#991b1b';ts.innerText='❌ '+(d.error||'Error');}setTimeout(()=>ts.remove(),3500);}).catch(()=>{ts.style.background='#991b1b';ts.innerText='❌ Servidor apagado. Ejecuta npm run dev';setTimeout(()=>ts.remove(),4000);});})();">
+        ⚡ Guardar en Dev Toolkit
+      </a>
+    </div>
+
+    <p>¡Listo! Cuando veas una herramienta en X, solo haz clic en ese marcador y se procesará automáticamente con Gemini y se guardará en tu Segundo Cerebro.</p>
+  </div>
+</body>
+</html>

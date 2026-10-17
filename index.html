@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awesome Dev Toolkit - Segundo Cerebro & Catálogo</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              500: '#0ea5e9',
+              600: '#0284c7',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-sky-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="p-2 bg-sky-500/10 border border-sky-500/20 rounded-xl text-sky-400">
+          <i data-lucide="sparkles" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold tracking-tight flex items-center gap-2">
+            Awesome Dev Toolkit
+            <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30">Segundo Cerebro</span>
+          </h1>
+          <p class="text-xs text-slate-400">Recursos curados de X sincronizados con Obsidian & Gemini</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <a id="headerBookmarkletLink" href="./bookmarklet.html" target="_blank" class="text-xs px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5 text-slate-200">
+          <i data-lucide="bookmark" class="w-3.5 h-3.5 text-sky-400"></i>
+          <span class="hidden sm:inline">Bookmarklet</span> 1-Clic
+        </a>
+        <button onclick="openIngestModal()" class="text-xs px-3.5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 font-semibold transition flex items-center gap-1.5 shadow-lg shadow-sky-600/20">
+          <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+          <span>Añadir Herramienta</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full flex flex-col">
+    
+    <!-- Search & Quick Stats -->
+    <div class="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center mb-6">
+      <!-- Search Input -->
+      <div class="relative flex-1 max-w-xl">
+        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+          <i data-lucide="search" class="w-4 h-4"></i>
+        </div>
+        <input 
+          id="searchInput"
+          type="text" 
+          placeholder="Buscar herramienta, tecnología, tag o comando... (Presiona Ctrl/Cmd + K)"
+          class="w-full pl-10 pr-12 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-slate-200 placeholder-slate-500 transition shadow-inner"
+          oninput="filterTools()"
+        />
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+          <kbd class="text-[10px] font-mono px-1.5 py-0.5 bg-slate-800 text-slate-400 rounded border border-slate-700">⌘K</kbd>
+        </div>
+      </div>
+
+      <!-- Stats Counters -->
+      <div class="flex items-center gap-2 text-xs">
+        <span id="statTotal" class="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">
+          Total: <strong>0</strong>
+        </span>
+        <span id="statInUse" class="px-3 py-1.5 bg-emerald-950/40 border border-emerald-800/40 text-emerald-400 rounded-lg">
+          🟢 En uso: <strong>0</strong>
+        </span>
+        <span id="statToTry" class="px-3 py-1.5 bg-amber-950/40 border border-amber-800/40 text-amber-400 rounded-lg">
+          🟡 Por probar: <strong>0</strong>
+        </span>
+      </div>
+    </div>
+
+    <!-- Filter Pills: Categories & Status -->
+    <div class="space-y-3 mb-6">
+      <!-- Categories Scroll -->
+      <div id="categoryFilters" class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
+        <!-- Injected via JS -->
+      </div>
+      
+      <!-- Status Filters -->
+      <div class="flex items-center gap-2 text-xs text-slate-400">
+        <span class="font-medium mr-1">Estado:</span>
+        <button onclick="setStatusFilter('all')" class="status-btn px-2.5 py-1 rounded-md bg-sky-500/20 text-sky-400 border border-sky-500/30" data-status="all">Todos</button>
+        <button onclick="setStatusFilter('in_use')" class="status-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800" data-status="in_use">🟢 En uso</button>
+        <button onclick="setStatusFilter('to_try')" class="status-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800" data-status="to_try">🟡 Por probar</button>
+        <button onclick="setStatusFilter('archived')" class="status-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800" data-status="archived">⚪ Archivado</button>
+      </div>
+    </div>
+
+    <!-- Tools Grid -->
+    <div id="toolsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Loading Skeleton or empty state -->
+      <div class="col-span-full py-16 text-center text-slate-500">
+        <i data-lucide="loader" class="w-8 h-8 animate-spin mx-auto mb-3 text-sky-400"></i>
+        <p>Cargando herramientas del Segundo Cerebro...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal / Drawer: Ver y Editar Nota (Segundo Cerebro) -->
+  <div id="noteModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex justify-end">
+    <div class="bg-slate-900 border-l border-slate-800 w-full max-w-xl h-full flex flex-col shadow-2xl animate-in slide-in-from-right duration-200">
+      
+      <div class="p-5 border-b border-slate-800 flex items-center justify-between">
+        <div>
+          <h2 id="modalToolName" class="text-base font-bold text-slate-100 flex items-center gap-2">
+            <span>Nombre de la Herramienta</span>
+          </h2>
+          <p id="modalToolPath" class="text-xs font-mono text-slate-400 truncate max-w-sm"></p>
+        </div>
+        <button onclick="closeNoteModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="p-5 flex-1 overflow-y-auto space-y-4">
+        <!-- Status & Links -->
+        <div class="flex items-center justify-between bg-slate-950 p-3 rounded-xl border border-slate-800">
+          <div class="flex items-center gap-2">
+            <label class="text-xs text-slate-400 font-medium">Estado:</label>
+            <select id="modalStatusSelect" class="bg-slate-900 border border-slate-700 text-xs rounded-lg px-2.5 py-1 text-slate-200 focus:outline-none">
+              <option value="to_try">🟡 Por probar</option>
+              <option value="in_use">🟢 En uso</option>
+              <option value="archived">⚪ Archivado</option>
+            </select>
+          </div>
+          <a id="modalOfficialLink" href="#" target="_blank" class="text-xs text-sky-400 hover:underline flex items-center gap-1">
+            Visitar recurso <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Markdown Content Preview / Editor -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="text-xs font-semibold text-slate-300">Contenido Markdown (Obsidian / Segundo Cerebro)</label>
+            <span class="text-[10px] text-slate-500">Sincronizado con disco</span>
+          </div>
+          <textarea 
+            id="modalMarkdownContent" 
+            rows="16" 
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-300 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="p-4 border-t border-slate-800 bg-slate-900/50 flex justify-end gap-3">
+        <button onclick="closeNoteModal()" class="px-4 py-2 text-xs rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800">
+          Cancelar
+        </button>
+        <button id="saveNoteBtn" onclick="saveCurrentNote()" class="px-4 py-2 text-xs font-semibold rounded-lg bg-sky-600 hover:bg-sky-500 text-white shadow-md">
+          Guardar Cambios
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal: Ingestar Manualmente -->
+  <div id="ingestModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-base font-bold text-slate-100 flex items-center gap-2">
+          <i data-lucide="plus-circle" class="w-5 h-5 text-sky-400"></i>
+          Añadir Herramienta o Tweet
+        </h3>
+        <button onclick="closeIngestModal()" class="text-slate-400 hover:text-slate-200">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <form onsubmit="handleManualIngest(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">URL (GitHub, Web o Tweet de X):</label>
+          <input 
+            id="ingestUrlInput" 
+            type="url" 
+            placeholder="https://github.com/..."
+            required
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+          />
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Comentario o texto del tweet (Opcional):</label>
+          <textarea 
+            id="ingestTextInput" 
+            rows="3" 
+            placeholder="Para qué sirve o qué decían en el tweet..."
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+          ></textarea>
+        </div>
+
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" onclick="closeIngestModal()" class="px-4 py-2 text-xs text-slate-400 hover:text-slate-200">
+            Cancelar
+          </button>
+          <button id="ingestSubmitBtn" type="submit" class="px-4 py-2 text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white rounded-xl shadow-md flex items-center gap-2">
+            <span>Procesar con Gemini</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Client-side Logic -->
+  <script>
+    let allTools = [];
+    let currentCategory = 'all';
+    let currentStatus = 'all';
+    let activeEditingSlug = null;
+
+    const CATEGORIES = [
+      'all',
+      'CLI & Terminal',
+      'Frontend & UI',
+      'Backend & APIs',
+      'DevOps & Cloud',
+      'AI & Machine Learning',
+      'Databases & Storage',
+      'Productivity & Tools',
+      'Documentation & Resources',
+      'Other'
+    ];
+
+    let isStaticMode = false;
+
+    async function fetchTools() {
+      try {
+        let res = null;
+        if (!window.location.hostname.endsWith('github.io')) {
+          try {
+            const apiRes = await fetch('/api/tools');
+            if (apiRes.ok) res = apiRes;
+          } catch {}
+        }
+
+        if (!res) {
+          isStaticMode = true;
+          res = await fetch('./data/tools.json');
+        }
+
+        const data = await res.json();
+        allTools = data.tools || [];
+        renderCategoryFilters();
+        updateStats();
+        renderTools();
+      } catch (err) {
+        console.error('Error fetching tools:', err);
+        document.getElementById('toolsGrid').innerHTML = `
+          <div class="col-span-full py-12 text-center text-red-400">
+            Error cargando herramientas del catálogo.
+          </div>
+        `;
+      }
+    }
+
+    function renderCategoryFilters() {
+      const container = document.getElementById('categoryFilters');
+      container.innerHTML = CATEGORIES.map(cat => {
+        const isAll = cat === 'all';
+        const label = isAll ? '✨ Todas' : cat;
+        const active = currentCategory === cat;
+        return `
+          <button 
+            onclick="setCategoryFilter('${cat}')"
+            class="px-3 py-1.5 rounded-lg border whitespace-nowrap transition ${
+              active 
+                ? 'bg-sky-500/20 text-sky-300 border-sky-500/40 font-medium' 
+                : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800'
+            }">
+            ${label}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function setCategoryFilter(cat) {
+      currentCategory = cat;
+      renderCategoryFilters();
+      renderTools();
+    }
+
+    function setStatusFilter(status) {
+      currentStatus = status;
+      document.querySelectorAll('.status-btn').forEach(btn => {
+        const match = btn.dataset.status === status;
+        btn.className = `status-btn px-2.5 py-1 rounded-md transition ${
+          match 
+            ? 'bg-sky-500/20 text-sky-400 border border-sky-500/30' 
+            : 'bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800'
+        }`;
+      });
+      renderTools();
+    }
+
+    function filterTools() {
+      renderTools();
+    }
+
+    function getFilteredTools() {
+      const query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+
+      return allTools.filter(tool => {
+        // Category filter
+        if (currentCategory !== 'all' && tool.frontmatter.category !== currentCategory) {
+          return false;
+        }
+
+        // Status filter
+        if (currentStatus !== 'all' && tool.frontmatter.status !== currentStatus) {
+          return false;
+        }
+
+        // Search text
+        if (query) {
+          const matchName = (tool.frontmatter.name || '').toLowerCase().includes(query);
+          const matchTags = (tool.frontmatter.tags || []).some(t => t.toLowerCase().includes(query));
+          const matchContent = (tool.content || '').toLowerCase().includes(query);
+          const matchUrl = (tool.frontmatter.url || '').toLowerCase().includes(query);
+          return matchName || matchTags || matchContent || matchUrl;
+        }
+
+        return true;
+      });
+    }
+
+    function updateStats() {
+      document.getElementById('statTotal').innerHTML = `Total: <strong>${allTools.length}</strong>`;
+      const inUse = allTools.filter(t => t.frontmatter.status === 'in_use').length;
+      const toTry = allTools.filter(t => t.frontmatter.status === 'to_try').length;
+      document.getElementById('statInUse').innerHTML = `🟢 En uso: <strong>${inUse}</strong>`;
+      document.getElementById('statToTry').innerHTML = `🟡 Por probar: <strong>${toTry}</strong>`;
+    }
+
+    function renderTools() {
+      const grid = document.getElementById('toolsGrid');
+      const filtered = getFilteredTools();
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-500 border border-dashed border-slate-800 rounded-2xl">
+            <i data-lucide="inbox" class="w-10 h-10 mx-auto mb-2 text-slate-600"></i>
+            <p class="text-sm font-medium">No se encontraron herramientas con los filtros actuales.</p>
+            <p class="text-xs text-slate-600 mt-1">Prueba con otra búsqueda o añade un nuevo recurso desde el botón superior.</p>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      grid.innerHTML = filtered.map(tool => {
+        const fm = tool.frontmatter;
+        const starsBadge = fm.stars ? `
+          <span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">
+            ⭐ ${fm.stars.toLocaleString()}
+          </span>
+        ` : '';
+
+        const tagsHtml = (fm.tags || []).slice(0, 4).map(t => `
+          <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">#${t}</span>
+        `).join('');
+
+        // Extract summary
+        const quoteMatch = tool.content.match(/^>\s*(.+)$/m);
+        const summary = quoteMatch ? quoteMatch[1] : 'Sin descripción adicional.';
+
+        return `
+          <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 transition rounded-2xl p-4 flex flex-col justify-between group shadow-sm hover:shadow-md">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div>
+                  <span class="text-[10px] font-semibold tracking-wider uppercase text-sky-400">
+                    ${fm.category || 'Other'}
+                  </span>
+                  <h3 class="font-bold text-slate-100 text-sm group-hover:text-sky-300 transition flex items-center gap-1.5 mt-0.5">
+                    ${fm.name}
+                  </h3>
+                </div>
+                <div class="flex items-center gap-1.5 flex-shrink-0">
+                  ${starsBadge}
+                  <a href="${fm.url}" target="_blank" title="Visitar enlace" class="p-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed mb-3">
+                ${summary}
+              </p>
+
+              <div class="flex flex-wrap gap-1 mb-4">
+                ${tagsHtml}
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+              <!-- Inline Status Selector -->
+              <select onchange="updateToolStatusInline('${tool.slug}', this.value)" class="bg-slate-950 border border-slate-800 text-[11px] rounded-lg px-2 py-1 text-slate-300 focus:outline-none">
+                <option value="to_try" ${fm.status === 'to_try' ? 'selected' : ''}>🟡 Por probar</option>
+                <option value="in_use" ${fm.status === 'in_use' ? 'selected' : ''}>🟢 En uso</option>
+                <option value="archived" ${fm.status === 'archived' ? 'selected' : ''}>⚪ Archivado</option>
+              </select>
+
+              <!-- Open Note Button -->
+              <button onclick="openNoteModal('${tool.slug}')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1.5 transition">
+                <i data-lucide="file-text" class="w-3 h-3 text-sky-400"></i>
+                <span>Nota</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    async function updateToolStatusInline(slug, newStatus) {
+      const tool = allTools.find(t => t.slug === slug);
+      if (tool) tool.frontmatter.status = newStatus;
+      updateStats();
+
+      if (!isStaticMode) {
+        try {
+          await fetch(`/api/tools/${slug}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status: newStatus }),
+          });
+        } catch (err) {
+          console.error('Error updating status:', err);
+        }
+      }
+    }
+
+    function openNoteModal(slug) {
+      const tool = allTools.find(t => t.slug === slug);
+      if (!tool) return;
+      activeEditingSlug = slug;
+
+      document.getElementById('modalToolName').innerText = tool.frontmatter.name;
+      document.getElementById('modalToolPath').innerText = `content/tools/${slug}.md`;
+      document.getElementById('modalOfficialLink').href = tool.frontmatter.url;
+      document.getElementById('modalStatusSelect').value = tool.frontmatter.status || 'to_try';
+      document.getElementById('modalMarkdownContent').value = tool.content;
+
+      document.getElementById('noteModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeNoteModal() {
+      document.getElementById('noteModal').classList.add('hidden');
+      activeEditingSlug = null;
+    }
+
+    async function saveCurrentNote() {
+      if (!activeEditingSlug) return;
+      const btn = document.getElementById('saveNoteBtn');
+
+      if (isStaticMode) {
+        alert('💡 Modo Lectura (GitHub Pages):\nLas notas y cambios se sincronizan en tu disco ejecutando "npm run dev" en tu computadora o abriendo la carpeta content/tools en Obsidian.');
+        closeNoteModal();
+        return;
+      }
+
+      btn.innerText = 'Guardando...';
+
+      const newContent = document.getElementById('modalMarkdownContent').value;
+      const newStatus = document.getElementById('modalStatusSelect').value;
+
+      try {
+        await fetch(`/api/tools/${activeEditingSlug}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            notes: newContent,
+            status: newStatus,
+          }),
+        });
+
+        // Update local object
+        const tool = allTools.find(t => t.slug === activeEditingSlug);
+        if (tool) {
+          tool.content = newContent;
+          tool.frontmatter.status = newStatus;
+        }
+
+        btn.innerText = '¡Guardado!';
+        setTimeout(() => {
+          btn.innerText = 'Guardar Cambios';
+          closeNoteModal();
+          updateStats();
+          renderTools();
+        }, 600);
+      } catch (err) {
+        alert('Error al guardar la nota.');
+        btn.innerText = 'Guardar Cambios';
+      }
+    }
+
+    function openIngestModal() {
+      document.getElementById('ingestModal').classList.remove('hidden');
+      document.getElementById('ingestUrlInput').focus();
+    }
+
+    function closeIngestModal() {
+      document.getElementById('ingestModal').classList.add('hidden');
+    }
+
+    async function handleManualIngest(e) {
+      e.preventDefault();
+      const url = document.getElementById('ingestUrlInput').value.trim();
+      const rawText = document.getElementById('ingestTextInput').value.trim();
+      const btn = document.getElementById('ingestSubmitBtn');
+
+      if (isStaticMode) {
+        alert('💡 Modo GitHub Pages:\nPara clasificar con Gemini y agregar recursos a tu repositorio, corre en tu terminal:\n\nnpm run add "' + url + '"\n\nO inicia el servidor local con "npm run dev".');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = `<i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i><span>Analizando con Gemini...</span>`;
+      lucide.createIcons();
+
+      try {
+        const res = await fetch('/api/ingest', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url, rawText }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          closeIngestModal();
+          document.getElementById('ingestUrlInput').value = '';
+          document.getElementById('ingestTextInput').value = '';
+          await fetchTools();
+        } else {
+          alert('Error: ' + (data.error || 'No se pudo clasificar'));
+        }
+      } catch (err) {
+        alert('Error de conexión con el servidor.');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `<span>Procesar con Gemini</span>`;
+      }
+    }
+
+    // Keyboard shortcut Cmd/Ctrl + K to focus search
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('searchInput').focus();
+      }
+    });
+
+    // Initial Load
+    fetchTools();
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+  "success": true,
+  "count": 2,
+  "tools": [
+    {
+      "slug": "lazygit",
+      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tools/lazygit.md",
+      "frontmatter": {
+        "name": "Lazygit",
+        "url": "https://github.com/jesseduffield/lazygit",
+        "category": "CLI & Terminal",
+        "tags": [
+          "git",
+          "terminal",
+          "go",
+          "productivity"
+        ],
+        "stars": 52000,
+        "status": "in_use",
+        "date_added": "2026-10-16T00:00:00.000Z",
+        "source_tweet": "https://x.com/jesseduffield/status/123456789",
+        "author": "Jesse Duffield"
+      },
+      "content": "\n# Lazygit\n\n> Una interfaz de usuario de terminal simple y rápida para comandos de git, escrita en Go con gocui.\n\n## 💡 ¿Por qué destaca?\n- Permite hacer staging de líneas individuales y resolver merge conflicts visualmente en la terminal.\n- Manejo interactivo de rebase (`git rebase -i`) con atajos de un solo toque.\n- Integración perfecta con Neovim, Tmux y terminales modernas.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Es mi herramienta diaria imprescindible para revisar diffs antes de commitear.\n- Atajo favorito en la terminal: alias `lg=\"lazygit\"`.\n\n## 🔗 Referencias\n- Repositorio / Web oficial: [https://github.com/jesseduffield/lazygit](https://github.com/jesseduffield/lazygit)\n- Tweet origen: [Ver en X](https://x.com/jesseduffield/status/123456789)\n"
+    },
+    {
+      "slug": "astral-uv",
+      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tools/astral-uv.md",
+      "frontmatter": {
+        "name": "Astral UV",
+        "url": "https://github.com/astral-sh/uv",
+        "category": "CLI & Terminal",
+        "tags": [
+          "python",
+          "rust",
+          "package-manager",
+          "cli"
+        ],
+        "stars": 48000,
+        "status": "to_try",
+        "date_added": "2026-10-16T00:00:00.000Z",
+        "source_tweet": "https://x.com/astral_sh/status/987654321",
+        "author": "Astral"
+      },
+      "content": "\n# Astral UV\n\n> Gestor de paquetes y entornos de Python extremadamente rápido escrito en Rust, diseñado como reemplazo directo de pip y virtualenv.\n\n## 💡 ¿Por qué destaca?\n- 10-100x más rápido que pip y pip-tools al resolver dependencias complejas.\n- Instala y gestiona versiones de Python sin necesidad de pyenv.\n- Manejo de lockfiles deterministas y multiplataforma.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Pendiente de probar en los proyectos de backend para acelerar tiempos de CI/CD en GitHub Actions.\n\n## 🔗 Referencias\n- Repositorio / Web oficial: [https://github.com/astral-sh/uv](https://github.com/astral-sh/uv)\n- Tweet origen: [Ver en X](https://x.com/astral_sh/status/987654321)\n"
+    }
+  ]
+}
