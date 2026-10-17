@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import { extractUrlsFromText, resolveUrl } from './link_resolver.js';
-import { fetchGitHubRepoMetadata } from './github.js';
-import { classifyToolWithGemini } from './gemini.js';
+import { fetchGitHubRepoMetadata, GitHubMetadata } from './github.js';
+import { classifyToolsWithGemini } from './gemini.js';
 import { createOrUpdateToolNote } from './note_generator.js';
 import { ToolStatus } from './types.js';
 
@@ -10,6 +10,7 @@ dotenv.config();
 export interface IngestInput {
   rawText?: string;
   url?: string;
+  urls?: string[];
   sourceTweet?: string;
   author?: string;
   status?: ToolStatus;
@@ -18,66 +19,106 @@ export interface IngestInput {
 export async function ingestResource(input: IngestInput) {
   const text = (input.rawText || '').trim();
   const explicitUrl = (input.url || '').trim();
+  const explicitUrls = Array.isArray(input.urls) ? input.urls : [];
 
   // 1. Gather all potential URLs
   const candidateUrls: string[] = [];
+  for (const u of explicitUrls) {
+    if (u && u.trim()) candidateUrls.push(u.trim());
+  }
   if (explicitUrl) {
-    candidateUrls.push(explicitUrl);
+    // Support comma-separated list of URLs passed from bookmarklet query params
+    for (const part of explicitUrl.split(',')) {
+      if (part.trim()) candidateUrls.push(part.trim());
+    }
   }
   if (text) {
     candidateUrls.push(...extractUrlsFromText(text));
   }
 
-  // Filter out the tweet's own URL if present in candidateUrls
-  const nonTweetUrls = candidateUrls.filter(
-    (u) => !u.includes('twitter.com') && !u.includes('x.com')
+  // Filter out the tweet's own URL or x.com internal links
+  const nonTweetUrls = Array.from(
+    new Set(
+      candidateUrls.filter(
+        (u) => !u.includes('twitter.com') && !u.includes('x.com')
+      )
+    )
   );
 
-  let targetUrl = nonTweetUrls[0] || candidateUrls[0] || input.sourceTweet || '';
-
-  if (!targetUrl && !text) {
+  if (nonTweetUrls.length === 0 && !text && !input.sourceTweet) {
     throw new Error('Debes proporcionar al menos una URL o texto para procesar.');
   }
 
-  console.log(`[Pipeline] Resolviendo enlace: ${targetUrl || 'Texto sin enlace'}`);
+  console.log(
+    `[Pipeline] Resolviendo ${nonTweetUrls.length} enlace(s)...`
+  );
 
-  // 2. Resolve redirects (e.g. t.co -> final URL)
-  let resolved = targetUrl ? await resolveUrl(targetUrl) : null;
-  const canonicalUrl = resolved ? resolved.finalUrl : targetUrl;
+  // 2. Resolve redirects in parallel (e.g. t.co -> final URL)
+  const resolvedList = await Promise.all(
+    nonTweetUrls.map((u) => resolveUrl(u))
+  );
 
-  // 3. Fetch GitHub metadata if it is a GitHub repo
-  let githubMeta = null;
-  if (resolved?.isGitHub && resolved.githubOwner && resolved.githubRepo) {
-    console.log(`[Pipeline] Consultando GitHub API para ${resolved.githubOwner}/${resolved.githubRepo}...`);
-    githubMeta = await fetchGitHubRepoMetadata(
-      resolved.githubOwner,
-      resolved.githubRepo,
-      process.env.GITHUB_TOKEN
-    );
-  }
+  const canonicalUrls = Array.from(
+    new Set(resolvedList.map((r) => r.finalUrl).filter(Boolean))
+  );
 
-  // 4. Classify and summarize with Gemini
-  console.log(`[Pipeline] Clasificando recurso con Gemini 3.8 Flash...`);
-  const classification = await classifyToolWithGemini({
-    rawText: text || githubMeta?.description || canonicalUrl,
-    url: canonicalUrl,
-    githubMeta,
+  // 3. Fetch GitHub metadata for any GitHub repos in parallel
+  const githubMetas: Record<string, GitHubMetadata> = {};
+  await Promise.all(
+    resolvedList.map(async (res) => {
+      if (res.isGitHub && res.githubOwner && res.githubRepo) {
+        console.log(
+          `[Pipeline] Consultando GitHub API para ${res.githubOwner}/${res.githubRepo}...`
+        );
+        const meta = await fetchGitHubRepoMetadata(
+          res.githubOwner,
+          res.githubRepo,
+          process.env.GITHUB_TOKEN
+        );
+        if (meta) {
+          githubMetas[res.finalUrl] = meta;
+        }
+      }
+    })
+  );
+
+  // 4. Classify and summarize all tools found in the tweet with Gemini 3.8 Flash
+  console.log(`[Pipeline] Analizando y extrayendo herramientas con Gemini 3.8 Flash...`);
+  const classifications = await classifyToolsWithGemini({
+    rawText: text || canonicalUrls.join('\n') || input.sourceTweet || '',
+    urls: canonicalUrls,
+    githubMetas,
   });
 
-  // 5. Generate / Update Obsidian Markdown note
-  const result = createOrUpdateToolNote({
-    classification,
-    githubMeta,
-    sourceTweet: input.sourceTweet,
-    author: input.author,
-    initialStatus: input.status,
+  console.log(`[Pipeline] Gemini identificó ${classifications.length} herramienta(s).`);
+
+  // 5. Generate / Update Obsidian Markdown note for EACH tool
+  const savedItems = classifications.map((classification) => {
+    const ghMeta = githubMetas[classification.canonicalUrl] || null;
+    const result = createOrUpdateToolNote({
+      classification,
+      githubMeta: ghMeta,
+      sourceTweet: input.sourceTweet,
+      author: input.author,
+      initialStatus: input.status,
+    });
+
+    console.log(`[Pipeline] ✅ Nota guardada: ${result.filePath}`);
+    return {
+      slug: result.slug,
+      filePath: result.filePath,
+      classification,
+      stars: ghMeta?.stars,
+    };
   });
 
-  console.log(`[Pipeline] ✅ Nota guardada exitosamente en: ${result.filePath}`);
+  const first = savedItems[0];
   return {
-    slug: result.slug,
-    filePath: result.filePath,
-    classification,
-    stars: githubMeta?.stars,
+    count: savedItems.length,
+    items: savedItems,
+    slug: first?.slug,
+    filePath: first?.filePath,
+    classification: first?.classification,
+    stars: first?.stars,
   };
 }

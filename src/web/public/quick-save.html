@@ -7,11 +7,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4 font-sans">
-  <div id="card" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 w-full max-w-sm text-center shadow-2xl">
+  <div id="card" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 w-full max-w-md text-center shadow-2xl">
     <div id="spinner" class="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
     <h2 id="title" class="text-base font-bold text-slate-100 mb-1">⚡ Analizando con Gemini...</h2>
-    <p id="subtitle" class="text-xs text-slate-400">Extrayendo metadatos y clasificando herramienta</p>
-    <div id="details" class="hidden mt-4 pt-3 border-t border-slate-800 text-left text-xs space-y-1"></div>
+    <p id="subtitle" class="text-xs text-slate-400">Extrayendo todas las herramientas del tweet</p>
+    <div id="details" class="hidden mt-4 pt-3 border-t border-slate-800 text-left text-xs space-y-2 max-h-56 overflow-y-auto"></div>
   </div>
 
   <script>
@@ -20,14 +20,15 @@
       const sourceTweet = params.get('sourceTweet') || '';
       const rawText = params.get('rawText') || '';
       const author = params.get('author') || '';
-      const url = params.get('url') || '';
+      const urlParam = params.get('url') || '';
+      const urls = urlParam ? urlParam.split(',').map(u => u.trim()).filter(Boolean) : [];
 
       const spinner = document.getElementById('spinner');
       const title = document.getElementById('title');
       const subtitle = document.getElementById('subtitle');
       const details = document.getElementById('details');
 
-      if (!sourceTweet && !rawText && !url) {
+      if (!sourceTweet && !rawText && urls.length === 0) {
         spinner.className = 'hidden';
         title.innerText = '⚠️ Sin datos para guardar';
         subtitle.innerText = 'No se detectó ningún enlace o texto.';
@@ -42,7 +43,7 @@
             sourceTweet: sourceTweet || undefined,
             rawText: rawText || undefined,
             author: author || undefined,
-            url: url || undefined,
+            urls: urls.length > 0 ? urls : undefined,
           }),
         });
 
@@ -50,22 +51,46 @@
         spinner.className = 'hidden';
 
         if (data.success) {
-          const info = data.data?.classification || {};
+          const items = data.data?.items || (data.data?.classification ? [{ classification: data.data.classification }] : []);
           title.className = 'text-base font-bold text-emerald-400 mb-1';
-          title.innerText = '✅ ¡Guardado con éxito!';
-          subtitle.innerText = info.name || 'Herramienta añadida';
 
-          details.classList.remove('hidden');
-          details.innerHTML = `
-            <div><span class="text-slate-500">Categoría:</span> <span class="text-sky-400 font-medium">${info.category || 'Other'}</span></div>
-            <div><span class="text-slate-500">Tags:</span> <span class="text-slate-300 font-mono">${(info.tags || []).map(t => '#' + t).join(' ')}</span></div>
-            <p class="text-slate-400 pt-1 line-clamp-2">${info.oneLiner || ''}</p>
-            <p class="text-[10px] text-slate-500 text-center pt-2">Esta ventana se cerrará automáticamente...</p>
-          `;
+          if (items.length > 1) {
+            title.innerText = `✅ ¡${items.length} herramientas guardadas!`;
+            subtitle.innerText = 'Todas las herramientas del tweet fueron añadidas por separado:';
+            details.classList.remove('hidden');
+            details.innerHTML = items.map((item, idx) => {
+              const info = item.classification || {};
+              return `
+                <div class="p-2 rounded-lg bg-slate-950 border border-slate-800">
+                  <div class="flex justify-between items-center">
+                    <span class="font-bold text-slate-200">${idx + 1}. ${info.name || 'Herramienta'}</span>
+                    <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-400">${info.category || 'Other'}</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 line-clamp-1 mt-0.5">${info.oneLiner || ''}</p>
+                </div>
+              `;
+            }).join('') + `<p class="text-[10px] text-slate-500 text-center pt-2">Esta ventana se cerrará automáticamente...</p>`;
 
-          setTimeout(() => {
-            window.close();
-          }, 2200);
+            setTimeout(() => {
+              window.close();
+            }, 3500);
+          } else {
+            const info = items[0]?.classification || {};
+            title.innerText = '✅ ¡Guardado con éxito!';
+            subtitle.innerText = info.name || 'Herramienta añadida';
+
+            details.classList.remove('hidden');
+            details.innerHTML = `
+              <div><span class="text-slate-500">Categoría:</span> <span class="text-sky-400 font-medium">${info.category || 'Other'}</span></div>
+              <div><span class="text-slate-500">Tags:</span> <span class="text-slate-300 font-mono">${(info.tags || []).map(t => '#' + t).join(' ')}</span></div>
+              <p class="text-slate-400 pt-1 line-clamp-2">${info.oneLiner || ''}</p>
+              <p class="text-[10px] text-slate-500 text-center pt-2">Esta ventana se cerrará automáticamente...</p>
+            `;
+
+            setTimeout(() => {
+              window.close();
+            }, 2200);
+          }
         } else {
           title.className = 'text-base font-bold text-red-400 mb-1';
           title.innerText = '❌ Error al guardar';

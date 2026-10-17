@@ -45,11 +45,12 @@ app.get('/api/tools', (req, res) => {
 // POST ingest a new tool from X / URL
 app.post('/api/ingest', async (req, res) => {
   try {
-    const { url, rawText, sourceTweet, author, status } = req.body;
-    console.log(`[API] Ingest request received for: ${url || sourceTweet || rawText}`);
+    const { url, urls, rawText, sourceTweet, author, status } = req.body;
+    console.log(`[API] Ingest request received for: ${url || (urls && urls.join(', ')) || sourceTweet || rawText}`);
 
     const result = await ingestResource({
       url,
+      urls,
       rawText,
       sourceTweet,
       author,
