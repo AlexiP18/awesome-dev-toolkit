@@ -22,8 +22,8 @@ if (!fs.existsSync(publicDir)) {
 }
 app.use(express.static(publicDir));
 
-// Route to install the bookmarklet easily
-app.get('/bookmarklet', (req, res) => {
+// Route to install the bookmarklet easily (support both /bookmarklet and /bookmarklet.html)
+app.get(['/bookmarklet', '/bookmarklet.html'], (req, res) => {
   res.sendFile(path.resolve(process.cwd(), 'bookmarklet/install.html'));
 });
 
