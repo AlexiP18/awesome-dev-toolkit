@@ -1,11 +1,11 @@
 /**
- * BOOKMARKLET 1-CLIC: GUARDAR EN TOOLKIT
+ * BOOKMARKLET 1-CLIC: GUARDAR EN TOOLKIT (CSP-Safe)
  * -------------------------------------------------------------
- * Código JavaScript comprimido en URI para arrastrar a los marcadores de tu navegador.
+ * Usa window.open hacia /quick-save para evitar el bloqueo de
+ * Content-Security-Policy (connect-src) que impone X / Twitter.
  */
 
-// Código legible:
-function sendTweetToToolkit() {
+function sendTweetToToolkit(host = 'https://awesome-dev-toolkit.onrender.com') {
   const currentUrl = window.location.href;
   const isTwitter = currentUrl.includes('x.com') || currentUrl.includes('twitter.com');
 
@@ -30,37 +30,21 @@ function sendTweetToToolkit() {
       .filter((h) => h && !h.includes('x.com') && !h.includes('twitter.com') && !h.startsWith('javascript:'));
   }
 
-  // Notificación flotante tipo Toast en X
-  const toast = document.createElement('div');
-  toast.style.cssText =
-    'position:fixed;bottom:24px;right:24px;z-index:999999;background:#1e293b;color:#f8fafc;padding:12px 20px;border-radius:12px;font-family:system-ui,-apple-system,sans-serif;font-size:14px;box-shadow:0 10px 25px -5px rgba(0,0,0,0.5);border:1px solid #334155;transition:all 0.3s;';
-  toast.innerText = '⚡ Enviando a Dev Toolkit...';
-  document.body.appendChild(toast);
+  const query = new URLSearchParams({
+    sourceTweet: currentUrl,
+    rawText: tweetText,
+    author: author,
+    url: links[0] || '',
+  }).toString();
 
-  fetch('http://localhost:4000/api/ingest', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      sourceTweet: currentUrl,
-      rawText: tweetText,
-      author: author,
-      url: links[0] || undefined,
-    }),
-  })
-    .then((r) => r.json())
-    .then((data) => {
-      if (data.success) {
-        toast.style.background = '#065f46';
-        toast.innerText = `✅ ¡Guardado! ${data.data?.classification?.name || 'Recurso añadido'}`;
-      } else {
-        toast.style.background = '#991b1b';
-        toast.innerText = `❌ Error: ${data.error || 'Ocurrió un problema'}`;
-      }
-      setTimeout(() => toast.remove(), 4000);
-    })
-    .catch(() => {
-      toast.style.background = '#991b1b';
-      toast.innerText = '❌ Error de conexión: ¿Tienes corriendo "npm run dev"?';
-      setTimeout(() => toast.remove(), 4500);
-    });
+  const w = 440;
+  const h = 320;
+  const left = screen.width / 2 - w / 2;
+  const top = screen.height / 2 - h / 2;
+
+  window.open(
+    `${host}/quick-save?${query}`,
+    'ToolkitQuickSave',
+    `width=${w},height=${h},top=${top},left=${left},menubar=no,toolbar=no,location=no,status=no`
+  );
 }

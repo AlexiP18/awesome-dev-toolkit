@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guardando en Dev Toolkit...</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4 font-sans">
+  <div id="card" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 w-full max-w-sm text-center shadow-2xl">
+    <div id="spinner" class="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+    <h2 id="title" class="text-base font-bold text-slate-100 mb-1">⚡ Analizando con Gemini...</h2>
+    <p id="subtitle" class="text-xs text-slate-400">Extrayendo metadatos y clasificando herramienta</p>
+    <div id="details" class="hidden mt-4 pt-3 border-t border-slate-800 text-left text-xs space-y-1"></div>
+  </div>
+
+  <script>
+    async function runQuickSave() {
+      const params = new URLSearchParams(window.location.search);
+      const sourceTweet = params.get('sourceTweet') || '';
+      const rawText = params.get('rawText') || '';
+      const author = params.get('author') || '';
+      const url = params.get('url') || '';
+
+      const spinner = document.getElementById('spinner');
+      const title = document.getElementById('title');
+      const subtitle = document.getElementById('subtitle');
+      const details = document.getElementById('details');
+
+      if (!sourceTweet && !rawText && !url) {
+        spinner.className = 'hidden';
+        title.innerText = '⚠️ Sin datos para guardar';
+        subtitle.innerText = 'No se detectó ningún enlace o texto.';
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/ingest', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sourceTweet: sourceTweet || undefined,
+            rawText: rawText || undefined,
+            author: author || undefined,
+            url: url || undefined,
+          }),
+        });
+
+        const data = await res.json();
+        spinner.className = 'hidden';
+
+        if (data.success) {
+          const info = data.data?.classification || {};
+          title.className = 'text-base font-bold text-emerald-400 mb-1';
+          title.innerText = '✅ ¡Guardado con éxito!';
+          subtitle.innerText = info.name || 'Herramienta añadida';
+
+          details.classList.remove('hidden');
+          details.innerHTML = `
+            <div><span class="text-slate-500">Categoría:</span> <span class="text-sky-400 font-medium">${info.category || 'Other'}</span></div>
+            <div><span class="text-slate-500">Tags:</span> <span class="text-slate-300 font-mono">${(info.tags || []).map(t => '#' + t).join(' ')}</span></div>
+            <p class="text-slate-400 pt-1 line-clamp-2">${info.oneLiner || ''}</p>
+            <p class="text-[10px] text-slate-500 text-center pt-2">Esta ventana se cerrará automáticamente...</p>
+          `;
+
+          setTimeout(() => {
+            window.close();
+          }, 2200);
+        } else {
+          title.className = 'text-base font-bold text-red-400 mb-1';
+          title.innerText = '❌ Error al guardar';
+          subtitle.innerText = data.error || 'Ocurrió un problema en el servidor';
+        }
+      } catch (err) {
+        spinner.className = 'hidden';
+        title.className = 'text-base font-bold text-red-400 mb-1';
+        title.innerText = '❌ Error de conexión';
+        subtitle.innerText = 'No se pudo contactar con el servidor.';
+      }
+    }
+
+    runQuickSave();
+  </script>
+</body>
+</html>

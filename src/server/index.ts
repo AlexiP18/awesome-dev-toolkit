@@ -27,6 +27,11 @@ app.get(['/bookmarklet', '/bookmarklet.html'], (req, res) => {
   res.sendFile(path.resolve(process.cwd(), 'bookmarklet/install.html'));
 });
 
+// Route for the popup quick-save window (bypasses X/Twitter Content-Security-Policy)
+app.get(['/quick-save', '/quick-save.html'], (req, res) => {
+  res.sendFile(path.resolve(process.cwd(), 'src/web/public/quick-save.html'));
+});
+
 // GET all tools
 app.get('/api/tools', (req, res) => {
   try {
