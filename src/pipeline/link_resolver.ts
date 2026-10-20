@@ -25,9 +25,12 @@ export async function resolveUrl(rawUrl: string, timeoutMs = 6000): Promise<Reso
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
 
-    // Try HEAD first to avoid downloading large bodies
+    const isShortlink = /t\.co|bit\.ly|tinyurl\.com|goo\.gl|ow\.ly|buff\.ly/i.test(rawUrl);
+    // Use GET for shortlinks because t.co often ignores HEAD redirects
+    const method = isShortlink ? 'GET' : 'HEAD';
+
     let response = await fetch(rawUrl, {
-      method: 'HEAD',
+      method,
       redirect: 'follow',
       signal: controller.signal,
       headers: {
@@ -42,7 +45,7 @@ export async function resolveUrl(rawUrl: string, timeoutMs = 6000): Promise<Reso
       finalUrl = response.url;
     }
   } catch {
-    // If HEAD fails or timeouts, fallback to original URL
+    // If request fails or timeouts, fallback to original URL
     finalUrl = rawUrl;
   }
 
