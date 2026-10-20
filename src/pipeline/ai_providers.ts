@@ -136,8 +136,34 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
 }
 
 // -------------------------------------------------------------
+// Utilidad para extraer y parsear JSON de forma robusta
+// (maneja bloques ```json ... ``` y texto envolvente)
+// -------------------------------------------------------------
+function parseJsonSafely(text: string): any {
+  let cleaned = text.trim();
+  if (cleaned.startsWith('```')) {
+    cleaned = cleaned.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim();
+  }
+  try {
+    return JSON.parse(cleaned);
+  } catch (err) {
+    const firstBrace = cleaned.indexOf('{');
+    const lastBrace = cleaned.lastIndexOf('}');
+    const firstBracket = cleaned.indexOf('[');
+    const lastBracket = cleaned.lastIndexOf(']');
+
+    if (firstBrace !== -1 && lastBrace !== -1 && (firstBracket === -1 || firstBrace < firstBracket)) {
+      return JSON.parse(cleaned.slice(firstBrace, lastBrace + 1));
+    } else if (firstBracket !== -1 && lastBracket !== -1) {
+      return JSON.parse(cleaned.slice(firstBracket, lastBracket + 1));
+    }
+    throw err;
+  }
+}
+
+// -------------------------------------------------------------
 // Función genérica para proveedores compatibles con OpenAI
-// (Groq, OpenRouter, OpenAI, Ollama)
+// (ZenMux, Groq, OpenRouter, OpenAI, DeepSeek, Ollama)
 // -------------------------------------------------------------
 async function callOpenAICompatible(options: {
   providerName: string;
@@ -155,23 +181,43 @@ async function callOpenAICompatible(options: {
     headers['Authorization'] = `Bearer ${options.apiKey}`;
   }
 
-  const res = await fetch(options.endpoint, {
+  const payload: any = {
+    model: options.model,
+    messages: [
+      {
+        role: 'system',
+        content:
+          'Eres un clasificador experto de herramientas de desarrollo. Responde SIEMPRE en formato JSON válido con la propiedad "tools": []. No incluyas explicaciones ni texto fuera del JSON.',
+      },
+      { role: 'user', content: options.prompt },
+    ],
+    response_format: { type: 'json_object' },
+    temperature: 0.1,
+  };
+
+  let res = await fetch(options.endpoint, {
     method: 'POST',
     headers,
-    body: JSON.stringify({
-      model: options.model,
-      messages: [
-        {
-          role: 'system',
-          content:
-            'Eres un clasificador experto de herramientas de desarrollo. Responde SIEMPRE en formato JSON válido con la propiedad "tools": [].',
-        },
-        { role: 'user', content: options.prompt },
-      ],
-      response_format: { type: 'json_object' },
-      temperature: 0.1,
-    }),
+    body: JSON.stringify(payload),
   });
+
+  // Si el proxy o modelo no soporta response_format: { type: 'json_object' } (ej. ciertos modelos Claude/MiniMax)
+  if (!res.ok && (res.status === 400 || res.status === 422)) {
+    const errorBody = await res.text();
+    if (
+      errorBody.toLowerCase().includes('response_format') ||
+      errorBody.toLowerCase().includes('json_object')
+    ) {
+      delete payload.response_format;
+      res = await fetch(options.endpoint, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(payload),
+      });
+    } else {
+      throw new Error(`[${options.providerName}] HTTP ${res.status}: ${errorBody.slice(0, 180)}`);
+    }
+  }
 
   if (!res.ok) {
     const errorBody = await res.text();
@@ -182,11 +228,101 @@ async function callOpenAICompatible(options: {
   const rawText = data.choices?.[0]?.message?.content?.trim();
   if (!rawText) throw new Error(`[${options.providerName}] Respuesta vacía`);
 
-  const parsed = JSON.parse(rawText);
+  const parsed = parseJsonSafely(rawText);
   if (Array.isArray(parsed)) return parsed;
   if (Array.isArray(parsed.tools)) return parsed.tools;
   if (Array.isArray(parsed.items)) return parsed.items;
   return [parsed];
+}
+
+// -------------------------------------------------------------
+// ZenMux Gateway (https://zenmux.ai)
+// Admite Claude Haiku, MiniMax 3.1, DeepSeek Flash, etc.
+// -------------------------------------------------------------
+function getZenMuxEndpoint(): string {
+  const base = (process.env.ZENMUX_BASE_URL || 'https://zenmux.ai/api/v1').replace(/\/$/, '');
+  return `${base}/chat/completions`;
+}
+
+// ZenMux - DeepSeek Flash
+async function tryZenMuxDeepSeek(params: ClassifyInput): Promise<ClassificationResult[]> {
+  const apiKey = process.env.ZENMUX_DEEPSEEK_KEY || process.env.ZENMUX_API_KEY;
+  if (!apiKey) throw new Error('ZENMUX_DEEPSEEK_KEY no configurada');
+
+  const raw = await callOpenAICompatible({
+    providerName: 'ZenMux (DeepSeek Flash)',
+    endpoint: getZenMuxEndpoint(),
+    apiKey,
+    model: process.env.ZENMUX_DEEPSEEK_MODEL || 'zenmux/deepseek/deepseek-v4-flash',
+    prompt: buildUserPrompt(params),
+  });
+
+  return normalizeRawOutput(raw, params.urls);
+}
+
+// ZenMux - Claude Haiku (3.5 / 5.5)
+async function tryZenMuxClaude(params: ClassifyInput): Promise<ClassificationResult[]> {
+  const apiKey = process.env.ZENMUX_CLAUDE_KEY || process.env.ZENMUX_API_KEY;
+  if (!apiKey) throw new Error('ZENMUX_CLAUDE_KEY no configurada');
+
+  const raw = await callOpenAICompatible({
+    providerName: 'ZenMux (Claude Haiku)',
+    endpoint: getZenMuxEndpoint(),
+    apiKey,
+    model: process.env.ZENMUX_CLAUDE_MODEL || 'zenmux/anthropic/claude-3.5-haiku',
+    prompt: buildUserPrompt(params),
+  });
+
+  return normalizeRawOutput(raw, params.urls);
+}
+
+// ZenMux - MiniMax (3.1 / 01)
+async function tryZenMuxMiniMax(params: ClassifyInput): Promise<ClassificationResult[]> {
+  const apiKey = process.env.ZENMUX_MINIMAX_KEY || process.env.ZENMUX_API_KEY;
+  if (!apiKey) throw new Error('ZENMUX_MINIMAX_KEY no configurada');
+
+  const raw = await callOpenAICompatible({
+    providerName: 'ZenMux (MiniMax 3.1)',
+    endpoint: getZenMuxEndpoint(),
+    apiKey,
+    model: process.env.ZENMUX_MINIMAX_MODEL || 'zenmux/minimax/minimax-01',
+    prompt: buildUserPrompt(params),
+  });
+
+  return normalizeRawOutput(raw, params.urls);
+}
+
+// ZenMux - General (con ZENMUX_API_KEY y modelo personalizado)
+async function tryZenMuxGeneral(params: ClassifyInput): Promise<ClassificationResult[]> {
+  const apiKey = process.env.ZENMUX_API_KEY;
+  if (!apiKey) throw new Error('ZENMUX_API_KEY no configurada');
+
+  const model = process.env.ZENMUX_MODEL || 'zenmux/deepseek/deepseek-v4-flash';
+  const raw = await callOpenAICompatible({
+    providerName: `ZenMux (${model})`,
+    endpoint: getZenMuxEndpoint(),
+    apiKey,
+    model,
+    prompt: buildUserPrompt(params),
+  });
+
+  return normalizeRawOutput(raw, params.urls);
+}
+
+// DeepSeek Directo (api.deepseek.com)
+async function tryDeepSeekDirect(params: ClassifyInput): Promise<ClassificationResult[]> {
+  const apiKey = process.env.DEEPSEEK_API_KEY;
+  if (!apiKey) throw new Error('DEEPSEEK_API_KEY no configurada');
+
+  const raw = await callOpenAICompatible({
+    providerName: 'DeepSeek Directo',
+    endpoint: 'https://api.deepseek.com/chat/completions',
+    apiKey,
+    model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+    prompt: buildUserPrompt(params),
+  });
+
+  return normalizeRawOutput(raw, params.urls);
 }
 
 // -------------------------------------------------------------
@@ -270,10 +406,56 @@ export async function classifyWithProviderCascade(
   params: ClassifyInput
 ): Promise<{ results: ClassificationResult[]; providerUsed: string }> {
   const providers = [
+    // 1. Google Gemini (Principal)
     { name: 'Google Gemini (3.8 Flash)', fn: tryGemini, hasKey: () => Boolean(process.env.GEMINI_API_KEY) },
+
+    // 2. ZenMux (DeepSeek Flash)
+    {
+      name: 'ZenMux (DeepSeek Flash)',
+      fn: tryZenMuxDeepSeek,
+      hasKey: () => Boolean(process.env.ZENMUX_DEEPSEEK_KEY || (process.env.ZENMUX_DEEPSEEK_MODEL && process.env.ZENMUX_API_KEY)),
+    },
+
+    // 3. ZenMux (Claude Haiku)
+    {
+      name: 'ZenMux (Claude Haiku)',
+      fn: tryZenMuxClaude,
+      hasKey: () => Boolean(process.env.ZENMUX_CLAUDE_KEY || (process.env.ZENMUX_CLAUDE_MODEL && process.env.ZENMUX_API_KEY)),
+    },
+
+    // 4. ZenMux (MiniMax 3.1)
+    {
+      name: 'ZenMux (MiniMax 3.1)',
+      fn: tryZenMuxMiniMax,
+      hasKey: () => Boolean(process.env.ZENMUX_MINIMAX_KEY || (process.env.ZENMUX_MINIMAX_MODEL && process.env.ZENMUX_API_KEY)),
+    },
+
+    // 5. ZenMux (General)
+    {
+      name: 'ZenMux (General)',
+      fn: tryZenMuxGeneral,
+      hasKey: () =>
+        Boolean(
+          process.env.ZENMUX_API_KEY &&
+            !process.env.ZENMUX_DEEPSEEK_KEY &&
+            !process.env.ZENMUX_CLAUDE_KEY &&
+            !process.env.ZENMUX_MINIMAX_KEY
+        ),
+    },
+
+    // 6. DeepSeek Directo
+    { name: 'DeepSeek Directo', fn: tryDeepSeekDirect, hasKey: () => Boolean(process.env.DEEPSEEK_API_KEY) },
+
+    // 7. Groq (Llama 3.3)
     { name: 'Groq (Llama 3.3)', fn: tryGroq, hasKey: () => Boolean(process.env.GROQ_API_KEY) },
+
+    // 8. OpenRouter
     { name: 'OpenRouter', fn: tryOpenRouter, hasKey: () => Boolean(process.env.OPENROUTER_API_KEY) },
+
+    // 9. OpenAI (GPT-4o-mini)
     { name: 'OpenAI (GPT-4o-mini)', fn: tryOpenAI, hasKey: () => Boolean(process.env.OPENAI_API_KEY) },
+
+    // 10. Ollama (Local)
     { name: 'Ollama (Local)', fn: tryOllama, hasKey: () => Boolean(process.env.OLLAMA_BASE_URL) },
   ];
 

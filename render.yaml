@@ -11,6 +11,16 @@ services:
         value: production
       - key: GEMINI_API_KEY
         sync: false
+      - key: ZENMUX_DEEPSEEK_KEY
+        sync: false
+      - key: ZENMUX_CLAUDE_KEY
+        sync: false
+      - key: ZENMUX_MINIMAX_KEY
+        sync: false
+      - key: ZENMUX_API_KEY
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false
       - key: GROQ_API_KEY
         sync: false
       - key: OPENROUTER_API_KEY
