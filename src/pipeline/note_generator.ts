@@ -5,10 +5,14 @@ import { ClassificationResult, ToolFrontmatter, ToolItem, ToolStatus } from './t
 import { GitHubMetadata } from './github.js';
 
 const TOOLS_DIR = path.resolve(process.cwd(), 'content/tools');
+const PRODUCTS_DIR = path.resolve(process.cwd(), 'content/products');
 
 export function ensureToolsDirExists(): void {
   if (!fs.existsSync(TOOLS_DIR)) {
     fs.mkdirSync(TOOLS_DIR, { recursive: true });
+  }
+  if (!fs.existsSync(PRODUCTS_DIR)) {
+    fs.mkdirSync(PRODUCTS_DIR, { recursive: true });
   }
 }
 
@@ -121,8 +125,11 @@ export function createOrUpdateToolNote(
     };
   }
 
+  const isShowcase = params.classification.entryType === 'product_showcase';
+  const targetDir = isShowcase ? PRODUCTS_DIR : TOOLS_DIR;
+
   const slug = slugify(params.classification.name);
-  const filePath = path.join(TOOLS_DIR, `${slug}.md`);
+  const filePath = path.join(targetDir, `${slug}.md`);
 
   const today = new Date().toISOString().split('T')[0];
 
@@ -136,25 +143,28 @@ export function createOrUpdateToolNote(
     date_added: today,
     source_tweet: params.sourceTweet,
     author: params.author,
+    entry_type: isShowcase ? 'product_showcase' : 'tool',
+    company: params.classification.company || (isShowcase ? params.author : undefined),
   };
 
   const highlightsMd = params.classification.keyHighlights.length
     ? params.classification.keyHighlights.map((h) => `- ${h}`).join('\n')
-    : '- Herramienta guardada para evaluación técnica.';
+    : '- Recurso guardado para evaluación técnica.';
 
   const markdownBody = `
 # ${params.classification.name}
 
 > ${params.classification.oneLiner}
 
+${isShowcase && frontmatter.company ? `**🏢 Empresa / Creador:** ${frontmatter.company}\n` : ''}
 ## 💡 ¿Por qué destaca?
 ${highlightsMd}
 
 ## 📝 Notas Personales (Segundo Cerebro)
-- ${params.classification.recommendedNotes || 'Pendiente de probar en un proyecto real.'}
+- ${params.classification.recommendedNotes || 'Pendiente de probar o revisar detalles.'}
 
 ## 🔗 Referencias
-- Repositorio / Web oficial: [${params.classification.canonicalUrl}](${params.classification.canonicalUrl})
+- Enlace / Web de referencia: [${params.classification.canonicalUrl}](${params.classification.canonicalUrl})
 ${params.sourceTweet ? `- Tweet origen: [Ver en X](${params.sourceTweet})` : ''}
 `;
 
@@ -166,22 +176,35 @@ ${params.sourceTweet ? `- Tweet origen: [Ver en X](${params.sourceTweet})` : ''}
 
 export function loadAllTools(): ToolItem[] {
   ensureToolsDirExists();
-  const files = fs.readdirSync(TOOLS_DIR).filter((f) => f.endsWith('.md'));
-
   const tools: ToolItem[] = [];
 
-  for (const file of files) {
-    const filePath = path.join(TOOLS_DIR, file);
-    const content = fs.readFileSync(filePath, 'utf-8');
-    const parsed = matter(content);
+  const dirs = [
+    { dir: TOOLS_DIR, defaultType: 'tool' as const },
+    { dir: PRODUCTS_DIR, defaultType: 'product_showcase' as const },
+  ];
 
-    const slug = path.basename(file, '.md');
-    tools.push({
-      slug,
-      filePath,
-      frontmatter: parsed.data as ToolFrontmatter,
-      content: parsed.content,
-    });
+  for (const { dir, defaultType } of dirs) {
+    if (!fs.existsSync(dir)) continue;
+    const files = fs.readdirSync(dir).filter((f) => f.endsWith('.md'));
+
+    for (const file of files) {
+      const filePath = path.join(dir, file);
+      const content = fs.readFileSync(filePath, 'utf-8');
+      const parsed = matter(content);
+
+      const slug = path.basename(file, '.md');
+      const data = parsed.data as ToolFrontmatter;
+      if (!data.entry_type) {
+        data.entry_type = defaultType;
+      }
+
+      tools.push({
+        slug,
+        filePath,
+        frontmatter: data,
+        content: parsed.content,
+      });
+    }
   }
 
   // Sort descending by date_added or stars
@@ -196,9 +219,12 @@ export function updateToolNote(slug: string, updates: {
   category?: string;
   tags?: string[];
 }): boolean {
-  const filePath = path.join(TOOLS_DIR, `${slug}.md`);
+  let filePath = path.join(TOOLS_DIR, `${slug}.md`);
   if (!fs.existsSync(filePath)) {
-    return false;
+    filePath = path.join(PRODUCTS_DIR, `${slug}.md`);
+    if (!fs.existsSync(filePath)) {
+      return false;
+    }
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');

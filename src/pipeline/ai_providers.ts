@@ -15,6 +15,7 @@ export const ALLOWED_CATEGORIES: ToolCategory[] = [
   'Databases & Storage',
   'Productivity & Tools',
   'Documentation & Resources',
+  'Empresas & Productos',
   'Other',
 ];
 
@@ -64,12 +65,15 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
    - Si el tweet incluye un enlace a una herramienta Y TAMBIÉN enlaces a canales de Telegram (t.me/...), servidores de Discord (discord.gg/...), grupos de WhatsApp, canales personales de YouTube o enlaces de donación/café:
    - RECHAZA Y DESCARTA por completo los enlaces comunitarios/sociales. La herramienta NUNCA es el canal de Telegram o Discord. Solo debes registrar la herramienta de software o sitio web técnico real.
 
-5. TWEETS DE EMPRESAS O CREADORES ANUNCIANDO UN PRODUCTO SIN ENLACE DIRECTO:
+5. TWEETS DE EMPRESAS O CREADORES ANUNCIANDO UN PRODUCTO SIN ENLACE DIRECTO (Apartado: 'Empresas & Productos'):
    - Si una empresa o creador anuncia un producto técnico, archivo o recurso pero no incluye un link web/repo directo (ej: "Introducing epstein.md A 927,400+ Character .MD File trained to skip vibe coded AI slop..."):
-   - Si describe un recurso técnico real y utilizable para desarrolladores, extráelo como herramienta:
-     * 'name': Nombre del producto o recurso (ej: "epstein.md").
+   - Si describe un producto técnico real y utilizable para desarrolladores, regístralo como producto de empresa:
+     * 'name': Nombre del producto o archivo (ej: "epstein.md").
      * 'canonicalUrl': Si no hay link web en el texto, usa la URL de la empresa/creador o el enlace del tweet de origen.
-     * 'tags': Incluye etiquetas relevantes y 'product-showcase'.
+     * 'category': "Empresas & Productos".
+     * 'entryType': "product_showcase".
+     * 'company': Nombre de la empresa o cuenta creadora (ej: "Shipper").
+     * 'tags': Incluye etiquetas relevantes como 'showcase', 'design', etc.
    - Si el tweet es simplemente opinión personal, meme, polémica o discusión sin producto técnico concreto detrás, devuelve un arreglo vacío 'tools': [].
 
 Categorías válidas (selecciona EXACTAMENTE una para cada herramienta):
@@ -82,6 +86,8 @@ Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
       "name": "Nombre claro y conciso",
       "canonicalUrl": "https://...",
       "category": "Una de las categorías válidas listadas arriba",
+      "entryType": "tool o product_showcase",
+      "company": "Nombre de la empresa si aplica",
       "tags": ["tag1", "tag2", "tag3"],
       "oneLiner": "Resumen conciso en español de 1-2 oraciones explicando para qué sirve",
       "keyHighlights": ["Punto clave 1", "Punto clave 2"],
@@ -113,6 +119,11 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
       url = validCandidate || '';
     }
 
+    const isShowcase =
+      parsed.entryType === 'product_showcase' ||
+      validCategory === 'Empresas & Productos' ||
+      Boolean(parsed.company && !parsed.canonicalUrl?.includes('github.com'));
+
     return {
       name: parsed.name || 'Nueva Herramienta',
       canonicalUrl: url,
@@ -121,6 +132,8 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
       oneLiner: parsed.oneLiner || 'Herramienta guardada de X.',
       keyHighlights: Array.isArray(parsed.keyHighlights) ? parsed.keyHighlights : [],
       recommendedNotes: parsed.recommendedNotes || '',
+      entryType: isShowcase ? 'product_showcase' : 'tool',
+      company: parsed.company || undefined,
     };
   });
 }
@@ -149,6 +162,8 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
             name: { type: Type.STRING },
             canonicalUrl: { type: Type.STRING },
             category: { type: Type.STRING },
+            entryType: { type: Type.STRING },
+            company: { type: Type.STRING },
             tags: { type: Type.ARRAY, items: { type: Type.STRING } },
             oneLiner: { type: Type.STRING },
             keyHighlights: { type: Type.ARRAY, items: { type: Type.STRING } },

@@ -18,10 +18,10 @@
 ### 🛠️ CLI & Terminal
 
 - **[Lazygit](https://github.com/jesseduffield/lazygit)** ⭐ **52.000** `🟢 En uso`  
-  Una interfaz de usuario de terminal simple y rápida para comandos de git, escrita en Go con gocui. [📝 Ver nota](content/tools/lazygit.md) `#git` `#terminal` `#go` `#productivity`
+  Una interfaz de usuario de terminal simple y rápida para comandos de git, escrita en Go con gocui. [📝 Ver ficha](content/tools/lazygit.md) `#git` `#terminal` `#go` `#productivity`
 
 - **[Astral UV](https://github.com/astral-sh/uv)** ⭐ **48.000** `🟡 Por probar`  
-  Gestor de paquetes y entornos de Python extremadamente rápido escrito en Rust, diseñado como reemplazo directo de pip y virtualenv. [📝 Ver nota](content/tools/astral-uv.md) `#python` `#rust` `#package-manager` `#cli`
+  Gestor de paquetes y entornos de Python extremadamente rápido escrito en Rust, diseñado como reemplazo directo de pip y virtualenv. [📝 Ver ficha](content/tools/astral-uv.md) `#python` `#rust` `#package-manager` `#cli`
 
 
 

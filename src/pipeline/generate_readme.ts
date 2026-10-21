@@ -12,6 +12,7 @@ const CATEGORY_ICONS: Record<ToolCategory, string> = {
   'Databases & Storage': '🗄️',
   'Productivity & Tools': '⚡',
   'Documentation & Resources': '📚',
+  'Empresas & Productos': '🏢',
   'Other': '📦',
 };
 
@@ -62,8 +63,13 @@ export function generateReadme(): string {
       const quoteMatch = item.content.match(/^>\s*(.+)$/m);
       const summary = quoteMatch ? quoteMatch[1] : 'Sin descripción adicional.';
 
-      body += `- **[${item.frontmatter.name}](${item.frontmatter.url})**${starsBadge}${statusBadge}  \n`;
-      body += `  ${summary} [📝 Ver nota](content/tools/${item.slug}.md)${tags}\n\n`;
+      const companyBadge = item.frontmatter.company ? ` (\`🏢 ${item.frontmatter.company}\`)` : '';
+      const notePath = item.frontmatter.entry_type === 'product_showcase'
+        ? `content/products/${item.slug}.md`
+        : `content/tools/${item.slug}.md`;
+
+      body += `- **[${item.frontmatter.name}](${item.frontmatter.url})**${companyBadge}${starsBadge}${statusBadge}  \n`;
+      body += `  ${summary} [📝 Ver ficha](${notePath})${tags}\n\n`;
     }
   }
 

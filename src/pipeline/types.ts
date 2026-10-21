@@ -7,7 +7,10 @@ export type ToolCategory =
   | 'Databases & Storage'
   | 'Productivity & Tools'
   | 'Documentation & Resources'
+  | 'Empresas & Productos'
   | 'Other';
+
+export type EntryType = 'tool' | 'product_showcase';
 
 export type ToolStatus = 'to_try' | 'in_use' | 'archived';
 
@@ -21,6 +24,8 @@ export interface ToolFrontmatter {
   date_added: string;
   source_tweet?: string;
   author?: string;
+  entry_type?: EntryType;
+  company?: string;
 }
 
 export interface ToolItem {
@@ -38,4 +43,6 @@ export interface ClassificationResult {
   oneLiner: string;
   keyHighlights: string[];
   recommendedNotes: string;
+  entryType?: EntryType;
+  company?: string;
 }
