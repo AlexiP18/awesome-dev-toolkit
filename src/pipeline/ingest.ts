@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { extractUrlsFromText, resolveUrl } from './link_resolver.js';
+import { extractUrlsFromText, resolveUrl, isIgnoredNonToolUrl } from './link_resolver.js';
 import { fetchGitHubRepoMetadata, GitHubMetadata } from './github.js';
 import { classifyToolsWithGemini } from './gemini.js';
 import {
@@ -39,12 +39,12 @@ export async function ingestResource(input: IngestInput) {
     candidateUrls.push(...extractUrlsFromText(text));
   }
 
-  // Filter out the tweet's own URL or x.com internal links
+  // Filtrar enlaces de Twitter/X y enlaces sociales/comunitarios no técnicos (Telegram, Discord, etc.)
   const nonTweetUrls = Array.from(
     new Set(
-      candidateUrls.filter(
-        (u) => !u.includes('twitter.com') && !u.includes('x.com')
-      )
+      candidateUrls
+        .map((u) => u.trim())
+        .filter((u) => Boolean(u) && !isIgnoredNonToolUrl(u))
     )
   );
 
@@ -55,9 +55,9 @@ export async function ingestResource(input: IngestInput) {
   console.log(`[Pipeline] Resolviendo ${nonTweetUrls.length} enlace(s)...`);
 
   // 2. Resolve redirects in parallel (e.g. t.co -> final URL)
-  const resolvedList = await Promise.all(
+  const resolvedList = (await Promise.all(
     nonTweetUrls.map((u) => resolveUrl(u))
-  );
+  )).filter((r) => !isIgnoredNonToolUrl(r.finalUrl));
 
   const canonicalUrls = Array.from(
     new Set(resolvedList.map((r) => r.finalUrl).filter(Boolean))

@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import { GoogleGenAI, Type } from '@google/genai';
 import { ClassificationResult, ToolCategory } from './types.js';
 import { GitHubMetadata } from './github.js';
+import { isIgnoredNonToolUrl } from './link_resolver.js';
 
 dotenv.config();
 
@@ -34,7 +35,7 @@ function buildUserPrompt(params: ClassifyInput): string {
     .join('\n');
 
   return `
-Analiza el siguiente tweet o texto guardado:
+Analiza el siguiente tweet o texto guardado para un Toolkit de Desarrolladores de Software:
 - Texto original del Tweet / Guardado:
 """
 ${params.rawText}
@@ -43,11 +44,33 @@ ${params.rawText}
 ${params.urls.length > 0 ? params.urls.map((u) => `  * ${u}`).join('\n') : '  (Ninguno explícito, infiérelos del texto si aparecen dominios como sitio.com, herramienta.io, etc.)'}
 ${githubInfoList ? `- Metadata de GitHub:\n${githubInfoList}` : ''}
 
-REGLA MUY IMPORTANTE PARA TWEETS CON MÚLTIPLES HERRAMIENTAS:
-- Si el tweet es una lista o menciona MÚLTIPLES herramientas, sitios web o repositorios distintos (por ejemplo: "1. jiro.build ... 2. godly.website ... 3. awwwards.com ..."), DEBES extraer y devolver CADA UNA de las herramientas como un objeto independiente dentro del arreglo JSON 'tools'.
-- Si el texto menciona un dominio sin "https://" (por ejemplo "jiro.build" o "mobbin.com"), asegúrate de que su 'canonicalUrl' incluya el protocolo completo (ej. "https://jiro.build").
-- Si el tweet trata sobre UNA SOLA herramienta, devuelve un arreglo 'tools' con ese único elemento.
-- Si el tweet es personal, un meme deportivo o NO menciona ninguna herramienta o recurso técnico, devuelve un arreglo vacío 'tools': [].
+GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
+
+1. TWEETS TIPO LISTA O RECOPILACIÓN (Múltiples herramientas):
+   - Si el tweet numera o agrupa varias herramientas distintas (ej: "1. Superdesign Skill github.com/... 2. Better Design ... 3. Design Taste ..."):
+   - DEBES extraer y devolver CADA UNA de las herramientas como un objeto independiente dentro del arreglo JSON 'tools'.
+   - Asocia a cada herramienta su URL correspondiente (web oficial o repositorio de GitHub).
+
+2. TWEETS EXPLICATIVOS CON ENLACE (Showcases técnicos):
+   - Si el tweet detalla y explica las bondades o arquitectura de un proyecto con su enlace (ej: "DeepSeek acaba de liberar DeepInfer... motor de inferencia de producción... licencia Apache 2.0 -> github.com/..."):
+   - Extrae el nombre exacto de la herramienta (ej: "DeepInfer").
+   - Aprovecha TODO el contexto técnico del tweet para redactar un 'oneLiner' preciso y 'keyHighlights' con las características técnicas reales descritas (licencia, optimizaciones, casos de uso).
+
+3. TWEETS CON ENLACE DIRECTO O TARJETA SIN APENAS TEXTO:
+   - Si el tweet contiene poco o ningún texto y solo comparte una tarjeta/enlace de GitHub o web (ej. tarjeta de "OpenUI"):
+   - Apóyate en la 'Metadata de GitHub' provista arriba (descripción, tópicos, lenguaje, estrellas) y en la URL canónica para generar una ficha completa, técnica y profesional.
+
+4. RECHAZO OBLIGATORIO DE ENLACES SOCIALES Y COMUNITARIOS:
+   - Si el tweet incluye un enlace a una herramienta Y TAMBIÉN enlaces a canales de Telegram (t.me/...), servidores de Discord (discord.gg/...), grupos de WhatsApp, canales personales de YouTube o enlaces de donación/café:
+   - RECHAZA Y DESCARTA por completo los enlaces comunitarios/sociales. La herramienta NUNCA es el canal de Telegram o Discord. Solo debes registrar la herramienta de software o sitio web técnico real.
+
+5. TWEETS DE EMPRESAS O CREADORES ANUNCIANDO UN PRODUCTO SIN ENLACE DIRECTO:
+   - Si una empresa o creador anuncia un producto técnico, archivo o recurso pero no incluye un link web/repo directo (ej: "Introducing epstein.md A 927,400+ Character .MD File trained to skip vibe coded AI slop..."):
+   - Si describe un recurso técnico real y utilizable para desarrolladores, extráelo como herramienta:
+     * 'name': Nombre del producto o recurso (ej: "epstein.md").
+     * 'canonicalUrl': Si no hay link web en el texto, usa la URL de la empresa/creador o el enlace del tweet de origen.
+     * 'tags': Incluye etiquetas relevantes y 'product-showcase'.
+   - Si el tweet es simplemente opinión personal, meme, polémica o discusión sin producto técnico concreto detrás, devuelve un arreglo vacío 'tools': [].
 
 Categorías válidas (selecciona EXACTAMENTE una para cada herramienta):
 ${ALLOWED_CATEGORIES.map((c) => `- "${c}"`).join('\n')}
@@ -82,6 +105,12 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
     let url = (parsed.canonicalUrl || urls[index] || urls[0] || '').trim();
     if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
       url = `https://${url}`;
+    }
+
+    // Doble validación: Si la URL resultante es un enlace social/comunitario ignorado (ej. Telegram), reemplazarlo
+    if (isIgnoredNonToolUrl(url)) {
+      const validCandidate = urls.find((u) => !isIgnoredNonToolUrl(u));
+      url = validCandidate || '';
     }
 
     return {

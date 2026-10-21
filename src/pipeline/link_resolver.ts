@@ -11,11 +11,62 @@ export interface ResolvedLink {
   githubRepo?: string;
 }
 
+export const IGNORED_DOMAINS = [
+  't.me',
+  'telegram.me',
+  'discord.gg',
+  'discord.com/invite',
+  'chat.whatsapp.com',
+  'wa.me',
+  'youtube.com',
+  'youtu.be',
+  'instagram.com',
+  'tiktok.com',
+  'facebook.com',
+  'buymeacoffee.com',
+  'patreon.com',
+  'ko-fi.com',
+  'twitter.com',
+  'x.com',
+];
+
+export function isIgnoredNonToolUrl(rawUrl: string): boolean {
+  const lower = rawUrl.toLowerCase();
+  return IGNORED_DOMAINS.some((domain) => lower.includes(domain));
+}
+
 export function extractUrlsFromText(text: string): string[] {
-  const urlRegex = /(https?:\/\/[^\s<>"'()]+)/gi;
-  const matches = text.match(urlRegex) || [];
-  // Clean trailing punctuation often caught in regex
-  return matches.map((url) => url.replace(/[.,;:!?)]+$/, ''));
+  if (!text) return [];
+
+  const foundUrls: string[] = [];
+
+  // 1. Enlaces estándar con protocolo http(s)://
+  const httpRegex = /(https?:\/\/[^\s<>"'()]+)/gi;
+  const httpMatches = text.match(httpRegex) || [];
+  for (const match of httpMatches) {
+    const cleaned = match.replace(/[.,;:!?)]+$/, '');
+    if (!isIgnoredNonToolUrl(cleaned)) {
+      foundUrls.push(cleaned);
+    }
+  }
+
+  // 2. Dominios y repositorios sin protocolo (ej: github.com/user/repo, adcode.bluethenics.com, jiro.build)
+  const domainRegex = /\b(?:github\.com|gitlab\.com|[a-zA-Z0-9-]+\.(?:com|io|dev|app|org|net|co|ai|build|sh|so|tech|tools|site|design|website))\b(?:\/[^\s<>"'()]*)?/gi;
+  const domainMatches = text.match(domainRegex) || [];
+  for (const match of domainMatches) {
+    const cleaned = match.replace(/[.,;:!?)]+$/, '');
+    const withProtocol = `https://${cleaned}`;
+    if (!isIgnoredNonToolUrl(withProtocol)) {
+      const alreadyHas = foundUrls.some(
+        (u) => u.replace(/^https?:\/\//, '').toLowerCase() === cleaned.toLowerCase()
+      );
+      if (!alreadyHas) {
+        foundUrls.push(withProtocol);
+      }
+    }
+  }
+
+  return Array.from(new Set(foundUrls));
 }
 
 export async function resolveUrl(rawUrl: string, timeoutMs = 6000): Promise<ResolvedLink> {
