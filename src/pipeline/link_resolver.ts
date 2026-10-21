@@ -30,6 +30,22 @@ export const IGNORED_DOMAINS = [
   'x.com',
 ];
 
+export function cleanTrackingParams(rawUrl: string): string {
+  try {
+    const u = new URL(rawUrl);
+    const tracking = [
+      'oref', 'ref', 'ref_src', 'utm_source', 'utm_medium',
+      'utm_campaign', 'utm_term', 'utm_content', 'fbclid', 'gclid'
+    ];
+    for (const p of tracking) {
+      u.searchParams.delete(p);
+    }
+    return u.toString().replace(/\?$/, '');
+  } catch {
+    return rawUrl;
+  }
+}
+
 export function isIgnoredNonToolUrl(rawUrl: string): boolean {
   const lower = rawUrl.toLowerCase();
   return IGNORED_DOMAINS.some((domain) => lower.includes(domain));
@@ -93,11 +109,11 @@ export async function resolveUrl(rawUrl: string, timeoutMs = 6000): Promise<Reso
     clearTimeout(timer);
 
     if (response.url) {
-      finalUrl = response.url;
+      finalUrl = cleanTrackingParams(response.url);
     }
   } catch {
     // If request fails or timeouts, fallback to original URL
-    finalUrl = rawUrl;
+    finalUrl = cleanTrackingParams(rawUrl);
   }
 
   // Normalize GitHub URL

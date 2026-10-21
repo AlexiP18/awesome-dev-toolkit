@@ -63,6 +63,11 @@ export async function ingestResource(input: IngestInput) {
     new Set(resolvedList.map((r) => r.finalUrl).filter(Boolean))
   );
 
+  // Priorizar repositorios de GitHub al inicio de los candidatos
+  canonicalUrls.sort(
+    (a, b) => (b.includes('github.com') ? 1 : 0) - (a.includes('github.com') ? 1 : 0)
+  );
+
   // Load current catalog to check duplicates
   const existingTools = loadAllTools();
 
@@ -135,6 +140,29 @@ export async function ingestResource(input: IngestInput) {
   });
 
   console.log(`[Pipeline] Gemini identificó ${classifications.length} herramienta(s).`);
+
+  // 4.5. Prioridad Determinística: Si la IA seleccionó una landing page pero el tweet contiene
+  // un repositorio de GitHub correspondiente a la herramienta, priorizar el repositorio como URL canónica principal
+  for (const classification of classifications) {
+    if (!classification.canonicalUrl.includes('github.com')) {
+      const matchingGh = resolvedList.find((r) => r.isGitHub && r.finalUrl);
+      if (matchingGh) {
+        const repoName = (matchingGh.githubRepo || '').toLowerCase().replace(/[-_]/g, '');
+        const toolName = classification.name.toLowerCase().replace(/[-_\s]/g, '');
+        const totalGh = resolvedList.filter((r) => r.isGitHub).length;
+
+        if (totalGh === 1 || repoName.includes(toolName) || toolName.includes(repoName)) {
+          console.log(
+            `[Pipeline] 🔄 Priorizando repositorio GitHub sobre landing page: ${matchingGh.finalUrl} (Web guardada: ${classification.canonicalUrl})`
+          );
+          if (!classification.websiteUrl) {
+            classification.websiteUrl = classification.canonicalUrl;
+          }
+          classification.canonicalUrl = matchingGh.finalUrl;
+        }
+      }
+    }
+  }
 
   // 5. Generate Obsidian Markdown note for EACH tool (skipping duplicates)
   const savedItems = [];

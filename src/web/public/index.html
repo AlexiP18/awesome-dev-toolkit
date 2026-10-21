@@ -393,6 +393,16 @@
         const quoteMatch = tool.content.match(/^>\s*(.+)$/m);
         const summary = quoteMatch ? quoteMatch[1] : 'Sin descripción adicional.';
 
+        const isGithub = (fm.url || '').includes('github.com');
+        const mainLinkIcon = isGithub ? 'github' : 'external-link';
+        const mainLinkTitle = isGithub ? 'Ver repositorio en GitHub' : 'Visitar enlace principal';
+
+        const websiteLink = fm.website_url ? `
+          <a href="${fm.website_url}" target="_blank" title="Visitar sitio web oficial" class="p-1 rounded-lg text-slate-400 hover:text-emerald-400 hover:bg-slate-800 transition">
+            <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+          </a>
+        ` : '';
+
         return `
           <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 transition rounded-2xl p-4 flex flex-col justify-between group shadow-sm hover:shadow-md">
             <div>
@@ -405,10 +415,11 @@
                     ${fm.name}
                   </h3>
                 </div>
-                <div class="flex items-center gap-1.5 flex-shrink-0">
+                <div class="flex items-center gap-1 flex-shrink-0">
                   ${starsBadge}
-                  <a href="${fm.url}" target="_blank" title="Visitar enlace" class="p-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
-                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                  ${websiteLink}
+                  <a href="${fm.url}" target="_blank" title="${mainLinkTitle}" class="p-1 rounded-lg text-slate-400 hover:text-sky-400 hover:bg-slate-800 transition">
+                    <i data-lucide="${mainLinkIcon}" class="w-3.5 h-3.5"></i>
                   </a>
                 </div>
               </div>

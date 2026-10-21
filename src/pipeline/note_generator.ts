@@ -136,6 +136,7 @@ export function createOrUpdateToolNote(
   const frontmatter: ToolFrontmatter = {
     name: params.classification.name,
     url: params.classification.canonicalUrl,
+    website_url: params.classification.websiteUrl,
     category: params.classification.category,
     tags: params.classification.tags,
     stars: params.githubMeta?.stars,
@@ -164,8 +165,8 @@ ${highlightsMd}
 - ${params.classification.recommendedNotes || 'Pendiente de probar o revisar detalles.'}
 
 ## 🔗 Referencias
-- Enlace / Web de referencia: [${params.classification.canonicalUrl}](${params.classification.canonicalUrl})
-${params.sourceTweet ? `- Tweet origen: [Ver en X](${params.sourceTweet})` : ''}
+- ${frontmatter.url.includes('github.com') ? 'Repositorio de código (GitHub)' : 'Enlace de referencia'}: [${params.classification.canonicalUrl}](${params.classification.canonicalUrl})
+${frontmatter.website_url ? `- Sitio Web oficial: [${frontmatter.website_url}](${frontmatter.website_url})\n` : ''}${params.sourceTweet ? `- Tweet origen: [Ver en X](${params.sourceTweet})` : ''}
 `;
 
   const fileContent = matter.stringify(markdownBody.trim() + '\n', cleanFrontmatter(frontmatter));

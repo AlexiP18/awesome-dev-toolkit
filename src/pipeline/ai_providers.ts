@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import { GoogleGenAI, Type } from '@google/genai';
 import { ClassificationResult, ToolCategory } from './types.js';
 import { GitHubMetadata } from './github.js';
-import { isIgnoredNonToolUrl } from './link_resolver.js';
+import { isIgnoredNonToolUrl, cleanTrackingParams } from './link_resolver.js';
 
 dotenv.config();
 
@@ -76,6 +76,12 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * 'tags': Incluye etiquetas relevantes como 'showcase', 'design', etc.
    - Si el tweet es simplemente opinión personal, meme, polémica o discusión sin producto técnico concreto detrás, devuelve un arreglo vacío 'tools': [].
 
+6. REGLA DE ORO DE PRIORIDAD: GITHUB/GITLAB SIEMPRE TIENE PRIORIDAD SOBRE LANDING PAGES:
+   - Si una herramienta cuenta con un REPOSITORIO DE CÓDIGO (GitHub o GitLab) y TAMBIÉN con una página web promocional o landing page comercial (ej: "voice-pro.ai", lander, etc.):
+     * 'canonicalUrl' DEBE SER SIEMPRE EL ENLACE AL REPOSITORIO DE GITHUB/GITLAB (ej: "https://github.com/abus-aikorea/voice-pro"). A los desarrolladores les interesa ver el código fuente, estrellas, issues y documentación del repo.
+     * Si además tiene un sitio web oficial, asígnalo en el campo 'websiteUrl' (ej: "https://voice-pro.ai").
+     * NUNCA elijas un enlace a una landing page comercial o con redirecciones (/lander) como 'canonicalUrl' si existe un repositorio de código disponible.
+
 Categorías válidas (selecciona EXACTAMENTE una para cada herramienta):
 ${ALLOWED_CATEGORIES.map((c) => `- "${c}"`).join('\n')}
 
@@ -84,7 +90,8 @@ Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
   "tools": [
     {
       "name": "Nombre claro y conciso",
-      "canonicalUrl": "https://...",
+      "canonicalUrl": "https://github.com/... (priorizar repo de GitHub/GitLab)",
+      "websiteUrl": "https://... (web oficial si existe)",
       "category": "Una de las categorías válidas listadas arriba",
       "entryType": "tool o product_showcase",
       "company": "Nombre de la empresa si aplica",
@@ -109,8 +116,14 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
       : 'Other';
 
     let url = (parsed.canonicalUrl || urls[index] || urls[0] || '').trim();
+    url = cleanTrackingParams(url);
     if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
       url = `https://${url}`;
+    }
+
+    let websiteUrl = parsed.websiteUrl ? cleanTrackingParams(parsed.websiteUrl.trim()) : undefined;
+    if (websiteUrl && !websiteUrl.startsWith('http://') && !websiteUrl.startsWith('https://')) {
+      websiteUrl = `https://${websiteUrl}`;
     }
 
     // Doble validación: Si la URL resultante es un enlace social/comunitario ignorado (ej. Telegram), reemplazarlo
@@ -119,14 +132,22 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
       url = validCandidate || '';
     }
 
+    // Si la URL elegida no es GitHub pero el websiteUrl sí es GitHub, invertirlos para que GitHub sea canonicalUrl
+    if (!url.includes('github.com') && websiteUrl?.includes('github.com')) {
+      const temp = url;
+      url = websiteUrl;
+      websiteUrl = temp;
+    }
+
     const isShowcase =
       parsed.entryType === 'product_showcase' ||
       validCategory === 'Empresas & Productos' ||
-      Boolean(parsed.company && !parsed.canonicalUrl?.includes('github.com'));
+      Boolean(parsed.company && !url.includes('github.com'));
 
     return {
       name: parsed.name || 'Nueva Herramienta',
       canonicalUrl: url,
+      websiteUrl,
       category: validCategory,
       tags: Array.isArray(parsed.tags) ? parsed.tags.map((t: string) => t.toLowerCase()) : [],
       oneLiner: parsed.oneLiner || 'Herramienta guardada de X.',
@@ -161,6 +182,7 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
           properties: {
             name: { type: Type.STRING },
             canonicalUrl: { type: Type.STRING },
+            websiteUrl: { type: Type.STRING },
             category: { type: Type.STRING },
             entryType: { type: Type.STRING },
             company: { type: Type.STRING },

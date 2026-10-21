@@ -16,7 +16,8 @@ export type ToolStatus = 'to_try' | 'in_use' | 'archived';
 
 export interface ToolFrontmatter {
   name: string;
-  url: string;
+  url: string; // URL principal (prioriza repositorios de GitHub/GitLab)
+  website_url?: string; // Web oficial o landing page si existe
   category: ToolCategory;
   tags: string[];
   stars?: number;
@@ -38,6 +39,7 @@ export interface ToolItem {
 export interface ClassificationResult {
   name: string;
   canonicalUrl: string;
+  websiteUrl?: string;
   category: ToolCategory;
   tags: string[];
   oneLiner: string;
