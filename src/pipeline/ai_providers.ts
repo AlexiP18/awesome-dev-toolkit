@@ -594,3 +594,297 @@ export async function classifyWithProviderCascade(
 
   return { results: fallback, providerUsed: 'Fallback (Sin IA)' };
 }
+
+// =============================================================
+// ANÁLISIS DE AUTORES DE X CON IA
+// =============================================================
+export interface AuthorAnalysisInput {
+  name: string;
+  handle?: string;
+  tools: Array<{
+    name: string;
+    category?: string;
+    oneLiner?: string;
+    url?: string;
+    tags?: string[];
+  }>;
+}
+
+export interface AuthorProfileResult {
+  name: string;
+  handle?: string;
+  role: string;
+  bio: string;
+  specialties: string[];
+  whyFollow: string;
+  suggestedTags: string[];
+  githubUrl?: string;
+  websiteUrl?: string;
+}
+
+function buildAuthorAnalysisPrompt(input: AuthorAnalysisInput): string {
+  const toolsList = input.tools.length > 0
+    ? input.tools
+        .map(
+          (t) =>
+            `- "${t.name}" [${t.category || 'General'}]: ${t.oneLiner || 'Herramienta de desarrollo'} (URL: ${t.url || 'n/a'}) Tags: ${(t.tags || []).join(', ')}`
+        )
+        .join('\n')
+    : '- Sin herramientas específicas en el historial aún.';
+
+  return `
+Actúa como un experto en ecosistemas de desarrollo de software, código abierto y la comunidad técnica de X (Twitter).
+Analiza al siguiente creador / autor de X:
+
+- Nombre del Autor: "${input.name}"
+- Usuario de X/Twitter: @${input.handle || 'desconocido'}
+- Herramientas o recursos que ha compartido o creado en este catálogo técnico:
+${toolsList}
+
+Genera un perfil profesional y técnico estructurado en español sobre este creador, explicando su rol en el mundo del desarrollo, sus áreas de especialización y por qué es valioso seguirlo en X.
+
+Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
+{
+  "name": "${input.name}",
+  "handle": "${input.handle || ''}",
+  "role": "Rol técnico o especialidad profesional breve (ej. Creador Open Source de Terminal, Desarrollador Backend & Go, Investigador de IA)",
+  "bio": "Descripción profesional concisa de 1 a 2 párrafos en español explicando su perfil, proyectos destacados (menciona si creó o impulsó alguna de las herramientas listadas) y el tipo de contenido que comparte.",
+  "specialties": ["Especialidad 1", "Especialidad 2", "Especialidad 3"],
+  "whyFollow": "1-2 oraciones explicando por qué vale la pena seguir a este creador en X y qué valor técnico aporta.",
+  "suggestedTags": ["tag1", "tag2", "tag3"],
+  "githubUrl": "https://github.com/usuario (si es conocido o inferible del repositorio de sus herramientas, o null)",
+  "websiteUrl": "https://... (si tiene sitio web o blog conocido, o null)"
+}
+`;
+}
+
+function normalizeAuthorProfile(raw: any, input: AuthorAnalysisInput): AuthorProfileResult {
+  const role = raw.role || `Curador y Creador Técnico en X`;
+  const bio =
+    raw.bio ||
+    `${input.name} es un creador técnico en X que comparte herramientas y recursos para desarrolladores.`;
+
+  const specialties =
+    Array.isArray(raw.specialties) && raw.specialties.length > 0
+      ? raw.specialties
+      : [...new Set(input.tools.map((t) => t.category).filter(Boolean))];
+
+  const whyFollow =
+    raw.whyFollow ||
+    `Comparte recursos y utilidades prácticas para mejorar el flujo de trabajo de programación.`;
+
+  const suggestedTags = Array.isArray(raw.suggestedTags) ? raw.suggestedTags : [];
+
+  let githubUrl = raw.githubUrl && typeof raw.githubUrl === 'string' ? raw.githubUrl.trim() : undefined;
+  if (githubUrl && !githubUrl.startsWith('http')) githubUrl = `https://${githubUrl}`;
+  if (!githubUrl) {
+    const ghTool = input.tools.find((t) => t.url?.includes('github.com'));
+    if (ghTool && ghTool.url) {
+      const match = ghTool.url.match(/github\.com\/([a-zA-Z0-9_-]+)/);
+      if (match && match[1]) {
+        githubUrl = `https://github.com/${match[1]}`;
+      }
+    }
+  }
+
+  let websiteUrl = raw.websiteUrl && typeof raw.websiteUrl === 'string' ? raw.websiteUrl.trim() : undefined;
+  if (websiteUrl && !websiteUrl.startsWith('http')) websiteUrl = `https://${websiteUrl}`;
+
+  return {
+    name: raw.name || input.name,
+    handle: (raw.handle || input.handle || '').replace(/^@/, ''),
+    role,
+    bio,
+    specialties: specialties.slice(0, 5),
+    whyFollow,
+    suggestedTags: suggestedTags.slice(0, 6),
+    githubUrl,
+    websiteUrl,
+  };
+}
+
+async function tryGeminiAuthor(params: AuthorAnalysisInput): Promise<AuthorProfileResult> {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) throw new Error('GEMINI_API_KEY no configurada');
+
+  const ai = new GoogleGenAI({ apiKey });
+  const prompt = buildAuthorAnalysisPrompt(params);
+
+  const response = await ai.models.generateContent({
+    model: 'gemini-3.8-flash',
+    contents: prompt,
+    config: {
+      responseMimeType: 'application/json',
+      responseJsonSchema: {
+        type: Type.OBJECT,
+        description: 'Perfil y análisis técnico del autor en X',
+        properties: {
+          name: { type: Type.STRING },
+          handle: { type: Type.STRING },
+          role: { type: Type.STRING },
+          bio: { type: Type.STRING },
+          specialties: { type: Type.ARRAY, items: { type: Type.STRING } },
+          whyFollow: { type: Type.STRING },
+          suggestedTags: { type: Type.ARRAY, items: { type: Type.STRING } },
+          githubUrl: { type: Type.STRING },
+          websiteUrl: { type: Type.STRING },
+        },
+        required: ['name', 'role', 'bio', 'specialties', 'whyFollow'],
+      },
+    },
+  });
+
+  const parsed = JSON.parse(response.text || '{}');
+  return normalizeAuthorProfile(parsed, params);
+}
+
+async function callOpenAICompatibleAuthor(options: {
+  providerName: string;
+  endpoint: string;
+  apiKey?: string;
+  model: string;
+  prompt: string;
+  headers?: Record<string, string>;
+}): Promise<any> {
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    ...(options.headers || {}),
+  };
+  if (options.apiKey) {
+    headers['Authorization'] = `Bearer ${options.apiKey}`;
+  }
+
+  const payload: any = {
+    model: options.model,
+    messages: [
+      {
+        role: 'system',
+        content:
+          'Eres un analista experto en la comunidad de desarrolladores y creadores de software en X/Twitter. Responde SIEMPRE en formato JSON válido con el perfil del autor. No incluyas texto fuera del JSON.',
+      },
+      { role: 'user', content: options.prompt },
+    ],
+    response_format: { type: 'json_object' },
+    temperature: 0.2,
+  };
+
+  const res = await fetch(options.endpoint, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const errorBody = await res.text();
+    throw new Error(`[${options.providerName}] HTTP ${res.status}: ${errorBody.slice(0, 180)}`);
+  }
+
+  const data = await res.json();
+  const rawText = data.choices?.[0]?.message?.content?.trim();
+  if (!rawText) throw new Error(`[${options.providerName}] Respuesta vacía`);
+
+  return parseJsonSafely(rawText);
+}
+
+export async function analyzeAuthorWithCascade(
+  params: AuthorAnalysisInput
+): Promise<{ result: AuthorProfileResult; providerUsed: string }> {
+  const prompt = buildAuthorAnalysisPrompt(params);
+
+  const providers = [
+    // 1. Google Gemini (Principal)
+    {
+      name: 'Google Gemini (3.8 Flash)',
+      fn: () => tryGeminiAuthor(params),
+      hasKey: () => Boolean(process.env.GEMINI_API_KEY),
+    },
+
+    // 2. ZenMux - Modelo específico o DeepSeek
+    ...(process.env.ZENMUX_MODEL
+      ? [
+          {
+            name: `ZenMux (${process.env.ZENMUX_MODEL})`,
+            fn: async () => {
+              const raw = await callOpenAICompatibleAuthor({
+                providerName: `ZenMux (${process.env.ZENMUX_MODEL})`,
+                endpoint: getZenMuxEndpoint(),
+                apiKey: process.env.ZENMUX_API_KEY,
+                model: process.env.ZENMUX_MODEL!,
+                prompt,
+              });
+              return normalizeAuthorProfile(raw, params);
+            },
+            hasKey: () => Boolean(process.env.ZENMUX_API_KEY),
+          },
+        ]
+      : []),
+
+    // 3. ZenMux - DeepSeek Flash
+    {
+      name: 'ZenMux (DeepSeek v4.1 Flash)',
+      fn: async () => {
+        const apiKey = process.env.ZENMUX_DEEPSEEK_KEY || process.env.ZENMUX_API_KEY;
+        const model = process.env.ZENMUX_DEEPSEEK_MODEL || 'deepseek/deepseek-v4.1-flash';
+        const raw = await callOpenAICompatibleAuthor({
+          providerName: `ZenMux (${model})`,
+          endpoint: getZenMuxEndpoint(),
+          apiKey,
+          model,
+          prompt,
+        });
+        return normalizeAuthorProfile(raw, params);
+      },
+      hasKey: () => Boolean(process.env.ZENMUX_DEEPSEEK_KEY || process.env.ZENMUX_API_KEY),
+    },
+
+    // 4. ZenMux - Claude Haiku
+    {
+      name: 'ZenMux (Claude Haiku 5.5)',
+      fn: async () => {
+        const apiKey = process.env.ZENMUX_CLAUDE_KEY || process.env.ZENMUX_API_KEY;
+        const model = process.env.ZENMUX_CLAUDE_MODEL || 'anthropic/claude-haiku-5.5';
+        const raw = await callOpenAICompatibleAuthor({
+          providerName: `ZenMux (${model})`,
+          endpoint: getZenMuxEndpoint(),
+          apiKey,
+          model,
+          prompt,
+        });
+        return normalizeAuthorProfile(raw, params);
+      },
+      hasKey: () => Boolean(process.env.ZENMUX_CLAUDE_KEY || process.env.ZENMUX_API_KEY),
+    },
+  ];
+
+  for (const provider of providers) {
+    if (!provider.hasKey()) continue;
+
+    try {
+      console.log(`[Author IA] Analizando autor "${params.name}" con: ${provider.name}...`);
+      const result = await provider.fn();
+      console.log(`[Author IA] ✅ Éxito analizando autor con: ${provider.name}`);
+      return { result, providerUsed: provider.name };
+    } catch (err: any) {
+      console.warn(`[Author IA] ⚠️ Falló ${provider.name}: ${err?.message || err}. Probando siguiente proveedor...`);
+    }
+  }
+
+  // Fallback si no hay API de IA o todas fallaron
+  console.log(`[Author IA] Usando análisis heurístico de respaldo para "${params.name}"`);
+  const cats = [...new Set(params.tools.map((t) => t.category).filter(Boolean))];
+  const tags = [...new Set(params.tools.flatMap((t) => t.tags || []))].slice(0, 5);
+
+  const fallback: AuthorProfileResult = {
+    name: params.name,
+    handle: (params.handle || '').replace(/^@/, ''),
+    role: `Curador técnico en ${cats.slice(0, 2).join(' & ') || 'desarrollo de software'}`,
+    bio: `${params.name} ha compartido ${params.tools.length} recurso${params.tools.length > 1 ? 's' : ''} en tu catálogo técnico de X, destacando en ${cats.join(', ') || 'tecnología'}.`,
+    specialties: cats.length > 0 ? (cats as string[]) : ['Herramientas de Desarrollo'],
+    whyFollow: `Comparte y recomienda herramientas prácticas para el flujo de trabajo de programación en X.`,
+    suggestedTags: tags,
+    githubUrl: params.tools.find((t) => t.url?.includes('github.com'))?.url,
+    websiteUrl: undefined,
+  };
+
+  return { result: fallback, providerUsed: 'Fallback (Sin IA)' };
+}

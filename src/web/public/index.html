@@ -144,6 +144,79 @@
       </div>
     </div>
 
+    <!-- Author Profile Hero Banner (Shown when an author filter is active) -->
+    <div id="authorProfileBanner" class="hidden mb-6 p-5 rounded-2xl bg-slate-900 border border-sky-500/30 shadow-lg relative overflow-hidden">
+      <!-- Glow effect -->
+      <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 relative z-10">
+        <div class="flex items-start gap-4">
+          <!-- Avatar -->
+          <div id="authorBannerAvatar" class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-600 to-indigo-600 text-white font-bold text-lg flex items-center justify-center flex-shrink-0 shadow-md">
+            ?
+          </div>
+
+          <div class="space-y-1.5 flex-1">
+            <div class="flex items-center gap-2 flex-wrap">
+              <h2 id="authorBannerName" class="text-base font-bold text-slate-100">Nombre del Autor</h2>
+              <a id="authorBannerHandle" href="#" target="_blank" class="hidden text-xs text-sky-400 hover:underline font-mono flex items-center gap-1">
+                <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <span>@handle</span>
+              </a>
+              <span id="authorBannerStatusBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                Filtro Activo
+              </span>
+            </div>
+
+            <p id="authorBannerRole" class="text-xs font-semibold text-sky-300">
+              Curador Técnico
+            </p>
+
+            <p id="authorBannerBio" class="text-xs text-slate-300 leading-relaxed max-w-2xl">
+              Cargando perfil del autor...
+            </p>
+
+            <div id="authorBannerWhyFollowBox" class="hidden p-2.5 rounded-xl bg-slate-950/70 border border-slate-800 text-xs text-slate-300 flex items-start gap-2">
+              <span class="text-sm">💡</span>
+              <div>
+                <strong class="text-sky-300 text-[11px]">¿Por qué seguirlo en X?</strong>
+                <p id="authorBannerWhyFollow" class="text-[11px] text-slate-400 mt-0.5"></p>
+              </div>
+            </div>
+
+            <!-- Specialties & Links -->
+            <div class="flex flex-wrap items-center gap-3 pt-1 text-xs">
+              <div id="authorBannerSpecialties" class="flex flex-wrap items-center gap-1">
+                <!-- Specialties injected here -->
+              </div>
+              <div class="flex items-center gap-3 ml-auto">
+                <a id="authorBannerGithub" href="#" target="_blank" class="hidden text-slate-400 hover:text-white transition flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  <span>GitHub</span>
+                </a>
+                <a id="authorBannerWebsite" href="#" target="_blank" class="hidden text-slate-400 hover:text-white transition flex items-center gap-1">
+                  <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+                  <span>Sitio Web</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner Right Action Controls -->
+        <div class="flex md:flex-col items-center md:items-end gap-2 flex-shrink-0 self-end md:self-start">
+          <button id="authorBannerAnalyzeBtn" onclick="analyzeCurrentFilteredAuthor()" class="text-xs px-3 py-1.5 rounded-xl bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white font-medium shadow-md transition flex items-center gap-1.5">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span id="authorBannerAnalyzeText">Analizar con IA</span>
+          </button>
+          <button onclick="setAuthorFilter('all')" class="text-xs px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition flex items-center gap-1">
+            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+            <span>Quitar filtro</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Tools Grid -->
     <div id="toolsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <!-- Loading Skeleton or empty state -->
@@ -321,11 +394,35 @@
   <!-- Client-side Logic -->
   <script>
     let allTools = [];
+    let allAuthorProfiles = {};
     let currentCategory = 'all';
     let currentStatus = 'all';
     let currentAuthor = 'all';
     let filterOnlyAcademic = false;
     let activeEditingSlug = null;
+
+    async function fetchAuthorProfiles() {
+      try {
+        let res = null;
+        if (!isStaticMode && !window.location.hostname.endsWith('github.io')) {
+          try {
+            const apiRes = await fetch('/api/authors');
+            if (apiRes.ok) res = apiRes;
+          } catch {}
+        }
+
+        if (!res) {
+          res = await fetch('./data/authors.json');
+        }
+
+        if (res && res.ok) {
+          const data = await res.json();
+          allAuthorProfiles = data.authors || {};
+        }
+      } catch (err) {
+        console.warn('No se pudieron cargar perfiles de autores:', err);
+      }
+    }
 
     function isAcademicTool(tool) {
       const fm = tool.frontmatter || {};
@@ -424,7 +521,147 @@
     function setAuthorFilter(author) {
       currentAuthor = author;
       renderAuthorFilterSelect();
+      updateAuthorProfileBanner();
       renderTools();
+    }
+
+    function updateAuthorProfileBanner() {
+      const banner = document.getElementById('authorProfileBanner');
+      if (!banner) return;
+
+      if (currentAuthor === 'all') {
+        banner.classList.add('hidden');
+        return;
+      }
+
+      const authors = getAuthorsData();
+      const authorData = authors.find(a => a.name.toLowerCase() === currentAuthor.toLowerCase()) || {
+        name: currentAuthor,
+        handle: currentAuthor.startsWith('@') ? currentAuthor.slice(1) : undefined,
+        totalTools: 0,
+        sortedCategories: [],
+        tools: [],
+      };
+
+      const profile = allAuthorProfiles[currentAuthor.toLowerCase()] || (authorData.handle ? allAuthorProfiles[authorData.handle.toLowerCase()] : null);
+
+      // Avatar
+      const avatarEl = document.getElementById('authorBannerAvatar');
+      if (avatarEl) {
+        const initial = currentAuthor.replace(/^@/, '').charAt(0).toUpperCase();
+        avatarEl.innerText = initial || '?';
+      }
+
+      // Name & Handle
+      document.getElementById('authorBannerName').innerText = profile?.name || authorData.name;
+      const handleEl = document.getElementById('authorBannerHandle');
+      const handle = profile?.handle || authorData.handle;
+      if (handleEl && handle) {
+        handleEl.href = `https://x.com/${handle}`;
+        handleEl.querySelector('span').innerText = `@${handle}`;
+        handleEl.classList.remove('hidden');
+      } else if (handleEl) {
+        handleEl.classList.add('hidden');
+      }
+
+      // Role, Bio & Why Follow
+      const roleEl = document.getElementById('authorBannerRole');
+      const bioEl = document.getElementById('authorBannerBio');
+      const whyFollowBox = document.getElementById('authorBannerWhyFollowBox');
+      const whyFollowEl = document.getElementById('authorBannerWhyFollow');
+      const analyzeBtnText = document.getElementById('authorBannerAnalyzeText');
+
+      if (profile && profile.role) {
+        roleEl.innerText = profile.role;
+        bioEl.innerText = profile.bio || 'Sin descripción disponible.';
+        if (profile.whyFollow) {
+          whyFollowEl.innerText = profile.whyFollow;
+          whyFollowBox.classList.remove('hidden');
+        } else {
+          whyFollowBox.classList.add('hidden');
+        }
+        if (analyzeBtnText) analyzeBtnText.innerText = 'Actualizar con IA';
+      } else {
+        const topCat = authorData.sortedCategories[0] ? authorData.sortedCategories[0][0] : 'General';
+        roleEl.innerText = `Curador Técnico en X (${topCat})`;
+        bioEl.innerText = `Este autor ha aportado ${authorData.totalTools} herramienta(s) a tu catálogo. Haz clic en "Analizar con IA" para que Gemini investigue y establezca su biografía, especialidades y valor técnico.`;
+        whyFollowBox.classList.add('hidden');
+        if (analyzeBtnText) analyzeBtnText.innerText = 'Analizar con IA';
+      }
+
+      // Specialties
+      const specialtiesContainer = document.getElementById('authorBannerSpecialties');
+      if (specialtiesContainer) {
+        const specs = (profile?.specialties && profile.specialties.length > 0)
+          ? profile.specialties
+          : authorData.sortedCategories.map(c => c[0]);
+
+        specialtiesContainer.innerHTML = specs.slice(0, 5).map(s => `
+          <span class="px-2 py-0.5 rounded-md bg-sky-500/10 text-sky-300 border border-sky-500/20 text-[10px] font-medium">
+            🎯 ${s}
+          </span>
+        `).join('');
+      }
+
+      // Links
+      const ghLink = document.getElementById('authorBannerGithub');
+      if (ghLink) {
+        if (profile?.githubUrl) {
+          ghLink.href = profile.githubUrl;
+          ghLink.classList.remove('hidden');
+        } else {
+          ghLink.classList.add('hidden');
+        }
+      }
+
+      const webLink = document.getElementById('authorBannerWebsite');
+      if (webLink) {
+        if (profile?.websiteUrl) {
+          webLink.href = profile.websiteUrl;
+          webLink.classList.remove('hidden');
+        } else {
+          webLink.classList.add('hidden');
+        }
+      }
+
+      banner.classList.remove('hidden');
+    }
+
+    async function analyzeCurrentFilteredAuthor(authorNameParam, handleParam) {
+      const authorName = authorNameParam || currentAuthor;
+      if (!authorName || authorName === 'all') return;
+
+      const btn = document.getElementById('authorBannerAnalyzeBtn');
+      const btnText = document.getElementById('authorBannerAnalyzeText');
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.innerText = 'Analizando con IA...';
+
+      try {
+        const authorData = getAuthorsData().find(a => a.name.toLowerCase() === authorName.toLowerCase());
+        const handle = handleParam || (authorData ? authorData.handle : undefined);
+
+        const res = await fetch('/api/authors/analyze', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ authorName, authorHandle: handle }),
+        });
+
+        const data = await res.json();
+        if (data.success && data.profile) {
+          allAuthorProfiles[authorName.toLowerCase()] = data.profile;
+          if (data.profile.handle) allAuthorProfiles[data.profile.handle.toLowerCase()] = data.profile;
+          updateAuthorProfileBanner();
+          renderAuthorsModal();
+        } else {
+          alert('Aviso: ' + (data.error || 'No se pudo completar el análisis del autor'));
+        }
+      } catch (err) {
+        console.error('Error analizando autor:', err);
+        alert('Error al conectar con la API para analizar el perfil con IA.');
+      } finally {
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.innerText = 'Actualizar con IA';
+      }
     }
 
     function renderAuthorFilterSelect() {
@@ -484,6 +721,8 @@
         const primaryCatCount = author.sortedCategories[0] ? author.sortedCategories[0][1] : 0;
         const primaryCatPercent = Math.round((primaryCatCount / author.totalTools) * 100);
 
+        const profile = allAuthorProfiles[author.name.toLowerCase()] || (author.handle ? allAuthorProfiles[author.handle.toLowerCase()] : null);
+
         const categoriesBadges = author.sortedCategories.map(([cat, count]) => `
           <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700/60 text-[10px]">
             ${cat}: <strong class="text-sky-300">${count}</strong>
@@ -499,6 +738,22 @@
             ${t.frontmatter.name}
           </button>
         `).join('');
+
+        const aiProfileBox = profile && profile.role ? `
+          <div class="mt-2 text-xs bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 space-y-1">
+            <div class="font-semibold text-sky-300 flex items-center gap-1.5 text-xs">
+              <span>✨</span> <span>${profile.role}</span>
+            </div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              ${profile.bio}
+            </p>
+            ${profile.whyFollow ? `
+              <p class="text-slate-400 text-[10px] italic pt-1 border-t border-slate-800">
+                💡 <strong class="text-slate-300 not-italic">Por qué seguirlo en X:</strong> ${profile.whyFollow}
+              </p>
+            ` : ''}
+          </div>
+        ` : '';
 
         return `
           <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition flex flex-col sm:flex-row sm:items-start justify-between gap-4">
@@ -523,6 +778,8 @@
                   ${author.totalTools} recurso${author.totalTools > 1 ? 's' : ''}
                 </span>
               </div>
+
+              ${aiProfileBox}
 
               <!-- Specialization Area -->
               <div class="flex items-center gap-1.5 flex-wrap text-xs pt-1">
@@ -551,6 +808,10 @@
               <button onclick="setAuthorFilter('${author.name}'); closeAuthorsModal();" class="text-xs px-3 py-1.5 rounded-lg bg-sky-600/20 hover:bg-sky-600/30 text-sky-300 border border-sky-500/30 transition flex items-center gap-1.5">
                 <i data-lucide="filter" class="w-3.5 h-3.5"></i>
                 <span>Ver herramientas</span>
+              </button>
+              <button onclick="analyzeCurrentFilteredAuthor('${author.name}', '${author.handle || ''}')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition flex items-center gap-1">
+                <i data-lucide="sparkles" class="w-3 h-3 text-sky-400"></i>
+                <span>${profile ? 'Actualizar IA' : 'Analizar IA'}</span>
               </button>
             </div>
           </div>
@@ -594,6 +855,7 @@
 
         const data = await res.json();
         allTools = data.tools || [];
+        await fetchAuthorProfiles();
         renderCategoryFilters();
         renderAuthorFilterSelect();
         updateStats();
@@ -714,6 +976,7 @@
     }
 
     function renderTools() {
+      updateAuthorProfileBanner();
       const grid = document.getElementById('toolsGrid');
       const filtered = getFilteredTools();
 

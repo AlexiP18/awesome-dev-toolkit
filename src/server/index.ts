@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import { loadAllTools, updateToolNote } from '../pipeline/note_generator.js';
 import { ingestResource } from '../pipeline/ingest.js';
 import { generateReadme } from '../pipeline/generate_readme.js';
+import { loadAllAuthorProfiles, analyzeAuthorWithAI } from '../pipeline/author_manager.js';
 import fs from 'fs';
 
 dotenv.config();
@@ -38,6 +39,32 @@ app.get('/api/tools', (req, res) => {
     const tools = loadAllTools();
     res.json({ success: true, count: tools.length, tools });
   } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// GET all author profiles
+app.get('/api/authors', (req, res) => {
+  try {
+    const authors = loadAllAuthorProfiles();
+    res.json({ success: true, count: Object.keys(authors).length, authors });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// POST analyze author profile with AI
+app.post('/api/authors/analyze', async (req, res) => {
+  try {
+    const { authorName, authorHandle } = req.body;
+    if (!authorName) {
+      return res.status(400).json({ success: false, error: 'authorName es requerido' });
+    }
+
+    const { profile, providerUsed } = await analyzeAuthorWithAI(authorName, authorHandle);
+    res.json({ success: true, profile, providerUsed });
+  } catch (error: any) {
+    console.error('[API Author Analyze Error]', error);
     res.status(500).json({ success: false, error: error.message });
   }
 });

@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { loadAllTools } from './note_generator.js';
 import { generateReadme } from './generate_readme.js';
+import { loadAllAuthorProfiles } from './author_manager.js';
 
 export function buildStaticSite(): void {
   const rootDir = process.cwd();
@@ -21,6 +22,12 @@ export function buildStaticSite(): void {
   const jsonPath = path.join(distDataDir, 'tools.json');
   fs.writeFileSync(jsonPath, JSON.stringify({ success: true, count: tools.length, tools }, null, 2), 'utf-8');
   console.log(`[Build] 📦 Exportadas ${tools.length} herramientas a ${jsonPath}`);
+
+  // 2b. Export authors profiles
+  const authors = loadAllAuthorProfiles();
+  const authorsJsonPath = path.join(distDataDir, 'authors.json');
+  fs.writeFileSync(authorsJsonPath, JSON.stringify({ success: true, count: Object.keys(authors).length, authors }, null, 2), 'utf-8');
+  console.log(`[Build] 👥 Exportados ${Object.keys(authors).length} perfiles de autores a ${authorsJsonPath}`);
 
   // 3. Copy public assets (index.html, bookmarklet)
   const publicDir = path.resolve(rootDir, 'src/web/public');
