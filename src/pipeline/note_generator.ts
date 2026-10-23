@@ -75,6 +75,19 @@ export function findExistingTool(
   return undefined;
 }
 
+export function extractAuthorFromTweet(sourceTweet?: string): { author?: string; handle?: string } {
+  if (!sourceTweet) return {};
+  const match = sourceTweet.match(/(?:twitter|x)\.com\/([a-zA-Z0-9_]{1,15})(?:\/status|\/?$)/i);
+  if (match && match[1]) {
+    const handle = match[1];
+    const reserved = ['home', 'explore', 'notifications', 'messages', 'i', 'search', 'settings'];
+    if (!reserved.includes(handle.toLowerCase())) {
+      return { author: `@${handle}`, handle };
+    }
+  }
+  return {};
+}
+
 function cleanFrontmatter(obj: Record<string, any>): Record<string, any> {
   const cleaned: Record<string, any> = {};
   for (const [key, value] of Object.entries(obj)) {
@@ -145,6 +158,10 @@ export function createOrUpdateToolNote(
     finalUrl = params.classification.websiteUrl || params.sourceTweet || '#';
   }
 
+  const tweetAuthorInfo = extractAuthorFromTweet(params.sourceTweet);
+  const authorName = params.author?.trim() || tweetAuthorInfo.author;
+  const authorHandle = tweetAuthorInfo.handle || (authorName?.startsWith('@') ? authorName.slice(1) : undefined);
+
   const frontmatter: ToolFrontmatter = {
     name: params.classification.name,
     url: finalUrl,
@@ -155,7 +172,8 @@ export function createOrUpdateToolNote(
     status: params.initialStatus || 'to_try',
     date_added: today,
     source_tweet: params.sourceTweet,
-    author: params.author,
+    author: authorName,
+    author_handle: authorHandle,
     entry_type: isShowcase ? 'product_showcase' : 'tool',
     company: params.classification.company || (isShowcase ? params.author : undefined),
     has_academic_promo: params.classification.hasAcademicPromo || undefined,
@@ -175,7 +193,7 @@ export function createOrUpdateToolNote(
 
 > ${params.classification.oneLiner}
 
-${promoBlock}${isShowcase && frontmatter.company ? `**🏢 Empresa / Creador:** ${frontmatter.company}\n` : ''}
+${promoBlock}${authorName ? `**👤 Publicado / Recomendado por:** ${authorName}${authorHandle ? ` ([@${authorHandle}](https://x.com/${authorHandle}))` : ''}\n` : ''}${isShowcase && frontmatter.company ? `**🏢 Empresa / Creador:** ${frontmatter.company}\n` : ''}
 ## 💡 ¿Por qué destaca?
 ${highlightsMd}
 
@@ -217,6 +235,16 @@ export function loadAllTools(): ToolItem[] {
         data.entry_type = defaultType;
       }
 
+      // Automatically infer author and handle from source_tweet if missing
+      if (!data.author && data.source_tweet) {
+        const info = extractAuthorFromTweet(data.source_tweet);
+        if (info.author) data.author = info.author;
+        if (info.handle) data.author_handle = info.handle;
+      } else if (data.author && !data.author_handle && data.source_tweet) {
+        const info = extractAuthorFromTweet(data.source_tweet);
+        if (info.handle) data.author_handle = info.handle;
+      }
+
       tools.push({
         slug,
         filePath,
@@ -237,6 +265,8 @@ export function updateToolNote(slug: string, updates: {
   notes?: string;
   category?: string;
   tags?: string[];
+  author?: string;
+  author_handle?: string;
   has_academic_promo?: boolean;
   academic_promo_details?: string;
 }): boolean {
@@ -256,6 +286,8 @@ export function updateToolNote(slug: string, updates: {
     ...(updates.status ? { status: updates.status } : {}),
     ...(updates.category ? { category: updates.category } : {}),
     ...(updates.tags ? { tags: updates.tags } : {}),
+    ...(updates.author !== undefined ? { author: updates.author } : {}),
+    ...(updates.author_handle !== undefined ? { author_handle: updates.author_handle } : {}),
     ...(updates.has_academic_promo !== undefined ? { has_academic_promo: updates.has_academic_promo } : {}),
     ...(updates.academic_promo_details !== undefined ? { academic_promo_details: updates.academic_promo_details } : {}),
   };

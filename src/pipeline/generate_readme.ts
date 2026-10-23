@@ -65,6 +65,9 @@ export function generateReadme(): string {
       const summary = quoteMatch ? quoteMatch[1] : 'Sin descripción adicional.';
 
       const companyBadge = item.frontmatter.company ? ` (\`🏢 ${item.frontmatter.company}\`)` : '';
+      const authorBadge = item.frontmatter.author && !item.frontmatter.company
+        ? ` (\`👤 ${item.frontmatter.author}\`)`
+        : '';
       const websiteBadge = item.frontmatter.website_url
         ? ` [🌐 Web](${item.frontmatter.website_url})`
         : '';
@@ -80,7 +83,7 @@ export function generateReadme(): string {
         ? `content/products/${item.slug}.md`
         : `content/tools/${item.slug}.md`;
 
-      body += `- **[${item.frontmatter.name}](${item.frontmatter.url})**${companyBadge}${starsBadge}${websiteBadge}${tweetBadge}${academicBadge}${statusBadge}  \n`;
+      body += `- **[${item.frontmatter.name}](${item.frontmatter.url})**${companyBadge}${authorBadge}${starsBadge}${websiteBadge}${tweetBadge}${academicBadge}${statusBadge}  \n`;
       body += `  ${summary} [📝 Ver ficha](${notePath})${tags}\n\n`;
     }
   }

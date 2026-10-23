@@ -26,6 +26,7 @@ export interface ToolFrontmatter {
   date_added: string;
   source_tweet?: string;
   author?: string;
+  author_handle?: string;
   entry_type?: EntryType;
   company?: string;
   has_academic_promo?: boolean;
