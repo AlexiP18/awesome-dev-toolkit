@@ -129,7 +129,17 @@ export function createOrUpdateToolNote(
 
   if (duplicate) {
     const dupUrl = duplicate.frontmatter.url;
-    const isDupBroken = !dupUrl || dupUrl === 'undefined' || dupUrl === 'null' || dupUrl.endsWith('/undefined');
+    const newUrl = params.classification.canonicalUrl;
+    const isDupBroken =
+      !dupUrl ||
+      dupUrl === 'undefined' ||
+      dupUrl === 'null' ||
+      dupUrl.endsWith('/undefined') ||
+      Boolean(
+        newUrl &&
+          dupUrl.toLowerCase() !== newUrl.toLowerCase() &&
+          newUrl.toLowerCase().startsWith(dupUrl.toLowerCase())
+      );
     const hasNewValidTweet = Boolean(
       params.sourceTweet &&
       /\/status\/\d{10,}/.test(params.sourceTweet) &&
@@ -147,7 +157,7 @@ export function createOrUpdateToolNote(
       };
     }
     console.log(
-      `[Deduplicación] 🔄 Reparando/actualizando nota existente: "${duplicate.frontmatter.name}" (${params.sourceTweet || params.classification.canonicalUrl})`
+      `[Deduplicación] 🔄 Reparando/actualizando nota existente: "${duplicate.frontmatter.name}" (${params.classification.canonicalUrl})`
     );
   }
 

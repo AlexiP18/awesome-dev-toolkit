@@ -1,5 +1,10 @@
 import dotenv from 'dotenv';
-import { extractUrlsFromText, resolveUrl, isIgnoredNonToolUrl } from './link_resolver.js';
+import {
+  extractUrlsFromText,
+  resolveUrl,
+  isIgnoredNonToolUrl,
+  expandTruncatedGitHubUrls,
+} from './link_resolver.js';
 import { fetchGitHubRepoMetadata, GitHubMetadata } from './github.js';
 import { classifyToolsWithGemini } from './gemini.js';
 import {
@@ -21,7 +26,7 @@ export interface IngestInput {
 }
 
 export async function ingestResource(input: IngestInput) {
-  const text = (input.rawText || '').trim();
+  let text = (input.rawText || '').trim();
   const explicitUrl = (input.url || '').trim();
   const explicitUrls = Array.isArray(input.urls) ? input.urls : [];
 
@@ -58,6 +63,24 @@ export async function ingestResource(input: IngestInput) {
   const rawResolvedList = (await Promise.all(
     nonTweetUrls.map((u) => resolveUrl(u))
   )).filter((r) => !isIgnoredNonToolUrl(r.finalUrl));
+
+  // 2.5. Expandir o limpiar enlaces truncados en el texto (ej. "github.com/HKUDS/Vibe-Tra..." -> "https://github.com/HKUDS/Vibe-Trading")
+  if (text) {
+    const { cleanedText, expandedUrls } = await expandTruncatedGitHubUrls(
+      text,
+      rawResolvedList.map((r) => r.finalUrl),
+      process.env.GITHUB_TOKEN
+    );
+    text = cleanedText;
+    for (const expUrl of expandedUrls) {
+      if (!rawResolvedList.some((r) => r.finalUrl.toLowerCase() === expUrl.toLowerCase())) {
+        const resExp = await resolveUrl(expUrl);
+        if (!isIgnoredNonToolUrl(resExp.finalUrl)) {
+          rawResolvedList.push(resExp);
+        }
+      }
+    }
+  }
 
   // Filtrar URLs de GitHub que sean un prefijo truncado de otra URL de GitHub resuelta
   // (ej. descartar "https://github.com/diegosouzapw/O" si existe "https://github.com/diegosouzapw/OmniRoute")
