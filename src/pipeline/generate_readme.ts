@@ -68,11 +68,14 @@ export function generateReadme(): string {
       const websiteBadge = item.frontmatter.website_url
         ? ` [🌐 Web](${item.frontmatter.website_url})`
         : '';
+      const tweetBadge = item.frontmatter.source_tweet
+        ? ` [𝕏 Tweet](${item.frontmatter.source_tweet})`
+        : '';
       const notePath = item.frontmatter.entry_type === 'product_showcase'
         ? `content/products/${item.slug}.md`
         : `content/tools/${item.slug}.md`;
 
-      body += `- **[${item.frontmatter.name}](${item.frontmatter.url})**${companyBadge}${starsBadge}${websiteBadge}${statusBadge}  \n`;
+      body += `- **[${item.frontmatter.name}](${item.frontmatter.url})**${companyBadge}${starsBadge}${websiteBadge}${tweetBadge}${statusBadge}  \n`;
       body += `  ${summary} [📝 Ver ficha](${notePath})${tags}\n\n`;
     }
   }
