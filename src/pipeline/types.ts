@@ -28,6 +28,8 @@ export interface ToolFrontmatter {
   author?: string;
   entry_type?: EntryType;
   company?: string;
+  has_academic_promo?: boolean;
+  academic_promo_details?: string;
 }
 
 export interface ToolItem {
@@ -48,4 +50,6 @@ export interface ClassificationResult {
   recommendedNotes: string;
   entryType?: EntryType;
   company?: string;
+  hasAcademicPromo?: boolean;
+  academicPromoDetails?: string;
 }

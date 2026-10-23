@@ -86,7 +86,7 @@
       </div>
 
       <!-- Stats Counters -->
-      <div class="flex items-center gap-2 text-xs">
+      <div class="flex items-center gap-2 text-xs flex-wrap">
         <span id="statTotal" class="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">
           Total: <strong>0</strong>
         </span>
@@ -95,6 +95,9 @@
         </span>
         <span id="statToTry" class="px-3 py-1.5 bg-amber-950/40 border border-amber-800/40 text-amber-400 rounded-lg">
           🟡 Por probar: <strong>0</strong>
+        </span>
+        <span id="statAcademic" class="hidden px-3 py-1.5 bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 rounded-lg font-medium">
+          🎓 Académicas: <strong>0</strong>
         </span>
       </div>
     </div>
@@ -107,12 +110,17 @@
       </div>
       
       <!-- Status Filters -->
-      <div class="flex items-center gap-2 text-xs text-slate-400">
+      <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
         <span class="font-medium mr-1">Estado:</span>
         <button onclick="setStatusFilter('all')" class="status-btn px-2.5 py-1 rounded-md bg-sky-500/20 text-sky-400 border border-sky-500/30" data-status="all">Todos</button>
         <button onclick="setStatusFilter('in_use')" class="status-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800" data-status="in_use">🟢 En uso</button>
         <button onclick="setStatusFilter('to_try')" class="status-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800" data-status="to_try">🟡 Por probar</button>
         <button onclick="setStatusFilter('archived')" class="status-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800" data-status="archived">⚪ Archivado</button>
+
+        <span class="text-slate-700 hidden sm:inline">|</span>
+        <button id="academicFilterBtn" onclick="toggleAcademicFilter()" class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800 transition flex items-center gap-1.5">
+          <span>🎓 Solo Promos Académicas</span>
+        </button>
       </div>
     </div>
 
@@ -162,6 +170,15 @@
             <a id="modalOfficialLink" href="#" target="_blank" class="text-xs text-sky-400 hover:underline flex items-center gap-1">
               Visitar recurso <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
+          </div>
+        </div>
+
+        <!-- Academic Promo Alert inside Modal -->
+        <div id="modalAcademicAlert" class="hidden p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300 flex items-start gap-2.5">
+          <span class="text-base leading-none">🎓</span>
+          <div>
+            <span class="font-bold text-emerald-200">Promoción / Beneficio Académico:</span>
+            <p id="modalAcademicText" class="mt-0.5 text-emerald-300/90 text-xs leading-relaxed"></p>
           </div>
         </div>
 
@@ -242,7 +259,28 @@
     let allTools = [];
     let currentCategory = 'all';
     let currentStatus = 'all';
+    let filterOnlyAcademic = false;
     let activeEditingSlug = null;
+
+    function isAcademicTool(tool) {
+      const fm = tool.frontmatter || {};
+      if (fm.has_academic_promo) return true;
+      const tags = fm.tags || [];
+      return tags.some(t => ['academic', 'academico', 'académico', 'estudiante', 'estudiantes', 'student', 'students', 'education', 'educacion', 'educación'].includes(t.toLowerCase()));
+    }
+
+    function toggleAcademicFilter() {
+      filterOnlyAcademic = !filterOnlyAcademic;
+      const btn = document.getElementById('academicFilterBtn');
+      if (btn) {
+        btn.className = `px-2.5 py-1 rounded-md transition flex items-center gap-1.5 ${
+          filterOnlyAcademic
+            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-medium'
+            : 'bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800'
+        }`;
+      }
+      renderTools();
+    }
 
     const CATEGORIES = [
       'all',
@@ -348,6 +386,11 @@
           return false;
         }
 
+        // Academic promo filter
+        if (filterOnlyAcademic && !isAcademicTool(tool)) {
+          return false;
+        }
+
         // Search text
         if (query) {
           const matchName = (tool.frontmatter.name || '').toLowerCase().includes(query);
@@ -367,6 +410,17 @@
       const toTry = allTools.filter(t => t.frontmatter.status === 'to_try').length;
       document.getElementById('statInUse').innerHTML = `🟢 En uso: <strong>${inUse}</strong>`;
       document.getElementById('statToTry').innerHTML = `🟡 Por probar: <strong>${toTry}</strong>`;
+
+      const academicCount = allTools.filter(isAcademicTool).length;
+      const statAcademicEl = document.getElementById('statAcademic');
+      if (statAcademicEl) {
+        if (academicCount > 0) {
+          statAcademicEl.classList.remove('hidden');
+          statAcademicEl.innerHTML = `🎓 Académicas: <strong>${academicCount}</strong>`;
+        } else {
+          statAcademicEl.classList.add('hidden');
+        }
+      }
     }
 
     function renderTools() {
@@ -431,15 +485,27 @@
           </a>
         ` : '';
 
+        const isAcademic = isAcademicTool(tool);
+        const promoDetails = (fm.academic_promo_details || 'Cuenta con promoción, descuento o beneficio especial para estudiantes y sector educativo').replace(/"/g, '&quot;');
+
+        const academicBadge = isAcademic ? `
+          <span title="${promoDetails}" class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 cursor-help transition hover:bg-emerald-500/25">
+            <span>🎓</span> Promo Académica
+          </span>
+        ` : '';
+
         return `
           <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 transition rounded-2xl p-4 flex flex-col justify-between group shadow-sm hover:shadow-md">
             <div>
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div>
-                  <span class="text-[10px] font-semibold tracking-wider uppercase text-sky-400">
-                    ${fm.category || 'Other'}
-                  </span>
-                  <h3 class="font-bold text-slate-100 text-sm group-hover:text-sky-300 transition flex items-center gap-1.5 mt-0.5">
+                  <div class="flex items-center gap-1.5 flex-wrap mb-1">
+                    <span class="text-[10px] font-semibold tracking-wider uppercase text-sky-400">
+                      ${fm.category || 'Other'}
+                    </span>
+                    ${academicBadge}
+                  </div>
+                  <h3 class="font-bold text-slate-100 text-sm group-hover:text-sky-300 transition flex items-center gap-1.5">
                     <a href="${safeUrl !== '#' ? safeUrl : 'javascript:void(0)'}" target="${safeUrl !== '#' ? '_blank' : '_self'}" class="hover:underline">
                       ${fm.name}
                     </a>
@@ -517,6 +583,17 @@
           tweetLinkEl.classList.remove('hidden');
         } else {
           tweetLinkEl.classList.add('hidden');
+        }
+      }
+
+      const academicAlert = document.getElementById('modalAcademicAlert');
+      const academicText = document.getElementById('modalAcademicText');
+      if (academicAlert && academicText) {
+        if (isAcademicTool(tool)) {
+          academicText.innerText = tool.frontmatter.academic_promo_details || 'Esta herramienta cuenta con promoción o beneficio especial para estudiantes y sector educativo.';
+          academicAlert.classList.remove('hidden');
+        } else {
+          academicAlert.classList.add('hidden');
         }
       }
 

@@ -158,18 +158,24 @@ export function createOrUpdateToolNote(
     author: params.author,
     entry_type: isShowcase ? 'product_showcase' : 'tool',
     company: params.classification.company || (isShowcase ? params.author : undefined),
+    has_academic_promo: params.classification.hasAcademicPromo || undefined,
+    academic_promo_details: params.classification.academicPromoDetails || undefined,
   };
 
   const highlightsMd = params.classification.keyHighlights.length
     ? params.classification.keyHighlights.map((h) => `- ${h}`).join('\n')
     : '- Recurso guardado para evaluación técnica.';
 
+  const promoBlock = frontmatter.has_academic_promo
+    ? `> 🎓 **Promoción Académica:** ${frontmatter.academic_promo_details || 'Disponible para estudiantes o instituciones educativas.'}\n\n`
+    : '';
+
   const markdownBody = `
 # ${params.classification.name}
 
 > ${params.classification.oneLiner}
 
-${isShowcase && frontmatter.company ? `**🏢 Empresa / Creador:** ${frontmatter.company}\n` : ''}
+${promoBlock}${isShowcase && frontmatter.company ? `**🏢 Empresa / Creador:** ${frontmatter.company}\n` : ''}
 ## 💡 ¿Por qué destaca?
 ${highlightsMd}
 
@@ -231,6 +237,8 @@ export function updateToolNote(slug: string, updates: {
   notes?: string;
   category?: string;
   tags?: string[];
+  has_academic_promo?: boolean;
+  academic_promo_details?: string;
 }): boolean {
   let filePath = path.join(TOOLS_DIR, `${slug}.md`);
   if (!fs.existsSync(filePath)) {
@@ -248,6 +256,8 @@ export function updateToolNote(slug: string, updates: {
     ...(updates.status ? { status: updates.status } : {}),
     ...(updates.category ? { category: updates.category } : {}),
     ...(updates.tags ? { tags: updates.tags } : {}),
+    ...(updates.has_academic_promo !== undefined ? { has_academic_promo: updates.has_academic_promo } : {}),
+    ...(updates.academic_promo_details !== undefined ? { academic_promo_details: updates.academic_promo_details } : {}),
   };
 
   let body = parsed.content;

@@ -87,6 +87,13 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
    - "Prompts, Art & Video": Selecciona esta categoría para catálogos o colecciones de prompts, estilos artísticos o cinematográficos para video/imagen, Claude Code skills de diseño o estilos (ej. "lemo-opuscar"), prompts para agentes creativos, herramientas de arte generativo y animación en código.
    - "AI & Machine Learning": Reserva esta categoría estrictamente para modelos de base, motores de inferencia (DeepInfer, vLLM), entrenamiento, PyTorch, TensorFlow, embeddings, RAG o infraestructura técnica de ML.
 
+8. DETECCIÓN DE PROMOCIONES ACADÉMICAS O BENEFICIOS PARA ESTUDIANTES:
+   - Si el tweet o recurso menciona promociones académicas, beneficios para estudiantes o profesores, licencias gratis con correo universitario (.edu o institucional), inclusión en GitHub Student Developer Pack, o descuentos educativos:
+     * 'hasAcademicPromo': true
+     * 'academicPromoDetails': Descripción breve del beneficio (ej. "Gratis para estudiantes con correo .edu o GitHub Student Developer Pack", "Descuento del 50% para estudiantes").
+     * Añade etiquetas relevantes a 'tags' (ej: "educacion", "estudiantes").
+   - Si no hay mención ni evidencia de beneficios académicos, establece 'hasAcademicPromo': false y 'academicPromoDetails': null.
+
 Categorías válidas (selecciona EXACTAMENTE una para cada herramienta):
 ${ALLOWED_CATEGORIES.map((c) => `- "${c}"`).join('\n')}
 
@@ -103,7 +110,9 @@ Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
       "tags": ["tag1", "tag2", "tag3"],
       "oneLiner": "Resumen conciso en español de 1-2 oraciones explicando para qué sirve",
       "keyHighlights": ["Punto clave 1", "Punto clave 2"],
-      "recommendedNotes": "Una sugerencia técnica breve en español"
+      "recommendedNotes": "Una sugerencia técnica breve en español",
+      "hasAcademicPromo": false,
+      "academicPromoDetails": "Detalles del beneficio para estudiantes o null"
     }
   ]
 }
@@ -156,6 +165,14 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
       validCategory === 'Empresas & Productos' ||
       Boolean(parsed.company && !url.includes('github.com'));
 
+    const hasAcademicPromo = Boolean(
+      parsed.hasAcademicPromo === true ||
+      parsed.has_academic_promo === true ||
+      (Array.isArray(parsed.tags) && parsed.tags.some((t: string) => ['academic', 'academico', 'académico', 'estudiante', 'estudiantes', 'educacion', 'educación', 'student', 'students'].includes(t.toLowerCase())))
+    );
+
+    const academicPromoDetails = parsed.academicPromoDetails || parsed.academic_promo_details || undefined;
+
     return {
       name: parsed.name || 'Nueva Herramienta',
       canonicalUrl: url,
@@ -167,6 +184,8 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
       recommendedNotes: parsed.recommendedNotes || '',
       entryType: isShowcase ? 'product_showcase' : 'tool',
       company: parsed.company || undefined,
+      hasAcademicPromo,
+      academicPromoDetails,
     };
   });
 }
@@ -202,6 +221,8 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
             oneLiner: { type: Type.STRING },
             keyHighlights: { type: Type.ARRAY, items: { type: Type.STRING } },
             recommendedNotes: { type: Type.STRING },
+            hasAcademicPromo: { type: Type.BOOLEAN },
+            academicPromoDetails: { type: Type.STRING },
           },
           required: ['name', 'canonicalUrl', 'category', 'tags', 'oneLiner', 'keyHighlights'],
         },

@@ -76,9 +76,9 @@ app.post('/api/ingest', async (req, res) => {
 app.patch('/api/tools/:slug', (req, res) => {
   try {
     const { slug } = req.params;
-    const { status, notes, category, tags } = req.body;
+    const { status, notes, category, tags, has_academic_promo, academic_promo_details } = req.body;
 
-    const ok = updateToolNote(slug, { status, notes, category, tags });
+    const ok = updateToolNote(slug, { status, notes, category, tags, has_academic_promo, academic_promo_details });
     if (!ok) {
       return res.status(404).json({ success: false, error: 'Herramienta no encontrada' });
     }
