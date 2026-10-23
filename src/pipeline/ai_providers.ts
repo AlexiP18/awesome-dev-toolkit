@@ -12,6 +12,7 @@ export const ALLOWED_CATEGORIES: ToolCategory[] = [
   'Backend & APIs',
   'DevOps & Cloud',
   'AI & Machine Learning',
+  'Prompts, Art & Video',
   'Databases & Storage',
   'Productivity & Tools',
   'Documentation & Resources',
@@ -82,6 +83,10 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * Si además tiene un sitio web oficial, asígnalo en el campo 'websiteUrl' (ej: "https://voice-pro.ai").
      * NUNCA elijas un enlace a una landing page comercial o con redirecciones (/lander) como 'canonicalUrl' si existe un repositorio de código disponible.
 
+7. DISTINCIÓN IMPORTANTE ENTRE CATEGORÍAS DE IA Y CREATIVIDAD:
+   - "Prompts, Art & Video": Selecciona esta categoría para catálogos o colecciones de prompts, estilos artísticos o cinematográficos para video/imagen, Claude Code skills de diseño o estilos (ej. "lemo-opuscar"), prompts para agentes creativos, herramientas de arte generativo y animación en código.
+   - "AI & Machine Learning": Reserva esta categoría estrictamente para modelos de base, motores de inferencia (DeepInfer, vLLM), entrenamiento, PyTorch, TensorFlow, embeddings, RAG o infraestructura técnica de ML.
+
 Categorías válidas (selecciona EXACTAMENTE una para cada herramienta):
 ${ALLOWED_CATEGORIES.map((c) => `- "${c}"`).join('\n')}
 
@@ -116,9 +121,16 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
       : 'Other';
 
     let url = (parsed.canonicalUrl || urls[index] || urls[0] || '').trim();
+    if (url === 'undefined' || url === 'null') {
+      url = (urls[index] || urls[0] || '').trim();
+    }
     url = cleanTrackingParams(url);
     if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
       url = `https://${url}`;
+    }
+
+    if (!url || url === 'https://undefined' || url === 'https://null') {
+      url = urls[0] || '';
     }
 
     let websiteUrl = parsed.websiteUrl ? cleanTrackingParams(parsed.websiteUrl.trim()) : undefined;

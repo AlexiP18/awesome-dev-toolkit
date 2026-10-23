@@ -245,9 +245,11 @@
       'Backend & APIs',
       'DevOps & Cloud',
       'AI & Machine Learning',
+      'Prompts, Art & Video',
       'Databases & Storage',
       'Productivity & Tools',
       'Documentation & Resources',
+      'Empresas & Productos',
       'Other'
     ];
 
@@ -393,11 +395,12 @@
         const quoteMatch = tool.content.match(/^>\s*(.+)$/m);
         const summary = quoteMatch ? quoteMatch[1] : 'Sin descripción adicional.';
 
-        const isGithub = (fm.url || '').includes('github.com');
+        const safeUrl = (fm.url && fm.url !== 'undefined' && fm.url !== 'null') ? fm.url : '#';
+        const isGithub = safeUrl.includes('github.com');
         const mainLinkIcon = isGithub ? 'github' : 'external-link';
         const mainLinkTitle = isGithub ? 'Ver repositorio en GitHub' : 'Visitar enlace principal';
 
-        const websiteLink = fm.website_url ? `
+        const websiteLink = (fm.website_url && fm.website_url !== 'undefined' && fm.website_url !== safeUrl) ? `
           <a href="${fm.website_url}" target="_blank" title="Visitar sitio web oficial" class="p-1 rounded-lg text-slate-400 hover:text-emerald-400 hover:bg-slate-800 transition">
             <i data-lucide="globe" class="w-3.5 h-3.5"></i>
           </a>
@@ -418,7 +421,7 @@
                 <div class="flex items-center gap-1 flex-shrink-0">
                   ${starsBadge}
                   ${websiteLink}
-                  <a href="${fm.url}" target="_blank" title="${mainLinkTitle}" class="p-1 rounded-lg text-slate-400 hover:text-sky-400 hover:bg-slate-800 transition">
+                  <a href="${safeUrl}" target="_blank" title="${mainLinkTitle}" class="p-1 rounded-lg text-slate-400 hover:text-sky-400 hover:bg-slate-800 transition">
                     <i data-lucide="${mainLinkIcon}" class="w-3.5 h-3.5"></i>
                   </a>
                 </div>

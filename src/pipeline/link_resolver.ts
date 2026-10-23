@@ -82,6 +82,18 @@ export function extractUrlsFromText(text: string): string[] {
     }
   }
 
+  // 3. Patrones de tarjetas de GitHub en X (ej: "GitHub - lemomo-ai/lemo-opuscar: ...")
+  const ghCardRegex = /GitHub\s*[-–—:]\s*([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)/gi;
+  let ghCardMatch;
+  while ((ghCardMatch = ghCardRegex.exec(text)) !== null) {
+    const owner = ghCardMatch[1];
+    const repo = ghCardMatch[2].replace(/[.,;:!?)]+$/, '');
+    const ghUrl = `https://github.com/${owner}/${repo}`;
+    if (!foundUrls.some((u) => u.toLowerCase() === ghUrl.toLowerCase())) {
+      foundUrls.push(ghUrl);
+    }
+  }
+
   return Array.from(new Set(foundUrls));
 }
 

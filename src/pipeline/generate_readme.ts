@@ -9,6 +9,7 @@ const CATEGORY_ICONS: Record<ToolCategory, string> = {
   'Backend & APIs': '⚙️',
   'DevOps & Cloud': '🐳',
   'AI & Machine Learning': '🤖',
+  'Prompts, Art & Video': '🎬',
   'Databases & Storage': '🗄️',
   'Productivity & Tools': '⚡',
   'Documentation & Resources': '📚',

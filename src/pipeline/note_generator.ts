@@ -115,14 +115,21 @@ export function createOrUpdateToolNote(
   );
 
   if (duplicate) {
+    const dupUrl = duplicate.frontmatter.url;
+    const isDupBroken = !dupUrl || dupUrl === 'undefined' || dupUrl === 'null' || dupUrl.endsWith('/undefined');
+    if (!isDupBroken) {
+      console.log(
+        `[Deduplicación] ⏭️ La herramienta "${duplicate.frontmatter.name}" (${duplicate.frontmatter.url}) ya existe en ${duplicate.slug}.md. Se omite para no duplicar.`
+      );
+      return {
+        filePath: duplicate.filePath,
+        slug: duplicate.slug,
+        alreadyExisted: true,
+      };
+    }
     console.log(
-      `[Deduplicación] ⏭️ La herramienta "${duplicate.frontmatter.name}" (${duplicate.frontmatter.url}) ya existe en ${duplicate.slug}.md. Se omite para no duplicar.`
+      `[Deduplicación] 🔄 Reparando y actualizando nota con URL válida: "${duplicate.frontmatter.name}" -> ${params.classification.canonicalUrl}`
     );
-    return {
-      filePath: duplicate.filePath,
-      slug: duplicate.slug,
-      alreadyExisted: true,
-    };
   }
 
   const isShowcase = params.classification.entryType === 'product_showcase';
@@ -133,9 +140,14 @@ export function createOrUpdateToolNote(
 
   const today = new Date().toISOString().split('T')[0];
 
+  let finalUrl = (params.classification.canonicalUrl || '').trim();
+  if (!finalUrl || finalUrl === 'undefined' || finalUrl === 'null') {
+    finalUrl = params.classification.websiteUrl || params.sourceTweet || '#';
+  }
+
   const frontmatter: ToolFrontmatter = {
     name: params.classification.name,
-    url: params.classification.canonicalUrl,
+    url: finalUrl,
     website_url: params.classification.websiteUrl,
     category: params.classification.category,
     tags: params.classification.tags,
