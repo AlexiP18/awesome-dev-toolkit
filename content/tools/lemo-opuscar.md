@@ -14,8 +14,8 @@ tags:
 stars: 5730
 status: to_try
 date_added: '2026-10-23'
-source_tweet: 'https://x.com/7uanF/status/123456789'
-author: Juan (@7uanF)
+source_tweet: 'https://x.com/7uanF/status/2111816121548447790'
+author: Juan
 author_handle: 7uanF
 entry_type: tool
 company: Lemomo
@@ -24,7 +24,7 @@ company: Lemomo
 
 > Skill de Claude Code con una colección de 59 estilos cinematográficos generados enteramente mediante código para crear cortometrajes sin modelos de video.
 
-**👤 Publicado / Recomendado por:** Juan (@7uanF) ([@7uanF](https://x.com/7uanF))
+**👤 Publicado / Recomendado por:** Juan ([@7uanF](https://x.com/7uanF))
 
 ## 💡 ¿Por qué destaca?
 - Incluye 59 estilos prediseñados y soporte para crear estilos cinematográficos propios mediante prompts
@@ -37,5 +37,4 @@ company: Lemomo
 
 ## 🔗 Referencias
 - Repositorio de código (GitHub): [https://github.com/lemomo-ai/lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar)
-- Sitio Web oficial: [https://github.com/lemomo-ai/lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar)
-- Tweet origen: [Ver en X](https://x.com/7uanF/status/123456789)
+- Tweet origen: [Ver en X](https://x.com/7uanF/status/2111816121548447790)

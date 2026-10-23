@@ -27,7 +27,7 @@
 
 ### 🎬 Prompts, Art & Video
 
-- **[lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar)** (`🏢 Lemomo`) ⭐ **5.730** [𝕏 Tweet](https://x.com/7uanF/status/123456789) `🟡 Por probar`  
+- **[lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar)** (`🏢 Lemomo`) ⭐ **5.730** [𝕏 Tweet](https://x.com/7uanF/status/2111816121548447790) `🟡 Por probar`  
   Skill de Claude Code con una colección de 59 estilos cinematográficos generados enteramente mediante código para crear cortometrajes sin modelos de video. [📝 Ver ficha](content/tools/lemo-opuscar.md) `#claude-code` `#agent-skills` `#creative-coding` `#filmmaking` `#animation` `#threejs` `#ffmpeg` `#motion-graphics`
 
 

@@ -130,7 +130,13 @@ export function createOrUpdateToolNote(
   if (duplicate) {
     const dupUrl = duplicate.frontmatter.url;
     const isDupBroken = !dupUrl || dupUrl === 'undefined' || dupUrl === 'null' || dupUrl.endsWith('/undefined');
-    if (!isDupBroken) {
+    const hasNewValidTweet = Boolean(
+      params.sourceTweet &&
+      /\/status\/\d{10,}/.test(params.sourceTweet) &&
+      duplicate.frontmatter.source_tweet !== params.sourceTweet
+    );
+
+    if (!isDupBroken && !hasNewValidTweet) {
       console.log(
         `[Deduplicación] ⏭️ La herramienta "${duplicate.frontmatter.name}" (${duplicate.frontmatter.url}) ya existe en ${duplicate.slug}.md. Se omite para no duplicar.`
       );
@@ -141,7 +147,7 @@ export function createOrUpdateToolNote(
       };
     }
     console.log(
-      `[Deduplicación] 🔄 Reparando y actualizando nota con URL válida: "${duplicate.frontmatter.name}" -> ${params.classification.canonicalUrl}`
+      `[Deduplicación] 🔄 Reparando/actualizando nota existente: "${duplicate.frontmatter.name}" (${params.sourceTweet || params.classification.canonicalUrl})`
     );
   }
 
