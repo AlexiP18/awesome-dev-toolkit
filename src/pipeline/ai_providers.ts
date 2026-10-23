@@ -94,6 +94,12 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * Añade etiquetas relevantes a 'tags' (ej: "educacion", "estudiantes").
    - Si no hay mención ni evidencia de beneficios académicos, establece 'hasAcademicPromo': false y 'academicPromoDetails': null.
 
+9. REGLA ESTRICTA DE INTEGRIDAD DE ENLACES (PROHIBIDO ALUCINAR O ALTERAR URLs):
+   - Si en la sección 'Enlaces detectados y resueltos' arriba se lista una URL de repositorio (ej. "https://github.com/lemomo-ai/lemo-opuscar"):
+     * 'canonicalUrl' DEBE SER EXACTAMENTE ESA URL DETECTADA.
+     * ESTÁ ESTRICTAMENTE PROHIBIDO modificar, cambiar o abreviar letras del dueño u organización (ej. NUNCA cambies 'lemomo-ai' por 'lemo-ai').
+     * Copia la URL exacta de la lista de enlaces detectados carácter por carácter.
+
 Categorías válidas (selecciona EXACTAMENTE una para cada herramienta):
 ${ALLOWED_CATEGORIES.map((c) => `- "${c}"`).join('\n')}
 
@@ -140,6 +146,47 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
 
     if (!url || url === 'https://undefined' || url === 'https://null') {
       url = urls[0] || '';
+    }
+
+    // PROTECCIÓN CONTRA ALUCINACIONES DE LA IA EN ENLACES DE GITHUB:
+    // Si tenemos URLs detectadas en el tweet (ground truth), reconciliar url con las URLs reales:
+    if (urls && urls.length > 0) {
+      const ghMatch = url.match(/^https?:\/\/(?:www\.)?github\.com\/([^/]+)\/([^/#?]+)/i);
+      if (ghMatch) {
+        const aiOwner = ghMatch[1].toLowerCase().replace(/[-_]/g, '');
+        const aiRepo = ghMatch[2].toLowerCase().replace(/\.git$/, '').replace(/[-_]/g, '');
+
+        // Buscar en las URLs detectadas si hay una que corresponda al mismo repositorio
+        const exactCandidate = urls.find((c) => {
+          const cMatch = c.match(/^https?:\/\/(?:www\.)?github\.com\/([^/]+)\/([^/#?]+)/i);
+          if (!cMatch) return false;
+          const cOwner = cMatch[1].toLowerCase().replace(/[-_]/g, '');
+          const cRepo = cMatch[2].toLowerCase().replace(/\.git$/, '').replace(/[-_]/g, '');
+
+          // Si el nombre del repositorio coincide exactamente (ej. lemo-opuscar == lemo-opuscar)
+          if (cRepo === aiRepo) return true;
+          // O si el repo es una variación menor
+          if (cRepo.includes(aiRepo) || aiRepo.includes(cRepo)) {
+            if (cOwner === aiOwner || cOwner.includes(aiOwner) || aiOwner.includes(cOwner)) return true;
+          }
+          return false;
+        });
+
+        if (exactCandidate) {
+          if (exactCandidate !== url) {
+            console.log(
+              `[Pipeline] 🛡️ Corrigiendo URL alucinada por la IA "${url}" por la URL verificada del tweet: "${exactCandidate}"`
+            );
+          }
+          url = exactCandidate;
+        } else if (urls.length === 1 && urls[0].includes('github.com')) {
+          // Si solo había 1 URL de GitHub detectada en el tweet y la IA clasificó 1 sola herramienta:
+          console.log(
+            `[Pipeline] 🛡️ Vinculando con la URL verificada única del tweet: "${urls[0]}" (IA sugirió: "${url}")`
+          );
+          url = urls[0];
+        }
+      }
     }
 
     let websiteUrl = parsed.websiteUrl ? cleanTrackingParams(parsed.websiteUrl.trim()) : undefined;

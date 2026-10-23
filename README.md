@@ -2,7 +2,7 @@
 
 > Colección curada y categorizada de herramientas, bibliotecas y repositorios técnicos descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA (Gemini 3.8 Flash).
 
-[![Total Tools](https://img.shields.io/badge/Herramientas_guardadas-2-blue?style=for-the-badge&logo=bookmark)]()
+[![Total Tools](https://img.shields.io/badge/Herramientas_guardadas-3-blue?style=for-the-badge&logo=bookmark)]()
 [![Gemini Powered](https://img.shields.io/badge/Clasificado_con-Gemini_3.8_Flash-8E75C2?style=for-the-badge&logo=google)]()
 [![Obsidian Ready](https://img.shields.io/badge/Obsidian-Segundo_Cerebro-7C3AED?style=for-the-badge&logo=obsidian)]()
 
@@ -11,6 +11,7 @@
 ## 📑 Tabla de Contenidos
 
 - [🛠️ CLI & Terminal](#cli-terminal) (2)
+- [🎬 Prompts, Art & Video](#prompts-art-video) (1)
 
 ---
 
@@ -22,6 +23,12 @@
 
 - **[Astral UV](https://github.com/astral-sh/uv)** (`👤 Astral`) ⭐ **48.000** [𝕏 Tweet](https://x.com/astral_sh/status/987654321) `🟡 Por probar`  
   Gestor de paquetes y entornos de Python extremadamente rápido escrito en Rust, diseñado como reemplazo directo de pip y virtualenv. [📝 Ver ficha](content/tools/astral-uv.md) `#python` `#rust` `#package-manager` `#cli`
+
+
+### 🎬 Prompts, Art & Video
+
+- **[lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar)** (`🏢 Lemomo`) ⭐ **5.730** [🌐 Web](https://github.com/lemomo-ai/lemo-opuscar) [𝕏 Tweet](https://x.com/7uanF/status/123456789) `🟡 Por probar`  
+  Skill de Claude Code con una colección de 59 estilos cinematográficos generados enteramente mediante código para crear cortometrajes sin modelos de video. [📝 Ver ficha](content/tools/lemo-opuscar.md) `#claude-code` `#agent-skills` `#creative-coding` `#filmmaking` `#animation` `#threejs` `#ffmpeg` `#motion-graphics`
 
 
 

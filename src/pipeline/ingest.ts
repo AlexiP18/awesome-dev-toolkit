@@ -141,21 +141,31 @@ export async function ingestResource(input: IngestInput) {
 
   console.log(`[Pipeline] Gemini identificó ${classifications.length} herramienta(s).`);
 
-  // 4.5. Prioridad Determinística: Si la IA seleccionó una landing page pero el tweet contiene
-  // un repositorio de GitHub correspondiente a la herramienta, priorizar el repositorio como URL canónica principal
+  // 4.5. Prioridad Determinística y Reconciliación con Repositorios Reales:
+  // Si la IA devolvió una landing page o una URL de GitHub con variaciones tipográficas/alucinadas (ej. lemo-ai en vez de lemomo-ai),
+  // reconciliar con los repositorios reales detectados y verificados en resolvedList.
+  const ghRepos = resolvedList.filter((r) => r.isGitHub && r.finalUrl);
   for (const classification of classifications) {
-    if (!classification.canonicalUrl.includes('github.com')) {
-      const matchingGh = resolvedList.find((r) => r.isGitHub && r.finalUrl);
-      if (matchingGh) {
-        const repoName = (matchingGh.githubRepo || '').toLowerCase().replace(/[-_]/g, '');
-        const toolName = classification.name.toLowerCase().replace(/[-_\s]/g, '');
-        const totalGh = resolvedList.filter((r) => r.isGitHub).length;
+    if (ghRepos.length > 0) {
+      const toolName = classification.name.toLowerCase().replace(/[-_\s]/g, '');
+      const aiGhMatch = classification.canonicalUrl.match(/^https?:\/\/(?:www\.)?github\.com\/([^/]+)\/([^/#?]+)/i);
+      const aiRepoName = aiGhMatch ? aiGhMatch[2].toLowerCase().replace(/[-_]/g, '') : '';
 
-        if (totalGh === 1 || repoName.includes(toolName) || toolName.includes(repoName)) {
+      const matchingGh =
+        ghRepos.find((r) => {
+          const rName = (r.githubRepo || '').toLowerCase().replace(/[-_]/g, '');
+          if (aiRepoName && (rName === aiRepoName || rName.includes(aiRepoName) || aiRepoName.includes(rName))) {
+            return true;
+          }
+          return rName.includes(toolName) || toolName.includes(rName);
+        }) || (ghRepos.length === 1 && classifications.length === 1 ? ghRepos[0] : undefined);
+
+      if (matchingGh && matchingGh.finalUrl) {
+        if (classification.canonicalUrl !== matchingGh.finalUrl) {
           console.log(
-            `[Pipeline] 🔄 Priorizando repositorio GitHub sobre landing page: ${matchingGh.finalUrl} (Web guardada: ${classification.canonicalUrl})`
+            `[Pipeline] 🔄 Reconciliando canonicalUrl con repositorio real de GitHub: ${matchingGh.finalUrl} (Antes: ${classification.canonicalUrl})`
           );
-          if (!classification.websiteUrl) {
+          if (!classification.websiteUrl && !classification.canonicalUrl.includes('github.com')) {
             classification.websiteUrl = classification.canonicalUrl;
           }
           classification.canonicalUrl = matchingGh.finalUrl;
