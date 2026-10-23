@@ -109,6 +109,19 @@ export function loadAllAuthorProfiles(): Record<string, AuthorProfile> {
       const data = parsed.data as any;
       const slug = path.basename(file, '.md');
 
+      let cleanGh = data.github_url;
+      if (cleanGh && typeof cleanGh === 'string' && cleanGh.includes('github.com')) {
+        try {
+          const u = new URL(cleanGh.startsWith('http') ? cleanGh : `https://${cleanGh}`);
+          const segs = u.pathname.split('/').filter(Boolean);
+          if (segs.length >= 1) {
+            cleanGh = `https://github.com/${segs[0]}`;
+          }
+        } catch {
+          // ignore error
+        }
+      }
+
       const profile: AuthorProfile = {
         slug,
         name: data.name || slug,
@@ -118,7 +131,7 @@ export function loadAllAuthorProfiles(): Record<string, AuthorProfile> {
         specialties: data.specialties || [],
         whyFollow: data.why_follow || '',
         suggestedTags: data.suggested_tags || [],
-        githubUrl: data.github_url,
+        githubUrl: cleanGh,
         websiteUrl: data.website_url,
         twitterUrl: data.twitter_url || (data.handle ? `https://x.com/${data.handle}` : undefined),
         dateAnalyzed: data.date_analyzed,

@@ -652,7 +652,7 @@ Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
   "specialties": ["Especialidad 1", "Especialidad 2", "Especialidad 3"],
   "whyFollow": "1-2 oraciones explicando por qué vale la pena seguir a este creador en X y qué valor técnico aporta.",
   "suggestedTags": ["tag1", "tag2", "tag3"],
-  "githubUrl": "https://github.com/usuario (si es conocido o inferible del repositorio de sus herramientas, o null)",
+  "githubUrl": "Perfil oficial del autor en GitHub estrictamente en formato 'https://github.com/usuario'. REGLAS ESTRICTAS: 1) SOLO debe ser el perfil raíz del autor/creador dueño de la cuenta de X (ej. https://github.com/jesseduffield o https://github.com/astral-sh). 2) NUNCA pongas la URL de un repositorio (ej. NUNCA 'https://github.com/usuario/proyecto'). 3) Si el autor en X es un curador o difusor que comparte herramientas creadas por otros (ej. repositorios de terceros, empresas o proyectos ajenos), pon null. 4) Si no conoces con certeza el perfil personal o de organización del autor en GitHub, pon null.",
   "websiteUrl": "https://... (si tiene sitio web o blog conocido, o null)"
 }
 `;
@@ -675,19 +675,71 @@ function normalizeAuthorProfile(raw: any, input: AuthorAnalysisInput): AuthorPro
 
   const suggestedTags = Array.isArray(raw.suggestedTags) ? raw.suggestedTags : [];
 
-  let githubUrl = raw.githubUrl && typeof raw.githubUrl === 'string' ? raw.githubUrl.trim() : undefined;
-  if (githubUrl && !githubUrl.startsWith('http')) githubUrl = `https://${githubUrl}`;
+  let githubUrl: string | undefined = undefined;
+  if (
+    raw.githubUrl &&
+    typeof raw.githubUrl === 'string' &&
+    raw.githubUrl.trim() &&
+    raw.githubUrl !== 'null' &&
+    raw.githubUrl !== 'undefined'
+  ) {
+    let clean = raw.githubUrl.trim();
+    if (!clean.startsWith('http')) clean = `https://${clean}`;
+    try {
+      const parsed = new URL(clean);
+      if (parsed.hostname.includes('github.com')) {
+        const segs = parsed.pathname.split('/').filter(Boolean);
+        if (segs.length >= 1) {
+          const userOrOrg = segs[0];
+          const blacklisted = ['features', 'topics', 'trending', 'collections', 'events', 'readme', 'sponsors', 'orgs'];
+          if (!blacklisted.includes(userOrOrg.toLowerCase())) {
+            const authorHandle = (input.handle || '').replace(/^@/, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+            const authorName = input.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const targetClean = userOrOrg.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+            const isMatch =
+              (authorHandle && (authorHandle.includes(targetClean) || targetClean.includes(authorHandle))) ||
+              (authorName && (authorName.includes(targetClean) || targetClean.includes(authorName)));
+
+            // Si coincide con el autor del tweet, o si no proviene de las herramientas de terceros
+            if (isMatch || !input.tools.some((t) => t.url?.toLowerCase().includes(`github.com/${userOrOrg.toLowerCase()}/`))) {
+              githubUrl = `https://github.com/${userOrOrg}`;
+            } else if (isMatch) {
+              githubUrl = `https://github.com/${userOrOrg}`;
+            }
+          }
+        }
+      }
+    } catch {
+      // Ignorar URL inválida
+    }
+  }
+
+  // Si no se proporcionó o fue descartado por ser de terceros, inferir SOLO si el autor es el dueño verificable del repo
   if (!githubUrl) {
-    const ghTool = input.tools.find((t) => t.url?.includes('github.com'));
-    if (ghTool && ghTool.url) {
-      const match = ghTool.url.match(/github\.com\/([a-zA-Z0-9_-]+)/);
-      if (match && match[1]) {
-        githubUrl = `https://github.com/${match[1]}`;
+    const cleanHandle = (input.handle || '').replace(/^@/, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    const cleanName = input.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+    for (const t of input.tools) {
+      if (t.url?.includes('github.com')) {
+        const match = t.url.match(/github\.com\/([a-zA-Z0-9_-]+)/i);
+        if (match && match[1]) {
+          const owner = match[1];
+          const ownerClean = owner.toLowerCase().replace(/[^a-z0-9]/g, '');
+          if (
+            (cleanHandle && (cleanHandle === ownerClean || ownerClean.includes(cleanHandle) || cleanHandle.includes(ownerClean))) ||
+            (cleanName && (cleanName === ownerClean || ownerClean.includes(cleanName) || cleanName.includes(ownerClean)))
+          ) {
+            githubUrl = `https://github.com/${owner}`;
+            break;
+          }
+        }
       }
     }
   }
 
   let websiteUrl = raw.websiteUrl && typeof raw.websiteUrl === 'string' ? raw.websiteUrl.trim() : undefined;
+  if (websiteUrl && (websiteUrl === 'null' || websiteUrl === 'undefined')) websiteUrl = undefined;
   if (websiteUrl && !websiteUrl.startsWith('http')) websiteUrl = `https://${websiteUrl}`;
 
   return {
@@ -874,6 +926,28 @@ export async function analyzeAuthorWithCascade(
   const cats = [...new Set(params.tools.map((t) => t.category).filter(Boolean))];
   const tags = [...new Set(params.tools.flatMap((t) => t.tags || []))].slice(0, 5);
 
+  // Resolver si hay un perfil de GitHub directamente asociado al autor (no a herramientas de terceros)
+  let fallbackGithub: string | undefined = undefined;
+  const cleanHandle = (params.handle || '').replace(/^@/, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const cleanName = params.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+  for (const t of params.tools) {
+    if (t.url?.includes('github.com')) {
+      const match = t.url.match(/github\.com\/([a-zA-Z0-9_-]+)/i);
+      if (match && match[1]) {
+        const owner = match[1];
+        const ownerClean = owner.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (
+          (cleanHandle && (cleanHandle === ownerClean || ownerClean.includes(cleanHandle) || cleanHandle.includes(ownerClean))) ||
+          (cleanName && (cleanName === ownerClean || ownerClean.includes(cleanName) || cleanName.includes(ownerClean)))
+        ) {
+          fallbackGithub = `https://github.com/${owner}`;
+          break;
+        }
+      }
+    }
+  }
+
   const fallback: AuthorProfileResult = {
     name: params.name,
     handle: (params.handle || '').replace(/^@/, ''),
@@ -882,7 +956,7 @@ export async function analyzeAuthorWithCascade(
     specialties: cats.length > 0 ? (cats as string[]) : ['Herramientas de Desarrollo'],
     whyFollow: `Comparte y recomienda herramientas prácticas para el flujo de trabajo de programación en X.`,
     suggestedTags: tags,
-    githubUrl: params.tools.find((t) => t.url?.includes('github.com'))?.url,
+    githubUrl: fallbackGithub,
     websiteUrl: undefined,
   };
 
