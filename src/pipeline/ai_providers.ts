@@ -156,21 +156,28 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
         const aiOwner = ghMatch[1].toLowerCase().replace(/[-_]/g, '');
         const aiRepo = ghMatch[2].toLowerCase().replace(/\.git$/, '').replace(/[-_]/g, '');
 
-        // Buscar en las URLs detectadas si hay una que corresponda al mismo repositorio
-        const exactCandidate = urls.find((c) => {
+        // 1. Buscar primero coincidencia exacta del nombre del repositorio (ej. omniroute == omniroute)
+        let exactCandidate = urls.find((c) => {
           const cMatch = c.match(/^https?:\/\/(?:www\.)?github\.com\/([^/]+)\/([^/#?]+)/i);
           if (!cMatch) return false;
-          const cOwner = cMatch[1].toLowerCase().replace(/[-_]/g, '');
           const cRepo = cMatch[2].toLowerCase().replace(/\.git$/, '').replace(/[-_]/g, '');
-
-          // Si el nombre del repositorio coincide exactamente (ej. lemo-opuscar == lemo-opuscar)
-          if (cRepo === aiRepo) return true;
-          // O si el repo es una variación menor
-          if (cRepo.includes(aiRepo) || aiRepo.includes(cRepo)) {
-            if (cOwner === aiOwner || cOwner.includes(aiOwner) || aiOwner.includes(cOwner)) return true;
-          }
-          return false;
+          return cRepo.length >= 2 && cRepo === aiRepo;
         });
+
+        // 2. Si no hubo coincidencia exacta de repo, buscar variación menor (exigiendo longitud >= 3 para evitar prefijos de 1 letra como "/O")
+        if (!exactCandidate && aiRepo.length >= 3) {
+          exactCandidate = urls.find((c) => {
+            const cMatch = c.match(/^https?:\/\/(?:www\.)?github\.com\/([^/]+)\/([^/#?]+)/i);
+            if (!cMatch) return false;
+            const cOwner = cMatch[1].toLowerCase().replace(/[-_]/g, '');
+            const cRepo = cMatch[2].toLowerCase().replace(/\.git$/, '').replace(/[-_]/g, '');
+            if (cRepo.length < 3) return false;
+            if (cRepo.includes(aiRepo) || aiRepo.includes(cRepo)) {
+              if (cOwner === aiOwner || cOwner.includes(aiOwner) || aiOwner.includes(cOwner)) return true;
+            }
+            return false;
+          });
+        }
 
         if (exactCandidate) {
           if (exactCandidate !== url) {
@@ -190,6 +197,9 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
     }
 
     let websiteUrl = parsed.websiteUrl ? cleanTrackingParams(parsed.websiteUrl.trim()) : undefined;
+    if (websiteUrl === 'null' || websiteUrl === 'undefined' || websiteUrl === '') {
+      websiteUrl = undefined;
+    }
     if (websiteUrl && !websiteUrl.startsWith('http://') && !websiteUrl.startsWith('https://')) {
       websiteUrl = `https://${websiteUrl}`;
     }
@@ -205,6 +215,17 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
       const temp = url;
       url = websiteUrl;
       websiteUrl = temp;
+    }
+
+    // Nunca guardar un enlace de GitHub/GitLab ni un enlace idéntico a canonicalUrl dentro de websiteUrl
+    if (
+      websiteUrl &&
+      (websiteUrl.toLowerCase() === url.toLowerCase() ||
+        websiteUrl.toLowerCase().includes('github.com') ||
+        websiteUrl.toLowerCase().includes('gitlab.com') ||
+        isIgnoredNonToolUrl(websiteUrl))
+    ) {
+      websiteUrl = undefined;
     }
 
     const isShowcase =

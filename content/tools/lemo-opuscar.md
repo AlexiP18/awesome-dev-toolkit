@@ -1,7 +1,6 @@
 ---
 name: lemo-opuscar
 url: 'https://github.com/lemomo-ai/lemo-opuscar'
-website_url: 'https://github.com/lemomo-ai/lemo-opuscar'
 category: 'Prompts, Art & Video'
 tags:
   - claude-code

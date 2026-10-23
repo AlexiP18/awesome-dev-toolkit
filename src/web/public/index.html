@@ -1053,8 +1053,15 @@
           </a>
         ` : '';
 
-        const websiteLink = (fm.website_url && fm.website_url !== 'undefined' && fm.website_url !== safeUrl) ? `
-          <a href="${fm.website_url}" target="_blank" title="Visitar sitio web oficial" class="p-1.5 rounded-lg text-slate-400 hover:text-emerald-400 hover:bg-slate-800 transition flex items-center justify-center">
+        const websiteLink = (
+          fm.website_url &&
+          fm.website_url !== 'undefined' &&
+          fm.website_url !== 'null' &&
+          fm.website_url !== safeUrl &&
+          !fm.website_url.toLowerCase().includes('github.com') &&
+          !fm.website_url.toLowerCase().includes('gitlab.com')
+        ) ? `
+          <a href="${fm.website_url}" target="_blank" rel="noopener noreferrer" title="Visitar sitio web oficial" class="p-1.5 rounded-lg text-slate-400 hover:text-emerald-400 hover:bg-slate-800 transition flex items-center justify-center">
             <i data-lucide="globe" class="w-3.5 h-3.5"></i>
           </a>
         ` : '';

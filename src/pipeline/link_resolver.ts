@@ -56,21 +56,45 @@ export function extractUrlsFromText(text: string): string[] {
 
   const foundUrls: string[] = [];
 
-  // 1. Enlaces estándar con protocolo http(s)://
-  const httpRegex = /(https?:\/\/[^\s<>"'()]+)/gi;
-  const httpMatches = text.match(httpRegex) || [];
-  for (const match of httpMatches) {
-    const cleaned = match.replace(/[.,;:!?)]+$/, '');
-    if (!isIgnoredNonToolUrl(cleaned)) {
-      foundUrls.push(cleaned);
+  // 1. Patrones de tarjetas de GitHub en X (ej: "GitHub - diegosouzapw/OmniRoute: ...")
+  // Se evalúan primero porque contienen el owner/repo completo sin truncamiento visual
+  const ghCardRegex = /GitHub\s*[-–—:]\s*([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)/gi;
+  let ghCardMatch;
+  while ((ghCardMatch = ghCardRegex.exec(text)) !== null) {
+    const owner = ghCardMatch[1];
+    const repo = ghCardMatch[2].replace(/[.,;:!?…]+$/, '');
+    if (owner && repo) {
+      const ghUrl = `https://github.com/${owner}/${repo}`;
+      if (!foundUrls.some((u) => u.toLowerCase() === ghUrl.toLowerCase())) {
+        foundUrls.push(ghUrl);
+      }
     }
   }
 
-  // 2. Dominios y repositorios sin protocolo (ej: github.com/user/repo, adcode.bluethenics.com, jiro.build)
+  // 2. Enlaces estándar con protocolo http(s)://
+  const httpRegex = /(https?:\/\/[^\s<>"'()]+)/gi;
+  const httpMatches = text.match(httpRegex) || [];
+  for (const match of httpMatches) {
+    // Descartar enlaces truncados visualmente por X/Twitter (terminan en "..." o "…")
+    if (/\.\.\.$|…$/.test(match)) continue;
+    const cleaned = match.replace(/[.,;:!?)]+$/, '');
+    if (!isIgnoredNonToolUrl(cleaned)) {
+      if (!foundUrls.some((u) => u.toLowerCase() === cleaned.toLowerCase())) {
+        foundUrls.push(cleaned);
+      }
+    }
+  }
+
+  // 3. Dominios y repositorios sin protocolo (ej: github.com/user/repo, adcode.bluethenics.com, jiro.build)
   const domainRegex = /\b(?:github\.com|gitlab\.com|[a-zA-Z0-9-]+\.(?:com|io|dev|app|org|net|co|ai|build|sh|so|tech|tools|site|design|website))\b(?:\/[^\s<>"'()]*)?/gi;
   const domainMatches = text.match(domainRegex) || [];
   for (const match of domainMatches) {
+    // Descartar enlaces truncados visualmente por X/Twitter (ej. "github.com/diegosouzapw/O..." o "…")
+    if (/\.\.\.$|…$/.test(match)) continue;
     const cleaned = match.replace(/[.,;:!?)]+$/, '');
+    // Ignorar si solo es el dominio "github.com" sin ruta (ej. del pie "From github.com")
+    if (/^(?:www\.)?(?:github|gitlab)\.com$/i.test(cleaned)) continue;
+
     const withProtocol = `https://${cleaned}`;
     if (!isIgnoredNonToolUrl(withProtocol)) {
       const alreadyHas = foundUrls.some(
@@ -82,19 +106,18 @@ export function extractUrlsFromText(text: string): string[] {
     }
   }
 
-  // 3. Patrones de tarjetas de GitHub en X (ej: "GitHub - lemomo-ai/lemo-opuscar: ...")
-  const ghCardRegex = /GitHub\s*[-–—:]\s*([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)/gi;
-  let ghCardMatch;
-  while ((ghCardMatch = ghCardRegex.exec(text)) !== null) {
-    const owner = ghCardMatch[1];
-    const repo = ghCardMatch[2].replace(/[.,;:!?)]+$/, '');
-    const ghUrl = `https://github.com/${owner}/${repo}`;
-    if (!foundUrls.some((u) => u.toLowerCase() === ghUrl.toLowerCase())) {
-      foundUrls.push(ghUrl);
-    }
-  }
+  // 4. Filtrar URLs de GitHub que sean un prefijo truncado de otra URL de GitHub más completa en el mismo tweet
+  // (ej. descartar "https://github.com/diegosouzapw/O" si existe "https://github.com/diegosouzapw/OmniRoute")
+  const filteredUrls = foundUrls.filter((url) => {
+    const lower = url.toLowerCase();
+    if (!lower.includes('github.com/')) return true;
+    const isPrefixOfAnother = foundUrls.some(
+      (other) => other.toLowerCase() !== lower && other.toLowerCase().startsWith(lower)
+    );
+    return !isPrefixOfAnother;
+  });
 
-  return Array.from(new Set(foundUrls));
+  return Array.from(new Set(filteredUrls));
 }
 
 export async function resolveUrl(rawUrl: string, timeoutMs = 6000): Promise<ResolvedLink> {

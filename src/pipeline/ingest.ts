@@ -55,18 +55,35 @@ export async function ingestResource(input: IngestInput) {
   console.log(`[Pipeline] Resolviendo ${nonTweetUrls.length} enlace(s)...`);
 
   // 2. Resolve redirects in parallel (e.g. t.co -> final URL)
-  const resolvedList = (await Promise.all(
+  const rawResolvedList = (await Promise.all(
     nonTweetUrls.map((u) => resolveUrl(u))
   )).filter((r) => !isIgnoredNonToolUrl(r.finalUrl));
+
+  // Filtrar URLs de GitHub que sean un prefijo truncado de otra URL de GitHub resuelta
+  // (ej. descartar "https://github.com/diegosouzapw/O" si existe "https://github.com/diegosouzapw/OmniRoute")
+  const resolvedList = rawResolvedList.filter((item) => {
+    const lower = item.finalUrl.toLowerCase();
+    if (!item.isGitHub) return true;
+    const isTruncatedPrefix = rawResolvedList.some(
+      (other) =>
+        other.isGitHub &&
+        other.finalUrl.toLowerCase() !== lower &&
+        other.finalUrl.toLowerCase().startsWith(lower)
+    );
+    return !isTruncatedPrefix;
+  });
 
   const canonicalUrls = Array.from(
     new Set(resolvedList.map((r) => r.finalUrl).filter(Boolean))
   );
 
-  // Priorizar repositorios de GitHub al inicio de los candidatos
-  canonicalUrls.sort(
-    (a, b) => (b.includes('github.com') ? 1 : 0) - (a.includes('github.com') ? 1 : 0)
-  );
+  // Priorizar repositorios de GitHub al inicio de los candidatos (y los de nombre más completo primero)
+  canonicalUrls.sort((a, b) => {
+    const aGh = a.includes('github.com') ? 1 : 0;
+    const bGh = b.includes('github.com') ? 1 : 0;
+    if (bGh !== aGh) return bGh - aGh;
+    return b.length - a.length;
+  });
 
   // Load current catalog to check duplicates
   const existingTools = loadAllTools();
@@ -142,23 +159,46 @@ export async function ingestResource(input: IngestInput) {
   console.log(`[Pipeline] Gemini identificó ${classifications.length} herramienta(s).`);
 
   // 4.5. Prioridad Determinística y Reconciliación con Repositorios Reales:
-  // Si la IA devolvió una landing page o una URL de GitHub con variaciones tipográficas/alucinadas (ej. lemo-ai en vez de lemomo-ai),
+  // Si la IA devolvió una landing page o una URL de GitHub con variaciones tipográficas/alucinadas (ej. cheaper-inference/OmniRoute o lemo-ai),
   // reconciliar con los repositorios reales detectados y verificados en resolvedList.
-  const ghRepos = resolvedList.filter((r) => r.isGitHub && r.finalUrl);
+  const ghRepos = resolvedList
+    .filter((r) => r.isGitHub && r.finalUrl)
+    .sort((a, b) => {
+      // Priorizar repos que sí devolvieron metadata válida en GitHub API (existen realmente)
+      const aHasMeta = githubMetas[a.finalUrl] ? 1 : 0;
+      const bHasMeta = githubMetas[b.finalUrl] ? 1 : 0;
+      if (bHasMeta !== aHasMeta) return bHasMeta - aHasMeta;
+      return (b.githubRepo || '').length - (a.githubRepo || '').length;
+    });
+
   for (const classification of classifications) {
     if (ghRepos.length > 0) {
       const toolName = classification.name.toLowerCase().replace(/[-_\s]/g, '');
       const aiGhMatch = classification.canonicalUrl.match(/^https?:\/\/(?:www\.)?github\.com\/([^/]+)\/([^/#?]+)/i);
       const aiRepoName = aiGhMatch ? aiGhMatch[2].toLowerCase().replace(/[-_]/g, '') : '';
 
-      const matchingGh =
-        ghRepos.find((r) => {
+      // 1. Buscar coincidencia exacta de nombre de repositorio
+      let matchingGh = ghRepos.find((r) => {
+        const rName = (r.githubRepo || '').toLowerCase().replace(/[-_]/g, '');
+        return rName.length >= 2 && (rName === aiRepoName || rName === toolName);
+      });
+
+      // 2. Si no hubo exacta, buscar coincidencia parcial exigiendo longitud >= 3 (evita falsos positivos como "/O")
+      if (!matchingGh) {
+        matchingGh = ghRepos.find((r) => {
           const rName = (r.githubRepo || '').toLowerCase().replace(/[-_]/g, '');
-          if (aiRepoName && (rName === aiRepoName || rName.includes(aiRepoName) || aiRepoName.includes(rName))) {
+          if (rName.length < 3) return false;
+          if (aiRepoName && aiRepoName.length >= 3 && (rName.includes(aiRepoName) || aiRepoName.includes(rName))) {
             return true;
           }
-          return rName.includes(toolName) || toolName.includes(rName);
-        }) || (ghRepos.length === 1 && classifications.length === 1 ? ghRepos[0] : undefined);
+          return toolName.length >= 3 && (rName.includes(toolName) || toolName.includes(rName));
+        });
+      }
+
+      // 3. Si solo hay 1 repo válido en el tweet y 1 herramienta clasificada
+      if (!matchingGh && ghRepos.length === 1 && classifications.length === 1) {
+        matchingGh = ghRepos[0];
+      }
 
       if (matchingGh && matchingGh.finalUrl) {
         if (classification.canonicalUrl !== matchingGh.finalUrl) {
@@ -171,6 +211,16 @@ export async function ingestResource(input: IngestInput) {
           classification.canonicalUrl = matchingGh.finalUrl;
         }
       }
+    }
+
+    // Limpiar websiteUrl si por error apunta a un repositorio de GitHub/GitLab o es idéntico a canonicalUrl
+    if (
+      classification.websiteUrl &&
+      (classification.websiteUrl.toLowerCase() === classification.canonicalUrl.toLowerCase() ||
+        classification.websiteUrl.toLowerCase().includes('github.com') ||
+        classification.websiteUrl.toLowerCase().includes('gitlab.com'))
+    ) {
+      classification.websiteUrl = undefined;
     }
   }
 
