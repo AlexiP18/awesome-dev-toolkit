@@ -7,6 +7,7 @@ import { GitHubMetadata } from './github.js';
 const TOOLS_DIR = path.resolve(process.cwd(), 'content/tools');
 const PRODUCTS_DIR = path.resolve(process.cwd(), 'content/products');
 const TIPS_DIR = path.resolve(process.cwd(), 'content/tips');
+const JOBS_DIR = path.resolve(process.cwd(), 'content/jobs');
 
 export function ensureToolsDirExists(): void {
   if (!fs.existsSync(TOOLS_DIR)) {
@@ -17,6 +18,9 @@ export function ensureToolsDirExists(): void {
   }
   if (!fs.existsSync(TIPS_DIR)) {
     fs.mkdirSync(TIPS_DIR, { recursive: true });
+  }
+  if (!fs.existsSync(JOBS_DIR)) {
+    fs.mkdirSync(JOBS_DIR, { recursive: true });
   }
 }
 
@@ -174,9 +178,10 @@ export function createOrUpdateToolNote(
     );
   }
 
-  const isTip = params.classification.entryType === 'tech_tip';
-  const isShowcase = params.classification.entryType === 'product_showcase';
-  const targetDir = isTip ? TIPS_DIR : isShowcase ? PRODUCTS_DIR : TOOLS_DIR;
+  const isJob = params.classification.entryType === 'job_remote' || params.classification.category === 'Trabajo & Freelance';
+  const isTip = !isJob && params.classification.entryType === 'tech_tip';
+  const isShowcase = !isJob && !isTip && params.classification.entryType === 'product_showcase';
+  const targetDir = isJob ? JOBS_DIR : isTip ? TIPS_DIR : isShowcase ? PRODUCTS_DIR : TOOLS_DIR;
 
   const slug = slugify(params.classification.name);
   const filePath = path.join(targetDir, `${slug}.md`);
@@ -204,8 +209,11 @@ export function createOrUpdateToolNote(
     source_tweet: params.sourceTweet,
     author: authorName,
     author_handle: authorHandle,
-    entry_type: isTip ? 'tech_tip' : isShowcase ? 'product_showcase' : 'tool',
+    entry_type: isJob ? 'job_remote' : isTip ? 'tech_tip' : isShowcase ? 'product_showcase' : 'tool',
     company: params.classification.company || (isShowcase ? params.author : undefined),
+    location: params.classification.location || undefined,
+    salary: params.classification.salary || undefined,
+    job_type: params.classification.jobType || undefined,
     has_academic_promo: params.classification.hasAcademicPromo || undefined,
     academic_promo_details: params.classification.academicPromoDetails || undefined,
   };
@@ -218,23 +226,29 @@ export function createOrUpdateToolNote(
     ? `> 🎓 **Promoción Académica:** ${frontmatter.academic_promo_details || 'Disponible para estudiantes o instituciones educativas.'}\n\n`
     : '';
 
-  const sectionHighlightsTitle = isTip ? '📌 Puntos Clave & Pasos del Consejo' : '💡 ¿Por qué destaca?';
-  const sectionNotesTitle = isTip ? '📝 Aplicación Práctica & Contexto' : '📝 Notas Personales (Segundo Cerebro)';
-  const referenceLabel = isTip
+  const sectionHighlightsTitle = isJob ? '📋 Requisitos & Características Clave' : isTip ? '📌 Puntos Clave & Pasos del Consejo' : '💡 ¿Por qué destaca?';
+  const sectionNotesTitle = isJob ? '📝 Notas de Postulación & Consejos' : isTip ? '📝 Aplicación Práctica & Contexto' : '📝 Notas Personales (Segundo Cerebro)';
+  const referenceLabel = isJob
+    ? 'Enlace oficial / Para postular'
+    : isTip
     ? (frontmatter.url.includes('x.com') || frontmatter.url.includes('twitter.com') ? 'Tweet con el consejo completo' : 'Enlace o documentación de referencia')
     : (frontmatter.url.includes('github.com') ? 'Repositorio de código (GitHub)' : 'Enlace de referencia');
 
+  const jobMetaBlock = isJob
+    ? `${frontmatter.company ? `- **🏢 Empresa / Plataforma:** ${frontmatter.company}\n` : ''}${frontmatter.location ? `- **🌍 Modalidad / Ubicación:** ${frontmatter.location}\n` : ''}${frontmatter.salary ? `- **💰 Compensación / Tarifa:** ${frontmatter.salary}\n` : ''}`
+    : '';
+
   const markdownBody = `
-# ${isTip ? '💡 ' : ''}${params.classification.name}
+# ${isJob ? '💼 ' : isTip ? '💡 ' : ''}${params.classification.name}
 
 > ${params.classification.oneLiner}
 
-${promoBlock}${authorName ? `**👤 Publicado / Recomendado por:** ${authorName}${authorHandle ? ` ([@${authorHandle}](https://x.com/${authorHandle}))` : ''}\n` : ''}${isShowcase && frontmatter.company ? `**🏢 Empresa / Creador:** ${frontmatter.company}\n` : ''}
+${promoBlock}${authorName ? `**👤 Publicado / Recomendado por:** ${authorName}${authorHandle ? ` ([@${authorHandle}](https://x.com/${authorHandle}))` : ''}\n` : ''}${isShowcase && frontmatter.company ? `**🏢 Empresa / Creador:** ${frontmatter.company}\n` : ''}${jobMetaBlock ? `\n### 📌 Información de la Oportunidad\n${jobMetaBlock}\n` : ''}
 ## ${sectionHighlightsTitle}
 ${highlightsMd}
 
 ## ${sectionNotesTitle}
-- ${params.classification.recommendedNotes || 'Pendiente de probar o revisar detalles.'}
+- ${params.classification.recommendedNotes || (isJob ? 'Pendiente de revisar requisitos y postular.' : 'Pendiente de probar o revisar detalles.')}
 
 ## 🔗 Referencias
 - ${referenceLabel}: [${params.classification.canonicalUrl}](${params.classification.canonicalUrl})
@@ -255,6 +269,7 @@ export function loadAllTools(): ToolItem[] {
     { dir: TOOLS_DIR, defaultType: 'tool' as const },
     { dir: PRODUCTS_DIR, defaultType: 'product_showcase' as const },
     { dir: TIPS_DIR, defaultType: 'tech_tip' as const },
+    { dir: JOBS_DIR, defaultType: 'job_remote' as const },
   ];
 
   for (const { dir, defaultType } of dirs) {
@@ -304,6 +319,9 @@ export function updateToolNote(slug: string, updates: {
   tags?: string[];
   author?: string;
   author_handle?: string;
+  location?: string;
+  salary?: string;
+  company?: string;
   has_academic_promo?: boolean;
   academic_promo_details?: string;
 }): boolean {
@@ -313,7 +331,10 @@ export function updateToolNote(slug: string, updates: {
     if (!fs.existsSync(filePath)) {
       filePath = path.join(TIPS_DIR, `${slug}.md`);
       if (!fs.existsSync(filePath)) {
-        return false;
+        filePath = path.join(JOBS_DIR, `${slug}.md`);
+        if (!fs.existsSync(filePath)) {
+          return false;
+        }
       }
     }
   }
@@ -328,6 +349,9 @@ export function updateToolNote(slug: string, updates: {
     ...(updates.tags ? { tags: updates.tags } : {}),
     ...(updates.author !== undefined ? { author: updates.author } : {}),
     ...(updates.author_handle !== undefined ? { author_handle: updates.author_handle } : {}),
+    ...(updates.location !== undefined ? { location: updates.location } : {}),
+    ...(updates.salary !== undefined ? { salary: updates.salary } : {}),
+    ...(updates.company !== undefined ? { company: updates.company } : {}),
     ...(updates.has_academic_promo !== undefined ? { has_academic_promo: updates.has_academic_promo } : {}),
     ...(updates.academic_promo_details !== undefined ? { academic_promo_details: updates.academic_promo_details } : {}),
   };

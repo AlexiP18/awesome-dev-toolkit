@@ -10,9 +10,10 @@ export type ToolCategory =
   | 'Documentation & Resources'
   | 'Empresas & Productos'
   | 'Consejos & Buenas Prácticas'
+  | 'Trabajo & Freelance'
   | 'Other';
 
-export type EntryType = 'tool' | 'product_showcase' | 'tech_tip';
+export type EntryType = 'tool' | 'product_showcase' | 'tech_tip' | 'job_remote';
 
 export type ToolStatus = 'to_try' | 'in_use' | 'archived';
 
@@ -30,6 +31,9 @@ export interface ToolFrontmatter {
   author_handle?: string;
   entry_type?: EntryType;
   company?: string;
+  location?: string; // Modalidad/ubicación (ej. "Remoto (Mundial)", "Remoto (LATAM)", "Híbrido")
+  salary?: string; // Rango salarial o tarifa (ej. "$60k - $80k USD/año", "$40/h")
+  job_type?: 'remote_job' | 'freelance' | 'job_board' | 'resource';
   has_academic_promo?: boolean;
   academic_promo_details?: string;
 }
@@ -52,6 +56,9 @@ export interface ClassificationResult {
   recommendedNotes: string;
   entryType?: EntryType;
   company?: string;
+  location?: string;
+  salary?: string;
+  jobType?: 'remote_job' | 'freelance' | 'job_board' | 'resource';
   hasAcademicPromo?: boolean;
   academicPromoDetails?: string;
 }

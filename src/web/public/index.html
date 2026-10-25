@@ -110,12 +110,15 @@
         <span id="statTips" class="px-3 py-1.5 bg-violet-950/40 border border-violet-800/40 text-violet-300 rounded-lg">
           💡 Consejos: <strong>0</strong>
         </span>
+        <span id="statJobs" class="px-3 py-1.5 bg-blue-950/40 border border-blue-800/40 text-blue-300 rounded-lg">
+          💼 Empleo & Freelance: <strong>0</strong>
+        </span>
       </div>
     </div>
 
     <!-- Filter Pills: Types, Categories & Status -->
     <div class="space-y-3 mb-6">
-      <!-- Type Filter Tabs: Todos, Herramientas, Consejos Técnicos, Productos -->
+      <!-- Type Filter Tabs: Todos, Herramientas, Consejos Técnicos, Trabajo & Freelance, Productos -->
       <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
         <span class="font-medium text-slate-400 mr-1 flex items-center gap-1 flex-shrink-0">
           <i data-lucide="layers" class="w-3.5 h-3.5 text-slate-500"></i>
@@ -129,6 +132,9 @@
         </button>
         <button onclick="setTypeFilter('tech_tip')" class="type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800" data-type="tech_tip">
           💡 Consejos Técnicos
+        </button>
+        <button onclick="setTypeFilter('job_remote')" class="type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800" data-type="job_remote">
+          💼 Trabajo & Freelance
         </button>
         <button onclick="setTypeFilter('product_showcase')" class="type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800" data-type="product_showcase">
           🏢 Empresas & Productos
@@ -306,6 +312,15 @@
           </div>
         </div>
 
+        <!-- Job Info Alert inside Modal -->
+        <div id="modalJobInfo" class="hidden p-3 rounded-xl bg-blue-500/10 border border-blue-500/30 text-xs text-blue-300 flex items-start gap-2.5">
+          <span class="text-base leading-none">💼</span>
+          <div class="space-y-1">
+            <span class="font-bold text-blue-200">Detalles de Trabajo / Freelance:</span>
+            <div id="modalJobDetails" class="text-xs text-blue-300/90 leading-relaxed flex flex-wrap gap-2 pt-0.5"></div>
+          </div>
+        </div>
+
         <!-- Markdown Content Preview / Editor -->
         <div>
           <div class="flex items-center justify-between mb-2">
@@ -374,7 +389,7 @@
       <div class="flex justify-between items-center mb-4">
         <h3 class="text-base font-bold text-slate-100 flex items-center gap-2">
           <i data-lucide="plus-circle" class="w-5 h-5 text-sky-400"></i>
-          Añadir Herramienta o Tweet
+          Añadir Recurso, Empleo o Consejo
         </h3>
         <button onclick="closeIngestModal()" class="text-slate-400 hover:text-slate-200">
           <i data-lucide="x" class="w-5 h-5"></i>
@@ -387,7 +402,7 @@
           <input 
             id="ingestUrlInput" 
             type="url" 
-            placeholder="https://github.com/..."
+            placeholder="https://github.com/... o https://x.com/..."
             required
             class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
           />
@@ -397,7 +412,7 @@
           <textarea 
             id="ingestTextInput" 
             rows="3" 
-            placeholder="Para qué sirve o qué decían en el tweet..."
+            placeholder="Para qué sirve, descripción de la herramienta, consejo técnico o detalle de la vacante/plataforma..."
             class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
           ></textarea>
         </div>
@@ -898,6 +913,7 @@
       'Documentation & Resources',
       'Empresas & Productos',
       'Consejos & Buenas Prácticas',
+      'Trabajo & Freelance',
       'Other'
     ];
 
@@ -985,9 +1001,14 @@
         // Type filter
         if (currentType !== 'all') {
           const entryType = tool.frontmatter.entry_type || 'tool';
-          if (entryType !== currentType) {
-            return false;
-          }
+          const isJob = entryType === 'job_remote' || tool.frontmatter.category === 'Trabajo & Freelance';
+          const isTip = entryType === 'tech_tip' || tool.frontmatter.category === 'Consejos & Buenas Prácticas';
+          const isShowcase = entryType === 'product_showcase' || tool.frontmatter.category === 'Empresas & Productos';
+
+          if (currentType === 'job_remote' && !isJob) return false;
+          if (currentType === 'tech_tip' && !isTip) return false;
+          if (currentType === 'product_showcase' && !isShowcase) return false;
+          if (currentType === 'tool' && (isJob || isTip || isShowcase)) return false;
         }
 
         // Category filter
@@ -1016,7 +1037,9 @@
           const matchTags = (tool.frontmatter.tags || []).some(t => t.toLowerCase().includes(query));
           const matchContent = (tool.content || '').toLowerCase().includes(query);
           const matchUrl = (tool.frontmatter.url || '').toLowerCase().includes(query);
-          return matchName || matchTags || matchContent || matchUrl;
+          const matchCompany = (tool.frontmatter.company || '').toLowerCase().includes(query);
+          const matchLocation = (tool.frontmatter.location || '').toLowerCase().includes(query);
+          return matchName || matchTags || matchContent || matchUrl || matchCompany || matchLocation;
         }
 
         return true;
@@ -1045,6 +1068,12 @@
       const statTipsEl = document.getElementById('statTips');
       if (statTipsEl) {
         statTipsEl.innerHTML = `💡 Consejos: <strong>${tipsCount}</strong>`;
+      }
+
+      const jobsCount = allTools.filter(t => t.frontmatter.entry_type === 'job_remote' || t.frontmatter.category === 'Trabajo & Freelance').length;
+      const statJobsEl = document.getElementById('statJobs');
+      if (statJobsEl) {
+        statJobsEl.innerHTML = `💼 Empleo/Freelance: <strong>${jobsCount}</strong>`;
       }
 
       const authors = getAuthorsData();
@@ -1090,7 +1119,11 @@
         const safeUrl = (fm.url && fm.url !== 'undefined' && fm.url !== 'null') ? fm.url : (fm.website_url || '#');
         const isGithub = safeUrl.includes('github.com');
         const isTwitter = safeUrl.includes('x.com') || safeUrl.includes('twitter.com');
-        const mainLinkTitle = isGithub ? 'Ver repositorio en GitHub' : isTwitter ? 'Ver tweet del consejo en X' : 'Visitar enlace principal';
+        const isJob = fm.entry_type === 'job_remote' || fm.category === 'Trabajo & Freelance';
+        const isTip = !isJob && fm.entry_type === 'tech_tip';
+        const isShowcase = !isJob && !isTip && fm.entry_type === 'product_showcase';
+
+        const mainLinkTitle = isGithub ? 'Ver repositorio en GitHub' : isJob ? 'Ver oferta o enlace para postular' : isTwitter ? 'Ver tweet en X' : 'Visitar enlace principal';
 
         // Ícono SVG de GitHub nativo (ya que Lucide v1 no incluye marcas propietarias)
         const githubSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>`;
@@ -1098,12 +1131,13 @@
         // Ícono SVG de X (Twitter)
         const xSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
 
-        const mainIconHtml = isGithub ? githubSvg : isTwitter ? xSvg : `<i data-lucide="external-link" class="w-3.5 h-3.5"></i>`;
+        const mainIconHtml = isGithub ? githubSvg : (isTwitter && !isJob) ? xSvg : isJob ? `<i data-lucide="briefcase" class="w-3.5 h-3.5"></i>` : `<i data-lucide="external-link" class="w-3.5 h-3.5"></i>`;
 
-        const isTip = fm.entry_type === 'tech_tip';
-        const isShowcase = fm.entry_type === 'product_showcase';
-
-        const typeBadge = isTip ? `
+        const typeBadge = isJob ? `
+          <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/30">
+            <span>💼</span> Trabajo & Freelance
+          </span>
+        ` : isTip ? `
           <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-300 border border-violet-500/30">
             <span>💡</span> Consejo Técnico
           </span>
@@ -1152,6 +1186,14 @@
           </span>
         ` : '';
 
+        const jobPills = isJob && (fm.company || fm.location || fm.salary) ? `
+          <div class="flex flex-wrap items-center gap-1.5 mb-2.5">
+            ${fm.company ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-medium"><span>🏢</span> ${fm.company}</span>` : ''}
+            ${fm.location ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-sky-950/50 text-sky-300 border border-sky-800/40 font-medium"><span>🌍</span> ${fm.location}</span>` : ''}
+            ${fm.salary ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-emerald-950/40 text-emerald-400 border border-emerald-800/40 font-mono font-medium"><span>💰</span> ${fm.salary}</span>` : ''}
+          </div>
+        ` : '';
+
         const authorName = getToolAuthor(tool);
         const authorHandle = getToolAuthorHandle(tool);
         const authorRow = authorName ? `
@@ -1197,6 +1239,8 @@
                   ${primaryLink}
                 </div>
               </div>
+
+              ${jobPills}
 
               <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed mb-3">
                 ${summary}
@@ -1254,7 +1298,10 @@
       activeEditingSlug = slug;
 
       document.getElementById('modalToolName').innerText = tool.frontmatter.name;
-      const noteFolder = tool.frontmatter.entry_type === 'tech_tip'
+      const isJob = tool.frontmatter.entry_type === 'job_remote' || tool.frontmatter.category === 'Trabajo & Freelance';
+      const noteFolder = isJob
+        ? 'content/jobs'
+        : tool.frontmatter.entry_type === 'tech_tip'
         ? 'content/tips'
         : tool.frontmatter.entry_type === 'product_showcase'
         ? 'content/products'
@@ -1299,6 +1346,21 @@
           academicAlert.classList.remove('hidden');
         } else {
           academicAlert.classList.add('hidden');
+        }
+      }
+
+      const jobInfoEl = document.getElementById('modalJobInfo');
+      const jobDetailsEl = document.getElementById('modalJobDetails');
+      if (jobInfoEl && jobDetailsEl) {
+        if (isJob && (tool.frontmatter.company || tool.frontmatter.location || tool.frontmatter.salary)) {
+          const parts = [];
+          if (tool.frontmatter.company) parts.push(`<span>🏢 <strong>Empresa:</strong> ${tool.frontmatter.company}</span>`);
+          if (tool.frontmatter.location) parts.push(`<span>🌍 <strong>Modalidad:</strong> ${tool.frontmatter.location}</span>`);
+          if (tool.frontmatter.salary) parts.push(`<span>💰 <strong>Compensación:</strong> ${tool.frontmatter.salary}</span>`);
+          jobDetailsEl.innerHTML = parts.join('<span class="text-blue-500">•</span>');
+          jobInfoEl.classList.remove('hidden');
+        } else {
+          jobInfoEl.classList.add('hidden');
         }
       }
 

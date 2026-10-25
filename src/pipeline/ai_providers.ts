@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { GoogleGenAI, Type } from '@google/genai';
-import { ClassificationResult, ToolCategory } from './types.js';
+import { ClassificationResult, ToolCategory, EntryType } from './types.js';
 import { GitHubMetadata } from './github.js';
 import { isIgnoredNonToolUrl, cleanTrackingParams } from './link_resolver.js';
 
@@ -18,6 +18,7 @@ export const ALLOWED_CATEGORIES: ToolCategory[] = [
   'Documentation & Resources',
   'Empresas & Productos',
   'Consejos & Buenas Prácticas',
+  'Trabajo & Freelance',
   'Other',
 ];
 
@@ -113,6 +114,20 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * 'recommendedNotes': Ejemplo práctico de cuándo aplicarlo, consideraciones o advertencias técnicas.
      * 'tags': Incluye etiquetas técnicas relevantes (ej: ["docker", "devops", "tips"], ["postgresql", "sql", "performance"], ["react", "frontend", "patterns"]).
 
+11. TWEETS DE TRABAJO, EMPLEO REMOTO O FREELANCE ('job_remote'):
+   - Si el tweet comparte ofertas de trabajo remoto, vacantes, convocatorias de contratación (hiring), oportunidades freelance, bolsas de empleo remoto, plataformas freelance (ej: RemoteOK, We Work Remotely, Torre, Contra, Upwork), guías de tarifas freelance, plantillas de contratos para desarrolladores o consejos específicos para conseguir trabajo remoto:
+     * 'name': Título descriptivo de la posición, plataforma o recurso (ej: "Senior Frontend Engineer (Remoto LATAM)", "Remotive - Directorio de Empleos Remotos", "Plantilla de Propuesta Freelance para Desarrolladores").
+     * 'canonicalUrl': Enlace directo para postular, web oficial de la plataforma/empresa o documentación. Si el tweet no incluye link externo, usa el enlace del tweet de origen.
+     * 'category': "Trabajo & Freelance".
+     * 'entryType': "job_remote".
+     * 'company': Nombre de la empresa, startup o cliente contratante (si se especifica).
+     * 'location': Modalidad y región geográfica (ej: "Remoto (Mundial)", "Remoto (LATAM)", "Remoto (EE.UU.)", "Híbrido").
+     * 'salary': Salario o tarifa si se menciona explícitamente (ej: "$50k - $70k USD/año", "$35 - $50 USD/h", o null).
+     * 'tags': Etiquetas relevantes como 'remoto', 'freelance', 'trabajo', 'frontend', 'backend', etc.
+     * 'oneLiner': Resumen conciso del puesto, plataforma o recurso laboral y a quién va dirigido.
+     * 'keyHighlights': Requisitos técnicos clave, stack exigido, beneficios (equity, vacaciones, hardware) o ventajas de la plataforma.
+     * 'recommendedNotes': Consejos para aplicar, requisitos de nivel de inglés o recomendaciones para la postulación.
+
 Categorías válidas (selecciona EXACTAMENTE una para cada herramienta):
 ${ALLOWED_CATEGORIES.map((c) => `- "${c}"`).join('\n')}
 
@@ -121,15 +136,17 @@ Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
   "tools": [
     {
       "name": "Nombre claro y conciso",
-      "canonicalUrl": "https://github.com/... (priorizar repo de GitHub/GitLab, o enlace/tweet de referencia)",
+      "canonicalUrl": "https://github.com/... (priorizar repo de GitHub/GitLab, o enlace/tweet de referencia/postulación)",
       "websiteUrl": "https://... (web oficial si existe)",
       "category": "Una de las categorías válidas listadas arriba",
-      "entryType": "tool, product_showcase o tech_tip",
+      "entryType": "tool, product_showcase, tech_tip o job_remote",
       "company": "Nombre de la empresa si aplica",
+      "location": "Modalidad o región (ej: Remoto (Mundial), Remoto (LATAM)) o null",
+      "salary": "Compensación o tarifa si se menciona (ej: $60k-$80k USD) o null",
       "tags": ["tag1", "tag2", "tag3"],
-      "oneLiner": "Resumen conciso en español de 1-2 oraciones explicando para qué sirve o en qué consiste",
+      "oneLiner": "Resumen conciso en español de 1-2 oraciones explicando para qué sirve, el puesto o recurso",
       "keyHighlights": ["Punto clave o paso 1", "Punto clave o paso 2"],
-      "recommendedNotes": "Una sugerencia técnica breve en español",
+      "recommendedNotes": "Una sugerencia técnica o de postulación breve en español",
       "hasAcademicPromo": false,
       "academicPromoDetails": "Detalles del beneficio para estudiantes o null"
     }
@@ -148,11 +165,12 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
       ? (parsed.category as ToolCategory)
       : 'Other';
 
-    const isTip = parsed.entryType === 'tech_tip' || validCategory === 'Consejos & Buenas Prácticas';
+    const isJob = parsed.entryType === 'job_remote' || validCategory === 'Trabajo & Freelance';
+    const isTip = !isJob && (parsed.entryType === 'tech_tip' || validCategory === 'Consejos & Buenas Prácticas');
 
-    let url = (parsed.canonicalUrl || urls[index] || urls[0] || (isTip ? sourceTweet : '') || '').trim();
+    let url = (parsed.canonicalUrl || urls[index] || urls[0] || ((isJob || isTip) ? sourceTweet : '') || '').trim();
     if (url === 'undefined' || url === 'null') {
-      url = (urls[index] || urls[0] || (isTip ? sourceTweet : '') || '').trim();
+      url = (urls[index] || urls[0] || ((isJob || isTip) ? sourceTweet : '') || '').trim();
     }
     url = cleanTrackingParams(url);
     if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
@@ -160,7 +178,7 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
     }
 
     if (!url || url === 'https://undefined' || url === 'https://null') {
-      url = urls[0] || (isTip ? sourceTweet : '') || '';
+      url = urls[0] || ((isJob || isTip) ? sourceTweet : '') || '';
     }
 
     // PROTECCIÓN CONTRA ALUCINACIONES DE LA IA EN ENLACES DE GITHUB:
@@ -244,12 +262,15 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
     }
 
     const isShowcase =
+      !isJob &&
       !isTip &&
       (parsed.entryType === 'product_showcase' ||
         validCategory === 'Empresas & Productos' ||
         Boolean(parsed.company && !url.includes('github.com')));
 
-    const entryType: 'tool' | 'product_showcase' | 'tech_tip' = isTip
+    const entryType: 'tool' | 'product_showcase' | 'tech_tip' | 'job_remote' = isJob
+      ? 'job_remote'
+      : isTip
       ? 'tech_tip'
       : isShowcase
       ? 'product_showcase'
@@ -264,16 +285,19 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
     const academicPromoDetails = parsed.academicPromoDetails || parsed.academic_promo_details || undefined;
 
     return {
-      name: parsed.name || (isTip ? 'Consejo Técnico' : 'Nueva Herramienta'),
+      name: parsed.name || (isJob ? 'Oportunidad / Recurso Laboral' : isTip ? 'Consejo Técnico' : 'Nueva Herramienta'),
       canonicalUrl: url,
       websiteUrl,
       category: validCategory,
       tags: Array.isArray(parsed.tags) ? parsed.tags.map((t: string) => t.toLowerCase()) : [],
-      oneLiner: parsed.oneLiner || (isTip ? 'Consejo técnico guardado de X.' : 'Herramienta guardada de X.'),
+      oneLiner: parsed.oneLiner || (isJob ? 'Oportunidad o recurso de trabajo remoto/freelance.' : isTip ? 'Consejo técnico guardado de X.' : 'Herramienta guardada de X.'),
       keyHighlights: Array.isArray(parsed.keyHighlights) ? parsed.keyHighlights : [],
       recommendedNotes: parsed.recommendedNotes || '',
       entryType,
       company: parsed.company || undefined,
+      location: parsed.location || undefined,
+      salary: parsed.salary || undefined,
+      jobType: parsed.jobType || (isJob ? 'remote_job' : undefined),
       hasAcademicPromo,
       academicPromoDetails,
     };
@@ -307,6 +331,8 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
             category: { type: Type.STRING },
             entryType: { type: Type.STRING },
             company: { type: Type.STRING },
+            location: { type: Type.STRING },
+            salary: { type: Type.STRING },
             tags: { type: Type.ARRAY, items: { type: Type.STRING } },
             oneLiner: { type: Type.STRING },
             keyHighlights: { type: Type.ARRAY, items: { type: Type.STRING } },
@@ -682,16 +708,19 @@ export async function classifyWithProviderCascade(
         entryType: 'tool' as const,
       }))
     : (params.sourceTweet || params.rawText)
-    ? [{
-        name: 'Consejo Técnico',
-        canonicalUrl: params.sourceTweet || '',
-        category: 'Consejos & Buenas Prácticas' as ToolCategory,
-        tags: ['consejos', 'tips', 'dev'],
-        oneLiner: params.rawText.slice(0, 140),
-        keyHighlights: [params.rawText.slice(0, 200)],
-        recommendedNotes: 'Importado en modo de respaldo.',
-        entryType: 'tech_tip' as const,
-      }]
+    ? (() => {
+        const isJobFallback = /remot[oa]|freelance|hiring|vacante|empleo|contrat|trabajo|job/i.test(params.rawText);
+        return [{
+          name: isJobFallback ? 'Oportunidad / Recurso Laboral' : 'Consejo Técnico',
+          canonicalUrl: params.sourceTweet || '',
+          category: (isJobFallback ? 'Trabajo & Freelance' : 'Consejos & Buenas Prácticas') as ToolCategory,
+          tags: isJobFallback ? ['remoto', 'trabajo', 'freelance', 'dev'] : ['consejos', 'tips', 'dev'],
+          oneLiner: params.rawText.slice(0, 140),
+          keyHighlights: [params.rawText.slice(0, 200)],
+          recommendedNotes: 'Importado en modo de respaldo.',
+          entryType: (isJobFallback ? 'job_remote' : 'tech_tip') as EntryType,
+        }];
+      })()
     : [];
 
   return { results: fallback, providerUsed: 'Fallback (Sin IA)' };
