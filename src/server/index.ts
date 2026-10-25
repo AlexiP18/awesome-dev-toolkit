@@ -6,6 +6,7 @@ import { loadAllTools, updateToolNote } from '../pipeline/note_generator.js';
 import { ingestResource } from '../pipeline/ingest.js';
 import { generateReadme } from '../pipeline/generate_readme.js';
 import { loadAllAuthorProfiles, analyzeAuthorWithAI } from '../pipeline/author_manager.js';
+import { getActivePrimaryProviderName, getConfiguredProvidersList } from '../pipeline/ai_providers.js';
 import fs from 'fs';
 
 dotenv.config();
@@ -48,6 +49,17 @@ app.get('/api/authors', (req, res) => {
   try {
     const authors = loadAllAuthorProfiles();
     res.json({ success: true, count: Object.keys(authors).length, authors });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// GET active AI provider status
+app.get('/api/ai/status', (req, res) => {
+  try {
+    const activeProvider = getActivePrimaryProviderName();
+    const allConfigured = getConfiguredProvidersList();
+    res.json({ success: true, activeProvider, allConfigured });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
   }

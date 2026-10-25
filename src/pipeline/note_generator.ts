@@ -121,6 +121,7 @@ export interface CreateNoteParams {
   sourceTweet?: string;
   author?: string;
   initialStatus?: ToolStatus;
+  providerUsed?: string;
 }
 
 export function createOrUpdateToolNote(
@@ -130,6 +131,7 @@ export function createOrUpdateToolNote(
     sourceTweet?: string;
     author?: string;
     initialStatus?: ToolStatus;
+    providerUsed?: string;
   },
   existingTools?: ToolItem[]
 ): { filePath: string; slug: string; alreadyExisted: boolean } {
@@ -216,6 +218,7 @@ export function createOrUpdateToolNote(
     job_type: params.classification.jobType || undefined,
     has_academic_promo: params.classification.hasAcademicPromo || undefined,
     academic_promo_details: params.classification.academicPromoDetails || undefined,
+    classified_by: params.providerUsed || undefined,
   };
 
   const highlightsMd = params.classification.keyHighlights.length

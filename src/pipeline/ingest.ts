@@ -177,16 +177,16 @@ export async function ingestResource(input: IngestInput) {
     })
   );
 
-  // 4. Classify and summarize all tools found in the tweet with Gemini 3.8 Flash
-  console.log(`[Pipeline] Analizando y extrayendo herramientas con Gemini 3.8 Flash...`);
-  const classifications = await classifyToolsWithGemini({
+  // 4. Classify and summarize all tools found in the tweet with AI Cascade
+  console.log(`[Pipeline] Analizando y extrayendo herramientas con IA en cascada...`);
+  const { results: classifications, providerUsed } = await classifyToolsWithGemini({
     rawText: text || canonicalUrls.join('\n') || input.sourceTweet || '',
     urls: canonicalUrls,
     sourceTweet: input.sourceTweet,
     githubMetas,
   });
 
-  console.log(`[Pipeline] Gemini identificó ${classifications.length} herramienta(s).`);
+  console.log(`[Pipeline] IA (${providerUsed}) identificó ${classifications.length} herramienta(s).`);
 
   // 4.5. Prioridad Determinística y Reconciliación con Repositorios Reales:
   // Si la IA devolvió una landing page o una URL de GitHub con variaciones tipográficas/alucinadas (ej. cheaper-inference/OmniRoute o lemo-ai),
@@ -278,6 +278,7 @@ export async function ingestResource(input: IngestInput) {
         sourceTweet: input.sourceTweet,
         author: input.author,
         initialStatus: input.status,
+        providerUsed,
       },
       existingTools
     );
@@ -317,6 +318,7 @@ export async function ingestResource(input: IngestInput) {
     count: savedItems.length,
     addedCount,
     skippedCount,
+    providerUsed,
     items: savedItems,
     slug: first?.slug,
     filePath: first?.filePath,

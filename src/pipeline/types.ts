@@ -36,6 +36,7 @@ export interface ToolFrontmatter {
   job_type?: 'remote_job' | 'freelance' | 'job_board' | 'resource';
   has_academic_promo?: boolean;
   academic_promo_details?: string;
+  classified_by?: string;
 }
 
 export interface ToolItem {
