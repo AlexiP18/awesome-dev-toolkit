@@ -30,6 +30,8 @@
     ::-webkit-scrollbar-track { background: #0f172a; }
     ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-sky-500 selection:text-white">
@@ -46,7 +48,7 @@
             Awesome Dev Toolkit
             <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30">Segundo Cerebro</span>
           </h1>
-          <p class="text-xs text-slate-400">Recursos curados de X sincronizados con Obsidian & Gemini</p>
+          <p class="text-xs text-slate-400">Recursos curados de X en 3 apartados sincronizados con Obsidian & Gemini</p>
         </div>
       </div>
 
@@ -62,7 +64,7 @@
         </a>
         <button onclick="openIngestModal()" class="text-xs px-3.5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 font-semibold transition flex items-center gap-1.5 shadow-lg shadow-sky-600/20">
           <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-          <span>Añadir Herramienta</span>
+          <span id="headerAddBtnText">Añadir Recurso</span>
         </button>
       </div>
     </div>
@@ -71,6 +73,107 @@
   <!-- Main Content -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full flex flex-col">
     
+    <!-- 3 APARTADOS SELECTOR TABS -->
+    <div class="mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl">
+        
+        <!-- Tab 1: Herramientas -->
+        <button 
+          id="tabSectionTools" 
+          onclick="switchSection('tools')" 
+          class="relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group bg-sky-500/15 border-sky-500/40 shadow-inner"
+        >
+          <div class="flex items-center gap-3">
+            <div id="tabIconBoxTools" class="p-2.5 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30">
+              <i data-lucide="wrench" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm text-slate-100 group-hover:text-sky-300 transition">1. Herramientas</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Software, utilidades & repos</p>
+            </div>
+          </div>
+          <span id="tabCountTools" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-sky-500/20 text-sky-300 border border-sky-500/30">
+            0
+          </span>
+        </button>
+
+        <!-- Tab 2: Consejos Técnicos -->
+        <button 
+          id="tabSectionTips" 
+          onclick="switchSection('tips')" 
+          class="relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40"
+        >
+          <div class="flex items-center gap-3">
+            <div id="tabIconBoxTips" class="p-2.5 rounded-xl bg-slate-800 text-slate-400 border border-slate-700">
+              <i data-lucide="lightbulb" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm text-slate-100 group-hover:text-violet-300 transition">2. Consejos</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Buenas prácticas, snippets & tips</p>
+            </div>
+          </div>
+          <span id="tabCountTips" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700">
+            0
+          </span>
+        </button>
+
+        <!-- Tab 3: Empleo & Freelance -->
+        <button 
+          id="tabSectionJobs" 
+          onclick="switchSection('jobs')" 
+          class="relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40"
+        >
+          <div class="flex items-center gap-3">
+            <div id="tabIconBoxJobs" class="p-2.5 rounded-xl bg-slate-800 text-slate-400 border border-slate-700">
+              <i data-lucide="briefcase" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm text-slate-100 group-hover:text-blue-300 transition">3. Trabajo & Freelance</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Remoto mundial, vacantes & bolsas</p>
+            </div>
+          </div>
+          <span id="tabCountJobs" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700">
+            0
+          </span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Active Section Banner -->
+    <div id="sectionBanner" class="p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-sky-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden">
+      <!-- Glow effect -->
+      <div id="sectionBannerGlow" class="absolute -right-10 -bottom-10 w-44 h-44 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex items-center gap-3.5 relative z-10">
+        <div id="sectionBannerIcon" class="p-3 rounded-2xl bg-sky-500/15 text-sky-400 border border-sky-500/30 text-2xl flex-shrink-0 shadow-inner">
+          🛠️
+        </div>
+        <div>
+          <h2 id="sectionBannerTitle" class="text-base sm:text-lg font-bold text-slate-100 flex items-center gap-2">
+            Apartado 1: Herramientas & Repositorios
+          </h2>
+          <p id="sectionBannerSubtitle" class="text-xs text-slate-400 mt-0.5">
+            Bibliotecas de código, utilidades CLI, devtools y productos técnicos curados desde X.
+          </p>
+        </div>
+      </div>
+      <button 
+        id="sectionBannerAddBtn" 
+        onclick="openIngestModalForCurrentSection()" 
+        class="relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white shadow-lg shadow-sky-600/25 flex items-center gap-2 transition flex-shrink-0"
+      >
+        <i data-lucide="plus" class="w-4 h-4"></i>
+        <span id="sectionBannerAddText">Añadir Herramienta</span>
+      </button>
+    </div>
+
     <!-- Search & Quick Stats -->
     <div class="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center mb-6">
       <!-- Search Input -->
@@ -90,10 +193,10 @@
         </div>
       </div>
 
-      <!-- Stats Counters -->
+      <!-- Stats Counters for Active Section -->
       <div class="flex items-center gap-2 text-xs flex-wrap">
-        <span id="statTotal" class="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">
-          Total: <strong>0</strong>
+        <span id="statSectionTotal" class="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">
+          En este apartado: <strong>0</strong>
         </span>
         <button onclick="openAuthorsModal()" id="statAuthorsBtn" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-lg text-slate-300 transition flex items-center gap-1.5" title="Ver autores y áreas de especialización">
           👥 Autores: <strong id="statAuthorsCount">0</strong>
@@ -107,43 +210,14 @@
         <span id="statAcademic" class="hidden px-3 py-1.5 bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 rounded-lg font-medium">
           🎓 Académicas: <strong>0</strong>
         </span>
-        <span id="statTips" class="px-3 py-1.5 bg-violet-950/40 border border-violet-800/40 text-violet-300 rounded-lg">
-          💡 Consejos: <strong>0</strong>
-        </span>
-        <span id="statJobs" class="px-3 py-1.5 bg-blue-950/40 border border-blue-800/40 text-blue-300 rounded-lg">
-          💼 Empleo & Freelance: <strong>0</strong>
-        </span>
       </div>
     </div>
 
-    <!-- Filter Pills: Types, Categories & Status -->
+    <!-- Filter Pills: Categories & Status -->
     <div class="space-y-3 mb-6">
-      <!-- Type Filter Tabs: Todos, Herramientas, Consejos Técnicos, Trabajo & Freelance, Productos -->
-      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
-        <span class="font-medium text-slate-400 mr-1 flex items-center gap-1 flex-shrink-0">
-          <i data-lucide="layers" class="w-3.5 h-3.5 text-slate-500"></i>
-          <span>Tipo:</span>
-        </span>
-        <button onclick="setTypeFilter('all')" class="type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition bg-sky-500/20 text-sky-300 border-sky-500/40 font-medium" data-type="all">
-          ✨ Todos los recursos
-        </button>
-        <button onclick="setTypeFilter('tool')" class="type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800" data-type="tool">
-          🛠️ Herramientas
-        </button>
-        <button onclick="setTypeFilter('tech_tip')" class="type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800" data-type="tech_tip">
-          💡 Consejos Técnicos
-        </button>
-        <button onclick="setTypeFilter('job_remote')" class="type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800" data-type="job_remote">
-          💼 Trabajo & Freelance
-        </button>
-        <button onclick="setTypeFilter('product_showcase')" class="type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800" data-type="product_showcase">
-          🏢 Empresas & Productos
-        </button>
-      </div>
-
       <!-- Categories Scroll -->
       <div id="categoryFilters" class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
-        <!-- Injected via JS -->
+        <!-- Injected via JS depending on currentSection -->
       </div>
       
       <!-- Status & Author Filters -->
@@ -154,7 +228,7 @@
         <button onclick="setStatusFilter('to_try')" class="status-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800" data-status="to_try">🟡 Por probar</button>
         <button onclick="setStatusFilter('archived')" class="status-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800" data-status="archived">⚪ Archivado</button>
 
-        <span class="text-slate-700 hidden sm:inline">|</span>
+        <span id="academicFilterSeparator" class="text-slate-700 hidden sm:inline">|</span>
         <button id="academicFilterBtn" onclick="toggleAcademicFilter()" class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800 transition flex items-center gap-1.5">
           <span>🎓 Solo Promos Académicas</span>
         </button>
@@ -246,12 +320,12 @@
       </div>
     </div>
 
-    <!-- Tools Grid -->
+    <!-- Items Grid for Active Section -->
     <div id="toolsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <!-- Loading Skeleton or empty state -->
       <div class="col-span-full py-16 text-center text-slate-500">
         <i data-lucide="loader" class="w-8 h-8 animate-spin mx-auto mb-3 text-sky-400"></i>
-        <p>Cargando herramientas del Segundo Cerebro...</p>
+        <p>Cargando catálogo del Segundo Cerebro...</p>
       </div>
     </div>
 
@@ -264,7 +338,7 @@
       <div class="p-5 border-b border-slate-800 flex items-center justify-between">
         <div>
           <h2 id="modalToolName" class="text-base font-bold text-slate-100 flex items-center gap-2">
-            <span>Nombre de la Herramienta</span>
+            <span>Nombre del Recurso</span>
           </h2>
           <div class="flex items-center gap-2 flex-wrap mt-0.5">
             <p id="modalToolPath" class="text-xs font-mono text-slate-400 truncate max-w-xs"></p>
@@ -287,8 +361,8 @@
           <div class="flex items-center gap-2">
             <label class="text-xs text-slate-400 font-medium">Estado:</label>
             <select id="modalStatusSelect" class="bg-slate-900 border border-slate-700 text-xs rounded-lg px-2.5 py-1 text-slate-200 focus:outline-none">
-              <option value="to_try">🟡 Por probar</option>
-              <option value="in_use">🟢 En uso</option>
+              <option value="to_try">🟡 Por probar / Por postular</option>
+              <option value="in_use">🟢 En uso / Guardado</option>
               <option value="archived">⚪ Archivado</option>
             </select>
           </div>
@@ -316,7 +390,7 @@
         <div id="modalJobInfo" class="hidden p-3 rounded-xl bg-blue-500/10 border border-blue-500/30 text-xs text-blue-300 flex items-start gap-2.5">
           <span class="text-base leading-none">💼</span>
           <div class="space-y-1">
-            <span class="font-bold text-blue-200">Detalles de Trabajo / Freelance:</span>
+            <span class="font-bold text-blue-200">Detalles de la Oportunidad:</span>
             <div id="modalJobDetails" class="text-xs text-blue-300/90 leading-relaxed flex flex-wrap gap-2 pt-0.5"></div>
           </div>
         </div>
@@ -383,22 +457,56 @@
     </div>
   </div>
 
-  <!-- Modal: Ingestar Manualmente -->
+  <!-- Modal: Ingestar Recurso en Apartado Específico -->
   <div id="ingestModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl">
       <div class="flex justify-between items-center mb-4">
         <h3 class="text-base font-bold text-slate-100 flex items-center gap-2">
           <i data-lucide="plus-circle" class="w-5 h-5 text-sky-400"></i>
-          Añadir Recurso, Empleo o Consejo
+          <span id="ingestModalTitle">Añadir Recurso</span>
         </h3>
         <button onclick="closeIngestModal()" class="text-slate-400 hover:text-slate-200">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
+      <!-- Apartado Target Destination Selector -->
+      <div class="mb-4">
+        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Apartado de destino:</label>
+        <div class="grid grid-cols-3 gap-2 text-xs">
+          <button 
+            type="button" 
+            onclick="setModalTargetSection('tool')" 
+            id="modalDestToolBtn" 
+            class="px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-sky-500/20 text-sky-300 border-sky-500/40"
+          >
+            <span class="text-base">🛠️</span>
+            <span>Herramienta</span>
+          </button>
+          <button 
+            type="button" 
+            onclick="setModalTargetSection('tech_tip')" 
+            id="modalDestTipBtn" 
+            class="px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-slate-950 text-slate-400 border-slate-800 hover:bg-slate-800"
+          >
+            <span class="text-base">💡</span>
+            <span>Consejo</span>
+          </button>
+          <button 
+            type="button" 
+            onclick="setModalTargetSection('job_remote')" 
+            id="modalDestJobBtn" 
+            class="px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-slate-950 text-slate-400 border-slate-800 hover:bg-slate-800"
+          >
+            <span class="text-base">💼</span>
+            <span>Trabajo/Remoto</span>
+          </button>
+        </div>
+      </div>
+
       <form onsubmit="handleManualIngest(event)" class="space-y-4">
         <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">URL (GitHub, Web o Tweet de X):</label>
+          <label id="ingestUrlLabel" class="block text-xs font-medium text-slate-300 mb-1">URL (GitHub, Web o Tweet de X):</label>
           <input 
             id="ingestUrlInput" 
             type="url" 
@@ -408,11 +516,11 @@
           />
         </div>
         <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">Comentario o texto del tweet (Opcional):</label>
+          <label id="ingestTextLabel" class="block text-xs font-medium text-slate-300 mb-1">Comentario o texto del tweet (Opcional):</label>
           <textarea 
             id="ingestTextInput" 
             rows="3" 
-            placeholder="Para qué sirve, descripción de la herramienta, consejo técnico o detalle de la vacante/plataforma..."
+            placeholder="Descripción de la herramienta, consejo técnico o detalles de la oferta de trabajo..."
             class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
           ></textarea>
         </div>
@@ -433,24 +541,192 @@
   <script>
     let allTools = [];
     let allAuthorProfiles = {};
-    let currentType = 'all';
+    let currentSection = 'tools'; // 'tools' | 'tips' | 'jobs'
     let currentCategory = 'all';
     let currentStatus = 'all';
     let currentAuthor = 'all';
     let filterOnlyAcademic = false;
     let activeEditingSlug = null;
+    let modalSelectedDest = 'tool'; // 'tool' | 'tech_tip' | 'job_remote'
+    let isStaticMode = false;
 
-    function setTypeFilter(type) {
-      currentType = type;
-      document.querySelectorAll('.type-btn').forEach(btn => {
-        const match = btn.dataset.type === type;
-        btn.className = `type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition ${
-          match 
-            ? 'bg-sky-500/20 text-sky-300 border-sky-500/40 font-medium' 
-            : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800'
-        }`;
+    // Configuración contextual para cada uno de los 3 apartados
+    const SECTION_CONFIG = {
+      tools: {
+        id: 'tools',
+        name: 'Herramientas',
+        badgeTitle: 'Apartado 1: Herramientas & Repositorios',
+        icon: '🛠️',
+        subtitle: 'Bibliotecas de código, utilidades CLI, devtools y productos técnicos curados desde X.',
+        searchPlaceholder: 'Buscar herramienta, tecnología, CLI, framework o autor... (⌘K)',
+        addBtnText: 'Añadir Herramienta',
+        accentColor: 'sky',
+        categories: [
+          'all',
+          'CLI & Terminal',
+          'Frontend & UI',
+          'Backend & APIs',
+          'DevOps & Cloud',
+          'AI & Machine Learning',
+          'Prompts, Art & Video',
+          'Databases & Storage',
+          'Productivity & Tools',
+          'Documentation & Resources',
+          'Empresas & Productos',
+          'Other'
+        ]
+      },
+      tips: {
+        id: 'tips',
+        name: 'Consejos Técnicos',
+        badgeTitle: 'Apartado 2: Consejos Técnicos & Buenas Prácticas',
+        icon: '💡',
+        subtitle: 'Trucos de programación, patrones de arquitectura, comandos de terminal y tips de ingeniería.',
+        searchPlaceholder: 'Buscar consejo, truco, comando, arquitectura o autor... (⌘K)',
+        addBtnText: 'Añadir Consejo',
+        accentColor: 'violet',
+        categories: [
+          'all',
+          'Frontend & UI',
+          'Backend & APIs',
+          'DevOps & Cloud',
+          'Databases & Storage',
+          'CLI & Terminal',
+          'AI & Machine Learning',
+          'Productivity & Tools',
+          'Consejos & Buenas Prácticas',
+          'Other'
+        ]
+      },
+      jobs: {
+        id: 'jobs',
+        name: 'Trabajo & Freelance',
+        badgeTitle: 'Apartado 3: Empleo Remoto & Oportunidades Freelance',
+        icon: '💼',
+        subtitle: 'Vacantes de trabajo remoto mundial, proyectos freelance, bolsas de trabajo y recursos para trabajar.',
+        searchPlaceholder: 'Buscar empleo, puesto, empresa, ubicación (LATAM, Global) o compensación... (⌘K)',
+        addBtnText: 'Añadir Oportunidad',
+        accentColor: 'blue',
+        categories: [
+          'all',
+          'Remoto (Mundial)',
+          'Remoto (LATAM)',
+          'Freelance / Contrato',
+          'Plataformas & Bolsas',
+          'Full-Time',
+          'Trabajo & Freelance',
+          'Other'
+        ]
+      }
+    };
+
+    /**
+     * Retorna a cuál de los 3 apartados pertenece un recurso de manera estricta y disjunta.
+     */
+    function getItemSection(tool) {
+      const fm = tool.frontmatter || {};
+      if (fm.entry_type === 'job_remote' || fm.category === 'Trabajo & Freelance') {
+        return 'jobs';
+      }
+      if (fm.entry_type === 'tech_tip' || fm.category === 'Consejos & Buenas Prácticas') {
+        return 'tips';
+      }
+      return 'tools';
+    }
+
+    /**
+     * Cambia el apartado activo: Herramientas, Consejos o Empleo.
+     */
+    function switchSection(sectionId) {
+      currentSection = sectionId;
+      currentCategory = 'all';
+      currentAuthor = 'all';
+
+      // Actualizar estilo visual de las 3 tabs
+      const tabs = [
+        { id: 'tools', btn: 'tabSectionTools', icon: 'tabIconBoxTools', count: 'tabCountTools', activeClass: 'bg-sky-500/15 border-sky-500/40 text-sky-300 shadow-inner' },
+        { id: 'tips', btn: 'tabSectionTips', icon: 'tabIconBoxTips', count: 'tabCountTips', activeClass: 'bg-violet-500/15 border-violet-500/40 text-violet-300 shadow-inner' },
+        { id: 'jobs', btn: 'tabSectionJobs', icon: 'tabIconBoxJobs', count: 'tabCountJobs', activeClass: 'bg-blue-500/15 border-blue-500/40 text-blue-300 shadow-inner' }
+      ];
+
+      tabs.forEach(t => {
+        const btnEl = document.getElementById(t.btn);
+        const iconEl = document.getElementById(t.icon);
+        const countEl = document.getElementById(t.count);
+        const isSelected = t.id === sectionId;
+
+        if (isSelected) {
+          btnEl.className = `relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group ${t.activeClass}`;
+          if (t.id === 'tools') {
+            iconEl.className = 'p-2.5 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30';
+            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-sky-500/20 text-sky-300 border border-sky-500/30';
+          } else if (t.id === 'tips') {
+            iconEl.className = 'p-2.5 rounded-xl bg-violet-500/20 text-violet-300 border border-violet-500/30';
+            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-violet-500/20 text-violet-300 border border-violet-500/30';
+          } else {
+            iconEl.className = 'p-2.5 rounded-xl bg-blue-500/20 text-blue-300 border border-blue-500/30';
+            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30';
+          }
+        } else {
+          btnEl.className = 'relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40';
+          iconEl.className = 'p-2.5 rounded-xl bg-slate-800 text-slate-400 border border-slate-700';
+          countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700';
+        }
       });
+
+      // Actualizar Banner
+      const config = SECTION_CONFIG[sectionId];
+      const banner = document.getElementById('sectionBanner');
+      const bannerIcon = document.getElementById('sectionBannerIcon');
+      const bannerTitle = document.getElementById('sectionBannerTitle');
+      const bannerSubtitle = document.getElementById('sectionBannerSubtitle');
+      const bannerAddText = document.getElementById('sectionBannerAddText');
+      const bannerAddBtn = document.getElementById('sectionBannerAddBtn');
+      const searchInput = document.getElementById('searchInput');
+      const headerAddText = document.getElementById('headerAddBtnText');
+
+      if (banner && config) {
+        bannerIcon.innerText = config.icon;
+        bannerTitle.innerText = config.badgeTitle;
+        bannerSubtitle.innerText = config.subtitle;
+        bannerAddText.innerText = config.addBtnText;
+        if (headerAddText) headerAddText.innerText = config.addBtnText;
+        if (searchInput) searchInput.placeholder = config.searchPlaceholder;
+
+        if (sectionId === 'tools') {
+          banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-sky-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
+          bannerIcon.className = 'p-3 rounded-2xl bg-sky-500/15 text-sky-400 border border-sky-500/30 text-2xl flex-shrink-0 shadow-inner';
+          bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white shadow-lg shadow-sky-600/25 flex items-center gap-2 transition flex-shrink-0';
+        } else if (sectionId === 'tips') {
+          banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-violet-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
+          bannerIcon.className = 'p-3 rounded-2xl bg-violet-500/15 text-violet-400 border border-violet-500/30 text-2xl flex-shrink-0 shadow-inner';
+          bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-violet-600 hover:bg-violet-500 text-white shadow-lg shadow-violet-600/25 flex items-center gap-2 transition flex-shrink-0';
+        } else {
+          banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-blue-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
+          bannerIcon.className = 'p-3 rounded-2xl bg-blue-500/15 text-blue-400 border border-blue-500/30 text-2xl flex-shrink-0 shadow-inner';
+          bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/25 flex items-center gap-2 transition flex-shrink-0';
+        }
+      }
+
+      // Visibilidad del botón de Promos Académicas (solo relevante para herramientas)
+      const acadBtn = document.getElementById('academicFilterBtn');
+      const acadSep = document.getElementById('academicFilterSeparator');
+      if (acadBtn && acadSep) {
+        if (sectionId === 'tools') {
+          acadBtn.classList.remove('hidden');
+          acadSep.classList.remove('hidden');
+        } else {
+          acadBtn.classList.add('hidden');
+          acadSep.classList.add('hidden');
+          filterOnlyAcademic = false;
+        }
+      }
+
+      renderCategoryFilters();
+      renderAuthorFilterSelect();
+      updateStats();
       renderTools();
+      lucide.createIcons();
     }
 
     async function fetchAuthorProfiles() {
@@ -523,10 +799,13 @@
       return null;
     }
 
-    function getAuthorsData() {
+    function getAuthorsData(sectionSpecific = false) {
       const authorsMap = new Map();
+      const listToProcess = sectionSpecific
+        ? allTools.filter(t => getItemSection(t) === currentSection)
+        : allTools;
 
-      allTools.forEach(tool => {
+      listToProcess.forEach(tool => {
         const authorName = getToolAuthor(tool);
         if (!authorName) return;
 
@@ -586,7 +865,7 @@
         return;
       }
 
-      const authors = getAuthorsData();
+      const authors = getAuthorsData(false);
       const authorData = authors.find(a => a.name.toLowerCase() === currentAuthor.toLowerCase()) || {
         name: currentAuthor,
         handle: currentAuthor.startsWith('@') ? currentAuthor.slice(1) : undefined,
@@ -636,7 +915,7 @@
       } else {
         const topCat = authorData.sortedCategories[0] ? authorData.sortedCategories[0][0] : 'General';
         roleEl.innerText = `Curador Técnico en X (${topCat})`;
-        bioEl.innerText = `Este autor ha aportado ${authorData.totalTools} herramienta(s) a tu catálogo. Haz clic en "Analizar con IA" para que Gemini investigue y establezca su biografía, especialidades y valor técnico.`;
+        bioEl.innerText = `Este autor ha aportado ${authorData.totalTools} recurso(s) a tu catálogo. Haz clic en "Analizar con IA" para que Gemini investigue y establezca su biografía, especialidades y valor técnico.`;
         whyFollowBox.classList.add('hidden');
         if (analyzeBtnText) analyzeBtnText.innerText = 'Analizar con IA';
       }
@@ -740,7 +1019,8 @@
       const clearBtn = document.getElementById('clearAuthorFilterBtn');
       if (!select) return;
 
-      const authors = getAuthorsData();
+      // Autores que tienen recursos en el apartado actual
+      const authors = getAuthorsData(true);
       select.innerHTML = `<option value="all">👥 Todos los autores (${authors.length})</option>` +
         authors.map(a => `
           <option value="${a.name}" ${currentAuthor === a.name ? 'selected' : ''}>
@@ -770,7 +1050,7 @@
     function renderAuthorsModal() {
       const container = document.getElementById('authorsListContainer');
       const summaryEl = document.getElementById('authorsModalSummary');
-      const authors = getAuthorsData();
+      const authors = getAuthorsData(false);
 
       if (summaryEl) {
         summaryEl.innerText = `${authors.length} autor${authors.length !== 1 ? 'es' : ''} registrado${authors.length !== 1 ? 's' : ''}`;
@@ -877,7 +1157,7 @@
 
               <!-- Tools list -->
               <div class="flex flex-wrap gap-1.5 items-center pt-1">
-                <span class="text-[10px] text-slate-500 font-medium">Herramientas:</span>
+                <span class="text-[10px] text-slate-500 font-medium">Recursos:</span>
                 ${toolsChips}
               </div>
             </div>
@@ -886,7 +1166,7 @@
             <div class="flex sm:flex-col items-center gap-2 flex-shrink-0 self-end sm:self-center">
               <button onclick="setAuthorFilter('${author.name}'); closeAuthorsModal();" class="text-xs px-3 py-1.5 rounded-lg bg-sky-600/20 hover:bg-sky-600/30 text-sky-300 border border-sky-500/30 transition flex items-center gap-1.5">
                 <i data-lucide="filter" class="w-3.5 h-3.5"></i>
-                <span>Ver herramientas</span>
+                <span>Ver recursos</span>
               </button>
               <button onclick="analyzeCurrentFilteredAuthor('${author.name}', '${author.handle || ''}')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition flex items-center gap-1">
                 <i data-lucide="sparkles" class="w-3 h-3 text-sky-400"></i>
@@ -899,25 +1179,6 @@
 
       lucide.createIcons();
     }
-
-    const CATEGORIES = [
-      'all',
-      'CLI & Terminal',
-      'Frontend & UI',
-      'Backend & APIs',
-      'DevOps & Cloud',
-      'AI & Machine Learning',
-      'Prompts, Art & Video',
-      'Databases & Storage',
-      'Productivity & Tools',
-      'Documentation & Resources',
-      'Empresas & Productos',
-      'Consejos & Buenas Prácticas',
-      'Trabajo & Freelance',
-      'Other'
-    ];
-
-    let isStaticMode = false;
 
     async function fetchTools() {
       try {
@@ -937,15 +1198,12 @@
         const data = await res.json();
         allTools = data.tools || [];
         await fetchAuthorProfiles();
-        renderCategoryFilters();
-        renderAuthorFilterSelect();
-        updateStats();
-        renderTools();
+        switchSection(currentSection);
       } catch (err) {
         console.error('Error fetching tools:', err);
         document.getElementById('toolsGrid').innerHTML = `
           <div class="col-span-full py-12 text-center text-red-400">
-            Error cargando herramientas del catálogo.
+            Error cargando recursos del catálogo.
           </div>
         `;
       }
@@ -953,7 +1211,14 @@
 
     function renderCategoryFilters() {
       const container = document.getElementById('categoryFilters');
-      container.innerHTML = CATEGORIES.map(cat => {
+      const cats = SECTION_CONFIG[currentSection]?.categories || ['all', 'Other'];
+      const activeColor = currentSection === 'tools' 
+        ? 'bg-sky-500/20 text-sky-300 border-sky-500/40' 
+        : currentSection === 'tips'
+        ? 'bg-violet-500/20 text-violet-300 border-violet-500/40'
+        : 'bg-blue-500/20 text-blue-300 border-blue-500/40';
+
+      container.innerHTML = cats.map(cat => {
         const isAll = cat === 'all';
         const label = isAll ? '✨ Todas' : cat;
         const active = currentCategory === cat;
@@ -962,7 +1227,7 @@
             onclick="setCategoryFilter('${cat}')"
             class="px-3 py-1.5 rounded-lg border whitespace-nowrap transition ${
               active 
-                ? 'bg-sky-500/20 text-sky-300 border-sky-500/40 font-medium' 
+                ? `${activeColor} font-medium` 
                 : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800'
             }">
             ${label}
@@ -998,48 +1263,51 @@
       const query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
 
       return allTools.filter(tool => {
-        // Type filter
-        if (currentType !== 'all') {
-          const entryType = tool.frontmatter.entry_type || 'tool';
-          const isJob = entryType === 'job_remote' || tool.frontmatter.category === 'Trabajo & Freelance';
-          const isTip = entryType === 'tech_tip' || tool.frontmatter.category === 'Consejos & Buenas Prácticas';
-          const isShowcase = entryType === 'product_showcase' || tool.frontmatter.category === 'Empresas & Productos';
-
-          if (currentType === 'job_remote' && !isJob) return false;
-          if (currentType === 'tech_tip' && !isTip) return false;
-          if (currentType === 'product_showcase' && !isShowcase) return false;
-          if (currentType === 'tool' && (isJob || isTip || isShowcase)) return false;
-        }
-
-        // Category filter
-        if (currentCategory !== 'all' && tool.frontmatter.category !== currentCategory) {
+        // 1. FILTRO PRIMARIO OBLIGATORIO: Apartado activo (Herramientas, Consejos o Empleo)
+        const itemSec = getItemSection(tool);
+        if (itemSec !== currentSection) {
           return false;
         }
 
-        // Status filter
+        // 2. Filtro de Categoría
+        if (currentCategory !== 'all') {
+          // Soporta coincidencia exacta o coincidencia en tags/ubicación para empleos
+          const cat = tool.frontmatter.category || 'Other';
+          const isCatMatch = cat === currentCategory;
+          const isLocationMatch = tool.frontmatter.location && tool.frontmatter.location.toLowerCase().includes(currentCategory.toLowerCase());
+          const isJobTypeMatch = tool.frontmatter.job_type && currentCategory.toLowerCase().includes(tool.frontmatter.job_type);
+          if (!isCatMatch && !isLocationMatch && !isJobTypeMatch) {
+            return false;
+          }
+        }
+
+        // 3. Filtro de Estado
         if (currentStatus !== 'all' && tool.frontmatter.status !== currentStatus) {
           return false;
         }
 
-        // Academic promo filter
+        // 4. Filtro de Promos Académicas (solo herramientas)
         if (filterOnlyAcademic && !isAcademicTool(tool)) {
           return false;
         }
 
-        // Author filter
+        // 5. Filtro de Autor
         if (currentAuthor !== 'all' && getToolAuthor(tool) !== currentAuthor) {
           return false;
         }
 
-        // Search text
+        // 6. Búsqueda de Texto
         if (query) {
-          const matchName = (tool.frontmatter.name || '').toLowerCase().includes(query);
-          const matchTags = (tool.frontmatter.tags || []).some(t => t.toLowerCase().includes(query));
+          const fm = tool.frontmatter || {};
+          const matchName = (fm.name || '').toLowerCase().includes(query);
+          const matchTags = (fm.tags || []).some(t => t.toLowerCase().includes(query));
           const matchContent = (tool.content || '').toLowerCase().includes(query);
-          const matchUrl = (tool.frontmatter.url || '').toLowerCase().includes(query);
-          const matchCompany = (tool.frontmatter.company || '').toLowerCase().includes(query);
-          const matchLocation = (tool.frontmatter.location || '').toLowerCase().includes(query);
-          return matchName || matchTags || matchContent || matchUrl || matchCompany || matchLocation;
+          const matchUrl = (fm.url || '').toLowerCase().includes(query);
+          const matchCompany = (fm.company || '').toLowerCase().includes(query);
+          const matchLocation = (fm.location || '').toLowerCase().includes(query);
+          const matchSalary = (fm.salary || '').toLowerCase().includes(query);
+          const matchAuthor = (fm.author || '').toLowerCase().includes(query);
+          return matchName || matchTags || matchContent || matchUrl || matchCompany || matchLocation || matchSalary || matchAuthor;
         }
 
         return true;
@@ -1047,16 +1315,32 @@
     }
 
     function updateStats() {
-      document.getElementById('statTotal').innerHTML = `Total: <strong>${allTools.length}</strong>`;
-      const inUse = allTools.filter(t => t.frontmatter.status === 'in_use').length;
-      const toTry = allTools.filter(t => t.frontmatter.status === 'to_try').length;
-      document.getElementById('statInUse').innerHTML = `🟢 En uso: <strong>${inUse}</strong>`;
-      document.getElementById('statToTry').innerHTML = `🟡 Por probar: <strong>${toTry}</strong>`;
+      // Contadores globales por cada uno de los 3 apartados
+      const toolsCount = allTools.filter(t => getItemSection(t) === 'tools').length;
+      const tipsCount = allTools.filter(t => getItemSection(t) === 'tips').length;
+      const jobsCount = allTools.filter(t => getItemSection(t) === 'jobs').length;
 
-      const academicCount = allTools.filter(isAcademicTool).length;
+      document.getElementById('tabCountTools').innerText = toolsCount;
+      document.getElementById('tabCountTips').innerText = tipsCount;
+      document.getElementById('tabCountJobs').innerText = jobsCount;
+
+      // Elementos del apartado actualmente activo
+      const sectionItems = allTools.filter(t => getItemSection(t) === currentSection);
+      document.getElementById('statSectionTotal').innerHTML = `En este apartado: <strong>${sectionItems.length}</strong>`;
+
+      const inUse = sectionItems.filter(t => t.frontmatter.status === 'in_use').length;
+      const toTry = sectionItems.filter(t => t.frontmatter.status === 'to_try').length;
+      document.getElementById('statInUse').innerHTML = currentSection === 'jobs' 
+        ? `🟢 Postulado: <strong>${inUse}</strong>` 
+        : `🟢 En uso: <strong>${inUse}</strong>`;
+      document.getElementById('statToTry').innerHTML = currentSection === 'jobs'
+        ? `🟡 Por postular: <strong>${toTry}</strong>`
+        : `🟡 Por probar: <strong>${toTry}</strong>`;
+
+      const academicCount = sectionItems.filter(isAcademicTool).length;
       const statAcademicEl = document.getElementById('statAcademic');
       if (statAcademicEl) {
-        if (academicCount > 0) {
+        if (currentSection === 'tools' && academicCount > 0) {
           statAcademicEl.classList.remove('hidden');
           statAcademicEl.innerHTML = `🎓 Académicas: <strong>${academicCount}</strong>`;
         } else {
@@ -1064,23 +1348,13 @@
         }
       }
 
-      const tipsCount = allTools.filter(t => t.frontmatter.entry_type === 'tech_tip' || t.frontmatter.category === 'Consejos & Buenas Prácticas').length;
-      const statTipsEl = document.getElementById('statTips');
-      if (statTipsEl) {
-        statTipsEl.innerHTML = `💡 Consejos: <strong>${tipsCount}</strong>`;
-      }
-
-      const jobsCount = allTools.filter(t => t.frontmatter.entry_type === 'job_remote' || t.frontmatter.category === 'Trabajo & Freelance').length;
-      const statJobsEl = document.getElementById('statJobs');
-      if (statJobsEl) {
-        statJobsEl.innerHTML = `💼 Empleo/Freelance: <strong>${jobsCount}</strong>`;
-      }
-
-      const authors = getAuthorsData();
+      const sectionAuthors = getAuthorsData(true);
       const statAuthorsCountEl = document.getElementById('statAuthorsCount');
-      if (statAuthorsCountEl) statAuthorsCountEl.innerText = authors.length;
+      if (statAuthorsCountEl) statAuthorsCountEl.innerText = sectionAuthors.length;
+      
+      const allAuthors = getAuthorsData(false);
       const headerAuthorCountEl = document.getElementById('headerAuthorCount');
-      if (headerAuthorCountEl) headerAuthorCountEl.innerText = authors.length;
+      if (headerAuthorCountEl) headerAuthorCountEl.innerText = allAuthors.length;
     }
 
     function renderTools() {
@@ -1089,11 +1363,16 @@
       const filtered = getFilteredTools();
 
       if (filtered.length === 0) {
+        const config = SECTION_CONFIG[currentSection] || SECTION_CONFIG.tools;
         grid.innerHTML = `
           <div class="col-span-full py-16 text-center text-slate-500 border border-dashed border-slate-800 rounded-2xl">
-            <i data-lucide="inbox" class="w-10 h-10 mx-auto mb-2 text-slate-600"></i>
-            <p class="text-sm font-medium">No se encontraron herramientas con los filtros actuales.</p>
-            <p class="text-xs text-slate-600 mt-1">Prueba con otra búsqueda o añade un nuevo recurso desde el botón superior.</p>
+            <span class="text-3xl block mb-2">${config.icon}</span>
+            <p class="text-sm font-medium text-slate-300">No hay ${config.name.toLowerCase()} con los filtros actuales.</p>
+            <p class="text-xs text-slate-500 mt-1">Prueba con otra búsqueda o añade un nuevo recurso desde el botón superior.</p>
+            <button onclick="openIngestModalForCurrentSection()" class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 transition">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              <span>${config.addBtnText}</span>
+            </button>
           </div>
         `;
         lucide.createIcons();
@@ -1102,6 +1381,11 @@
 
       grid.innerHTML = filtered.map(tool => {
         const fm = tool.frontmatter;
+        const itemSec = getItemSection(tool);
+        const isJob = itemSec === 'jobs';
+        const isTip = itemSec === 'tips';
+        const isTool = itemSec === 'tools';
+
         const starsBadge = fm.stars ? `
           <span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">
             ⭐ ${fm.stars.toLocaleString()}
@@ -1112,40 +1396,39 @@
           <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">#${t}</span>
         `).join('');
 
-        // Extract summary
+        // Extract summary blockquote
         const quoteMatch = tool.content.match(/^>\s*(.+)$/m);
         const summary = quoteMatch ? quoteMatch[1] : 'Sin descripción adicional.';
 
         const safeUrl = (fm.url && fm.url !== 'undefined' && fm.url !== 'null') ? fm.url : (fm.website_url || '#');
         const isGithub = safeUrl.includes('github.com');
         const isTwitter = safeUrl.includes('x.com') || safeUrl.includes('twitter.com');
-        const isJob = fm.entry_type === 'job_remote' || fm.category === 'Trabajo & Freelance';
-        const isTip = !isJob && fm.entry_type === 'tech_tip';
-        const isShowcase = !isJob && !isTip && fm.entry_type === 'product_showcase';
 
         const mainLinkTitle = isGithub ? 'Ver repositorio en GitHub' : isJob ? 'Ver oferta o enlace para postular' : isTwitter ? 'Ver tweet en X' : 'Visitar enlace principal';
 
-        // Ícono SVG de GitHub nativo (ya que Lucide v1 no incluye marcas propietarias)
         const githubSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>`;
-
-        // Ícono SVG de X (Twitter)
         const xSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
 
         const mainIconHtml = isGithub ? githubSvg : (isTwitter && !isJob) ? xSvg : isJob ? `<i data-lucide="briefcase" class="w-3.5 h-3.5"></i>` : `<i data-lucide="external-link" class="w-3.5 h-3.5"></i>`;
 
-        const typeBadge = isJob ? `
+        // Section Badges
+        const sectionBadge = isJob ? `
           <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/30">
-            <span>💼</span> Trabajo & Freelance
+            <span>💼</span> Empleo/Remoto
           </span>
         ` : isTip ? `
           <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-300 border border-violet-500/30">
             <span>💡</span> Consejo Técnico
           </span>
-        ` : isShowcase ? `
+        ` : fm.entry_type === 'product_showcase' ? `
           <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
             <span>🏢</span> Producto
           </span>
-        ` : '';
+        ` : `
+          <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-300 border border-sky-500/30">
+            <span>🛠️</span> Herramienta
+          </span>
+        `;
 
         const tweetLink = (
           fm.source_tweet &&
@@ -1178,14 +1461,14 @@
         ` : '';
 
         const isAcademic = isAcademicTool(tool);
-        const promoDetails = (fm.academic_promo_details || 'Cuenta con promoción, descuento o beneficio especial para estudiantes y sector educativo').replace(/"/g, '&quot;');
-
-        const academicBadge = isAcademic ? `
+        const promoDetails = (fm.academic_promo_details || 'Cuenta con promoción o descuento para estudiantes y sector educativo').replace(/"/g, '&quot;');
+        const academicBadge = (isTool && isAcademic) ? `
           <span title="${promoDetails}" class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 cursor-help transition hover:bg-emerald-500/25">
             <span>🎓</span> Promo Académica
           </span>
         ` : '';
 
+        // Job specific pills
         const jobPills = isJob && (fm.company || fm.location || fm.salary) ? `
           <div class="flex flex-wrap items-center gap-1.5 mb-2.5">
             ${fm.company ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-medium"><span>🏢</span> ${fm.company}</span>` : ''}
@@ -1201,7 +1484,7 @@
             <div class="flex items-center gap-1.5 min-w-0">
               <i data-lucide="user" class="w-3 h-3 text-slate-500 flex-shrink-0"></i>
               <span class="text-slate-500 text-[10px]">Por:</span>
-              <button onclick="setAuthorFilter('${authorName}')" title="Filtrar herramientas compartidas por ${authorName}" class="font-medium text-slate-300 hover:text-sky-300 hover:underline transition truncate max-w-[130px] text-left">
+              <button onclick="setAuthorFilter('${authorName}')" title="Filtrar recomendaciones de ${authorName}" class="font-medium text-slate-300 hover:text-sky-300 hover:underline transition truncate max-w-[130px] text-left">
                 ${authorName}
               </button>
             </div>
@@ -1214,8 +1497,11 @@
           </div>
         ` : '';
 
+        // Border styling depending on section
+        const cardBorderHover = isJob ? 'hover:border-blue-500/50' : isTip ? 'hover:border-violet-500/50' : 'hover:border-sky-500/50';
+
         return `
-          <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 transition rounded-2xl p-4 flex flex-col justify-between group shadow-sm hover:shadow-md">
+          <div class="bg-slate-900 border border-slate-800 ${cardBorderHover} transition rounded-2xl p-4 flex flex-col justify-between group shadow-sm hover:shadow-md">
             <div>
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div>
@@ -1223,7 +1509,7 @@
                     <span class="text-[10px] font-semibold tracking-wider uppercase text-sky-400">
                       ${fm.category || 'Other'}
                     </span>
-                    ${typeBadge}
+                    ${sectionBadge}
                     ${academicBadge}
                   </div>
                   <h3 class="font-bold text-slate-100 text-sm group-hover:text-sky-300 transition flex items-center gap-1.5">
@@ -1256,15 +1542,15 @@
             <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
               <!-- Inline Status Selector -->
               <select onchange="updateToolStatusInline('${tool.slug}', this.value)" class="bg-slate-950 border border-slate-800 text-[11px] rounded-lg px-2 py-1 text-slate-300 focus:outline-none">
-                <option value="to_try" ${fm.status === 'to_try' ? 'selected' : ''}>🟡 Por probar</option>
-                <option value="in_use" ${fm.status === 'in_use' ? 'selected' : ''}>🟢 En uso</option>
+                <option value="to_try" ${fm.status === 'to_try' ? 'selected' : ''}>${isJob ? '🟡 Por postular' : '🟡 Por probar'}</option>
+                <option value="in_use" ${fm.status === 'in_use' ? 'selected' : ''}>${isJob ? '🟢 Postulado' : '🟢 En uso'}</option>
                 <option value="archived" ${fm.status === 'archived' ? 'selected' : ''}>⚪ Archivado</option>
               </select>
 
               <!-- Open Note Button -->
               <button onclick="openNoteModal('${tool.slug}')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1.5 transition">
                 <i data-lucide="file-text" class="w-3 h-3 text-sky-400"></i>
-                <span>Nota</span>
+                <span>Ver Ficha</span>
               </button>
             </div>
           </div>
@@ -1298,10 +1584,10 @@
       activeEditingSlug = slug;
 
       document.getElementById('modalToolName').innerText = tool.frontmatter.name;
-      const isJob = tool.frontmatter.entry_type === 'job_remote' || tool.frontmatter.category === 'Trabajo & Freelance';
-      const noteFolder = isJob
+      const itemSec = getItemSection(tool);
+      const noteFolder = itemSec === 'jobs'
         ? 'content/jobs'
-        : tool.frontmatter.entry_type === 'tech_tip'
+        : itemSec === 'tips'
         ? 'content/tips'
         : tool.frontmatter.entry_type === 'product_showcase'
         ? 'content/products'
@@ -1352,7 +1638,7 @@
       const jobInfoEl = document.getElementById('modalJobInfo');
       const jobDetailsEl = document.getElementById('modalJobDetails');
       if (jobInfoEl && jobDetailsEl) {
-        if (isJob && (tool.frontmatter.company || tool.frontmatter.location || tool.frontmatter.salary)) {
+        if (itemSec === 'jobs' && (tool.frontmatter.company || tool.frontmatter.location || tool.frontmatter.salary)) {
           const parts = [];
           if (tool.frontmatter.company) parts.push(`<span>🏢 <strong>Empresa:</strong> ${tool.frontmatter.company}</span>`);
           if (tool.frontmatter.location) parts.push(`<span>🌍 <strong>Modalidad:</strong> ${tool.frontmatter.location}</span>`);
@@ -1421,9 +1707,59 @@
       }
     }
 
+    function setModalTargetSection(destType) {
+      modalSelectedDest = destType;
+      const toolBtn = document.getElementById('modalDestToolBtn');
+      const tipBtn = document.getElementById('modalDestTipBtn');
+      const jobBtn = document.getElementById('modalDestJobBtn');
+      const modalTitle = document.getElementById('ingestModalTitle');
+      const urlLabel = document.getElementById('ingestUrlLabel');
+      const urlInput = document.getElementById('ingestUrlInput');
+      const textLabel = document.getElementById('ingestTextLabel');
+      const textInput = document.getElementById('ingestTextInput');
+
+      const inactiveClass = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-slate-950 text-slate-400 border-slate-800 hover:bg-slate-800';
+
+      if (destType === 'tool') {
+        toolBtn.className = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-sky-500/20 text-sky-300 border-sky-500/40';
+        tipBtn.className = inactiveClass;
+        jobBtn.className = inactiveClass;
+        modalTitle.innerText = 'Añadir Herramienta';
+        urlLabel.innerText = 'URL (GitHub o Sitio Web Oficial):';
+        urlInput.placeholder = 'https://github.com/... o https://...';
+        textLabel.innerText = 'Tweet de origen o descripción (Opcional):';
+        textInput.placeholder = 'Descripción técnica de la biblioteca o comando...';
+      } else if (destType === 'tech_tip') {
+        toolBtn.className = inactiveClass;
+        tipBtn.className = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-violet-500/20 text-violet-300 border-violet-500/40';
+        jobBtn.className = inactiveClass;
+        modalTitle.innerText = 'Añadir Consejo Técnico';
+        urlLabel.innerText = 'Tweet de X con el consejo o enlace de referencia:';
+        urlInput.placeholder = 'https://x.com/.../status/...';
+        textLabel.innerText = 'Texto del consejo o snippet (Opcional):';
+        textInput.placeholder = 'Pega aquí el código, comando de terminal o explicación...';
+      } else {
+        toolBtn.className = inactiveClass;
+        tipBtn.className = inactiveClass;
+        jobBtn.className = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-blue-500/20 text-blue-300 border-blue-500/40';
+        modalTitle.innerText = 'Añadir Oportunidad de Empleo / Freelance';
+        urlLabel.innerText = 'Enlace a la vacante, tweet u oferta:';
+        urlInput.placeholder = 'https://x.com/... o https://remoteok.com/... o enlace de la empresa';
+        textLabel.innerText = 'Detalles de la vacante, compensación y requisitos:';
+        textInput.placeholder = 'Ej: Empresa, rango salarial ($USD), requisitos y modalidad...';
+      }
+    }
+
     function openIngestModal() {
+      // Por defecto toma la sección activa actual
+      const defaultDest = currentSection === 'jobs' ? 'job_remote' : currentSection === 'tips' ? 'tech_tip' : 'tool';
+      setModalTargetSection(defaultDest);
       document.getElementById('ingestModal').classList.remove('hidden');
       document.getElementById('ingestUrlInput').focus();
+    }
+
+    function openIngestModalForCurrentSection() {
+      openIngestModal();
     }
 
     function closeIngestModal() {
@@ -1449,16 +1785,30 @@
         const res = await fetch('/api/ingest', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url, rawText }),
+          body: JSON.stringify({ 
+            url, 
+            rawText,
+            entryType: modalSelectedDest,
+          }),
         });
         const data = await res.json();
         if (data.success) {
           closeIngestModal();
           document.getElementById('ingestUrlInput').value = '';
           document.getElementById('ingestTextInput').value = '';
+          
+          // Switch view to the destination section
+          if (modalSelectedDest === 'job_remote') {
+            currentSection = 'jobs';
+          } else if (modalSelectedDest === 'tech_tip') {
+            currentSection = 'tips';
+          } else {
+            currentSection = 'tools';
+          }
+
           await fetchTools();
           if (data.data?.addedCount === 0 && data.data?.skippedCount > 0) {
-            alert(`⏭️ La herramienta "${data.data?.classification?.name || url}" ya existía en tu catálogo, por lo que no se duplicó.`);
+            alert(`⏭️ El recurso "${data.data?.classification?.name || url}" ya existía en tu catálogo, por lo que no se duplicó.`);
           }
         } else {
           alert('Error: ' + (data.error || 'No se pudo clasificar'));
@@ -1471,7 +1821,7 @@
       }
     }
 
-    // Keyboard shortcut Cmd/Ctrl + K to focus search
+    // Atajo de teclado Cmd/Ctrl + K para buscar
     window.addEventListener('keydown', (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
@@ -1479,7 +1829,7 @@
       }
     });
 
-    // Initial Load
+    // Carga inicial
     fetchTools();
   </script>
 </body>

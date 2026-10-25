@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { loadAllTools } from './note_generator.js';
-import { ToolCategory } from './types.js';
+import { ToolCategory, ToolItem } from './types.js';
 
 const CATEGORY_ICONS: Record<ToolCategory, string> = {
   'CLI & Terminal': '🛠️',
@@ -19,95 +19,157 @@ const CATEGORY_ICONS: Record<ToolCategory, string> = {
   'Other': '📦',
 };
 
+function renderItemRow(item: ToolItem): string {
+  const starsBadge = item.frontmatter.stars
+    ? ` ⭐ **${item.frontmatter.stars.toLocaleString()}**`
+    : '';
+  const tags = item.frontmatter.tags?.length
+    ? ` ${item.frontmatter.tags.map((t: string) => `\`#${t}\``).join(' ')}`
+    : '';
+  const statusBadge =
+    item.frontmatter.status === 'in_use'
+      ? ' `🟢 En uso`'
+      : item.frontmatter.status === 'archived'
+      ? ' `⚪ Archivado`'
+      : ' `🟡 Por probar`';
+
+  // Extract one-liner blockquote
+  const quoteMatch = item.content.match(/^>\s*(.+)$/m);
+  const summary = quoteMatch ? quoteMatch[1] : 'Sin descripción adicional.';
+
+  const companyBadge = item.frontmatter.company ? ` (\`🏢 ${item.frontmatter.company}\`)` : '';
+  const authorBadge = item.frontmatter.author && !item.frontmatter.company
+    ? ` (\`👤 ${item.frontmatter.author}\`)`
+    : '';
+  const websiteBadge = item.frontmatter.website_url
+    ? ` [🌐 Web](${item.frontmatter.website_url})`
+    : '';
+  const tweetBadge = item.frontmatter.source_tweet
+    ? ` [𝕏 Tweet](${item.frontmatter.source_tweet})`
+    : '';
+  const isJob = item.frontmatter.entry_type === 'job_remote' || item.frontmatter.category === 'Trabajo & Freelance';
+  const isTip = !isJob && item.frontmatter.entry_type === 'tech_tip';
+  const locationBadge = item.frontmatter.location ? ` (\`🌍 ${item.frontmatter.location}\`)` : '';
+  const salaryBadge = item.frontmatter.salary ? ` (\`💰 ${item.frontmatter.salary}\`)` : '';
+  const isAcademic = Boolean(
+    item.frontmatter.has_academic_promo ||
+    (item.frontmatter.tags && item.frontmatter.tags.some((t: string) => ['academic', 'academico', 'académico', 'estudiante', 'estudiantes', 'student', 'students', 'education', 'educacion', 'educación'].includes(t.toLowerCase())))
+  );
+  const academicBadge = isAcademic ? ' `🎓 Promo Académica`' : '';
+  const notePath = isJob
+    ? `content/jobs/${item.slug}.md`
+    : isTip
+    ? `content/tips/${item.slug}.md`
+    : item.frontmatter.entry_type === 'product_showcase'
+    ? `content/products/${item.slug}.md`
+    : `content/tools/${item.slug}.md`;
+
+  let row = `- **[${item.frontmatter.name}](${item.frontmatter.url})**${companyBadge}${authorBadge}${locationBadge}${salaryBadge}${starsBadge}${websiteBadge}${tweetBadge}${academicBadge}${statusBadge}  \n`;
+  row += `  ${summary} [📝 Ver ficha](${notePath})${tags}\n\n`;
+  return row;
+}
+
 export function generateReadme(): string {
-  const tools = loadAllTools();
+  const allTools = loadAllTools();
 
-  // Group by category
-  const groups: Partial<Record<ToolCategory, typeof tools>> = {};
+  // Partición exacta en los 3 apartados
+  const toolItems = allTools.filter(t => {
+    const isTip = t.frontmatter.entry_type === 'tech_tip' || t.frontmatter.category === 'Consejos & Buenas Prácticas';
+    const isJob = t.frontmatter.entry_type === 'job_remote' || t.frontmatter.category === 'Trabajo & Freelance';
+    return !isTip && !isJob;
+  });
 
-  for (const tool of tools) {
-    const cat = tool.frontmatter.category || 'Other';
-    if (!groups[cat]) {
-      groups[cat] = [];
-    }
-    groups[cat]!.push(tool);
-  }
+  const tipItems = allTools.filter(t => t.frontmatter.entry_type === 'tech_tip' || t.frontmatter.category === 'Consejos & Buenas Prácticas');
 
-  const categoryKeys = Object.keys(CATEGORY_ICONS) as ToolCategory[];
+  const jobItems = allTools.filter(t => t.frontmatter.entry_type === 'job_remote' || t.frontmatter.category === 'Trabajo & Freelance');
 
-  let toc = '## 📑 Tabla de Contenidos\n\n';
   let body = '';
 
-  for (const cat of categoryKeys) {
-    const items = groups[cat];
-    if (!items || items.length === 0) continue;
+  // ---------------------------------------------------------
+  // APARTADO 1: HERRAMIENTAS
+  // ---------------------------------------------------------
+  body += `## 🛠️ Apartado 1: Herramientas & Repositorios de Software (${toolItems.length})\n\n`;
+  body += `> Bibliotecas, utilidades CLI, herramientas de desarrollo, devtools y productos técnicos guardados desde X.\n\n`;
 
-    const icon = CATEGORY_ICONS[cat];
-    const anchor = cat.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    toc += `- [${icon} ${cat}](#${anchor}) (${items.length})\n`;
+  if (toolItems.length === 0) {
+    body += `*Aún no has guardado herramientas. Utiliza el botón o el comando \`npm run add\` para añadir una.*\n\n`;
+  } else {
+    // Agrupar herramientas por categoría
+    const toolGroups: Partial<Record<ToolCategory, typeof toolItems>> = {};
+    for (const t of toolItems) {
+      const cat = t.frontmatter.category || 'Other';
+      if (!toolGroups[cat]) toolGroups[cat] = [];
+      toolGroups[cat]!.push(t);
+    }
 
-    body += `\n### ${icon} ${cat}\n\n`;
-
-    for (const item of items) {
-      const starsBadge = item.frontmatter.stars
-        ? ` ⭐ **${item.frontmatter.stars.toLocaleString()}**`
-        : '';
-      const tags = item.frontmatter.tags?.length
-        ? ` ${item.frontmatter.tags.map((t) => `\`#${t}\``).join(' ')}`
-        : '';
-      const statusBadge =
-        item.frontmatter.status === 'in_use'
-          ? ' `🟢 En uso`'
-          : item.frontmatter.status === 'archived'
-          ? ' `⚪ Archivado`'
-          : ' `🟡 Por probar`';
-
-      // Extract one-liner blockquote
-      const quoteMatch = item.content.match(/^>\s*(.+)$/m);
-      const summary = quoteMatch ? quoteMatch[1] : 'Sin descripción adicional.';
-
-      const companyBadge = item.frontmatter.company ? ` (\`🏢 ${item.frontmatter.company}\`)` : '';
-      const authorBadge = item.frontmatter.author && !item.frontmatter.company
-        ? ` (\`👤 ${item.frontmatter.author}\`)`
-        : '';
-      const websiteBadge = item.frontmatter.website_url
-        ? ` [🌐 Web](${item.frontmatter.website_url})`
-        : '';
-      const tweetBadge = item.frontmatter.source_tweet
-        ? ` [𝕏 Tweet](${item.frontmatter.source_tweet})`
-        : '';
-      const isJob = item.frontmatter.entry_type === 'job_remote' || item.frontmatter.category === 'Trabajo & Freelance';
-      const isTip = !isJob && item.frontmatter.entry_type === 'tech_tip';
-      const jobBadge = isJob ? ' `💼 Trabajo / Freelance`' : '';
-      const tipBadge = isTip ? ' `💡 Consejo Técnico`' : '';
-      const locationBadge = item.frontmatter.location ? ` (\`🌍 ${item.frontmatter.location}\`)` : '';
-      const salaryBadge = item.frontmatter.salary ? ` (\`💰 ${item.frontmatter.salary}\`)` : '';
-      const isAcademic = Boolean(
-        item.frontmatter.has_academic_promo ||
-        (item.frontmatter.tags && item.frontmatter.tags.some(t => ['academic', 'academico', 'académico', 'estudiante', 'estudiantes', 'student', 'students', 'education', 'educacion', 'educación'].includes(t.toLowerCase())))
-      );
-      const academicBadge = isAcademic ? ' `🎓 Promo Académica`' : '';
-      const notePath = isJob
-        ? `content/jobs/${item.slug}.md`
-        : isTip
-        ? `content/tips/${item.slug}.md`
-        : item.frontmatter.entry_type === 'product_showcase'
-        ? `content/products/${item.slug}.md`
-        : `content/tools/${item.slug}.md`;
-
-      body += `- **[${item.frontmatter.name}](${item.frontmatter.url})**${jobBadge}${tipBadge}${companyBadge}${authorBadge}${locationBadge}${salaryBadge}${starsBadge}${websiteBadge}${tweetBadge}${academicBadge}${statusBadge}  \n`;
-      body += `  ${summary} [📝 Ver ficha](${notePath})${tags}\n\n`;
+    const categories = Object.keys(CATEGORY_ICONS) as ToolCategory[];
+    for (const cat of categories) {
+      const items = toolGroups[cat];
+      if (!items || items.length === 0) continue;
+      const icon = CATEGORY_ICONS[cat];
+      body += `### ${icon} ${cat} (${items.length})\n\n`;
+      for (const item of items) {
+        body += renderItemRow(item);
+      }
     }
   }
 
-  const totalTools = tools.length;
+  // ---------------------------------------------------------
+  // APARTADO 2: CONSEJOS
+  // ---------------------------------------------------------
+  body += `---\n\n## 💡 Apartado 2: Consejos Técnicos & Buenas Prácticas (${tipItems.length})\n\n`;
+  body += `> Trucos prácticos, comandos, snippets de código y lecciones de arquitectura e ingeniería de software.\n\n`;
+
+  if (tipItems.length === 0) {
+    body += `*Aún no has guardado consejos técnicos. Agrega tweets con trucos prácticos para verlos aquí.*\n\n`;
+  } else {
+    const tipGroups: Partial<Record<ToolCategory, typeof tipItems>> = {};
+    for (const t of tipItems) {
+      const cat = t.frontmatter.category || 'Consejos & Buenas Prácticas';
+      if (!tipGroups[cat]) tipGroups[cat] = [];
+      tipGroups[cat]!.push(t);
+    }
+
+    const categories = Object.keys(CATEGORY_ICONS) as ToolCategory[];
+    for (const cat of categories) {
+      const items = tipGroups[cat];
+      if (!items || items.length === 0) continue;
+      const icon = CATEGORY_ICONS[cat];
+      body += `### ${icon} ${cat} (${items.length})\n\n`;
+      for (const item of items) {
+        body += renderItemRow(item);
+      }
+    }
+  }
+
+  // ---------------------------------------------------------
+  // APARTADO 3: TRABAJO Y FREELANCE
+  // ---------------------------------------------------------
+  body += `---\n\n## 💼 Apartado 3: Trabajo Remoto & Oportunidades Freelance (${jobItems.length})\n\n`;
+  body += `> Ofertas de empleo remoto (Mundial / LATAM), proyectos freelance, bolsas de trabajo y plataformas para devs.\n\n`;
+
+  if (jobItems.length === 0) {
+    body += `*Aún no has guardado oportunidades de trabajo remoto o freelance. Agrega ofertas o convocatorias para gestionarlas aquí.*\n\n`;
+  } else {
+    for (const item of jobItems) {
+      body += renderItemRow(item);
+    }
+  }
+
+  const toc = `## 📑 Los 3 Apartados del Toolkit
+
+- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-${toolItems.length}) (${toolItems.length})
+- [💡 Apartado 2: Consejos Técnicos & Buenas Prácticas](#-apartado-2-consejos-técnicos--buenas-prácticas-${tipItems.length}) (${tipItems.length})
+- [💼 Apartado 3: Trabajo Remoto & Freelance](#-apartado-3-trabajo-remoto--oportunidades-freelance-${jobItems.length}) (${jobItems.length})
+`;
 
   return `# 🚀 Awesome Dev Toolkit & Segundo Cerebro
 
-> Colección curada y categorizada de herramientas, bibliotecas y repositorios técnicos descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA (Gemini 3.8 Flash).
+> Colección curada en **3 apartados esenciales** (Herramientas, Consejos Técnicos y Trabajo Remoto/Freelance) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA (Gemini 3.8 Flash).
 
-[![Total Tools](https://img.shields.io/badge/Herramientas_guardadas-${totalTools}-blue?style=for-the-badge&logo=bookmark)]()
-[![Gemini Powered](https://img.shields.io/badge/Clasificado_con-Gemini_3.8_Flash-8E75C2?style=for-the-badge&logo=google)]()
+[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-${toolItems.length}-blue?style=for-the-badge)]()
+[![Consejos](https://img.shields.io/badge/💡_Consejos-${tipItems.length}-8E75C2?style=for-the-badge)]()
+[![Trabajo Remoto](https://img.shields.io/badge/💼_Trabajo_Remoto-${jobItems.length}-0284C7?style=for-the-badge)]()
 [![Obsidian Ready](https://img.shields.io/badge/Obsidian-Segundo_Cerebro-7C3AED?style=for-the-badge&logo=obsidian)]()
 
 ---
@@ -125,7 +187,7 @@ ${body}
 \`\`\`bash
 npm run dev
 \`\`\`
-Abre \`http://localhost:4000\` en tu navegador para ver el catálogo con buscador instantáneo (\`Cmd+K\`), filtros por tecnología y notas personales.
+Abre \`http://localhost:4000\` en tu navegador para ver el catálogo con buscador instantáneo (\`Cmd+K\`), selector de los 3 apartados y notas personales.
 
 ### 2. Añadir un recurso rápidamente desde la terminal
 \`\`\`bash
@@ -133,7 +195,10 @@ npm run add "https://github.com/astral-sh/uv"
 \`\`\`
 
 ### 3. Usar como Segundo Cerebro en Obsidian
-Abre la carpeta \`content/tools\` directamente como un **Vault en Obsidian** (o añade esta carpeta a tu Vault existente). Cada herramienta tiene su propio archivo \`.md\` con frontmatter YAML compatible con Dataview y notas de uso personal.
+Abre las carpetas directamente como un **Vault en Obsidian**:
+- \`content/tools/\`: Herramientas y bibliotecas.
+- \`content/tips/\`: Consejos técnicos y trucos.
+- \`content/jobs/\`: Oportunidades de trabajo remoto y freelance.
 
 ### 4. Guardado en 1-Clic desde X (Bookmarklet)
 Arrastra el enlace desde la carpeta \`bookmarklet/\` a tu barra de favoritos de Chrome/Brave/Firefox. Al ver un tweet interesante en X, haz clic en el botón y se enviará directo a tu toolkit local.

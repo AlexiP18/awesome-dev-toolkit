@@ -12,7 +12,7 @@ import {
   findExistingTool,
   loadAllTools,
 } from './note_generator.js';
-import { ToolStatus } from './types.js';
+import { ToolStatus, EntryType } from './types.js';
 
 dotenv.config();
 
@@ -23,6 +23,7 @@ export interface IngestInput {
   sourceTweet?: string;
   author?: string;
   status?: ToolStatus;
+  entryType?: EntryType;
 }
 
 export async function ingestResource(input: IngestInput) {
@@ -254,6 +255,15 @@ export async function ingestResource(input: IngestInput) {
 
     if (!classification.canonicalUrl && input.sourceTweet) {
       classification.canonicalUrl = input.sourceTweet;
+    }
+
+    if (input.entryType) {
+      classification.entryType = input.entryType;
+      if (input.entryType === 'job_remote') {
+        classification.category = 'Trabajo & Freelance';
+      } else if (input.entryType === 'tech_tip' && (!classification.category || classification.category === 'Other')) {
+        classification.category = 'Consejos & Buenas Prácticas';
+      }
     }
   }
 

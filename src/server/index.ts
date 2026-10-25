@@ -72,7 +72,7 @@ app.post('/api/authors/analyze', async (req, res) => {
 // POST ingest a new tool from X / URL
 app.post('/api/ingest', async (req, res) => {
   try {
-    const { url, urls, rawText, sourceTweet, author, status } = req.body;
+    const { url, urls, rawText, sourceTweet, author, status, entryType } = req.body;
     console.log(`[API] Ingest request received for: ${url || (urls && urls.join(', ')) || sourceTweet || rawText}`);
 
     const result = await ingestResource({
@@ -82,6 +82,7 @@ app.post('/api/ingest', async (req, res) => {
       sourceTweet,
       author,
       status,
+      entryType,
     });
 
     // Auto-update README.md
