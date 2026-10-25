@@ -17,6 +17,7 @@ export const ALLOWED_CATEGORIES: ToolCategory[] = [
   'Productivity & Tools',
   'Documentation & Resources',
   'Empresas & Productos',
+  'Productos Tecnológicos & Hardware',
   'Consejos & Buenas Prácticas',
   'Trabajo & Freelance',
   'Other',
@@ -128,6 +129,19 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * 'keyHighlights': Requisitos técnicos clave, stack exigido, beneficios (equity, vacaciones, hardware) o ventajas de la plataforma.
      * 'recommendedNotes': Consejos para aplicar, requisitos de nivel de inglés o recomendaciones para la postulación.
 
+12. TWEETS DE PRODUCTOS TECNOLÓGICOS Y HARDWARE ('tech_product'):
+   - Si el tweet presenta, analiza o anuncia productos tecnológicos físicos, hardware, gadgets para desarrolladores, microcontroladores, placas de desarrollo (Raspberry Pi, ESP32, Arduino), laptops/computadoras de desarrollo, periféricos, teclados mecánicos, chips/procesadores, dispositivos de IA o accesorios tech:
+     * 'name': Nombre del producto tecnológico o dispositivo (ej: "Raspberry Pi 5", "Framework Laptop 16", "Flipper Zero", "ESP32-S3 DevKit", "Keychron Q1 Pro").
+     * 'canonicalUrl': Enlace a la tienda oficial, página de producto o documentación técnica. Si no hay link externo, usa el enlace del tweet de origen.
+     * 'category': "Productos Tecnológicos & Hardware".
+     * 'entryType': "tech_product".
+     * 'company': Fabricante, marca o creador (ej: "Raspberry Pi", "Framework", "Apple", "Espressif", "Keychron").
+     * 'price': Precio o coste si se menciona (ej: "$80 USD", "€35", etc.) o null.
+     * 'tags': Etiquetas relevantes como 'hardware', 'gadgets', 'iot', 'electronics', 'peripherals', etc.
+     * 'oneLiner': Resumen claro de qué es el producto, sus especificaciones más llamativas y para qué desarrollador/maker está pensado.
+     * 'keyHighlights': Especificaciones técnicas destacadas (procesador, RAM, puertos, conectividad, consumo, compatibilidad).
+     * 'recommendedNotes': Casos de uso ideales, disponibilidad o compatibilidad.
+
 Categorías válidas (selecciona EXACTAMENTE una para cada herramienta):
 ${ALLOWED_CATEGORIES.map((c) => `- "${c}"`).join('\n')}
 
@@ -136,13 +150,14 @@ Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
   "tools": [
     {
       "name": "Nombre claro y conciso",
-      "canonicalUrl": "https://github.com/... (priorizar repo de GitHub/GitLab, o enlace/tweet de referencia/postulación)",
+      "canonicalUrl": "https://github.com/... (priorizar repo de GitHub/GitLab, o enlace/tweet de referencia/postulación/producto)",
       "websiteUrl": "https://... (web oficial si existe)",
       "category": "Una de las categorías válidas listadas arriba",
-      "entryType": "tool, product_showcase, tech_tip o job_remote",
-      "company": "Nombre de la empresa si aplica",
+      "entryType": "tool, tech_product, tech_tip o job_remote",
+      "company": "Nombre del fabricante o empresa si aplica",
       "location": "Modalidad o región (ej: Remoto (Mundial), Remoto (LATAM)) o null",
       "salary": "Compensación o tarifa si se menciona (ej: $60k-$80k USD) o null",
+      "price": "Precio o coste del producto/hardware si se menciona o null",
       "tags": ["tag1", "tag2", "tag3"],
       "oneLiner": "Resumen conciso en español de 1-2 oraciones explicando para qué sirve, el puesto o recurso",
       "keyHighlights": ["Punto clave o paso 1", "Punto clave o paso 2"],
@@ -167,10 +182,16 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
 
     const isJob = parsed.entryType === 'job_remote' || validCategory === 'Trabajo & Freelance';
     const isTip = !isJob && (parsed.entryType === 'tech_tip' || validCategory === 'Consejos & Buenas Prácticas');
+    const isProduct = !isJob && !isTip && (
+      parsed.entryType === 'tech_product' ||
+      parsed.entryType === 'product_showcase' ||
+      validCategory === 'Productos Tecnológicos & Hardware' ||
+      validCategory === 'Empresas & Productos'
+    );
 
-    let url = (parsed.canonicalUrl || urls[index] || urls[0] || ((isJob || isTip) ? sourceTweet : '') || '').trim();
+    let url = (parsed.canonicalUrl || urls[index] || urls[0] || ((isJob || isTip || isProduct) ? sourceTweet : '') || '').trim();
     if (url === 'undefined' || url === 'null') {
-      url = (urls[index] || urls[0] || ((isJob || isTip) ? sourceTweet : '') || '').trim();
+      url = (urls[index] || urls[0] || ((isJob || isTip || isProduct) ? sourceTweet : '') || '').trim();
     }
     url = cleanTrackingParams(url);
     if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
@@ -178,7 +199,7 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
     }
 
     if (!url || url === 'https://undefined' || url === 'https://null') {
-      url = urls[0] || ((isJob || isTip) ? sourceTweet : '') || '';
+      url = urls[0] || ((isJob || isTip || isProduct) ? sourceTweet : '') || '';
     }
 
     // PROTECCIÓN CONTRA ALUCINACIONES DE LA IA EN ENLACES DE GITHUB:
@@ -264,14 +285,17 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
     const isShowcase =
       !isJob &&
       !isTip &&
+      !isProduct &&
       (parsed.entryType === 'product_showcase' ||
         validCategory === 'Empresas & Productos' ||
         Boolean(parsed.company && !url.includes('github.com')));
 
-    const entryType: 'tool' | 'product_showcase' | 'tech_tip' | 'job_remote' = isJob
+    const entryType: EntryType = isJob
       ? 'job_remote'
       : isTip
       ? 'tech_tip'
+      : isProduct
+      ? 'tech_product'
       : isShowcase
       ? 'product_showcase'
       : 'tool';
@@ -285,18 +309,19 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
     const academicPromoDetails = parsed.academicPromoDetails || parsed.academic_promo_details || undefined;
 
     return {
-      name: parsed.name || (isJob ? 'Oportunidad / Recurso Laboral' : isTip ? 'Consejo Técnico' : 'Nueva Herramienta'),
+      name: parsed.name || (isJob ? 'Oportunidad / Recurso Laboral' : isTip ? 'Consejo Técnico' : isProduct ? 'Producto Tecnológico / Hardware' : 'Nueva Herramienta'),
       canonicalUrl: url,
       websiteUrl,
       category: validCategory,
       tags: Array.isArray(parsed.tags) ? parsed.tags.map((t: string) => t.toLowerCase()) : [],
-      oneLiner: parsed.oneLiner || (isJob ? 'Oportunidad o recurso de trabajo remoto/freelance.' : isTip ? 'Consejo técnico guardado de X.' : 'Herramienta guardada de X.'),
+      oneLiner: parsed.oneLiner || (isJob ? 'Oportunidad o recurso de trabajo remoto/freelance.' : isTip ? 'Consejo técnico guardado de X.' : isProduct ? 'Producto tecnológico o hardware de desarrollo.' : 'Herramienta guardada de X.'),
       keyHighlights: Array.isArray(parsed.keyHighlights) ? parsed.keyHighlights : [],
       recommendedNotes: parsed.recommendedNotes || '',
       entryType,
       company: parsed.company || undefined,
       location: parsed.location || undefined,
       salary: parsed.salary || undefined,
+      price: parsed.price || undefined,
       jobType: parsed.jobType || (isJob ? 'remote_job' : undefined),
       hasAcademicPromo,
       academicPromoDetails,
@@ -333,6 +358,7 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
             company: { type: Type.STRING },
             location: { type: Type.STRING },
             salary: { type: Type.STRING },
+            price: { type: Type.STRING },
             tags: { type: Type.ARRAY, items: { type: Type.STRING } },
             oneLiner: { type: Type.STRING },
             keyHighlights: { type: Type.ARRAY, items: { type: Type.STRING } },
@@ -721,15 +747,16 @@ export async function classifyWithProviderCascade(
     : (params.sourceTweet || params.rawText)
     ? (() => {
         const isJobFallback = /remot[oa]|freelance|hiring|vacante|empleo|contrat|trabajo|job/i.test(params.rawText);
+        const isProductFallback = !isJobFallback && /hardware|gadget|dispositivo|chip|laptop|teclado|placa|raspberry|esp32|arduino/i.test(params.rawText);
         return [{
-          name: isJobFallback ? 'Oportunidad / Recurso Laboral' : 'Consejo Técnico',
+          name: isJobFallback ? 'Oportunidad / Recurso Laboral' : isProductFallback ? 'Producto Tecnológico / Hardware' : 'Consejo Técnico',
           canonicalUrl: params.sourceTweet || '',
-          category: (isJobFallback ? 'Trabajo & Freelance' : 'Consejos & Buenas Prácticas') as ToolCategory,
-          tags: isJobFallback ? ['remoto', 'trabajo', 'freelance', 'dev'] : ['consejos', 'tips', 'dev'],
+          category: (isJobFallback ? 'Trabajo & Freelance' : isProductFallback ? 'Productos Tecnológicos & Hardware' : 'Consejos & Buenas Prácticas') as ToolCategory,
+          tags: isJobFallback ? ['remoto', 'trabajo', 'freelance', 'dev'] : isProductFallback ? ['hardware', 'gadgets', 'tech', 'dev'] : ['consejos', 'tips', 'dev'],
           oneLiner: params.rawText.slice(0, 140),
           keyHighlights: [params.rawText.slice(0, 200)],
           recommendedNotes: 'Importado en modo de respaldo.',
-          entryType: (isJobFallback ? 'job_remote' : 'tech_tip') as EntryType,
+          entryType: (isJobFallback ? 'job_remote' : isProductFallback ? 'tech_product' : 'tech_tip') as EntryType,
         }];
       })()
     : [];

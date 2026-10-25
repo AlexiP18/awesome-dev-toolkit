@@ -263,6 +263,8 @@ export async function ingestResource(input: IngestInput) {
         classification.category = 'Trabajo & Freelance';
       } else if (input.entryType === 'tech_tip' && (!classification.category || classification.category === 'Other')) {
         classification.category = 'Consejos & Buenas Prácticas';
+      } else if ((input.entryType === 'tech_product' || input.entryType === 'product_showcase') && (!classification.category || classification.category === 'Other')) {
+        classification.category = 'Productos Tecnológicos & Hardware';
       }
     }
   }

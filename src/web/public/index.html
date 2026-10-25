@@ -73,9 +73,9 @@
   <!-- Main Content -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full flex flex-col">
     
-    <!-- 3 APARTADOS SELECTOR TABS -->
+    <!-- 4 APARTADOS SELECTOR TABS -->
     <div class="mb-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl">
         
         <!-- Tab 1: Herramientas -->
         <button 
@@ -139,6 +139,28 @@
             </div>
           </div>
           <span id="tabCountJobs" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700">
+            0
+          </span>
+        </button>
+
+        <!-- Tab 4: Productos Tecnológicos & Hardware -->
+        <button 
+          id="tabSectionProducts" 
+          onclick="switchSection('products')" 
+          class="relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40"
+        >
+          <div class="flex items-center gap-3">
+            <div id="tabIconBoxProducts" class="p-2.5 rounded-xl bg-slate-800 text-slate-400 border border-slate-700">
+              <i data-lucide="cpu" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm text-slate-100 group-hover:text-amber-300 transition">4. Productos Tech</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Hardware, gadgets & placas</p>
+            </div>
+          </div>
+          <span id="tabCountProducts" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700">
             0
           </span>
         </button>
@@ -401,6 +423,15 @@
           </div>
         </div>
 
+        <!-- Product Info Alert inside Modal -->
+        <div id="modalProductInfo" class="hidden p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300 flex items-start gap-2.5">
+          <span class="text-base leading-none">🖥️</span>
+          <div class="space-y-1">
+            <span class="font-bold text-amber-200">Información del Producto / Hardware:</span>
+            <div id="modalProductDetails" class="text-xs text-amber-300/90 leading-relaxed flex flex-wrap gap-2 pt-0.5"></div>
+          </div>
+        </div>
+
         <!-- Markdown Content Preview / Editor -->
         <div>
           <div class="flex items-center justify-between mb-2">
@@ -490,7 +521,7 @@
       <!-- Apartado Target Destination Selector -->
       <div class="mb-4">
         <label class="block text-xs font-semibold text-slate-300 mb-1.5">Apartado de destino:</label>
-        <div class="grid grid-cols-3 gap-2 text-xs">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
           <button 
             type="button" 
             onclick="setModalTargetSection('tool')" 
@@ -517,6 +548,15 @@
           >
             <span class="text-base">💼</span>
             <span>Trabajo/Remoto</span>
+          </button>
+          <button 
+            type="button" 
+            onclick="setModalTargetSection('tech_product')" 
+            id="modalDestProductBtn" 
+            class="px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-slate-950 text-slate-400 border-slate-800 hover:bg-slate-800"
+          >
+            <span class="text-base">🖥️</span>
+            <span>Producto/Hardware</span>
           </button>
         </div>
       </div>
@@ -558,13 +598,13 @@
   <script>
     let allTools = [];
     let allAuthorProfiles = {};
-    let currentSection = 'tools'; // 'tools' | 'tips' | 'jobs'
+    let currentSection = 'tools'; // 'tools' | 'tips' | 'jobs' | 'products'
     let currentCategory = 'all';
     let currentStatus = 'all';
     let currentAuthor = 'all';
     let filterOnlyAcademic = false;
     let activeEditingSlug = null;
-    let modalSelectedDest = 'tool'; // 'tool' | 'tech_tip' | 'job_remote'
+    let modalSelectedDest = 'tool'; // 'tool' | 'tech_tip' | 'job_remote' | 'tech_product'
     let isStaticMode = false;
     let currentActiveAiProvider = 'DeepSeek / MiniMax / Gemini';
     let currentActiveAiShortName = 'IA';
@@ -674,11 +714,33 @@
           'Trabajo & Freelance',
           'Other'
         ]
+      },
+      products: {
+        id: 'products',
+        name: 'Productos Tech & Hardware',
+        badgeTitle: 'Apartado 4: Productos Tecnológicos & Hardware',
+        icon: '🖥️',
+        subtitle: 'Dispositivos para devs, placas de desarrollo (Raspberry Pi, ESP32), gadgets y hardware técnico.',
+        searchPlaceholder: 'Buscar producto, hardware, placa, especificaciones, fabricante... (⌘K)',
+        addBtnText: 'Añadir Producto / Hardware',
+        accentColor: 'amber',
+        categories: [
+          'all',
+          'Hardware & Gadgets',
+          'Placas & Microcontroladores',
+          'Periféricos & Setups',
+          'Laptops & Equipos',
+          'Chips & Procesadores',
+          'IA Devices & Robótica',
+          'Empresas & Productos',
+          'Productos Tecnológicos & Hardware',
+          'Other'
+        ]
       }
     };
 
     /**
-     * Retorna a cuál de los 3 apartados pertenece un recurso de manera estricta y disjunta.
+     * Retorna a cuál de los 4 apartados pertenece un recurso de manera estricta y disjunta.
      */
     function getItemSection(tool) {
       const fm = tool.frontmatter || {};
@@ -688,22 +750,31 @@
       if (fm.entry_type === 'tech_tip' || fm.category === 'Consejos & Buenas Prácticas') {
         return 'tips';
       }
+      if (
+        fm.entry_type === 'tech_product' ||
+        fm.entry_type === 'product_showcase' ||
+        fm.category === 'Productos Tecnológicos & Hardware' ||
+        fm.category === 'Empresas & Productos'
+      ) {
+        return 'products';
+      }
       return 'tools';
     }
 
     /**
-     * Cambia el apartado activo: Herramientas, Consejos o Empleo.
+     * Cambia el apartado activo: Herramientas, Consejos, Empleo o Productos Tech.
      */
     function switchSection(sectionId) {
       currentSection = sectionId;
       currentCategory = 'all';
       currentAuthor = 'all';
 
-      // Actualizar estilo visual de las 3 tabs
+      // Actualizar estilo visual de las 4 tabs
       const tabs = [
         { id: 'tools', btn: 'tabSectionTools', icon: 'tabIconBoxTools', count: 'tabCountTools', activeClass: 'bg-sky-500/15 border-sky-500/40 text-sky-300 shadow-inner' },
         { id: 'tips', btn: 'tabSectionTips', icon: 'tabIconBoxTips', count: 'tabCountTips', activeClass: 'bg-violet-500/15 border-violet-500/40 text-violet-300 shadow-inner' },
-        { id: 'jobs', btn: 'tabSectionJobs', icon: 'tabIconBoxJobs', count: 'tabCountJobs', activeClass: 'bg-blue-500/15 border-blue-500/40 text-blue-300 shadow-inner' }
+        { id: 'jobs', btn: 'tabSectionJobs', icon: 'tabIconBoxJobs', count: 'tabCountJobs', activeClass: 'bg-blue-500/15 border-blue-500/40 text-blue-300 shadow-inner' },
+        { id: 'products', btn: 'tabSectionProducts', icon: 'tabIconBoxProducts', count: 'tabCountProducts', activeClass: 'bg-amber-500/15 border-amber-500/40 text-amber-300 shadow-inner' }
       ];
 
       tabs.forEach(t => {
@@ -720,9 +791,12 @@
           } else if (t.id === 'tips') {
             iconEl.className = 'p-2.5 rounded-xl bg-violet-500/20 text-violet-300 border border-violet-500/30';
             countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-violet-500/20 text-violet-300 border border-violet-500/30';
-          } else {
+          } else if (t.id === 'jobs') {
             iconEl.className = 'p-2.5 rounded-xl bg-blue-500/20 text-blue-300 border border-blue-500/30';
             countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30';
+          } else {
+            iconEl.className = 'p-2.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/30';
+            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30';
           }
         } else {
           btnEl.className = 'relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40';
@@ -758,10 +832,14 @@
           banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-violet-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
           bannerIcon.className = 'p-3 rounded-2xl bg-violet-500/15 text-violet-400 border border-violet-500/30 text-2xl flex-shrink-0 shadow-inner';
           bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-violet-600 hover:bg-violet-500 text-white shadow-lg shadow-violet-600/25 flex items-center gap-2 transition flex-shrink-0';
-        } else {
+        } else if (sectionId === 'jobs') {
           banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-blue-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
           bannerIcon.className = 'p-3 rounded-2xl bg-blue-500/15 text-blue-400 border border-blue-500/30 text-2xl flex-shrink-0 shadow-inner';
           bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/25 flex items-center gap-2 transition flex-shrink-0';
+        } else {
+          banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
+          bannerIcon.className = 'p-3 rounded-2xl bg-amber-500/15 text-amber-400 border border-amber-500/30 text-2xl flex-shrink-0 shadow-inner';
+          bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-amber-600 hover:bg-amber-500 text-white shadow-lg shadow-amber-600/25 flex items-center gap-2 transition flex-shrink-0';
         }
       }
 
@@ -1291,7 +1369,9 @@
         ? 'bg-sky-500/20 text-sky-300 border-sky-500/40' 
         : currentSection === 'tips'
         ? 'bg-violet-500/20 text-violet-300 border-violet-500/40'
-        : 'bg-blue-500/20 text-blue-300 border-blue-500/40';
+        : currentSection === 'jobs'
+        ? 'bg-blue-500/20 text-blue-300 border-blue-500/40'
+        : 'bg-amber-500/20 text-amber-300 border-amber-500/40';
 
       container.innerHTML = cats.map(cat => {
         const isAll = cat === 'all';
@@ -1338,7 +1418,7 @@
       const query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
 
       return allTools.filter(tool => {
-        // 1. FILTRO PRIMARIO OBLIGATORIO: Apartado activo (Herramientas, Consejos o Empleo)
+        // 1. FILTRO PRIMARIO OBLIGATORIO: Apartado activo (Herramientas, Consejos, Empleo o Productos)
         const itemSec = getItemSection(tool);
         if (itemSec !== currentSection) {
           return false;
@@ -1346,7 +1426,7 @@
 
         // 2. Filtro de Categoría
         if (currentCategory !== 'all') {
-          // Soporta coincidencia exacta o coincidencia en tags/ubicación para empleos
+          // Soporta coincidencia exacta o coincidencia en tags/ubicación para empleos/productos
           const cat = tool.frontmatter.category || 'Other';
           const isCatMatch = cat === currentCategory;
           const isLocationMatch = tool.frontmatter.location && tool.frontmatter.location.toLowerCase().includes(currentCategory.toLowerCase());
@@ -1381,8 +1461,9 @@
           const matchCompany = (fm.company || '').toLowerCase().includes(query);
           const matchLocation = (fm.location || '').toLowerCase().includes(query);
           const matchSalary = (fm.salary || '').toLowerCase().includes(query);
+          const matchPrice = (fm.price || '').toLowerCase().includes(query);
           const matchAuthor = (fm.author || '').toLowerCase().includes(query);
-          return matchName || matchTags || matchContent || matchUrl || matchCompany || matchLocation || matchSalary || matchAuthor;
+          return matchName || matchTags || matchContent || matchUrl || matchCompany || matchLocation || matchSalary || matchPrice || matchAuthor;
         }
 
         return true;
@@ -1390,14 +1471,16 @@
     }
 
     function updateStats() {
-      // Contadores globales por cada uno de los 3 apartados
+      // Contadores globales por cada uno de los 4 apartados
       const toolsCount = allTools.filter(t => getItemSection(t) === 'tools').length;
       const tipsCount = allTools.filter(t => getItemSection(t) === 'tips').length;
       const jobsCount = allTools.filter(t => getItemSection(t) === 'jobs').length;
+      const productsCount = allTools.filter(t => getItemSection(t) === 'products').length;
 
       document.getElementById('tabCountTools').innerText = toolsCount;
       document.getElementById('tabCountTips').innerText = tipsCount;
       document.getElementById('tabCountJobs').innerText = jobsCount;
+      document.getElementById('tabCountProducts').innerText = productsCount;
 
       // Elementos del apartado actualmente activo
       const sectionItems = allTools.filter(t => getItemSection(t) === currentSection);
@@ -1407,9 +1490,13 @@
       const toTry = sectionItems.filter(t => t.frontmatter.status === 'to_try').length;
       document.getElementById('statInUse').innerHTML = currentSection === 'jobs' 
         ? `🟢 Postulado: <strong>${inUse}</strong>` 
+        : currentSection === 'products'
+        ? `🟢 En posesión: <strong>${inUse}</strong>`
         : `🟢 En uso: <strong>${inUse}</strong>`;
       document.getElementById('statToTry').innerHTML = currentSection === 'jobs'
         ? `🟡 Por postular: <strong>${toTry}</strong>`
+        : currentSection === 'products'
+        ? `🟡 Por adquirir/probar: <strong>${toTry}</strong>`
         : `🟡 Por probar: <strong>${toTry}</strong>`;
 
       const academicCount = sectionItems.filter(isAcademicTool).length;
@@ -1459,6 +1546,7 @@
         const itemSec = getItemSection(tool);
         const isJob = itemSec === 'jobs';
         const isTip = itemSec === 'tips';
+        const isProduct = itemSec === 'products';
         const isTool = itemSec === 'tools';
 
         const starsBadge = fm.stars ? `
@@ -1479,7 +1567,7 @@
         const isGithub = safeUrl.includes('github.com');
         const isTwitter = safeUrl.includes('x.com') || safeUrl.includes('twitter.com');
 
-        const mainLinkTitle = isGithub ? 'Ver repositorio en GitHub' : isJob ? 'Ver oferta o enlace para postular' : isTwitter ? 'Ver tweet en X' : 'Visitar enlace principal';
+        const mainLinkTitle = isGithub ? 'Ver repositorio en GitHub' : isJob ? 'Ver oferta o enlace para postular' : isProduct ? 'Ver ficha del producto / web' : isTwitter ? 'Ver tweet en X' : 'Visitar enlace principal';
 
         const githubSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>`;
         const xSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
@@ -1495,9 +1583,9 @@
           <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-300 border border-violet-500/30">
             <span>💡</span> Consejo Técnico
           </span>
-        ` : fm.entry_type === 'product_showcase' ? `
+        ` : isProduct ? `
           <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
-            <span>🏢</span> Producto
+            <span>🖥️</span> Producto / Hardware
           </span>
         ` : `
           <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-300 border border-sky-500/30">
@@ -1552,6 +1640,14 @@
           </div>
         ` : '';
 
+        // Product specific pills
+        const productPills = isProduct && (fm.company || fm.price) ? `
+          <div class="flex flex-wrap items-center gap-1.5 mb-2.5">
+            ${fm.company ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-medium"><span>🏢</span> ${fm.company}</span>` : ''}
+            ${fm.price ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-amber-950/40 text-amber-300 border border-amber-800/40 font-mono font-medium"><span>💰</span> ${fm.price}</span>` : ''}
+          </div>
+        ` : '';
+
         const authorName = getToolAuthor(tool);
         const authorHandle = getToolAuthorHandle(tool);
         const authorRow = authorName ? `
@@ -1573,7 +1669,7 @@
         ` : '';
 
         // Border styling depending on section
-        const cardBorderHover = isJob ? 'hover:border-blue-500/50' : isTip ? 'hover:border-violet-500/50' : 'hover:border-sky-500/50';
+        const cardBorderHover = isJob ? 'hover:border-blue-500/50' : isTip ? 'hover:border-violet-500/50' : isProduct ? 'hover:border-amber-500/50' : 'hover:border-sky-500/50';
 
         return `
           <div class="bg-slate-900 border border-slate-800 ${cardBorderHover} transition rounded-2xl p-4 flex flex-col justify-between group shadow-sm hover:shadow-md">
@@ -1602,6 +1698,7 @@
               </div>
 
               ${jobPills}
+              ${productPills}
 
               <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed mb-3">
                 ${summary}
@@ -1617,8 +1714,8 @@
             <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
               <!-- Inline Status Selector -->
               <select onchange="updateToolStatusInline('${tool.slug}', this.value)" class="bg-slate-950 border border-slate-800 text-[11px] rounded-lg px-2 py-1 text-slate-300 focus:outline-none">
-                <option value="to_try" ${fm.status === 'to_try' ? 'selected' : ''}>${isJob ? '🟡 Por postular' : '🟡 Por probar'}</option>
-                <option value="in_use" ${fm.status === 'in_use' ? 'selected' : ''}>${isJob ? '🟢 Postulado' : '🟢 En uso'}</option>
+                <option value="to_try" ${fm.status === 'to_try' ? 'selected' : ''}>${isJob ? '🟡 Por postular' : isProduct ? '🟡 Por adquirir/probar' : '🟡 Por probar'}</option>
+                <option value="in_use" ${fm.status === 'in_use' ? 'selected' : ''}>${isJob ? '🟢 Postulado' : isProduct ? '🟢 En posesión' : '🟢 En uso'}</option>
                 <option value="archived" ${fm.status === 'archived' ? 'selected' : ''}>⚪ Archivado</option>
               </select>
 
@@ -1664,7 +1761,7 @@
         ? 'content/jobs'
         : itemSec === 'tips'
         ? 'content/tips'
-        : tool.frontmatter.entry_type === 'product_showcase'
+        : itemSec === 'products'
         ? 'content/products'
         : 'content/tools';
       document.getElementById('modalToolPath').innerText = `${noteFolder}/${slug}.md`;
@@ -1736,6 +1833,20 @@
         }
       }
 
+      const productInfoEl = document.getElementById('modalProductInfo');
+      const productDetailsEl = document.getElementById('modalProductDetails');
+      if (productInfoEl && productDetailsEl) {
+        if (itemSec === 'products' && (tool.frontmatter.company || tool.frontmatter.price)) {
+          const parts = [];
+          if (tool.frontmatter.company) parts.push(`<span>🏢 <strong>Fabricante:</strong> ${tool.frontmatter.company}</span>`);
+          if (tool.frontmatter.price) parts.push(`<span>💰 <strong>Precio:</strong> ${tool.frontmatter.price}</span>`);
+          productDetailsEl.innerHTML = parts.join('<span class="text-amber-500">•</span>');
+          productInfoEl.classList.remove('hidden');
+        } else {
+          productInfoEl.classList.add('hidden');
+        }
+      }
+
       document.getElementById('modalStatusSelect').value = tool.frontmatter.status || 'to_try';
       document.getElementById('modalMarkdownContent').value = tool.content;
 
@@ -1798,6 +1909,7 @@
       const toolBtn = document.getElementById('modalDestToolBtn');
       const tipBtn = document.getElementById('modalDestTipBtn');
       const jobBtn = document.getElementById('modalDestJobBtn');
+      const productBtn = document.getElementById('modalDestProductBtn');
       const modalTitle = document.getElementById('ingestModalTitle');
       const urlLabel = document.getElementById('ingestUrlLabel');
       const urlInput = document.getElementById('ingestUrlInput');
@@ -1810,6 +1922,7 @@
         toolBtn.className = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-sky-500/20 text-sky-300 border-sky-500/40';
         tipBtn.className = inactiveClass;
         jobBtn.className = inactiveClass;
+        if (productBtn) productBtn.className = inactiveClass;
         modalTitle.innerText = 'Añadir Herramienta';
         urlLabel.innerText = 'URL (GitHub o Sitio Web Oficial):';
         urlInput.placeholder = 'https://github.com/... o https://...';
@@ -1819,26 +1932,45 @@
         toolBtn.className = inactiveClass;
         tipBtn.className = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-violet-500/20 text-violet-300 border-violet-500/40';
         jobBtn.className = inactiveClass;
+        if (productBtn) productBtn.className = inactiveClass;
         modalTitle.innerText = 'Añadir Consejo Técnico';
         urlLabel.innerText = 'Tweet de X con el consejo o enlace de referencia:';
         urlInput.placeholder = 'https://x.com/.../status/...';
         textLabel.innerText = 'Texto del consejo o snippet (Opcional):';
         textInput.placeholder = 'Pega aquí el código, comando de terminal o explicación...';
-      } else {
+      } else if (destType === 'job_remote') {
         toolBtn.className = inactiveClass;
         tipBtn.className = inactiveClass;
         jobBtn.className = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-blue-500/20 text-blue-300 border-blue-500/40';
+        if (productBtn) productBtn.className = inactiveClass;
         modalTitle.innerText = 'Añadir Oportunidad de Empleo / Freelance';
         urlLabel.innerText = 'Enlace a la vacante, tweet u oferta:';
         urlInput.placeholder = 'https://x.com/... o https://remoteok.com/... o enlace de la empresa';
         textLabel.innerText = 'Detalles de la vacante, compensación y requisitos:';
         textInput.placeholder = 'Ej: Empresa, rango salarial ($USD), requisitos y modalidad...';
+      } else {
+        // tech_product
+        toolBtn.className = inactiveClass;
+        tipBtn.className = inactiveClass;
+        jobBtn.className = inactiveClass;
+        if (productBtn) productBtn.className = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-amber-500/20 text-amber-300 border-amber-500/40';
+        modalTitle.innerText = 'Añadir Producto Tecnológico / Hardware';
+        urlLabel.innerText = 'Enlace a la tienda, ficha técnica o tweet:';
+        urlInput.placeholder = 'https://x.com/... o https://raspberrypi.com/... o tienda oficial';
+        textLabel.innerText = 'Especificaciones, fabricante, precio o detalles del dispositivo:';
+        textInput.placeholder = 'Ej: Fabricante, procesador, RAM, puertos, precio ($USD) o características clave...';
       }
     }
 
     function openIngestModal() {
       // Por defecto toma la sección activa actual
-      const defaultDest = currentSection === 'jobs' ? 'job_remote' : currentSection === 'tips' ? 'tech_tip' : 'tool';
+      const defaultDest = currentSection === 'jobs' 
+        ? 'job_remote' 
+        : currentSection === 'tips' 
+        ? 'tech_tip' 
+        : currentSection === 'products'
+        ? 'tech_product'
+        : 'tool';
       setModalTargetSection(defaultDest);
       document.getElementById('ingestModal').classList.remove('hidden');
       document.getElementById('ingestUrlInput').focus();
@@ -1888,6 +2020,8 @@
             currentSection = 'jobs';
           } else if (modalSelectedDest === 'tech_tip') {
             currentSection = 'tips';
+          } else if (modalSelectedDest === 'tech_product') {
+            currentSection = 'products';
           } else {
             currentSection = 'tools';
           }

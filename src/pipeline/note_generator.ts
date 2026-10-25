@@ -182,8 +182,13 @@ export function createOrUpdateToolNote(
 
   const isJob = params.classification.entryType === 'job_remote' || params.classification.category === 'Trabajo & Freelance';
   const isTip = !isJob && params.classification.entryType === 'tech_tip';
-  const isShowcase = !isJob && !isTip && params.classification.entryType === 'product_showcase';
-  const targetDir = isJob ? JOBS_DIR : isTip ? TIPS_DIR : isShowcase ? PRODUCTS_DIR : TOOLS_DIR;
+  const isProduct = !isJob && !isTip && (
+    params.classification.entryType === 'tech_product' ||
+    params.classification.entryType === 'product_showcase' ||
+    params.classification.category === 'Productos Tecnológicos & Hardware' ||
+    params.classification.category === 'Empresas & Productos'
+  );
+  const targetDir = isJob ? JOBS_DIR : isTip ? TIPS_DIR : isProduct ? PRODUCTS_DIR : TOOLS_DIR;
 
   const slug = slugify(params.classification.name);
   const filePath = path.join(targetDir, `${slug}.md`);
@@ -211,10 +216,11 @@ export function createOrUpdateToolNote(
     source_tweet: params.sourceTweet,
     author: authorName,
     author_handle: authorHandle,
-    entry_type: isJob ? 'job_remote' : isTip ? 'tech_tip' : isShowcase ? 'product_showcase' : 'tool',
-    company: params.classification.company || (isShowcase ? params.author : undefined),
+    entry_type: isJob ? 'job_remote' : isTip ? 'tech_tip' : isProduct ? 'tech_product' : 'tool',
+    company: params.classification.company || (isProduct ? params.author : undefined),
     location: params.classification.location || undefined,
     salary: params.classification.salary || undefined,
+    price: params.classification.price || undefined,
     job_type: params.classification.jobType || undefined,
     has_academic_promo: params.classification.hasAcademicPromo || undefined,
     academic_promo_details: params.classification.academicPromoDetails || undefined,
@@ -229,29 +235,49 @@ export function createOrUpdateToolNote(
     ? `> 🎓 **Promoción Académica:** ${frontmatter.academic_promo_details || 'Disponible para estudiantes o instituciones educativas.'}\n\n`
     : '';
 
-  const sectionHighlightsTitle = isJob ? '📋 Requisitos & Características Clave' : isTip ? '📌 Puntos Clave & Pasos del Consejo' : '💡 ¿Por qué destaca?';
-  const sectionNotesTitle = isJob ? '📝 Notas de Postulación & Consejos' : isTip ? '📝 Aplicación Práctica & Contexto' : '📝 Notas Personales (Segundo Cerebro)';
+  const sectionHighlightsTitle = isJob
+    ? '📋 Requisitos & Características Clave'
+    : isTip
+    ? '📌 Puntos Clave & Pasos del Consejo'
+    : isProduct
+    ? '⚙️ Especificaciones & Características Clave'
+    : '💡 ¿Por qué destaca?';
+
+  const sectionNotesTitle = isJob
+    ? '📝 Notas de Postulación & Consejos'
+    : isTip
+    ? '📝 Aplicación Práctica & Contexto'
+    : isProduct
+    ? '📝 Notas de Evaluación & Casos de Uso'
+    : '📝 Notas Personales (Segundo Cerebro)';
+
   const referenceLabel = isJob
     ? 'Enlace oficial / Para postular'
     : isTip
     ? (frontmatter.url.includes('x.com') || frontmatter.url.includes('twitter.com') ? 'Tweet con el consejo completo' : 'Enlace o documentación de referencia')
+    : isProduct
+    ? 'Sitio oficial o ficha del producto'
     : (frontmatter.url.includes('github.com') ? 'Repositorio de código (GitHub)' : 'Enlace de referencia');
 
   const jobMetaBlock = isJob
     ? `${frontmatter.company ? `- **🏢 Empresa / Plataforma:** ${frontmatter.company}\n` : ''}${frontmatter.location ? `- **🌍 Modalidad / Ubicación:** ${frontmatter.location}\n` : ''}${frontmatter.salary ? `- **💰 Compensación / Tarifa:** ${frontmatter.salary}\n` : ''}`
     : '';
 
+  const productMetaBlock = isProduct
+    ? `${frontmatter.company ? `- **🏢 Fabricante / Marca:** ${frontmatter.company}\n` : ''}${frontmatter.price ? `- **💰 Precio / Disponibilidad:** ${frontmatter.price}\n` : ''}`
+    : '';
+
   const markdownBody = `
-# ${isJob ? '💼 ' : isTip ? '💡 ' : ''}${params.classification.name}
+# ${isJob ? '💼 ' : isTip ? '💡 ' : isProduct ? '🖥️ ' : ''}${params.classification.name}
 
 > ${params.classification.oneLiner}
 
-${promoBlock}${authorName ? `**👤 Publicado / Recomendado por:** ${authorName}${authorHandle ? ` ([@${authorHandle}](https://x.com/${authorHandle}))` : ''}\n` : ''}${isShowcase && frontmatter.company ? `**🏢 Empresa / Creador:** ${frontmatter.company}\n` : ''}${jobMetaBlock ? `\n### 📌 Información de la Oportunidad\n${jobMetaBlock}\n` : ''}
+${promoBlock}${authorName ? `**👤 Publicado / Recomendado por:** ${authorName}${authorHandle ? ` ([@${authorHandle}](https://x.com/${authorHandle}))` : ''}\n` : ''}${isProduct && frontmatter.company ? `**🏢 Fabricante / Empresa:** ${frontmatter.company}\n` : ''}${jobMetaBlock ? `\n### 📌 Información de la Oportunidad\n${jobMetaBlock}\n` : ''}${productMetaBlock ? `\n### 📌 Información del Producto / Hardware\n${productMetaBlock}\n` : ''}
 ## ${sectionHighlightsTitle}
 ${highlightsMd}
 
 ## ${sectionNotesTitle}
-- ${params.classification.recommendedNotes || (isJob ? 'Pendiente de revisar requisitos y postular.' : 'Pendiente de probar o revisar detalles.')}
+- ${params.classification.recommendedNotes || (isJob ? 'Pendiente de revisar requisitos y postular.' : isProduct ? 'Pendiente de evaluar disponibilidad o compra.' : 'Pendiente de probar o revisar detalles.')}
 
 ## 🔗 Referencias
 - ${referenceLabel}: [${params.classification.canonicalUrl}](${params.classification.canonicalUrl})
@@ -324,6 +350,7 @@ export function updateToolNote(slug: string, updates: {
   author_handle?: string;
   location?: string;
   salary?: string;
+  price?: string;
   company?: string;
   has_academic_promo?: boolean;
   academic_promo_details?: string;
@@ -354,6 +381,7 @@ export function updateToolNote(slug: string, updates: {
     ...(updates.author_handle !== undefined ? { author_handle: updates.author_handle } : {}),
     ...(updates.location !== undefined ? { location: updates.location } : {}),
     ...(updates.salary !== undefined ? { salary: updates.salary } : {}),
+    ...(updates.price !== undefined ? { price: updates.price } : {}),
     ...(updates.company !== undefined ? { company: updates.company } : {}),
     ...(updates.has_academic_promo !== undefined ? { has_academic_promo: updates.has_academic_promo } : {}),
     ...(updates.academic_promo_details !== undefined ? { academic_promo_details: updates.academic_promo_details } : {}),

@@ -9,11 +9,12 @@ export type ToolCategory =
   | 'Productivity & Tools'
   | 'Documentation & Resources'
   | 'Empresas & Productos'
+  | 'Productos Tecnológicos & Hardware'
   | 'Consejos & Buenas Prácticas'
   | 'Trabajo & Freelance'
   | 'Other';
 
-export type EntryType = 'tool' | 'product_showcase' | 'tech_tip' | 'job_remote';
+export type EntryType = 'tool' | 'product_showcase' | 'tech_tip' | 'job_remote' | 'tech_product';
 
 export type ToolStatus = 'to_try' | 'in_use' | 'archived';
 
@@ -33,6 +34,7 @@ export interface ToolFrontmatter {
   company?: string;
   location?: string; // Modalidad/ubicación (ej. "Remoto (Mundial)", "Remoto (LATAM)", "Híbrido")
   salary?: string; // Rango salarial o tarifa (ej. "$60k - $80k USD/año", "$40/h")
+  price?: string; // Precio del producto o hardware si está disponible
   job_type?: 'remote_job' | 'freelance' | 'job_board' | 'resource';
   has_academic_promo?: boolean;
   academic_promo_details?: string;
@@ -59,6 +61,7 @@ export interface ClassificationResult {
   company?: string;
   location?: string;
   salary?: string;
+  price?: string;
   jobType?: 'remote_job' | 'freelance' | 'job_board' | 'resource';
   hasAcademicPromo?: boolean;
   academicPromoDetails?: string;
