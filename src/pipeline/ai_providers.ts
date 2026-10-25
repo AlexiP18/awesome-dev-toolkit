@@ -645,17 +645,24 @@ async function tryOllama(params: ClassifyInput): Promise<ClassificationResult[]>
 
 // -------------------------------------------------------------
 // ORQUESTADOR CON CASCADA MULTI-PROVEEDOR
-// Orden de prioridad configurado:
-// 1º DeepSeek (ZenMux o Directo)
-// 2º MiniMax 3.1 Flash (ZenMux)
-// 3º Google Gemini (3.8 Flash)
-// 4º Claude Haiku / Groq / OpenAI / Ollama
+// Orden de prioridad configurado (Gemini por defecto):
+// 1º Google Gemini (3.8 Flash)
+// 2º DeepSeek (ZenMux o Directo)
+// 3º MiniMax 3.1 Flash (ZenMux)
+// 4º Claude Haiku / Groq / OpenRouter / OpenAI / Ollama
 // -------------------------------------------------------------
 export async function classifyWithProviderCascade(
   params: ClassifyInput
 ): Promise<{ results: ClassificationResult[]; providerUsed: string }> {
   const providers = [
-    // 1. DeepSeek (ZenMux v4.1 Flash o Directo)
+    // 1. Google Gemini (3.8 Flash) - Prioridad principal por defecto
+    {
+      name: 'Google Gemini (3.8 Flash)',
+      fn: tryGemini,
+      hasKey: () => Boolean(process.env.GEMINI_API_KEY),
+    },
+
+    // 2. DeepSeek (ZenMux v4.1 Flash o Directo)
     {
       name: `ZenMux (${process.env.ZENMUX_DEEPSEEK_MODEL || 'deepseek/deepseek-v4.1-flash'})`,
       fn: tryZenMuxDeepSeek,
@@ -667,18 +674,11 @@ export async function classifyWithProviderCascade(
       hasKey: () => Boolean(process.env.DEEPSEEK_API_KEY),
     },
 
-    // 2. MiniMax (3.1 Flash vía ZenMux)
+    // 3. MiniMax (3.1 Flash vía ZenMux)
     {
       name: `ZenMux (${process.env.ZENMUX_MINIMAX_MODEL || 'minimax/minimax-m3.1-flash'})`,
       fn: tryZenMuxMiniMax,
       hasKey: () => Boolean(process.env.ZENMUX_MINIMAX_KEY || process.env.ZENMUX_API_KEY),
-    },
-
-    // 3. Google Gemini (3.8 Flash)
-    {
-      name: 'Google Gemini (3.8 Flash)',
-      fn: tryGemini,
-      hasKey: () => Boolean(process.env.GEMINI_API_KEY),
     },
 
     // 4. ZenMux - Claude Haiku 5.5
@@ -1013,7 +1013,14 @@ export async function analyzeAuthorWithCascade(
   const prompt = buildAuthorAnalysisPrompt(params);
 
   const providers = [
-    // 1. DeepSeek Flash (ZenMux)
+    // 1. Google Gemini (3.8 Flash) - Prioridad principal por defecto
+    {
+      name: 'Google Gemini (3.8 Flash)',
+      fn: () => tryGeminiAuthor(params),
+      hasKey: () => Boolean(process.env.GEMINI_API_KEY),
+    },
+
+    // 2. DeepSeek Flash (ZenMux)
     {
       name: `ZenMux (${process.env.ZENMUX_DEEPSEEK_MODEL || 'deepseek/deepseek-v4.1-flash'})`,
       fn: async () => {
@@ -1031,7 +1038,7 @@ export async function analyzeAuthorWithCascade(
       hasKey: () => Boolean(process.env.ZENMUX_DEEPSEEK_KEY || process.env.ZENMUX_API_KEY),
     },
 
-    // 2. MiniMax 3.1 Flash (ZenMux)
+    // 3. MiniMax 3.1 Flash (ZenMux)
     {
       name: `ZenMux (${process.env.ZENMUX_MINIMAX_MODEL || 'minimax/minimax-m3.1-flash'})`,
       fn: async () => {
@@ -1047,13 +1054,6 @@ export async function analyzeAuthorWithCascade(
         return normalizeAuthorProfile(raw, params);
       },
       hasKey: () => Boolean(process.env.ZENMUX_MINIMAX_KEY || process.env.ZENMUX_API_KEY),
-    },
-
-    // 3. Google Gemini (3.8 Flash)
-    {
-      name: 'Google Gemini (3.8 Flash)',
-      fn: () => tryGeminiAuthor(params),
-      hasKey: () => Boolean(process.env.GEMINI_API_KEY),
     },
 
     // 4. Claude Haiku 5.5 (ZenMux)
@@ -1154,7 +1154,12 @@ export async function analyzeAuthorWithCascade(
 // Utilidades de consulta para la interfaz y ventanas de análisis
 // -------------------------------------------------------------
 export function getActivePrimaryProviderName(): string {
-  // 1. DeepSeek (ZenMux o Directo)
+  // 1. Google Gemini (3.8 Flash) - Proveedor Principal por defecto
+  if (process.env.GEMINI_API_KEY) {
+    return 'Google Gemini (3.8 Flash)';
+  }
+
+  // 2. DeepSeek (ZenMux o Directo)
   if (process.env.ZENMUX_DEEPSEEK_KEY || (process.env.ZENMUX_API_KEY && (!process.env.ZENMUX_MODEL || process.env.ZENMUX_MODEL.includes('deepseek')))) {
     const model = process.env.ZENMUX_DEEPSEEK_MODEL || 'deepseek/deepseek-v4.1-flash';
     return `ZenMux (${model})`;
@@ -1163,21 +1168,16 @@ export function getActivePrimaryProviderName(): string {
     return `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || 'deepseek-chat'})`;
   }
 
-  // 2. MiniMax (ZenMux 3.1 Flash)
+  // 3. MiniMax (ZenMux 3.1 Flash)
   if (process.env.ZENMUX_MINIMAX_KEY || (process.env.ZENMUX_API_KEY && process.env.ZENMUX_MODEL?.includes('minimax'))) {
     const model = process.env.ZENMUX_MINIMAX_MODEL || 'minimax/minimax-m3.1-flash';
     return `ZenMux (${model})`;
   }
 
-  // Si tiene ZENMUX_API_KEY general, por el nuevo orden inicia con DeepSeek
+  // Si tiene ZENMUX_API_KEY general (por defecto modelo DeepSeek en ZenMux)
   if (process.env.ZENMUX_API_KEY) {
-    const model = process.env.ZENMUX_DEEPSEEK_MODEL || 'deepseek/deepseek-v4.1-flash';
+    const model = process.env.ZENMUX_MODEL || process.env.ZENMUX_DEEPSEEK_MODEL || 'deepseek/deepseek-v4.1-flash';
     return `ZenMux (${model})`;
-  }
-
-  // 3. Google Gemini (3.8 Flash)
-  if (process.env.GEMINI_API_KEY) {
-    return 'Google Gemini (3.8 Flash)';
   }
 
   // 4. Claude Haiku
@@ -1212,22 +1212,22 @@ export function getActivePrimaryProviderName(): string {
 export function getConfiguredProvidersList(): Array<{ name: string; priority: number; configured: boolean; shortName: string }> {
   return [
     {
+      name: 'Google Gemini (3.8 Flash)',
+      shortName: 'Gemini 3.8 Flash',
+      priority: 1,
+      configured: Boolean(process.env.GEMINI_API_KEY),
+    },
+    {
       name: `ZenMux DeepSeek (${process.env.ZENMUX_DEEPSEEK_MODEL || 'v4.1-flash'})`,
       shortName: 'DeepSeek v4.1',
-      priority: 1,
+      priority: 2,
       configured: Boolean(process.env.ZENMUX_DEEPSEEK_KEY || process.env.ZENMUX_API_KEY || process.env.DEEPSEEK_API_KEY),
     },
     {
       name: `ZenMux MiniMax (${process.env.ZENMUX_MINIMAX_MODEL || '3.1-flash'})`,
       shortName: 'MiniMax 3.1',
-      priority: 2,
-      configured: Boolean(process.env.ZENMUX_MINIMAX_KEY || process.env.ZENMUX_API_KEY),
-    },
-    {
-      name: 'Google Gemini (3.8 Flash)',
-      shortName: 'Gemini 3.8 Flash',
       priority: 3,
-      configured: Boolean(process.env.GEMINI_API_KEY),
+      configured: Boolean(process.env.ZENMUX_MINIMAX_KEY || process.env.ZENMUX_API_KEY),
     },
     {
       name: `ZenMux Claude (${process.env.ZENMUX_CLAUDE_MODEL || 'Haiku 5.5'})`,

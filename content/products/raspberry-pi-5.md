@@ -17,7 +17,7 @@ author_handle: Raspberry_Pi
 entry_type: tech_product
 company: "Raspberry Pi"
 price: "$60 - $80 USD"
-classified_by: "DeepSeek / MiniMax / Gemini"
+classified_by: "Google Gemini (3.8 Flash)"
 ---
 
 # 🖥️ Raspberry Pi 5
