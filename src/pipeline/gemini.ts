@@ -7,6 +7,7 @@ export { ALLOWED_CATEGORIES };
 export async function classifyToolsWithGemini(params: {
   rawText: string;
   urls: string[];
+  sourceTweet?: string;
   githubMetas?: Record<string, GitHubMetadata>;
 }): Promise<ClassificationResult[]> {
   const { results, providerUsed } = await classifyWithProviderCascade(params);

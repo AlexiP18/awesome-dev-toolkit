@@ -6,6 +6,7 @@ import { GitHubMetadata } from './github.js';
 
 const TOOLS_DIR = path.resolve(process.cwd(), 'content/tools');
 const PRODUCTS_DIR = path.resolve(process.cwd(), 'content/products');
+const TIPS_DIR = path.resolve(process.cwd(), 'content/tips');
 
 export function ensureToolsDirExists(): void {
   if (!fs.existsSync(TOOLS_DIR)) {
@@ -13,6 +14,9 @@ export function ensureToolsDirExists(): void {
   }
   if (!fs.existsSync(PRODUCTS_DIR)) {
     fs.mkdirSync(PRODUCTS_DIR, { recursive: true });
+  }
+  if (!fs.existsSync(TIPS_DIR)) {
+    fs.mkdirSync(TIPS_DIR, { recursive: true });
   }
 }
 
@@ -34,14 +38,23 @@ export function slugify(text: string): string {
 export function normalizeUrlForComparison(rawUrl?: string): string {
   if (!rawUrl) return '';
   let u = rawUrl.trim().toLowerCase();
-  if (!u || u.includes('x.com/') || u.includes('twitter.com/')) {
-    return '';
-  }
+  if (!u) return '';
   u = u.replace(/^https?:\/\//, '');
   u = u.replace(/^www\./, '');
   u = u.split('?')[0].split('#')[0];
   u = u.replace(/\.git\/?$/, '');
   u = u.replace(/\/+$/, '');
+
+  // Normalizar dominios de X / Twitter
+  if (u.startsWith('twitter.com/')) {
+    u = 'x.com/' + u.slice('twitter.com/'.length);
+  }
+  if (u.startsWith('x.com/')) {
+    // Si no contiene un ID de status específico, ignorar para comparación de herramienta
+    if (!u.includes('/status/')) {
+      return '';
+    }
+  }
   return u;
 }
 
@@ -161,8 +174,9 @@ export function createOrUpdateToolNote(
     );
   }
 
+  const isTip = params.classification.entryType === 'tech_tip';
   const isShowcase = params.classification.entryType === 'product_showcase';
-  const targetDir = isShowcase ? PRODUCTS_DIR : TOOLS_DIR;
+  const targetDir = isTip ? TIPS_DIR : isShowcase ? PRODUCTS_DIR : TOOLS_DIR;
 
   const slug = slugify(params.classification.name);
   const filePath = path.join(targetDir, `${slug}.md`);
@@ -190,7 +204,7 @@ export function createOrUpdateToolNote(
     source_tweet: params.sourceTweet,
     author: authorName,
     author_handle: authorHandle,
-    entry_type: isShowcase ? 'product_showcase' : 'tool',
+    entry_type: isTip ? 'tech_tip' : isShowcase ? 'product_showcase' : 'tool',
     company: params.classification.company || (isShowcase ? params.author : undefined),
     has_academic_promo: params.classification.hasAcademicPromo || undefined,
     academic_promo_details: params.classification.academicPromoDetails || undefined,
@@ -204,21 +218,27 @@ export function createOrUpdateToolNote(
     ? `> 🎓 **Promoción Académica:** ${frontmatter.academic_promo_details || 'Disponible para estudiantes o instituciones educativas.'}\n\n`
     : '';
 
+  const sectionHighlightsTitle = isTip ? '📌 Puntos Clave & Pasos del Consejo' : '💡 ¿Por qué destaca?';
+  const sectionNotesTitle = isTip ? '📝 Aplicación Práctica & Contexto' : '📝 Notas Personales (Segundo Cerebro)';
+  const referenceLabel = isTip
+    ? (frontmatter.url.includes('x.com') || frontmatter.url.includes('twitter.com') ? 'Tweet con el consejo completo' : 'Enlace o documentación de referencia')
+    : (frontmatter.url.includes('github.com') ? 'Repositorio de código (GitHub)' : 'Enlace de referencia');
+
   const markdownBody = `
-# ${params.classification.name}
+# ${isTip ? '💡 ' : ''}${params.classification.name}
 
 > ${params.classification.oneLiner}
 
 ${promoBlock}${authorName ? `**👤 Publicado / Recomendado por:** ${authorName}${authorHandle ? ` ([@${authorHandle}](https://x.com/${authorHandle}))` : ''}\n` : ''}${isShowcase && frontmatter.company ? `**🏢 Empresa / Creador:** ${frontmatter.company}\n` : ''}
-## 💡 ¿Por qué destaca?
+## ${sectionHighlightsTitle}
 ${highlightsMd}
 
-## 📝 Notas Personales (Segundo Cerebro)
+## ${sectionNotesTitle}
 - ${params.classification.recommendedNotes || 'Pendiente de probar o revisar detalles.'}
 
 ## 🔗 Referencias
-- ${frontmatter.url.includes('github.com') ? 'Repositorio de código (GitHub)' : 'Enlace de referencia'}: [${params.classification.canonicalUrl}](${params.classification.canonicalUrl})
-${frontmatter.website_url ? `- Sitio Web oficial: [${frontmatter.website_url}](${frontmatter.website_url})\n` : ''}${params.sourceTweet ? `- Tweet origen: [Ver en X](${params.sourceTweet})` : ''}
+- ${referenceLabel}: [${params.classification.canonicalUrl}](${params.classification.canonicalUrl})
+${frontmatter.website_url ? `- Sitio Web oficial: [${frontmatter.website_url}](${frontmatter.website_url})\n` : ''}${params.sourceTweet && params.sourceTweet !== params.classification.canonicalUrl ? `- Tweet origen: [Ver en X](${params.sourceTweet})\n` : ''}
 `;
 
   const fileContent = matter.stringify(markdownBody.trim() + '\n', cleanFrontmatter(frontmatter));
@@ -234,6 +254,7 @@ export function loadAllTools(): ToolItem[] {
   const dirs = [
     { dir: TOOLS_DIR, defaultType: 'tool' as const },
     { dir: PRODUCTS_DIR, defaultType: 'product_showcase' as const },
+    { dir: TIPS_DIR, defaultType: 'tech_tip' as const },
   ];
 
   for (const { dir, defaultType } of dirs) {
@@ -290,7 +311,10 @@ export function updateToolNote(slug: string, updates: {
   if (!fs.existsSync(filePath)) {
     filePath = path.join(PRODUCTS_DIR, `${slug}.md`);
     if (!fs.existsSync(filePath)) {
-      return false;
+      filePath = path.join(TIPS_DIR, `${slug}.md`);
+      if (!fs.existsSync(filePath)) {
+        return false;
+      }
     }
   }
 

@@ -107,11 +107,34 @@
         <span id="statAcademic" class="hidden px-3 py-1.5 bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 rounded-lg font-medium">
           🎓 Académicas: <strong>0</strong>
         </span>
+        <span id="statTips" class="px-3 py-1.5 bg-violet-950/40 border border-violet-800/40 text-violet-300 rounded-lg">
+          💡 Consejos: <strong>0</strong>
+        </span>
       </div>
     </div>
 
-    <!-- Filter Pills: Categories & Status -->
+    <!-- Filter Pills: Types, Categories & Status -->
     <div class="space-y-3 mb-6">
+      <!-- Type Filter Tabs: Todos, Herramientas, Consejos Técnicos, Productos -->
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
+        <span class="font-medium text-slate-400 mr-1 flex items-center gap-1 flex-shrink-0">
+          <i data-lucide="layers" class="w-3.5 h-3.5 text-slate-500"></i>
+          <span>Tipo:</span>
+        </span>
+        <button onclick="setTypeFilter('all')" class="type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition bg-sky-500/20 text-sky-300 border-sky-500/40 font-medium" data-type="all">
+          ✨ Todos los recursos
+        </button>
+        <button onclick="setTypeFilter('tool')" class="type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800" data-type="tool">
+          🛠️ Herramientas
+        </button>
+        <button onclick="setTypeFilter('tech_tip')" class="type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800" data-type="tech_tip">
+          💡 Consejos Técnicos
+        </button>
+        <button onclick="setTypeFilter('product_showcase')" class="type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800" data-type="product_showcase">
+          🏢 Empresas & Productos
+        </button>
+      </div>
+
       <!-- Categories Scroll -->
       <div id="categoryFilters" class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
         <!-- Injected via JS -->
@@ -395,11 +418,25 @@
   <script>
     let allTools = [];
     let allAuthorProfiles = {};
+    let currentType = 'all';
     let currentCategory = 'all';
     let currentStatus = 'all';
     let currentAuthor = 'all';
     let filterOnlyAcademic = false;
     let activeEditingSlug = null;
+
+    function setTypeFilter(type) {
+      currentType = type;
+      document.querySelectorAll('.type-btn').forEach(btn => {
+        const match = btn.dataset.type === type;
+        btn.className = `type-btn px-3 py-1.5 rounded-lg border whitespace-nowrap transition ${
+          match 
+            ? 'bg-sky-500/20 text-sky-300 border-sky-500/40 font-medium' 
+            : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800'
+        }`;
+      });
+      renderTools();
+    }
 
     async function fetchAuthorProfiles() {
       try {
@@ -860,6 +897,7 @@
       'Productivity & Tools',
       'Documentation & Resources',
       'Empresas & Productos',
+      'Consejos & Buenas Prácticas',
       'Other'
     ];
 
@@ -944,6 +982,14 @@
       const query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
 
       return allTools.filter(tool => {
+        // Type filter
+        if (currentType !== 'all') {
+          const entryType = tool.frontmatter.entry_type || 'tool';
+          if (entryType !== currentType) {
+            return false;
+          }
+        }
+
         // Category filter
         if (currentCategory !== 'all' && tool.frontmatter.category !== currentCategory) {
           return false;
@@ -995,6 +1041,12 @@
         }
       }
 
+      const tipsCount = allTools.filter(t => t.frontmatter.entry_type === 'tech_tip' || t.frontmatter.category === 'Consejos & Buenas Prácticas').length;
+      const statTipsEl = document.getElementById('statTips');
+      if (statTipsEl) {
+        statTipsEl.innerHTML = `💡 Consejos: <strong>${tipsCount}</strong>`;
+      }
+
       const authors = getAuthorsData();
       const statAuthorsCountEl = document.getElementById('statAuthorsCount');
       if (statAuthorsCountEl) statAuthorsCountEl.innerText = authors.length;
@@ -1037,7 +1089,8 @@
 
         const safeUrl = (fm.url && fm.url !== 'undefined' && fm.url !== 'null') ? fm.url : (fm.website_url || '#');
         const isGithub = safeUrl.includes('github.com');
-        const mainLinkTitle = isGithub ? 'Ver repositorio en GitHub' : 'Visitar enlace principal';
+        const isTwitter = safeUrl.includes('x.com') || safeUrl.includes('twitter.com');
+        const mainLinkTitle = isGithub ? 'Ver repositorio en GitHub' : isTwitter ? 'Ver tweet del consejo en X' : 'Visitar enlace principal';
 
         // Ícono SVG de GitHub nativo (ya que Lucide v1 no incluye marcas propietarias)
         const githubSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>`;
@@ -1045,9 +1098,27 @@
         // Ícono SVG de X (Twitter)
         const xSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
 
-        const mainIconHtml = isGithub ? githubSvg : `<i data-lucide="external-link" class="w-3.5 h-3.5"></i>`;
+        const mainIconHtml = isGithub ? githubSvg : isTwitter ? xSvg : `<i data-lucide="external-link" class="w-3.5 h-3.5"></i>`;
 
-        const tweetLink = (fm.source_tweet && fm.source_tweet !== 'undefined' && fm.source_tweet !== 'null') ? `
+        const isTip = fm.entry_type === 'tech_tip';
+        const isShowcase = fm.entry_type === 'product_showcase';
+
+        const typeBadge = isTip ? `
+          <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-300 border border-violet-500/30">
+            <span>💡</span> Consejo Técnico
+          </span>
+        ` : isShowcase ? `
+          <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+            <span>🏢</span> Producto
+          </span>
+        ` : '';
+
+        const tweetLink = (
+          fm.source_tweet &&
+          fm.source_tweet !== 'undefined' &&
+          fm.source_tweet !== 'null' &&
+          fm.source_tweet !== safeUrl
+        ) ? `
           <a href="${fm.source_tweet}" target="_blank" title="Ver tweet original en X / Twitter" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition flex items-center justify-center">
             ${xSvg}
           </a>
@@ -1110,6 +1181,7 @@
                     <span class="text-[10px] font-semibold tracking-wider uppercase text-sky-400">
                       ${fm.category || 'Other'}
                     </span>
+                    ${typeBadge}
                     ${academicBadge}
                   </div>
                   <h3 class="font-bold text-slate-100 text-sm group-hover:text-sky-300 transition flex items-center gap-1.5">
@@ -1182,7 +1254,12 @@
       activeEditingSlug = slug;
 
       document.getElementById('modalToolName').innerText = tool.frontmatter.name;
-      document.getElementById('modalToolPath').innerText = `content/tools/${slug}.md`;
+      const noteFolder = tool.frontmatter.entry_type === 'tech_tip'
+        ? 'content/tips'
+        : tool.frontmatter.entry_type === 'product_showcase'
+        ? 'content/products'
+        : 'content/tools';
+      document.getElementById('modalToolPath').innerText = `${noteFolder}/${slug}.md`;
       document.getElementById('modalOfficialLink').href = tool.frontmatter.url;
 
       const authorBadgeEl = document.getElementById('modalAuthorBadge');

@@ -100,6 +100,11 @@ export async function ingestResource(input: IngestInput) {
     new Set(resolvedList.map((r) => r.finalUrl).filter(Boolean))
   );
 
+  // Si no se detectaron URLs externas pero se proporcionó el tweet de origen, usarlo como enlace de respaldo
+  if (canonicalUrls.length === 0 && input.sourceTweet) {
+    canonicalUrls.push(input.sourceTweet);
+  }
+
   // Priorizar repositorios de GitHub al inicio de los candidatos (y los de nombre más completo primero)
   canonicalUrls.sort((a, b) => {
     const aGh = a.includes('github.com') ? 1 : 0;
@@ -176,6 +181,7 @@ export async function ingestResource(input: IngestInput) {
   const classifications = await classifyToolsWithGemini({
     rawText: text || canonicalUrls.join('\n') || input.sourceTweet || '',
     urls: canonicalUrls,
+    sourceTweet: input.sourceTweet,
     githubMetas,
   });
 
@@ -244,6 +250,10 @@ export async function ingestResource(input: IngestInput) {
         classification.websiteUrl.toLowerCase().includes('gitlab.com'))
     ) {
       classification.websiteUrl = undefined;
+    }
+
+    if (!classification.canonicalUrl && input.sourceTweet) {
+      classification.canonicalUrl = input.sourceTweet;
     }
   }
 

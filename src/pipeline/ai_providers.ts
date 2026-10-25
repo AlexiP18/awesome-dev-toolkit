@@ -17,12 +17,14 @@ export const ALLOWED_CATEGORIES: ToolCategory[] = [
   'Productivity & Tools',
   'Documentation & Resources',
   'Empresas & Productos',
+  'Consejos & Buenas Prácticas',
   'Other',
 ];
 
 export interface ClassifyInput {
   rawText: string;
   urls: string[];
+  sourceTweet?: string;
   githubMetas?: Record<string, GitHubMetadata>;
 }
 
@@ -42,7 +44,7 @@ Analiza el siguiente tweet o texto guardado para un Toolkit de Desarrolladores d
 """
 ${params.rawText}
 """
-- Enlaces detectados y resueltos:
+${params.sourceTweet ? `- Tweet de origen: ${params.sourceTweet}\n` : ''}- Enlaces detectados y resueltos:
 ${params.urls.length > 0 ? params.urls.map((u) => `  * ${u}`).join('\n') : '  (Ninguno explícito, infiérelos del texto si aparecen dominios como sitio.com, herramienta.io, etc.)'}
 ${githubInfoList ? `- Metadata de GitHub:\n${githubInfoList}` : ''}
 
@@ -100,6 +102,17 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * ESTÁ ESTRICTAMENTE PROHIBIDO modificar, cambiar o abreviar letras del dueño u organización (ej. NUNCA cambies 'lemomo-ai' por 'lemo-ai').
      * Copia la URL exacta de la lista de enlaces detectados carácter por carácter.
 
+10. TWEETS DE CONSEJOS TÉCNICOS, TRUCOS O BUENAS PRÁCTICAS EN DIFERENTES ÁREAS ('tech_tip'):
+   - Si el tweet comparte consejos prácticos, trucos o buenas prácticas técnicas (ej: comandos útiles de Docker o Git, trucos de CSS/React, optimización de consultas SQL, patrones de diseño de APIs, atajos de terminal, reglas de arquitectura o tips de debugging):
+     * 'name': Título descriptivo y conciso del consejo o técnica (ej: "Optimización de Pools de Conexión en PostgreSQL", "Multi-stage Builds Eficientes en Docker", "Patrón Compound Components en React").
+     * 'canonicalUrl': Si el tweet incluye un enlace de referencia técnica o documentación, úsalo. Si NO tiene ningún enlace externo, usa el tweet de origen o déjalo vacío para que se asocie al tweet.
+     * 'category': Asigna el área técnica correspondiente (ej: 'DevOps & Cloud' para Docker/K8s/CI, 'Databases & Storage' para SQL/Postgres, 'Frontend & UI' para React/CSS/Tailwind, 'Backend & APIs' para NodeJS/APIs, 'CLI & Terminal' para bash/git). Si es un consejo general de ingeniería de software o no encaja en una específica, usa 'Consejos & Buenas Prácticas'.
+     * 'entryType': "tech_tip".
+     * 'oneLiner': Resumen conciso y claro en español del consejo y su utilidad práctica.
+     * 'keyHighlights': Pasos, comandos clave o puntos esenciales del truco explicados claramente.
+     * 'recommendedNotes': Ejemplo práctico de cuándo aplicarlo, consideraciones o advertencias técnicas.
+     * 'tags': Incluye etiquetas técnicas relevantes (ej: ["docker", "devops", "tips"], ["postgresql", "sql", "performance"], ["react", "frontend", "patterns"]).
+
 Categorías válidas (selecciona EXACTAMENTE una para cada herramienta):
 ${ALLOWED_CATEGORIES.map((c) => `- "${c}"`).join('\n')}
 
@@ -108,14 +121,14 @@ Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
   "tools": [
     {
       "name": "Nombre claro y conciso",
-      "canonicalUrl": "https://github.com/... (priorizar repo de GitHub/GitLab)",
+      "canonicalUrl": "https://github.com/... (priorizar repo de GitHub/GitLab, o enlace/tweet de referencia)",
       "websiteUrl": "https://... (web oficial si existe)",
       "category": "Una de las categorías válidas listadas arriba",
-      "entryType": "tool o product_showcase",
+      "entryType": "tool, product_showcase o tech_tip",
       "company": "Nombre de la empresa si aplica",
       "tags": ["tag1", "tag2", "tag3"],
-      "oneLiner": "Resumen conciso en español de 1-2 oraciones explicando para qué sirve",
-      "keyHighlights": ["Punto clave 1", "Punto clave 2"],
+      "oneLiner": "Resumen conciso en español de 1-2 oraciones explicando para qué sirve o en qué consiste",
+      "keyHighlights": ["Punto clave o paso 1", "Punto clave o paso 2"],
       "recommendedNotes": "Una sugerencia técnica breve en español",
       "hasAcademicPromo": false,
       "academicPromoDetails": "Detalles del beneficio para estudiantes o null"
@@ -125,7 +138,7 @@ Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
 `;
 }
 
-function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationResult[] {
+function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: string): ClassificationResult[] {
   if (!Array.isArray(parsedList) || parsedList.length === 0) {
     return [];
   }
@@ -135,9 +148,11 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
       ? (parsed.category as ToolCategory)
       : 'Other';
 
-    let url = (parsed.canonicalUrl || urls[index] || urls[0] || '').trim();
+    const isTip = parsed.entryType === 'tech_tip' || validCategory === 'Consejos & Buenas Prácticas';
+
+    let url = (parsed.canonicalUrl || urls[index] || urls[0] || (isTip ? sourceTweet : '') || '').trim();
     if (url === 'undefined' || url === 'null') {
-      url = (urls[index] || urls[0] || '').trim();
+      url = (urls[index] || urls[0] || (isTip ? sourceTweet : '') || '').trim();
     }
     url = cleanTrackingParams(url);
     if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
@@ -145,7 +160,7 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
     }
 
     if (!url || url === 'https://undefined' || url === 'https://null') {
-      url = urls[0] || '';
+      url = urls[0] || (isTip ? sourceTweet : '') || '';
     }
 
     // PROTECCIÓN CONTRA ALUCINACIONES DE LA IA EN ENLACES DE GITHUB:
@@ -229,9 +244,16 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
     }
 
     const isShowcase =
-      parsed.entryType === 'product_showcase' ||
-      validCategory === 'Empresas & Productos' ||
-      Boolean(parsed.company && !url.includes('github.com'));
+      !isTip &&
+      (parsed.entryType === 'product_showcase' ||
+        validCategory === 'Empresas & Productos' ||
+        Boolean(parsed.company && !url.includes('github.com')));
+
+    const entryType: 'tool' | 'product_showcase' | 'tech_tip' = isTip
+      ? 'tech_tip'
+      : isShowcase
+      ? 'product_showcase'
+      : 'tool';
 
     const hasAcademicPromo = Boolean(
       parsed.hasAcademicPromo === true ||
@@ -242,15 +264,15 @@ function normalizeRawOutput(parsedList: any[], urls: string[]): ClassificationRe
     const academicPromoDetails = parsed.academicPromoDetails || parsed.academic_promo_details || undefined;
 
     return {
-      name: parsed.name || 'Nueva Herramienta',
+      name: parsed.name || (isTip ? 'Consejo Técnico' : 'Nueva Herramienta'),
       canonicalUrl: url,
       websiteUrl,
       category: validCategory,
       tags: Array.isArray(parsed.tags) ? parsed.tags.map((t: string) => t.toLowerCase()) : [],
-      oneLiner: parsed.oneLiner || 'Herramienta guardada de X.',
+      oneLiner: parsed.oneLiner || (isTip ? 'Consejo técnico guardado de X.' : 'Herramienta guardada de X.'),
       keyHighlights: Array.isArray(parsed.keyHighlights) ? parsed.keyHighlights : [],
       recommendedNotes: parsed.recommendedNotes || '',
-      entryType: isShowcase ? 'product_showcase' : 'tool',
+      entryType,
       company: parsed.company || undefined,
       hasAcademicPromo,
       academicPromoDetails,
@@ -299,7 +321,7 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
   });
 
   const parsed = JSON.parse(response.text || '[]');
-  return normalizeRawOutput(parsed, params.urls);
+  return normalizeRawOutput(parsed, params.urls, params.sourceTweet);
 }
 
 // -------------------------------------------------------------
@@ -425,7 +447,7 @@ async function tryZenMuxDeepSeek(params: ClassifyInput): Promise<ClassificationR
     prompt: buildUserPrompt(params),
   });
 
-  return normalizeRawOutput(raw, params.urls);
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
 }
 
 // ZenMux - Claude Haiku (5.5)
@@ -442,7 +464,7 @@ async function tryZenMuxClaude(params: ClassifyInput): Promise<ClassificationRes
     prompt: buildUserPrompt(params),
   });
 
-  return normalizeRawOutput(raw, params.urls);
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
 }
 
 // ZenMux - MiniMax (3.1 Flash)
@@ -459,7 +481,7 @@ async function tryZenMuxMiniMax(params: ClassifyInput): Promise<ClassificationRe
     prompt: buildUserPrompt(params),
   });
 
-  return normalizeRawOutput(raw, params.urls);
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
 }
 
 // ZenMux - General (con ZENMUX_API_KEY y modelo personalizado)
@@ -476,7 +498,7 @@ async function tryZenMuxGeneral(params: ClassifyInput): Promise<ClassificationRe
     prompt: buildUserPrompt(params),
   });
 
-  return normalizeRawOutput(raw, params.urls);
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
 }
 
 // DeepSeek Directo (api.deepseek.com)
@@ -492,7 +514,7 @@ async function tryDeepSeekDirect(params: ClassifyInput): Promise<ClassificationR
     prompt: buildUserPrompt(params),
   });
 
-  return normalizeRawOutput(raw, params.urls);
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
 }
 
 // -------------------------------------------------------------
@@ -510,7 +532,7 @@ async function tryGroq(params: ClassifyInput): Promise<ClassificationResult[]> {
     prompt: buildUserPrompt(params),
   });
 
-  return normalizeRawOutput(raw, params.urls);
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
 }
 
 // -------------------------------------------------------------
@@ -532,7 +554,7 @@ async function tryOpenRouter(params: ClassifyInput): Promise<ClassificationResul
     },
   });
 
-  return normalizeRawOutput(raw, params.urls);
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
 }
 
 // -------------------------------------------------------------
@@ -550,7 +572,7 @@ async function tryOpenAI(params: ClassifyInput): Promise<ClassificationResult[]>
     prompt: buildUserPrompt(params),
   });
 
-  return normalizeRawOutput(raw, params.urls);
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
 }
 
 // -------------------------------------------------------------
@@ -566,7 +588,7 @@ async function tryOllama(params: ClassifyInput): Promise<ClassificationResult[]>
     prompt: buildUserPrompt(params),
   });
 
-  return normalizeRawOutput(raw, params.urls);
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
 }
 
 // -------------------------------------------------------------
@@ -648,7 +670,7 @@ export async function classifyWithProviderCascade(
     `[IA Fallback] Ningún proveedor de IA tuvo éxito. Errores: ${errors.join(' | ')}. Usando fallback básico.`
   );
 
-  const fallback = params.urls.length > 0
+  const fallback: ClassificationResult[] = params.urls.length > 0
     ? params.urls.map((u) => ({
         name: params.githubMetas?.[u]?.name || u.split('/').filter(Boolean).pop()?.replace(/-/g, ' ') || 'Herramienta',
         canonicalUrl: u,
@@ -657,7 +679,19 @@ export async function classifyWithProviderCascade(
         oneLiner: params.githubMetas?.[u]?.description || params.rawText.slice(0, 140),
         keyHighlights: params.githubMetas?.[u]?.language ? [`Escrito en ${params.githubMetas[u].language}`] : [],
         recommendedNotes: 'Importado en modo de respaldo (sin proveedor de IA activo).',
+        entryType: 'tool' as const,
       }))
+    : (params.sourceTweet || params.rawText)
+    ? [{
+        name: 'Consejo Técnico',
+        canonicalUrl: params.sourceTweet || '',
+        category: 'Consejos & Buenas Prácticas' as ToolCategory,
+        tags: ['consejos', 'tips', 'dev'],
+        oneLiner: params.rawText.slice(0, 140),
+        keyHighlights: [params.rawText.slice(0, 200)],
+        recommendedNotes: 'Importado en modo de respaldo.',
+        entryType: 'tech_tip' as const,
+      }]
     : [];
 
   return { results: fallback, providerUsed: 'Fallback (Sin IA)' };

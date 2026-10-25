@@ -14,6 +14,7 @@ const CATEGORY_ICONS: Record<ToolCategory, string> = {
   'Productivity & Tools': '⚡',
   'Documentation & Resources': '📚',
   'Empresas & Productos': '🏢',
+  'Consejos & Buenas Prácticas': '💡',
   'Other': '📦',
 };
 
@@ -74,16 +75,20 @@ export function generateReadme(): string {
       const tweetBadge = item.frontmatter.source_tweet
         ? ` [𝕏 Tweet](${item.frontmatter.source_tweet})`
         : '';
+      const isTip = item.frontmatter.entry_type === 'tech_tip';
+      const tipBadge = isTip ? ' `💡 Consejo Técnico`' : '';
       const isAcademic = Boolean(
         item.frontmatter.has_academic_promo ||
         (item.frontmatter.tags && item.frontmatter.tags.some(t => ['academic', 'academico', 'académico', 'estudiante', 'estudiantes', 'student', 'students', 'education', 'educacion', 'educación'].includes(t.toLowerCase())))
       );
       const academicBadge = isAcademic ? ' `🎓 Promo Académica`' : '';
-      const notePath = item.frontmatter.entry_type === 'product_showcase'
+      const notePath = isTip
+        ? `content/tips/${item.slug}.md`
+        : item.frontmatter.entry_type === 'product_showcase'
         ? `content/products/${item.slug}.md`
         : `content/tools/${item.slug}.md`;
 
-      body += `- **[${item.frontmatter.name}](${item.frontmatter.url})**${companyBadge}${authorBadge}${starsBadge}${websiteBadge}${tweetBadge}${academicBadge}${statusBadge}  \n`;
+      body += `- **[${item.frontmatter.name}](${item.frontmatter.url})**${tipBadge}${companyBadge}${authorBadge}${starsBadge}${websiteBadge}${tweetBadge}${academicBadge}${statusBadge}  \n`;
       body += `  ${summary} [📝 Ver ficha](${notePath})${tags}\n\n`;
     }
   }

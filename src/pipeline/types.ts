@@ -9,9 +9,10 @@ export type ToolCategory =
   | 'Productivity & Tools'
   | 'Documentation & Resources'
   | 'Empresas & Productos'
+  | 'Consejos & Buenas Prácticas'
   | 'Other';
 
-export type EntryType = 'tool' | 'product_showcase';
+export type EntryType = 'tool' | 'product_showcase' | 'tech_tip';
 
 export type ToolStatus = 'to_try' | 'in_use' | 'archived';
 
