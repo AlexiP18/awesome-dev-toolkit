@@ -3,7 +3,7 @@
 > Colección curada en **4 apartados esenciales** (Herramientas, Consejos Técnicos, Trabajo Remoto/Freelance y Productos Tech/Hardware) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA (Gemini 3.8 Flash).
 
 [![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-4-blue?style=for-the-badge)]()
-[![Consejos](https://img.shields.io/badge/💡_Consejos-1-8E75C2?style=for-the-badge)]()
+[![Consejos](https://img.shields.io/badge/💡_Consejos-2-8E75C2?style=for-the-badge)]()
 [![Trabajo Remoto](https://img.shields.io/badge/💼_Trabajo_Remoto-1-0284C7?style=for-the-badge)]()
 [![Productos Tech](https://img.shields.io/badge/🖥️_Productos_Tech-1-D97706?style=for-the-badge)]()
 [![Obsidian Ready](https://img.shields.io/badge/Obsidian-Segundo_Cerebro-7C3AED?style=for-the-badge&logo=obsidian)]()
@@ -13,7 +13,7 @@
 ## 📑 Los 4 Apartados del Toolkit
 
 - [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-4) (4)
-- [💡 Apartado 2: Consejos Técnicos & Buenas Prácticas](#-apartado-2-consejos-técnicos--buenas-prácticas-1) (1)
+- [💡 Apartado 2: Consejos Técnicos & Buenas Prácticas](#-apartado-2-consejos-técnicos--buenas-prácticas-2) (2)
 - [💼 Apartado 3: Trabajo Remoto & Freelance](#-apartado-3-trabajo-remoto--oportunidades-freelance-1) (1)
 - [🖥️ Apartado 4: Productos Tecnológicos & Hardware](#-apartado-4-productos-tecnológicos--hardware-1) (1)
 
@@ -43,11 +43,14 @@
 
 ---
 
-## 💡 Apartado 2: Consejos Técnicos & Buenas Prácticas (1)
+## 💡 Apartado 2: Consejos Técnicos & Buenas Prácticas (2)
 
 > Trucos prácticos, comandos, snippets de código y lecciones de arquitectura e ingeniería de software.
 
-### 💡 Consejos & Buenas Prácticas (1)
+### 💡 Consejos & Buenas Prácticas (2)
+
+- **[Claude Desktop: 7 Prompts para Diagnosticar y Acelerar tu Red WiFi](https://x.com/SantiTorAI/status/2114760255121063981)** (`👤 Santi Torres`) [𝕏 Tweet](https://x.com/SantiTorAI/status/2114760255121063981) `🟢 En uso`  
+  Guía de prompts para la aplicación de escritorio de Claude con acceso al ordenador, funcionando como un técnico de redes para medir velocidad, detectar programas que consumen ancho de banda y registrar caídas de conexión. [📝 Ver ficha](content/tips/claude-desktop-diagnostico-wifi.md) `#claude` `#wifi` `#networking` `#diagnostico` `#prompts` `#tips`
 
 - **[Git: Deshacer el último commit manteniendo los cambios](https://x.com/tech_tips_daily/status/1789012345678901234)** (`👤 @tech_tips_daily`) [𝕏 Tweet](https://x.com/tech_tips_daily/status/1789012345678901234) `🟢 En uso`  
   Si hiciste un commit por error o necesitas modificar archivos antes de enviarlo, usa `git reset --soft HEAD~1` para mantener todos tus cambios intactos en el área de staging. [📝 Ver ficha](content/tips/git-undo-commit-trick.md) `#git` `#terminal` `#productivity` `#workflow`

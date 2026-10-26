@@ -7,6 +7,7 @@ import { ingestResource } from '../pipeline/ingest.js';
 import { generateReadme } from '../pipeline/generate_readme.js';
 import { loadAllAuthorProfiles, analyzeAuthorWithAI } from '../pipeline/author_manager.js';
 import { getActivePrimaryProviderName, getConfiguredProvidersList } from '../pipeline/ai_providers.js';
+import { classifyToolsWithGemini } from '../pipeline/gemini.js';
 import fs from 'fs';
 
 dotenv.config();
@@ -131,6 +132,79 @@ app.patch('/api/tools/:slug', (req, res) => {
     } catch {}
 
     res.json({ success: true, message: 'Nota actualizada correctamente' });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// POST append or structure thread tweets into an existing tool / tip
+app.post('/api/tools/:slug/thread', async (req, res) => {
+  try {
+    const { slug } = req.params;
+    const { rawText, aiProvider } = req.body;
+    if (!rawText || !rawText.trim()) {
+      return res.status(400).json({ success: false, error: 'rawText es requerido' });
+    }
+
+    const allTools = loadAllTools();
+    const tool = allTools.find((t) => t.slug === slug);
+    if (!tool) {
+      return res.status(404).json({ success: false, error: 'Recurso no encontrado' });
+    }
+
+    let updatedContent = tool.content;
+    let providerUsed = 'Directo';
+
+    try {
+      const aiPrompt = `Tienes una ficha técnica existente titulada: "${tool.frontmatter.name}"
+URL: ${tool.frontmatter.url}
+
+El usuario ha recopilado tweets o prompts adicionales de este hilo en X:
+"""
+${rawText}
+"""
+
+Por favor, extrae de forma limpia y numerada cada paso, prompt o instrucción técnica encontrada en los tweets. Genera una lista de puntos clave donde cada paso tenga su título y su prompt respectivo.`;
+
+      const aiRes = await classifyToolsWithGemini(
+        {
+          rawText: aiPrompt,
+          urls: [tool.frontmatter.url],
+          sourceTweet: tool.frontmatter.source_tweet,
+        },
+        aiProvider
+      );
+
+      if (aiRes.results && aiRes.results.length > 0) {
+        const first = aiRes.results[0];
+        providerUsed = aiRes.providerUsed;
+        const newHighlights = first.keyHighlights || [];
+        if (newHighlights.length > 0) {
+          const formattedSteps = newHighlights
+            .map((h, i) => `\n### Paso adicional ${i + 1}\n${h}`)
+            .join('\n');
+          updatedContent = updatedContent + `\n\n## 🧵 Tweets Adicionales del Hilo\n${formattedSteps}\n`;
+        } else {
+          updatedContent = updatedContent + `\n\n## 🧵 Tweets Adicionales del Hilo\n${rawText}\n`;
+        }
+      } else {
+        updatedContent = updatedContent + `\n\n## 🧵 Tweets Adicionales del Hilo\n${rawText}\n`;
+      }
+    } catch (e: any) {
+      console.warn('[Thread API] Error en IA al procesar hilo, adjuntando texto directamente:', e?.message);
+      updatedContent = updatedContent + `\n\n## 🧵 Tweets Adicionales del Hilo\n${rawText}\n`;
+    }
+
+    updateToolNote(slug, { notes: updatedContent });
+
+    try {
+      const readme = generateReadme();
+      fs.writeFileSync(path.resolve(process.cwd(), 'README.md'), readme, 'utf-8');
+    } catch {}
+
+    const updatedTools = loadAllTools();
+    const updated = updatedTools.find((t) => t.slug === slug);
+    res.json({ success: true, tool: updated, providerUsed });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
   }
