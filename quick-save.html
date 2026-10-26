@@ -3,42 +3,245 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guardando en Dev Toolkit...</title>
+  <title>Analizar con IA - Dev Toolkit</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4 font-sans">
-  <div id="card" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 w-full max-w-md text-center shadow-2xl">
-    <div id="spinner" class="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-    <h2 id="title" class="text-base font-bold text-slate-100 mb-1">⚡ Analizando con Gemini...</h2>
-    <p id="subtitle" class="text-xs text-slate-400">Verificando duplicados y extrayendo herramientas</p>
-    <div id="details" class="hidden mt-4 pt-3 border-t border-slate-800 text-left text-xs space-y-2 max-h-56 overflow-y-auto"></div>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-3 font-sans select-none">
+  <div id="card" class="bg-slate-900 border border-slate-800 rounded-2xl p-5 w-full max-w-md shadow-2xl transition-all">
+    
+    <!-- Top Header -->
+    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="p-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm flex-shrink-0">
+          ⚡
+        </div>
+        <div class="min-w-0">
+          <h1 class="text-xs font-bold text-slate-100">Awesome Dev Toolkit</h1>
+          <p id="resourcePreview" class="text-[10px] text-slate-400 truncate max-w-[260px]">Detectando recurso...</p>
+        </div>
+      </div>
+      <button onclick="window.close()" class="text-slate-500 hover:text-slate-300 p-1 text-xs transition" title="Cerrar">✕</button>
+    </div>
+
+    <!-- VIEW 1: Model Selection & Launch -->
+    <div id="viewSelection" class="space-y-3">
+      <div class="text-left">
+        <label class="block text-xs font-semibold text-slate-200 mb-0.5">Elige el motor de IA para el análisis:</label>
+        <p class="text-[11px] text-slate-400">Selecciona el modelo con el que deseas clasificar y generar la ficha:</p>
+      </div>
+
+      <div class="space-y-2" id="providerList">
+        <!-- Gemini 3.8 Flash -->
+        <button 
+          type="button"
+          onclick="selectAndRun('gemini')" 
+          id="btnProvider-gemini"
+          class="w-full p-2.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/80 border-slate-800 hover:border-sky-500/70 hover:bg-sky-500/10 cursor-pointer shadow-sm"
+        >
+          <div class="flex items-center gap-2.5">
+            <span class="text-lg">🧠</span>
+            <div>
+              <div class="text-xs font-bold text-slate-200 group-hover:text-sky-300 flex items-center gap-1.5">
+                <span>Google Gemini</span>
+                <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">3.8 Flash</span>
+              </div>
+              <div class="text-[10px] text-slate-400">Modelo principal rápido por defecto</div>
+            </div>
+          </div>
+          <span id="badge-gemini" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-medium">🟢 Listo</span>
+        </button>
+
+        <!-- DeepSeek v4.1 -->
+        <button 
+          type="button"
+          onclick="selectAndRun('deepseek')" 
+          id="btnProvider-deepseek"
+          class="w-full p-2.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/80 border-slate-800 hover:border-blue-500/70 hover:bg-blue-500/10 cursor-pointer shadow-sm"
+        >
+          <div class="flex items-center gap-2.5">
+            <span class="text-lg">🚀</span>
+            <div>
+              <div class="text-xs font-bold text-slate-200 group-hover:text-blue-300 flex items-center gap-1.5">
+                <span>DeepSeek</span>
+                <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">v4.1 Flash</span>
+              </div>
+              <div class="text-[10px] text-slate-400">Recomendado cuando Gemini está sobrecargado</div>
+            </div>
+          </div>
+          <span id="badge-deepseek" class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 font-medium">Directo / ZenMux</span>
+        </button>
+
+        <!-- MiniMax 3.1 -->
+        <button 
+          type="button"
+          onclick="selectAndRun('minimax')" 
+          id="btnProvider-minimax"
+          class="w-full p-2.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/80 border-slate-800 hover:border-amber-500/70 hover:bg-amber-500/10 cursor-pointer shadow-sm"
+        >
+          <div class="flex items-center gap-2.5">
+            <span class="text-lg">⚡</span>
+            <div>
+              <div class="text-xs font-bold text-slate-200 group-hover:text-amber-300 flex items-center gap-1.5">
+                <span>MiniMax</span>
+                <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">3.1 Flash</span>
+              </div>
+              <div class="text-[10px] text-slate-400">Excelente para hilos, prompts y resúmenes</div>
+            </div>
+          </div>
+          <span id="badge-minimax" class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 font-medium">ZenMux</span>
+        </button>
+      </div>
+
+      <div class="pt-2 flex items-center justify-between text-[11px] text-slate-500 border-t border-slate-800/60">
+        <span>Haz clic en un modelo para iniciar</span>
+        <button type="button" onclick="window.close()" class="hover:text-slate-300 transition">Cancelar</button>
+      </div>
+    </div>
+
+    <!-- VIEW 2: In Progress -->
+    <div id="viewLoading" class="hidden py-6 text-center space-y-3">
+      <div id="spinner" class="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+      <div>
+        <h2 id="loadingTitle" class="text-sm font-bold text-slate-100">Analizando...</h2>
+        <p id="loadingSubtitle" class="text-xs text-slate-400 mt-0.5">Clasificando contenido y generando ficha técnica</p>
+      </div>
+    </div>
+
+    <!-- VIEW 3: Results / Details -->
+    <div id="viewResults" class="hidden space-y-3">
+      <div id="resultHeader" class="text-center pb-2">
+        <h2 id="resultTitle" class="text-sm font-bold text-emerald-400 mb-0.5">✅ Guardado con éxito</h2>
+        <p id="resultSubtitle" class="text-xs text-slate-300 font-medium"></p>
+      </div>
+
+      <div id="resultDetails" class="text-left text-xs space-y-2 max-h-56 overflow-y-auto bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+      </div>
+
+      <div class="pt-2 flex items-center justify-between text-[10px] text-slate-500">
+        <span id="autoCloseNotice">Esta ventana se cerrará automáticamente...</span>
+        <button type="button" onclick="window.close()" class="px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 transition">Cerrar</button>
+      </div>
+    </div>
+
+    <!-- VIEW 4: Error & Switch Retry -->
+    <div id="viewError" class="hidden space-y-3 text-left">
+      <div class="p-3 rounded-xl bg-amber-950/30 border border-amber-500/30 text-amber-200">
+        <div class="flex items-center gap-1.5 font-bold text-xs text-amber-300 mb-1">
+          <span>⚠️</span>
+          <span id="errorTitle">Sobrecarga o error del modelo</span>
+        </div>
+        <p id="errorDescription" class="text-[11px] text-slate-300 leading-relaxed"></p>
+      </div>
+
+      <div class="space-y-2">
+        <p class="text-xs font-semibold text-slate-200">Elige otro modelo para reintentar de inmediato:</p>
+        <div id="retryButtons" class="grid grid-cols-1 gap-2">
+          <!-- Injected dynamically based on failed model -->
+        </div>
+      </div>
+
+      <div class="pt-2 flex items-center justify-between text-xs text-slate-400 border-t border-slate-800/60">
+        <button type="button" onclick="showSelectionView()" class="text-sky-400 hover:underline">Ver todos los modelos</button>
+        <button type="button" onclick="window.close()" class="hover:text-slate-200">Cerrar</button>
+      </div>
+    </div>
+
   </div>
 
   <script>
-    async function runQuickSave() {
-      const params = new URLSearchParams(window.location.search);
-      const sourceTweet = params.get('sourceTweet') || '';
-      const rawText = params.get('rawText') || '';
-      const author = params.get('author') || '';
-      const urlParam = params.get('url') || '';
-      const urls = urlParam ? urlParam.split(',').map(u => u.trim()).filter(Boolean) : [];
-      const aiProvider = params.get('aiProvider') || localStorage.getItem('toolkit_selected_ai_provider') || undefined;
+    const params = new URLSearchParams(window.location.search);
+    const sourceTweet = params.get('sourceTweet') || '';
+    const rawText = params.get('rawText') || '';
+    const author = params.get('author') || '';
+    const urlParam = params.get('url') || '';
+    const urls = urlParam ? urlParam.split(',').map(u => u.trim()).filter(Boolean) : [];
+    
+    let selectedProvider = localStorage.getItem('toolkit_selected_ai_provider') || 'gemini';
+    let allConfiguredProviders = [];
 
-      const spinner = document.getElementById('spinner');
-      const title = document.getElementById('title');
-      const subtitle = document.getElementById('subtitle');
-      const details = document.getElementById('details');
+    // Setup initial header preview
+    const previewEl = document.getElementById('resourcePreview');
+    if (author) {
+      previewEl.innerText = `Tweet de ${author}`;
+    } else if (sourceTweet) {
+      previewEl.innerText = sourceTweet;
+    } else if (urls.length > 0) {
+      previewEl.innerText = urls[0];
+    } else if (rawText) {
+      previewEl.innerText = rawText.slice(0, 40) + '...';
+    } else {
+      previewEl.innerText = 'Sin contenido detectado';
+    }
 
-      if (aiProvider && title) {
-        title.innerText = `⚡ Analizando con ${aiProvider}...`;
+    // Highlight previously chosen provider
+    function highlightSelectedProvider() {
+      ['gemini', 'deepseek', 'minimax'].forEach(id => {
+        const btn = document.getElementById(`btnProvider-${id}`);
+        if (!btn) return;
+        if (id === selectedProvider) {
+          btn.classList.add('ring-2', 'ring-sky-500/60', 'bg-sky-500/5');
+        } else {
+          btn.classList.remove('ring-2', 'ring-sky-500/60', 'bg-sky-500/5');
+        }
+      });
+    }
+
+    // Load available status from server
+    async function loadAiStatus() {
+      try {
+        const res = await fetch('/api/ai/status');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && Array.isArray(data.allConfigured)) {
+            allConfiguredProviders = data.allConfigured;
+            data.allConfigured.forEach(p => {
+              const badge = document.getElementById(`badge-${p.id}`);
+              if (badge) {
+                if (p.configured) {
+                  badge.innerText = '🟢 Listo';
+                  badge.className = 'text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-medium';
+                } else {
+                  badge.innerText = '⚪ Sin API key';
+                  badge.className = 'text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 font-medium';
+                }
+              }
+            });
+          }
+        }
+      } catch (e) {
+        console.warn('No se pudo consultar estado de proveedores:', e);
       }
+    }
 
-      if (!sourceTweet && !rawText && urls.length === 0) {
-        spinner.className = 'hidden';
-        title.innerText = '⚠️ Sin datos para guardar';
-        subtitle.innerText = 'No se detectó ningún enlace o texto.';
-        return;
+    function showView(viewId) {
+      ['viewSelection', 'viewLoading', 'viewResults', 'viewError'].forEach(v => {
+        const el = document.getElementById(v);
+        if (el) el.classList.toggle('hidden', v !== viewId);
+      });
+    }
+
+    function showSelectionView() {
+      showView('viewSelection');
+    }
+
+    function getModelDisplayName(providerId) {
+      switch (providerId) {
+        case 'gemini': return 'Google Gemini (3.8 Flash)';
+        case 'deepseek': return 'DeepSeek (v4.1 Flash)';
+        case 'minimax': return 'MiniMax (3.1 Flash)';
+        default: return 'IA';
       }
+    }
+
+    async function selectAndRun(providerId) {
+      selectedProvider = providerId;
+      localStorage.setItem('toolkit_selected_ai_provider', providerId);
+      highlightSelectedProvider();
+
+      const modelName = getModelDisplayName(providerId);
+      document.getElementById('loadingTitle').innerText = `⚡ Analizando con ${modelName}...`;
+      document.getElementById('loadingSubtitle').innerText = 'Extrayendo recursos, verificando duplicados y generando ficha';
+      showView('viewLoading');
 
       try {
         const res = await fetch('/api/ingest', {
@@ -49,43 +252,45 @@
             rawText: rawText || undefined,
             author: author || undefined,
             urls: urls.length > 0 ? urls : undefined,
-            aiProvider: aiProvider || undefined,
+            aiProvider: providerId,
           }),
         });
 
         const data = await res.json();
-        spinner.className = 'hidden';
 
         if (data.success) {
           const items = data.data?.items || (data.data?.classification ? [{ classification: data.data.classification, alreadyExisted: data.data.alreadyExisted }] : []);
           const addedCount = data.data?.addedCount ?? items.filter(i => !i.alreadyExisted).length;
           const skippedCount = data.data?.skippedCount ?? items.filter(i => i.alreadyExisted).length;
 
+          const titleEl = document.getElementById('resultTitle');
+          const subEl = document.getElementById('resultSubtitle');
+          const detailsEl = document.getElementById('resultDetails');
+
           if (items.length > 1) {
             if (addedCount === 0) {
-              title.className = 'text-base font-bold text-amber-400 mb-1';
-              title.innerText = `⏭️ Las ${skippedCount} herramientas ya existían`;
-              subtitle.innerText = 'Ninguna se duplicó en tu catálogo:';
+              titleEl.className = 'text-sm font-bold text-amber-400 mb-0.5';
+              titleEl.innerText = `⏭️ Las ${skippedCount} herramientas ya existían`;
+              subEl.innerText = 'Ninguna se duplicó en tu catálogo.';
             } else if (skippedCount > 0) {
-              title.className = 'text-base font-bold text-emerald-400 mb-1';
-              title.innerText = `✅ ${addedCount} nueva(s) · ⏭️ ${skippedCount} omitida(s)`;
-              subtitle.innerText = 'Se omitieron las que ya tenías guardadas:';
+              titleEl.className = 'text-sm font-bold text-emerald-400 mb-0.5';
+              titleEl.innerText = `✅ ${addedCount} nueva(s) · ⏭️ ${skippedCount} omitida(s)`;
+              subEl.innerText = 'Se omitieron las que ya tenías guardadas.';
             } else {
-              title.className = 'text-base font-bold text-emerald-400 mb-1';
-              title.innerText = `✅ ¡${addedCount} herramientas guardadas!`;
-              subtitle.innerText = 'Todas las herramientas del tweet fueron añadidas:';
+              titleEl.className = 'text-sm font-bold text-emerald-400 mb-0.5';
+              titleEl.innerText = `✅ ¡${addedCount} herramientas guardadas!`;
+              subEl.innerText = 'Todas las herramientas del tweet fueron catalogadas.';
             }
 
-            details.classList.remove('hidden');
-            details.innerHTML = items.map((item, idx) => {
+            detailsEl.innerHTML = items.map((item, idx) => {
               const info = item.classification || {};
               const badge = item.alreadyExisted
                 ? `<span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">⏭️ Ya existía</span>`
                 : `<span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">🆕 Nueva</span>`;
               return `
-                <div class="p-2 rounded-lg bg-slate-950 border border-slate-800">
+                <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
                   <div class="flex justify-between items-center gap-2">
-                    <span class="font-bold text-slate-200 truncate">${idx + 1}. ${info.name || 'Herramienta'}</span>
+                    <span class="font-bold text-slate-200 truncate">${idx + 1}. ${info.name || 'Recurso'}</span>
                     <div class="flex items-center gap-1 flex-shrink-0">
                       ${badge}
                       <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-400">${info.category || 'Other'}</span>
@@ -94,54 +299,88 @@
                   <p class="text-[11px] text-slate-400 line-clamp-1 mt-0.5">${info.oneLiner || ''}</p>
                 </div>
               `;
-            }).join('') + `<p class="text-[10px] text-slate-500 text-center pt-2">Esta ventana se cerrará automáticamente...</p>`;
-
-            setTimeout(() => {
-              window.close();
-            }, 3500);
+            }).join('');
           } else {
             const firstItem = items[0] || {};
             const info = firstItem.classification || {};
 
             if (firstItem.alreadyExisted) {
-              title.className = 'text-base font-bold text-amber-400 mb-1';
-              title.innerText = '⏭️ Ya estaba en tu Toolkit';
-              subtitle.innerText = `${info.name || 'Esta herramienta'} ya existe (no se duplicó)`;
+              titleEl.className = 'text-sm font-bold text-amber-400 mb-0.5';
+              titleEl.innerText = '⏭️ Ya estaba en tu Toolkit';
+              subEl.innerText = `${info.name || 'Este recurso'} ya existe en tu catálogo`;
             } else {
-              title.className = 'text-base font-bold text-emerald-400 mb-1';
-              title.innerText = '✅ ¡Guardado con éxito!';
-              subtitle.innerText = info.name || 'Herramienta añadida';
+              titleEl.className = 'text-sm font-bold text-emerald-400 mb-0.5';
+              titleEl.innerText = '✅ ¡Guardado con éxito!';
+              subEl.innerText = info.name || 'Ficha generada';
             }
 
-            details.classList.remove('hidden');
             const noticeHtml = data.data?.switchNotice 
               ? `<div class="p-2 mb-2 rounded-lg bg-amber-500/15 border border-amber-500/30 text-[11px] text-amber-300 font-medium leading-relaxed">${data.data.switchNotice}</div>`
               : '';
-            details.innerHTML = noticeHtml + `
+
+            detailsEl.innerHTML = noticeHtml + `
               <div><span class="text-slate-500">Categoría:</span> <span class="text-sky-400 font-medium">${info.category || 'Other'}</span></div>
               <div><span class="text-slate-500">Tags:</span> <span class="text-slate-300 font-mono">${(info.tags || []).map(t => '#' + t).join(' ')}</span></div>
-              <p class="text-slate-400 pt-1 line-clamp-2">${info.oneLiner || ''}</p>
-              <p class="text-[10px] text-slate-500 text-center pt-2">Esta ventana se cerrará automáticamente...</p>
+              <p class="text-slate-400 pt-1 line-clamp-2 leading-relaxed">${info.oneLiner || ''}</p>
             `;
-
-            setTimeout(() => {
-              window.close();
-            }, 2200);
           }
+
+          showView('viewResults');
+          setTimeout(() => {
+            window.close();
+          }, 3500);
+
         } else {
-          title.className = 'text-base font-bold text-red-400 mb-1';
-          title.innerText = '❌ Error al guardar';
-          subtitle.innerText = data.error || 'Ocurrió un problema en el servidor';
+          // Failure handling: show retry options
+          handleIngestError(providerId, data.error || 'Ocurrió un error en el análisis');
         }
       } catch (err) {
-        spinner.className = 'hidden';
-        title.className = 'text-base font-bold text-red-400 mb-1';
-        title.innerText = '❌ Error de conexión';
-        subtitle.innerText = 'No se pudo contactar con el servidor.';
+        handleIngestError(providerId, err.message || 'Error de conexión con el servidor');
       }
     }
 
-    runQuickSave();
+    function handleIngestError(failedProvider, errorMsg) {
+      const isOverloaded = errorMsg.includes('503') || errorMsg.includes('overload') || errorMsg.includes('UNAVAILABLE') || errorMsg.includes('high demand') || errorMsg.includes('sobrecarga');
+      
+      const errorTitleEl = document.getElementById('errorTitle');
+      const errorDescEl = document.getElementById('errorDescription');
+      
+      if (isOverloaded) {
+        errorTitleEl.innerText = `Servidores de ${getModelDisplayName(failedProvider)} sobrecargados`;
+        errorDescEl.innerText = `Google Gemini ha respondido con sobrecarga temporal (503). Puedes analizar este tweet de inmediato cambiando a DeepSeek o MiniMax:`;
+      } else {
+        errorTitleEl.innerText = `Error al analizar con ${getModelDisplayName(failedProvider)}`;
+        errorDescEl.innerText = errorMsg;
+      }
+
+      // Generate retry buttons for the OTHER providers
+      const retryContainer = document.getElementById('retryButtons');
+      const otherProviders = [
+        { id: 'deepseek', icon: '🚀', name: 'DeepSeek v4.1 Flash' },
+        { id: 'minimax', icon: '⚡', name: 'MiniMax 3.1 Flash' },
+        { id: 'gemini', icon: '🧠', name: 'Google Gemini 3.8 Flash' },
+      ].filter(p => p.id !== failedProvider);
+
+      retryContainer.innerHTML = otherProviders.map(p => `
+        <button 
+          type="button"
+          onclick="selectAndRun('${p.id}')"
+          class="w-full p-2.5 rounded-xl border border-slate-700 bg-slate-900 hover:border-sky-500 hover:bg-sky-500/10 text-left transition flex items-center justify-between group"
+        >
+          <div class="flex items-center gap-2">
+            <span class="text-base">${p.icon}</span>
+            <span class="text-xs font-bold text-slate-200 group-hover:text-sky-300">Reintentar con ${p.name}</span>
+          </div>
+          <span class="text-xs text-slate-400 group-hover:text-sky-400">➔</span>
+        </button>
+      `).join('');
+
+      showView('viewError');
+    }
+
+    // Init
+    highlightSelectedProvider();
+    loadAiStatus();
   </script>
 </body>
 </html>
