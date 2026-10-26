@@ -1887,11 +1887,16 @@
         return true;
       });
 
-      // 7. Filtro y ordenación por "Recientes" (activo por defecto)
+      // 7. Filtro y ordenación por "Recientes" (activo por defecto: los más nuevos siempre primero)
       if (filterRecent) {
         filtered.sort((a, b) => {
-          const dateA = a.frontmatter?.date_added ? new Date(a.frontmatter.date_added).getTime() : 0;
-          const dateB = b.frontmatter?.date_added ? new Date(b.frontmatter.date_added).getTime() : 0;
+          const parseTime = (dateStr) => {
+            if (!dateStr) return 0;
+            const t = new Date(dateStr).getTime();
+            return isNaN(t) ? 0 : t;
+          };
+          const dateA = parseTime(a.frontmatter?.date_added);
+          const dateB = parseTime(b.frontmatter?.date_added);
           if (dateB !== dateA) return dateB - dateA;
           return (b.frontmatter?.stars || 0) - (a.frontmatter?.stars || 0);
         });

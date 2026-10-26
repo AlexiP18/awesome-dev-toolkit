@@ -333,8 +333,11 @@ export function loadAllTools(): ToolItem[] {
     }
   }
 
-  // Sort descending by date_added or stars
+  // Sort descending by date_added (most recent first), then by stars
   return tools.sort((a, b) => {
+    const dateA = a.frontmatter.date_added ? new Date(a.frontmatter.date_added).getTime() : 0;
+    const dateB = b.frontmatter.date_added ? new Date(b.frontmatter.date_added).getTime() : 0;
+    if (dateB !== dateA) return dateB - dateA;
     return (b.frontmatter.stars || 0) - (a.frontmatter.stars || 0);
   });
 }
