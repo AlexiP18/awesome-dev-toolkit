@@ -2051,14 +2051,14 @@
         }
 
         const apartadoVerticalBarHtml = isAllFilter ? `
-          <div class="w-8 sm:w-9 flex flex-col items-center justify-between py-3 px-1 ${apartadoBarTheme.bg} ${apartadoBarTheme.border} flex-shrink-0 select-none shadow-inner" title="Apartado: ${apartadoBarTheme.fullName}">
-            <div class="text-white flex items-center justify-center p-1 rounded-md bg-black/20 shadow-sm">
-              <i data-lucide="${apartadoBarTheme.icon}" class="w-3.5 h-3.5"></i>
+          <div class="w-9 sm:w-10 flex flex-col items-center justify-between py-3.5 px-1 ${apartadoBarTheme.bg} ${apartadoBarTheme.border} flex-shrink-0 select-none shadow-inner" title="Apartado: ${apartadoBarTheme.fullName}">
+            <div class="text-white flex items-center justify-center p-1.5 rounded-lg bg-black/25 shadow-sm">
+              <i data-lucide="${apartadoBarTheme.icon}" class="w-4 h-4"></i>
             </div>
-            <span class="text-[9px] font-black tracking-widest text-white uppercase my-auto whitespace-nowrap drop-shadow-sm" style="writing-mode: vertical-rl; transform: rotate(180deg);">
+            <span class="text-[11px] sm:text-xs font-black tracking-widest text-white uppercase my-auto whitespace-nowrap drop-shadow" style="writing-mode: vertical-rl; transform: rotate(180deg);">
               ${apartadoBarTheme.label}
             </span>
-            <div class="w-1.5 h-1.5 rounded-full bg-white/40"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-white/50"></div>
           </div>
         ` : '';
 
