@@ -6,7 +6,7 @@ async function main() {
   if (args.length === 0) {
     console.log(`
 Uso de la herramienta CLI:
-  npm run add <URL o Enlace de GitHub o Tweet> [--ai <gemini|deepseek|minimax|claude|groq|openrouter|openai|ollama|auto>]
+  npm run add <URL o Enlace de GitHub o Tweet> [--ai <gemini|deepseek|minimax|auto>]
   npm run add "https://github.com/jesseduffield/lazygit"
   npm run add "https://github.com/Leonxlnx/taste-skill" --ai deepseek
   npm run add -- "https://x.com/.../status/..." "Texto descriptivo de la herramienta"

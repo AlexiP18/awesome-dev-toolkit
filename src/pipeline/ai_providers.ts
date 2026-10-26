@@ -1285,40 +1285,5 @@ export function getConfiguredProvidersList(): Array<{ id: string; name: string; 
       priority: 3,
       configured: Boolean(process.env.ZENMUX_MINIMAX_KEY || process.env.ZENMUX_API_KEY),
     },
-    {
-      id: 'claude',
-      name: `ZenMux Claude (${process.env.ZENMUX_CLAUDE_MODEL || 'Haiku 5.5'})`,
-      shortName: 'Claude Haiku',
-      priority: 4,
-      configured: Boolean(process.env.ZENMUX_CLAUDE_KEY || process.env.ZENMUX_API_KEY),
-    },
-    {
-      id: 'groq',
-      name: 'Groq (Llama 3.3 70B)',
-      shortName: 'Groq (Llama 3.3)',
-      priority: 5,
-      configured: Boolean(process.env.GROQ_API_KEY),
-    },
-    {
-      id: 'openrouter',
-      name: 'OpenRouter',
-      shortName: 'OpenRouter',
-      priority: 6,
-      configured: Boolean(process.env.OPENROUTER_API_KEY),
-    },
-    {
-      id: 'openai',
-      name: 'OpenAI (GPT-4o-mini)',
-      shortName: 'GPT-4o-mini',
-      priority: 7,
-      configured: Boolean(process.env.OPENAI_API_KEY),
-    },
-    {
-      id: 'ollama',
-      name: 'Ollama (Local)',
-      shortName: 'Ollama',
-      priority: 8,
-      configured: Boolean(process.env.OLLAMA_BASE_URL),
-    },
   ];
 }
