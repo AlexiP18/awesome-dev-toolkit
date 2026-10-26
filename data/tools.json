@@ -36,80 +36,6 @@
       "content": "# taste-skill\n\n> Herramienta que dota a los agentes de código de habilidades de dirección de arte, permitiéndoles diseñar interfaces web con un estilo más humano y referencias reales, evitando el aspecto genérico generado por la IA.\n\n**👤 Publicado / Recomendado por:** PA13L0 (@Fluyeporlaweb) ([@Fluyeporlaweb](https://x.com/Fluyeporlaweb))\n\n## 💡 ¿Por qué destaca?\n- Ofrece habilidades de dirección de arte para agentes de código.\n- Permite el uso de referencias visuales reales en lugar de descripciones genéricas.\n- Incluye la capacidad de verificar el resultado directamente en el navegador.\n- Ha acumulado más de 102.5K estrellas en GitHub y tiene licencia MIT.\n- Compatible con agentes como Claude Code, Cursor y otras plataformas de generación de código.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Ideal para desarrolladores que buscan que los diseños generados por sus agentes de IA tengan un 'gusto' y una calidad visual superior, alejándose de los resultados predecibles y repetitivos.\n\n## 🔗 Referencias\n- Repositorio de código (GitHub): [https://github.com/Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill)\n- Tweet origen: [Ver en X](https://x.com/Fluyeporlaweb/status/1987654321098765432)\n"
     },
     {
-      "slug": "lazygit",
-      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tools/lazygit.md",
-      "frontmatter": {
-        "name": "Lazygit",
-        "url": "https://github.com/jesseduffield/lazygit",
-        "category": "CLI & Terminal",
-        "tags": [
-          "git",
-          "terminal",
-          "go",
-          "productivity"
-        ],
-        "stars": 52000,
-        "status": "in_use",
-        "date_added": "2026-10-16T00:00:00.000Z",
-        "source_tweet": "https://x.com/jesseduffield/status/123456789",
-        "author": "Jesse Duffield",
-        "entry_type": "tool",
-        "author_handle": "jesseduffield"
-      },
-      "content": "\n# Lazygit\n\n> Una interfaz de usuario de terminal simple y rápida para comandos de git, escrita en Go con gocui.\n\n## 💡 ¿Por qué destaca?\n- Permite hacer staging de líneas individuales y resolver merge conflicts visualmente en la terminal.\n- Manejo interactivo de rebase (`git rebase -i`) con atajos de un solo toque.\n- Integración perfecta con Neovim, Tmux y terminales modernas.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Es mi herramienta diaria imprescindible para revisar diffs antes de commitear.\n- Atajo favorito en la terminal: alias `lg=\"lazygit\"`.\n\n## 🔗 Referencias\n- Repositorio / Web oficial: [https://github.com/jesseduffield/lazygit](https://github.com/jesseduffield/lazygit)\n- Tweet origen: [Ver en X](https://x.com/jesseduffield/status/123456789)\n"
-    },
-    {
-      "slug": "astral-uv",
-      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tools/astral-uv.md",
-      "frontmatter": {
-        "name": "Astral UV",
-        "url": "https://github.com/astral-sh/uv",
-        "category": "CLI & Terminal",
-        "tags": [
-          "python",
-          "rust",
-          "package-manager",
-          "cli"
-        ],
-        "stars": 48000,
-        "status": "to_try",
-        "date_added": "2026-10-16T00:00:00.000Z",
-        "source_tweet": "https://x.com/astral_sh/status/987654321",
-        "author": "Astral",
-        "entry_type": "tool",
-        "author_handle": "astral_sh"
-      },
-      "content": "\n# Astral UV\n\n> Gestor de paquetes y entornos de Python extremadamente rápido escrito en Rust, diseñado como reemplazo directo de pip y virtualenv.\n\n## 💡 ¿Por qué destaca?\n- 10-100x más rápido que pip y pip-tools al resolver dependencias complejas.\n- Instala y gestiona versiones de Python sin necesidad de pyenv.\n- Manejo de lockfiles deterministas y multiplataforma.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Pendiente de probar en los proyectos de backend para acelerar tiempos de CI/CD en GitHub Actions.\n\n## 🔗 Referencias\n- Repositorio / Web oficial: [https://github.com/astral-sh/uv](https://github.com/astral-sh/uv)\n- Tweet origen: [Ver en X](https://x.com/astral_sh/status/987654321)\n"
-    },
-    {
-      "slug": "lemo-opuscar",
-      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tools/lemo-opuscar.md",
-      "frontmatter": {
-        "name": "lemo-opuscar",
-        "url": "https://github.com/lemomo-ai/lemo-opuscar",
-        "category": "Prompts, Art & Video",
-        "tags": [
-          "claude-code",
-          "agent-skills",
-          "creative-coding",
-          "filmmaking",
-          "animation",
-          "threejs",
-          "ffmpeg",
-          "motion-graphics"
-        ],
-        "stars": 5730,
-        "status": "to_try",
-        "date_added": "2026-10-23",
-        "source_tweet": "https://x.com/7uanF/status/2111816121548447790",
-        "author": "Juan",
-        "author_handle": "7uanF",
-        "entry_type": "tool",
-        "company": "Lemomo"
-      },
-      "content": "# lemo-opuscar\n\n> Skill de Claude Code con una colección de 59 estilos cinematográficos generados enteramente mediante código para crear cortometrajes sin modelos de video.\n\n**👤 Publicado / Recomendado por:** Juan ([@7uanF](https://x.com/7uanF))\n\n## 💡 ¿Por qué destaca?\n- Incluye 59 estilos prediseñados y soporte para crear estilos cinematográficos propios mediante prompts\n- Genera piezas audiovisuales y motion graphics usando código puro con Canvas, Three.js, WebGL y FFmpeg\n- Diseñado específicamente como skill/plugin para Claude Code y agentes de IA\n- Elimina la dependencia de modelos de difusión de video pesados al programar las animaciones directamente\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Excelente complemento para Claude Code enfocado en creativos y desarrolladores que buscan generar visuales y cortometrajes programáticos ligeros y deterministas.\n\n## 🔗 Referencias\n- Repositorio de código (GitHub): [https://github.com/lemomo-ai/lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar)\n- Tweet origen: [Ver en X](https://x.com/7uanF/status/2111816121548447790)\n"
-    },
-    {
       "slug": "raspberry-pi-5",
       "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/products/raspberry-pi-5.md",
       "frontmatter": {
@@ -185,6 +111,80 @@
         "job_type": "remote_job"
       },
       "content": "\n# 💼 Full Stack Engineer (Remoto LATAM)\n\n> Vacante 100% remota para desarrolladores en América Latina con experiencia en TypeScript, React y Node.js, contrato directo internacional en USD.\n\n### 📌 Información de la Oportunidad\n- **🏢 Empresa / Plataforma:** Global Tech LATAM\n- **🌍 Modalidad / Ubicación:** Remoto (LATAM)\n- **💰 Compensación / Tarifa:** $4,000 - $6,000 USD / mes\n\n## 📋 Requisitos & Características Clave\n- +3 años de experiencia en desarrollo web con TypeScript, React y Node.js.\n- Trabajo 100% remoto y asíncrono con solapamiento parcial en zona horaria EST/COT.\n- Pagos quincenales en USD a través de plataformas como Deel u Ontop.\n- Vacaciones pagadas y presupuesto para equipamiento de oficina en casa.\n\n## 📝 Notas de Postulación & Consejos\n- Preparar CV en inglés enfatizando proyectos full-stack y contribuciones open source.\n- Repasar patrones de diseño y APIs REST/GraphQL.\n\n## 🔗 Referencias\n- Enlace oficial / Para postular: [https://remoteok.com](https://remoteok.com)\n- Tweet origen: [Ver en X](https://x.com/remote_jobs_tech/status/1789555666777888999)\n"
+    },
+    {
+      "slug": "lemo-opuscar",
+      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tools/lemo-opuscar.md",
+      "frontmatter": {
+        "name": "lemo-opuscar",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar",
+        "category": "Prompts, Art & Video",
+        "tags": [
+          "claude-code",
+          "agent-skills",
+          "creative-coding",
+          "filmmaking",
+          "animation",
+          "threejs",
+          "ffmpeg",
+          "motion-graphics"
+        ],
+        "stars": 5730,
+        "status": "to_try",
+        "date_added": "2026-10-23",
+        "source_tweet": "https://x.com/7uanF/status/2111816121548447790",
+        "author": "Juan",
+        "author_handle": "7uanF",
+        "entry_type": "tool",
+        "company": "Lemomo"
+      },
+      "content": "# lemo-opuscar\n\n> Skill de Claude Code con una colección de 59 estilos cinematográficos generados enteramente mediante código para crear cortometrajes sin modelos de video.\n\n**👤 Publicado / Recomendado por:** Juan ([@7uanF](https://x.com/7uanF))\n\n## 💡 ¿Por qué destaca?\n- Incluye 59 estilos prediseñados y soporte para crear estilos cinematográficos propios mediante prompts\n- Genera piezas audiovisuales y motion graphics usando código puro con Canvas, Three.js, WebGL y FFmpeg\n- Diseñado específicamente como skill/plugin para Claude Code y agentes de IA\n- Elimina la dependencia de modelos de difusión de video pesados al programar las animaciones directamente\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Excelente complemento para Claude Code enfocado en creativos y desarrolladores que buscan generar visuales y cortometrajes programáticos ligeros y deterministas.\n\n## 🔗 Referencias\n- Repositorio de código (GitHub): [https://github.com/lemomo-ai/lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar)\n- Tweet origen: [Ver en X](https://x.com/7uanF/status/2111816121548447790)\n"
+    },
+    {
+      "slug": "lazygit",
+      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tools/lazygit.md",
+      "frontmatter": {
+        "name": "Lazygit",
+        "url": "https://github.com/jesseduffield/lazygit",
+        "category": "CLI & Terminal",
+        "tags": [
+          "git",
+          "terminal",
+          "go",
+          "productivity"
+        ],
+        "stars": 52000,
+        "status": "in_use",
+        "date_added": "2026-10-16T00:00:00.000Z",
+        "source_tweet": "https://x.com/jesseduffield/status/123456789",
+        "author": "Jesse Duffield",
+        "entry_type": "tool",
+        "author_handle": "jesseduffield"
+      },
+      "content": "\n# Lazygit\n\n> Una interfaz de usuario de terminal simple y rápida para comandos de git, escrita en Go con gocui.\n\n## 💡 ¿Por qué destaca?\n- Permite hacer staging de líneas individuales y resolver merge conflicts visualmente en la terminal.\n- Manejo interactivo de rebase (`git rebase -i`) con atajos de un solo toque.\n- Integración perfecta con Neovim, Tmux y terminales modernas.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Es mi herramienta diaria imprescindible para revisar diffs antes de commitear.\n- Atajo favorito en la terminal: alias `lg=\"lazygit\"`.\n\n## 🔗 Referencias\n- Repositorio / Web oficial: [https://github.com/jesseduffield/lazygit](https://github.com/jesseduffield/lazygit)\n- Tweet origen: [Ver en X](https://x.com/jesseduffield/status/123456789)\n"
+    },
+    {
+      "slug": "astral-uv",
+      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tools/astral-uv.md",
+      "frontmatter": {
+        "name": "Astral UV",
+        "url": "https://github.com/astral-sh/uv",
+        "category": "CLI & Terminal",
+        "tags": [
+          "python",
+          "rust",
+          "package-manager",
+          "cli"
+        ],
+        "stars": 48000,
+        "status": "to_try",
+        "date_added": "2026-10-16T00:00:00.000Z",
+        "source_tweet": "https://x.com/astral_sh/status/987654321",
+        "author": "Astral",
+        "entry_type": "tool",
+        "author_handle": "astral_sh"
+      },
+      "content": "\n# Astral UV\n\n> Gestor de paquetes y entornos de Python extremadamente rápido escrito en Rust, diseñado como reemplazo directo de pip y virtualenv.\n\n## 💡 ¿Por qué destaca?\n- 10-100x más rápido que pip y pip-tools al resolver dependencias complejas.\n- Instala y gestiona versiones de Python sin necesidad de pyenv.\n- Manejo de lockfiles deterministas y multiplataforma.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Pendiente de probar en los proyectos de backend para acelerar tiempos de CI/CD en GitHub Actions.\n\n## 🔗 Referencias\n- Repositorio / Web oficial: [https://github.com/astral-sh/uv](https://github.com/astral-sh/uv)\n- Tweet origen: [Ver en X](https://x.com/astral_sh/status/987654321)\n"
     }
   ]
 }
