@@ -22,11 +22,16 @@
       const author = params.get('author') || '';
       const urlParam = params.get('url') || '';
       const urls = urlParam ? urlParam.split(',').map(u => u.trim()).filter(Boolean) : [];
+      const aiProvider = params.get('aiProvider') || localStorage.getItem('toolkit_selected_ai_provider') || undefined;
 
       const spinner = document.getElementById('spinner');
       const title = document.getElementById('title');
       const subtitle = document.getElementById('subtitle');
       const details = document.getElementById('details');
+
+      if (aiProvider && title) {
+        title.innerText = `⚡ Analizando con ${aiProvider}...`;
+      }
 
       if (!sourceTweet && !rawText && urls.length === 0) {
         spinner.className = 'hidden';
@@ -44,6 +49,7 @@
             rawText: rawText || undefined,
             author: author || undefined,
             urls: urls.length > 0 ? urls : undefined,
+            aiProvider: aiProvider || undefined,
           }),
         });
 
