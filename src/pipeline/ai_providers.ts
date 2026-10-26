@@ -358,42 +358,60 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
 
   const ai = new GoogleGenAI({ apiKey });
   const prompt = buildUserPrompt(params);
+  const targetModel = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
 
-  const response = await ai.models.generateContent({
-    model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
-    contents: prompt,
-    config: {
-      responseMimeType: 'application/json',
-      responseJsonSchema: {
-        type: Type.ARRAY,
-        description: 'Lista de herramientas técnicas encontradas',
-        items: {
-          type: Type.OBJECT,
-          properties: {
-            name: { type: Type.STRING },
-            canonicalUrl: { type: Type.STRING },
-            websiteUrl: { type: Type.STRING },
-            category: { type: Type.STRING },
-            entryType: { type: Type.STRING },
-            company: { type: Type.STRING },
-            location: { type: Type.STRING },
-            salary: { type: Type.STRING },
-            price: { type: Type.STRING },
-            tags: { type: Type.ARRAY, items: { type: Type.STRING } },
-            oneLiner: { type: Type.STRING },
-            keyHighlights: { type: Type.ARRAY, items: { type: Type.STRING } },
-            recommendedNotes: { type: Type.STRING },
-            hasAcademicPromo: { type: Type.BOOLEAN },
-            academicPromoDetails: { type: Type.STRING },
-          },
-          required: ['name', 'canonicalUrl', 'category', 'tags', 'oneLiner', 'keyHighlights'],
+  const schemaConfig = {
+    responseMimeType: 'application/json',
+    responseJsonSchema: {
+      type: Type.ARRAY,
+      description: 'Lista de herramientas técnicas encontradas',
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          name: { type: Type.STRING },
+          canonicalUrl: { type: Type.STRING },
+          websiteUrl: { type: Type.STRING },
+          category: { type: Type.STRING },
+          entryType: { type: Type.STRING },
+          company: { type: Type.STRING },
+          location: { type: Type.STRING },
+          salary: { type: Type.STRING },
+          price: { type: Type.STRING },
+          tags: { type: Type.ARRAY, items: { type: Type.STRING } },
+          oneLiner: { type: Type.STRING },
+          keyHighlights: { type: Type.ARRAY, items: { type: Type.STRING } },
+          recommendedNotes: { type: Type.STRING },
+          hasAcademicPromo: { type: Type.BOOLEAN },
+          academicPromoDetails: { type: Type.STRING },
         },
+        required: ['name', 'canonicalUrl', 'category', 'tags', 'oneLiner', 'keyHighlights'],
       },
     },
-  });
+  };
 
-  const parsed = JSON.parse(response.text || '[]');
-  return normalizeRawOutput(parsed, params.urls, params.sourceTweet);
+  try {
+    const response = await ai.models.generateContent({
+      model: targetModel,
+      contents: prompt,
+      config: schemaConfig,
+    });
+
+    const parsed = JSON.parse(response.text || '[]');
+    return normalizeRawOutput(parsed, params.urls, params.sourceTweet);
+  } catch (err: any) {
+    // Si Gemini 3.8 Flash sufre un pico temporal de sobrecarga (503 UNAVAILABLE), degradar suavemente a 2.5 Flash
+    if (targetModel === 'gemini-3.8-flash' && err?.message && (err.message.includes('503') || err.message.includes('UNAVAILABLE'))) {
+      console.warn(`[Gemini] ⚠️ gemini-3.8-flash en sobrecarga temporal (503). Reintentando con gemini-2.5-flash como respaldo...`);
+      const fallbackResponse = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: prompt,
+        config: schemaConfig,
+      });
+      const parsed = JSON.parse(fallbackResponse.text || '[]');
+      return normalizeRawOutput(parsed, params.urls, params.sourceTweet);
+    }
+    throw err;
+  }
 }
 
 // -------------------------------------------------------------
@@ -666,7 +684,7 @@ async function tryOllama(params: ClassifyInput): Promise<ClassificationResult[]>
 // -------------------------------------------------------------
 // ORQUESTADOR CON CASCADA MULTI-PROVEEDOR
 // Orden de prioridad configurado (Gemini por defecto):
-// 1º Google Gemini (2.5 Flash)
+// 1º Google Gemini (3.8 Flash)
 // 2º DeepSeek (ZenMux o Directo)
 // 3º MiniMax 3.1 Flash (ZenMux)
 // 4º Claude Haiku / Groq / OpenRouter / OpenAI / Ollama
@@ -676,10 +694,10 @@ export async function classifyWithProviderCascade(
   preferredProvider?: string
 ): Promise<{ results: ClassificationResult[]; providerUsed: string }> {
   let providers = [
-    // 1. Google Gemini (2.5 Flash) - Prioridad principal por defecto
+    // 1. Google Gemini (3.8 Flash) - Prioridad principal por defecto
     {
       id: 'gemini',
-      name: 'Google Gemini (2.5 Flash)',
+      name: 'Google Gemini (3.8 Flash)',
       fn: tryGemini,
       hasKey: () => Boolean(process.env.GEMINI_API_KEY),
     },
@@ -967,33 +985,50 @@ async function tryGeminiAuthor(params: AuthorAnalysisInput): Promise<AuthorProfi
 
   const ai = new GoogleGenAI({ apiKey });
   const prompt = buildAuthorAnalysisPrompt(params);
+  const targetModel = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
 
-  const response = await ai.models.generateContent({
-    model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
-    contents: prompt,
-    config: {
-      responseMimeType: 'application/json',
-      responseJsonSchema: {
-        type: Type.OBJECT,
-        description: 'Perfil y análisis técnico del autor en X',
-        properties: {
-          name: { type: Type.STRING },
-          handle: { type: Type.STRING },
-          role: { type: Type.STRING },
-          bio: { type: Type.STRING },
-          specialties: { type: Type.ARRAY, items: { type: Type.STRING } },
-          whyFollow: { type: Type.STRING },
-          suggestedTags: { type: Type.ARRAY, items: { type: Type.STRING } },
-          githubUrl: { type: Type.STRING },
-          websiteUrl: { type: Type.STRING },
-        },
-        required: ['name', 'role', 'bio', 'specialties', 'whyFollow'],
+  const authorSchemaConfig = {
+    responseMimeType: 'application/json',
+    responseJsonSchema: {
+      type: Type.OBJECT,
+      description: 'Perfil y análisis técnico del autor en X',
+      properties: {
+        name: { type: Type.STRING },
+        handle: { type: Type.STRING },
+        role: { type: Type.STRING },
+        bio: { type: Type.STRING },
+        specialties: { type: Type.ARRAY, items: { type: Type.STRING } },
+        whyFollow: { type: Type.STRING },
+        suggestedTags: { type: Type.ARRAY, items: { type: Type.STRING } },
+        githubUrl: { type: Type.STRING },
+        websiteUrl: { type: Type.STRING },
       },
+      required: ['name', 'role', 'bio', 'specialties', 'whyFollow'],
     },
-  });
+  };
 
-  const parsed = JSON.parse(response.text || '{}');
-  return normalizeAuthorProfile(parsed, params);
+  try {
+    const response = await ai.models.generateContent({
+      model: targetModel,
+      contents: prompt,
+      config: authorSchemaConfig,
+    });
+
+    const parsed = JSON.parse(response.text || '{}');
+    return normalizeAuthorProfile(parsed, params);
+  } catch (err: any) {
+    if (targetModel === 'gemini-3.8-flash' && err?.message && (err.message.includes('503') || err.message.includes('UNAVAILABLE'))) {
+      console.warn(`[Gemini Author] ⚠️ gemini-3.8-flash en sobrecarga temporal (503). Reintentando con gemini-2.5-flash como respaldo...`);
+      const fallbackResponse = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: prompt,
+        config: authorSchemaConfig,
+      });
+      const parsed = JSON.parse(fallbackResponse.text || '{}');
+      return normalizeAuthorProfile(parsed, params);
+    }
+    throw err;
+  }
 }
 
 async function callOpenAICompatibleAuthor(options: {
@@ -1051,10 +1086,10 @@ export async function analyzeAuthorWithCascade(
   const prompt = buildAuthorAnalysisPrompt(params);
 
   let providers = [
-    // 1. Google Gemini (2.5 Flash) - Prioridad principal por defecto
+    // 1. Google Gemini (3.8 Flash) - Prioridad principal por defecto
     {
       id: 'gemini',
-      name: 'Google Gemini (2.5 Flash)',
+      name: 'Google Gemini (3.8 Flash)',
       fn: () => tryGeminiAuthor(params),
       hasKey: () => Boolean(process.env.GEMINI_API_KEY),
     },
@@ -1207,9 +1242,9 @@ export async function analyzeAuthorWithCascade(
 // Utilidades de consulta para la interfaz y ventanas de análisis
 // -------------------------------------------------------------
 export function getActivePrimaryProviderName(): string {
-  // 1. Google Gemini (2.5 Flash) - Proveedor Principal por defecto
+  // 1. Google Gemini (3.8 Flash) - Proveedor Principal por defecto
   if (process.env.GEMINI_API_KEY) {
-    return 'Google Gemini (2.5 Flash)';
+    return 'Google Gemini (3.8 Flash)';
   }
 
   // 2. DeepSeek (ZenMux o Directo)
@@ -1266,8 +1301,8 @@ export function getConfiguredProvidersList(): Array<{ id: string; name: string; 
   return [
     {
       id: 'gemini',
-      name: 'Google Gemini (2.5 Flash)',
-      shortName: 'Gemini 2.5 Flash',
+      name: 'Google Gemini (3.8 Flash)',
+      shortName: 'Gemini 3.8 Flash',
       priority: 1,
       configured: Boolean(process.env.GEMINI_API_KEY),
     },

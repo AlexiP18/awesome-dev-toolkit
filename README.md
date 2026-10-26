@@ -1,6 +1,6 @@
 # 🚀 Awesome Dev Toolkit & Segundo Cerebro
 
-> Colección curada en **4 apartados esenciales** (Herramientas, Consejos Técnicos, Trabajo Remoto/Freelance y Productos Tech/Hardware) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA (Gemini 2.5 Flash).
+> Colección curada en **4 apartados esenciales** (Herramientas, Consejos Técnicos, Trabajo Remoto/Freelance y Productos Tech/Hardware) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA (Gemini 3.8 Flash).
 
 [![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-4-blue?style=for-the-badge)]()
 [![Consejos](https://img.shields.io/badge/💡_Consejos-1-8E75C2?style=for-the-badge)]()
