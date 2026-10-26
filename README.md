@@ -1,8 +1,8 @@
 # 🚀 Awesome Dev Toolkit & Segundo Cerebro
 
-> Colección curada en **4 apartados esenciales** (Herramientas, Consejos Técnicos, Trabajo Remoto/Freelance y Productos Tech/Hardware) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA (Gemini 3.8 Flash).
+> Colección curada en **4 apartados esenciales** (Herramientas, Consejos Técnicos, Trabajo Remoto/Freelance y Productos Tech/Hardware) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA (Gemini 2.5 Flash).
 
-[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-3-blue?style=for-the-badge)]()
+[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-4-blue?style=for-the-badge)]()
 [![Consejos](https://img.shields.io/badge/💡_Consejos-1-8E75C2?style=for-the-badge)]()
 [![Trabajo Remoto](https://img.shields.io/badge/💼_Trabajo_Remoto-1-0284C7?style=for-the-badge)]()
 [![Productos Tech](https://img.shields.io/badge/🖥️_Productos_Tech-1-D97706?style=for-the-badge)]()
@@ -12,14 +12,14 @@
 
 ## 📑 Los 4 Apartados del Toolkit
 
-- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-3) (3)
+- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-4) (4)
 - [💡 Apartado 2: Consejos Técnicos & Buenas Prácticas](#-apartado-2-consejos-técnicos--buenas-prácticas-1) (1)
 - [💼 Apartado 3: Trabajo Remoto & Freelance](#-apartado-3-trabajo-remoto--oportunidades-freelance-1) (1)
 - [🖥️ Apartado 4: Productos Tecnológicos & Hardware](#-apartado-4-productos-tecnológicos--hardware-1) (1)
 
 ---
 
-## 🛠️ Apartado 1: Herramientas & Repositorios de Software (3)
+## 🛠️ Apartado 1: Herramientas & Repositorios de Software (4)
 
 > Bibliotecas, utilidades CLI, herramientas de desarrollo, devtools y productos técnicos guardados desde X.
 
@@ -30,6 +30,11 @@
 
 - **[Astral UV](https://github.com/astral-sh/uv)** (`👤 Astral`) ⭐ **48.000** [𝕏 Tweet](https://x.com/astral_sh/status/987654321) `🟡 Por probar`  
   Gestor de paquetes y entornos de Python extremadamente rápido escrito en Rust, diseñado como reemplazo directo de pip y virtualenv. [📝 Ver ficha](content/tools/astral-uv.md) `#python` `#rust` `#package-manager` `#cli`
+
+### 🎨 Frontend & UI (1)
+
+- **[taste-skill](https://github.com/Leonxlnx/taste-skill)** (`👤 PA13L0 (@Fluyeporlaweb)`) ⭐ **102.562** [𝕏 Tweet](https://x.com/Fluyeporlaweb/status/1987654321098765432) `🟡 Por probar`  
+  Herramienta que dota a los agentes de código de habilidades de dirección de arte, permitiéndoles diseñar interfaces web con un estilo más humano y referencias reales, evitando el aspecto genérico generado por la IA. [📝 Ver ficha](content/tools/taste-skill.md) `#agent-skills` `#ai-agents` `#anti-slop` `#claude-code` `#codex` `#cursor` `#design-system` `#frontend` `#landing-page` `#ui-design` `#web-design` `#design` `#code-generation`
 
 ### 🎬 Prompts, Art & Video (1)
 

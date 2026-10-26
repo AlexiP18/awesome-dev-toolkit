@@ -87,9 +87,10 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * Si además tiene un sitio web oficial, asígnalo en el campo 'websiteUrl' (ej: "https://voice-pro.ai").
      * NUNCA elijas un enlace a una landing page comercial o con redirecciones (/lander) como 'canonicalUrl' si existe un repositorio de código disponible.
 
-7. DISTINCIÓN IMPORTANTE ENTRE CATEGORÍAS DE IA Y CREATIVIDAD:
-   - "Prompts, Art & Video": Selecciona esta categoría para catálogos o colecciones de prompts, estilos artísticos o cinematográficos para video/imagen, Claude Code skills de diseño o estilos (ej. "lemo-opuscar"), prompts para agentes creativos, herramientas de arte generativo y animación en código.
-   - "AI & Machine Learning": Reserva esta categoría estrictamente para modelos de base, motores de inferencia (DeepInfer, vLLM), entrenamiento, PyTorch, TensorFlow, embeddings, RAG o infraestructura técnica de ML.
+7. DISTINCIÓN IMPORTANTE ENTRE CATEGORÍAS (Frontend & UI vs Prompts, Art & Video vs AI & Machine Learning):
+   - "Frontend & UI": Asigna esta categoría a herramientas, repositorios, bibliotecas, componentes, design systems, plantillas web, y skills o utilidades para agentes de código dedicadas a diseñar, maquetar, estructurar o mejorar interfaces de usuario y páginas web (ej. "taste-skill", skills de UI/UX, Tailwind, CSS, React, inspectores de frontend). Todo lo enfocado en que el código o la UI web sea atractiva, profesional y funcional pertenece aquí.
+   - "Prompts, Art & Video": Reserva esta categoría EXCLUSIVAMENTE para generación de video (ffmpeg, clips cinematográficos como "lemo-opuscar", Sora, Runway, Kling), arte visual 3D procedural/shaders, generadores de música/audio o catálogos de prompts para generadores de imágenes (Midjourney, DALL-E). NUNCA la uses para herramientas de diseño web, interfaces de usuario o componentes frontend.
+   - "AI & Machine Learning": Reserva esta categoría estrictamente para modelos de base, motores de inferencia (DeepInfer, vLLM, Ollama), entrenamiento, PyTorch, TensorFlow, embeddings, RAG o infraestructura técnica de ML.
 
 8. DETECCIÓN DE PROMOCIONES ACADÉMICAS O BENEFICIOS PARA ESTUDIANTES:
    - Si el tweet o recurso menciona promociones académicas, beneficios para estudiantes o profesores, licencias gratis con correo universitario (.edu o institucional), inclusión en GitHub Student Developer Pack, o descuentos educativos:
@@ -130,7 +131,9 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * 'recommendedNotes': Consejos para aplicar, requisitos de nivel de inglés o recomendaciones para la postulación.
 
 12. TWEETS DE PRODUCTOS TECNOLÓGICOS Y HARDWARE ('tech_product'):
-   - Si el tweet presenta, analiza o anuncia productos tecnológicos físicos, hardware, gadgets para desarrolladores, microcontroladores, placas de desarrollo (Raspberry Pi, ESP32, Arduino), laptops/computadoras de desarrollo, periféricos, teclados mecánicos, chips/procesadores, dispositivos de IA o accesorios tech:
+   - Asigna 'tech_product' y la categoría "Productos Tecnológicos & Hardware" ÚNICA Y EXCLUSIVAMENTE si el tweet presenta productos tecnológicos FÍSICOS, hardware tangible, gadgets para desarrolladores, microcontroladores, placas de desarrollo (Raspberry Pi, ESP32, Arduino), laptops/computadoras de desarrollo, periféricos (teclados mecánicos, pantallas), chips/procesadores o dispositivos de IA física.
+   - REGLA DE ORO DE HARDWARE VS SOFTWARE: Un repositorio de código en GitHub o GitLab (ej. "https://github.com/..."), biblioteca npm, skill de agente de código, script o software NUNCA es un producto de hardware físico. Todo repositorio de código o software es SIEMPRE 'tool' (Herramienta).
+   - Para hardware real:
      * 'name': Nombre del producto tecnológico o dispositivo (ej: "Raspberry Pi 5", "Framework Laptop 16", "Flipper Zero", "ESP32-S3 DevKit", "Keychron Q1 Pro").
      * 'canonicalUrl': Enlace a la tienda oficial, página de producto o documentación técnica. Si no hay link externo, usa el enlace del tweet de origen.
      * 'category': "Productos Tecnológicos & Hardware".
@@ -176,22 +179,16 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
   }
 
   return parsedList.map((parsed: any, index: number) => {
-    const validCategory = ALLOWED_CATEGORIES.includes(parsed.category as ToolCategory)
+    let validCategory = ALLOWED_CATEGORIES.includes(parsed.category as ToolCategory)
       ? (parsed.category as ToolCategory)
       : 'Other';
 
     const isJob = parsed.entryType === 'job_remote' || validCategory === 'Trabajo & Freelance';
     const isTip = !isJob && (parsed.entryType === 'tech_tip' || validCategory === 'Consejos & Buenas Prácticas');
-    const isProduct = !isJob && !isTip && (
-      parsed.entryType === 'tech_product' ||
-      parsed.entryType === 'product_showcase' ||
-      validCategory === 'Productos Tecnológicos & Hardware' ||
-      validCategory === 'Empresas & Productos'
-    );
 
-    let url = (parsed.canonicalUrl || urls[index] || urls[0] || ((isJob || isTip || isProduct) ? sourceTweet : '') || '').trim();
+    let url = (parsed.canonicalUrl || urls[index] || urls[0] || ((isJob || isTip) ? sourceTweet : '') || '').trim();
     if (url === 'undefined' || url === 'null') {
-      url = (urls[index] || urls[0] || ((isJob || isTip || isProduct) ? sourceTweet : '') || '').trim();
+      url = (urls[index] || urls[0] || ((isJob || isTip) ? sourceTweet : '') || '').trim();
     }
     url = cleanTrackingParams(url);
     if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
@@ -199,7 +196,7 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
     }
 
     if (!url || url === 'https://undefined' || url === 'https://null') {
-      url = urls[0] || ((isJob || isTip || isProduct) ? sourceTweet : '') || '';
+      url = urls[0] || ((isJob || isTip) ? sourceTweet : '') || '';
     }
 
     // PROTECCIÓN CONTRA ALUCINACIONES DE LA IA EN ENLACES DE GITHUB:
@@ -282,6 +279,29 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
       websiteUrl = undefined;
     }
 
+    // Auto-corrección si la IA confunde un skill de UI o diseño web con "Prompts, Art & Video":
+    if (validCategory === 'Prompts, Art & Video') {
+      const allText = `${parsed.name || ''} ${parsed.oneLiner || ''} ${(parsed.tags || []).join(' ')} ${(parsed.keyHighlights || []).join(' ')} ${url}`.toLowerCase();
+      if (
+        /frontend|ui-design|web-design|design-system|landing-page|css|html|tailwind|interfaz|navegador|browser|taste-skill/i.test(allText) &&
+        !/video|cinemat|film|ffmpeg|sora|runway|kling|clip/i.test(allText)
+      ) {
+        console.log(`[Pipeline] 🎨 Reclasificando "${parsed.name || url}" de "Prompts, Art & Video" a "Frontend & UI"`);
+        validCategory = 'Frontend & UI';
+      }
+    }
+
+    // Regla estricta: Un repositorio de código en GitHub o GitLab NUNCA es un producto de hardware físico, salvo que sea explícitamente hardware/firmware
+    const isGhRepo = url.includes('github.com') || url.includes('gitlab.com');
+    const isExplicitHardware = /hardware|gadget|placa|sbc|raspberry|esp32|arduino|microcontrolador|pcb|teclado mec[aá]nico|laptop/i.test(
+      `${parsed.name || ''} ${parsed.oneLiner || ''} ${(parsed.tags || []).join(' ')}`
+    );
+
+    const isProduct = !isJob && !isTip && (!isGhRepo || isExplicitHardware) && (
+      parsed.entryType === 'tech_product' ||
+      validCategory === 'Productos Tecnológicos & Hardware'
+    );
+
     const isShowcase =
       !isJob &&
       !isTip &&
@@ -340,7 +360,7 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
   const prompt = buildUserPrompt(params);
 
   const response = await ai.models.generateContent({
-    model: 'gemini-3.8-flash',
+    model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
     contents: prompt,
     config: {
       responseMimeType: 'application/json',
@@ -646,7 +666,7 @@ async function tryOllama(params: ClassifyInput): Promise<ClassificationResult[]>
 // -------------------------------------------------------------
 // ORQUESTADOR CON CASCADA MULTI-PROVEEDOR
 // Orden de prioridad configurado (Gemini por defecto):
-// 1º Google Gemini (3.8 Flash)
+// 1º Google Gemini (2.5 Flash)
 // 2º DeepSeek (ZenMux o Directo)
 // 3º MiniMax 3.1 Flash (ZenMux)
 // 4º Claude Haiku / Groq / OpenRouter / OpenAI / Ollama
@@ -655,9 +675,9 @@ export async function classifyWithProviderCascade(
   params: ClassifyInput
 ): Promise<{ results: ClassificationResult[]; providerUsed: string }> {
   const providers = [
-    // 1. Google Gemini (3.8 Flash) - Prioridad principal por defecto
+    // 1. Google Gemini (2.5 Flash) - Prioridad principal por defecto
     {
-      name: 'Google Gemini (3.8 Flash)',
+      name: 'Google Gemini (2.5 Flash)',
       fn: tryGemini,
       hasKey: () => Boolean(process.env.GEMINI_API_KEY),
     },
@@ -932,7 +952,7 @@ async function tryGeminiAuthor(params: AuthorAnalysisInput): Promise<AuthorProfi
   const prompt = buildAuthorAnalysisPrompt(params);
 
   const response = await ai.models.generateContent({
-    model: 'gemini-3.8-flash',
+    model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
     contents: prompt,
     config: {
       responseMimeType: 'application/json',
@@ -1013,9 +1033,9 @@ export async function analyzeAuthorWithCascade(
   const prompt = buildAuthorAnalysisPrompt(params);
 
   const providers = [
-    // 1. Google Gemini (3.8 Flash) - Prioridad principal por defecto
+    // 1. Google Gemini (2.5 Flash) - Prioridad principal por defecto
     {
-      name: 'Google Gemini (3.8 Flash)',
+      name: 'Google Gemini (2.5 Flash)',
       fn: () => tryGeminiAuthor(params),
       hasKey: () => Boolean(process.env.GEMINI_API_KEY),
     },
@@ -1154,9 +1174,9 @@ export async function analyzeAuthorWithCascade(
 // Utilidades de consulta para la interfaz y ventanas de análisis
 // -------------------------------------------------------------
 export function getActivePrimaryProviderName(): string {
-  // 1. Google Gemini (3.8 Flash) - Proveedor Principal por defecto
+  // 1. Google Gemini (2.5 Flash) - Proveedor Principal por defecto
   if (process.env.GEMINI_API_KEY) {
-    return 'Google Gemini (3.8 Flash)';
+    return 'Google Gemini (2.5 Flash)';
   }
 
   // 2. DeepSeek (ZenMux o Directo)
@@ -1212,8 +1232,8 @@ export function getActivePrimaryProviderName(): string {
 export function getConfiguredProvidersList(): Array<{ name: string; priority: number; configured: boolean; shortName: string }> {
   return [
     {
-      name: 'Google Gemini (3.8 Flash)',
-      shortName: 'Gemini 3.8 Flash',
+      name: 'Google Gemini (2.5 Flash)',
+      shortName: 'Gemini 2.5 Flash',
       priority: 1,
       configured: Boolean(process.env.GEMINI_API_KEY),
     },

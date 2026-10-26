@@ -52,9 +52,7 @@ function renderItemRow(item: ToolItem): string {
   const isTip = !isJob && (item.frontmatter.entry_type === 'tech_tip' || item.frontmatter.category === 'Consejos & Buenas Prácticas');
   const isProduct = !isJob && !isTip && (
     item.frontmatter.entry_type === 'tech_product' ||
-    item.frontmatter.entry_type === 'product_showcase' ||
-    item.frontmatter.category === 'Productos Tecnológicos & Hardware' ||
-    item.frontmatter.category === 'Empresas & Productos'
+    item.frontmatter.category === 'Productos Tecnológicos & Hardware'
   );
   const locationBadge = item.frontmatter.location ? ` (\`🌍 ${item.frontmatter.location}\`)` : '';
   const salaryBadge = item.frontmatter.salary ? ` (\`💰 ${item.frontmatter.salary}\`)` : '';
@@ -85,9 +83,7 @@ export function generateReadme(): string {
   const isTipItem = (t: ToolItem) => !isJobItem(t) && (t.frontmatter.entry_type === 'tech_tip' || t.frontmatter.category === 'Consejos & Buenas Prácticas');
   const isProductItem = (t: ToolItem) => !isJobItem(t) && !isTipItem(t) && (
     t.frontmatter.entry_type === 'tech_product' ||
-    t.frontmatter.entry_type === 'product_showcase' ||
-    t.frontmatter.category === 'Productos Tecnológicos & Hardware' ||
-    t.frontmatter.category === 'Empresas & Productos'
+    t.frontmatter.category === 'Productos Tecnológicos & Hardware'
   );
 
   const jobItems = allTools.filter(isJobItem);
@@ -192,7 +188,7 @@ export function generateReadme(): string {
 
   return `# 🚀 Awesome Dev Toolkit & Segundo Cerebro
 
-> Colección curada en **4 apartados esenciales** (Herramientas, Consejos Técnicos, Trabajo Remoto/Freelance y Productos Tech/Hardware) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA (Gemini 3.8 Flash).
+> Colección curada en **4 apartados esenciales** (Herramientas, Consejos Técnicos, Trabajo Remoto/Freelance y Productos Tech/Hardware) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA (Gemini 2.5 Flash).
 
 [![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-${toolItems.length}-blue?style=for-the-badge)]()
 [![Consejos](https://img.shields.io/badge/💡_Consejos-${tipItems.length}-8E75C2?style=for-the-badge)]()

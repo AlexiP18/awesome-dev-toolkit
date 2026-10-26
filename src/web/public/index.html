@@ -606,8 +606,8 @@
     let activeEditingSlug = null;
     let modalSelectedDest = 'tool'; // 'tool' | 'tech_tip' | 'job_remote' | 'tech_product'
     let isStaticMode = false;
-    let currentActiveAiProvider = 'Google Gemini (3.8 Flash)';
-    let currentActiveAiShortName = 'Gemini 3.8 Flash';
+    let currentActiveAiProvider = 'Google Gemini (2.5 Flash)';
+    let currentActiveAiShortName = 'Gemini 2.5 Flash';
 
     async function fetchAiStatus() {
       try {
@@ -620,7 +620,7 @@
               const low = data.activeProvider.toLowerCase();
               if (low.includes('deepseek')) currentActiveAiShortName = 'DeepSeek';
               else if (low.includes('minimax')) currentActiveAiShortName = 'MiniMax 3.1';
-              else if (low.includes('gemini')) currentActiveAiShortName = 'Gemini 3.8 Flash';
+              else if (low.includes('gemini')) currentActiveAiShortName = 'Gemini 2.5 Flash';
               else if (low.includes('claude')) currentActiveAiShortName = 'Claude Haiku';
               else if (low.includes('groq')) currentActiveAiShortName = 'Groq';
               else currentActiveAiShortName = 'IA';
@@ -732,7 +732,6 @@
           'Laptops & Equipos',
           'Chips & Procesadores',
           'IA Devices & Robótica',
-          'Empresas & Productos',
           'Productos Tecnológicos & Hardware',
           'Other'
         ]
@@ -752,9 +751,7 @@
       }
       if (
         fm.entry_type === 'tech_product' ||
-        fm.entry_type === 'product_showcase' ||
-        fm.category === 'Productos Tecnológicos & Hardware' ||
-        fm.category === 'Empresas & Productos'
+        fm.category === 'Productos Tecnológicos & Hardware'
       ) {
         return 'products';
       }

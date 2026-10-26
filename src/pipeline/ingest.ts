@@ -263,8 +263,10 @@ export async function ingestResource(input: IngestInput) {
         classification.category = 'Trabajo & Freelance';
       } else if (input.entryType === 'tech_tip' && (!classification.category || classification.category === 'Other')) {
         classification.category = 'Consejos & Buenas Prácticas';
-      } else if ((input.entryType === 'tech_product' || input.entryType === 'product_showcase') && (!classification.category || classification.category === 'Other')) {
+      } else if (input.entryType === 'tech_product' && (!classification.category || classification.category === 'Other')) {
         classification.category = 'Productos Tecnológicos & Hardware';
+      } else if (input.entryType === 'product_showcase' && (!classification.category || classification.category === 'Other')) {
+        classification.category = 'Empresas & Productos';
       }
     }
   }

@@ -184,9 +184,7 @@ export function createOrUpdateToolNote(
   const isTip = !isJob && params.classification.entryType === 'tech_tip';
   const isProduct = !isJob && !isTip && (
     params.classification.entryType === 'tech_product' ||
-    params.classification.entryType === 'product_showcase' ||
-    params.classification.category === 'Productos Tecnológicos & Hardware' ||
-    params.classification.category === 'Empresas & Productos'
+    params.classification.category === 'Productos Tecnológicos & Hardware'
   );
   const targetDir = isJob ? JOBS_DIR : isTip ? TIPS_DIR : isProduct ? PRODUCTS_DIR : TOOLS_DIR;
 
@@ -296,7 +294,7 @@ export function loadAllTools(): ToolItem[] {
 
   const dirs = [
     { dir: TOOLS_DIR, defaultType: 'tool' as const },
-    { dir: PRODUCTS_DIR, defaultType: 'product_showcase' as const },
+    { dir: PRODUCTS_DIR, defaultType: 'tech_product' as const },
     { dir: TIPS_DIR, defaultType: 'tech_tip' as const },
     { dir: JOBS_DIR, defaultType: 'job_remote' as const },
   ];
