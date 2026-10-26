@@ -525,15 +525,10 @@
             onchange="handleAiSelectChange(this.value)" 
             class="w-full bg-slate-900 border border-slate-700 hover:border-slate-600 rounded-lg px-2.5 py-2 text-xs text-slate-100 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition cursor-pointer appearance-none pr-8 font-medium"
           >
-            <option value="gemini" selected>🧠 Google Gemini (2.5 Flash) — Recomendado</option>
+            <option value="gemini" selected>🧠 Google Gemini (2.5 Flash) — Por defecto</option>
             <option value="deepseek">🚀 DeepSeek (v4.1 Flash / Directo)</option>
             <option value="minimax">⚡ MiniMax 3.1 Flash</option>
-            <option value="claude">🔮 Claude Haiku 5.5 (ZenMux)</option>
-            <option value="groq">⚡ Groq (Llama 3.3 70B)</option>
-            <option value="openrouter">🌐 OpenRouter</option>
-            <option value="openai">🤖 OpenAI (GPT-4o-mini)</option>
-            <option value="ollama">🦙 Ollama (Local)</option>
-            <option value="auto">🔄 Cascada Automática (Probar todos en orden)</option>
+            <option value="auto">🔄 Cascada Automática (Gemini ➔ DeepSeek ➔ MiniMax)</option>
           </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
             <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
@@ -647,12 +642,7 @@
         case 'gemini': return 'Gemini 2.5 Flash';
         case 'deepseek': return 'DeepSeek v4.1';
         case 'minimax': return 'MiniMax 3.1';
-        case 'claude': return 'Claude Haiku';
-        case 'groq': return 'Groq';
-        case 'openrouter': return 'OpenRouter';
-        case 'openai': return 'GPT-4o-mini';
-        case 'ollama': return 'Ollama';
-        default: return 'IA';
+        default: return 'Gemini 2.5 Flash';
       }
     }
 
@@ -697,15 +687,10 @@
       if (!select) return;
 
       const providerOptions = [
-        { id: 'gemini', icon: '🧠', name: 'Google Gemini (2.5 Flash)', desc: 'Recomendado' },
+        { id: 'gemini', icon: '🧠', name: 'Google Gemini (2.5 Flash)', desc: 'Por defecto' },
         { id: 'deepseek', icon: '🚀', name: 'DeepSeek (v4.1 Flash / Directo)', desc: '' },
         { id: 'minimax', icon: '⚡', name: 'MiniMax 3.1 Flash', desc: '' },
-        { id: 'claude', icon: '🔮', name: 'Claude Haiku 5.5 (ZenMux)', desc: '' },
-        { id: 'groq', icon: '⚡', name: 'Groq (Llama 3.3 70B)', desc: '' },
-        { id: 'openrouter', icon: '🌐', name: 'OpenRouter', desc: '' },
-        { id: 'openai', icon: '🤖', name: 'OpenAI (GPT-4o-mini)', desc: '' },
-        { id: 'ollama', icon: '🦙', name: 'Ollama (Local)', desc: '' },
-        { id: 'auto', icon: '🔄', name: 'Cascada Automática', desc: 'Probar todos en orden' },
+        { id: 'auto', icon: '🔄', name: 'Cascada Automática', desc: 'Gemini ➔ DeepSeek ➔ MiniMax' },
       ];
 
       select.innerHTML = providerOptions.map(opt => {
@@ -713,7 +698,7 @@
           return `<option value="auto" ${selectedAiProvider === 'auto' ? 'selected' : ''}>${opt.icon} ${opt.name} — ${opt.desc}</option>`;
         }
         const cfg = allAiProviders.find(p => p.id === opt.id);
-        const isConfigured = cfg ? cfg.configured : false;
+        const isConfigured = cfg ? cfg.configured : (opt.id === 'gemini');
         const statusLabel = isConfigured ? '🟢 Listo' : '⚪ Sin API key';
         const extraDesc = opt.desc ? ` (${opt.desc})` : '';
         const selected = selectedAiProvider === opt.id ? 'selected' : '';
@@ -740,7 +725,7 @@
           badge.className = 'font-mono font-medium text-sky-400 text-[10px] px-2 py-0.5 rounded-md bg-sky-500/10 border border-sky-500/20';
         }
         if (noticeText) {
-          noticeText.innerText = `Evaluará en cascada: ${currentActiveAiProvider} primero, y luego los demás modelos configurados.`;
+          noticeText.innerText = `Evaluará en cascada: Gemini ➔ DeepSeek ➔ MiniMax en orden de prioridad.`;
         }
       } else {
         const cfg = allAiProviders.find(p => p.id === selectedAiProvider);
