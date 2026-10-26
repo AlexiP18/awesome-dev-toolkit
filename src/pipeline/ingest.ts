@@ -24,6 +24,7 @@ export interface IngestInput {
   author?: string;
   status?: ToolStatus;
   entryType?: EntryType;
+  aiProvider?: string;
 }
 
 export async function ingestResource(input: IngestInput) {
@@ -179,12 +180,15 @@ export async function ingestResource(input: IngestInput) {
 
   // 4. Classify and summarize all tools found in the tweet with AI Cascade
   console.log(`[Pipeline] Analizando y extrayendo herramientas con IA en cascada...`);
-  const { results: classifications, providerUsed } = await classifyToolsWithGemini({
-    rawText: text || canonicalUrls.join('\n') || input.sourceTweet || '',
-    urls: canonicalUrls,
-    sourceTweet: input.sourceTweet,
-    githubMetas,
-  });
+  const { results: classifications, providerUsed } = await classifyToolsWithGemini(
+    {
+      rawText: text || canonicalUrls.join('\n') || input.sourceTweet || '',
+      urls: canonicalUrls,
+      sourceTweet: input.sourceTweet,
+      githubMetas,
+    },
+    input.aiProvider
+  );
 
   console.log(`[Pipeline] IA (${providerUsed}) identificó ${classifications.length} herramienta(s).`);
 

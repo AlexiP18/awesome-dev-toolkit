@@ -68,12 +68,12 @@ app.get('/api/ai/status', (req, res) => {
 // POST analyze author profile with AI
 app.post('/api/authors/analyze', async (req, res) => {
   try {
-    const { authorName, authorHandle } = req.body;
+    const { authorName, authorHandle, aiProvider } = req.body;
     if (!authorName) {
       return res.status(400).json({ success: false, error: 'authorName es requerido' });
     }
 
-    const { profile, providerUsed } = await analyzeAuthorWithAI(authorName, authorHandle);
+    const { profile, providerUsed } = await analyzeAuthorWithAI(authorName, authorHandle, aiProvider);
     res.json({ success: true, profile, providerUsed });
   } catch (error: any) {
     console.error('[API Author Analyze Error]', error);
@@ -84,8 +84,8 @@ app.post('/api/authors/analyze', async (req, res) => {
 // POST ingest a new tool from X / URL
 app.post('/api/ingest', async (req, res) => {
   try {
-    const { url, urls, rawText, sourceTweet, author, status, entryType } = req.body;
-    console.log(`[API] Ingest request received for: ${url || (urls && urls.join(', ')) || sourceTweet || rawText}`);
+    const { url, urls, rawText, sourceTweet, author, status, entryType, aiProvider } = req.body;
+    console.log(`[API] Ingest request received for: ${url || (urls && urls.join(', ')) || sourceTweet || rawText} [IA solicitada: ${aiProvider || 'auto'}]`);
 
     const result = await ingestResource({
       url,
@@ -95,6 +95,7 @@ app.post('/api/ingest', async (req, res) => {
       author,
       status,
       entryType,
+      aiProvider,
     });
 
     // Auto-update README.md

@@ -4,13 +4,16 @@ import { classifyWithProviderCascade, ALLOWED_CATEGORIES } from './ai_providers.
 
 export { ALLOWED_CATEGORIES };
 
-export async function classifyToolsWithGemini(params: {
-  rawText: string;
-  urls: string[];
-  sourceTweet?: string;
-  githubMetas?: Record<string, GitHubMetadata>;
-}): Promise<{ results: ClassificationResult[]; providerUsed: string }> {
-  const { results, providerUsed } = await classifyWithProviderCascade(params);
+export async function classifyToolsWithGemini(
+  params: {
+    rawText: string;
+    urls: string[];
+    sourceTweet?: string;
+    githubMetas?: Record<string, GitHubMetadata>;
+  },
+  preferredProvider?: string
+): Promise<{ results: ClassificationResult[]; providerUsed: string }> {
+  const { results, providerUsed } = await classifyWithProviderCascade(params, preferredProvider);
   console.log(`[Pipeline] Clasificación finalizada utilizando: ${providerUsed}`);
   return { results, providerUsed };
 }

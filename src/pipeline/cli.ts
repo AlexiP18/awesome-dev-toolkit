@@ -6,14 +6,22 @@ async function main() {
   if (args.length === 0) {
     console.log(`
 Uso de la herramienta CLI:
-  npm run add <URL o Enlace de GitHub o Tweet>
+  npm run add <URL o Enlace de GitHub o Tweet> [--ai <gemini|deepseek|minimax|claude|groq|openrouter|openai|ollama|auto>]
   npm run add "https://github.com/jesseduffield/lazygit"
+  npm run add "https://github.com/Leonxlnx/taste-skill" --ai deepseek
   npm run add -- "https://x.com/.../status/..." "Texto descriptivo de la herramienta"
 `);
     process.exit(1);
   }
 
-  const firstArg = args[0];
+  const aiIndex = args.indexOf('--ai');
+  let aiProvider: string | undefined = undefined;
+  if (aiIndex !== -1 && args[aiIndex + 1]) {
+    aiProvider = args[aiIndex + 1];
+    args.splice(aiIndex, 2);
+  }
+
+  const firstArg = args[0] || '';
   const secondArg = args[1] || '';
 
   const isUrl = firstArg.startsWith('http://') || firstArg.startsWith('https://');
@@ -23,6 +31,7 @@ Uso de la herramienta CLI:
       url: isUrl ? firstArg : undefined,
       rawText: isUrl ? secondArg : firstArg,
       sourceTweet: firstArg.includes('x.com') || firstArg.includes('twitter.com') ? firstArg : undefined,
+      aiProvider,
     });
 
     console.log('\n=======================================');

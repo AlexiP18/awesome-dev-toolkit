@@ -672,11 +672,13 @@ async function tryOllama(params: ClassifyInput): Promise<ClassificationResult[]>
 // 4º Claude Haiku / Groq / OpenRouter / OpenAI / Ollama
 // -------------------------------------------------------------
 export async function classifyWithProviderCascade(
-  params: ClassifyInput
+  params: ClassifyInput,
+  preferredProvider?: string
 ): Promise<{ results: ClassificationResult[]; providerUsed: string }> {
-  const providers = [
+  let providers = [
     // 1. Google Gemini (2.5 Flash) - Prioridad principal por defecto
     {
+      id: 'gemini',
       name: 'Google Gemini (2.5 Flash)',
       fn: tryGemini,
       hasKey: () => Boolean(process.env.GEMINI_API_KEY),
@@ -684,11 +686,13 @@ export async function classifyWithProviderCascade(
 
     // 2. DeepSeek (ZenMux v4.1 Flash o Directo)
     {
+      id: 'deepseek',
       name: `ZenMux (${process.env.ZENMUX_DEEPSEEK_MODEL || 'deepseek/deepseek-v4.1-flash'})`,
       fn: tryZenMuxDeepSeek,
       hasKey: () => Boolean(process.env.ZENMUX_DEEPSEEK_KEY || process.env.ZENMUX_API_KEY),
     },
     {
+      id: 'deepseek',
       name: `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || 'deepseek-chat'})`,
       fn: tryDeepSeekDirect,
       hasKey: () => Boolean(process.env.DEEPSEEK_API_KEY),
@@ -696,6 +700,7 @@ export async function classifyWithProviderCascade(
 
     // 3. MiniMax (3.1 Flash vía ZenMux)
     {
+      id: 'minimax',
       name: `ZenMux (${process.env.ZENMUX_MINIMAX_MODEL || 'minimax/minimax-m3.1-flash'})`,
       fn: tryZenMuxMiniMax,
       hasKey: () => Boolean(process.env.ZENMUX_MINIMAX_KEY || process.env.ZENMUX_API_KEY),
@@ -703,6 +708,7 @@ export async function classifyWithProviderCascade(
 
     // 4. ZenMux - Claude Haiku 5.5
     {
+      id: 'claude',
       name: `ZenMux (${process.env.ZENMUX_CLAUDE_MODEL || 'anthropic/claude-haiku-5.5'})`,
       fn: tryZenMuxClaude,
       hasKey: () => Boolean(process.env.ZENMUX_CLAUDE_KEY || process.env.ZENMUX_API_KEY),
@@ -712,6 +718,7 @@ export async function classifyWithProviderCascade(
     ...(process.env.ZENMUX_MODEL
       ? [
           {
+            id: 'zenmux',
             name: `ZenMux (${process.env.ZENMUX_MODEL})`,
             fn: tryZenMuxGeneral,
             hasKey: () => Boolean(process.env.ZENMUX_API_KEY),
@@ -720,17 +727,27 @@ export async function classifyWithProviderCascade(
       : []),
 
     // 5. Groq (Llama 3.3)
-    { name: 'Groq (Llama 3.3)', fn: tryGroq, hasKey: () => Boolean(process.env.GROQ_API_KEY) },
+    { id: 'groq', name: 'Groq (Llama 3.3)', fn: tryGroq, hasKey: () => Boolean(process.env.GROQ_API_KEY) },
 
     // 6. OpenRouter
-    { name: 'OpenRouter', fn: tryOpenRouter, hasKey: () => Boolean(process.env.OPENROUTER_API_KEY) },
+    { id: 'openrouter', name: 'OpenRouter', fn: tryOpenRouter, hasKey: () => Boolean(process.env.OPENROUTER_API_KEY) },
 
     // 7. OpenAI (GPT-4o-mini)
-    { name: 'OpenAI (GPT-4o-mini)', fn: tryOpenAI, hasKey: () => Boolean(process.env.OPENAI_API_KEY) },
+    { id: 'openai', name: 'OpenAI (GPT-4o-mini)', fn: tryOpenAI, hasKey: () => Boolean(process.env.OPENAI_API_KEY) },
 
     // 8. Ollama (Local)
-    { name: 'Ollama (Local)', fn: tryOllama, hasKey: () => Boolean(process.env.OLLAMA_BASE_URL) },
+    { id: 'ollama', name: 'Ollama (Local)', fn: tryOllama, hasKey: () => Boolean(process.env.OLLAMA_BASE_URL) },
   ];
+
+  if (preferredProvider && preferredProvider !== 'auto') {
+    const pref = preferredProvider.toLowerCase().trim();
+    const matched = providers.filter(p => p.id === pref || p.name.toLowerCase().includes(pref));
+    const others = providers.filter(p => p.id !== pref && !p.name.toLowerCase().includes(pref));
+    if (matched.length > 0) {
+      console.log(`[IA] 🎯 Usuario seleccionó preferir: ${matched[0].name}`);
+      providers = [...matched, ...others];
+    }
+  }
 
   const errors: string[] = [];
 
@@ -1028,13 +1045,15 @@ async function callOpenAICompatibleAuthor(options: {
 }
 
 export async function analyzeAuthorWithCascade(
-  params: AuthorAnalysisInput
+  params: AuthorAnalysisInput,
+  preferredProvider?: string
 ): Promise<{ result: AuthorProfileResult; providerUsed: string }> {
   const prompt = buildAuthorAnalysisPrompt(params);
 
-  const providers = [
+  let providers = [
     // 1. Google Gemini (2.5 Flash) - Prioridad principal por defecto
     {
+      id: 'gemini',
       name: 'Google Gemini (2.5 Flash)',
       fn: () => tryGeminiAuthor(params),
       hasKey: () => Boolean(process.env.GEMINI_API_KEY),
@@ -1042,6 +1061,7 @@ export async function analyzeAuthorWithCascade(
 
     // 2. DeepSeek Flash (ZenMux)
     {
+      id: 'deepseek',
       name: `ZenMux (${process.env.ZENMUX_DEEPSEEK_MODEL || 'deepseek/deepseek-v4.1-flash'})`,
       fn: async () => {
         const apiKey = process.env.ZENMUX_DEEPSEEK_KEY || process.env.ZENMUX_API_KEY;
@@ -1060,6 +1080,7 @@ export async function analyzeAuthorWithCascade(
 
     // 3. MiniMax 3.1 Flash (ZenMux)
     {
+      id: 'minimax',
       name: `ZenMux (${process.env.ZENMUX_MINIMAX_MODEL || 'minimax/minimax-m3.1-flash'})`,
       fn: async () => {
         const apiKey = process.env.ZENMUX_MINIMAX_KEY || process.env.ZENMUX_API_KEY;
@@ -1078,6 +1099,7 @@ export async function analyzeAuthorWithCascade(
 
     // 4. Claude Haiku 5.5 (ZenMux)
     {
+      id: 'claude',
       name: `ZenMux (${process.env.ZENMUX_CLAUDE_MODEL || 'anthropic/claude-haiku-5.5'})`,
       fn: async () => {
         const apiKey = process.env.ZENMUX_CLAUDE_KEY || process.env.ZENMUX_API_KEY;
@@ -1098,6 +1120,7 @@ export async function analyzeAuthorWithCascade(
     ...(process.env.ZENMUX_MODEL
       ? [
           {
+            id: 'zenmux',
             name: `ZenMux (${process.env.ZENMUX_MODEL})`,
             fn: async () => {
               const raw = await callOpenAICompatibleAuthor({
@@ -1114,6 +1137,16 @@ export async function analyzeAuthorWithCascade(
         ]
       : []),
   ];
+
+  if (preferredProvider && preferredProvider !== 'auto') {
+    const pref = preferredProvider.toLowerCase().trim();
+    const matched = providers.filter(p => p.id === pref || p.name.toLowerCase().includes(pref));
+    const others = providers.filter(p => p.id !== pref && !p.name.toLowerCase().includes(pref));
+    if (matched.length > 0) {
+      console.log(`[AuthorManager] 🎯 Analizando autor con motor elegido: ${matched[0].name}`);
+      providers = [...matched, ...others];
+    }
+  }
 
   for (const provider of providers) {
     if (!provider.hasKey()) continue;
@@ -1229,51 +1262,59 @@ export function getActivePrimaryProviderName(): string {
   return 'Modo Respaldo Local (Sin API Key)';
 }
 
-export function getConfiguredProvidersList(): Array<{ name: string; priority: number; configured: boolean; shortName: string }> {
+export function getConfiguredProvidersList(): Array<{ id: string; name: string; priority: number; configured: boolean; shortName: string }> {
   return [
     {
+      id: 'gemini',
       name: 'Google Gemini (2.5 Flash)',
       shortName: 'Gemini 2.5 Flash',
       priority: 1,
       configured: Boolean(process.env.GEMINI_API_KEY),
     },
     {
+      id: 'deepseek',
       name: `ZenMux DeepSeek (${process.env.ZENMUX_DEEPSEEK_MODEL || 'v4.1-flash'})`,
       shortName: 'DeepSeek v4.1',
       priority: 2,
       configured: Boolean(process.env.ZENMUX_DEEPSEEK_KEY || process.env.ZENMUX_API_KEY || process.env.DEEPSEEK_API_KEY),
     },
     {
+      id: 'minimax',
       name: `ZenMux MiniMax (${process.env.ZENMUX_MINIMAX_MODEL || '3.1-flash'})`,
       shortName: 'MiniMax 3.1',
       priority: 3,
       configured: Boolean(process.env.ZENMUX_MINIMAX_KEY || process.env.ZENMUX_API_KEY),
     },
     {
+      id: 'claude',
       name: `ZenMux Claude (${process.env.ZENMUX_CLAUDE_MODEL || 'Haiku 5.5'})`,
       shortName: 'Claude Haiku',
       priority: 4,
       configured: Boolean(process.env.ZENMUX_CLAUDE_KEY || process.env.ZENMUX_API_KEY),
     },
     {
+      id: 'groq',
       name: 'Groq (Llama 3.3 70B)',
       shortName: 'Groq (Llama 3.3)',
       priority: 5,
       configured: Boolean(process.env.GROQ_API_KEY),
     },
     {
+      id: 'openrouter',
       name: 'OpenRouter',
       shortName: 'OpenRouter',
       priority: 6,
       configured: Boolean(process.env.OPENROUTER_API_KEY),
     },
     {
+      id: 'openai',
       name: 'OpenAI (GPT-4o-mini)',
       shortName: 'GPT-4o-mini',
       priority: 7,
       configured: Boolean(process.env.OPENAI_API_KEY),
     },
     {
+      id: 'ollama',
       name: 'Ollama (Local)',
       shortName: 'Ollama',
       priority: 8,

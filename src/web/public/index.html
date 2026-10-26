@@ -507,15 +507,43 @@
         </button>
       </div>
 
-      <!-- Active AI Engine Indicator -->
-      <div class="mb-4 flex items-center justify-between p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs">
-        <span class="text-slate-400 flex items-center gap-1.5">
-          <i data-lucide="cpu" class="w-3.5 h-3.5 text-sky-400"></i>
-          <span>IA para análisis & extracción:</span>
-        </span>
-        <span id="modalActiveAiBadge" class="font-mono font-medium text-sky-300 text-[11px] px-2.5 py-0.5 rounded-lg bg-sky-500/10 border border-sky-500/25">
-          Cargando IA...
-        </span>
+      <!-- AI Engine Selector -->
+      <div class="mb-4 p-3 rounded-xl bg-slate-950/90 border border-slate-800 text-xs space-y-2">
+        <div class="flex items-center justify-between">
+          <label for="modalAiSelect" class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+            <i data-lucide="cpu" class="w-3.5 h-3.5 text-sky-400"></i>
+            <span>Motor de IA para el análisis:</span>
+          </label>
+          <span id="modalActiveAiBadge" class="font-mono font-medium text-emerald-400 text-[10px] px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20">
+            🟢 Listo
+          </span>
+        </div>
+        
+        <div class="relative">
+          <select 
+            id="modalAiSelect" 
+            onchange="handleAiSelectChange(this.value)" 
+            class="w-full bg-slate-900 border border-slate-700 hover:border-slate-600 rounded-lg px-2.5 py-2 text-xs text-slate-100 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition cursor-pointer appearance-none pr-8 font-medium"
+          >
+            <option value="gemini" selected>🧠 Google Gemini (2.5 Flash) — Recomendado</option>
+            <option value="deepseek">🚀 DeepSeek (v4.1 Flash / Directo)</option>
+            <option value="minimax">⚡ MiniMax 3.1 Flash</option>
+            <option value="claude">🔮 Claude Haiku 5.5 (ZenMux)</option>
+            <option value="groq">⚡ Groq (Llama 3.3 70B)</option>
+            <option value="openrouter">🌐 OpenRouter</option>
+            <option value="openai">🤖 OpenAI (GPT-4o-mini)</option>
+            <option value="ollama">🦙 Ollama (Local)</option>
+            <option value="auto">🔄 Cascada Automática (Probar todos en orden)</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+        <div id="modalAiStatusNotice" class="text-[11px] text-slate-400 flex items-center gap-1.5 pt-0.5">
+          <i data-lucide="info" class="w-3 h-3 text-sky-400 flex-shrink-0"></i>
+          <span id="modalAiStatusNoticeText">Gemini 2.5 Flash procesará la extracción y categorización técnica.</span>
+        </div>
       </div>
 
       <!-- Apartado Target Destination Selector -->
@@ -608,6 +636,31 @@
     let isStaticMode = false;
     let currentActiveAiProvider = 'Google Gemini (2.5 Flash)';
     let currentActiveAiShortName = 'Gemini 2.5 Flash';
+    let selectedAiProvider = localStorage.getItem('toolkit_selected_ai_provider') || 'gemini';
+    let allAiProviders = [];
+
+    function getSelectedAiShortName() {
+      if (selectedAiProvider === 'auto') return 'Cascada IA';
+      const found = allAiProviders.find(p => p.id === selectedAiProvider);
+      if (found) return found.shortName;
+      switch (selectedAiProvider) {
+        case 'gemini': return 'Gemini 2.5 Flash';
+        case 'deepseek': return 'DeepSeek v4.1';
+        case 'minimax': return 'MiniMax 3.1';
+        case 'claude': return 'Claude Haiku';
+        case 'groq': return 'Groq';
+        case 'openrouter': return 'OpenRouter';
+        case 'openai': return 'GPT-4o-mini';
+        case 'ollama': return 'Ollama';
+        default: return 'IA';
+      }
+    }
+
+    function handleAiSelectChange(val) {
+      selectedAiProvider = val;
+      localStorage.setItem('toolkit_selected_ai_provider', val);
+      updateAiBadges();
+    }
 
     async function fetchAiStatus() {
       try {
@@ -615,15 +668,21 @@
           const res = await fetch('/api/ai/status');
           if (res.ok) {
             const data = await res.json();
-            if (data.success && data.activeProvider) {
-              currentActiveAiProvider = data.activeProvider;
-              const low = data.activeProvider.toLowerCase();
-              if (low.includes('deepseek')) currentActiveAiShortName = 'DeepSeek';
-              else if (low.includes('minimax')) currentActiveAiShortName = 'MiniMax 3.1';
-              else if (low.includes('gemini')) currentActiveAiShortName = 'Gemini 2.5 Flash';
-              else if (low.includes('claude')) currentActiveAiShortName = 'Claude Haiku';
-              else if (low.includes('groq')) currentActiveAiShortName = 'Groq';
-              else currentActiveAiShortName = 'IA';
+            if (data.success) {
+              if (data.activeProvider) {
+                currentActiveAiProvider = data.activeProvider;
+                const low = data.activeProvider.toLowerCase();
+                if (low.includes('deepseek')) currentActiveAiShortName = 'DeepSeek';
+                else if (low.includes('minimax')) currentActiveAiShortName = 'MiniMax 3.1';
+                else if (low.includes('gemini')) currentActiveAiShortName = 'Gemini 2.5 Flash';
+                else if (low.includes('claude')) currentActiveAiShortName = 'Claude Haiku';
+                else if (low.includes('groq')) currentActiveAiShortName = 'Groq';
+                else currentActiveAiShortName = 'IA';
+              }
+              if (Array.isArray(data.allConfigured)) {
+                allAiProviders = data.allConfigured;
+                renderAiSelectOptions();
+              }
               updateAiBadges();
             }
           }
@@ -633,17 +692,86 @@
       }
     }
 
+    function renderAiSelectOptions() {
+      const select = document.getElementById('modalAiSelect');
+      if (!select) return;
+
+      const providerOptions = [
+        { id: 'gemini', icon: '🧠', name: 'Google Gemini (2.5 Flash)', desc: 'Recomendado' },
+        { id: 'deepseek', icon: '🚀', name: 'DeepSeek (v4.1 Flash / Directo)', desc: '' },
+        { id: 'minimax', icon: '⚡', name: 'MiniMax 3.1 Flash', desc: '' },
+        { id: 'claude', icon: '🔮', name: 'Claude Haiku 5.5 (ZenMux)', desc: '' },
+        { id: 'groq', icon: '⚡', name: 'Groq (Llama 3.3 70B)', desc: '' },
+        { id: 'openrouter', icon: '🌐', name: 'OpenRouter', desc: '' },
+        { id: 'openai', icon: '🤖', name: 'OpenAI (GPT-4o-mini)', desc: '' },
+        { id: 'ollama', icon: '🦙', name: 'Ollama (Local)', desc: '' },
+        { id: 'auto', icon: '🔄', name: 'Cascada Automática', desc: 'Probar todos en orden' },
+      ];
+
+      select.innerHTML = providerOptions.map(opt => {
+        if (opt.id === 'auto') {
+          return `<option value="auto" ${selectedAiProvider === 'auto' ? 'selected' : ''}>${opt.icon} ${opt.name} — ${opt.desc}</option>`;
+        }
+        const cfg = allAiProviders.find(p => p.id === opt.id);
+        const isConfigured = cfg ? cfg.configured : false;
+        const statusLabel = isConfigured ? '🟢 Listo' : '⚪ Sin API key';
+        const extraDesc = opt.desc ? ` (${opt.desc})` : '';
+        const selected = selectedAiProvider === opt.id ? 'selected' : '';
+        return `<option value="${opt.id}" ${selected}>${opt.icon} ${opt.name}${extraDesc} [${statusLabel}]</option>`;
+      }).join('');
+
+      select.value = selectedAiProvider;
+    }
+
     function updateAiBadges() {
       const badge = document.getElementById('modalActiveAiBadge');
-      if (badge) badge.innerText = currentActiveAiProvider;
-
+      const noticeText = document.getElementById('modalAiStatusNoticeText');
       const ingestBtnText = document.getElementById('ingestSubmitBtnText');
-      if (ingestBtnText) ingestBtnText.innerText = `Analizar con ${currentActiveAiShortName}`;
+      const shortName = getSelectedAiShortName();
+
+      const select = document.getElementById('modalAiSelect');
+      if (select && select.value !== selectedAiProvider) {
+        select.value = selectedAiProvider;
+      }
+
+      if (selectedAiProvider === 'auto') {
+        if (badge) {
+          badge.innerText = '🔄 Cascada Activa';
+          badge.className = 'font-mono font-medium text-sky-400 text-[10px] px-2 py-0.5 rounded-md bg-sky-500/10 border border-sky-500/20';
+        }
+        if (noticeText) {
+          noticeText.innerText = `Evaluará en cascada: ${currentActiveAiProvider} primero, y luego los demás modelos configurados.`;
+        }
+      } else {
+        const cfg = allAiProviders.find(p => p.id === selectedAiProvider);
+        const isConfigured = cfg ? cfg.configured : (selectedAiProvider === 'gemini');
+
+        if (badge) {
+          if (isConfigured) {
+            badge.innerText = '🟢 Configurado';
+            badge.className = 'font-mono font-medium text-emerald-400 text-[10px] px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20';
+          } else {
+            badge.innerText = '🟡 Sin Key (.env)';
+            badge.className = 'font-mono font-medium text-amber-400 text-[10px] px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20';
+          }
+        }
+        if (noticeText) {
+          if (isConfigured) {
+            noticeText.innerText = `${shortName} procesará la extracción técnica y categorización del recurso.`;
+          } else {
+            noticeText.innerText = `No se detectó API Key en .env para ${shortName}. Si falla, el pipeline usará la cascada de respaldo.`;
+          }
+        }
+      }
+
+      if (ingestBtnText) {
+        ingestBtnText.innerText = `Analizar con ${shortName}`;
+      }
 
       const bannerAnalyzeText = document.getElementById('authorBannerAnalyzeText');
       if (bannerAnalyzeText && !bannerAnalyzeText.innerText.includes('Analizando')) {
         const isAnalyzed = Boolean(document.getElementById('authorBannerBio')?.innerText && !document.getElementById('authorBannerBio')?.innerText.includes('Cargando'));
-        bannerAnalyzeText.innerText = isAnalyzed ? `Actualizar con ${currentActiveAiShortName}` : `Analizar con ${currentActiveAiShortName}`;
+        bannerAnalyzeText.innerText = isAnalyzed ? `Actualizar con ${shortName}` : `Analizar con ${shortName}`;
       }
     }
 
@@ -1124,10 +1252,11 @@
       const authorName = authorNameParam || currentAuthor;
       if (!authorName || authorName === 'all') return;
 
+      const shortName = getSelectedAiShortName();
       const btn = document.getElementById('authorBannerAnalyzeBtn');
       const btnText = document.getElementById('authorBannerAnalyzeText');
       if (btn) btn.disabled = true;
-      if (btnText) btnText.innerText = `Analizando con ${currentActiveAiShortName}...`;
+      if (btnText) btnText.innerText = `Analizando con ${shortName}...`;
 
       try {
         const authorData = getAuthorsData().find(a => a.name.toLowerCase() === authorName.toLowerCase());
@@ -1136,7 +1265,11 @@
         const res = await fetch('/api/authors/analyze', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ authorName, authorHandle: handle }),
+          body: JSON.stringify({ 
+            authorName, 
+            authorHandle: handle,
+            aiProvider: selectedAiProvider,
+          }),
         });
 
         const data = await res.json();
@@ -1154,7 +1287,7 @@
         alert('Error al conectar con la API para analizar el perfil con IA.');
       } finally {
         if (btn) btn.disabled = false;
-        if (btnText) btnText.innerText = `Actualizar con ${currentActiveAiShortName}`;
+        if (btnText) btnText.innerText = `Actualizar con ${shortName}`;
       }
     }
 
@@ -1986,14 +2119,15 @@
       const url = document.getElementById('ingestUrlInput').value.trim();
       const rawText = document.getElementById('ingestTextInput').value.trim();
       const btn = document.getElementById('ingestSubmitBtn');
+      const shortName = getSelectedAiShortName();
 
       if (isStaticMode) {
-        alert(`💡 Modo GitHub Pages:\nPara clasificar con ${currentActiveAiShortName} y agregar recursos a tu repositorio, corre en tu terminal:\n\nnpm run add "` + url + `"\n\nO inicia el servidor local con "npm run dev".`);
+        alert(`💡 Modo GitHub Pages:\nPara clasificar con ${shortName} y agregar recursos a tu repositorio, corre en tu terminal:\n\nnpm run add "` + url + `"\n\nO inicia el servidor local con "npm run dev".`);
         return;
       }
 
       btn.disabled = true;
-      btn.innerHTML = `<i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i><span>Analizando con ${currentActiveAiShortName}...</span>`;
+      btn.innerHTML = `<i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i><span>Analizando con ${shortName}...</span>`;
       lucide.createIcons();
 
       try {
@@ -2004,6 +2138,7 @@
             url, 
             rawText,
             entryType: modalSelectedDest,
+            aiProvider: selectedAiProvider,
           }),
         });
         const data = await res.json();
@@ -2037,7 +2172,7 @@
         alert('Error de conexión con el servidor.');
       } finally {
         btn.disabled = false;
-        btn.innerHTML = `<span>Analizar con ${currentActiveAiShortName}</span>`;
+        btn.innerHTML = `<span>Analizar con ${shortName}</span>`;
       }
     }
 
