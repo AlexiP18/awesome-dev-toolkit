@@ -539,6 +539,11 @@
           <i data-lucide="info" class="w-3 h-3 text-sky-400 flex-shrink-0"></i>
           <span id="modalAiStatusNoticeText">Gemini 3.8 Flash procesará la extracción y categorización técnica.</span>
         </div>
+
+        <div id="modalSwitchNoticeAlert" class="hidden p-2 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 text-[11px] flex items-start gap-1.5">
+          <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-400 flex-shrink-0 mt-0.5"></i>
+          <span id="modalSwitchNoticeAlertText" class="leading-relaxed"></span>
+        </div>
       </div>
 
       <!-- Apartado Target Destination Selector -->
@@ -1263,7 +1268,11 @@
           if (data.profile.handle) allAuthorProfiles[data.profile.handle.toLowerCase()] = data.profile;
           updateAuthorProfileBanner();
           renderAuthorsModal();
-          alert(`✅ Autor "${authorName}" analizado con éxito utilizando: ${data.providerUsed || currentActiveAiProvider}`);
+          if (data.switchNotice) {
+            alert(`${data.switchNotice}\n\n✅ Perfil de autor "${authorName}" actualizado.`);
+          } else {
+            alert(`✅ Autor "${authorName}" analizado con éxito utilizando: ${data.providerUsed || currentActiveAiProvider}`);
+          }
         } else {
           alert('Aviso: ' + (data.error || 'No se pudo completar el análisis del autor'));
         }
@@ -2145,7 +2154,10 @@
 
           await fetchTools();
           const usedAi = data.data?.providerUsed || currentActiveAiProvider;
-          if (data.data?.addedCount === 0 && data.data?.skippedCount > 0) {
+          const switchNotice = data.data?.switchNotice;
+          if (switchNotice) {
+            alert(`${switchNotice}\n\n✅ Guardado con éxito en tu catálogo.`);
+          } else if (data.data?.addedCount === 0 && data.data?.skippedCount > 0) {
             alert(`⏭️ El recurso "${data.data?.classification?.name || url}" ya existía en tu catálogo, por lo que no se duplicó.`);
           } else {
             alert(`✅ Recurso analizado y guardado con éxito utilizando: ${usedAi}`);

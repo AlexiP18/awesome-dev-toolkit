@@ -114,7 +114,10 @@
             }
 
             details.classList.remove('hidden');
-            details.innerHTML = `
+            const noticeHtml = data.data?.switchNotice 
+              ? `<div class="p-2 mb-2 rounded-lg bg-amber-500/15 border border-amber-500/30 text-[11px] text-amber-300 font-medium leading-relaxed">${data.data.switchNotice}</div>`
+              : '';
+            details.innerHTML = noticeHtml + `
               <div><span class="text-slate-500">Categoría:</span> <span class="text-sky-400 font-medium">${info.category || 'Other'}</span></div>
               <div><span class="text-slate-500">Tags:</span> <span class="text-slate-300 font-mono">${(info.tags || []).map(t => '#' + t).join(' ')}</span></div>
               <p class="text-slate-400 pt-1 line-clamp-2">${info.oneLiner || ''}</p>
