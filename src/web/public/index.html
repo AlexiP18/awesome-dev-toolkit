@@ -2018,7 +2018,7 @@
         let apartadoBarTheme;
         if (isJob) {
           apartadoBarTheme = {
-            label: 'EMPLEO / REMOTO',
+            label: 'TRABAJO',
             fullName: 'Trabajo & Freelance',
             icon: 'briefcase',
             bg: 'bg-gradient-to-b from-blue-600 to-blue-700',
@@ -2034,7 +2034,7 @@
           };
         } else if (isProduct) {
           apartadoBarTheme = {
-            label: 'PRODUCTOS TECH',
+            label: 'PRODUCTOS',
             fullName: 'Productos Tech & Hardware',
             icon: 'cpu',
             bg: 'bg-gradient-to-b from-amber-600 to-amber-700',
@@ -2050,14 +2050,21 @@
           };
         }
 
+        const lettersHtml = apartadoBarTheme.label.split('').map(ch => {
+          if (ch === ' ' || ch === '/') {
+            return `<span class="h-2 w-full flex items-center justify-center"><span class="w-1 h-1 rounded-full bg-white/40"></span></span>`;
+          }
+          return `<span class="leading-none drop-shadow-sm font-black">${ch}</span>`;
+        }).join('');
+
         const apartadoVerticalBarHtml = isAllFilter ? `
-          <div class="w-9 sm:w-10 flex flex-col items-center justify-between py-3.5 px-1 ${apartadoBarTheme.bg} ${apartadoBarTheme.border} flex-shrink-0 select-none shadow-inner" title="Apartado: ${apartadoBarTheme.fullName}">
+          <div class="w-8 sm:w-9 flex flex-col items-center justify-between py-3 px-1 ${apartadoBarTheme.bg} ${apartadoBarTheme.border} flex-shrink-0 select-none shadow-inner" title="Apartado: ${apartadoBarTheme.fullName}">
             <div class="text-white flex items-center justify-center p-1.5 rounded-lg bg-black/25 shadow-sm">
-              <i data-lucide="${apartadoBarTheme.icon}" class="w-4 h-4"></i>
+              <i data-lucide="${apartadoBarTheme.icon}" class="w-3.5 h-3.5"></i>
             </div>
-            <span class="text-[11px] sm:text-xs font-black tracking-widest text-white uppercase my-auto whitespace-nowrap drop-shadow" style="writing-mode: vertical-rl; transform: rotate(180deg);">
-              ${apartadoBarTheme.label}
-            </span>
+            <div class="flex flex-col items-center justify-center gap-0.5 select-none text-[10px] sm:text-[11px] text-white my-auto py-1 font-black" aria-label="${apartadoBarTheme.label}">
+              ${lettersHtml}
+            </div>
             <div class="w-1.5 h-1.5 rounded-full bg-white/50"></div>
           </div>
         ` : '';
