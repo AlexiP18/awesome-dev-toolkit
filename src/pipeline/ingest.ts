@@ -180,7 +180,7 @@ export async function ingestResource(input: IngestInput) {
 
   // 4. Classify and summarize all tools found in the tweet with AI Cascade
   console.log(`[Pipeline] Analizando y extrayendo herramientas con IA en cascada...`);
-  const { results: classifications, providerUsed } = await classifyToolsWithGemini(
+  const { results: classifications, providerUsed, switchNotice } = await classifyToolsWithGemini(
     {
       rawText: text || canonicalUrls.join('\n') || input.sourceTweet || '',
       urls: canonicalUrls,
@@ -327,6 +327,7 @@ export async function ingestResource(input: IngestInput) {
     addedCount,
     skippedCount,
     providerUsed,
+    switchNotice,
     items: savedItems,
     slug: first?.slug,
     filePath: first?.filePath,

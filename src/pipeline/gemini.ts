@@ -12,10 +12,10 @@ export async function classifyToolsWithGemini(
     githubMetas?: Record<string, GitHubMetadata>;
   },
   preferredProvider?: string
-): Promise<{ results: ClassificationResult[]; providerUsed: string }> {
-  const { results, providerUsed } = await classifyWithProviderCascade(params, preferredProvider);
+): Promise<{ results: ClassificationResult[]; providerUsed: string; switchNotice?: string }> {
+  const { results, providerUsed, switchNotice } = await classifyWithProviderCascade(params, preferredProvider);
   console.log(`[Pipeline] Clasificación finalizada utilizando: ${providerUsed}`);
-  return { results, providerUsed };
+  return { results, providerUsed, switchNotice };
 }
 
 export async function classifyToolWithGemini(params: {

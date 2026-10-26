@@ -154,7 +154,7 @@ export async function analyzeAuthorWithAI(
   authorName: string,
   authorHandle?: string,
   aiProvider?: string
-): Promise<{ profile: AuthorProfile; providerUsed: string }> {
+): Promise<{ profile: AuthorProfile; providerUsed: string; switchNotice?: string }> {
   const allTools = loadAllTools();
 
   // Find all tools associated with this author
@@ -176,7 +176,7 @@ export async function analyzeAuthorWithAI(
 
   console.log(`[AuthorManager] 🤖 Analizando autor "${authorName}" (@${authorHandle || 'n/a'}) con IA (${toolsSummary.length} herramientas)...`);
 
-  const { result, providerUsed } = await analyzeAuthorWithCascade(
+  const { result, providerUsed, switchNotice } = await analyzeAuthorWithCascade(
     {
       name: authorName,
       handle: authorHandle,
@@ -188,5 +188,5 @@ export async function analyzeAuthorWithAI(
   const savedProfile = saveAuthorProfile(result, providerUsed);
   console.log(`[AuthorManager] ✅ Perfil de "${authorName}" guardado en content/authors/${savedProfile.slug}.md`);
 
-  return { profile: savedProfile, providerUsed };
+  return { profile: savedProfile, providerUsed, switchNotice };
 }

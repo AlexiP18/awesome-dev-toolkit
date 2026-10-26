@@ -389,29 +389,14 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
     },
   };
 
-  try {
-    const response = await ai.models.generateContent({
-      model: targetModel,
-      contents: prompt,
-      config: schemaConfig,
-    });
+  const response = await ai.models.generateContent({
+    model: targetModel,
+    contents: prompt,
+    config: schemaConfig,
+  });
 
-    const parsed = JSON.parse(response.text || '[]');
-    return normalizeRawOutput(parsed, params.urls, params.sourceTweet);
-  } catch (err: any) {
-    // Si Gemini 3.8 Flash sufre un pico temporal de sobrecarga (503 UNAVAILABLE), degradar suavemente a 2.5 Flash
-    if (targetModel === 'gemini-3.8-flash' && err?.message && (err.message.includes('503') || err.message.includes('UNAVAILABLE'))) {
-      console.warn(`[Gemini] ⚠️ gemini-3.8-flash en sobrecarga temporal (503). Reintentando con gemini-2.5-flash como respaldo...`);
-      const fallbackResponse = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: prompt,
-        config: schemaConfig,
-      });
-      const parsed = JSON.parse(fallbackResponse.text || '[]');
-      return normalizeRawOutput(parsed, params.urls, params.sourceTweet);
-    }
-    throw err;
-  }
+  const parsed = JSON.parse(response.text || '[]');
+  return normalizeRawOutput(parsed, params.urls, params.sourceTweet);
 }
 
 // -------------------------------------------------------------
@@ -692,7 +677,7 @@ async function tryOllama(params: ClassifyInput): Promise<ClassificationResult[]>
 export async function classifyWithProviderCascade(
   params: ClassifyInput,
   preferredProvider?: string
-): Promise<{ results: ClassificationResult[]; providerUsed: string }> {
+): Promise<{ results: ClassificationResult[]; providerUsed: string; switchNotice?: string }> {
   let providers = [
     // 1. Google Gemini (3.8 Flash) - Prioridad principal por defecto
     {
@@ -776,10 +761,76 @@ export async function classifyWithProviderCascade(
       console.log(`[IA] Intentando clasificar con: ${provider.name}...`);
       const results = await provider.fn(params);
       console.log(`[IA] ✅ Éxito con proveedor: ${provider.name} (${results.length} herramientas identificadas)`);
-      return { results, providerUsed: provider.name };
+
+      let switchNotice: string | undefined = undefined;
+      const geminiFailed = errors.find(
+        (e) => e.includes('Google Gemini') && (e.includes('503') || e.includes('UNAVAILABLE') || e.includes('high demand'))
+      );
+      if (geminiFailed && !provider.name.includes('Gemini')) {
+        switchNotice = `⚠️ Google Gemini (3.8 Flash) experimentó una sobrecarga temporal (503). Se cambió de API automáticamente a ${provider.name} para completar el análisis.`;
+        console.log(`[IA Resiliencia] ${switchNotice}`);
+      }
+
+      return { results, providerUsed: provider.name, switchNotice };
     } catch (err: any) {
       console.warn(`[IA] ⚠️ Falló ${provider.name}: ${err?.message || err}. Probando siguiente proveedor...`);
       errors.push(`${provider.name}: ${err?.message || err}`);
+    }
+  }
+
+  // Si Gemini 3.8 Flash falló específicamente por sobrecarga 503 (servidores de Google saturados)
+  // y los otros proveedores contemplados (DeepSeek/MiniMax) no tenían API key configurada en .env o también fallaron:
+  const gemini503Error = errors.find(
+    (e) => e.includes('Google Gemini') && (e.includes('503') || e.includes('UNAVAILABLE') || e.includes('high demand'))
+  );
+  if (gemini503Error && process.env.GEMINI_API_KEY) {
+    try {
+      console.log(`[IA Resiliencia] Gemini 3.8 Flash en 503 y sin otros proveedores disponibles. Probando rescate de emergencia con Gemini 2.5 Flash...`);
+      const emergencyAi = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      const prompt = buildUserPrompt(params);
+      const res = await emergencyAi.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: prompt,
+        config: {
+          responseMimeType: 'application/json',
+          responseJsonSchema: {
+            type: Type.ARRAY,
+            description: 'Lista de herramientas técnicas encontradas',
+            items: {
+              type: Type.OBJECT,
+              properties: {
+                name: { type: Type.STRING },
+                canonicalUrl: { type: Type.STRING },
+                websiteUrl: { type: Type.STRING },
+                category: { type: Type.STRING },
+                entryType: { type: Type.STRING },
+                company: { type: Type.STRING },
+                location: { type: Type.STRING },
+                salary: { type: Type.STRING },
+                price: { type: Type.STRING },
+                tags: { type: Type.ARRAY, items: { type: Type.STRING } },
+                oneLiner: { type: Type.STRING },
+                keyHighlights: { type: Type.ARRAY, items: { type: Type.STRING } },
+                recommendedNotes: { type: Type.STRING },
+                hasAcademicPromo: { type: Type.BOOLEAN },
+                academicPromoDetails: { type: Type.STRING },
+              },
+              required: ['name', 'canonicalUrl', 'category', 'tags', 'oneLiner', 'keyHighlights'],
+            },
+          },
+        },
+      });
+      const parsed = JSON.parse(res.text || '[]');
+      const results = normalizeRawOutput(parsed, params.urls, params.sourceTweet);
+      const switchNotice = `⚠️ Google Gemini (3.8 Flash) experimentó una sobrecarga temporal (503). Al no haber claves configuradas para DeepSeek o MiniMax en tu .env, se usó temporalmente Gemini 2.5 Flash de emergencia para no perder el análisis.`;
+      console.log(`[IA Resiliencia] ${switchNotice}`);
+      return {
+        results,
+        providerUsed: 'Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)',
+        switchNotice,
+      };
+    } catch (e: any) {
+      errors.push(`Gemini 2.5 Flash Respaldo: ${e?.message || e}`);
     }
   }
 
@@ -1007,28 +1058,14 @@ async function tryGeminiAuthor(params: AuthorAnalysisInput): Promise<AuthorProfi
     },
   };
 
-  try {
-    const response = await ai.models.generateContent({
-      model: targetModel,
-      contents: prompt,
-      config: authorSchemaConfig,
-    });
+  const response = await ai.models.generateContent({
+    model: targetModel,
+    contents: prompt,
+    config: authorSchemaConfig,
+  });
 
-    const parsed = JSON.parse(response.text || '{}');
-    return normalizeAuthorProfile(parsed, params);
-  } catch (err: any) {
-    if (targetModel === 'gemini-3.8-flash' && err?.message && (err.message.includes('503') || err.message.includes('UNAVAILABLE'))) {
-      console.warn(`[Gemini Author] ⚠️ gemini-3.8-flash en sobrecarga temporal (503). Reintentando con gemini-2.5-flash como respaldo...`);
-      const fallbackResponse = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: prompt,
-        config: authorSchemaConfig,
-      });
-      const parsed = JSON.parse(fallbackResponse.text || '{}');
-      return normalizeAuthorProfile(parsed, params);
-    }
-    throw err;
-  }
+  const parsed = JSON.parse(response.text || '{}');
+  return normalizeAuthorProfile(parsed, params);
 }
 
 async function callOpenAICompatibleAuthor(options: {
@@ -1082,7 +1119,7 @@ async function callOpenAICompatibleAuthor(options: {
 export async function analyzeAuthorWithCascade(
   params: AuthorAnalysisInput,
   preferredProvider?: string
-): Promise<{ result: AuthorProfileResult; providerUsed: string }> {
+): Promise<{ result: AuthorProfileResult; providerUsed: string; switchNotice?: string }> {
   const prompt = buildAuthorAnalysisPrompt(params);
 
   let providers = [
@@ -1183,6 +1220,8 @@ export async function analyzeAuthorWithCascade(
     }
   }
 
+  const authorErrors: string[] = [];
+
   for (const provider of providers) {
     if (!provider.hasKey()) continue;
 
@@ -1190,9 +1229,64 @@ export async function analyzeAuthorWithCascade(
       console.log(`[Author IA] Analizando autor "${params.name}" con: ${provider.name}...`);
       const result = await provider.fn();
       console.log(`[Author IA] ✅ Éxito analizando autor con: ${provider.name}`);
-      return { result, providerUsed: provider.name };
+
+      let switchNotice: string | undefined = undefined;
+      const geminiFailed = authorErrors.find(
+        (e) => e.includes('Google Gemini') && (e.includes('503') || e.includes('UNAVAILABLE') || e.includes('high demand'))
+      );
+      if (geminiFailed && !provider.name.includes('Gemini')) {
+        switchNotice = `⚠️ Google Gemini (3.8 Flash) experimentó una sobrecarga temporal (503). Se cambió automáticamente a ${provider.name} para analizar el perfil de autor.`;
+        console.log(`[Author Resiliencia] ${switchNotice}`);
+      }
+
+      return { result, providerUsed: provider.name, switchNotice };
     } catch (err: any) {
       console.warn(`[Author IA] ⚠️ Falló ${provider.name}: ${err?.message || err}. Probando siguiente proveedor...`);
+      authorErrors.push(`${provider.name}: ${err?.message || err}`);
+    }
+  }
+
+  // Si Gemini 3.8 Flash falló con 503 y no hay claves de DeepSeek/MiniMax configuradas:
+  const gemini503Author = authorErrors.find(
+    (e) => e.includes('Google Gemini') && (e.includes('503') || e.includes('UNAVAILABLE') || e.includes('high demand'))
+  );
+  if (gemini503Author && process.env.GEMINI_API_KEY) {
+    try {
+      console.log(`[Author Resiliencia] Gemini 3.8 Flash en 503. Rescatando análisis de autor con Gemini 2.5 Flash...`);
+      const emergencyAi = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      const res = await emergencyAi.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: prompt,
+        config: {
+          responseMimeType: 'application/json',
+          responseJsonSchema: {
+            type: Type.OBJECT,
+            description: 'Perfil y análisis técnico del autor en X',
+            properties: {
+              name: { type: Type.STRING },
+              handle: { type: Type.STRING },
+              role: { type: Type.STRING },
+              bio: { type: Type.STRING },
+              specialties: { type: Type.ARRAY, items: { type: Type.STRING } },
+              whyFollow: { type: Type.STRING },
+              suggestedTags: { type: Type.ARRAY, items: { type: Type.STRING } },
+              githubUrl: { type: Type.STRING },
+              websiteUrl: { type: Type.STRING },
+            },
+            required: ['name', 'role', 'bio', 'specialties', 'whyFollow'],
+          },
+        },
+      });
+      const parsed = JSON.parse(res.text || '{}');
+      const result = normalizeAuthorProfile(parsed, params);
+      const switchNotice = `⚠️ Google Gemini (3.8 Flash) experimentó sobrecarga temporal (503). El perfil de autor se analizó exitosamente con Gemini 2.5 Flash como rescate de emergencia.`;
+      return {
+        result,
+        providerUsed: 'Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)',
+        switchNotice,
+      };
+    } catch (e: any) {
+      authorErrors.push(`Gemini 2.5 Flash Author Respaldo: ${e?.message || e}`);
     }
   }
 

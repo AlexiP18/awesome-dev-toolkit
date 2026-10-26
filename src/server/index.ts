@@ -73,8 +73,8 @@ app.post('/api/authors/analyze', async (req, res) => {
       return res.status(400).json({ success: false, error: 'authorName es requerido' });
     }
 
-    const { profile, providerUsed } = await analyzeAuthorWithAI(authorName, authorHandle, aiProvider);
-    res.json({ success: true, profile, providerUsed });
+    const { profile, providerUsed, switchNotice } = await analyzeAuthorWithAI(authorName, authorHandle, aiProvider);
+    res.json({ success: true, profile, providerUsed, switchNotice });
   } catch (error: any) {
     console.error('[API Author Analyze Error]', error);
     res.status(500).json({ success: false, error: error.message });
