@@ -244,6 +244,14 @@
       
       <!-- Status & Author Filters -->
       <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <!-- Filtro Recientes (activo por defecto) -->
+        <button id="recentFilterBtn" onclick="toggleRecentFilter()" class="px-2.5 py-1 rounded-md bg-sky-500/20 text-sky-300 border border-sky-500/40 hover:bg-sky-500/30 transition flex items-center gap-1.5 font-medium shadow-sm" title="Filtrar por más recientes (activo por defecto)">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-sky-400"></i>
+          <span>Recientes</span>
+        </button>
+
+        <span class="text-slate-700 hidden sm:inline">|</span>
+
         <span class="font-medium mr-1">Estado:</span>
         <button onclick="setStatusFilter('all')" class="status-btn px-2.5 py-1 rounded-md bg-sky-500/20 text-sky-400 border border-sky-500/30" data-status="all">Todos</button>
         <button onclick="setStatusFilter('in_use')" class="status-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800" data-status="in_use">🟢 En uso</button>
@@ -630,6 +638,7 @@
     let currentCategory = 'all';
     let currentStatus = 'all';
     let currentAuthor = 'all';
+    let filterRecent = true; // Activo por defecto según requerimiento
     let filterOnlyAcademic = false;
     let activeEditingSlug = null;
     let modalSelectedDest = 'tool'; // 'tool' | 'tech_tip' | 'job_remote' | 'tech_product'
@@ -1007,6 +1016,220 @@
       if (fm.has_academic_promo) return true;
       const tags = fm.tags || [];
       return tags.some(t => ['academic', 'academico', 'académico', 'estudiante', 'estudiantes', 'student', 'students', 'education', 'educacion', 'educación'].includes(t.toLowerCase()));
+    }
+
+    function toggleRecentFilter() {
+      filterRecent = !filterRecent;
+      const btn = document.getElementById('recentFilterBtn');
+      if (btn) {
+        btn.className = `px-2.5 py-1 rounded-md transition flex items-center gap-1.5 ${
+          filterRecent
+            ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40 hover:bg-sky-500/30 font-medium shadow-sm'
+            : 'bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800'
+        }`;
+      }
+      renderTools();
+    }
+
+    function formatDateSimple(dateStr) {
+      if (!dateStr) return '';
+      try {
+        const parts = String(dateStr).split('-');
+        if (parts.length === 3) {
+          const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+          const day = parseInt(parts[2], 10);
+          const monthIdx = parseInt(parts[1], 10) - 1;
+          const month = months[monthIdx] || parts[1];
+          return `${day} ${month}`;
+        }
+        return String(dateStr);
+      } catch {
+        return String(dateStr);
+      }
+    }
+
+    function getCategoryTheme(category) {
+      const cat = (category || '').toLowerCase().trim();
+
+      // 1. AI & Machine Learning / IA Devices & Robótica
+      if (cat.includes('ai &') || cat.includes('machine learning') || cat.includes('ia devices') || cat.includes('robótica') || cat.includes('inteligencia artificial') || cat.includes('deep learning')) {
+        return {
+          badge: 'bg-purple-500/15 text-purple-300 border-purple-500/30',
+          dot: 'bg-purple-400',
+          border: 'border-purple-500/30 hover:border-purple-400/60',
+          topBorder: 'border-t-purple-500',
+          bgTint: 'from-purple-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-purple-300',
+          dateColor: 'text-purple-300/70'
+        };
+      }
+
+      // 2. CLI & Terminal
+      if (cat.includes('cli') || cat.includes('terminal') || cat.includes('shell') || cat.includes('bash') || cat.includes('zsh')) {
+        return {
+          badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+          dot: 'bg-emerald-400',
+          border: 'border-emerald-500/30 hover:border-emerald-400/60',
+          topBorder: 'border-t-emerald-500',
+          bgTint: 'from-emerald-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-emerald-300',
+          dateColor: 'text-emerald-300/70'
+        };
+      }
+
+      // 3. Frontend & UI
+      if (cat.includes('frontend') || cat.includes('ui') || cat.includes('css') || cat.includes('web') || cat.includes('react') || cat.includes('vue') || cat.includes('svelte') || cat.includes('tailwind') || cat.includes('component')) {
+        return {
+          badge: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30',
+          dot: 'bg-cyan-400',
+          border: 'border-cyan-500/30 hover:border-cyan-400/60',
+          topBorder: 'border-t-cyan-500',
+          bgTint: 'from-cyan-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-cyan-300',
+          dateColor: 'text-cyan-300/70'
+        };
+      }
+
+      // 4. Backend & APIs
+      if (cat.includes('backend') || cat.includes('api') || cat.includes('server') || cat.includes('node') || cat.includes('python') || cat.includes('rust') || cat.includes('go') || cat.includes('microservicio')) {
+        return {
+          badge: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30',
+          dot: 'bg-indigo-400',
+          border: 'border-indigo-500/30 hover:border-indigo-400/60',
+          topBorder: 'border-t-indigo-500',
+          bgTint: 'from-indigo-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-indigo-300',
+          dateColor: 'text-indigo-300/70'
+        };
+      }
+
+      // 5. DevOps & Cloud
+      if (cat.includes('devops') || cat.includes('cloud') || cat.includes('docker') || cat.includes('kubernetes') || cat.includes('infra') || cat.includes('aws') || cat.includes('gcp') || cat.includes('ci/cd')) {
+        return {
+          badge: 'bg-sky-500/15 text-sky-300 border-sky-500/30',
+          dot: 'bg-sky-400',
+          border: 'border-sky-500/30 hover:border-sky-400/60',
+          topBorder: 'border-t-sky-500',
+          bgTint: 'from-sky-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-sky-300',
+          dateColor: 'text-sky-300/70'
+        };
+      }
+
+      // 6. Databases & Storage / Bases de Datos
+      if (cat.includes('database') || cat.includes('storage') || cat.includes('datos') || cat.includes('sql') || cat.includes('postgres') || cat.includes('redis') || cat.includes('mongo')) {
+        return {
+          badge: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+          dot: 'bg-amber-400',
+          border: 'border-amber-500/30 hover:border-amber-400/60',
+          topBorder: 'border-t-amber-500',
+          bgTint: 'from-amber-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-amber-300',
+          dateColor: 'text-amber-300/70'
+        };
+      }
+
+      // 7. Prompts, Art & Video
+      if (cat.includes('prompt') || cat.includes('art') || cat.includes('video') || cat.includes('diseño') || cat.includes('design') || cat.includes('imagen')) {
+        return {
+          badge: 'bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30',
+          dot: 'bg-fuchsia-400',
+          border: 'border-fuchsia-500/30 hover:border-fuchsia-400/60',
+          topBorder: 'border-t-fuchsia-500',
+          bgTint: 'from-fuchsia-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-fuchsia-300',
+          dateColor: 'text-fuchsia-300/70'
+        };
+      }
+
+      // 8. Productivity & Tools
+      if (cat.includes('productivity') || cat.includes('productividad') || cat.includes('utilidad') || cat.includes('workflow')) {
+        return {
+          badge: 'bg-teal-500/15 text-teal-300 border-teal-500/30',
+          dot: 'bg-teal-400',
+          border: 'border-teal-500/30 hover:border-teal-400/60',
+          topBorder: 'border-t-teal-500',
+          bgTint: 'from-teal-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-teal-300',
+          dateColor: 'text-teal-300/70'
+        };
+      }
+
+      // 9. Documentation & Resources
+      if (cat.includes('doc') || cat.includes('resource') || cat.includes('recursos') || cat.includes('guia') || cat.includes('libro')) {
+        return {
+          badge: 'bg-lime-500/15 text-lime-300 border-lime-500/30',
+          dot: 'bg-lime-400',
+          border: 'border-lime-500/30 hover:border-lime-400/60',
+          topBorder: 'border-t-lime-500',
+          bgTint: 'from-lime-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-lime-300',
+          dateColor: 'text-lime-300/70'
+        };
+      }
+
+      // 10. Hardware, Dispositivos, Placas, Microcontroladores, Gadgets
+      if (cat.includes('hardware') || cat.includes('placa') || cat.includes('gadget') || cat.includes('dispositivo') || cat.includes('chip') || cat.includes('laptop') || cat.includes('periférico') || cat.includes('microcontrolador') || cat.includes('tecnológicos') || cat.includes('empresa')) {
+        return {
+          badge: 'bg-orange-500/15 text-orange-300 border-orange-500/30',
+          dot: 'bg-orange-400',
+          border: 'border-orange-500/30 hover:border-orange-400/60',
+          topBorder: 'border-t-orange-500',
+          bgTint: 'from-orange-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-orange-300',
+          dateColor: 'text-orange-300/70'
+        };
+      }
+
+      // 11. Trabajo & Freelance / Remoto / Empleo
+      if (cat.includes('trabajo') || cat.includes('freelance') || cat.includes('remoto') || cat.includes('empleo') || cat.includes('job') || cat.includes('bolsa') || cat.includes('full-time')) {
+        return {
+          badge: 'bg-blue-500/15 text-blue-300 border-blue-500/30',
+          dot: 'bg-blue-400',
+          border: 'border-blue-500/30 hover:border-blue-400/60',
+          topBorder: 'border-t-blue-500',
+          bgTint: 'from-blue-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-blue-300',
+          dateColor: 'text-blue-300/70'
+        };
+      }
+
+      // 12. Consejos & Buenas Prácticas
+      if (cat.includes('consejo') || cat.includes('tip') || cat.includes('buena práctica') || cat.includes('truco') || cat.includes('practica')) {
+        return {
+          badge: 'bg-violet-500/15 text-violet-300 border-violet-500/30',
+          dot: 'bg-violet-400',
+          border: 'border-violet-500/30 hover:border-violet-400/60',
+          topBorder: 'border-t-violet-500',
+          bgTint: 'from-violet-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-violet-300',
+          dateColor: 'text-violet-300/70'
+        };
+      }
+
+      // 13. Seguridad & Auth
+      if (cat.includes('seguridad') || cat.includes('security') || cat.includes('auth') || cat.includes('ciberseguridad')) {
+        return {
+          badge: 'bg-rose-500/15 text-rose-300 border-rose-500/30',
+          dot: 'bg-rose-400',
+          border: 'border-rose-500/30 hover:border-rose-400/60',
+          topBorder: 'border-t-rose-500',
+          bgTint: 'from-rose-950/20 via-slate-900 to-slate-900',
+          titleHover: 'group-hover:text-rose-300',
+          dateColor: 'text-rose-300/70'
+        };
+      }
+
+      // 14. Default / Other
+      return {
+        badge: 'bg-slate-800 text-slate-300 border-slate-700',
+        dot: 'bg-slate-400',
+        border: 'border-slate-800 hover:border-slate-700',
+        topBorder: 'border-t-slate-600',
+        bgTint: 'from-slate-900 to-slate-900',
+        titleHover: 'group-hover:text-slate-200',
+        dateColor: 'text-slate-500'
+      };
     }
 
     function toggleAcademicFilter() {
@@ -1501,15 +1724,21 @@
         const isAll = cat === 'all';
         const label = isAll ? '✨ Todas' : cat;
         const active = currentCategory === cat;
+        const theme = !isAll ? getCategoryTheme(cat) : null;
+        const activeClass = isAll
+          ? `${activeColor} font-medium shadow-sm`
+          : `${theme.badge} font-semibold shadow-sm`;
+
         return `
           <button 
             onclick="setCategoryFilter('${cat}')"
-            class="px-3 py-1.5 rounded-lg border whitespace-nowrap transition ${
+            class="px-3 py-1.5 rounded-lg border whitespace-nowrap transition flex items-center gap-1.5 ${
               active 
-                ? `${activeColor} font-medium` 
-                : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800'
+                ? activeClass 
+                : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800 hover:text-slate-200'
             }">
-            ${label}
+            ${!isAll && theme ? `<span class="w-1.5 h-1.5 rounded-full ${theme.dot}"></span>` : ''}
+            <span>${label}</span>
           </button>
         `;
       }).join('');
@@ -1541,7 +1770,7 @@
     function getFilteredTools() {
       const query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
 
-      return allTools.filter(tool => {
+      const filtered = allTools.filter(tool => {
         // 1. FILTRO PRIMARIO OBLIGATORIO: Apartado activo (Herramientas, Consejos, Empleo o Productos)
         const itemSec = getItemSection(tool);
         if (itemSec !== currentSection) {
@@ -1592,6 +1821,18 @@
 
         return true;
       });
+
+      // 7. Filtro y ordenación por "Recientes" (activo por defecto)
+      if (filterRecent) {
+        filtered.sort((a, b) => {
+          const dateA = a.frontmatter?.date_added ? new Date(a.frontmatter.date_added).getTime() : 0;
+          const dateB = b.frontmatter?.date_added ? new Date(b.frontmatter.date_added).getTime() : 0;
+          if (dateB !== dateA) return dateB - dateA;
+          return (b.frontmatter?.stars || 0) - (a.frontmatter?.stars || 0);
+        });
+      }
+
+      return filtered;
     }
 
     function updateStats() {
@@ -1792,22 +2033,23 @@
           </div>
         ` : '';
 
-        // Border styling depending on section
-        const cardBorderHover = isJob ? 'hover:border-blue-500/50' : isTip ? 'hover:border-violet-500/50' : isProduct ? 'hover:border-amber-500/50' : 'hover:border-sky-500/50';
+        // Tema visual distintivo por categoría
+        const catTheme = getCategoryTheme(fm.category);
 
         return `
-          <div class="bg-slate-900 border border-slate-800 ${cardBorderHover} transition rounded-2xl p-4 flex flex-col justify-between group shadow-sm hover:shadow-md">
+          <div class="bg-gradient-to-b ${catTheme.bgTint} border ${catTheme.border} border-t-2 ${catTheme.topBorder} transition-all duration-200 rounded-2xl p-4 flex flex-col justify-between group shadow-sm hover:shadow-xl relative overflow-hidden">
             <div>
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div>
                   <div class="flex items-center gap-1.5 flex-wrap mb-1">
-                    <span class="text-[10px] font-semibold tracking-wider uppercase text-sky-400">
-                      ${fm.category || 'Other'}
+                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-bold tracking-wider uppercase border ${catTheme.badge}">
+                      <span class="w-1.5 h-1.5 rounded-full ${catTheme.dot}"></span>
+                      <span>${fm.category || 'Other'}</span>
                     </span>
                     ${sectionBadge}
                     ${academicBadge}
                   </div>
-                  <h3 class="font-bold text-slate-100 text-sm group-hover:text-sky-300 transition flex items-center gap-1.5">
+                  <h3 class="font-bold text-slate-100 text-sm ${catTheme.titleHover} transition flex items-center gap-1.5">
                     <a href="${safeUrl !== '#' ? safeUrl : 'javascript:void(0)'}" target="${safeUrl !== '#' ? '_blank' : '_self'}" class="hover:underline">
                       ${fm.name}
                     </a>
@@ -1843,11 +2085,20 @@
                 <option value="archived" ${fm.status === 'archived' ? 'selected' : ''}>⚪ Archivado</option>
               </select>
 
-              <!-- Open Note Button -->
-              <button onclick="openNoteModal('${tool.slug}')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1.5 transition">
-                <i data-lucide="file-text" class="w-3 h-3 text-sky-400"></i>
-                <span>Ver Ficha</span>
-              </button>
+              <div class="flex items-center gap-2">
+                ${fm.date_added ? `
+                  <span class="text-[10px] ${catTheme.dateColor} font-mono flex items-center gap-1" title="Añadido: ${fm.date_added}">
+                    <i data-lucide="calendar" class="w-2.5 h-2.5 opacity-75"></i>
+                    <span>${formatDateSimple(fm.date_added)}</span>
+                  </span>
+                ` : ''}
+
+                <!-- Open Note Button -->
+                <button onclick="openNoteModal('${tool.slug}')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1.5 transition">
+                  <i data-lucide="file-text" class="w-3 h-3 text-sky-400"></i>
+                  <span>Ver Ficha</span>
+                </button>
+              </div>
             </div>
           </div>
         `;
