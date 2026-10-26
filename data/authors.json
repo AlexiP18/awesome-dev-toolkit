@@ -1,0 +1,194 @@
+{
+  "success": true,
+  "count": 7,
+  "authors": {
+    "7uanf": {
+      "slug": "7uanf",
+      "name": "Juan",
+      "handle": "7uanF",
+      "role": "Desarrollador de Creative Coding y Agent Skills",
+      "bio": "Juan (@7uanF) es un desarrollador y creador enfocado en la convergencia entre modelos de lenguaje, creative coding y producción audiovisual programática. Destaca por impulsar proyectos innovadores como lemo-opuscar, una biblioteca de agent skills para Claude Code diseñada para generar cortometrajes y animaciones cinematográficas mediante código (Three.js, FFmpeg) sin depender de modelos tradicionales de video generativo.",
+      "specialties": [
+        "Creative Coding",
+        "Agent Skills y Claude Code",
+        "Motion Graphics y Three.js",
+        "Automatización Audiovisual con FFmpeg"
+      ],
+      "whyFollow": "Seguir a Juan te permitirá descubrir técnicas de vanguardia para convertir agentes de código en herramientas de dirección cinematográfica y creación multimedia totalmente programática.",
+      "suggestedTags": [
+        "creative-coding",
+        "claude-code",
+        "agent-skills",
+        "threejs",
+        "ffmpeg",
+        "generative-art"
+      ],
+      "twitterUrl": "https://x.com/7uanF",
+      "dateAnalyzed": "2026-10-23",
+      "providerUsed": "Google Gemini (3.8 Flash)"
+    },
+    "juan": {
+      "slug": "7uanf",
+      "name": "Juan",
+      "handle": "7uanF",
+      "role": "Desarrollador de Creative Coding y Agent Skills",
+      "bio": "Juan (@7uanF) es un desarrollador y creador enfocado en la convergencia entre modelos de lenguaje, creative coding y producción audiovisual programática. Destaca por impulsar proyectos innovadores como lemo-opuscar, una biblioteca de agent skills para Claude Code diseñada para generar cortometrajes y animaciones cinematográficas mediante código (Three.js, FFmpeg) sin depender de modelos tradicionales de video generativo.",
+      "specialties": [
+        "Creative Coding",
+        "Agent Skills y Claude Code",
+        "Motion Graphics y Three.js",
+        "Automatización Audiovisual con FFmpeg"
+      ],
+      "whyFollow": "Seguir a Juan te permitirá descubrir técnicas de vanguardia para convertir agentes de código en herramientas de dirección cinematográfica y creación multimedia totalmente programática.",
+      "suggestedTags": [
+        "creative-coding",
+        "claude-code",
+        "agent-skills",
+        "threejs",
+        "ffmpeg",
+        "generative-art"
+      ],
+      "twitterUrl": "https://x.com/7uanF",
+      "dateAnalyzed": "2026-10-23",
+      "providerUsed": "Google Gemini (3.8 Flash)"
+    },
+    "astral-sh": {
+      "slug": "astral-sh",
+      "name": "Astral",
+      "handle": "astral_sh",
+      "role": "Equipo de Desarrollo Open Source y Creadores de Tooling para Python en Rust",
+      "bio": "Astral es una compañía y colectivo de código abierto enfocado en transformar radicalmente el ecosistema de desarrollo de Python mediante la creación de herramientas ultrarrápidas escritas en Rust. Son los creadores de 'uv', un revolucionario gestor de paquetes y entornos que reemplaza a pip y virtualenv, además del reconocido linter y formateador 'Ruff'. En su cuenta comparten actualizaciones técnicas, benchmarks, nuevos lanzamientos y discusiones profundas sobre la optimización de flujos de trabajo en Python y Rust.",
+      "specialties": [
+        "Tooling y Ecosistema de Python",
+        "Programación en Rust",
+        "Optimización de Rendimiento CLI",
+        "Gestores de Paquetes y Dependencias",
+        "Desarrollo Open Source"
+      ],
+      "whyFollow": "Seguir a Astral permite mantenerse a la vanguardia de la modernización del ecosistema de Python, descubriendo herramientas de ultra alto rendimiento y mejores prácticas de ingeniería de software para optimizar tiempos de ejecución y CI/CD.",
+      "suggestedTags": [
+        "python",
+        "rust",
+        "uv",
+        "package-manager",
+        "developer-tools",
+        "cli"
+      ],
+      "githubUrl": "https://github.com/astral-sh",
+      "websiteUrl": "https://astral.sh",
+      "twitterUrl": "https://x.com/astral_sh",
+      "dateAnalyzed": "2026-10-23",
+      "providerUsed": "Google Gemini (3.8 Flash)"
+    },
+    "astral": {
+      "slug": "astral-sh",
+      "name": "Astral",
+      "handle": "astral_sh",
+      "role": "Equipo de Desarrollo Open Source y Creadores de Tooling para Python en Rust",
+      "bio": "Astral es una compañía y colectivo de código abierto enfocado en transformar radicalmente el ecosistema de desarrollo de Python mediante la creación de herramientas ultrarrápidas escritas en Rust. Son los creadores de 'uv', un revolucionario gestor de paquetes y entornos que reemplaza a pip y virtualenv, además del reconocido linter y formateador 'Ruff'. En su cuenta comparten actualizaciones técnicas, benchmarks, nuevos lanzamientos y discusiones profundas sobre la optimización de flujos de trabajo en Python y Rust.",
+      "specialties": [
+        "Tooling y Ecosistema de Python",
+        "Programación en Rust",
+        "Optimización de Rendimiento CLI",
+        "Gestores de Paquetes y Dependencias",
+        "Desarrollo Open Source"
+      ],
+      "whyFollow": "Seguir a Astral permite mantenerse a la vanguardia de la modernización del ecosistema de Python, descubriendo herramientas de ultra alto rendimiento y mejores prácticas de ingeniería de software para optimizar tiempos de ejecución y CI/CD.",
+      "suggestedTags": [
+        "python",
+        "rust",
+        "uv",
+        "package-manager",
+        "developer-tools",
+        "cli"
+      ],
+      "githubUrl": "https://github.com/astral-sh",
+      "websiteUrl": "https://astral.sh",
+      "twitterUrl": "https://x.com/astral_sh",
+      "dateAnalyzed": "2026-10-23",
+      "providerUsed": "Google Gemini (3.8 Flash)"
+    },
+    "astral_sh": {
+      "slug": "astral-sh",
+      "name": "Astral",
+      "handle": "astral_sh",
+      "role": "Equipo de Desarrollo Open Source y Creadores de Tooling para Python en Rust",
+      "bio": "Astral es una compañía y colectivo de código abierto enfocado en transformar radicalmente el ecosistema de desarrollo de Python mediante la creación de herramientas ultrarrápidas escritas en Rust. Son los creadores de 'uv', un revolucionario gestor de paquetes y entornos que reemplaza a pip y virtualenv, además del reconocido linter y formateador 'Ruff'. En su cuenta comparten actualizaciones técnicas, benchmarks, nuevos lanzamientos y discusiones profundas sobre la optimización de flujos de trabajo en Python y Rust.",
+      "specialties": [
+        "Tooling y Ecosistema de Python",
+        "Programación en Rust",
+        "Optimización de Rendimiento CLI",
+        "Gestores de Paquetes y Dependencias",
+        "Desarrollo Open Source"
+      ],
+      "whyFollow": "Seguir a Astral permite mantenerse a la vanguardia de la modernización del ecosistema de Python, descubriendo herramientas de ultra alto rendimiento y mejores prácticas de ingeniería de software para optimizar tiempos de ejecución y CI/CD.",
+      "suggestedTags": [
+        "python",
+        "rust",
+        "uv",
+        "package-manager",
+        "developer-tools",
+        "cli"
+      ],
+      "githubUrl": "https://github.com/astral-sh",
+      "websiteUrl": "https://astral.sh",
+      "twitterUrl": "https://x.com/astral_sh",
+      "dateAnalyzed": "2026-10-23",
+      "providerUsed": "Google Gemini (3.8 Flash)"
+    },
+    "jesseduffield": {
+      "slug": "jesseduffield",
+      "name": "Jesse Duffield",
+      "handle": "jesseduffield",
+      "role": "Creador Open Source de Herramientas de Terminal y Desarrollador Go",
+      "bio": "Jesse Duffield es un destacado desarrollador de software e innovador en herramientas de código abierto para la terminal. Es el creador de Lazygit, una popular y aclamada interfaz TUI para Git escrita en Go que transforma el flujo de control de versiones en consola, además de otros proyectos de gran impacto como Lazydocker. En sus redes comparte novedades sobre el desarrollo de utilidades de terminal, mejoras de ergonomía para desarrolladores y mejores prácticas en la creación de software CLI.",
+      "specialties": [
+        "Desarrollo en Go",
+        "Interfaces de Terminal (TUI)",
+        "Git y Control de Versiones",
+        "Productividad para Desarrolladores (DevEx)",
+        "Código Abierto"
+      ],
+      "whyFollow": "Seguir a Jesse es clave para quienes desean dominar herramientas de productividad avanzadas en la terminal y mantenerse actualizados en el diseño de interfaces modernas para la línea de comandos.",
+      "suggestedTags": [
+        "git",
+        "terminal",
+        "tui",
+        "go",
+        "productivity",
+        "devtools"
+      ],
+      "githubUrl": "https://github.com/jesseduffield",
+      "twitterUrl": "https://x.com/jesseduffield",
+      "dateAnalyzed": "2026-10-23",
+      "providerUsed": "Google Gemini (3.8 Flash)"
+    },
+    "jesse duffield": {
+      "slug": "jesseduffield",
+      "name": "Jesse Duffield",
+      "handle": "jesseduffield",
+      "role": "Creador Open Source de Herramientas de Terminal y Desarrollador Go",
+      "bio": "Jesse Duffield es un destacado desarrollador de software e innovador en herramientas de código abierto para la terminal. Es el creador de Lazygit, una popular y aclamada interfaz TUI para Git escrita en Go que transforma el flujo de control de versiones en consola, además de otros proyectos de gran impacto como Lazydocker. En sus redes comparte novedades sobre el desarrollo de utilidades de terminal, mejoras de ergonomía para desarrolladores y mejores prácticas en la creación de software CLI.",
+      "specialties": [
+        "Desarrollo en Go",
+        "Interfaces de Terminal (TUI)",
+        "Git y Control de Versiones",
+        "Productividad para Desarrolladores (DevEx)",
+        "Código Abierto"
+      ],
+      "whyFollow": "Seguir a Jesse es clave para quienes desean dominar herramientas de productividad avanzadas en la terminal y mantenerse actualizados en el diseño de interfaces modernas para la línea de comandos.",
+      "suggestedTags": [
+        "git",
+        "terminal",
+        "tui",
+        "go",
+        "productivity",
+        "devtools"
+      ],
+      "githubUrl": "https://github.com/jesseduffield",
+      "twitterUrl": "https://x.com/jesseduffield",
+      "dateAnalyzed": "2026-10-23",
+      "providerUsed": "Google Gemini (3.8 Flash)"
+    }
+  }
+}

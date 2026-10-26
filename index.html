@@ -30,6 +30,8 @@
     ::-webkit-scrollbar-track { background: #0f172a; }
     ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-sky-500 selection:text-white">
@@ -46,18 +48,23 @@
             Awesome Dev Toolkit
             <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30">Segundo Cerebro</span>
           </h1>
-          <p class="text-xs text-slate-400">Recursos curados de X sincronizados con Obsidian & Gemini</p>
+          <p class="text-xs text-slate-400">Recursos curados de X en 3 apartados sincronizados con Obsidian & Gemini</p>
         </div>
       </div>
 
       <div class="flex items-center space-x-2 sm:space-x-3">
+        <button onclick="openAuthorsModal()" class="text-xs px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5 text-slate-200">
+          <i data-lucide="users" class="w-3.5 h-3.5 text-sky-400"></i>
+          <span class="hidden sm:inline">Autores</span>
+          <span id="headerAuthorCount" class="px-1.5 py-0.2 rounded-full bg-slate-700 text-[10px] text-sky-300 font-mono">0</span>
+        </button>
         <a id="headerBookmarkletLink" href="./bookmarklet.html" target="_blank" class="text-xs px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5 text-slate-200">
           <i data-lucide="bookmark" class="w-3.5 h-3.5 text-sky-400"></i>
           <span class="hidden sm:inline">Bookmarklet</span> 1-Clic
         </a>
         <button onclick="openIngestModal()" class="text-xs px-3.5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 font-semibold transition flex items-center gap-1.5 shadow-lg shadow-sky-600/20">
           <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-          <span>Añadir Herramienta</span>
+          <span id="headerAddBtnText">Añadir Recurso</span>
         </button>
       </div>
     </div>
@@ -66,6 +73,129 @@
   <!-- Main Content -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full flex flex-col">
     
+    <!-- 4 APARTADOS SELECTOR TABS -->
+    <div class="mb-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl">
+        
+        <!-- Tab 1: Herramientas -->
+        <button 
+          id="tabSectionTools" 
+          onclick="switchSection('tools')" 
+          class="relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group bg-sky-500/15 border-sky-500/40 shadow-inner"
+        >
+          <div class="flex items-center gap-3">
+            <div id="tabIconBoxTools" class="p-2.5 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30">
+              <i data-lucide="wrench" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm text-slate-100 group-hover:text-sky-300 transition">1. Herramientas</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Software, utilidades & repos</p>
+            </div>
+          </div>
+          <span id="tabCountTools" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-sky-500/20 text-sky-300 border border-sky-500/30">
+            0
+          </span>
+        </button>
+
+        <!-- Tab 2: Consejos Técnicos -->
+        <button 
+          id="tabSectionTips" 
+          onclick="switchSection('tips')" 
+          class="relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40"
+        >
+          <div class="flex items-center gap-3">
+            <div id="tabIconBoxTips" class="p-2.5 rounded-xl bg-slate-800 text-slate-400 border border-slate-700">
+              <i data-lucide="lightbulb" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm text-slate-100 group-hover:text-violet-300 transition">2. Consejos</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Buenas prácticas, snippets & tips</p>
+            </div>
+          </div>
+          <span id="tabCountTips" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700">
+            0
+          </span>
+        </button>
+
+        <!-- Tab 3: Empleo & Freelance -->
+        <button 
+          id="tabSectionJobs" 
+          onclick="switchSection('jobs')" 
+          class="relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40"
+        >
+          <div class="flex items-center gap-3">
+            <div id="tabIconBoxJobs" class="p-2.5 rounded-xl bg-slate-800 text-slate-400 border border-slate-700">
+              <i data-lucide="briefcase" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm text-slate-100 group-hover:text-blue-300 transition">3. Trabajo & Freelance</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Remoto mundial, vacantes & bolsas</p>
+            </div>
+          </div>
+          <span id="tabCountJobs" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700">
+            0
+          </span>
+        </button>
+
+        <!-- Tab 4: Productos Tecnológicos & Hardware -->
+        <button 
+          id="tabSectionProducts" 
+          onclick="switchSection('products')" 
+          class="relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40"
+        >
+          <div class="flex items-center gap-3">
+            <div id="tabIconBoxProducts" class="p-2.5 rounded-xl bg-slate-800 text-slate-400 border border-slate-700">
+              <i data-lucide="cpu" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm text-slate-100 group-hover:text-amber-300 transition">4. Productos Tech</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Hardware, gadgets & placas</p>
+            </div>
+          </div>
+          <span id="tabCountProducts" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700">
+            0
+          </span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Active Section Banner -->
+    <div id="sectionBanner" class="p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-sky-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden">
+      <!-- Glow effect -->
+      <div id="sectionBannerGlow" class="absolute -right-10 -bottom-10 w-44 h-44 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex items-center gap-3.5 relative z-10">
+        <div id="sectionBannerIcon" class="p-3 rounded-2xl bg-sky-500/15 text-sky-400 border border-sky-500/30 text-2xl flex-shrink-0 shadow-inner">
+          🛠️
+        </div>
+        <div>
+          <h2 id="sectionBannerTitle" class="text-base sm:text-lg font-bold text-slate-100 flex items-center gap-2">
+            Apartado 1: Herramientas & Repositorios
+          </h2>
+          <p id="sectionBannerSubtitle" class="text-xs text-slate-400 mt-0.5">
+            Bibliotecas de código, utilidades CLI, devtools y productos técnicos curados desde X.
+          </p>
+        </div>
+      </div>
+      <button 
+        id="sectionBannerAddBtn" 
+        onclick="openIngestModalForCurrentSection()" 
+        class="relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white shadow-lg shadow-sky-600/25 flex items-center gap-2 transition flex-shrink-0"
+      >
+        <i data-lucide="plus" class="w-4 h-4"></i>
+        <span id="sectionBannerAddText">Añadir Herramienta</span>
+      </button>
+    </div>
+
     <!-- Search & Quick Stats -->
     <div class="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center mb-6">
       <!-- Search Input -->
@@ -85,16 +215,22 @@
         </div>
       </div>
 
-      <!-- Stats Counters -->
-      <div class="flex items-center gap-2 text-xs">
-        <span id="statTotal" class="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">
-          Total: <strong>0</strong>
+      <!-- Stats Counters for Active Section -->
+      <div class="flex items-center gap-2 text-xs flex-wrap">
+        <span id="statSectionTotal" class="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">
+          En este apartado: <strong>0</strong>
         </span>
+        <button onclick="openAuthorsModal()" id="statAuthorsBtn" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-lg text-slate-300 transition flex items-center gap-1.5" title="Ver autores y áreas de especialización">
+          👥 Autores: <strong id="statAuthorsCount">0</strong>
+        </button>
         <span id="statInUse" class="px-3 py-1.5 bg-emerald-950/40 border border-emerald-800/40 text-emerald-400 rounded-lg">
           🟢 En uso: <strong>0</strong>
         </span>
         <span id="statToTry" class="px-3 py-1.5 bg-amber-950/40 border border-amber-800/40 text-amber-400 rounded-lg">
           🟡 Por probar: <strong>0</strong>
+        </span>
+        <span id="statAcademic" class="hidden px-3 py-1.5 bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 rounded-lg font-medium">
+          🎓 Académicas: <strong>0</strong>
         </span>
       </div>
     </div>
@@ -103,25 +239,118 @@
     <div class="space-y-3 mb-6">
       <!-- Categories Scroll -->
       <div id="categoryFilters" class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
-        <!-- Injected via JS -->
+        <!-- Injected via JS depending on currentSection -->
       </div>
       
-      <!-- Status Filters -->
-      <div class="flex items-center gap-2 text-xs text-slate-400">
+      <!-- Status & Author Filters -->
+      <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
         <span class="font-medium mr-1">Estado:</span>
         <button onclick="setStatusFilter('all')" class="status-btn px-2.5 py-1 rounded-md bg-sky-500/20 text-sky-400 border border-sky-500/30" data-status="all">Todos</button>
         <button onclick="setStatusFilter('in_use')" class="status-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800" data-status="in_use">🟢 En uso</button>
         <button onclick="setStatusFilter('to_try')" class="status-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800" data-status="to_try">🟡 Por probar</button>
         <button onclick="setStatusFilter('archived')" class="status-btn px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800" data-status="archived">⚪ Archivado</button>
+
+        <span id="academicFilterSeparator" class="text-slate-700 hidden sm:inline">|</span>
+        <button id="academicFilterBtn" onclick="toggleAcademicFilter()" class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800 transition flex items-center gap-1.5">
+          <span>🎓 Solo Promos Académicas</span>
+        </button>
+
+        <span class="text-slate-700 hidden sm:inline">|</span>
+        <!-- Author Filter Dropdown -->
+        <div class="flex items-center gap-1.5">
+          <i data-lucide="user" class="w-3.5 h-3.5 text-slate-500"></i>
+          <select id="authorFilterSelect" onchange="setAuthorFilter(this.value)" class="bg-slate-900 border border-slate-800 text-xs rounded-lg px-2.5 py-1 text-slate-300 focus:outline-none focus:border-sky-500 max-w-[170px] truncate">
+            <option value="all">👥 Todos los autores</option>
+          </select>
+          <button id="clearAuthorFilterBtn" onclick="setAuthorFilter('all')" class="hidden text-[10px] px-1.5 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="Limpiar filtro de autor">
+            ✕ Limpiar
+          </button>
+        </div>
       </div>
     </div>
 
-    <!-- Tools Grid -->
+    <!-- Author Profile Hero Banner (Shown when an author filter is active) -->
+    <div id="authorProfileBanner" class="hidden mb-6 p-5 rounded-2xl bg-slate-900 border border-sky-500/30 shadow-lg relative overflow-hidden">
+      <!-- Glow effect -->
+      <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 relative z-10">
+        <div class="flex items-start gap-4">
+          <!-- Avatar -->
+          <div id="authorBannerAvatar" class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-600 to-indigo-600 text-white font-bold text-lg flex items-center justify-center flex-shrink-0 shadow-md">
+            ?
+          </div>
+
+          <div class="space-y-1.5 flex-1">
+            <div class="flex items-center gap-2 flex-wrap">
+              <h2 id="authorBannerName" class="text-base font-bold text-slate-100">Nombre del Autor</h2>
+              <a id="authorBannerHandle" href="#" target="_blank" class="hidden text-xs text-sky-400 hover:underline font-mono flex items-center gap-1">
+                <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <span>@handle</span>
+              </a>
+              <span id="authorBannerStatusBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                Filtro Activo
+              </span>
+              <span id="authorBannerAiBadge" class="hidden text-[10px] px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 font-medium">
+                🤖 <span id="authorBannerAiProviderName"></span>
+              </span>
+            </div>
+
+            <p id="authorBannerRole" class="text-xs font-semibold text-sky-300">
+              Curador Técnico
+            </p>
+
+            <p id="authorBannerBio" class="text-xs text-slate-300 leading-relaxed max-w-2xl">
+              Cargando perfil del autor...
+            </p>
+
+            <div id="authorBannerWhyFollowBox" class="hidden p-2.5 rounded-xl bg-slate-950/70 border border-slate-800 text-xs text-slate-300 flex items-start gap-2">
+              <span class="text-sm">💡</span>
+              <div>
+                <strong class="text-sky-300 text-[11px]">¿Por qué seguirlo en X?</strong>
+                <p id="authorBannerWhyFollow" class="text-[11px] text-slate-400 mt-0.5"></p>
+              </div>
+            </div>
+
+            <!-- Specialties & Links -->
+            <div class="flex flex-wrap items-center gap-3 pt-1 text-xs">
+              <div id="authorBannerSpecialties" class="flex flex-wrap items-center gap-1">
+                <!-- Specialties injected here -->
+              </div>
+              <div class="flex items-center gap-3 ml-auto">
+                <a id="authorBannerGithub" href="#" target="_blank" rel="noopener noreferrer" title="Ver perfil del autor en GitHub" class="hidden text-slate-400 hover:text-white transition flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  <span>GitHub</span>
+                </a>
+                <a id="authorBannerWebsite" href="#" target="_blank" rel="noopener noreferrer" title="Sitio web o blog oficial" class="hidden text-slate-400 hover:text-white transition flex items-center gap-1">
+                  <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+                  <span>Sitio Web</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner Right Action Controls -->
+        <div class="flex md:flex-col items-center md:items-end gap-2 flex-shrink-0 self-end md:self-start">
+          <button id="authorBannerAnalyzeBtn" onclick="analyzeCurrentFilteredAuthor()" class="text-xs px-3 py-1.5 rounded-xl bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white font-medium shadow-md transition flex items-center gap-1.5">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span id="authorBannerAnalyzeText">Analizar con IA</span>
+          </button>
+          <button onclick="setAuthorFilter('all')" class="text-xs px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition flex items-center gap-1">
+            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+            <span>Quitar filtro</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Items Grid for Active Section -->
     <div id="toolsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <!-- Loading Skeleton or empty state -->
       <div class="col-span-full py-16 text-center text-slate-500">
         <i data-lucide="loader" class="w-8 h-8 animate-spin mx-auto mb-3 text-sky-400"></i>
-        <p>Cargando herramientas del Segundo Cerebro...</p>
+        <p>Cargando catálogo del Segundo Cerebro...</p>
       </div>
     </div>
 
@@ -134,9 +363,20 @@
       <div class="p-5 border-b border-slate-800 flex items-center justify-between">
         <div>
           <h2 id="modalToolName" class="text-base font-bold text-slate-100 flex items-center gap-2">
-            <span>Nombre de la Herramienta</span>
+            <span>Nombre del Recurso</span>
           </h2>
-          <p id="modalToolPath" class="text-xs font-mono text-slate-400 truncate max-w-sm"></p>
+          <div class="flex items-center gap-2 flex-wrap mt-0.5">
+            <p id="modalToolPath" class="text-xs font-mono text-slate-400 truncate max-w-xs"></p>
+            <span id="modalAuthorBadge" class="hidden text-[11px] text-slate-400 flex items-center gap-1">
+              <span class="text-slate-600">•</span>
+              <span>Por:</span>
+              <span id="modalAuthorName" class="font-medium text-slate-300"></span>
+              <a id="modalAuthorHandleLink" href="#" target="_blank" class="hidden text-sky-400 hover:underline font-mono text-[10px]"></a>
+            </span>
+            <span id="modalClassifiedByBadge" class="hidden text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 font-mono">
+              🤖 <span id="modalClassifiedByText"></span>
+            </span>
+          </div>
         </div>
         <button onclick="closeNoteModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800">
           <i data-lucide="x" class="w-5 h-5"></i>
@@ -149,14 +389,47 @@
           <div class="flex items-center gap-2">
             <label class="text-xs text-slate-400 font-medium">Estado:</label>
             <select id="modalStatusSelect" class="bg-slate-900 border border-slate-700 text-xs rounded-lg px-2.5 py-1 text-slate-200 focus:outline-none">
-              <option value="to_try">🟡 Por probar</option>
-              <option value="in_use">🟢 En uso</option>
+              <option value="to_try">🟡 Por probar / Por postular</option>
+              <option value="in_use">🟢 En uso / Guardado</option>
               <option value="archived">⚪ Archivado</option>
             </select>
           </div>
-          <a id="modalOfficialLink" href="#" target="_blank" class="text-xs text-sky-400 hover:underline flex items-center gap-1">
-            Visitar recurso <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-          </a>
+          <div class="flex items-center gap-3">
+            <a id="modalTweetLink" href="#" target="_blank" class="hidden text-xs text-slate-400 hover:text-white flex items-center gap-1.5 transition">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <span>Ver Tweet</span>
+            </a>
+            <a id="modalOfficialLink" href="#" target="_blank" class="text-xs text-sky-400 hover:underline flex items-center gap-1">
+              Visitar recurso <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Academic Promo Alert inside Modal -->
+        <div id="modalAcademicAlert" class="hidden p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300 flex items-start gap-2.5">
+          <span class="text-base leading-none">🎓</span>
+          <div>
+            <span class="font-bold text-emerald-200">Promoción / Beneficio Académico:</span>
+            <p id="modalAcademicText" class="mt-0.5 text-emerald-300/90 text-xs leading-relaxed"></p>
+          </div>
+        </div>
+
+        <!-- Job Info Alert inside Modal -->
+        <div id="modalJobInfo" class="hidden p-3 rounded-xl bg-blue-500/10 border border-blue-500/30 text-xs text-blue-300 flex items-start gap-2.5">
+          <span class="text-base leading-none">💼</span>
+          <div class="space-y-1">
+            <span class="font-bold text-blue-200">Detalles de la Oportunidad:</span>
+            <div id="modalJobDetails" class="text-xs text-blue-300/90 leading-relaxed flex flex-wrap gap-2 pt-0.5"></div>
+          </div>
+        </div>
+
+        <!-- Product Info Alert inside Modal -->
+        <div id="modalProductInfo" class="hidden p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300 flex items-start gap-2.5">
+          <span class="text-base leading-none">🖥️</span>
+          <div class="space-y-1">
+            <span class="font-bold text-amber-200">Información del Producto / Hardware:</span>
+            <div id="modalProductDetails" class="text-xs text-amber-300/90 leading-relaxed flex flex-wrap gap-2 pt-0.5"></div>
+          </div>
         </div>
 
         <!-- Markdown Content Preview / Editor -->
@@ -185,36 +458,126 @@
     </div>
   </div>
 
-  <!-- Modal: Ingestar Manualmente -->
+  <!-- Modal: Directorio de Autores y Especialidades -->
+  <div id="authorsModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in duration-150">
+      
+      <div class="p-5 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-xl bg-sky-500/10 text-sky-400 border border-sky-500/20">
+            <i data-lucide="users" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h2 class="text-base font-bold text-slate-100 flex items-center gap-2">
+              <span>Directorio de Autores & Especialidades</span>
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">Creadores de X cuyas recomendaciones has guardado en tu catálogo</p>
+          </div>
+        </div>
+        <button onclick="closeAuthorsModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Authors List Container -->
+      <div id="authorsListContainer" class="p-5 flex-1 overflow-y-auto space-y-4">
+        <!-- Injected via JS -->
+      </div>
+
+      <div class="p-4 border-t border-slate-800 bg-slate-900/50 flex justify-between items-center text-xs text-slate-500">
+        <span id="authorsModalSummary">0 autores registrados</span>
+        <button onclick="closeAuthorsModal()" class="px-4 py-2 font-medium rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition">
+          Cerrar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal: Ingestar Recurso en Apartado Específico -->
   <div id="ingestModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl">
       <div class="flex justify-between items-center mb-4">
         <h3 class="text-base font-bold text-slate-100 flex items-center gap-2">
           <i data-lucide="plus-circle" class="w-5 h-5 text-sky-400"></i>
-          Añadir Herramienta o Tweet
+          <span id="ingestModalTitle">Añadir Recurso</span>
         </h3>
         <button onclick="closeIngestModal()" class="text-slate-400 hover:text-slate-200">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
+      <!-- Active AI Engine Indicator -->
+      <div class="mb-4 flex items-center justify-between p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs">
+        <span class="text-slate-400 flex items-center gap-1.5">
+          <i data-lucide="cpu" class="w-3.5 h-3.5 text-sky-400"></i>
+          <span>IA para análisis & extracción:</span>
+        </span>
+        <span id="modalActiveAiBadge" class="font-mono font-medium text-sky-300 text-[11px] px-2.5 py-0.5 rounded-lg bg-sky-500/10 border border-sky-500/25">
+          Cargando IA...
+        </span>
+      </div>
+
+      <!-- Apartado Target Destination Selector -->
+      <div class="mb-4">
+        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Apartado de destino:</label>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+          <button 
+            type="button" 
+            onclick="setModalTargetSection('tool')" 
+            id="modalDestToolBtn" 
+            class="px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-sky-500/20 text-sky-300 border-sky-500/40"
+          >
+            <span class="text-base">🛠️</span>
+            <span>Herramienta</span>
+          </button>
+          <button 
+            type="button" 
+            onclick="setModalTargetSection('tech_tip')" 
+            id="modalDestTipBtn" 
+            class="px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-slate-950 text-slate-400 border-slate-800 hover:bg-slate-800"
+          >
+            <span class="text-base">💡</span>
+            <span>Consejo</span>
+          </button>
+          <button 
+            type="button" 
+            onclick="setModalTargetSection('job_remote')" 
+            id="modalDestJobBtn" 
+            class="px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-slate-950 text-slate-400 border-slate-800 hover:bg-slate-800"
+          >
+            <span class="text-base">💼</span>
+            <span>Trabajo/Remoto</span>
+          </button>
+          <button 
+            type="button" 
+            onclick="setModalTargetSection('tech_product')" 
+            id="modalDestProductBtn" 
+            class="px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-slate-950 text-slate-400 border-slate-800 hover:bg-slate-800"
+          >
+            <span class="text-base">🖥️</span>
+            <span>Producto/Hardware</span>
+          </button>
+        </div>
+      </div>
+
       <form onsubmit="handleManualIngest(event)" class="space-y-4">
         <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">URL (GitHub, Web o Tweet de X):</label>
+          <label id="ingestUrlLabel" class="block text-xs font-medium text-slate-300 mb-1">URL (GitHub, Web o Tweet de X):</label>
           <input 
             id="ingestUrlInput" 
             type="url" 
-            placeholder="https://github.com/..."
+            placeholder="https://github.com/... o https://x.com/..."
             required
             class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
           />
         </div>
         <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">Comentario o texto del tweet (Opcional):</label>
+          <label id="ingestTextLabel" class="block text-xs font-medium text-slate-300 mb-1">Comentario o texto del tweet (Opcional):</label>
           <textarea 
             id="ingestTextInput" 
             rows="3" 
-            placeholder="Para qué sirve o qué decían en el tweet..."
+            placeholder="Descripción de la herramienta, consejo técnico o detalles de la oferta de trabajo..."
             class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
           ></textarea>
         </div>
@@ -224,7 +587,7 @@
             Cancelar
           </button>
           <button id="ingestSubmitBtn" type="submit" class="px-4 py-2 text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white rounded-xl shadow-md flex items-center gap-2">
-            <span>Procesar con Gemini</span>
+            <span id="ingestSubmitBtnText">Analizar con IA</span>
           </button>
         </div>
       </form>
@@ -234,24 +597,737 @@
   <!-- Client-side Logic -->
   <script>
     let allTools = [];
+    let allAuthorProfiles = {};
+    let currentSection = 'tools'; // 'tools' | 'tips' | 'jobs' | 'products'
     let currentCategory = 'all';
     let currentStatus = 'all';
+    let currentAuthor = 'all';
+    let filterOnlyAcademic = false;
     let activeEditingSlug = null;
-
-    const CATEGORIES = [
-      'all',
-      'CLI & Terminal',
-      'Frontend & UI',
-      'Backend & APIs',
-      'DevOps & Cloud',
-      'AI & Machine Learning',
-      'Databases & Storage',
-      'Productivity & Tools',
-      'Documentation & Resources',
-      'Other'
-    ];
-
+    let modalSelectedDest = 'tool'; // 'tool' | 'tech_tip' | 'job_remote' | 'tech_product'
     let isStaticMode = false;
+    let currentActiveAiProvider = 'Google Gemini (2.5 Flash)';
+    let currentActiveAiShortName = 'Gemini 2.5 Flash';
+
+    async function fetchAiStatus() {
+      try {
+        if (!isStaticMode && !window.location.hostname.endsWith('github.io')) {
+          const res = await fetch('/api/ai/status');
+          if (res.ok) {
+            const data = await res.json();
+            if (data.success && data.activeProvider) {
+              currentActiveAiProvider = data.activeProvider;
+              const low = data.activeProvider.toLowerCase();
+              if (low.includes('deepseek')) currentActiveAiShortName = 'DeepSeek';
+              else if (low.includes('minimax')) currentActiveAiShortName = 'MiniMax 3.1';
+              else if (low.includes('gemini')) currentActiveAiShortName = 'Gemini 2.5 Flash';
+              else if (low.includes('claude')) currentActiveAiShortName = 'Claude Haiku';
+              else if (low.includes('groq')) currentActiveAiShortName = 'Groq';
+              else currentActiveAiShortName = 'IA';
+              updateAiBadges();
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('No se pudo cargar estado de IA:', e);
+      }
+    }
+
+    function updateAiBadges() {
+      const badge = document.getElementById('modalActiveAiBadge');
+      if (badge) badge.innerText = currentActiveAiProvider;
+
+      const ingestBtnText = document.getElementById('ingestSubmitBtnText');
+      if (ingestBtnText) ingestBtnText.innerText = `Analizar con ${currentActiveAiShortName}`;
+
+      const bannerAnalyzeText = document.getElementById('authorBannerAnalyzeText');
+      if (bannerAnalyzeText && !bannerAnalyzeText.innerText.includes('Analizando')) {
+        const isAnalyzed = Boolean(document.getElementById('authorBannerBio')?.innerText && !document.getElementById('authorBannerBio')?.innerText.includes('Cargando'));
+        bannerAnalyzeText.innerText = isAnalyzed ? `Actualizar con ${currentActiveAiShortName}` : `Analizar con ${currentActiveAiShortName}`;
+      }
+    }
+
+    // Configuración contextual para cada uno de los 3 apartados
+    const SECTION_CONFIG = {
+      tools: {
+        id: 'tools',
+        name: 'Herramientas',
+        badgeTitle: 'Apartado 1: Herramientas & Repositorios',
+        icon: '🛠️',
+        subtitle: 'Bibliotecas de código, utilidades CLI, devtools y productos técnicos curados desde X.',
+        searchPlaceholder: 'Buscar herramienta, tecnología, CLI, framework o autor... (⌘K)',
+        addBtnText: 'Añadir Herramienta',
+        accentColor: 'sky',
+        categories: [
+          'all',
+          'CLI & Terminal',
+          'Frontend & UI',
+          'Backend & APIs',
+          'DevOps & Cloud',
+          'AI & Machine Learning',
+          'Prompts, Art & Video',
+          'Databases & Storage',
+          'Productivity & Tools',
+          'Documentation & Resources',
+          'Empresas & Productos',
+          'Other'
+        ]
+      },
+      tips: {
+        id: 'tips',
+        name: 'Consejos Técnicos',
+        badgeTitle: 'Apartado 2: Consejos Técnicos & Buenas Prácticas',
+        icon: '💡',
+        subtitle: 'Trucos de programación, patrones de arquitectura, comandos de terminal y tips de ingeniería.',
+        searchPlaceholder: 'Buscar consejo, truco, comando, arquitectura o autor... (⌘K)',
+        addBtnText: 'Añadir Consejo',
+        accentColor: 'violet',
+        categories: [
+          'all',
+          'Frontend & UI',
+          'Backend & APIs',
+          'DevOps & Cloud',
+          'Databases & Storage',
+          'CLI & Terminal',
+          'AI & Machine Learning',
+          'Productivity & Tools',
+          'Consejos & Buenas Prácticas',
+          'Other'
+        ]
+      },
+      jobs: {
+        id: 'jobs',
+        name: 'Trabajo & Freelance',
+        badgeTitle: 'Apartado 3: Empleo Remoto & Oportunidades Freelance',
+        icon: '💼',
+        subtitle: 'Vacantes de trabajo remoto mundial, proyectos freelance, bolsas de trabajo y recursos para trabajar.',
+        searchPlaceholder: 'Buscar empleo, puesto, empresa, ubicación (LATAM, Global) o compensación... (⌘K)',
+        addBtnText: 'Añadir Oportunidad',
+        accentColor: 'blue',
+        categories: [
+          'all',
+          'Remoto (Mundial)',
+          'Remoto (LATAM)',
+          'Freelance / Contrato',
+          'Plataformas & Bolsas',
+          'Full-Time',
+          'Trabajo & Freelance',
+          'Other'
+        ]
+      },
+      products: {
+        id: 'products',
+        name: 'Productos Tech & Hardware',
+        badgeTitle: 'Apartado 4: Productos Tecnológicos & Hardware',
+        icon: '🖥️',
+        subtitle: 'Dispositivos para devs, placas de desarrollo (Raspberry Pi, ESP32), gadgets y hardware técnico.',
+        searchPlaceholder: 'Buscar producto, hardware, placa, especificaciones, fabricante... (⌘K)',
+        addBtnText: 'Añadir Producto / Hardware',
+        accentColor: 'amber',
+        categories: [
+          'all',
+          'Hardware & Gadgets',
+          'Placas & Microcontroladores',
+          'Periféricos & Setups',
+          'Laptops & Equipos',
+          'Chips & Procesadores',
+          'IA Devices & Robótica',
+          'Productos Tecnológicos & Hardware',
+          'Other'
+        ]
+      }
+    };
+
+    /**
+     * Retorna a cuál de los 4 apartados pertenece un recurso de manera estricta y disjunta.
+     */
+    function getItemSection(tool) {
+      const fm = tool.frontmatter || {};
+      if (fm.entry_type === 'job_remote' || fm.category === 'Trabajo & Freelance') {
+        return 'jobs';
+      }
+      if (fm.entry_type === 'tech_tip' || fm.category === 'Consejos & Buenas Prácticas') {
+        return 'tips';
+      }
+      if (
+        fm.entry_type === 'tech_product' ||
+        fm.category === 'Productos Tecnológicos & Hardware'
+      ) {
+        return 'products';
+      }
+      return 'tools';
+    }
+
+    /**
+     * Cambia el apartado activo: Herramientas, Consejos, Empleo o Productos Tech.
+     */
+    function switchSection(sectionId) {
+      currentSection = sectionId;
+      currentCategory = 'all';
+      currentAuthor = 'all';
+
+      // Actualizar estilo visual de las 4 tabs
+      const tabs = [
+        { id: 'tools', btn: 'tabSectionTools', icon: 'tabIconBoxTools', count: 'tabCountTools', activeClass: 'bg-sky-500/15 border-sky-500/40 text-sky-300 shadow-inner' },
+        { id: 'tips', btn: 'tabSectionTips', icon: 'tabIconBoxTips', count: 'tabCountTips', activeClass: 'bg-violet-500/15 border-violet-500/40 text-violet-300 shadow-inner' },
+        { id: 'jobs', btn: 'tabSectionJobs', icon: 'tabIconBoxJobs', count: 'tabCountJobs', activeClass: 'bg-blue-500/15 border-blue-500/40 text-blue-300 shadow-inner' },
+        { id: 'products', btn: 'tabSectionProducts', icon: 'tabIconBoxProducts', count: 'tabCountProducts', activeClass: 'bg-amber-500/15 border-amber-500/40 text-amber-300 shadow-inner' }
+      ];
+
+      tabs.forEach(t => {
+        const btnEl = document.getElementById(t.btn);
+        const iconEl = document.getElementById(t.icon);
+        const countEl = document.getElementById(t.count);
+        const isSelected = t.id === sectionId;
+
+        if (isSelected) {
+          btnEl.className = `relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group ${t.activeClass}`;
+          if (t.id === 'tools') {
+            iconEl.className = 'p-2.5 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30';
+            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-sky-500/20 text-sky-300 border border-sky-500/30';
+          } else if (t.id === 'tips') {
+            iconEl.className = 'p-2.5 rounded-xl bg-violet-500/20 text-violet-300 border border-violet-500/30';
+            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-violet-500/20 text-violet-300 border border-violet-500/30';
+          } else if (t.id === 'jobs') {
+            iconEl.className = 'p-2.5 rounded-xl bg-blue-500/20 text-blue-300 border border-blue-500/30';
+            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30';
+          } else {
+            iconEl.className = 'p-2.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/30';
+            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30';
+          }
+        } else {
+          btnEl.className = 'relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40';
+          iconEl.className = 'p-2.5 rounded-xl bg-slate-800 text-slate-400 border border-slate-700';
+          countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700';
+        }
+      });
+
+      // Actualizar Banner
+      const config = SECTION_CONFIG[sectionId];
+      const banner = document.getElementById('sectionBanner');
+      const bannerIcon = document.getElementById('sectionBannerIcon');
+      const bannerTitle = document.getElementById('sectionBannerTitle');
+      const bannerSubtitle = document.getElementById('sectionBannerSubtitle');
+      const bannerAddText = document.getElementById('sectionBannerAddText');
+      const bannerAddBtn = document.getElementById('sectionBannerAddBtn');
+      const searchInput = document.getElementById('searchInput');
+      const headerAddText = document.getElementById('headerAddBtnText');
+
+      if (banner && config) {
+        bannerIcon.innerText = config.icon;
+        bannerTitle.innerText = config.badgeTitle;
+        bannerSubtitle.innerText = config.subtitle;
+        bannerAddText.innerText = config.addBtnText;
+        if (headerAddText) headerAddText.innerText = config.addBtnText;
+        if (searchInput) searchInput.placeholder = config.searchPlaceholder;
+
+        if (sectionId === 'tools') {
+          banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-sky-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
+          bannerIcon.className = 'p-3 rounded-2xl bg-sky-500/15 text-sky-400 border border-sky-500/30 text-2xl flex-shrink-0 shadow-inner';
+          bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white shadow-lg shadow-sky-600/25 flex items-center gap-2 transition flex-shrink-0';
+        } else if (sectionId === 'tips') {
+          banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-violet-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
+          bannerIcon.className = 'p-3 rounded-2xl bg-violet-500/15 text-violet-400 border border-violet-500/30 text-2xl flex-shrink-0 shadow-inner';
+          bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-violet-600 hover:bg-violet-500 text-white shadow-lg shadow-violet-600/25 flex items-center gap-2 transition flex-shrink-0';
+        } else if (sectionId === 'jobs') {
+          banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-blue-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
+          bannerIcon.className = 'p-3 rounded-2xl bg-blue-500/15 text-blue-400 border border-blue-500/30 text-2xl flex-shrink-0 shadow-inner';
+          bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/25 flex items-center gap-2 transition flex-shrink-0';
+        } else {
+          banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
+          bannerIcon.className = 'p-3 rounded-2xl bg-amber-500/15 text-amber-400 border border-amber-500/30 text-2xl flex-shrink-0 shadow-inner';
+          bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-amber-600 hover:bg-amber-500 text-white shadow-lg shadow-amber-600/25 flex items-center gap-2 transition flex-shrink-0';
+        }
+      }
+
+      // Visibilidad del botón de Promos Académicas (solo relevante para herramientas)
+      const acadBtn = document.getElementById('academicFilterBtn');
+      const acadSep = document.getElementById('academicFilterSeparator');
+      if (acadBtn && acadSep) {
+        if (sectionId === 'tools') {
+          acadBtn.classList.remove('hidden');
+          acadSep.classList.remove('hidden');
+        } else {
+          acadBtn.classList.add('hidden');
+          acadSep.classList.add('hidden');
+          filterOnlyAcademic = false;
+        }
+      }
+
+      renderCategoryFilters();
+      renderAuthorFilterSelect();
+      updateStats();
+      renderTools();
+      lucide.createIcons();
+    }
+
+    async function fetchAuthorProfiles() {
+      try {
+        let res = null;
+        if (!isStaticMode && !window.location.hostname.endsWith('github.io')) {
+          try {
+            const apiRes = await fetch('/api/authors');
+            if (apiRes.ok) res = apiRes;
+          } catch {}
+        }
+
+        if (!res) {
+          res = await fetch('./data/authors.json');
+        }
+
+        if (res && res.ok) {
+          const data = await res.json();
+          allAuthorProfiles = data.authors || {};
+        }
+      } catch (err) {
+        console.warn('No se pudieron cargar perfiles de autores:', err);
+      }
+    }
+
+    function isAcademicTool(tool) {
+      const fm = tool.frontmatter || {};
+      if (fm.has_academic_promo) return true;
+      const tags = fm.tags || [];
+      return tags.some(t => ['academic', 'academico', 'académico', 'estudiante', 'estudiantes', 'student', 'students', 'education', 'educacion', 'educación'].includes(t.toLowerCase()));
+    }
+
+    function toggleAcademicFilter() {
+      filterOnlyAcademic = !filterOnlyAcademic;
+      const btn = document.getElementById('academicFilterBtn');
+      if (btn) {
+        btn.className = `px-2.5 py-1 rounded-md transition flex items-center gap-1.5 ${
+          filterOnlyAcademic
+            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-medium'
+            : 'bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800'
+        }`;
+      }
+      renderTools();
+    }
+
+    function getToolAuthor(tool) {
+      const fm = tool.frontmatter || {};
+      if (fm.author && fm.author.trim()) return fm.author.trim();
+      if (fm.source_tweet) {
+        const m = fm.source_tweet.match(/(?:twitter|x)\.com\/([a-zA-Z0-9_]{1,15})/i);
+        if (m && m[1] && !['home', 'explore', 'notifications', 'messages', 'i', 'search', 'settings'].includes(m[1].toLowerCase())) {
+          return `@${m[1]}`;
+        }
+      }
+      return null;
+    }
+
+    function getToolAuthorHandle(tool) {
+      const fm = tool.frontmatter || {};
+      if (fm.author_handle) return fm.author_handle.replace(/^@/, '');
+      if (fm.source_tweet) {
+        const m = fm.source_tweet.match(/(?:twitter|x)\.com\/([a-zA-Z0-9_]{1,15})/i);
+        if (m && m[1] && !['home', 'explore', 'notifications', 'messages', 'i', 'search', 'settings'].includes(m[1].toLowerCase())) {
+          return m[1];
+        }
+      }
+      if (fm.author && fm.author.startsWith('@')) {
+        return fm.author.slice(1);
+      }
+      return null;
+    }
+
+    function getAuthorsData(sectionSpecific = false) {
+      const authorsMap = new Map();
+      const listToProcess = sectionSpecific
+        ? allTools.filter(t => getItemSection(t) === currentSection)
+        : allTools;
+
+      listToProcess.forEach(tool => {
+        const authorName = getToolAuthor(tool);
+        if (!authorName) return;
+
+        const handle = getToolAuthorHandle(tool);
+
+        if (!authorsMap.has(authorName)) {
+          authorsMap.set(authorName, {
+            name: authorName,
+            handle: handle,
+            tools: [],
+            categories: {},
+            tags: {},
+          });
+        }
+
+        const entry = authorsMap.get(authorName);
+        entry.tools.push(tool);
+
+        const cat = tool.frontmatter.category || 'Other';
+        entry.categories[cat] = (entry.categories[cat] || 0) + 1;
+
+        (tool.frontmatter.tags || []).forEach(tag => {
+          entry.tags[tag] = (entry.tags[tag] || 0) + 1;
+        });
+      });
+
+      const list = Array.from(authorsMap.values()).map(entry => {
+        const sortedCats = Object.entries(entry.categories).sort((a, b) => b[1] - a[1]);
+        const topCategory = sortedCats[0] ? sortedCats[0][0] : 'General';
+        const topTags = Object.entries(entry.tags).sort((a, b) => b[1] - a[1]).slice(0, 4).map(e => e[0]);
+
+        return {
+          ...entry,
+          totalTools: entry.tools.length,
+          sortedCategories: sortedCats,
+          topCategory,
+          topTags,
+        };
+      });
+
+      return list.sort((a, b) => b.totalTools - a.totalTools);
+    }
+
+    function setAuthorFilter(author) {
+      currentAuthor = author;
+      renderAuthorFilterSelect();
+      updateAuthorProfileBanner();
+      renderTools();
+    }
+
+    function updateAuthorProfileBanner() {
+      const banner = document.getElementById('authorProfileBanner');
+      if (!banner) return;
+
+      if (currentAuthor === 'all') {
+        banner.classList.add('hidden');
+        return;
+      }
+
+      const authors = getAuthorsData(false);
+      const authorData = authors.find(a => a.name.toLowerCase() === currentAuthor.toLowerCase()) || {
+        name: currentAuthor,
+        handle: currentAuthor.startsWith('@') ? currentAuthor.slice(1) : undefined,
+        totalTools: 0,
+        sortedCategories: [],
+        tools: [],
+      };
+
+      const profile = allAuthorProfiles[currentAuthor.toLowerCase()] || (authorData.handle ? allAuthorProfiles[authorData.handle.toLowerCase()] : null);
+
+      // Avatar
+      const avatarEl = document.getElementById('authorBannerAvatar');
+      if (avatarEl) {
+        const initial = currentAuthor.replace(/^@/, '').charAt(0).toUpperCase();
+        avatarEl.innerText = initial || '?';
+      }
+
+      // Name & Handle
+      document.getElementById('authorBannerName').innerText = profile?.name || authorData.name;
+      const handleEl = document.getElementById('authorBannerHandle');
+      const handle = profile?.handle || authorData.handle;
+      if (handleEl && handle) {
+        handleEl.href = `https://x.com/${handle}`;
+        handleEl.querySelector('span').innerText = `@${handle}`;
+        handleEl.classList.remove('hidden');
+      } else if (handleEl) {
+        handleEl.classList.add('hidden');
+      }
+
+      // Role, Bio, Why Follow & AI Badge
+      const roleEl = document.getElementById('authorBannerRole');
+      const bioEl = document.getElementById('authorBannerBio');
+      const whyFollowBox = document.getElementById('authorBannerWhyFollowBox');
+      const whyFollowEl = document.getElementById('authorBannerWhyFollow');
+      const analyzeBtnText = document.getElementById('authorBannerAnalyzeText');
+      const aiBadge = document.getElementById('authorBannerAiBadge');
+      const aiProviderName = document.getElementById('authorBannerAiProviderName');
+
+      if (aiBadge && aiProviderName) {
+        if (profile && profile.providerUsed) {
+          aiProviderName.innerText = `Analizado con ${profile.providerUsed}`;
+          aiBadge.classList.remove('hidden');
+        } else {
+          aiBadge.classList.add('hidden');
+        }
+      }
+
+      if (profile && profile.role) {
+        roleEl.innerText = profile.role;
+        bioEl.innerText = profile.bio || 'Sin descripción disponible.';
+        if (profile.whyFollow) {
+          whyFollowEl.innerText = profile.whyFollow;
+          whyFollowBox.classList.remove('hidden');
+        } else {
+          whyFollowBox.classList.add('hidden');
+        }
+        if (analyzeBtnText) analyzeBtnText.innerText = `Actualizar con ${currentActiveAiShortName}`;
+      } else {
+        const topCat = authorData.sortedCategories[0] ? authorData.sortedCategories[0][0] : 'General';
+        roleEl.innerText = `Curador Técnico en X (${topCat})`;
+        bioEl.innerText = `Este autor ha aportado ${authorData.totalTools} recurso(s) a tu catálogo. Haz clic en "Analizar con ${currentActiveAiShortName}" para investigar y establecer su biografía, especialidades y valor técnico.`;
+        whyFollowBox.classList.add('hidden');
+        if (analyzeBtnText) analyzeBtnText.innerText = `Analizar con ${currentActiveAiShortName}`;
+      }
+
+      // Specialties
+      const specialtiesContainer = document.getElementById('authorBannerSpecialties');
+      if (specialtiesContainer) {
+        const specs = (profile?.specialties && profile.specialties.length > 0)
+          ? profile.specialties
+          : authorData.sortedCategories.map(c => c[0]);
+
+        specialtiesContainer.innerHTML = specs.slice(0, 5).map(s => `
+          <span class="px-2 py-0.5 rounded-md bg-sky-500/10 text-sky-300 border border-sky-500/20 text-[10px] font-medium">
+            🎯 ${s}
+          </span>
+        `).join('');
+      }
+
+      // Links
+      const ghLink = document.getElementById('authorBannerGithub');
+      if (ghLink) {
+        let ghUrl = profile?.githubUrl;
+        if (ghUrl && ghUrl !== '#' && ghUrl !== 'null' && ghUrl !== 'undefined') {
+          try {
+            const u = new URL(ghUrl.startsWith('http') ? ghUrl : `https://${ghUrl}`);
+            const segs = u.pathname.split('/').filter(Boolean);
+            if (segs.length >= 1) {
+              ghUrl = `https://github.com/${segs[0]}`;
+            }
+          } catch (e) {
+            ghUrl = null;
+          }
+        } else {
+          ghUrl = null;
+        }
+
+        if (ghUrl) {
+          ghLink.href = ghUrl;
+          ghLink.title = `Ver perfil de ${profile?.name || authorData.name} en GitHub`;
+          ghLink.classList.remove('hidden');
+        } else {
+          ghLink.classList.add('hidden');
+        }
+      }
+
+      const webLink = document.getElementById('authorBannerWebsite');
+      if (webLink) {
+        let webUrl = profile?.websiteUrl;
+        if (webUrl && webUrl !== '#' && webUrl !== 'null' && webUrl !== 'undefined') {
+          if (!webUrl.startsWith('http')) webUrl = `https://${webUrl}`;
+          webLink.href = webUrl;
+          webLink.title = `Visitar sitio web oficial`;
+          webLink.classList.remove('hidden');
+        } else {
+          webLink.classList.add('hidden');
+        }
+      }
+
+      banner.classList.remove('hidden');
+    }
+
+    async function analyzeCurrentFilteredAuthor(authorNameParam, handleParam) {
+      const authorName = authorNameParam || currentAuthor;
+      if (!authorName || authorName === 'all') return;
+
+      const btn = document.getElementById('authorBannerAnalyzeBtn');
+      const btnText = document.getElementById('authorBannerAnalyzeText');
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.innerText = `Analizando con ${currentActiveAiShortName}...`;
+
+      try {
+        const authorData = getAuthorsData().find(a => a.name.toLowerCase() === authorName.toLowerCase());
+        const handle = handleParam || (authorData ? authorData.handle : undefined);
+
+        const res = await fetch('/api/authors/analyze', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ authorName, authorHandle: handle }),
+        });
+
+        const data = await res.json();
+        if (data.success && data.profile) {
+          allAuthorProfiles[authorName.toLowerCase()] = data.profile;
+          if (data.profile.handle) allAuthorProfiles[data.profile.handle.toLowerCase()] = data.profile;
+          updateAuthorProfileBanner();
+          renderAuthorsModal();
+          alert(`✅ Autor "${authorName}" analizado con éxito utilizando: ${data.providerUsed || currentActiveAiProvider}`);
+        } else {
+          alert('Aviso: ' + (data.error || 'No se pudo completar el análisis del autor'));
+        }
+      } catch (err) {
+        console.error('Error analizando autor:', err);
+        alert('Error al conectar con la API para analizar el perfil con IA.');
+      } finally {
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.innerText = `Actualizar con ${currentActiveAiShortName}`;
+      }
+    }
+
+    function renderAuthorFilterSelect() {
+      const select = document.getElementById('authorFilterSelect');
+      const clearBtn = document.getElementById('clearAuthorFilterBtn');
+      if (!select) return;
+
+      // Autores que tienen recursos en el apartado actual
+      const authors = getAuthorsData(true);
+      select.innerHTML = `<option value="all">👥 Todos los autores (${authors.length})</option>` +
+        authors.map(a => `
+          <option value="${a.name}" ${currentAuthor === a.name ? 'selected' : ''}>
+            ${a.name} (${a.totalTools})
+          </option>
+        `).join('');
+
+      if (clearBtn) {
+        if (currentAuthor !== 'all') {
+          clearBtn.classList.remove('hidden');
+        } else {
+          clearBtn.classList.add('hidden');
+        }
+      }
+    }
+
+    function openAuthorsModal() {
+      renderAuthorsModal();
+      document.getElementById('authorsModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeAuthorsModal() {
+      document.getElementById('authorsModal').classList.add('hidden');
+    }
+
+    function renderAuthorsModal() {
+      const container = document.getElementById('authorsListContainer');
+      const summaryEl = document.getElementById('authorsModalSummary');
+      const authors = getAuthorsData(false);
+
+      if (summaryEl) {
+        summaryEl.innerText = `${authors.length} autor${authors.length !== 1 ? 'es' : ''} registrado${authors.length !== 1 ? 's' : ''}`;
+      }
+
+      if (authors.length === 0) {
+        container.innerHTML = `
+          <div class="py-12 text-center text-slate-500">
+            <i data-lucide="user-x" class="w-8 h-8 mx-auto mb-2 text-slate-600"></i>
+            <p class="text-sm">No se han registrado autores en las notas aún.</p>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = authors.map(author => {
+        const primaryCat = author.sortedCategories[0] ? author.sortedCategories[0][0] : 'General';
+        const primaryCatCount = author.sortedCategories[0] ? author.sortedCategories[0][1] : 0;
+        const primaryCatPercent = Math.round((primaryCatCount / author.totalTools) * 100);
+
+        const profile = allAuthorProfiles[author.name.toLowerCase()] || (author.handle ? allAuthorProfiles[author.handle.toLowerCase()] : null);
+
+        const categoriesBadges = author.sortedCategories.map(([cat, count]) => `
+          <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700/60 text-[10px]">
+            ${cat}: <strong class="text-sky-300">${count}</strong>
+          </span>
+        `).join('');
+
+        const tagsBadges = author.topTags.map(t => `
+          <span class="text-slate-400 font-mono text-[10px]">#${t}</span>
+        `).join(' ');
+
+        const toolsChips = author.tools.map(t => `
+          <button onclick="closeAuthorsModal(); openNoteModal('${t.slug}')" class="text-[11px] px-2 py-0.5 rounded bg-slate-950 text-slate-300 hover:text-sky-300 border border-slate-800 hover:border-slate-700 transition">
+            ${t.frontmatter.name}
+          </button>
+        `).join('');
+
+        const aiProfileBox = profile && profile.role ? `
+          <div class="mt-2 text-xs bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 space-y-1">
+            <div class="font-semibold text-sky-300 flex items-center gap-1.5 text-xs">
+              <span>✨</span> <span>${profile.role}</span>
+            </div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              ${profile.bio}
+            </p>
+            ${profile.whyFollow ? `
+              <p class="text-slate-400 text-[10px] italic pt-1 border-t border-slate-800">
+                💡 <strong class="text-slate-300 not-italic">Por qué seguirlo en X:</strong> ${profile.whyFollow}
+              </p>
+            ` : ''}
+          </div>
+        ` : '';
+
+        return `
+          <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div class="space-y-2 flex-1">
+              <!-- Header info -->
+              <div class="flex items-center gap-2 flex-wrap">
+                <div class="w-7 h-7 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 flex items-center justify-center font-bold text-xs">
+                  ${author.name.replace(/^@/, '').charAt(0).toUpperCase()}
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-200 leading-tight">
+                    ${author.name}
+                  </h4>
+                  <div class="flex items-center gap-2">
+                    ${author.handle ? `
+                      <a href="https://x.com/${author.handle}" target="_blank" rel="noopener noreferrer" class="text-[11px] text-slate-500 hover:text-slate-300 font-mono flex items-center gap-1 transition">
+                        <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        <span>@${author.handle}</span>
+                      </a>
+                    ` : ''}
+                    ${profile?.githubUrl ? `
+                      <a href="${profile.githubUrl}" target="_blank" rel="noopener noreferrer" title="Perfil de ${author.name} en GitHub" class="text-[11px] text-slate-500 hover:text-white font-mono flex items-center gap-1 transition">
+                        <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                        <span>GitHub</span>
+                      </a>
+                    ` : ''}
+                  </div>
+                </div>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 font-mono ml-auto sm:ml-2">
+                  ${author.totalTools} recurso${author.totalTools > 1 ? 's' : ''}
+                </span>
+                ${profile?.providerUsed ? `
+                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 font-medium">
+                    🤖 ${profile.providerUsed}
+                  </span>
+                ` : ''}
+              </div>
+
+              ${aiProfileBox}
+
+              <!-- Specialization Area -->
+              <div class="flex items-center gap-1.5 flex-wrap text-xs pt-1">
+                <span class="text-slate-400 text-[11px]">Especialidad principal:</span>
+                <span class="px-2 py-0.5 rounded-md bg-sky-500/15 text-sky-300 border border-sky-500/30 text-[11px] font-medium flex items-center gap-1">
+                  <span>🎯</span> ${primaryCat} (${primaryCatPercent}%)
+                </span>
+                ${tagsBadges ? `<span class="text-slate-600 ml-1">|</span> <span class="flex items-center gap-1">${tagsBadges}</span>` : ''}
+              </div>
+
+              <!-- Categories shared -->
+              <div class="flex flex-wrap gap-1.5 items-center pt-1">
+                <span class="text-[10px] text-slate-500 font-medium">Áreas:</span>
+                ${categoriesBadges}
+              </div>
+
+              <!-- Tools list -->
+              <div class="flex flex-wrap gap-1.5 items-center pt-1">
+                <span class="text-[10px] text-slate-500 font-medium">Recursos:</span>
+                ${toolsChips}
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="flex sm:flex-col items-center gap-2 flex-shrink-0 self-end sm:self-center">
+              <button onclick="setAuthorFilter('${author.name}'); closeAuthorsModal();" class="text-xs px-3 py-1.5 rounded-lg bg-sky-600/20 hover:bg-sky-600/30 text-sky-300 border border-sky-500/30 transition flex items-center gap-1.5">
+                <i data-lucide="filter" class="w-3.5 h-3.5"></i>
+                <span>Ver recursos</span>
+              </button>
+              <button onclick="analyzeCurrentFilteredAuthor('${author.name}', '${author.handle || ''}')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition flex items-center gap-1">
+                <i data-lucide="sparkles" class="w-3 h-3 text-sky-400"></i>
+                <span>${profile ? 'Actualizar (' + currentActiveAiShortName + ')' : 'Analizar (' + currentActiveAiShortName + ')'}</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
 
     async function fetchTools() {
       try {
@@ -270,14 +1346,14 @@
 
         const data = await res.json();
         allTools = data.tools || [];
-        renderCategoryFilters();
-        updateStats();
-        renderTools();
+        await fetchAiStatus();
+        await fetchAuthorProfiles();
+        switchSection(currentSection);
       } catch (err) {
         console.error('Error fetching tools:', err);
         document.getElementById('toolsGrid').innerHTML = `
           <div class="col-span-full py-12 text-center text-red-400">
-            Error cargando herramientas del catálogo.
+            Error cargando recursos del catálogo.
           </div>
         `;
       }
@@ -285,7 +1361,16 @@
 
     function renderCategoryFilters() {
       const container = document.getElementById('categoryFilters');
-      container.innerHTML = CATEGORIES.map(cat => {
+      const cats = SECTION_CONFIG[currentSection]?.categories || ['all', 'Other'];
+      const activeColor = currentSection === 'tools' 
+        ? 'bg-sky-500/20 text-sky-300 border-sky-500/40' 
+        : currentSection === 'tips'
+        ? 'bg-violet-500/20 text-violet-300 border-violet-500/40'
+        : currentSection === 'jobs'
+        ? 'bg-blue-500/20 text-blue-300 border-blue-500/40'
+        : 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+
+      container.innerHTML = cats.map(cat => {
         const isAll = cat === 'all';
         const label = isAll ? '✨ Todas' : cat;
         const active = currentCategory === cat;
@@ -294,7 +1379,7 @@
             onclick="setCategoryFilter('${cat}')"
             class="px-3 py-1.5 rounded-lg border whitespace-nowrap transition ${
               active 
-                ? 'bg-sky-500/20 text-sky-300 border-sky-500/40 font-medium' 
+                ? `${activeColor} font-medium` 
                 : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800'
             }">
             ${label}
@@ -330,23 +1415,52 @@
       const query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
 
       return allTools.filter(tool => {
-        // Category filter
-        if (currentCategory !== 'all' && tool.frontmatter.category !== currentCategory) {
+        // 1. FILTRO PRIMARIO OBLIGATORIO: Apartado activo (Herramientas, Consejos, Empleo o Productos)
+        const itemSec = getItemSection(tool);
+        if (itemSec !== currentSection) {
           return false;
         }
 
-        // Status filter
+        // 2. Filtro de Categoría
+        if (currentCategory !== 'all') {
+          // Soporta coincidencia exacta o coincidencia en tags/ubicación para empleos/productos
+          const cat = tool.frontmatter.category || 'Other';
+          const isCatMatch = cat === currentCategory;
+          const isLocationMatch = tool.frontmatter.location && tool.frontmatter.location.toLowerCase().includes(currentCategory.toLowerCase());
+          const isJobTypeMatch = tool.frontmatter.job_type && currentCategory.toLowerCase().includes(tool.frontmatter.job_type);
+          if (!isCatMatch && !isLocationMatch && !isJobTypeMatch) {
+            return false;
+          }
+        }
+
+        // 3. Filtro de Estado
         if (currentStatus !== 'all' && tool.frontmatter.status !== currentStatus) {
           return false;
         }
 
-        // Search text
+        // 4. Filtro de Promos Académicas (solo herramientas)
+        if (filterOnlyAcademic && !isAcademicTool(tool)) {
+          return false;
+        }
+
+        // 5. Filtro de Autor
+        if (currentAuthor !== 'all' && getToolAuthor(tool) !== currentAuthor) {
+          return false;
+        }
+
+        // 6. Búsqueda de Texto
         if (query) {
-          const matchName = (tool.frontmatter.name || '').toLowerCase().includes(query);
-          const matchTags = (tool.frontmatter.tags || []).some(t => t.toLowerCase().includes(query));
+          const fm = tool.frontmatter || {};
+          const matchName = (fm.name || '').toLowerCase().includes(query);
+          const matchTags = (fm.tags || []).some(t => t.toLowerCase().includes(query));
           const matchContent = (tool.content || '').toLowerCase().includes(query);
-          const matchUrl = (tool.frontmatter.url || '').toLowerCase().includes(query);
-          return matchName || matchTags || matchContent || matchUrl;
+          const matchUrl = (fm.url || '').toLowerCase().includes(query);
+          const matchCompany = (fm.company || '').toLowerCase().includes(query);
+          const matchLocation = (fm.location || '').toLowerCase().includes(query);
+          const matchSalary = (fm.salary || '').toLowerCase().includes(query);
+          const matchPrice = (fm.price || '').toLowerCase().includes(query);
+          const matchAuthor = (fm.author || '').toLowerCase().includes(query);
+          return matchName || matchTags || matchContent || matchUrl || matchCompany || matchLocation || matchSalary || matchPrice || matchAuthor;
         }
 
         return true;
@@ -354,23 +1468,70 @@
     }
 
     function updateStats() {
-      document.getElementById('statTotal').innerHTML = `Total: <strong>${allTools.length}</strong>`;
-      const inUse = allTools.filter(t => t.frontmatter.status === 'in_use').length;
-      const toTry = allTools.filter(t => t.frontmatter.status === 'to_try').length;
-      document.getElementById('statInUse').innerHTML = `🟢 En uso: <strong>${inUse}</strong>`;
-      document.getElementById('statToTry').innerHTML = `🟡 Por probar: <strong>${toTry}</strong>`;
+      // Contadores globales por cada uno de los 4 apartados
+      const toolsCount = allTools.filter(t => getItemSection(t) === 'tools').length;
+      const tipsCount = allTools.filter(t => getItemSection(t) === 'tips').length;
+      const jobsCount = allTools.filter(t => getItemSection(t) === 'jobs').length;
+      const productsCount = allTools.filter(t => getItemSection(t) === 'products').length;
+
+      document.getElementById('tabCountTools').innerText = toolsCount;
+      document.getElementById('tabCountTips').innerText = tipsCount;
+      document.getElementById('tabCountJobs').innerText = jobsCount;
+      document.getElementById('tabCountProducts').innerText = productsCount;
+
+      // Elementos del apartado actualmente activo
+      const sectionItems = allTools.filter(t => getItemSection(t) === currentSection);
+      document.getElementById('statSectionTotal').innerHTML = `En este apartado: <strong>${sectionItems.length}</strong>`;
+
+      const inUse = sectionItems.filter(t => t.frontmatter.status === 'in_use').length;
+      const toTry = sectionItems.filter(t => t.frontmatter.status === 'to_try').length;
+      document.getElementById('statInUse').innerHTML = currentSection === 'jobs' 
+        ? `🟢 Postulado: <strong>${inUse}</strong>` 
+        : currentSection === 'products'
+        ? `🟢 En posesión: <strong>${inUse}</strong>`
+        : `🟢 En uso: <strong>${inUse}</strong>`;
+      document.getElementById('statToTry').innerHTML = currentSection === 'jobs'
+        ? `🟡 Por postular: <strong>${toTry}</strong>`
+        : currentSection === 'products'
+        ? `🟡 Por adquirir/probar: <strong>${toTry}</strong>`
+        : `🟡 Por probar: <strong>${toTry}</strong>`;
+
+      const academicCount = sectionItems.filter(isAcademicTool).length;
+      const statAcademicEl = document.getElementById('statAcademic');
+      if (statAcademicEl) {
+        if (currentSection === 'tools' && academicCount > 0) {
+          statAcademicEl.classList.remove('hidden');
+          statAcademicEl.innerHTML = `🎓 Académicas: <strong>${academicCount}</strong>`;
+        } else {
+          statAcademicEl.classList.add('hidden');
+        }
+      }
+
+      const sectionAuthors = getAuthorsData(true);
+      const statAuthorsCountEl = document.getElementById('statAuthorsCount');
+      if (statAuthorsCountEl) statAuthorsCountEl.innerText = sectionAuthors.length;
+      
+      const allAuthors = getAuthorsData(false);
+      const headerAuthorCountEl = document.getElementById('headerAuthorCount');
+      if (headerAuthorCountEl) headerAuthorCountEl.innerText = allAuthors.length;
     }
 
     function renderTools() {
+      updateAuthorProfileBanner();
       const grid = document.getElementById('toolsGrid');
       const filtered = getFilteredTools();
 
       if (filtered.length === 0) {
+        const config = SECTION_CONFIG[currentSection] || SECTION_CONFIG.tools;
         grid.innerHTML = `
           <div class="col-span-full py-16 text-center text-slate-500 border border-dashed border-slate-800 rounded-2xl">
-            <i data-lucide="inbox" class="w-10 h-10 mx-auto mb-2 text-slate-600"></i>
-            <p class="text-sm font-medium">No se encontraron herramientas con los filtros actuales.</p>
-            <p class="text-xs text-slate-600 mt-1">Prueba con otra búsqueda o añade un nuevo recurso desde el botón superior.</p>
+            <span class="text-3xl block mb-2">${config.icon}</span>
+            <p class="text-sm font-medium text-slate-300">No hay ${config.name.toLowerCase()} con los filtros actuales.</p>
+            <p class="text-xs text-slate-500 mt-1">Prueba con otra búsqueda o añade un nuevo recurso desde el botón superior.</p>
+            <button onclick="openIngestModalForCurrentSection()" class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 transition">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              <span>${config.addBtnText}</span>
+            </button>
           </div>
         `;
         lucide.createIcons();
@@ -379,6 +1540,12 @@
 
       grid.innerHTML = filtered.map(tool => {
         const fm = tool.frontmatter;
+        const itemSec = getItemSection(tool);
+        const isJob = itemSec === 'jobs';
+        const isTip = itemSec === 'tips';
+        const isProduct = itemSec === 'products';
+        const isTool = itemSec === 'tools';
+
         const starsBadge = fm.stars ? `
           <span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">
             ⭐ ${fm.stars.toLocaleString()}
@@ -389,51 +1556,170 @@
           <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">#${t}</span>
         `).join('');
 
-        // Extract summary
+        // Extract summary blockquote
         const quoteMatch = tool.content.match(/^>\s*(.+)$/m);
         const summary = quoteMatch ? quoteMatch[1] : 'Sin descripción adicional.';
 
+        const safeUrl = (fm.url && fm.url !== 'undefined' && fm.url !== 'null') ? fm.url : (fm.website_url || '#');
+        const isGithub = safeUrl.includes('github.com');
+        const isTwitter = safeUrl.includes('x.com') || safeUrl.includes('twitter.com');
+
+        const mainLinkTitle = isGithub ? 'Ver repositorio en GitHub' : isJob ? 'Ver oferta o enlace para postular' : isProduct ? 'Ver ficha del producto / web' : isTwitter ? 'Ver tweet en X' : 'Visitar enlace principal';
+
+        const githubSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>`;
+        const xSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
+
+        const mainIconHtml = isGithub ? githubSvg : (isTwitter && !isJob) ? xSvg : isJob ? `<i data-lucide="briefcase" class="w-3.5 h-3.5"></i>` : `<i data-lucide="external-link" class="w-3.5 h-3.5"></i>`;
+
+        // Section Badges
+        const sectionBadge = isJob ? `
+          <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/30">
+            <span>💼</span> Empleo/Remoto
+          </span>
+        ` : isTip ? `
+          <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-300 border border-violet-500/30">
+            <span>💡</span> Consejo Técnico
+          </span>
+        ` : isProduct ? `
+          <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+            <span>🖥️</span> Producto / Hardware
+          </span>
+        ` : `
+          <span class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-300 border border-sky-500/30">
+            <span>🛠️</span> Herramienta
+          </span>
+        `;
+
+        const tweetLink = (
+          fm.source_tweet &&
+          fm.source_tweet !== 'undefined' &&
+          fm.source_tweet !== 'null' &&
+          fm.source_tweet !== safeUrl
+        ) ? `
+          <a href="${fm.source_tweet}" target="_blank" title="Ver tweet original en X / Twitter" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition flex items-center justify-center">
+            ${xSvg}
+          </a>
+        ` : '';
+
+        const websiteLink = (
+          fm.website_url &&
+          fm.website_url !== 'undefined' &&
+          fm.website_url !== 'null' &&
+          fm.website_url !== safeUrl &&
+          !fm.website_url.toLowerCase().includes('github.com') &&
+          !fm.website_url.toLowerCase().includes('gitlab.com')
+        ) ? `
+          <a href="${fm.website_url}" target="_blank" rel="noopener noreferrer" title="Visitar sitio web oficial" class="p-1.5 rounded-lg text-slate-400 hover:text-emerald-400 hover:bg-slate-800 transition flex items-center justify-center">
+            <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+          </a>
+        ` : '';
+
+        const primaryLink = (safeUrl && safeUrl !== '#') ? `
+          <a href="${safeUrl}" target="_blank" title="${mainLinkTitle}" class="p-1.5 rounded-lg text-slate-400 hover:text-sky-400 hover:bg-slate-800 transition flex items-center justify-center">
+            ${mainIconHtml}
+          </a>
+        ` : '';
+
+        const isAcademic = isAcademicTool(tool);
+        const promoDetails = (fm.academic_promo_details || 'Cuenta con promoción o descuento para estudiantes y sector educativo').replace(/"/g, '&quot;');
+        const academicBadge = (isTool && isAcademic) ? `
+          <span title="${promoDetails}" class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 cursor-help transition hover:bg-emerald-500/25">
+            <span>🎓</span> Promo Académica
+          </span>
+        ` : '';
+
+        // Job specific pills
+        const jobPills = isJob && (fm.company || fm.location || fm.salary) ? `
+          <div class="flex flex-wrap items-center gap-1.5 mb-2.5">
+            ${fm.company ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-medium"><span>🏢</span> ${fm.company}</span>` : ''}
+            ${fm.location ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-sky-950/50 text-sky-300 border border-sky-800/40 font-medium"><span>🌍</span> ${fm.location}</span>` : ''}
+            ${fm.salary ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-emerald-950/40 text-emerald-400 border border-emerald-800/40 font-mono font-medium"><span>💰</span> ${fm.salary}</span>` : ''}
+          </div>
+        ` : '';
+
+        // Product specific pills
+        const productPills = isProduct && (fm.company || fm.price) ? `
+          <div class="flex flex-wrap items-center gap-1.5 mb-2.5">
+            ${fm.company ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-medium"><span>🏢</span> ${fm.company}</span>` : ''}
+            ${fm.price ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-amber-950/40 text-amber-300 border border-amber-800/40 font-mono font-medium"><span>💰</span> ${fm.price}</span>` : ''}
+          </div>
+        ` : '';
+
+        const authorName = getToolAuthor(tool);
+        const authorHandle = getToolAuthorHandle(tool);
+        const authorRow = authorName ? `
+          <div class="flex items-center justify-between text-[11px] text-slate-400 pt-2.5 border-t border-slate-800/60 mt-3">
+            <div class="flex items-center gap-1.5 min-w-0">
+              <i data-lucide="user" class="w-3 h-3 text-slate-500 flex-shrink-0"></i>
+              <span class="text-slate-500 text-[10px]">Por:</span>
+              <button onclick="setAuthorFilter('${authorName}')" title="Filtrar recomendaciones de ${authorName}" class="font-medium text-slate-300 hover:text-sky-300 hover:underline transition truncate max-w-[130px] text-left">
+                ${authorName}
+              </button>
+            </div>
+            ${authorHandle ? `
+              <a href="https://x.com/${authorHandle}" target="_blank" title="Ver perfil @${authorHandle} en X" class="text-slate-500 hover:text-white transition flex items-center gap-1 flex-shrink-0 ml-1 font-mono text-[10px]">
+                <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <span>@${authorHandle}</span>
+              </a>
+            ` : ''}
+          </div>
+        ` : '';
+
+        // Border styling depending on section
+        const cardBorderHover = isJob ? 'hover:border-blue-500/50' : isTip ? 'hover:border-violet-500/50' : isProduct ? 'hover:border-amber-500/50' : 'hover:border-sky-500/50';
+
         return `
-          <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 transition rounded-2xl p-4 flex flex-col justify-between group shadow-sm hover:shadow-md">
+          <div class="bg-slate-900 border border-slate-800 ${cardBorderHover} transition rounded-2xl p-4 flex flex-col justify-between group shadow-sm hover:shadow-md">
             <div>
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div>
-                  <span class="text-[10px] font-semibold tracking-wider uppercase text-sky-400">
-                    ${fm.category || 'Other'}
-                  </span>
-                  <h3 class="font-bold text-slate-100 text-sm group-hover:text-sky-300 transition flex items-center gap-1.5 mt-0.5">
-                    ${fm.name}
+                  <div class="flex items-center gap-1.5 flex-wrap mb-1">
+                    <span class="text-[10px] font-semibold tracking-wider uppercase text-sky-400">
+                      ${fm.category || 'Other'}
+                    </span>
+                    ${sectionBadge}
+                    ${academicBadge}
+                  </div>
+                  <h3 class="font-bold text-slate-100 text-sm group-hover:text-sky-300 transition flex items-center gap-1.5">
+                    <a href="${safeUrl !== '#' ? safeUrl : 'javascript:void(0)'}" target="${safeUrl !== '#' ? '_blank' : '_self'}" class="hover:underline">
+                      ${fm.name}
+                    </a>
                   </h3>
                 </div>
-                <div class="flex items-center gap-1.5 flex-shrink-0">
+                <div class="flex items-center gap-1 flex-shrink-0">
                   ${starsBadge}
-                  <a href="${fm.url}" target="_blank" title="Visitar enlace" class="p-1 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
-                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                  </a>
+                  ${tweetLink}
+                  ${websiteLink}
+                  ${primaryLink}
                 </div>
               </div>
+
+              ${jobPills}
+              ${productPills}
 
               <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed mb-3">
                 ${summary}
               </p>
 
-              <div class="flex flex-wrap gap-1 mb-4">
+              <div class="flex flex-wrap gap-1 mb-1">
                 ${tagsHtml}
               </div>
+
+              ${authorRow}
             </div>
 
             <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
               <!-- Inline Status Selector -->
               <select onchange="updateToolStatusInline('${tool.slug}', this.value)" class="bg-slate-950 border border-slate-800 text-[11px] rounded-lg px-2 py-1 text-slate-300 focus:outline-none">
-                <option value="to_try" ${fm.status === 'to_try' ? 'selected' : ''}>🟡 Por probar</option>
-                <option value="in_use" ${fm.status === 'in_use' ? 'selected' : ''}>🟢 En uso</option>
+                <option value="to_try" ${fm.status === 'to_try' ? 'selected' : ''}>${isJob ? '🟡 Por postular' : isProduct ? '🟡 Por adquirir/probar' : '🟡 Por probar'}</option>
+                <option value="in_use" ${fm.status === 'in_use' ? 'selected' : ''}>${isJob ? '🟢 Postulado' : isProduct ? '🟢 En posesión' : '🟢 En uso'}</option>
                 <option value="archived" ${fm.status === 'archived' ? 'selected' : ''}>⚪ Archivado</option>
               </select>
 
               <!-- Open Note Button -->
               <button onclick="openNoteModal('${tool.slug}')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1.5 transition">
                 <i data-lucide="file-text" class="w-3 h-3 text-sky-400"></i>
-                <span>Nota</span>
+                <span>Ver Ficha</span>
               </button>
             </div>
           </div>
@@ -467,8 +1753,97 @@
       activeEditingSlug = slug;
 
       document.getElementById('modalToolName').innerText = tool.frontmatter.name;
-      document.getElementById('modalToolPath').innerText = `content/tools/${slug}.md`;
+      const itemSec = getItemSection(tool);
+      const noteFolder = itemSec === 'jobs'
+        ? 'content/jobs'
+        : itemSec === 'tips'
+        ? 'content/tips'
+        : itemSec === 'products'
+        ? 'content/products'
+        : 'content/tools';
+      document.getElementById('modalToolPath').innerText = `${noteFolder}/${slug}.md`;
       document.getElementById('modalOfficialLink').href = tool.frontmatter.url;
+
+      const authorBadgeEl = document.getElementById('modalAuthorBadge');
+      const authorNameEl = document.getElementById('modalAuthorName');
+      const authorHandleEl = document.getElementById('modalAuthorHandleLink');
+      const aName = getToolAuthor(tool);
+      const aHandle = getToolAuthorHandle(tool);
+      if (authorBadgeEl && aName) {
+        authorNameEl.innerText = aName;
+        if (aHandle) {
+          authorHandleEl.href = `https://x.com/${aHandle}`;
+          authorHandleEl.innerText = `@${aHandle}`;
+          authorHandleEl.classList.remove('hidden');
+        } else {
+          authorHandleEl.classList.add('hidden');
+        }
+        authorBadgeEl.classList.remove('hidden');
+      } else if (authorBadgeEl) {
+        authorBadgeEl.classList.add('hidden');
+      }
+
+      const classifiedBadge = document.getElementById('modalClassifiedByBadge');
+      const classifiedText = document.getElementById('modalClassifiedByText');
+      if (classifiedBadge && classifiedText) {
+        if (tool.frontmatter.classified_by) {
+          classifiedText.innerText = tool.frontmatter.classified_by;
+          classifiedBadge.classList.remove('hidden');
+        } else {
+          classifiedBadge.classList.add('hidden');
+        }
+      }
+      
+      const tweetLinkEl = document.getElementById('modalTweetLink');
+      if (tweetLinkEl) {
+        if (tool.frontmatter.source_tweet && tool.frontmatter.source_tweet !== 'undefined' && tool.frontmatter.source_tweet !== 'null') {
+          tweetLinkEl.href = tool.frontmatter.source_tweet;
+          tweetLinkEl.classList.remove('hidden');
+        } else {
+          tweetLinkEl.classList.add('hidden');
+        }
+      }
+
+      const academicAlert = document.getElementById('modalAcademicAlert');
+      const academicText = document.getElementById('modalAcademicText');
+      if (academicAlert && academicText) {
+        if (isAcademicTool(tool)) {
+          academicText.innerText = tool.frontmatter.academic_promo_details || 'Esta herramienta cuenta con promoción o beneficio especial para estudiantes y sector educativo.';
+          academicAlert.classList.remove('hidden');
+        } else {
+          academicAlert.classList.add('hidden');
+        }
+      }
+
+      const jobInfoEl = document.getElementById('modalJobInfo');
+      const jobDetailsEl = document.getElementById('modalJobDetails');
+      if (jobInfoEl && jobDetailsEl) {
+        if (itemSec === 'jobs' && (tool.frontmatter.company || tool.frontmatter.location || tool.frontmatter.salary)) {
+          const parts = [];
+          if (tool.frontmatter.company) parts.push(`<span>🏢 <strong>Empresa:</strong> ${tool.frontmatter.company}</span>`);
+          if (tool.frontmatter.location) parts.push(`<span>🌍 <strong>Modalidad:</strong> ${tool.frontmatter.location}</span>`);
+          if (tool.frontmatter.salary) parts.push(`<span>💰 <strong>Compensación:</strong> ${tool.frontmatter.salary}</span>`);
+          jobDetailsEl.innerHTML = parts.join('<span class="text-blue-500">•</span>');
+          jobInfoEl.classList.remove('hidden');
+        } else {
+          jobInfoEl.classList.add('hidden');
+        }
+      }
+
+      const productInfoEl = document.getElementById('modalProductInfo');
+      const productDetailsEl = document.getElementById('modalProductDetails');
+      if (productInfoEl && productDetailsEl) {
+        if (itemSec === 'products' && (tool.frontmatter.company || tool.frontmatter.price)) {
+          const parts = [];
+          if (tool.frontmatter.company) parts.push(`<span>🏢 <strong>Fabricante:</strong> ${tool.frontmatter.company}</span>`);
+          if (tool.frontmatter.price) parts.push(`<span>💰 <strong>Precio:</strong> ${tool.frontmatter.price}</span>`);
+          productDetailsEl.innerHTML = parts.join('<span class="text-amber-500">•</span>');
+          productInfoEl.classList.remove('hidden');
+        } else {
+          productInfoEl.classList.add('hidden');
+        }
+      }
+
       document.getElementById('modalStatusSelect').value = tool.frontmatter.status || 'to_try';
       document.getElementById('modalMarkdownContent').value = tool.content;
 
@@ -526,9 +1901,80 @@
       }
     }
 
+    function setModalTargetSection(destType) {
+      modalSelectedDest = destType;
+      const toolBtn = document.getElementById('modalDestToolBtn');
+      const tipBtn = document.getElementById('modalDestTipBtn');
+      const jobBtn = document.getElementById('modalDestJobBtn');
+      const productBtn = document.getElementById('modalDestProductBtn');
+      const modalTitle = document.getElementById('ingestModalTitle');
+      const urlLabel = document.getElementById('ingestUrlLabel');
+      const urlInput = document.getElementById('ingestUrlInput');
+      const textLabel = document.getElementById('ingestTextLabel');
+      const textInput = document.getElementById('ingestTextInput');
+
+      const inactiveClass = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-slate-950 text-slate-400 border-slate-800 hover:bg-slate-800';
+
+      if (destType === 'tool') {
+        toolBtn.className = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-sky-500/20 text-sky-300 border-sky-500/40';
+        tipBtn.className = inactiveClass;
+        jobBtn.className = inactiveClass;
+        if (productBtn) productBtn.className = inactiveClass;
+        modalTitle.innerText = 'Añadir Herramienta';
+        urlLabel.innerText = 'URL (GitHub o Sitio Web Oficial):';
+        urlInput.placeholder = 'https://github.com/... o https://...';
+        textLabel.innerText = 'Tweet de origen o descripción (Opcional):';
+        textInput.placeholder = 'Descripción técnica de la biblioteca o comando...';
+      } else if (destType === 'tech_tip') {
+        toolBtn.className = inactiveClass;
+        tipBtn.className = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-violet-500/20 text-violet-300 border-violet-500/40';
+        jobBtn.className = inactiveClass;
+        if (productBtn) productBtn.className = inactiveClass;
+        modalTitle.innerText = 'Añadir Consejo Técnico';
+        urlLabel.innerText = 'Tweet de X con el consejo o enlace de referencia:';
+        urlInput.placeholder = 'https://x.com/.../status/...';
+        textLabel.innerText = 'Texto del consejo o snippet (Opcional):';
+        textInput.placeholder = 'Pega aquí el código, comando de terminal o explicación...';
+      } else if (destType === 'job_remote') {
+        toolBtn.className = inactiveClass;
+        tipBtn.className = inactiveClass;
+        jobBtn.className = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-blue-500/20 text-blue-300 border-blue-500/40';
+        if (productBtn) productBtn.className = inactiveClass;
+        modalTitle.innerText = 'Añadir Oportunidad de Empleo / Freelance';
+        urlLabel.innerText = 'Enlace a la vacante, tweet u oferta:';
+        urlInput.placeholder = 'https://x.com/... o https://remoteok.com/... o enlace de la empresa';
+        textLabel.innerText = 'Detalles de la vacante, compensación y requisitos:';
+        textInput.placeholder = 'Ej: Empresa, rango salarial ($USD), requisitos y modalidad...';
+      } else {
+        // tech_product
+        toolBtn.className = inactiveClass;
+        tipBtn.className = inactiveClass;
+        jobBtn.className = inactiveClass;
+        if (productBtn) productBtn.className = 'px-2.5 py-2 rounded-xl border text-center font-medium transition flex flex-col items-center gap-1 bg-amber-500/20 text-amber-300 border-amber-500/40';
+        modalTitle.innerText = 'Añadir Producto Tecnológico / Hardware';
+        urlLabel.innerText = 'Enlace a la tienda, ficha técnica o tweet:';
+        urlInput.placeholder = 'https://x.com/... o https://raspberrypi.com/... o tienda oficial';
+        textLabel.innerText = 'Especificaciones, fabricante, precio o detalles del dispositivo:';
+        textInput.placeholder = 'Ej: Fabricante, procesador, RAM, puertos, precio ($USD) o características clave...';
+      }
+    }
+
     function openIngestModal() {
+      // Por defecto toma la sección activa actual
+      const defaultDest = currentSection === 'jobs' 
+        ? 'job_remote' 
+        : currentSection === 'tips' 
+        ? 'tech_tip' 
+        : currentSection === 'products'
+        ? 'tech_product'
+        : 'tool';
+      setModalTargetSection(defaultDest);
       document.getElementById('ingestModal').classList.remove('hidden');
       document.getElementById('ingestUrlInput').focus();
+    }
+
+    function openIngestModalForCurrentSection() {
+      openIngestModal();
     }
 
     function closeIngestModal() {
@@ -542,26 +1988,48 @@
       const btn = document.getElementById('ingestSubmitBtn');
 
       if (isStaticMode) {
-        alert('💡 Modo GitHub Pages:\nPara clasificar con Gemini y agregar recursos a tu repositorio, corre en tu terminal:\n\nnpm run add "' + url + '"\n\nO inicia el servidor local con "npm run dev".');
+        alert(`💡 Modo GitHub Pages:\nPara clasificar con ${currentActiveAiShortName} y agregar recursos a tu repositorio, corre en tu terminal:\n\nnpm run add "` + url + `"\n\nO inicia el servidor local con "npm run dev".`);
         return;
       }
 
       btn.disabled = true;
-      btn.innerHTML = `<i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i><span>Analizando con Gemini...</span>`;
+      btn.innerHTML = `<i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i><span>Analizando con ${currentActiveAiShortName}...</span>`;
       lucide.createIcons();
 
       try {
         const res = await fetch('/api/ingest', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url, rawText }),
+          body: JSON.stringify({ 
+            url, 
+            rawText,
+            entryType: modalSelectedDest,
+          }),
         });
         const data = await res.json();
         if (data.success) {
           closeIngestModal();
           document.getElementById('ingestUrlInput').value = '';
           document.getElementById('ingestTextInput').value = '';
+          
+          // Switch view to the destination section
+          if (modalSelectedDest === 'job_remote') {
+            currentSection = 'jobs';
+          } else if (modalSelectedDest === 'tech_tip') {
+            currentSection = 'tips';
+          } else if (modalSelectedDest === 'tech_product') {
+            currentSection = 'products';
+          } else {
+            currentSection = 'tools';
+          }
+
           await fetchTools();
+          const usedAi = data.data?.providerUsed || currentActiveAiProvider;
+          if (data.data?.addedCount === 0 && data.data?.skippedCount > 0) {
+            alert(`⏭️ El recurso "${data.data?.classification?.name || url}" ya existía en tu catálogo, por lo que no se duplicó.`);
+          } else {
+            alert(`✅ Recurso analizado y guardado con éxito utilizando: ${usedAi}`);
+          }
         } else {
           alert('Error: ' + (data.error || 'No se pudo clasificar'));
         }
@@ -569,11 +2037,11 @@
         alert('Error de conexión con el servidor.');
       } finally {
         btn.disabled = false;
-        btn.innerHTML = `<span>Procesar con Gemini</span>`;
+        btn.innerHTML = `<span>Analizar con ${currentActiveAiShortName}</span>`;
       }
     }
 
-    // Keyboard shortcut Cmd/Ctrl + K to focus search
+    // Atajo de teclado Cmd/Ctrl + K para buscar
     window.addEventListener('keydown', (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
@@ -581,7 +2049,7 @@
       }
     });
 
-    // Initial Load
+    // Carga inicial
     fetchTools();
   </script>
 </body>
