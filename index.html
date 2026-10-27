@@ -761,6 +761,49 @@
     </div>
   </div>
 
+  <!-- Modal: Confirmar Eliminación (Adecuado y pequeño del sistema) -->
+  <div id="confirmDeleteModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-sm w-full p-5 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150 relative">
+      <button onclick="closeDeleteModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-200 p-1 rounded-lg hover:bg-slate-800 transition">
+        ✕
+      </button>
+
+      <div class="flex items-start gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-400 flex items-center justify-center flex-shrink-0">
+          <i data-lucide="trash-2" class="w-5 h-5"></i>
+        </div>
+        <div class="min-w-0 pr-4">
+          <h3 id="deleteModalTitle" class="text-sm font-bold text-slate-100">¿Eliminar ficha?</h3>
+          <p id="deleteModalMessage" class="text-xs text-slate-400 mt-1 leading-relaxed">
+            Esta acción borrará el archivo de tu disco y actualizará el catálogo.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800/80 text-[11px] text-slate-400 font-mono break-words" id="deleteModalTargetBadge">
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-800/80">
+        <button 
+          type="button" 
+          onclick="closeDeleteModal()" 
+          class="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs transition"
+        >
+          Cancelar
+        </button>
+        <button 
+          type="button" 
+          id="confirmDeleteSubmitBtn" 
+          onclick="executeConfirmedDeletion()" 
+          class="px-4 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs transition flex items-center gap-1.5 shadow-md shadow-rose-950/50"
+        >
+          <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+          <span>Eliminar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal: Ingestar Recurso en Apartado Específico -->
   <div id="ingestModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl">
@@ -914,6 +957,12 @@
       <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
       <span id="batchDeleteBtnText">Eliminar seleccionados</span>
     </button>
+  </div>
+
+  <!-- Toast Notification Flotante del Sistema -->
+  <div id="toastNotification" class="fixed top-5 right-5 z-50 hidden max-w-sm p-3.5 rounded-xl bg-slate-900/95 border border-slate-700/80 shadow-2xl backdrop-blur-md text-xs text-slate-200 flex items-center gap-2.5 animate-in slide-in-from-top-2 duration-200">
+    <span id="toastIcon" class="text-base flex-shrink-0">🗑️</span>
+    <span id="toastMessage" class="flex-1 font-medium leading-snug">Operación completada con éxito</span>
   </div>
 
   <!-- Client-side Logic -->
@@ -2672,82 +2721,136 @@
       lucide.createIcons();
     }
 
-    async function deleteSingleTool(slug) {
+    let toastTimer = null;
+    function showToast(message, icon = '✅') {
+      const toast = document.getElementById('toastNotification');
+      const msgEl = document.getElementById('toastMessage');
+      const iconEl = document.getElementById('toastIcon');
+      if (!toast) return;
+
+      if (msgEl) msgEl.innerText = message;
+      if (iconEl) iconEl.innerText = icon;
+
+      toast.classList.remove('hidden');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3200);
+    }
+
+    let pendingDeleteType = null; // 'single' | 'batch'
+    let pendingDeleteSlug = null;
+    let pendingDeleteSlugsList = [];
+
+    function deleteSingleTool(slug) {
       const tool = allTools.find(t => t.slug === slug);
       const name = tool ? tool.frontmatter.name : slug;
 
       if (isStaticMode) {
-        alert('💡 Modo Lectura (GitHub Pages):\nPara eliminar fichas de tu disco, corre la aplicación localmente con "npm run dev".');
+        showToast('Modo Lectura (GitHub Pages): Para eliminar en disco corre "npm run dev"', '💡');
         return;
       }
 
-      const confirmed = confirm(`¿Estás seguro de que deseas eliminar permanentemente la ficha:\n\n"${name}"?\n\nEsta acción borrará el archivo Markdown de tu disco y actualizará el README.`);
-      if (!confirmed) return;
+      pendingDeleteType = 'single';
+      pendingDeleteSlug = slug;
+      pendingDeleteSlugsList = [slug];
 
-      try {
-        const res = await fetch(`/api/tools/${slug}`, {
-          method: 'DELETE',
-        });
-        const data = await res.json();
-        if (data.success) {
-          selectedSlugs.delete(slug);
-          updateBatchBar();
-          if (activeEditingSlug === slug) {
-            closeNoteModal();
-          }
-          await fetchTools();
-          alert(`🗑️ Ficha "${name}" eliminada correctamente.`);
-        } else {
-          alert('Error al eliminar: ' + (data.error || 'Desconocido'));
-        }
-      } catch (err) {
-        alert('Error de conexión con el servidor al intentar eliminar la ficha.');
-      }
+      document.getElementById('deleteModalTitle').innerText = '¿Eliminar ficha de disco?';
+      document.getElementById('deleteModalMessage').innerHTML = `¿Estás seguro de que deseas eliminar permanentemente <strong>"${escapeHtml(name)}"</strong>?`;
+      document.getElementById('deleteModalTargetBadge').innerHTML = `📄 Archivo: <span class="text-slate-300">${escapeHtml(slug)}.md</span>`;
+      
+      const confirmBtn = document.getElementById('confirmDeleteSubmitBtn');
+      confirmBtn.disabled = false;
+      confirmBtn.innerHTML = `<i data-lucide="trash-2" class="w-3.5 h-3.5"></i><span>Eliminar</span>`;
+
+      document.getElementById('confirmDeleteModal').classList.remove('hidden');
+      lucide.createIcons();
     }
 
-    async function deleteBatchSelectedTools() {
+    function deleteBatchSelectedTools() {
       const count = selectedSlugs.size;
       if (count === 0) return;
 
       if (isStaticMode) {
-        alert('💡 Modo Lectura (GitHub Pages):\nPara eliminar fichas de tu disco, corre la aplicación localmente con "npm run dev".');
+        showToast('Modo Lectura (GitHub Pages): Para eliminar en disco corre "npm run dev"', '💡');
         return;
       }
 
-      const confirmed = confirm(`⚠️ ¿Estás seguro de que deseas eliminar permanentemente las ${count} fichas seleccionadas?\n\nEsta acción borrará los archivos Markdown de tu disco y actualizará el README. No se puede deshacer.`);
-      if (!confirmed) return;
+      pendingDeleteType = 'batch';
+      pendingDeleteSlug = null;
+      pendingDeleteSlugsList = Array.from(selectedSlugs);
 
-      const slugsToDelete = Array.from(selectedSlugs);
-      const btn = document.getElementById('batchDeleteBtn');
-      if (btn) {
-        btn.disabled = true;
-        btn.innerHTML = `<i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i><span>Eliminando ${count}...</span>`;
-        lucide.createIcons();
-      }
+      document.getElementById('deleteModalTitle').innerText = `¿Eliminar ${count} fichas seleccionadas?`;
+      document.getElementById('deleteModalMessage').innerHTML = `Se eliminarán permanentemente las <strong>${count} fichas</strong> seleccionadas y sus notas Markdown de tu disco.`;
+      document.getElementById('deleteModalTargetBadge').innerHTML = `📦 ${count} archivos .md serán eliminados permanentemente`;
+      
+      const confirmBtn = document.getElementById('confirmDeleteSubmitBtn');
+      confirmBtn.disabled = false;
+      confirmBtn.innerHTML = `<i data-lucide="trash-2" class="w-3.5 h-3.5"></i><span>Eliminar ${count} fichas</span>`;
+
+      document.getElementById('confirmDeleteModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeDeleteModal() {
+      document.getElementById('confirmDeleteModal').classList.add('hidden');
+      pendingDeleteType = null;
+      pendingDeleteSlug = null;
+      pendingDeleteSlugsList = [];
+    }
+
+    async function executeConfirmedDeletion() {
+      const confirmBtn = document.getElementById('confirmDeleteSubmitBtn');
+      confirmBtn.disabled = true;
+      confirmBtn.innerHTML = `<i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i><span>Eliminando...</span>`;
+      lucide.createIcons();
 
       try {
-        const res = await fetch('/api/tools/batch-delete', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ slugs: slugsToDelete }),
-        });
-        const data = await res.json();
-        if (data.success) {
-          selectedSlugs.clear();
-          updateBatchBar();
-          await fetchTools();
-          alert(`🗑️ Se han eliminado ${data.deletedCount} fichas con éxito de tu catálogo.`);
-        } else {
-          alert('Error al eliminar por lotes: ' + (data.error || 'Desconocido'));
+        if (pendingDeleteType === 'single') {
+          const slug = pendingDeleteSlug;
+          const tool = allTools.find(t => t.slug === slug);
+          const name = tool ? tool.frontmatter.name : slug;
+
+          const res = await fetch(`/api/tools/${slug}`, {
+            method: 'DELETE',
+          });
+          const data = await res.json();
+          if (data.success) {
+            selectedSlugs.delete(slug);
+            updateBatchBar();
+            if (activeEditingSlug === slug) {
+              closeNoteModal();
+            }
+            closeDeleteModal();
+            await fetchTools();
+            showToast(`Ficha "${name}" eliminada correctamente`, '🗑️');
+          } else {
+            showToast('Error al eliminar: ' + (data.error || 'Desconocido'), '⚠️');
+          }
+        } else if (pendingDeleteType === 'batch') {
+          const slugsToDelete = pendingDeleteSlugsList;
+          const res = await fetch('/api/tools/batch-delete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ slugs: slugsToDelete }),
+          });
+          const data = await res.json();
+          if (data.success) {
+            selectedSlugs.clear();
+            updateBatchBar();
+            closeDeleteModal();
+            await fetchTools();
+            showToast(`Se han eliminado ${data.deletedCount} fichas con éxito`, '🗑️');
+          } else {
+            showToast('Error al eliminar por lotes: ' + (data.error || 'Desconocido'), '⚠️');
+          }
         }
       } catch (err) {
-        alert('Error de conexión al eliminar por lotes.');
+        showToast('Error de conexión al intentar eliminar', '⚠️');
       } finally {
-        if (btn) {
-          btn.disabled = false;
-          btn.innerHTML = `<i data-lucide="trash-2" class="w-3.5 h-3.5"></i><span id="batchDeleteBtnText">Eliminar seleccionados</span>`;
-          lucide.createIcons();
-        }
+        confirmBtn.disabled = false;
+        confirmBtn.innerHTML = `<i data-lucide="trash-2" class="w-3.5 h-3.5"></i><span>Eliminar</span>`;
+        lucide.createIcons();
       }
     }
 
@@ -3556,11 +3659,18 @@
       }
     }
 
-    // Atajo de teclado Cmd/Ctrl + K para buscar
+    // Atajos de teclado
     window.addEventListener('keydown', (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         document.getElementById('searchInput').focus();
+      } else if (e.key === 'Escape') {
+        closeDeleteModal();
+        closeEditToolModal();
+        closeNoteModal();
+        closeIngestModal();
+        closeAuthorsModal();
+        closeThreadCollectorModal();
       }
     });
 
