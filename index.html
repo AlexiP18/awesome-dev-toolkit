@@ -3627,27 +3627,35 @@
           document.getElementById('ingestUrlInput').value = '';
           document.getElementById('ingestTextInput').value = '';
           
-          // Switch view to the destination section
+          let targetSection = 'tools';
           if (modalSelectedDest === 'job_remote') {
-            currentSection = 'jobs';
+            targetSection = 'jobs';
           } else if (modalSelectedDest === 'tech_tip') {
-            currentSection = 'tips';
+            targetSection = 'tips';
           } else if (modalSelectedDest === 'tech_product') {
-            currentSection = 'products';
-          } else {
-            currentSection = 'tools';
+            targetSection = 'products';
           }
 
-          await fetchTools();
           const usedAi = data.data?.providerUsed || currentActiveAiProvider;
           const switchNotice = data.data?.switchNotice;
+          let toastMsg = `✅ Recurso analizado y guardado con éxito utilizando: ${usedAi}`;
+          let toastIcon = '✨';
+
           if (switchNotice) {
-            alert(`${switchNotice}\n\n✅ Guardado con éxito en tu catálogo.`);
+            toastMsg = `${switchNotice} · ✅ Guardado en tu catálogo`;
+            toastIcon = '🔄';
           } else if (data.data?.addedCount === 0 && data.data?.skippedCount > 0) {
-            alert(`⏭️ El recurso "${data.data?.classification?.name || url}" ya existía en tu catálogo, por lo que no se duplicó.`);
-          } else {
-            alert(`✅ Recurso analizado y guardado con éxito utilizando: ${usedAi}`);
+            toastMsg = `⏭️ El recurso ya existía en tu catálogo, por lo que no se duplicó.`;
+            toastIcon = '⏭️';
           }
+
+          sessionStorage.setItem('toolkit_active_section', targetSection);
+          sessionStorage.setItem('toolkit_toast_notice', toastMsg);
+          sessionStorage.setItem('toolkit_toast_icon', toastIcon);
+
+          // Recargar la página principal por completo como se solicitó
+          window.location.reload();
+          return;
         } else {
           alert('Error: ' + (data.error || 'No se pudo clasificar'));
         }
@@ -3675,6 +3683,21 @@
     });
 
     // Carga inicial
+    const savedSection = sessionStorage.getItem('toolkit_active_section');
+    if (savedSection) {
+      currentSection = savedSection;
+      sessionStorage.removeItem('toolkit_active_section');
+    }
+    const savedToast = sessionStorage.getItem('toolkit_toast_notice');
+    const savedToastIcon = sessionStorage.getItem('toolkit_toast_icon') || '✅';
+    if (savedToast) {
+      sessionStorage.removeItem('toolkit_toast_notice');
+      sessionStorage.removeItem('toolkit_toast_icon');
+      setTimeout(() => {
+        showToast(savedToast, savedToastIcon);
+      }, 400);
+    }
+
     fetchTools();
   </script>
 </body>
