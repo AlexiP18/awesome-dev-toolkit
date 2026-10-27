@@ -1,6 +1,6 @@
 ---
 name: Lazygit
-url: https://github.com/jesseduffield/lazygit
+url: 'https://github.com/jesseduffield/lazygit'
 category: CLI & Terminal
 tags:
   - git
@@ -9,11 +9,11 @@ tags:
   - productivity
 stars: 52000
 status: in_use
-date_added: 2026-10-16
-source_tweet: https://x.com/jesseduffield/status/123456789
+date_added: 2026-10-16T00:00:00.000Z
+source_tweet: 'https://x.com/jesseduffield/status/123456789'
 author: Jesse Duffield
+created_at: '2026-10-16T21:05:14.396Z'
 ---
-
 # Lazygit
 
 > Una interfaz de usuario de terminal simple y rápida para comandos de git, escrita en Go con gocui.

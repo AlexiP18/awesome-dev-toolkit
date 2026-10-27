@@ -191,7 +191,9 @@ export function createOrUpdateToolNote(
   const slug = slugify(params.classification.name);
   const filePath = path.join(targetDir, `${slug}.md`);
 
-  const today = new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const nowIso = now.toISOString();
+  const today = nowIso.split('T')[0];
 
   let finalUrl = (params.classification.canonicalUrl || '').trim();
   if (!finalUrl || finalUrl === 'undefined' || finalUrl === 'null') {
@@ -211,6 +213,7 @@ export function createOrUpdateToolNote(
     stars: params.githubMeta?.stars,
     status: params.initialStatus || 'to_try',
     date_added: today,
+    created_at: nowIso,
     source_tweet: params.sourceTweet,
     author: authorName,
     author_handle: authorHandle,
@@ -288,6 +291,23 @@ ${frontmatter.website_url ? `- Sitio Web oficial: [${frontmatter.website_url}]($
   return { filePath, slug, alreadyExisted: false };
 }
 
+export function getToolRecency(item: { frontmatter?: ToolFrontmatter; mtimeMs?: number }): number {
+  if (!item) return 0;
+  const fm = item.frontmatter || ({} as ToolFrontmatter);
+  if (fm.created_at) {
+    const t = new Date(fm.created_at).getTime();
+    if (!isNaN(t) && t > 0) return t;
+  }
+  if (item.mtimeMs && !isNaN(item.mtimeMs) && item.mtimeMs > 0) {
+    return item.mtimeMs;
+  }
+  if (fm.date_added) {
+    const t = new Date(fm.date_added).getTime();
+    if (!isNaN(t) && t > 0) return t;
+  }
+  return 0;
+}
+
 export function loadAllTools(): ToolItem[] {
   ensureToolsDirExists();
   const tools: ToolItem[] = [];
@@ -314,6 +334,14 @@ export function loadAllTools(): ToolItem[] {
         data.entry_type = defaultType;
       }
 
+      const stat = fs.statSync(filePath);
+      const mtimeMs = stat.mtimeMs;
+      if (!data.created_at) {
+        data.created_at = data.date_added && String(data.date_added).length > 10
+          ? new Date(data.date_added).toISOString()
+          : (stat.birthtime.getTime() > 0 ? stat.birthtime.toISOString() : stat.mtime.toISOString());
+      }
+
       // Automatically infer author and handle from source_tweet if missing
       if (!data.author && data.source_tweet) {
         const info = extractAuthorFromTweet(data.source_tweet);
@@ -329,15 +357,16 @@ export function loadAllTools(): ToolItem[] {
         filePath,
         frontmatter: data,
         content: parsed.content,
+        mtimeMs,
       });
     }
   }
 
-  // Sort descending by date_added (most recent first), then by stars
+  // Sort descending by recency (most recently added/analyzed first), then by stars
   return tools.sort((a, b) => {
-    const dateA = a.frontmatter.date_added ? new Date(a.frontmatter.date_added).getTime() : 0;
-    const dateB = b.frontmatter.date_added ? new Date(b.frontmatter.date_added).getTime() : 0;
-    if (dateB !== dateA) return dateB - dateA;
+    const recA = getToolRecency(a);
+    const recB = getToolRecency(b);
+    if (recB !== recA) return recB - recA;
     return (b.frontmatter.stars || 0) - (a.frontmatter.stars || 0);
   });
 }

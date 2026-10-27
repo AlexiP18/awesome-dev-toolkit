@@ -294,6 +294,7 @@ export async function ingestResource(input: IngestInput) {
     if (!result.alreadyExisted) {
       console.log(`[Pipeline] ✅ Nueva nota guardada: ${result.filePath}`);
       // Add to in-memory existingTools list so duplicates within the same tweet are also caught
+      const nowIso = new Date().toISOString();
       existingTools.push({
         slug: result.slug,
         filePath: result.filePath,
@@ -303,9 +304,11 @@ export async function ingestResource(input: IngestInput) {
           category: classification.category,
           tags: classification.tags,
           status: input.status || 'to_try',
-          date_added: new Date().toISOString().split('T')[0],
+          date_added: nowIso.split('T')[0],
+          created_at: nowIso,
         },
         content: '',
+        mtimeMs: Date.now(),
       });
     }
 

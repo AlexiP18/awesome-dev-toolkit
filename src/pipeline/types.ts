@@ -27,6 +27,7 @@ export interface ToolFrontmatter {
   stars?: number;
   status: ToolStatus;
   date_added: string;
+  created_at?: string;
   source_tweet?: string;
   author?: string;
   author_handle?: string;
@@ -46,6 +47,7 @@ export interface ToolItem {
   filePath: string;
   frontmatter: ToolFrontmatter;
   content: string; // The markdown body (personal notes, reasons, etc.)
+  mtimeMs?: number;
 }
 
 export interface ClassificationResult {

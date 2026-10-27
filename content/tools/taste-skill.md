@@ -24,6 +24,7 @@ author: PA13L0 (@Fluyeporlaweb)
 author_handle: Fluyeporlaweb
 entry_type: tool
 classified_by: Google Gemini (2.5 Flash)
+created_at: '2026-10-26T04:07:05.721Z'
 ---
 # taste-skill
 

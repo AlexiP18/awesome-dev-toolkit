@@ -19,6 +19,7 @@ author: Juan
 author_handle: 7uanF
 entry_type: tool
 company: Lemomo
+created_at: '2026-10-23T04:36:05.083Z'
 ---
 # lemo-opuscar
 

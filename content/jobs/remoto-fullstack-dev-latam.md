@@ -1,8 +1,8 @@
 ---
-name: "Full Stack Engineer (Remoto LATAM)"
-url: https://x.com/remote_jobs_tech/status/1789555666777888999
-website_url: https://remoteok.com
-category: "Trabajo & Freelance"
+name: Full Stack Engineer (Remoto LATAM)
+url: 'https://x.com/remote_jobs_tech/status/1789555666777888999'
+website_url: 'https://remoteok.com'
+category: Trabajo & Freelance
 tags:
   - remote
   - latam
@@ -10,17 +10,17 @@ tags:
   - react
   - nodejs
 status: to_try
-date_added: 2026-10-25
-source_tweet: https://x.com/remote_jobs_tech/status/1789555666777888999
-author: "@remote_jobs_tech"
+date_added: 2026-10-25T00:00:00.000Z
+source_tweet: 'https://x.com/remote_jobs_tech/status/1789555666777888999'
+author: '@remote_jobs_tech'
 author_handle: remote_jobs_tech
 entry_type: job_remote
-company: "Global Tech LATAM"
-location: "Remoto (LATAM)"
-salary: "$4,000 - $6,000 USD / mes"
-job_type: "remote_job"
+company: Global Tech LATAM
+location: Remoto (LATAM)
+salary: '$4,000 - $6,000 USD / mes'
+job_type: remote_job
+created_at: '2026-10-25T18:05:58.440Z'
 ---
-
 # 💼 Full Stack Engineer (Remoto LATAM)
 
 > Vacante 100% remota para desarrolladores en América Latina con experiencia en TypeScript, React y Node.js, contrato directo internacional en USD.
