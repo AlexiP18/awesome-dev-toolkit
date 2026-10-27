@@ -12,6 +12,7 @@ import {
   findExistingTool,
   loadAllTools,
 } from './note_generator.js';
+import { fetchTweetDetailsFromX } from './twitter_scraper.js';
 import { ToolStatus, EntryType } from './types.js';
 
 dotenv.config();
@@ -44,6 +45,32 @@ export async function ingestResource(input: IngestInput) {
   }
   if (text) {
     candidateUrls.push(...extractUrlsFromText(text));
+  }
+
+  // Detectar si se proporcionó una URL de tweet en input.url o input.sourceTweet
+  const detectedTweetUrl = [input.sourceTweet, explicitUrl, ...candidateUrls].find(
+    (u) => u && /https?:\/\/(?:x|twitter)\.com\/(?:[a-zA-Z0-9_]+\/)?status\/\d+/i.test(u)
+  );
+
+  if (detectedTweetUrl && !input.sourceTweet) {
+    input.sourceTweet = detectedTweetUrl;
+  }
+
+  // Si tenemos URL de tweet y no hay texto o es muy breve, obtener automáticamente el contenido y autor desde X
+  if (detectedTweetUrl && (!text || text.length < 35)) {
+    console.log(`[Pipeline] 🐦 Obteniendo contenido de tweet desde X: ${detectedTweetUrl}...`);
+    const tweetDetails = await fetchTweetDetailsFromX(detectedTweetUrl);
+    if (tweetDetails) {
+      console.log(`[Pipeline] ✅ Contenido obtenido (${tweetDetails.authorName || tweetDetails.authorHandle}): ${tweetDetails.text.slice(0, 80)}...`);
+      text = text ? `${tweetDetails.text}\n\n${text}` : tweetDetails.text;
+      if (!input.author) {
+        input.author = tweetDetails.authorName || tweetDetails.authorHandle;
+      }
+      const tweetEmbeddedUrls = extractUrlsFromText(tweetDetails.text);
+      for (const u of tweetEmbeddedUrls) {
+        if (!candidateUrls.includes(u)) candidateUrls.push(u);
+      }
+    }
   }
 
   // Filtrar enlaces de Twitter/X y enlaces sociales/comunitarios no técnicos (Telegram, Discord, etc.)
@@ -192,6 +219,29 @@ export async function ingestResource(input: IngestInput) {
 
   console.log(`[Pipeline] IA (${providerUsed}) identificó ${classifications.length} herramienta(s).`);
 
+  // Si la IA no devolvió herramientas (común en hilos, consejos o posts sin enlaces externos a repositorios):
+  if (classifications.length === 0 && (text || input.sourceTweet)) {
+    console.log('[Pipeline] 💡 Generando ficha estructurada de respaldo para el hilo / publicación técnica...');
+    const firstLine = (text || '').split('\n').map((s) => s.trim()).filter(Boolean)[0] || 'Consejo / Hilo técnico';
+    const cleanTitle = firstLine.slice(0, 80).replace(/^[#\s*•\d+.)\-:]+/, '').trim() || 'Consejo técnico';
+
+    const steps = (text || '')
+      .split(/\n(?=\s*(?:\d+[.)\-:]|Paso\s+\d+|###|\*|-))/i)
+      .map((s) => s.trim())
+      .filter(Boolean);
+
+    classifications.push({
+      name: cleanTitle,
+      canonicalUrl: canonicalUrls[0] || input.sourceTweet || explicitUrl || 'https://x.com',
+      category: input.entryType === 'job_remote' ? 'Trabajo & Freelance' : input.entryType === 'tech_product' ? 'Productos Tecnológicos & Hardware' : 'Consejos & Buenas Prácticas',
+      tags: ['tips', 'hilo', 'x'],
+      oneLiner: (text || '').slice(0, 160).replace(/\n/g, ' ').trim() || 'Publicación técnica o hilo recopilado.',
+      keyHighlights: steps.length > 0 ? steps.slice(0, 8) : [(text || '').slice(0, 200)],
+      recommendedNotes: 'Revisa los detalles completos y pasos en la ficha.',
+      entryType: input.entryType || 'tech_tip',
+    });
+  }
+
   // 4.5. Prioridad Determinística y Reconciliación con Repositorios Reales:
   // Si la IA devolvió una landing page o una URL de GitHub con variaciones tipográficas/alucinadas (ej. cheaper-inference/OmniRoute o lemo-ai),
   // reconciliar con los repositorios reales detectados y verificados en resolvedList.
@@ -257,8 +307,13 @@ export async function ingestResource(input: IngestInput) {
       classification.websiteUrl = undefined;
     }
 
-    if (!classification.canonicalUrl && input.sourceTweet) {
-      classification.canonicalUrl = input.sourceTweet;
+    if (
+      !classification.canonicalUrl ||
+      classification.canonicalUrl === 'undefined' ||
+      classification.canonicalUrl === 'null' ||
+      classification.canonicalUrl === '#'
+    ) {
+      classification.canonicalUrl = input.sourceTweet || canonicalUrls[0] || explicitUrl || 'https://x.com';
     }
 
     if (input.entryType) {

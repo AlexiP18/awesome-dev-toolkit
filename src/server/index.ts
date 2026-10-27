@@ -6,7 +6,8 @@ import { loadAllTools, updateToolNote, deleteToolNote, deleteToolNotes } from '.
 import { ingestResource } from '../pipeline/ingest.js';
 import { generateReadme } from '../pipeline/generate_readme.js';
 import { loadAllAuthorProfiles, analyzeAuthorWithAI } from '../pipeline/author_manager.js';
-import { getActivePrimaryProviderName, getConfiguredProvidersList } from '../pipeline/ai_providers.js';
+import { getActivePrimaryProviderName, getConfiguredProvidersList, structureThreadStepsWithAI } from '../pipeline/ai_providers.js';
+import { fetchTweetDetailsFromX } from '../pipeline/twitter_scraper.js';
 import { classifyToolsWithGemini } from '../pipeline/gemini.js';
 import fs from 'fs';
 
@@ -233,47 +234,43 @@ app.post('/api/tools/:slug/thread', async (req, res) => {
       return res.status(404).json({ success: false, error: 'Recurso no encontrado' });
     }
 
+    let inputContent = rawText.trim();
+    // Si el usuario pegó una URL de X o tweet, intentar obtener automáticamente su texto
+    const xMatch = inputContent.match(/https?:\/\/(?:x|twitter)\.com\/(?:[a-zA-Z0-9_]+\/)?status\/\d+/i);
+    if (xMatch) {
+      console.log(`[Thread API] 🐦 Obteniendo contenido de tweet adicional: ${xMatch[0]}...`);
+      const fetched = await fetchTweetDetailsFromX(xMatch[0]);
+      if (fetched && fetched.text) {
+        inputContent = `${inputContent}\n\n${fetched.text}`;
+      }
+    }
+
     let updatedContent = tool.content;
-    let providerUsed = 'Directo';
+    let providerUsed = 'Google Gemini (Flash)';
 
     try {
-      const aiPrompt = `Tienes una ficha técnica existente titulada: "${tool.frontmatter.name}"
-URL: ${tool.frontmatter.url}
+      const steps = await structureThreadStepsWithAI(tool.frontmatter.name, inputContent);
+      if (steps && steps.length > 0) {
+        const formattedMarkdown = steps
+          .map((s, idx) => {
+            let block = `### ${s.title || `Paso adicional ${idx + 1}`}\n`;
+            if (s.prompt) {
+              block += `\`\`\`text\n${s.prompt}\n\`\`\`\n`;
+            }
+            if (s.description) {
+              block += `${s.description}\n`;
+            }
+            return block;
+          })
+          .join('\n');
 
-El usuario ha recopilado tweets o prompts adicionales de este hilo en X:
-"""
-${rawText}
-"""
-
-Por favor, extrae de forma limpia y numerada cada paso, prompt o instrucción técnica encontrada en los tweets. Genera una lista de puntos clave donde cada paso tenga su título y su prompt respectivo.`;
-
-      const aiRes = await classifyToolsWithGemini(
-        {
-          rawText: aiPrompt,
-          urls: [tool.frontmatter.url],
-          sourceTweet: tool.frontmatter.source_tweet,
-        },
-        aiProvider
-      );
-
-      if (aiRes.results && aiRes.results.length > 0) {
-        const first = aiRes.results[0];
-        providerUsed = aiRes.providerUsed;
-        const newHighlights = first.keyHighlights || [];
-        if (newHighlights.length > 0) {
-          const formattedSteps = newHighlights
-            .map((h, i) => `\n### Paso adicional ${i + 1}\n${h}`)
-            .join('\n');
-          updatedContent = updatedContent + `\n\n## 🧵 Tweets Adicionales del Hilo\n${formattedSteps}\n`;
-        } else {
-          updatedContent = updatedContent + `\n\n## 🧵 Tweets Adicionales del Hilo\n${rawText}\n`;
-        }
+        updatedContent = updatedContent + `\n\n## 🧵 Tweets Adicionales del Hilo\n${formattedMarkdown}\n`;
       } else {
-        updatedContent = updatedContent + `\n\n## 🧵 Tweets Adicionales del Hilo\n${rawText}\n`;
+        updatedContent = updatedContent + `\n\n## 🧵 Tweets Adicionales del Hilo\n${inputContent}\n`;
       }
     } catch (e: any) {
-      console.warn('[Thread API] Error en IA al procesar hilo, adjuntando texto directamente:', e?.message);
-      updatedContent = updatedContent + `\n\n## 🧵 Tweets Adicionales del Hilo\n${rawText}\n`;
+      console.warn('[Thread API] Error al procesar hilo con IA, adjuntando directamente:', e?.message || e);
+      updatedContent = updatedContent + `\n\n## 🧵 Tweets Adicionales del Hilo\n${inputContent}\n`;
     }
 
     updateToolNote(slug, { notes: updatedContent });

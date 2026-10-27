@@ -116,6 +116,17 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * 'recommendedNotes': Ejemplo práctico de cuándo aplicarlo, consideraciones o advertencias técnicas.
      * 'tags': Incluye etiquetas técnicas relevantes (ej: ["docker", "devops", "tips"], ["postgresql", "sql", "performance"], ["react", "frontend", "patterns"]).
 
+10.1. TWEETS DE HILOS TÉCNICOS, SECUENCIAS DE PROMPTS O GUÍAS PASO A PASO ('tech_tip'):
+   - Si el tweet o texto representa un HILO con múltiples pasos, recomendaciones o prompts (ej: '1) El diagnóstico de la conexión...', '2) Los ladrones de ancho de banda...', prompts para Claude/ChatGPT, o guías técnicas secuenciales):
+     * 'name': Título conciso del hilo (ej: 'Claude Desktop: 7 Prompts para Diagnosticar y Acelerar tu Red WiFi').
+     * 'canonicalUrl': Si el tweet incluye un enlace externo de herramienta o repositorio, úsalo. Si NO tiene link externo, usa el tweet de origen o URL del tweet.
+     * 'category': 'Consejos & Buenas Prácticas' o la categoría más afín a la temática.
+     * 'entryType': "tech_tip".
+     * 'oneLiner': Resumen claro en español del objetivo del hilo y qué problema soluciona.
+     * 'keyHighlights': DEBES extraer CADA UNO de los prompts, pasos o recomendaciones del hilo como un elemento independiente dentro de 'keyHighlights', manteniendo el título del paso y el texto del prompt exacto.
+     * 'recommendedNotes': Explicación de cómo aplicar estos prompts y requisitos técnicos.
+     * 'tags': Incluye etiquetas como 'prompts', 'tips', 'hilo', y las herramientas mencionadas (ej. 'claude', 'wifi', 'networking').
+
 11. TWEETS DE TRABAJO, EMPLEO REMOTO O FREELANCE ('job_remote'):
    - Si el tweet comparte ofertas de trabajo remoto, vacantes, convocatorias de contratación (hiring), oportunidades freelance, bolsas de empleo remoto, plataformas freelance (ej: RemoteOK, We Work Remotely, Torre, Contra, Upwork), guías de tarifas freelance, plantillas de contratos para desarrolladores o consejos específicos para conseguir trabajo remoto:
      * 'name': Título descriptivo de la posición, plataforma o recurso (ej: "Senior Frontend Engineer (Remoto LATAM)", "Remotive - Directorio de Empleos Remotos", "Plantilla de Propuesta Freelance para Desarrolladores").
@@ -358,7 +369,7 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
 
   const ai = new GoogleGenAI({ apiKey });
   const prompt = buildUserPrompt(params);
-  const targetModel = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
+  const targetModel = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 
   const schemaConfig = {
     responseMimeType: 'application/json',
@@ -389,14 +400,28 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
     },
   };
 
-  const response = await ai.models.generateContent({
-    model: targetModel,
-    contents: prompt,
-    config: schemaConfig,
-  });
+  try {
+    const response = await ai.models.generateContent({
+      model: targetModel,
+      contents: prompt,
+      config: schemaConfig,
+    });
 
-  const parsed = JSON.parse(response.text || '[]');
-  return normalizeRawOutput(parsed, params.urls, params.sourceTweet);
+    const parsed = JSON.parse(response.text || '[]');
+    return normalizeRawOutput(parsed, params.urls, params.sourceTweet);
+  } catch (err: any) {
+    if (targetModel !== 'gemini-2.5-flash') {
+      console.warn(`[Gemini] ${targetModel} falló (${err?.message || err}). Intentando respaldo inmediato con gemini-2.5-flash...`);
+      const retryRes = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: prompt,
+        config: schemaConfig,
+      });
+      const parsed = JSON.parse(retryRes.text || '[]');
+      return normalizeRawOutput(parsed, params.urls, params.sourceTweet);
+    }
+    throw err;
+  }
 }
 
 // -------------------------------------------------------------
@@ -679,10 +704,10 @@ export async function classifyWithProviderCascade(
   preferredProvider?: string
 ): Promise<{ results: ClassificationResult[]; providerUsed: string; switchNotice?: string }> {
   let providers = [
-    // 1. Google Gemini (3.8 Flash) - Prioridad principal por defecto
+    // 1. Google Gemini (Flash) - Prioridad principal por defecto
     {
       id: 'gemini',
-      name: 'Google Gemini (3.8 Flash)',
+      name: 'Google Gemini (Flash)',
       fn: tryGemini,
       hasKey: () => Boolean(process.env.GEMINI_API_KEY),
     },
@@ -1036,7 +1061,7 @@ async function tryGeminiAuthor(params: AuthorAnalysisInput): Promise<AuthorProfi
 
   const ai = new GoogleGenAI({ apiKey });
   const prompt = buildAuthorAnalysisPrompt(params);
-  const targetModel = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
+  const targetModel = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 
   const authorSchemaConfig = {
     responseMimeType: 'application/json',
@@ -1058,14 +1083,28 @@ async function tryGeminiAuthor(params: AuthorAnalysisInput): Promise<AuthorProfi
     },
   };
 
-  const response = await ai.models.generateContent({
-    model: targetModel,
-    contents: prompt,
-    config: authorSchemaConfig,
-  });
+  try {
+    const response = await ai.models.generateContent({
+      model: targetModel,
+      contents: prompt,
+      config: authorSchemaConfig,
+    });
 
-  const parsed = JSON.parse(response.text || '{}');
-  return normalizeAuthorProfile(parsed, params);
+    const parsed = JSON.parse(response.text || '{}');
+    return normalizeAuthorProfile(parsed, params);
+  } catch (err: any) {
+    if (targetModel !== 'gemini-2.5-flash') {
+      console.warn(`[Gemini Author] ${targetModel} falló. Reintentando con gemini-2.5-flash...`);
+      const retry = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: prompt,
+        config: authorSchemaConfig,
+      });
+      const parsed = JSON.parse(retry.text || '{}');
+      return normalizeAuthorProfile(parsed, params);
+    }
+    throw err;
+  }
 }
 
 async function callOpenAICompatibleAuthor(options: {
@@ -1123,10 +1162,10 @@ export async function analyzeAuthorWithCascade(
   const prompt = buildAuthorAnalysisPrompt(params);
 
   let providers = [
-    // 1. Google Gemini (3.8 Flash) - Prioridad principal por defecto
+    // 1. Google Gemini (Flash) - Prioridad principal por defecto
     {
       id: 'gemini',
-      name: 'Google Gemini (3.8 Flash)',
+      name: 'Google Gemini (Flash)',
       fn: () => tryGeminiAuthor(params),
       hasKey: () => Boolean(process.env.GEMINI_API_KEY),
     },
@@ -1395,8 +1434,8 @@ export function getConfiguredProvidersList(): Array<{ id: string; name: string; 
   return [
     {
       id: 'gemini',
-      name: 'Google Gemini (3.8 Flash)',
-      shortName: 'Gemini 3.8 Flash',
+      name: 'Google Gemini (Flash)',
+      shortName: 'Gemini Flash',
       priority: 1,
       configured: Boolean(process.env.GEMINI_API_KEY),
     },
@@ -1415,4 +1454,62 @@ export function getConfiguredProvidersList(): Array<{ id: string; name: string; 
       configured: Boolean(process.env.ZENMUX_MINIMAX_KEY || process.env.ZENMUX_API_KEY),
     },
   ];
+}
+
+export async function structureThreadStepsWithAI(
+  toolName: string,
+  rawText: string
+): Promise<Array<{ title: string; prompt?: string; description?: string }>> {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    return rawText
+      .split(/\n\s*\n/)
+      .map((chunk, idx) => ({ title: `Paso ${idx + 1}`, prompt: chunk.trim() }))
+      .filter((s) => Boolean(s.prompt));
+  }
+
+  try {
+    const ai = new GoogleGenAI({ apiKey });
+    const prompt = `Analiza los siguientes tweets adicionales o prompts de un hilo en X sobre "${toolName}":
+"""
+${rawText}
+"""
+Extrae de manera estructurada cada uno de los pasos, prompts o recomendaciones encontrados.
+Devuelve un array JSON de objetos donde cada elemento tenga:
+- "title": Título breve y numerado del paso (ej: "1) El diagnóstico de la conexión", "2) Los ladrones de ancho de banda", etc.)
+- "prompt": El texto exacto del prompt o comando entre comillas para copiar y pegar. Si no es un prompt exacto, el contenido central.
+- "description": Explicación breve de lo que hace o requisitos (opcional)`;
+
+    const res = await ai.models.generateContent({
+      model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
+      contents: prompt,
+      config: {
+        responseMimeType: 'application/json',
+        responseJsonSchema: {
+          type: Type.ARRAY,
+          items: {
+            type: Type.OBJECT,
+            properties: {
+              title: { type: Type.STRING },
+              prompt: { type: Type.STRING },
+              description: { type: Type.STRING },
+            },
+            required: ['title', 'prompt'],
+          },
+        },
+      },
+    });
+
+    const parsed = JSON.parse(res.text || '[]');
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      return parsed;
+    }
+  } catch (err: any) {
+    console.warn('[Thread AI] Error al estructurar hilo con IA, usando fallback estructurado:', err?.message || err);
+  }
+
+  return rawText
+    .split(/\n\s*\n/)
+    .map((chunk, idx) => ({ title: `Paso ${idx + 1}`, prompt: chunk.trim() }))
+    .filter((s) => Boolean(s.prompt));
 }

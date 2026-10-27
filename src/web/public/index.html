@@ -847,7 +847,7 @@
 
         <div id="modalAiStatusNotice" class="text-[11px] text-slate-400 flex items-center gap-1.5 pt-0.5">
           <i data-lucide="info" class="w-3 h-3 text-sky-400 flex-shrink-0"></i>
-          <span id="modalAiStatusNoticeText">Gemini 3.8 Flash procesará la extracción y categorización técnica.</span>
+          <span id="modalAiStatusNoticeText">Gemini Flash procesará la extracción y categorización técnica.</span>
         </div>
 
         <div id="modalSwitchNoticeAlert" class="hidden p-2 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 text-[11px] flex items-start gap-1.5">
@@ -979,8 +979,8 @@
     let activeEditingSlug = null;
     let modalSelectedDest = 'tool'; // 'tool' | 'tech_tip' | 'job_remote' | 'tech_product'
     let isStaticMode = false;
-    let currentActiveAiProvider = 'Google Gemini (3.8 Flash)';
-    let currentActiveAiShortName = 'Gemini 3.8 Flash';
+    let currentActiveAiProvider = 'Google Gemini (Flash)';
+    let currentActiveAiShortName = 'Gemini Flash';
     let selectedAiProvider = localStorage.getItem('toolkit_selected_ai_provider') || 'gemini';
     let allAiProviders = [];
 
@@ -989,10 +989,10 @@
       const found = allAiProviders.find(p => p.id === selectedAiProvider);
       if (found) return found.shortName;
       switch (selectedAiProvider) {
-        case 'gemini': return 'Gemini 3.8 Flash';
+        case 'gemini': return 'Gemini Flash';
         case 'deepseek': return 'DeepSeek v4.1';
         case 'minimax': return 'MiniMax 3.1';
-        default: return 'Gemini 3.8 Flash';
+        default: return 'Gemini Flash';
       }
     }
 
@@ -1014,7 +1014,7 @@
                 const low = data.activeProvider.toLowerCase();
                 if (low.includes('deepseek')) currentActiveAiShortName = 'DeepSeek';
                 else if (low.includes('minimax')) currentActiveAiShortName = 'MiniMax 3.1';
-                else if (low.includes('gemini')) currentActiveAiShortName = 'Gemini 3.8 Flash';
+                else if (low.includes('gemini')) currentActiveAiShortName = 'Gemini Flash';
                 else if (low.includes('claude')) currentActiveAiShortName = 'Claude Haiku';
                 else if (low.includes('groq')) currentActiveAiShortName = 'Groq';
                 else currentActiveAiShortName = 'IA';
