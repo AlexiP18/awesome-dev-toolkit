@@ -1404,7 +1404,8 @@
     function formatDateSimple(dateStr) {
       if (!dateStr) return '';
       try {
-        const parts = String(dateStr).split('-');
+        const clean = String(dateStr).split('T')[0];
+        const parts = clean.split('-');
         if (parts.length === 3) {
           const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
           const day = parseInt(parts[2], 10);
@@ -2152,6 +2153,23 @@
       renderTools();
     }
 
+    function getToolRecency(tool) {
+      if (!tool) return 0;
+      const fm = tool.frontmatter || {};
+      if (fm.created_at) {
+        const t = new Date(fm.created_at).getTime();
+        if (!isNaN(t) && t > 0) return t;
+      }
+      if (tool.mtimeMs && !isNaN(tool.mtimeMs) && tool.mtimeMs > 0) {
+        return tool.mtimeMs;
+      }
+      if (fm.date_added) {
+        const t = new Date(fm.date_added).getTime();
+        if (!isNaN(t) && t > 0) return t;
+      }
+      return 0;
+    }
+
     function getFilteredTools() {
       const query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
 
@@ -2207,19 +2225,17 @@
         return true;
       });
 
-      // 7. Filtro y ordenación por "Recientes" (activo por defecto: los más nuevos siempre primero)
+      // 7. Filtro y ordenación: si "Recientes" está activo (por defecto), los más nuevos/analizados primero
       if (filterRecent) {
         filtered.sort((a, b) => {
-          const parseTime = (dateStr) => {
-            if (!dateStr) return 0;
-            const t = new Date(dateStr).getTime();
-            return isNaN(t) ? 0 : t;
-          };
-          const dateA = parseTime(a.frontmatter?.date_added);
-          const dateB = parseTime(b.frontmatter?.date_added);
-          if (dateB !== dateA) return dateB - dateA;
+          const recA = getToolRecency(a);
+          const recB = getToolRecency(b);
+          if (recB !== recA) return recB - recA;
           return (b.frontmatter?.stars || 0) - (a.frontmatter?.stars || 0);
         });
+      } else {
+        // Si el usuario desactiva "Recientes", ordenar por estrellas / popularidad
+        filtered.sort((a, b) => (b.frontmatter?.stars || 0) - (a.frontmatter?.stars || 0));
       }
 
       return filtered;

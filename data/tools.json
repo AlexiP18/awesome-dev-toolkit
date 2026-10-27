@@ -3,6 +3,33 @@
   "count": 8,
   "tools": [
     {
+      "slug": "claude-desktop-diagnostico-wifi",
+      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tips/claude-desktop-diagnostico-wifi.md",
+      "frontmatter": {
+        "name": "Claude Desktop: 7 Prompts para Diagnosticar y Acelerar tu Red WiFi",
+        "url": "https://x.com/SantiTorAI/status/2114760255121063981",
+        "category": "Consejos & Buenas Prácticas",
+        "tags": [
+          "claude",
+          "wifi",
+          "networking",
+          "diagnostico",
+          "prompts",
+          "tips"
+        ],
+        "status": "in_use",
+        "date_added": "2026-10-26",
+        "source_tweet": "https://x.com/SantiTorAI/status/2114760255121063981",
+        "author": "Santi Torres",
+        "author_handle": "SantiTorAI",
+        "entry_type": "tech_tip",
+        "classified_by": "Google Gemini (3.8 Flash)",
+        "created_at": "2026-10-26T21:20:04.631Z"
+      },
+      "content": "# 💡 Claude Desktop: 7 Prompts para Diagnosticar y Acelerar tu Red WiFi\n\n> Guía de prompts para la aplicación de escritorio de Claude con acceso al ordenador, funcionando como un técnico de redes para medir velocidad, detectar programas que consumen ancho de banda y registrar caídas de conexión.\n\n**👤 Publicado / Recomendado por:** Santi Torres ([@SantiTorAI](https://x.com/SantiTorAI))\n\n## 📌 Puntos Clave & Pasos del Consejo\n\n### 1) El diagnóstico de la conexión\n```text\nMide mi conexión ahora mismo con un test de velocidad en el navegador: bajada, subida y ping. Compáralo con lo que tengo contratado ([X] Mbps) y explícame en términos sencillos si el problema viene de mi ordenador, de mi WiFi o de mi operador.\n```\n\n### 2) Los ladrones de ancho de banda\n```text\nEnumera todos los programas que están usando Internet en este momento y cuánto consume cada uno. Señala las descargas, sincronizaciones y actualizaciones en segundo plano que estén frenando mi conexión. Pausa únicamente los que yo te indique.\n```\n\n### 3) Las caídas de conexión\n```text\nRevisa el historial de este ordenador y dime cuántas veces se ha desconectado del WiFi en los últimos 7 días y a qué horas. Busca un patrón (horario, aparato, actualización) y explícame la causa más probable.\n```\n\n### 4 a 7) Prompts restantes del hilo\n> *(Pendiente de recopilar los prompts 4 al 7 desde X. Puedes agregarlos con el botón de recopilación del card o desde la ficha).*\n\n## 📝 Aplicación Práctica & Contexto\n- Requiere abrir la aplicación de escritorio de Claude y concederle permisos de acceso al ordenador para ejecutar herramientas de diagnóstico y terminal.\n- Permite justificar reclamaciones al operador con datos objetivos y horarios exactos de caídas o inconsistencias de ancho de banda.\n\n## 🔗 Referencias\n- Tweet con el consejo completo: [https://x.com/SantiTorAI/status/2114760255121063981](https://x.com/SantiTorAI/status/2114760255121063981)\n- Tweet origen: [Ver en X](https://x.com/SantiTorAI/status/2114760255121063981)\n",
+      "mtimeMs": 1793109885155.274
+    },
+    {
       "slug": "taste-skill",
       "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tools/taste-skill.md",
       "frontmatter": {
@@ -31,34 +58,11 @@
         "author": "PA13L0 (@Fluyeporlaweb)",
         "author_handle": "Fluyeporlaweb",
         "entry_type": "tool",
-        "classified_by": "Google Gemini (2.5 Flash)"
+        "classified_by": "Google Gemini (2.5 Flash)",
+        "created_at": "2026-10-26T04:07:05.721Z"
       },
-      "content": "# taste-skill\n\n> Herramienta que dota a los agentes de código de habilidades de dirección de arte, permitiéndoles diseñar interfaces web con un estilo más humano y referencias reales, evitando el aspecto genérico generado por la IA.\n\n**👤 Publicado / Recomendado por:** PA13L0 (@Fluyeporlaweb) ([@Fluyeporlaweb](https://x.com/Fluyeporlaweb))\n\n## 💡 ¿Por qué destaca?\n- Ofrece habilidades de dirección de arte para agentes de código.\n- Permite el uso de referencias visuales reales en lugar de descripciones genéricas.\n- Incluye la capacidad de verificar el resultado directamente en el navegador.\n- Ha acumulado más de 102.5K estrellas en GitHub y tiene licencia MIT.\n- Compatible con agentes como Claude Code, Cursor y otras plataformas de generación de código.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Ideal para desarrolladores que buscan que los diseños generados por sus agentes de IA tengan un 'gusto' y una calidad visual superior, alejándose de los resultados predecibles y repetitivos.\n\n## 🔗 Referencias\n- Repositorio de código (GitHub): [https://github.com/Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill)\n- Tweet origen: [Ver en X](https://x.com/Fluyeporlaweb/status/1987654321098765432)\n"
-    },
-    {
-      "slug": "claude-desktop-diagnostico-wifi",
-      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tips/claude-desktop-diagnostico-wifi.md",
-      "frontmatter": {
-        "name": "Claude Desktop: 7 Prompts para Diagnosticar y Acelerar tu Red WiFi",
-        "url": "https://x.com/SantiTorAI/status/2114760255121063981",
-        "category": "Consejos & Buenas Prácticas",
-        "tags": [
-          "claude",
-          "wifi",
-          "networking",
-          "diagnostico",
-          "prompts",
-          "tips"
-        ],
-        "status": "in_use",
-        "date_added": "2026-10-26",
-        "source_tweet": "https://x.com/SantiTorAI/status/2114760255121063981",
-        "author": "Santi Torres",
-        "author_handle": "SantiTorAI",
-        "entry_type": "tech_tip",
-        "classified_by": "Google Gemini (3.8 Flash)"
-      },
-      "content": "\n# 💡 Claude Desktop: 7 Prompts para Diagnosticar y Acelerar tu Red WiFi\n\n> Guía de prompts para la aplicación de escritorio de Claude con acceso al ordenador, funcionando como un técnico de redes para medir velocidad, detectar programas que consumen ancho de banda y registrar caídas de conexión.\n\n**👤 Publicado / Recomendado por:** Santi Torres ([@SantiTorAI](https://x.com/SantiTorAI))\n\n## 📌 Puntos Clave & Pasos del Consejo\n\n### 1) El diagnóstico de la conexión\n```text\nMide mi conexión ahora mismo con un test de velocidad en el navegador: bajada, subida y ping. Compáralo con lo que tengo contratado ([X] Mbps) y explícame en términos sencillos si el problema viene de mi ordenador, de mi WiFi o de mi operador.\n```\n\n### 2) Los ladrones de ancho de banda\n```text\nEnumera todos los programas que están usando Internet en este momento y cuánto consume cada uno. Señala las descargas, sincronizaciones y actualizaciones en segundo plano que estén frenando mi conexión. Pausa únicamente los que yo te indique.\n```\n\n### 3) Las caídas de conexión\n```text\nRevisa el historial de este ordenador y dime cuántas veces se ha desconectado del WiFi en los últimos 7 días y a qué horas. Busca un patrón (horario, aparato, actualización) y explícame la causa más probable.\n```\n\n### 4 a 7) Prompts restantes del hilo\n> *(Pendiente de recopilar los prompts 4 al 7 desde X. Puedes agregarlos con el botón de recopilación del card o desde la ficha).*\n\n## 📝 Aplicación Práctica & Contexto\n- Requiere abrir la aplicación de escritorio de Claude y concederle permisos de acceso al ordenador para ejecutar herramientas de diagnóstico y terminal.\n- Permite justificar reclamaciones al operador con datos objetivos y horarios exactos de caídas o inconsistencias de ancho de banda.\n\n## 🔗 Referencias\n- Tweet con el consejo completo: [https://x.com/SantiTorAI/status/2114760255121063981](https://x.com/SantiTorAI/status/2114760255121063981)\n- Tweet origen: [Ver en X](https://x.com/SantiTorAI/status/2114760255121063981)\n"
+      "content": "# taste-skill\n\n> Herramienta que dota a los agentes de código de habilidades de dirección de arte, permitiéndoles diseñar interfaces web con un estilo más humano y referencias reales, evitando el aspecto genérico generado por la IA.\n\n**👤 Publicado / Recomendado por:** PA13L0 (@Fluyeporlaweb) ([@Fluyeporlaweb](https://x.com/Fluyeporlaweb))\n\n## 💡 ¿Por qué destaca?\n- Ofrece habilidades de dirección de arte para agentes de código.\n- Permite el uso de referencias visuales reales en lugar de descripciones genéricas.\n- Incluye la capacidad de verificar el resultado directamente en el navegador.\n- Ha acumulado más de 102.5K estrellas en GitHub y tiene licencia MIT.\n- Compatible con agentes como Claude Code, Cursor y otras plataformas de generación de código.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Ideal para desarrolladores que buscan que los diseños generados por sus agentes de IA tengan un 'gusto' y una calidad visual superior, alejándose de los resultados predecibles y repetitivos.\n\n## 🔗 Referencias\n- Repositorio de código (GitHub): [https://github.com/Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill)\n- Tweet origen: [Ver en X](https://x.com/Fluyeporlaweb/status/1987654321098765432)\n",
+      "mtimeMs": 1793109885142.274
     },
     {
       "slug": "raspberry-pi-5",
@@ -83,31 +87,11 @@
         "entry_type": "tech_product",
         "company": "Raspberry Pi",
         "price": "$60 - $80 USD",
-        "classified_by": "Google Gemini (3.8 Flash)"
+        "classified_by": "Google Gemini (3.8 Flash)",
+        "created_at": "2026-10-25T21:42:54.372Z"
       },
-      "content": "\n# 🖥️ Raspberry Pi 5\n\n> Computadora monoplaca (SBC) de nueva generación con procesador Arm Cortex-A76 quad-core de 2.4GHz, PCIe 2.0 y rendimiento 2-3x superior para servidores caseros y proyectos de hardware.\n\n**👤 Publicado / Recomendado por:** @Raspberry_Pi ([@Raspberry_Pi](https://x.com/Raspberry_Pi))\n**🏢 Fabricante / Empresa:** Raspberry Pi\n\n### 📌 Información del Producto / Hardware\n- **🏢 Fabricante / Marca:** Raspberry Pi\n- **💰 Precio / Disponibilidad:** $60 - $80 USD\n\n## ⚙️ Especificaciones & Características Clave\n- Procesador Broadcom BCM2712 quad-core Arm Cortex-A76 de 64 bits a 2.4 GHz.\n- Opciones de memoria LPDDR4X-4267 de 4 GB y 8 GB.\n- Interfaz PCIe 2.0 x1 para conexión de almacenamiento SSD NVMe ultrarrápido.\n- Dos puertos micro HDMI 4Kp60 con soporte HDR simultáneo.\n- Controlador de E/S RP1 diseñado por Raspberry Pi que duplica el ancho de banda USB.\n\n## 📝 Notas de Evaluación & Casos de Uso\n- Ideal para montar un nodo de Kubernetes local (k3s), servidor de automatización con Docker o estación de desarrollo ligera.\n\n## 🔗 Referencias\n- Sitio oficial o ficha del producto: [https://www.raspberrypi.com/products/raspberry-pi-5/](https://www.raspberrypi.com/products/raspberry-pi-5/)\n- Tweet original en X: [https://x.com/Raspberry_Pi/status/1707300000000000000](https://x.com/Raspberry_Pi/status/1707300000000000000)\n"
-    },
-    {
-      "slug": "git-undo-commit-trick",
-      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tips/git-undo-commit-trick.md",
-      "frontmatter": {
-        "name": "Git: Deshacer el último commit manteniendo los cambios",
-        "url": "https://x.com/tech_tips_daily/status/1789012345678901234",
-        "category": "Consejos & Buenas Prácticas",
-        "tags": [
-          "git",
-          "terminal",
-          "productivity",
-          "workflow"
-        ],
-        "status": "in_use",
-        "date_added": "2026-10-25T00:00:00.000Z",
-        "source_tweet": "https://x.com/tech_tips_daily/status/1789012345678901234",
-        "author": "@tech_tips_daily",
-        "author_handle": "tech_tips_daily",
-        "entry_type": "tech_tip"
-      },
-      "content": "\n# 💡 Git: Deshacer el último commit manteniendo los cambios\n\n> Si hiciste un commit por error o necesitas modificar archivos antes de enviarlo, usa `git reset --soft HEAD~1` para mantener todos tus cambios intactos en el área de staging.\n\n## 📌 Puntos Clave & Pasos del Consejo\n- `git reset --soft HEAD~1`: Deshace el commit pero deja los cambios listos en staging (`staged`).\n- `git reset HEAD~1` (o `--mixed`): Deshace el commit y saca los cambios a tu directorio de trabajo (sin perder nada).\n- Evita usar `--hard` a menos que quieras descartar completamente los cambios realizados.\n\n## 📝 Aplicación Práctica & Contexto\n- Comando imprescindible al comitear antes de correr los tests o si olvidaste incluir un archivo en el mensaje de commit.\n\n## 🔗 Referencias\n- Tweet con el consejo completo: [Ver en X](https://x.com/tech_tips_daily/status/1789012345678901234)\n"
+      "content": "# 🖥️ Raspberry Pi 5\n\n> Computadora monoplaca (SBC) de nueva generación con procesador Arm Cortex-A76 quad-core de 2.4GHz, PCIe 2.0 y rendimiento 2-3x superior para servidores caseros y proyectos de hardware.\n\n**👤 Publicado / Recomendado por:** @Raspberry_Pi ([@Raspberry_Pi](https://x.com/Raspberry_Pi))\n**🏢 Fabricante / Empresa:** Raspberry Pi\n\n### 📌 Información del Producto / Hardware\n- **🏢 Fabricante / Marca:** Raspberry Pi\n- **💰 Precio / Disponibilidad:** $60 - $80 USD\n\n## ⚙️ Especificaciones & Características Clave\n- Procesador Broadcom BCM2712 quad-core Arm Cortex-A76 de 64 bits a 2.4 GHz.\n- Opciones de memoria LPDDR4X-4267 de 4 GB y 8 GB.\n- Interfaz PCIe 2.0 x1 para conexión de almacenamiento SSD NVMe ultrarrápido.\n- Dos puertos micro HDMI 4Kp60 con soporte HDR simultáneo.\n- Controlador de E/S RP1 diseñado por Raspberry Pi que duplica el ancho de banda USB.\n\n## 📝 Notas de Evaluación & Casos de Uso\n- Ideal para montar un nodo de Kubernetes local (k3s), servidor de automatización con Docker o estación de desarrollo ligera.\n\n## 🔗 Referencias\n- Sitio oficial o ficha del producto: [https://www.raspberrypi.com/products/raspberry-pi-5/](https://www.raspberrypi.com/products/raspberry-pi-5/)\n- Tweet original en X: [https://x.com/Raspberry_Pi/status/1707300000000000000](https://x.com/Raspberry_Pi/status/1707300000000000000)\n",
+      "mtimeMs": 1793109885177.2742
     },
     {
       "slug": "remoto-fullstack-dev-latam",
@@ -133,9 +117,35 @@
         "company": "Global Tech LATAM",
         "location": "Remoto (LATAM)",
         "salary": "$4,000 - $6,000 USD / mes",
-        "job_type": "remote_job"
+        "job_type": "remote_job",
+        "created_at": "2026-10-25T18:05:58.440Z"
       },
-      "content": "\n# 💼 Full Stack Engineer (Remoto LATAM)\n\n> Vacante 100% remota para desarrolladores en América Latina con experiencia en TypeScript, React y Node.js, contrato directo internacional en USD.\n\n### 📌 Información de la Oportunidad\n- **🏢 Empresa / Plataforma:** Global Tech LATAM\n- **🌍 Modalidad / Ubicación:** Remoto (LATAM)\n- **💰 Compensación / Tarifa:** $4,000 - $6,000 USD / mes\n\n## 📋 Requisitos & Características Clave\n- +3 años de experiencia en desarrollo web con TypeScript, React y Node.js.\n- Trabajo 100% remoto y asíncrono con solapamiento parcial en zona horaria EST/COT.\n- Pagos quincenales en USD a través de plataformas como Deel u Ontop.\n- Vacaciones pagadas y presupuesto para equipamiento de oficina en casa.\n\n## 📝 Notas de Postulación & Consejos\n- Preparar CV en inglés enfatizando proyectos full-stack y contribuciones open source.\n- Repasar patrones de diseño y APIs REST/GraphQL.\n\n## 🔗 Referencias\n- Enlace oficial / Para postular: [https://remoteok.com](https://remoteok.com)\n- Tweet origen: [Ver en X](https://x.com/remote_jobs_tech/status/1789555666777888999)\n"
+      "content": "# 💼 Full Stack Engineer (Remoto LATAM)\n\n> Vacante 100% remota para desarrolladores en América Latina con experiencia en TypeScript, React y Node.js, contrato directo internacional en USD.\n\n### 📌 Información de la Oportunidad\n- **🏢 Empresa / Plataforma:** Global Tech LATAM\n- **🌍 Modalidad / Ubicación:** Remoto (LATAM)\n- **💰 Compensación / Tarifa:** $4,000 - $6,000 USD / mes\n\n## 📋 Requisitos & Características Clave\n- +3 años de experiencia en desarrollo web con TypeScript, React y Node.js.\n- Trabajo 100% remoto y asíncrono con solapamiento parcial en zona horaria EST/COT.\n- Pagos quincenales en USD a través de plataformas como Deel u Ontop.\n- Vacaciones pagadas y presupuesto para equipamiento de oficina en casa.\n\n## 📝 Notas de Postulación & Consejos\n- Preparar CV en inglés enfatizando proyectos full-stack y contribuciones open source.\n- Repasar patrones de diseño y APIs REST/GraphQL.\n\n## 🔗 Referencias\n- Enlace oficial / Para postular: [https://remoteok.com](https://remoteok.com)\n- Tweet origen: [Ver en X](https://x.com/remote_jobs_tech/status/1789555666777888999)\n",
+      "mtimeMs": 1793109885165.2742
+    },
+    {
+      "slug": "git-undo-commit-trick",
+      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tips/git-undo-commit-trick.md",
+      "frontmatter": {
+        "name": "Git: Deshacer el último commit manteniendo los cambios",
+        "url": "https://x.com/tech_tips_daily/status/1789012345678901234",
+        "category": "Consejos & Buenas Prácticas",
+        "tags": [
+          "git",
+          "terminal",
+          "productivity",
+          "workflow"
+        ],
+        "status": "in_use",
+        "date_added": "2026-10-25T00:00:00.000Z",
+        "source_tweet": "https://x.com/tech_tips_daily/status/1789012345678901234",
+        "author": "@tech_tips_daily",
+        "author_handle": "tech_tips_daily",
+        "entry_type": "tech_tip",
+        "created_at": "2026-10-25T18:05:48.979Z"
+      },
+      "content": "# 💡 Git: Deshacer el último commit manteniendo los cambios\n\n> Si hiciste un commit por error o necesitas modificar archivos antes de enviarlo, usa `git reset --soft HEAD~1` para mantener todos tus cambios intactos en el área de staging.\n\n## 📌 Puntos Clave & Pasos del Consejo\n- `git reset --soft HEAD~1`: Deshace el commit pero deja los cambios listos en staging (`staged`).\n- `git reset HEAD~1` (o `--mixed`): Deshace el commit y saca los cambios a tu directorio de trabajo (sin perder nada).\n- Evita usar `--hard` a menos que quieras descartar completamente los cambios realizados.\n\n## 📝 Aplicación Práctica & Contexto\n- Comando imprescindible al comitear antes de correr los tests o si olvidaste incluir un archivo en el mensaje de commit.\n\n## 🔗 Referencias\n- Tweet con el consejo completo: [Ver en X](https://x.com/tech_tips_daily/status/1789012345678901234)\n",
+      "mtimeMs": 1793109885158.274
     },
     {
       "slug": "lemo-opuscar",
@@ -161,32 +171,11 @@
         "author": "Juan",
         "author_handle": "7uanF",
         "entry_type": "tool",
-        "company": "Lemomo"
+        "company": "Lemomo",
+        "created_at": "2026-10-23T04:36:05.083Z"
       },
-      "content": "# lemo-opuscar\n\n> Skill de Claude Code con una colección de 59 estilos cinematográficos generados enteramente mediante código para crear cortometrajes sin modelos de video.\n\n**👤 Publicado / Recomendado por:** Juan ([@7uanF](https://x.com/7uanF))\n\n## 💡 ¿Por qué destaca?\n- Incluye 59 estilos prediseñados y soporte para crear estilos cinematográficos propios mediante prompts\n- Genera piezas audiovisuales y motion graphics usando código puro con Canvas, Three.js, WebGL y FFmpeg\n- Diseñado específicamente como skill/plugin para Claude Code y agentes de IA\n- Elimina la dependencia de modelos de difusión de video pesados al programar las animaciones directamente\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Excelente complemento para Claude Code enfocado en creativos y desarrolladores que buscan generar visuales y cortometrajes programáticos ligeros y deterministas.\n\n## 🔗 Referencias\n- Repositorio de código (GitHub): [https://github.com/lemomo-ai/lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar)\n- Tweet origen: [Ver en X](https://x.com/7uanF/status/2111816121548447790)\n"
-    },
-    {
-      "slug": "lazygit",
-      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tools/lazygit.md",
-      "frontmatter": {
-        "name": "Lazygit",
-        "url": "https://github.com/jesseduffield/lazygit",
-        "category": "CLI & Terminal",
-        "tags": [
-          "git",
-          "terminal",
-          "go",
-          "productivity"
-        ],
-        "stars": 52000,
-        "status": "in_use",
-        "date_added": "2026-10-16T00:00:00.000Z",
-        "source_tweet": "https://x.com/jesseduffield/status/123456789",
-        "author": "Jesse Duffield",
-        "entry_type": "tool",
-        "author_handle": "jesseduffield"
-      },
-      "content": "\n# Lazygit\n\n> Una interfaz de usuario de terminal simple y rápida para comandos de git, escrita en Go con gocui.\n\n## 💡 ¿Por qué destaca?\n- Permite hacer staging de líneas individuales y resolver merge conflicts visualmente en la terminal.\n- Manejo interactivo de rebase (`git rebase -i`) con atajos de un solo toque.\n- Integración perfecta con Neovim, Tmux y terminales modernas.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Es mi herramienta diaria imprescindible para revisar diffs antes de commitear.\n- Atajo favorito en la terminal: alias `lg=\"lazygit\"`.\n\n## 🔗 Referencias\n- Repositorio / Web oficial: [https://github.com/jesseduffield/lazygit](https://github.com/jesseduffield/lazygit)\n- Tweet origen: [Ver en X](https://x.com/jesseduffield/status/123456789)\n"
+      "content": "# lemo-opuscar\n\n> Skill de Claude Code con una colección de 59 estilos cinematográficos generados enteramente mediante código para crear cortometrajes sin modelos de video.\n\n**👤 Publicado / Recomendado por:** Juan ([@7uanF](https://x.com/7uanF))\n\n## 💡 ¿Por qué destaca?\n- Incluye 59 estilos prediseñados y soporte para crear estilos cinematográficos propios mediante prompts\n- Genera piezas audiovisuales y motion graphics usando código puro con Canvas, Three.js, WebGL y FFmpeg\n- Diseñado específicamente como skill/plugin para Claude Code y agentes de IA\n- Elimina la dependencia de modelos de difusión de video pesados al programar las animaciones directamente\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Excelente complemento para Claude Code enfocado en creativos y desarrolladores que buscan generar visuales y cortometrajes programáticos ligeros y deterministas.\n\n## 🔗 Referencias\n- Repositorio de código (GitHub): [https://github.com/lemomo-ai/lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar)\n- Tweet origen: [Ver en X](https://x.com/7uanF/status/2111816121548447790)\n",
+      "mtimeMs": 1793109885086.2734
     },
     {
       "slug": "astral-uv",
@@ -206,10 +195,37 @@
         "date_added": "2026-10-16T00:00:00.000Z",
         "source_tweet": "https://x.com/astral_sh/status/987654321",
         "author": "Astral",
+        "created_at": "2026-10-16T21:05:36.327Z",
         "entry_type": "tool",
         "author_handle": "astral_sh"
       },
-      "content": "\n# Astral UV\n\n> Gestor de paquetes y entornos de Python extremadamente rápido escrito en Rust, diseñado como reemplazo directo de pip y virtualenv.\n\n## 💡 ¿Por qué destaca?\n- 10-100x más rápido que pip y pip-tools al resolver dependencias complejas.\n- Instala y gestiona versiones de Python sin necesidad de pyenv.\n- Manejo de lockfiles deterministas y multiplataforma.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Pendiente de probar en los proyectos de backend para acelerar tiempos de CI/CD en GitHub Actions.\n\n## 🔗 Referencias\n- Repositorio / Web oficial: [https://github.com/astral-sh/uv](https://github.com/astral-sh/uv)\n- Tweet origen: [Ver en X](https://x.com/astral_sh/status/987654321)\n"
+      "content": "# Astral UV\n\n> Gestor de paquetes y entornos de Python extremadamente rápido escrito en Rust, diseñado como reemplazo directo de pip y virtualenv.\n\n## 💡 ¿Por qué destaca?\n- 10-100x más rápido que pip y pip-tools al resolver dependencias complejas.\n- Instala y gestiona versiones de Python sin necesidad de pyenv.\n- Manejo de lockfiles deterministas y multiplataforma.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Pendiente de probar en los proyectos de backend para acelerar tiempos de CI/CD en GitHub Actions.\n\n## 🔗 Referencias\n- Repositorio / Web oficial: [https://github.com/astral-sh/uv](https://github.com/astral-sh/uv)\n- Tweet origen: [Ver en X](https://x.com/astral_sh/status/987654321)\n",
+      "mtimeMs": 1793109884742.2708
+    },
+    {
+      "slug": "lazygit",
+      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tools/lazygit.md",
+      "frontmatter": {
+        "name": "Lazygit",
+        "url": "https://github.com/jesseduffield/lazygit",
+        "category": "CLI & Terminal",
+        "tags": [
+          "git",
+          "terminal",
+          "go",
+          "productivity"
+        ],
+        "stars": 52000,
+        "status": "in_use",
+        "date_added": "2026-10-16T00:00:00.000Z",
+        "source_tweet": "https://x.com/jesseduffield/status/123456789",
+        "author": "Jesse Duffield",
+        "created_at": "2026-10-16T21:05:14.396Z",
+        "entry_type": "tool",
+        "author_handle": "jesseduffield"
+      },
+      "content": "# Lazygit\n\n> Una interfaz de usuario de terminal simple y rápida para comandos de git, escrita en Go con gocui.\n\n## 💡 ¿Por qué destaca?\n- Permite hacer staging de líneas individuales y resolver merge conflicts visualmente en la terminal.\n- Manejo interactivo de rebase (`git rebase -i`) con atajos de un solo toque.\n- Integración perfecta con Neovim, Tmux y terminales modernas.\n\n## 📝 Notas Personales (Segundo Cerebro)\n- Es mi herramienta diaria imprescindible para revisar diffs antes de commitear.\n- Atajo favorito en la terminal: alias `lg=\"lazygit\"`.\n\n## 🔗 Referencias\n- Repositorio / Web oficial: [https://github.com/jesseduffield/lazygit](https://github.com/jesseduffield/lazygit)\n- Tweet origen: [Ver en X](https://x.com/jesseduffield/status/123456789)\n",
+      "mtimeMs": 1793109885022.273
     }
   ]
 }
