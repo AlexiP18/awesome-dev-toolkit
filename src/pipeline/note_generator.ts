@@ -343,12 +343,15 @@ export function loadAllTools(): ToolItem[] {
 }
 
 export function updateToolNote(slug: string, updates: {
+  name?: string;
+  url?: string;
   status?: ToolStatus;
   notes?: string;
   category?: string;
   tags?: string[];
   author?: string;
   author_handle?: string;
+  source_tweet?: string;
   location?: string;
   salary?: string;
   price?: string;
@@ -375,11 +378,14 @@ export function updateToolNote(slug: string, updates: {
 
   const updatedFrontmatter = {
     ...parsed.data,
+    ...(updates.name ? { name: updates.name } : {}),
+    ...(updates.url ? { url: updates.url } : {}),
     ...(updates.status ? { status: updates.status } : {}),
     ...(updates.category ? { category: updates.category } : {}),
     ...(updates.tags ? { tags: updates.tags } : {}),
     ...(updates.author !== undefined ? { author: updates.author } : {}),
     ...(updates.author_handle !== undefined ? { author_handle: updates.author_handle } : {}),
+    ...(updates.source_tweet !== undefined ? { source_tweet: updates.source_tweet } : {}),
     ...(updates.location !== undefined ? { location: updates.location } : {}),
     ...(updates.salary !== undefined ? { salary: updates.salary } : {}),
     ...(updates.price !== undefined ? { price: updates.price } : {}),
@@ -396,4 +402,41 @@ export function updateToolNote(slug: string, updates: {
   const newContent = matter.stringify(body, cleanFrontmatter(updatedFrontmatter));
   fs.writeFileSync(filePath, newContent, 'utf-8');
   return true;
+}
+
+export function deleteToolNote(slug: string): boolean {
+  let filePath = path.join(TOOLS_DIR, `${slug}.md`);
+  if (!fs.existsSync(filePath)) {
+    filePath = path.join(PRODUCTS_DIR, `${slug}.md`);
+    if (!fs.existsSync(filePath)) {
+      filePath = path.join(TIPS_DIR, `${slug}.md`);
+      if (!fs.existsSync(filePath)) {
+        filePath = path.join(JOBS_DIR, `${slug}.md`);
+        if (!fs.existsSync(filePath)) {
+          return false;
+        }
+      }
+    }
+  }
+
+  try {
+    fs.unlinkSync(filePath);
+    return true;
+  } catch (err) {
+    console.error(`Error al eliminar archivo ${filePath}:`, err);
+    return false;
+  }
+}
+
+export function deleteToolNotes(slugs: string[]): { deleted: string[]; notFound: string[] } {
+  const deleted: string[] = [];
+  const notFound: string[] = [];
+  for (const slug of slugs) {
+    if (deleteToolNote(slug)) {
+      deleted.push(slug);
+    } else {
+      notFound.push(slug);
+    }
+  }
+  return { deleted, notFound };
 }

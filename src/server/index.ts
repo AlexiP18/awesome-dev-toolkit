@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
-import { loadAllTools, updateToolNote } from '../pipeline/note_generator.js';
+import { loadAllTools, updateToolNote, deleteToolNote, deleteToolNotes } from '../pipeline/note_generator.js';
 import { ingestResource } from '../pipeline/ingest.js';
 import { generateReadme } from '../pipeline/generate_readme.js';
 import { loadAllAuthorProfiles, analyzeAuthorWithAI } from '../pipeline/author_manager.js';
@@ -114,13 +114,45 @@ app.post('/api/ingest', async (req, res) => {
   }
 });
 
-// PATCH update status or personal notes for a tool
+// PATCH update tool metadata and personal notes
 app.patch('/api/tools/:slug', (req, res) => {
   try {
     const { slug } = req.params;
-    const { status, notes, category, tags, has_academic_promo, academic_promo_details } = req.body;
+    const { 
+      name,
+      url,
+      status, 
+      notes, 
+      category, 
+      tags, 
+      author,
+      author_handle,
+      source_tweet,
+      location,
+      salary,
+      price,
+      company,
+      has_academic_promo, 
+      academic_promo_details 
+    } = req.body;
 
-    const ok = updateToolNote(slug, { status, notes, category, tags, has_academic_promo, academic_promo_details });
+    const ok = updateToolNote(slug, { 
+      name,
+      url,
+      status, 
+      notes, 
+      category, 
+      tags, 
+      author,
+      author_handle,
+      source_tweet,
+      location,
+      salary,
+      price,
+      company,
+      has_academic_promo, 
+      academic_promo_details 
+    });
     if (!ok) {
       return res.status(404).json({ success: false, error: 'Herramienta no encontrada' });
     }
@@ -131,7 +163,56 @@ app.patch('/api/tools/:slug', (req, res) => {
       fs.writeFileSync(path.resolve(process.cwd(), 'README.md'), readme, 'utf-8');
     } catch {}
 
-    res.json({ success: true, message: 'Nota actualizada correctamente' });
+    const allTools = loadAllTools();
+    const updated = allTools.find((t) => t.slug === slug);
+
+    res.json({ success: true, message: 'Nota actualizada correctamente', tool: updated });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// DELETE a single tool / card by slug
+app.delete('/api/tools/:slug', (req, res) => {
+  try {
+    const { slug } = req.params;
+    const ok = deleteToolNote(slug);
+    if (!ok) {
+      return res.status(404).json({ success: false, error: 'Ficha no encontrada para eliminar' });
+    }
+
+    try {
+      const readme = generateReadme();
+      fs.writeFileSync(path.resolve(process.cwd(), 'README.md'), readme, 'utf-8');
+    } catch {}
+
+    res.json({ success: true, message: `Ficha "${slug}" eliminada correctamente` });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// POST batch delete tools
+app.post('/api/tools/batch-delete', (req, res) => {
+  try {
+    const { slugs } = req.body;
+    if (!Array.isArray(slugs) || slugs.length === 0) {
+      return res.status(400).json({ success: false, error: 'slugs debe ser un array con al menos 1 elemento' });
+    }
+
+    const result = deleteToolNotes(slugs);
+
+    try {
+      const readme = generateReadme();
+      fs.writeFileSync(path.resolve(process.cwd(), 'README.md'), readme, 'utf-8');
+    } catch {}
+
+    res.json({ 
+      success: true, 
+      deletedCount: result.deleted.length, 
+      deleted: result.deleted,
+      notFound: result.notFound 
+    });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
   }

@@ -296,6 +296,12 @@
             ✕ Limpiar
           </button>
         </div>
+
+        <span class="text-slate-700 hidden sm:inline">|</span>
+        <button id="batchSelectAllBtn" onclick="toggleSelectAllVisible()" class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 transition flex items-center gap-1.5" title="Seleccionar todos los cards visibles para eliminar por lotes">
+          <i data-lucide="check-square" class="w-3.5 h-3.5 text-sky-400"></i>
+          <span id="batchSelectAllBtnText">Seleccionar varios</span>
+        </button>
       </div>
     </div>
 
@@ -515,13 +521,34 @@
         </div>
       </div>
 
-      <div class="p-4 border-t border-slate-800 bg-slate-900/50 flex justify-end gap-3">
-        <button onclick="closeNoteModal()" class="px-4 py-2 text-xs rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800">
-          Cancelar
+      <div class="p-4 border-t border-slate-800 bg-slate-900/50 flex justify-between items-center text-xs">
+        <button 
+          type="button" 
+          onclick="deleteSingleTool(activeEditingSlug)" 
+          class="px-3 py-1.5 rounded-lg text-rose-400 hover:text-rose-300 hover:bg-rose-950/40 border border-rose-900/30 flex items-center gap-1.5 transition"
+          title="Eliminar esta ficha permanentemente"
+        >
+          <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+          <span>Eliminar Ficha</span>
         </button>
-        <button id="saveNoteBtn" onclick="saveCurrentNote()" class="px-4 py-2 text-xs font-semibold rounded-lg bg-sky-600 hover:bg-sky-500 text-white shadow-md">
-          Guardar Cambios
-        </button>
+
+        <div class="flex items-center gap-2">
+          <button 
+            type="button" 
+            onclick="openEditToolModal(activeEditingSlug)" 
+            class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-300 flex items-center gap-1.5 transition font-medium border border-slate-700"
+            title="Editar metadatos completos (nombre, URL, categoría, etc.)"
+          >
+            <i data-lucide="pencil" class="w-3 h-3 text-amber-400"></i>
+            <span>Editar Metadatos</span>
+          </button>
+          <button onclick="closeNoteModal()" class="px-3 py-1.5 text-xs rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800">
+            Cerrar
+          </button>
+          <button id="saveNoteBtn" onclick="saveCurrentNote()" class="px-4 py-1.5 text-xs font-semibold rounded-lg bg-sky-600 hover:bg-sky-500 text-white shadow-md">
+            Guardar Cambios
+          </button>
+        </div>
       </div>
 
     </div>
@@ -610,6 +637,127 @@
           </button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal: Editar Ficha Técnica Completa -->
+  <div id="editToolModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-xl w-full p-5 shadow-2xl flex flex-col space-y-4 max-h-[90vh] overflow-y-auto animate-in fade-in duration-150">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div class="flex items-center gap-2.5">
+          <span class="text-xl">✏️</span>
+          <div>
+            <h2 class="text-sm font-bold text-slate-100">Editar Ficha Técnica</h2>
+            <p id="editModalSubtitle" class="text-xs text-slate-400">Modifica los datos del recurso sincronizados con el archivo Markdown</p>
+          </div>
+        </div>
+        <button onclick="closeEditToolModal()" class="text-slate-400 hover:text-slate-200 p-1">✕</button>
+      </div>
+
+      <form id="editToolForm" onsubmit="handleEditToolSubmit(event)" class="space-y-3.5 text-xs">
+        <input type="hidden" id="editToolSlug" />
+
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">Nombre / Título:</label>
+          <input type="text" id="editToolName" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 font-medium" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">URL Principal / GitHub:</label>
+            <input type="url" id="editToolUrl" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-mono text-[11px]" />
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">Tweet de origen (Opcional):</label>
+            <input type="url" id="editToolSourceTweet" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-mono text-[11px]" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">Categoría:</label>
+            <select id="editToolCategory" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500">
+              <option value="CLI & Terminal">CLI & Terminal</option>
+              <option value="Frontend & UI">Frontend & UI</option>
+              <option value="Backend & APIs">Backend & APIs</option>
+              <option value="DevOps & Cloud">DevOps & Cloud</option>
+              <option value="AI & Machine Learning">AI & Machine Learning</option>
+              <option value="Prompts, Art & Video">Prompts, Art & Video</option>
+              <option value="Databases & Storage">Databases & Storage</option>
+              <option value="Productivity & Tools">Productivity & Tools</option>
+              <option value="Documentation & Resources">Documentation & Resources</option>
+              <option value="Consejos & Buenas Prácticas">Consejos & Buenas Prácticas</option>
+              <option value="Trabajo & Freelance">Trabajo & Freelance</option>
+              <option value="Productos Tecnológicos & Hardware">Productos Tecnológicos & Hardware</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">Estado:</label>
+            <select id="editToolStatus" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500">
+              <option value="to_try">🟡 Por probar / Por postular</option>
+              <option value="in_use">🟢 En uso / Postulado / En posesión</option>
+              <option value="archived">⚪ Archivado</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">Etiquetas / Tags (separados por comas):</label>
+          <input type="text" id="editToolTags" placeholder="ej: cli, rust, terminal, productivity" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-mono text-[11px]" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">Autor / Recomendador:</label>
+            <input type="text" id="editToolAuthor" placeholder="ej: Santi Torres" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500" />
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">Usuario de X (@handle):</label>
+            <input type="text" id="editToolAuthorHandle" placeholder="ej: SantiTorAI (sin @)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-mono text-[11px]" />
+          </div>
+        </div>
+
+        <!-- Campos contextuales para Empleo -->
+        <div id="editToolJobFields" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-2.5 p-3 rounded-xl bg-slate-950 border border-slate-800">
+          <div>
+            <label class="block font-semibold text-slate-400 mb-1">Empresa:</label>
+            <input type="text" id="editToolCompany" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs" />
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-400 mb-1">Ubicación / Modalidad:</label>
+            <input type="text" id="editToolLocation" placeholder="ej: Remoto (Mundial)" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs" />
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-400 mb-1">Salario / Compensación:</label>
+            <input type="text" id="editToolSalary" placeholder="ej: $120k - $150k USD" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs" />
+          </div>
+        </div>
+
+        <!-- Campos contextuales para Producto -->
+        <div id="editToolProductFields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3 rounded-xl bg-slate-950 border border-slate-800">
+          <div>
+            <label class="block font-semibold text-slate-400 mb-1">Fabricante / Marca:</label>
+            <input type="text" id="editToolProdCompany" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs" />
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-400 mb-1">Precio:</label>
+            <input type="text" id="editToolPrice" placeholder="ej: $80 USD" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">Contenido Markdown de la Ficha (Obsidian):</label>
+          <textarea id="editToolContent" rows="7" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-200 focus:outline-none focus:border-sky-500"></textarea>
+        </div>
+
+        <div class="flex items-center justify-between pt-2 border-t border-slate-800">
+          <button type="button" onclick="closeEditToolModal()" class="text-slate-400 hover:text-slate-200">Cancelar</button>
+          <button type="submit" id="editToolSubmitBtn" class="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold transition flex items-center gap-1.5 shadow-md">
+            <span>Guardar Cambios</span>
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -741,9 +889,37 @@
     </div>
   </div>
 
+  <!-- Floating Batch Action Bar -->
+  <div id="batchActionBar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 hidden bg-slate-900/95 border border-slate-700/80 backdrop-blur-md rounded-2xl shadow-2xl px-4 sm:px-6 py-3 flex items-center gap-3 sm:gap-4 text-xs animate-in slide-in-from-bottom duration-200">
+    <div class="flex items-center gap-2 text-slate-100 font-medium">
+      <span class="w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 font-bold flex items-center justify-center font-mono text-xs border border-sky-500/30" id="batchSelectedCount">0</span>
+      <span class="hidden sm:inline">fichas seleccionadas</span>
+      <span class="sm:hidden">sel.</span>
+    </div>
+
+    <div class="h-4 w-[1px] bg-slate-700"></div>
+
+    <div class="flex items-center gap-1.5">
+      <button onclick="selectAllVisibleTools()" class="text-slate-300 hover:text-white transition px-2 py-1 rounded-lg hover:bg-slate-800 text-[11px]">
+        Seleccionar todos
+      </button>
+      <button onclick="clearSelectedTools()" class="text-slate-400 hover:text-slate-200 transition px-2 py-1 rounded-lg hover:bg-slate-800 text-[11px]">
+        Deseleccionar
+      </button>
+    </div>
+
+    <div class="h-4 w-[1px] bg-slate-700"></div>
+
+    <button id="batchDeleteBtn" onclick="deleteBatchSelectedTools()" class="px-3.5 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold transition flex items-center gap-1.5 shadow-md shadow-rose-950/50">
+      <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+      <span id="batchDeleteBtnText">Eliminar seleccionados</span>
+    </button>
+  </div>
+
   <!-- Client-side Logic -->
   <script>
     let allTools = [];
+    let selectedSlugs = new Set();
     let allAuthorProfiles = {};
     let currentSection = 'all'; // 'all' | 'tools' | 'tips' | 'jobs' | 'products'
     let currentCategory = 'all';
@@ -1841,6 +2017,12 @@
 
         const data = await res.json();
         allTools = data.tools || [];
+        // Limpiar de la selección elementos que ya no existan
+        const currentValidSlugs = new Set(allTools.map(t => t.slug));
+        for (const s of Array.from(selectedSlugs)) {
+          if (!currentValidSlugs.has(s)) selectedSlugs.delete(s);
+        }
+        updateBatchBar();
         await fetchAiStatus();
         await fetchAuthorProfiles();
         switchSection(currentSection);
@@ -2316,14 +2498,26 @@
           `;
         }
 
+        // Estado de selección del card para acciones por lotes
+        const isCardSelected = selectedSlugs.has(tool.slug);
+        const cardSelectionRing = isCardSelected ? 'ring-2 ring-sky-500 shadow-lg shadow-sky-950/60 bg-sky-950/20' : '';
+
         return `
-          <div class="bg-gradient-to-b ${catTheme.bgTint} border ${catTheme.border} border-t-2 ${catTheme.topBorder} transition-all duration-200 rounded-2xl flex flex-row items-stretch group shadow-sm hover:shadow-xl relative overflow-hidden">
+          <div class="bg-gradient-to-b ${catTheme.bgTint} border ${catTheme.border} ${cardSelectionRing} border-t-2 ${catTheme.topBorder} transition-all duration-200 rounded-2xl flex flex-row items-stretch group shadow-sm hover:shadow-xl relative overflow-hidden">
             ${apartadoVerticalBarHtml}
             <div class="p-4 flex flex-col justify-between flex-1 min-w-0">
               <div>
                 <div class="flex items-start justify-between gap-2 mb-2">
                   <div class="min-w-0">
                     <div class="flex items-center gap-1.5 flex-wrap mb-1">
+                      <label class="inline-flex items-center cursor-pointer mr-0.5" title="Seleccionar para acciones por lotes" onclick="event.stopPropagation();">
+                        <input 
+                          type="checkbox" 
+                          onchange="toggleSelectTool('${tool.slug}', this.checked)" 
+                          ${isCardSelected ? 'checked' : ''} 
+                          class="w-3.5 h-3.5 rounded border-slate-700 bg-slate-950 text-sky-500 focus:ring-0 cursor-pointer accent-sky-500" 
+                        />
+                      </label>
                       <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-bold tracking-wider uppercase border ${catTheme.badge}">
                         <span class="w-1.5 h-1.5 rounded-full ${catTheme.dot}"></span>
                         <span>${fm.category || 'Other'}</span>
@@ -2368,7 +2562,7 @@
                   <option value="archived" ${fm.status === 'archived' ? 'selected' : ''}>⚪ Archivado</option>
                 </select>
 
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-1.5">
                   ${fm.date_added ? `
                     <span class="text-[10px] ${catTheme.dateColor} font-mono flex items-center gap-1" title="Añadido: ${fm.date_added}">
                       <i data-lucide="calendar" class="w-2.5 h-2.5 opacity-75"></i>
@@ -2376,8 +2570,32 @@
                     </span>
                   ` : ''}
 
+                  <!-- Edit Button -->
+                  <button 
+                    type="button" 
+                    onclick="openEditToolModal('${tool.slug}')" 
+                    class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-amber-300 transition" 
+                    title="Editar ficha y metadatos"
+                  >
+                    <i data-lucide="pencil" class="w-3 h-3 text-amber-400"></i>
+                  </button>
+
+                  <!-- Delete Button -->
+                  <button 
+                    type="button" 
+                    onclick="deleteSingleTool('${tool.slug}')" 
+                    class="p-1.5 rounded-lg bg-slate-800 hover:bg-rose-950/60 text-slate-300 hover:text-rose-400 transition" 
+                    title="Eliminar ficha de disco"
+                  >
+                    <i data-lucide="trash-2" class="w-3 h-3 text-rose-400"></i>
+                  </button>
+
                   <!-- Open Note Button -->
-                  <button onclick="openNoteModal('${tool.slug}')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1.5 transition">
+                  <button 
+                    type="button" 
+                    onclick="openNoteModal('${tool.slug}')" 
+                    class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1.5 transition"
+                  >
                     <i data-lucide="file-text" class="w-3 h-3 text-sky-400"></i>
                     <span>Ver Ficha</span>
                   </button>
@@ -2389,6 +2607,264 @@
       }).join('');
 
       lucide.createIcons();
+    }
+
+    function toggleSelectTool(slug, isChecked) {
+      if (isChecked) {
+        selectedSlugs.add(slug);
+      } else {
+        selectedSlugs.delete(slug);
+      }
+      updateBatchBar();
+      renderTools();
+    }
+
+    function toggleSelectAllVisible() {
+      const visible = getFilteredTools();
+      if (visible.length === 0) return;
+
+      const allVisibleSelected = visible.every(t => selectedSlugs.has(t.slug));
+      if (allVisibleSelected) {
+        visible.forEach(t => selectedSlugs.delete(t.slug));
+      } else {
+        visible.forEach(t => selectedSlugs.add(t.slug));
+      }
+      updateBatchBar();
+      renderTools();
+    }
+
+    function selectAllVisibleTools() {
+      const visible = getFilteredTools();
+      visible.forEach(t => selectedSlugs.add(t.slug));
+      updateBatchBar();
+      renderTools();
+    }
+
+    function clearSelectedTools() {
+      selectedSlugs.clear();
+      updateBatchBar();
+      renderTools();
+    }
+
+    function updateBatchBar() {
+      const bar = document.getElementById('batchActionBar');
+      const countEl = document.getElementById('batchSelectedCount');
+      const textEl = document.getElementById('batchDeleteBtnText');
+      const batchBtn = document.getElementById('batchSelectAllBtnText');
+
+      const count = selectedSlugs.size;
+      if (count > 0) {
+        if (bar) bar.classList.remove('hidden');
+        if (countEl) countEl.innerText = count;
+        if (textEl) textEl.innerText = count === 1 ? 'Eliminar 1 seleccionada' : `Eliminar ${count} seleccionadas`;
+        if (batchBtn) batchBtn.innerText = `${count} seleccionadas`;
+      } else {
+        if (bar) bar.classList.add('hidden');
+        if (batchBtn) batchBtn.innerText = 'Seleccionar varios';
+      }
+      lucide.createIcons();
+    }
+
+    async function deleteSingleTool(slug) {
+      const tool = allTools.find(t => t.slug === slug);
+      const name = tool ? tool.frontmatter.name : slug;
+
+      if (isStaticMode) {
+        alert('💡 Modo Lectura (GitHub Pages):\nPara eliminar fichas de tu disco, corre la aplicación localmente con "npm run dev".');
+        return;
+      }
+
+      const confirmed = confirm(`¿Estás seguro de que deseas eliminar permanentemente la ficha:\n\n"${name}"?\n\nEsta acción borrará el archivo Markdown de tu disco y actualizará el README.`);
+      if (!confirmed) return;
+
+      try {
+        const res = await fetch(`/api/tools/${slug}`, {
+          method: 'DELETE',
+        });
+        const data = await res.json();
+        if (data.success) {
+          selectedSlugs.delete(slug);
+          updateBatchBar();
+          if (activeEditingSlug === slug) {
+            closeNoteModal();
+          }
+          await fetchTools();
+          alert(`🗑️ Ficha "${name}" eliminada correctamente.`);
+        } else {
+          alert('Error al eliminar: ' + (data.error || 'Desconocido'));
+        }
+      } catch (err) {
+        alert('Error de conexión con el servidor al intentar eliminar la ficha.');
+      }
+    }
+
+    async function deleteBatchSelectedTools() {
+      const count = selectedSlugs.size;
+      if (count === 0) return;
+
+      if (isStaticMode) {
+        alert('💡 Modo Lectura (GitHub Pages):\nPara eliminar fichas de tu disco, corre la aplicación localmente con "npm run dev".');
+        return;
+      }
+
+      const confirmed = confirm(`⚠️ ¿Estás seguro de que deseas eliminar permanentemente las ${count} fichas seleccionadas?\n\nEsta acción borrará los archivos Markdown de tu disco y actualizará el README. No se puede deshacer.`);
+      if (!confirmed) return;
+
+      const slugsToDelete = Array.from(selectedSlugs);
+      const btn = document.getElementById('batchDeleteBtn');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i><span>Eliminando ${count}...</span>`;
+        lucide.createIcons();
+      }
+
+      try {
+        const res = await fetch('/api/tools/batch-delete', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slugs: slugsToDelete }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          selectedSlugs.clear();
+          updateBatchBar();
+          await fetchTools();
+          alert(`🗑️ Se han eliminado ${data.deletedCount} fichas con éxito de tu catálogo.`);
+        } else {
+          alert('Error al eliminar por lotes: ' + (data.error || 'Desconocido'));
+        }
+      } catch (err) {
+        alert('Error de conexión al eliminar por lotes.');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = `<i data-lucide="trash-2" class="w-3.5 h-3.5"></i><span id="batchDeleteBtnText">Eliminar seleccionados</span>`;
+          lucide.createIcons();
+        }
+      }
+    }
+
+    function openEditToolModal(slug) {
+      if (!slug) slug = activeEditingSlug;
+      if (!slug) return;
+      const tool = allTools.find(t => t.slug === slug);
+      if (!tool) return;
+
+      const fm = tool.frontmatter || {};
+      document.getElementById('editToolSlug').value = slug;
+      document.getElementById('editToolName').value = fm.name || '';
+      document.getElementById('editToolUrl').value = fm.url || '';
+      document.getElementById('editToolSourceTweet').value = (fm.source_tweet && fm.source_tweet !== 'undefined' && fm.source_tweet !== 'null') ? fm.source_tweet : '';
+      document.getElementById('editToolCategory').value = fm.category || 'Other';
+      document.getElementById('editToolStatus').value = fm.status || 'to_try';
+      document.getElementById('editToolTags').value = (fm.tags || []).join(', ');
+      document.getElementById('editToolAuthor').value = fm.author || '';
+      document.getElementById('editToolAuthorHandle').value = fm.author_handle || '';
+      document.getElementById('editToolContent').value = tool.content || '';
+
+      const itemSec = getItemSection(tool);
+      const jobFields = document.getElementById('editToolJobFields');
+      const prodFields = document.getElementById('editToolProductFields');
+
+      if (itemSec === 'jobs') {
+        jobFields.classList.remove('hidden');
+        document.getElementById('editToolCompany').value = fm.company || '';
+        document.getElementById('editToolLocation').value = fm.location || '';
+        document.getElementById('editToolSalary').value = fm.salary || '';
+      } else {
+        jobFields.classList.add('hidden');
+      }
+
+      if (itemSec === 'products') {
+        prodFields.classList.remove('hidden');
+        document.getElementById('editToolProdCompany').value = fm.company || '';
+        document.getElementById('editToolPrice').value = fm.price || '';
+      } else {
+        prodFields.classList.add('hidden');
+      }
+
+      document.getElementById('editModalSubtitle').innerText = `Editando: "${fm.name || slug}"`;
+      document.getElementById('editToolModal').classList.remove('hidden');
+      document.getElementById('editToolName').focus();
+    }
+
+    function closeEditToolModal() {
+      document.getElementById('editToolModal').classList.add('hidden');
+    }
+
+    async function handleEditToolSubmit(event) {
+      event.preventDefault();
+      const slug = document.getElementById('editToolSlug').value;
+      if (!slug) return;
+
+      if (isStaticMode) {
+        alert('💡 Modo Lectura (GitHub Pages):\nPara guardar cambios en los archivos de tu disco, corre la aplicación localmente con "npm run dev".');
+        return;
+      }
+
+      const name = document.getElementById('editToolName').value.trim();
+      const url = document.getElementById('editToolUrl').value.trim();
+      const source_tweet = document.getElementById('editToolSourceTweet').value.trim();
+      const category = document.getElementById('editToolCategory').value;
+      const status = document.getElementById('editToolStatus').value;
+      const rawTags = document.getElementById('editToolTags').value;
+      const tags = rawTags.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
+      const author = document.getElementById('editToolAuthor').value.trim();
+      const author_handle = document.getElementById('editToolAuthorHandle').value.trim().replace(/^@/, '');
+      const notes = document.getElementById('editToolContent').value;
+
+      const tool = allTools.find(t => t.slug === slug);
+      const itemSec = tool ? getItemSection(tool) : 'tools';
+
+      const payload = {
+        name,
+        url,
+        source_tweet: source_tweet || undefined,
+        category,
+        status,
+        tags,
+        author: author || undefined,
+        author_handle: author_handle || undefined,
+        notes,
+      };
+
+      if (itemSec === 'jobs') {
+        payload.company = document.getElementById('editToolCompany').value.trim() || undefined;
+        payload.location = document.getElementById('editToolLocation').value.trim() || undefined;
+        payload.salary = document.getElementById('editToolSalary').value.trim() || undefined;
+      } else if (itemSec === 'products') {
+        payload.company = document.getElementById('editToolProdCompany').value.trim() || undefined;
+        payload.price = document.getElementById('editToolPrice').value.trim() || undefined;
+      }
+
+      const btn = document.getElementById('editToolSubmitBtn');
+      btn.disabled = true;
+      btn.innerHTML = `<i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i><span>Guardando...</span>`;
+      lucide.createIcons();
+
+      try {
+        const res = await fetch(`/api/tools/${slug}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (data.success) {
+          closeEditToolModal();
+          await fetchTools();
+          if (activeEditingSlug === slug) {
+            openNoteModal(slug);
+          }
+          alert('✅ Ficha actualizada y sincronizada en disco.');
+        } else {
+          alert('Error al actualizar: ' + (data.error || 'Desconocido'));
+        }
+      } catch (err) {
+        alert('Error de conexión al guardar cambios.');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `<span>Guardar Cambios</span>`;
+      }
     }
 
     function escapeHtml(str) {
