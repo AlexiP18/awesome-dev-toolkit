@@ -1475,6 +1475,7 @@ export async function structureThreadStepsWithAI(
 ${rawText}
 """
 Extrae de manera estructurada cada uno de los pasos, prompts o recomendaciones encontrados.
+REGLA OBLIGATORIA: Descarta por completo cualquier tweet que sea publicidad, patrocinio, promoción de bases de datos de herramientas, cursos, newsletters o invitaciones a dar RT/seguir la cuenta. Solo extrae pasos o prompts técnicos útiles.
 Devuelve un array JSON de objetos donde cada elemento tenga:
 - "title": Título breve y numerado del paso (ej: "1) El diagnóstico de la conexión", "2) Los ladrones de ancho de banda", etc.)
 - "prompt": El texto exacto del prompt o comando entre comillas para copiar y pegar. Si no es un prompt exacto, el contenido central.

@@ -7,7 +7,7 @@ import { ingestResource } from '../pipeline/ingest.js';
 import { generateReadme } from '../pipeline/generate_readme.js';
 import { loadAllAuthorProfiles, analyzeAuthorWithAI } from '../pipeline/author_manager.js';
 import { getActivePrimaryProviderName, getConfiguredProvidersList, structureThreadStepsWithAI } from '../pipeline/ai_providers.js';
-import { fetchTweetDetailsFromX } from '../pipeline/twitter_scraper.js';
+import { fetchTweetDetailsFromX, fetchThreadTweetsFromX } from '../pipeline/twitter_scraper.js';
 import { classifyToolsWithGemini } from '../pipeline/gemini.js';
 import fs from 'fs';
 
@@ -235,13 +235,21 @@ app.post('/api/tools/:slug/thread', async (req, res) => {
     }
 
     let inputContent = rawText.trim();
-    // Si el usuario pegó una URL de X o tweet, intentar obtener automáticamente su texto
+    // Si el usuario pegó una URL de X o tweet, desenrollar automáticamente el hilo completo sin publicidad
     const xMatch = inputContent.match(/https?:\/\/(?:x|twitter)\.com\/(?:[a-zA-Z0-9_]+\/)?status\/\d+/i);
     if (xMatch) {
-      console.log(`[Thread API] 🐦 Obteniendo contenido de tweet adicional: ${xMatch[0]}...`);
-      const fetched = await fetchTweetDetailsFromX(xMatch[0]);
-      if (fetched && fetched.text) {
-        inputContent = `${inputContent}\n\n${fetched.text}`;
+      console.log(`[Thread API] 🐦 Obteniendo hilo completo de X: ${xMatch[0]}...`);
+      const threadRes = await fetchThreadTweetsFromX(xMatch[0], tool.frontmatter.author_handle);
+      if (threadRes && (threadRes.rootTweet || threadRes.threadTweets.length > 0)) {
+        const parts: string[] = [];
+        if (threadRes.rootTweet && !inputContent.includes(threadRes.rootTweet.text)) {
+          parts.push(threadRes.rootTweet.text);
+        }
+        for (const t of threadRes.threadTweets) {
+          parts.push(t.text);
+        }
+        inputContent = parts.join('\n\n');
+        console.log(`[Thread API] 🧵 Total tweets recopilados del hilo: ${parts.length}`);
       }
     }
 

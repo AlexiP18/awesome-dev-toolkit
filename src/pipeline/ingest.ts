@@ -12,7 +12,7 @@ import {
   findExistingTool,
   loadAllTools,
 } from './note_generator.js';
-import { fetchTweetDetailsFromX } from './twitter_scraper.js';
+import { fetchTweetDetailsFromX, fetchThreadTweetsFromX } from './twitter_scraper.js';
 import { ToolStatus, EntryType } from './types.js';
 
 dotenv.config();
@@ -56,19 +56,30 @@ export async function ingestResource(input: IngestInput) {
     input.sourceTweet = detectedTweetUrl;
   }
 
-  // Si tenemos URL de tweet y no hay texto o es muy breve, obtener automáticamente el contenido y autor desde X
-  if (detectedTweetUrl && (!text || text.length < 35)) {
-    console.log(`[Pipeline] 🐦 Obteniendo contenido de tweet desde X: ${detectedTweetUrl}...`);
-    const tweetDetails = await fetchTweetDetailsFromX(detectedTweetUrl);
-    if (tweetDetails) {
-      console.log(`[Pipeline] ✅ Contenido obtenido (${tweetDetails.authorName || tweetDetails.authorHandle}): ${tweetDetails.text.slice(0, 80)}...`);
-      text = text ? `${tweetDetails.text}\n\n${text}` : tweetDetails.text;
-      if (!input.author) {
-        input.author = tweetDetails.authorName || tweetDetails.authorHandle;
-      }
-      const tweetEmbeddedUrls = extractUrlsFromText(tweetDetails.text);
-      for (const u of tweetEmbeddedUrls) {
-        if (!candidateUrls.includes(u)) candidateUrls.push(u);
+  // Si tenemos URL de tweet, obtener automáticamente el contenido y autor desde X,
+  // y si es un hilo técnico o se solicita desenrollar, recopilar todos los tweets no promocionales
+  if (detectedTweetUrl) {
+    const isVeryShort = !text || text.length < 50;
+    const looksLikeThread = /hilo|thread|prompt|paso|consejo|guía|guia|\d\)/i.test(text || '');
+    if (isVeryShort || looksLikeThread) {
+      console.log(`[Pipeline] 🐦 Obteniendo hilo/contenido desde X: ${detectedTweetUrl}...`);
+      const threadResult = await fetchThreadTweetsFromX(detectedTweetUrl);
+      const rootTweet = threadResult.rootTweet;
+      if (rootTweet) {
+        if (!input.author) {
+          input.author = rootTweet.authorName || rootTweet.authorHandle;
+        }
+        let fullThreadText = rootTweet.text;
+        if (threadResult.threadTweets.length > 0) {
+          console.log(`[Pipeline] 🧵 Detectados ${threadResult.threadTweets.length} tweets del hilo (excluidos anuncios y publicidad).`);
+          const formattedSteps = threadResult.threadTweets.map((t, idx) => `[Paso / Tweet ${idx + 1}]:\n${t.text}`).join('\n\n');
+          fullThreadText = `${rootTweet.text}\n\n${formattedSteps}`;
+        }
+        text = text && !isVeryShort ? `${text}\n\n${fullThreadText}` : fullThreadText;
+        const tweetEmbeddedUrls = extractUrlsFromText(fullThreadText);
+        for (const u of tweetEmbeddedUrls) {
+          if (!candidateUrls.includes(u)) candidateUrls.push(u);
+        }
       }
     }
   }
