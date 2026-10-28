@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import { GoogleGenAI, Type } from '@google/genai';
 import { ClassificationResult, ToolCategory, EntryType } from './types.js';
 import { GitHubMetadata } from './github.js';
-import { isIgnoredNonToolUrl, cleanTrackingParams } from './link_resolver.js';
+import { isIgnoredNonToolUrl, cleanTrackingParams, WebPageMetadata } from './link_resolver.js';
 
 dotenv.config();
 
@@ -28,6 +28,7 @@ export interface ClassifyInput {
   urls: string[];
   sourceTweet?: string;
   githubMetas?: Record<string, GitHubMetadata>;
+  websiteMetas?: Record<string, WebPageMetadata>;
 }
 
 function buildUserPrompt(params: ClassifyInput): string {
@@ -40,6 +41,13 @@ function buildUserPrompt(params: ClassifyInput): string {
     )
     .join('\n');
 
+  const websiteInfoList = Object.entries(params.websiteMetas || {})
+    .map(
+      ([url, meta]) =>
+        `  * [${url}] -> Título: ${meta.title || 'N/A'}, Descripción web: ${meta.description || 'N/A'}`
+    )
+    .join('\n');
+
   return `
 Analiza el siguiente tweet o texto guardado para un Toolkit de Desarrolladores de Software:
 - Texto original del Tweet / Guardado:
@@ -48,14 +56,28 @@ ${params.rawText}
 """
 ${params.sourceTweet ? `- Tweet de origen: ${params.sourceTweet}\n` : ''}- Enlaces detectados y resueltos:
 ${params.urls.length > 0 ? params.urls.map((u) => `  * ${u}`).join('\n') : '  (Ninguno explícito, infiérelos del texto si aparecen dominios como sitio.com, herramienta.io, etc.)'}
-${githubInfoList ? `- Metadata de GitHub:\n${githubInfoList}` : ''}
-
+${githubInfoList ? `- Metadata de GitHub:\n${githubInfoList}\n` : ''}${websiteInfoList ? `- Metadata de Sitios Web / Documentación Oficial:\n${websiteInfoList}\n` : ''}
 GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
 
-1. TWEETS TIPO LISTA O RECOPILACIÓN (Múltiples herramientas):
-   - Si el tweet numera o agrupa varias herramientas distintas (ej: "1. Superdesign Skill github.com/... 2. Better Design ... 3. Design Taste ..."):
+1. TWEETS TIPO LISTA O RECOPILACIÓN (Múltiples herramientas y recursos):
+   - Si el tweet numera o agrupa varias herramientas o recursos distintos (ej: "6 free developer resources worth bookmarking...", "5 librerías de UI...", "1. ... 2. ..."):
    - DEBES extraer y devolver CADA UNA de las herramientas como un objeto independiente dentro del arreglo JSON 'tools'.
-   - Asocia a cada herramienta su URL correspondiente (web oficial o repositorio de GitHub).
+   - Asocia a cada herramienta su URL canónica correspondiente (repositorio de GitHub si existe, o su sitio web oficial).
+   - REGLA ESTRICTA DE CATEGORIZACIÓN INDEPENDIENTE (PROHIBIDO CATEGORÍA GENÉRICA COMÚN):
+     * NUNCA asignes a todas las herramientas la categoría del tweet o una categoría genérica/vaga (como "Documentation & Resources", "Consejos & Buenas Prácticas" u "Other").
+     * Cada herramienta DEBE ser evaluada y clasificada individualmente en su categoría técnica especializada correspondiente según su función real:
+       • "Frontend & UI": Bibliotecas de componentes React/Vue/Svelte/Web Components, UI kits, librerías de diseño, iconotecas, CSS/Tailwind, animaciones, motion y galerías de inspiración web (ej. beui.dev, iconaut.design, minimal.gallery).
+       • "AI & Machine Learning": Sistemas de memoria para agentes, skills para codificación asistida por IA, frameworks de agentes LLM, motores de inferencia, RAG, modelos y prompts de ingeniería (ej. claude-mem, agent-skills, vLLM, Ollama).
+       • "Productivity & Tools": Monitoreo y analítica para desarrolladores, métricas de tokens/costes, extensiones de productividad, utilidades para devs (ej. usagerank.com, raycast, launchers).
+       • "CLI & Terminal": Herramientas de línea de comandos, interfaces TUI, atajos de terminal, utilidades para bash/zsh o git (ej. lazygit, uv, ripgrep).
+       • "Backend & APIs": Frameworks de servidor, pasarelas de API, microservicios, autenticación backend, routing HTTP.
+       • "Databases & Storage": Bases de datos relacionales, vectoriales, NoSQL, ORMs, cachés, sistemas de archivos.
+       • "DevOps & Cloud": Docker, Kubernetes, CI/CD, despliegue, infraestructura como código, observabilidad en la nube.
+       • Reserva "Documentation & Resources" ÚNICA Y EXCLUSIVAMENTE para recursos que sean estrictamente libros, listas curadas de lectura o tutoriales estáticos que NO sean herramientas de software ni bibliotecas ejecutables.
+   - REGLA ESTRICTA DE DESCRIPCIÓN RICA E INDEPENDIENTE (PROHIBIDO DESCRIPCIONES COPIADAS O VACÍAS):
+     * Cada herramienta DEBE tener su propio 'oneLiner' técnico y específico en español (mínimo 10-15 palabras), explicando exactamente qué hace la herramienta, con qué tecnologías funciona y por qué es valiosa para un desarrollador. PROHIBIDO repetir el título del tweet o usar frases genéricas como "Recurso gratuito para desarrolladores".
+     * 'keyHighlights': 2 a 4 características técnicas distintivas de ESA herramienta en particular (ej. tecnologías soportadas, formato de exportación, comandos CLI, integración con frameworks).
+     * 'recommendedNotes': Caso de uso práctico directo de cuándo y para qué utilizarla en proyectos reales.
 
 2. TWEETS EXPLICATIVOS CON ENLACE (Showcases técnicos):
    - Si el tweet detalla y explica las bondades o arquitectura de un proyecto con su enlace (ej: "DeepSeek acaba de liberar DeepInfer... motor de inferencia de producción... licencia Apache 2.0 -> github.com/..."):

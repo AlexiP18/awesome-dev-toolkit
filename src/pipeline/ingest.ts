@@ -4,6 +4,8 @@ import {
   resolveUrl,
   isIgnoredNonToolUrl,
   expandTruncatedGitHubUrls,
+  fetchWebPageMetadata,
+  WebPageMetadata,
 } from './link_resolver.js';
 import { fetchGitHubRepoMetadata, GitHubMetadata } from './github.js';
 import { classifyToolsWithGemini } from './gemini.js';
@@ -193,14 +195,16 @@ export async function ingestResource(input: IngestInput) {
     }
   }
 
-  // 3. Fetch GitHub metadata for any GitHub repos in parallel (only for non-existing URLs)
+  // 3. Fetch GitHub metadata for repos and Website metadata for web apps/tools in parallel
   const githubMetas: Record<string, GitHubMetadata> = {};
+  const websiteMetas: Record<string, WebPageMetadata> = {};
+
   await Promise.all(
     resolvedList.map(async (res) => {
-      if (res.isGitHub && res.githubOwner && res.githubRepo) {
-        const alreadyThere = findExistingTool({ url: res.finalUrl }, existingTools);
-        if (alreadyThere) return;
+      const alreadyThere = findExistingTool({ url: res.finalUrl }, existingTools);
+      if (alreadyThere) return;
 
+      if (res.isGitHub && res.githubOwner && res.githubRepo) {
         console.log(
           `[Pipeline] Consultando GitHub API para ${res.githubOwner}/${res.githubRepo}...`
         );
@@ -211,6 +215,11 @@ export async function ingestResource(input: IngestInput) {
         );
         if (meta) {
           githubMetas[res.finalUrl] = meta;
+        }
+      } else if (!res.isGitHub && res.finalUrl && res.finalUrl.startsWith('http')) {
+        const webMeta = await fetchWebPageMetadata(res.finalUrl);
+        if (webMeta) {
+          websiteMetas[res.finalUrl] = webMeta;
         }
       }
     })
@@ -224,6 +233,7 @@ export async function ingestResource(input: IngestInput) {
       urls: canonicalUrls,
       sourceTweet: input.sourceTweet,
       githubMetas,
+      websiteMetas,
     },
     input.aiProvider
   );

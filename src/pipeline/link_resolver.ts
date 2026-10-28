@@ -85,8 +85,8 @@ export function extractUrlsFromText(text: string): string[] {
     }
   }
 
-  // 3. Dominios y repositorios sin protocolo (ej: github.com/user/repo, adcode.bluethenics.com, jiro.build)
-  const domainRegex = /\b(?:github\.com|gitlab\.com|[a-zA-Z0-9-]+\.(?:com|io|dev|app|org|net|co|ai|build|sh|so|tech|tools|site|design|website))\b(?:\/[^\s<>"'()]*)?/gi;
+  // 3. Dominios y repositorios sin protocolo (ej: github.com/user/repo, adcode.bluethenics.com, jiro.build, minimal.gallery)
+  const domainRegex = /\b(?:github\.com|gitlab\.com|[a-zA-Z0-9-]+\.(?:com|io|dev|app|org|net|co|ai|build|sh|so|tech|tools|site|design|website|gallery|me|xyz|space|cloud|cc|link|page|run|studio|guide|work|pro|network|systems|software|is))\b(?:\/[^\s<>"'()]*)?/gi;
   const domainMatches = text.match(domainRegex) || [];
   for (const match of domainMatches) {
     // Descartar enlaces truncados visualmente por X/Twitter (ej. "github.com/diegosouzapw/O..." o "…")
@@ -189,8 +189,62 @@ export async function resolveUrl(rawUrl: string, timeoutMs = 6000): Promise<Reso
   };
 }
 
+export interface WebPageMetadata {
+  url: string;
+  title?: string;
+  description?: string;
+}
+
 /**
- * Busca en el texto enlaces de GitHub truncados visualmente por X (ej. "github.com/HKUDS/Vibe-Tra..." o "github.com/The-Swarm-Corp…")
+ * Extrae metadatos esenciales (título HTML y meta description u og:description)
+ * de páginas web de herramientas para alimentar a los modelos de IA con contexto rico.
+ */
+export async function fetchWebPageMetadata(url: string, timeoutMs = 4500): Promise<WebPageMetadata | null> {
+  if (!url || !url.startsWith('http')) return null;
+  if (url.includes('github.com') || url.includes('gitlab.com') || isIgnoredNonToolUrl(url)) {
+    return null;
+  }
+
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+    const res = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        'User-Agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      },
+    });
+    clearTimeout(timer);
+
+    if (!res.ok) return null;
+    const html = await res.text();
+
+    const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
+    let title = titleMatch ? titleMatch[1].replace(/\s+/g, ' ').trim() : undefined;
+    if (title && title.length > 120) title = title.slice(0, 120) + '...';
+
+    const descMatch =
+      html.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)["']/i) ||
+      html.match(/<meta[^>]*property=["']og:description["'][^>]*content=["']([^"']+)["']/i) ||
+      html.match(/<meta[^>]*content=["']([^"']+)["'][^>]*name=["']description["']/i);
+
+    let description = descMatch ? descMatch[1].replace(/\s+/g, ' ').trim() : undefined;
+    if (description && description.length > 300) {
+      description = description.slice(0, 300) + '...';
+    }
+
+    if (!title && !description) return null;
+    return { url, title, description };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Busca en el texto enlaces de GitHub truncados visualmente por X (ej. "github.com/HKUDS/Vibe-Tra..." o "github.com/addyosmani/age...")
  * y los reemplaza por las URLs completas resueltas desde t.co o buscando en la API de GitHub con el contexto del tweet.
  */
 export async function expandTruncatedGitHubUrls(
@@ -207,26 +261,29 @@ export async function expandTruncatedGitHubUrls(
   const matches = Array.from(text.matchAll(truncatedRegex));
 
   for (const m of matches) {
-    const fullTruncatedToken = m[0]; // ej. "github.com/HKUDS/Vibe-Tra..."
-    const rawPrefix = m[1].startsWith('http') ? m[1] : `https://${m[1]}`; // ej. "https://github.com/HKUDS/Vibe-Tra"
-    const ownerPart = m[2]; // ej. "HKUDS" o "The-Swarm-Corp"
-    const repoPart = m[3] || ''; // ej. "Vibe-Tra" o ""
+    const fullTruncatedToken = m[0]; // ej. "github.com/addyosmani/age..."
+    const rawPrefix = m[1].startsWith('http') ? m[1] : `https://${m[1]}`; // ej. "https://github.com/addyosmani/age"
+    const ownerPart = m[2]; // ej. "addyosmani"
+    const repoPart = m[3] || ''; // ej. "age"
 
     // 1. ¿Ya tenemos la URL completa resuelta desde t.co en knownResolvedUrls?
     let resolvedFull = knownResolvedUrls.find((u) =>
       u.toLowerCase().startsWith(rawPrefix.toLowerCase())
     );
 
-    // 2. Si no estaba en knownResolvedUrls, intentar reconstruir con el nombre mencionado justo antes en el texto
-    // (ej: "2. vibe-trading -> ...\ngithub.com/HKUDS/Vibe-Tra...")
+    // 2. Si no estaba en knownResolvedUrls, intentar reconstruir analizando el contexto de la línea
     if (!resolvedFull) {
       const idx = m.index ?? 0;
       const precedingContext = text.slice(Math.max(0, idx - 180), idx);
-      // Buscar el nombre de herramienta en la línea previa (ej: "1. autohedge ->", "2. vibe-trading ->")
+      const afterText = text.slice(idx + fullTruncatedToken.length, idx + fullTruncatedToken.length + 160);
+      const sameLineAfter = afterText.split('\n')[0].replace(/^[\s\-–—:→>|•*]+/, '').trim();
+
+      // Buscar nombres de herramienta previos o posteriores en la misma línea
       const toolNameMatches = Array.from(
         precedingContext.matchAll(/(?:^|\n)\s*(?:\d+[.)]\s*|[•*-]\s*)?([a-zA-Z0-9_.-]+(?:\s+[a-zA-Z0-9_.-]+)?)\s*(?:→|->|:|-|—)/g)
       );
       const lastToolName = toolNameMatches.length > 0 ? toolNameMatches[toolNameMatches.length - 1][1].trim() : '';
+      const contextKeywords = `${lastToolName} ${sameLineAfter}`.trim();
 
       const headers: Record<string, string> = {
         Accept: 'application/vnd.github.v3+json',
@@ -234,7 +291,7 @@ export async function expandTruncatedGitHubUrls(
       };
       if (githubToken) headers.Authorization = `Bearer ${githubToken}`;
 
-      // 2a. Si tenemos owner completo y repoPart es prefijo del nombre de herramienta (ej. owner="HKUDS", repoPart="Vibe-Tra", lastToolName="vibe-trading")
+      // 2a. Si tenemos owner completo y repoPart es prefijo del nombre de herramienta
       if (
         repoPart &&
         lastToolName &&
@@ -252,25 +309,47 @@ export async function expandTruncatedGitHubUrls(
         }
       }
 
-      // 2b. Buscar en GitHub Search API combinando el prefijo y el nombre de la herramienta
+      // 2b. Buscar repositorios del usuario en GitHub API combinando el prefijo de repo y keywords
       if (!resolvedFull) {
-        const cleanTool = lastToolName.replace(/\s+/g, '-');
         const query = repoPart
-          ? `${cleanTool || repoPart} user:${ownerPart}`
-          : `${cleanTool || ownerPart} in:name`;
+          ? `user:${ownerPart} ${repoPart}`
+          : contextKeywords
+          ? `${contextKeywords} user:${ownerPart}`
+          : `user:${ownerPart}`;
+
         try {
           const searchRes = await fetch(
-            `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&per_page=5`,
+            `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&per_page=10`,
             { headers }
           );
           if (searchRes.ok) {
-            const searchData = (await searchRes.json()) as { items?: Array<{ html_url: string; full_name: string }> };
-            const matchItem =
-              searchData.items?.find((item) =>
-                item.html_url.toLowerCase().startsWith(rawPrefix.toLowerCase())
-              ) || (repoPart ? searchData.items?.[0] : undefined);
-            if (matchItem?.html_url) {
-              resolvedFull = matchItem.html_url;
+            const searchData = (await searchRes.json()) as {
+              items?: Array<{ html_url: string; full_name: string; name: string; description?: string }>;
+            };
+            const items = searchData.items || [];
+
+            // Buscar item que empiece exactamente con rawPrefix
+            let candidate = items.find((item) =>
+              item.html_url.toLowerCase().startsWith(rawPrefix.toLowerCase())
+            );
+
+            // Si hay varios candidatos por prefijo, desempatar usando keywords del contexto (ej: "AI coding workflows")
+            if (!candidate && repoPart) {
+              const prefixMatches = items.filter((i) => i.name.toLowerCase().startsWith(repoPart.toLowerCase()));
+              if (prefixMatches.length === 1) {
+                candidate = prefixMatches[0];
+              } else if (prefixMatches.length > 1 && contextKeywords) {
+                const words = contextKeywords.toLowerCase().split(/\s+/).filter((w) => w.length > 2);
+                candidate =
+                  prefixMatches.find((i) => {
+                    const combined = `${i.name} ${i.description || ''}`.toLowerCase();
+                    return words.some((w) => combined.includes(w));
+                  }) || prefixMatches[0];
+              }
+            }
+
+            if (candidate?.html_url) {
+              resolvedFull = candidate.html_url;
             }
           }
         } catch {
@@ -280,6 +359,7 @@ export async function expandTruncatedGitHubUrls(
     }
 
     if (resolvedFull) {
+      console.log(`[Pipeline] 🔗 Enlace truncado expandido exitosamente: ${fullTruncatedToken} -> ${resolvedFull}`);
       cleanedText = cleanedText.replace(fullTruncatedToken, resolvedFull);
       if (!expandedUrls.some((u) => u.toLowerCase() === resolvedFull!.toLowerCase())) {
         expandedUrls.push(resolvedFull);
