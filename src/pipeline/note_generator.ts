@@ -164,8 +164,15 @@ export function createOrUpdateToolNote(
       /\/status\/\d{10,}/.test(params.sourceTweet) &&
       duplicate.frontmatter.source_tweet !== params.sourceTweet
     );
+    const hasNewThreadPrompts = Boolean(
+      params.classification.keyHighlights.some((h) => h.includes('###') || h.includes('```')) &&
+      (!duplicate.content.includes('```') ||
+        duplicate.content.includes('Pendiente de recopilar') ||
+        (duplicate.content.match(/###\s+/g) || []).length <
+          params.classification.keyHighlights.filter((h) => h.includes('###')).length)
+    );
 
-    if (!isDupBroken && !hasNewValidTweet) {
+    if (!isDupBroken && !hasNewValidTweet && !hasNewThreadPrompts) {
       console.log(
         `[Deduplicación] ⏭️ La herramienta "${duplicate.frontmatter.name}" (${duplicate.frontmatter.url}) ya existe en ${duplicate.slug}.md. Se omite para no duplicar.`
       );
@@ -176,7 +183,7 @@ export function createOrUpdateToolNote(
       };
     }
     console.log(
-      `[Deduplicación] 🔄 Reparando/actualizando nota existente: "${duplicate.frontmatter.name}" (${params.classification.canonicalUrl})`
+      `[Deduplicación] 🔄 Reparando/actualizando nota existente con nuevos datos: "${duplicate.frontmatter.name}" (${params.classification.canonicalUrl})`
     );
   }
 
@@ -229,7 +236,15 @@ export function createOrUpdateToolNote(
   };
 
   const highlightsMd = params.classification.keyHighlights.length
-    ? params.classification.keyHighlights.map((h) => `- ${h}`).join('\n')
+    ? params.classification.keyHighlights
+        .map((h) => {
+          const trimmed = h.trim();
+          if (trimmed.startsWith('###') || trimmed.includes('```')) {
+            return trimmed;
+          }
+          return `- ${trimmed}`;
+        })
+        .join('\n\n')
     : '- Recurso guardado para evaluación técnica.';
 
   const promoBlock = frontmatter.has_academic_promo

@@ -291,7 +291,7 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
     // Doble validación: Si la URL resultante es un enlace social/comunitario ignorado (ej. Telegram), reemplazarlo
     if (isIgnoredNonToolUrl(url)) {
       const validCandidate = urls.find((u) => !isIgnoredNonToolUrl(u));
-      url = validCandidate || '';
+      url = validCandidate || sourceTweet || urls[0] || url;
     }
 
     // Si la URL elegida no es GitHub pero el websiteUrl sí es GitHub, invertirlos para que GitHub sea canonicalUrl
@@ -1533,6 +1533,20 @@ Devuelve un array JSON de objetos donde cada elemento tenga:
 
   return rawText
     .split(/\n\s*\n/)
-    .map((chunk, idx) => ({ title: `Paso ${idx + 1}`, prompt: chunk.trim() }))
+    .map((chunk, idx) => {
+      let clean = chunk.replace(/^\[Paso\s*(?:\/\s*Tweet)?\s*\d+\]:\s*/i, '').trim();
+      const titleMatch = clean.match(/^(\d+[.)\-:]\s*[^"\n\r]{3,60}?)(?:\s*["“”]([\s\S]+?)["“”]|\n|$)/);
+      if (titleMatch) {
+        const title = titleMatch[1].trim();
+        const prompt = titleMatch[2]
+          ? titleMatch[2].trim()
+          : clean.slice(title.length).replace(/^[\s:–—"“”]+/, '').trim();
+        return {
+          title,
+          prompt: prompt || clean,
+        };
+      }
+      return { title: `Paso ${idx + 1}`, prompt: clean };
+    })
     .filter((s) => Boolean(s.prompt));
 }

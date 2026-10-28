@@ -15,6 +15,7 @@ import {
   loadAllTools,
 } from './note_generator.js';
 import { fetchTweetDetailsFromX, fetchThreadTweetsFromX } from './twitter_scraper.js';
+import { structureThreadStepsWithAI } from './ai_providers.js';
 import { ToolStatus, EntryType } from './types.js';
 
 dotenv.config();
@@ -58,30 +59,32 @@ export async function ingestResource(input: IngestInput) {
     input.sourceTweet = detectedTweetUrl;
   }
 
+  let extractedThreadResult: {
+    rootTweet?: any;
+    threadTweets: Array<{ id: string; text: string; url: string }>;
+  } | null = null;
+
   // Si tenemos URL de tweet, obtener automáticamente el contenido y autor desde X,
-  // y si es un hilo técnico o se solicita desenrollar, recopilar todos los tweets no promocionales
+  // y recopilar todos los tweets del hilo no promocionales
   if (detectedTweetUrl) {
-    const isVeryShort = !text || text.length < 50;
-    const looksLikeThread = /hilo|thread|prompt|paso|consejo|guía|guia|\d\)/i.test(text || '');
-    if (isVeryShort || looksLikeThread) {
-      console.log(`[Pipeline] 🐦 Obteniendo hilo/contenido desde X: ${detectedTweetUrl}...`);
-      const threadResult = await fetchThreadTweetsFromX(detectedTweetUrl);
-      const rootTweet = threadResult.rootTweet;
-      if (rootTweet) {
-        if (!input.author) {
-          input.author = rootTweet.authorName || rootTweet.authorHandle;
-        }
-        let fullThreadText = rootTweet.text;
-        if (threadResult.threadTweets.length > 0) {
-          console.log(`[Pipeline] 🧵 Detectados ${threadResult.threadTweets.length} tweets del hilo (excluidos anuncios y publicidad).`);
-          const formattedSteps = threadResult.threadTweets.map((t, idx) => `[Paso / Tweet ${idx + 1}]:\n${t.text}`).join('\n\n');
-          fullThreadText = `${rootTweet.text}\n\n${formattedSteps}`;
-        }
-        text = text && !isVeryShort ? `${text}\n\n${fullThreadText}` : fullThreadText;
-        const tweetEmbeddedUrls = extractUrlsFromText(fullThreadText);
-        for (const u of tweetEmbeddedUrls) {
-          if (!candidateUrls.includes(u)) candidateUrls.push(u);
-        }
+    console.log(`[Pipeline] 🐦 Obteniendo hilo/contenido desde X: ${detectedTweetUrl}...`);
+    const threadResult = await fetchThreadTweetsFromX(detectedTweetUrl);
+    extractedThreadResult = threadResult;
+    const rootTweet = threadResult.rootTweet;
+    if (rootTweet) {
+      if (!input.author) {
+        input.author = rootTweet.authorName || rootTweet.authorHandle;
+      }
+      let fullThreadText = rootTweet.text;
+      if (threadResult.threadTweets.length > 0) {
+        console.log(`[Pipeline] 🧵 Detectados ${threadResult.threadTweets.length} tweets del hilo (excluidos anuncios y publicidad).`);
+        const formattedSteps = threadResult.threadTweets.map((t, idx) => `[Paso / Tweet ${idx + 1}]:\n${t.text}`).join('\n\n');
+        fullThreadText = `${rootTweet.text}\n\n${formattedSteps}`;
+      }
+      text = text ? `${text}\n\n${fullThreadText}` : fullThreadText;
+      const tweetEmbeddedUrls = extractUrlsFromText(fullThreadText);
+      for (const u of tweetEmbeddedUrls) {
+        if (!candidateUrls.includes(u)) candidateUrls.push(u);
       }
     }
   }
@@ -259,8 +262,48 @@ export async function ingestResource(input: IngestInput) {
       oneLiner: (text || '').slice(0, 160).replace(/\n/g, ' ').trim() || 'Publicación técnica o hilo recopilado.',
       keyHighlights: steps.length > 0 ? steps.slice(0, 8) : [(text || '').slice(0, 200)],
       recommendedNotes: 'Revisa los detalles completos y pasos en la ficha.',
-      entryType: input.entryType || 'tech_tip',
+      entryType: input.entryType === 'job_remote' || input.entryType === 'tech_product' ? input.entryType : 'tech_tip',
     });
+  }
+
+  // Si detectamos un hilo con múltiples tweets/prompts en X, estructurar cada paso/prompt
+  if (extractedThreadResult && extractedThreadResult.threadTweets.length > 0) {
+    const threadTarget = classifications.find((c) => c.entryType === 'tech_tip') || classifications[0];
+    if (threadTarget) {
+      console.log(`[Pipeline] 🤖 Estructurando ${extractedThreadResult.threadTweets.length} prompts/pasos del hilo con IA...`);
+      const threadTextToStructure = extractedThreadResult.threadTweets
+        .map((t, idx) => `[Paso / Tweet ${idx + 1}]:\n${t.text}`)
+        .join('\n\n');
+
+      try {
+        const structured = await structureThreadStepsWithAI(threadTarget.name, threadTextToStructure);
+        if (structured && structured.length > 0) {
+          threadTarget.keyHighlights = structured.map((s) => {
+            const promptBlock = s.prompt ? `\`\`\`text\n${s.prompt.trim()}\n\`\`\`` : '';
+            const descBlock = s.description ? `\n${s.description.trim()}` : '';
+            return `### ${s.title}\n${promptBlock}${descBlock}`.trim();
+          });
+        }
+      } catch (err: any) {
+        console.warn('[Pipeline] Error al estructurar prompts del hilo con IA:', err?.message || err);
+      }
+
+      // Fallback si la IA no produjo encabezados ###
+      if (
+        !threadTarget.keyHighlights ||
+        threadTarget.keyHighlights.length === 0 ||
+        !threadTarget.keyHighlights.some((h) => h.includes('###'))
+      ) {
+        threadTarget.keyHighlights = extractedThreadResult.threadTweets.map((t, idx) => {
+          return `### Paso ${idx + 1}\n\`\`\`text\n${t.text.trim()}\n\`\`\``;
+        });
+      }
+
+      if (threadTarget.entryType !== 'job_remote' && threadTarget.entryType !== 'tech_product') {
+        threadTarget.entryType = 'tech_tip';
+        threadTarget.category = 'Consejos & Buenas Prácticas';
+      }
+    }
   }
 
   // 4.5. Prioridad Determinística y Reconciliación con Repositorios Reales:
@@ -337,7 +380,7 @@ export async function ingestResource(input: IngestInput) {
       classification.canonicalUrl = input.sourceTweet || canonicalUrls[0] || explicitUrl || 'https://x.com';
     }
 
-    if (input.entryType) {
+    if (input.entryType && input.entryType !== 'tool') {
       classification.entryType = input.entryType;
       if (input.entryType === 'job_remote') {
         classification.category = 'Trabajo & Freelance';
@@ -348,6 +391,8 @@ export async function ingestResource(input: IngestInput) {
       } else if (input.entryType === 'product_showcase' && (!classification.category || classification.category === 'Other')) {
         classification.category = 'Empresas & Productos';
       }
+    } else if (!classification.entryType) {
+      classification.entryType = input.entryType || 'tool';
     }
   }
 

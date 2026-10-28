@@ -80,7 +80,7 @@ export async function fetchTweetDetailsFromX(tweetUrl: string, timeoutMs = 4500)
 export async function fetchThreadTweetsFromX(
   tweetUrl: string,
   authorHandle?: string,
-  timeoutMs = 8000
+  timeoutMs = 9000
 ): Promise<ExtractedThread> {
   const rootTweet = await fetchTweetDetailsFromX(tweetUrl, 4000);
   const match = tweetUrl.match(/https?:\/\/(?:x|twitter)\.com\/(?:([a-zA-Z0-9_]+)\/)?status\/(\d+)/i);
@@ -100,19 +100,25 @@ export async function fetchThreadTweetsFromX(
     const timer = setTimeout(() => controller.abort(), timeoutMs);
 
     const jinaUrl = `https://r.jina.ai/${tweetUrl}`;
+    // Usar 'Mozilla/5.0' simple para evitar 403 de Cloudflare/Jina
     const jinaRes = await fetch(jinaUrl, {
       signal: controller.signal,
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0',
+        Accept: 'text/plain',
       },
     });
     clearTimeout(timer);
 
     if (!jinaRes.ok) {
+      console.warn(`[Twitter API] Jina respondió con status ${jinaRes.status} para ${tweetUrl}`);
       return { rootTweet, threadTweets: [] };
     }
 
     const mdContent = await jinaRes.text();
+    const threadTweets: Array<{ id: string; text: string; url: string }> = [];
+
+    // Estrategia 1: Buscar enlaces de status directos en el contenido markdown
     const statusRegex = /https:\/\/(?:x|twitter)\.com\/([a-zA-Z0-9_]+)\/status\/(\d+)/gi;
     const threadStatusIds: string[] = [];
 
@@ -127,34 +133,62 @@ export async function fetchThreadTweetsFromX(
       }
     }
 
-    // Limitar para evitar sobrecargas accidentales (un hilo técnico estándar rara vez pasa de 15)
-    const candidateIds = threadStatusIds.slice(0, 15);
-    if (candidateIds.length === 0) {
-      return { rootTweet, threadTweets: [] };
-    }
+    if (threadStatusIds.length > 0) {
+      const candidateIds = threadStatusIds.slice(0, 15);
+      const fetchedResults = await Promise.allSettled(
+        candidateIds.map(async (id) => {
+          const single = await fetchTweetDetailsFromX(`https://x.com/i/status/${id}`, 3500);
+          return single;
+        })
+      );
 
-    // Traer en paralelo los tweets vía fxtwitter
-    const fetchedResults = await Promise.allSettled(
-      candidateIds.map(async (id) => {
-        const single = await fetchTweetDetailsFromX(`https://x.com/i/status/${id}`, 3500);
-        return single;
-      })
-    );
-
-    const threadTweets: Array<{ id: string; text: string; url: string }> = [];
-    for (const res of fetchedResults) {
-      if (res.status === 'fulfilled' && res.value && res.value.text) {
-        const tweetText = res.value.text.trim();
-        if (!isPromoTweet(tweetText)) {
-          threadTweets.push({
-            id: res.value.id,
-            text: tweetText,
-            url: res.value.url,
-          });
+      for (const res of fetchedResults) {
+        if (res.status === 'fulfilled' && res.value && res.value.text) {
+          const tweetText = res.value.text.trim();
+          if (!isPromoTweet(tweetText)) {
+            threadTweets.push({
+              id: res.value.id,
+              text: tweetText,
+              url: res.value.url,
+            });
+          }
         }
       }
     }
 
+    // Estrategia 2 (Respaldo robusto): Si los IDs de status no aparecieron o fallaron,
+    // extraer directamente los bloques de texto de los tweets del autor en el markdown de Jina
+    if (threadTweets.length === 0 && targetHandle) {
+      const escapedHandle = targetHandle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const avatarSplitRegex = new RegExp(`\\[\\!\\[Image \\d+:[^\\]]*\\]\\([^)]+\\)\\]\\(https?:\\/\\/x\\.com\\/${escapedHandle}\\)`, 'gi');
+      const chunks = mdContent.split(avatarSplitRegex);
+
+      for (let i = 1; i < chunks.length; i++) {
+        let chunk = chunks[i];
+        // Detener si empieza la respuesta de otro usuario
+        chunk = chunk.split(new RegExp(`\\[\\!\\[Image \\d+:[^\\]]*\\]\\([^)]+\\)\\]\\(https?:\\/\\/x\\.com\\/(?!${escapedHandle})[^)]+\\)`, 'i'))[0];
+        chunk = chunk.split(/\n\s*[*#]/)[0];
+        chunk = chunk.replace(/^[*•\s]+/, '').trim();
+        // Limpiar botones de interacción al final del tweet
+        chunk = chunk.replace(/\[\d+\]\(https?:\/\/x\.com\/compose\/post[^)]+\)[\s\d.KMkm]+$/i, '').trim();
+        chunk = chunk.replace(/Show more$/i, '').trim();
+
+        if (chunk.length > 20 && !isPromoTweet(chunk)) {
+          const rootSnippet = (rootTweet?.text || '').slice(0, 45).trim();
+          if (!rootSnippet || !chunk.includes(rootSnippet)) {
+            if (!threadTweets.some((t) => t.text.includes(chunk.slice(0, 45)))) {
+              threadTweets.push({
+                id: `${rootId}_step_${threadTweets.length + 1}`,
+                text: chunk,
+                url: `https://x.com/${targetHandle}/status/${rootId}#step-${threadTweets.length + 1}`,
+              });
+            }
+          }
+        }
+      }
+    }
+
+    console.log(`[Twitter API] 🧵 Total tweets del hilo extraídos para @${targetHandle}: ${threadTweets.length}`);
     return { rootTweet, threadTweets };
   } catch (err: any) {
     console.warn(`[Twitter API] Error al desenrollar hilo de X (${tweetUrl}):`, err?.message || err);
