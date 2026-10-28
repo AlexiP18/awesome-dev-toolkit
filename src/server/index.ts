@@ -188,7 +188,8 @@ app.patch('/api/tools/:slug', (req, res) => {
       price,
       company,
       has_academic_promo, 
-      academic_promo_details 
+      academic_promo_details,
+      entry_type,
     } = req.body;
 
     const ok = updateToolNote(slug, { 
@@ -206,7 +207,8 @@ app.patch('/api/tools/:slug', (req, res) => {
       price,
       company,
       has_academic_promo, 
-      academic_promo_details 
+      academic_promo_details,
+      entry_type,
     });
     if (!ok) {
       return res.status(404).json({ success: false, error: 'Herramienta no encontrada' });

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { ClassificationResult, ToolFrontmatter, ToolItem, ToolStatus } from './types.js';
+import { ClassificationResult, EntryType, ToolFrontmatter, ToolItem, ToolStatus } from './types.js';
 import { GitHubMetadata } from './github.js';
 
 const TOOLS_DIR = path.resolve(process.cwd(), 'content/tools');
@@ -402,6 +402,7 @@ export function updateToolNote(slug: string, updates: {
   company?: string;
   has_academic_promo?: boolean;
   academic_promo_details?: string;
+  entry_type?: EntryType;
 }): boolean {
   let filePath = path.join(TOOLS_DIR, `${slug}.md`);
   if (!fs.existsSync(filePath)) {
@@ -436,6 +437,7 @@ export function updateToolNote(slug: string, updates: {
     ...(updates.company !== undefined ? { company: updates.company } : {}),
     ...(updates.has_academic_promo !== undefined ? { has_academic_promo: updates.has_academic_promo } : {}),
     ...(updates.academic_promo_details !== undefined ? { academic_promo_details: updates.academic_promo_details } : {}),
+    ...(updates.entry_type ? { entry_type: updates.entry_type } : {}),
   };
 
   let body = parsed.content;
@@ -443,8 +445,30 @@ export function updateToolNote(slug: string, updates: {
     body = updates.notes;
   }
 
+  ensureToolsDirExists();
+
+  let targetDir = TOOLS_DIR;
+  if (updatedFrontmatter.entry_type === 'job_remote') {
+    targetDir = JOBS_DIR;
+  } else if (updatedFrontmatter.entry_type === 'tech_tip') {
+    targetDir = TIPS_DIR;
+  } else if (updatedFrontmatter.entry_type === 'tech_product' || updatedFrontmatter.entry_type === 'product_showcase') {
+    targetDir = PRODUCTS_DIR;
+  } else if (updatedFrontmatter.entry_type === 'tool') {
+    targetDir = TOOLS_DIR;
+  } else {
+    if (updatedFrontmatter.category === 'Trabajo & Freelance') targetDir = JOBS_DIR;
+    else if (updatedFrontmatter.category === 'Consejos & Buenas Prácticas') targetDir = TIPS_DIR;
+    else if (updatedFrontmatter.category === 'Productos Tecnológicos & Hardware') targetDir = PRODUCTS_DIR;
+  }
+
+  const targetPath = path.join(targetDir, `${slug}.md`);
   const newContent = matter.stringify(body, cleanFrontmatter(updatedFrontmatter));
-  fs.writeFileSync(filePath, newContent, 'utf-8');
+
+  fs.writeFileSync(targetPath, newContent, 'utf-8');
+  if (targetPath !== filePath && fs.existsSync(filePath)) {
+    fs.unlinkSync(filePath);
+  }
   return true;
 }
 

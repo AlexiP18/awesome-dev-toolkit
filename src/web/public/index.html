@@ -799,6 +799,26 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
+            <label class="block font-semibold text-slate-300 mb-1">Apartado / Área:</label>
+            <select id="editToolEntryType" onchange="handleEditToolEntryTypeChange()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-medium">
+              <option value="tool">🛠️ 1. Herramientas & Repositorios</option>
+              <option value="tech_tip">💡 2. Consejos & Buenas Prácticas</option>
+              <option value="job_remote">💼 3. Empleo Remoto & Freelance</option>
+              <option value="tech_product">🖥️ 4. Productos Tecnológicos & Hardware</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">Estado:</label>
+            <select id="editToolStatus" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500">
+              <option value="to_try">🟡 Por probar / Por postular</option>
+              <option value="in_use">🟢 En uso / Postulado / En posesión</option>
+              <option value="archived">⚪ Archivado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
             <div class="flex items-center justify-between mb-1">
               <label class="block font-semibold text-slate-300">Categoría:</label>
               <button type="button" onclick="openCategoryManagerModal()" class="text-[11px] text-sky-400 hover:text-sky-300 transition flex items-center gap-1 font-medium">
@@ -823,18 +843,9 @@
             </select>
           </div>
           <div>
-            <label class="block font-semibold text-slate-300 mb-1">Estado:</label>
-            <select id="editToolStatus" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500">
-              <option value="to_try">🟡 Por probar / Por postular</option>
-              <option value="in_use">🟢 En uso / Postulado / En posesión</option>
-              <option value="archived">⚪ Archivado</option>
-            </select>
+            <label class="block font-semibold text-slate-300 mb-1">Etiquetas / Tags (separados por comas):</label>
+            <input type="text" id="editToolTags" placeholder="ej: cli, rust, terminal, productivity" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-mono text-[11px]" />
           </div>
-        </div>
-
-        <div>
-          <label class="block font-semibold text-slate-300 mb-1">Etiquetas / Tags (separados por comas):</label>
-          <input type="text" id="editToolTags" placeholder="ej: cli, rust, terminal, productivity" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-mono text-[11px]" />
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -1412,14 +1423,18 @@
      */
     function getItemSection(tool) {
       const fm = tool.frontmatter || {};
-      if (fm.entry_type === 'job_remote' || fm.category === 'Trabajo & Freelance') {
+      if (fm.entry_type === 'job_remote') return 'jobs';
+      if (fm.entry_type === 'tech_tip') return 'tips';
+      if (fm.entry_type === 'tech_product' || fm.entry_type === 'product_showcase') return 'products';
+      if (fm.entry_type === 'tool') return 'tools';
+
+      if (fm.category === 'Trabajo & Freelance') {
         return 'jobs';
       }
-      if (fm.entry_type === 'tech_tip' || fm.category === 'Consejos & Buenas Prácticas') {
+      if (fm.category === 'Consejos & Buenas Prácticas') {
         return 'tips';
       }
       if (
-        fm.entry_type === 'tech_product' ||
         fm.category === 'Productos Tecnológicos & Hardware'
       ) {
         return 'products';
@@ -3281,6 +3296,23 @@
       }
     }
 
+    function handleEditToolEntryTypeChange() {
+      const entryType = document.getElementById('editToolEntryType').value;
+      const jobFields = document.getElementById('editToolJobFields');
+      const prodFields = document.getElementById('editToolProductFields');
+
+      if (entryType === 'job_remote') {
+        jobFields.classList.remove('hidden');
+        prodFields.classList.add('hidden');
+      } else if (entryType === 'tech_product') {
+        prodFields.classList.remove('hidden');
+        jobFields.classList.add('hidden');
+      } else {
+        jobFields.classList.add('hidden');
+        prodFields.classList.add('hidden');
+      }
+    }
+
     function openEditToolModal(slug) {
       if (!slug) slug = activeEditingSlug;
       if (!slug) return;
@@ -3300,25 +3332,24 @@
       document.getElementById('editToolContent').value = tool.content || '';
 
       const itemSec = getItemSection(tool);
-      const jobFields = document.getElementById('editToolJobFields');
-      const prodFields = document.getElementById('editToolProductFields');
-
-      if (itemSec === 'jobs') {
-        jobFields.classList.remove('hidden');
-        document.getElementById('editToolCompany').value = fm.company || '';
-        document.getElementById('editToolLocation').value = fm.location || '';
-        document.getElementById('editToolSalary').value = fm.salary || '';
-      } else {
-        jobFields.classList.add('hidden');
+      let initialEntryType = fm.entry_type;
+      if (!initialEntryType) {
+        if (itemSec === 'jobs') initialEntryType = 'job_remote';
+        else if (itemSec === 'tips') initialEntryType = 'tech_tip';
+        else if (itemSec === 'products') initialEntryType = 'tech_product';
+        else initialEntryType = 'tool';
       }
+      if (initialEntryType === 'product_showcase') initialEntryType = 'tech_product';
 
-      if (itemSec === 'products') {
-        prodFields.classList.remove('hidden');
-        document.getElementById('editToolProdCompany').value = fm.company || '';
-        document.getElementById('editToolPrice').value = fm.price || '';
-      } else {
-        prodFields.classList.add('hidden');
-      }
+      document.getElementById('editToolEntryType').value = initialEntryType;
+
+      document.getElementById('editToolCompany').value = fm.company || '';
+      document.getElementById('editToolLocation').value = fm.location || '';
+      document.getElementById('editToolSalary').value = fm.salary || '';
+      document.getElementById('editToolProdCompany').value = fm.company || '';
+      document.getElementById('editToolPrice').value = fm.price || '';
+
+      handleEditToolEntryTypeChange();
 
       document.getElementById('editModalSubtitle').innerText = `Editando: "${fm.name || slug}"`;
       document.getElementById('editToolModal').classList.remove('hidden');
@@ -3373,8 +3404,7 @@
       const author_handle = document.getElementById('editToolAuthorHandle').value.trim().replace(/^@/, '');
       const notes = document.getElementById('editToolContent').value;
 
-      const tool = allTools.find(t => t.slug === slug);
-      const itemSec = tool ? getItemSection(tool) : 'tools';
+      const entry_type = document.getElementById('editToolEntryType').value;
 
       const payload = {
         name,
@@ -3386,13 +3416,14 @@
         author: author || undefined,
         author_handle: author_handle || undefined,
         notes,
+        entry_type,
       };
 
-      if (itemSec === 'jobs') {
+      if (entry_type === 'job_remote') {
         payload.company = document.getElementById('editToolCompany').value.trim() || undefined;
         payload.location = document.getElementById('editToolLocation').value.trim() || undefined;
         payload.salary = document.getElementById('editToolSalary').value.trim() || undefined;
-      } else if (itemSec === 'products') {
+      } else if (entry_type === 'tech_product') {
         payload.company = document.getElementById('editToolProdCompany').value.trim() || undefined;
         payload.price = document.getElementById('editToolPrice').value.trim() || undefined;
       }
@@ -3415,10 +3446,18 @@
           if (activeEditingSlug === slug) {
             openNoteModal(slug);
           }
+          const areaLabels = {
+            tool: '🛠️ 1. Herramientas & Repositorios',
+            tech_tip: '💡 2. Consejos Técnicos & Buenas Prácticas',
+            job_remote: '💼 3. Empleo Remoto & Freelance',
+            tech_product: '🖥️ 4. Productos Tecnológicos & Hardware'
+          };
+          const areaName = areaLabels[entry_type] || '🛠️ Herramientas';
+
           openSaveConfirmModal(
             'Cambios guardados con éxito',
-            `La ficha <strong>"${escapeHtml(name)}"</strong> ha sido actualizada y sincronizada en disco correctamente.`,
-            `📄 Archivo: ${escapeHtml(slug)}.md`
+            `La ficha <strong>"${escapeHtml(name)}"</strong> ha sido actualizada y organizada en el área <strong>${escapeHtml(areaName)}</strong>.`,
+            `📁 Apartado: ${escapeHtml(areaName)} | 📄 ${escapeHtml(slug)}.md`
           );
         } else {
           showToast('Error al actualizar: ' + (data.error || 'Desconocido'), '⚠️');

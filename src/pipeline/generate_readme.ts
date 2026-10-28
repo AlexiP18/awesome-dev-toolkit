@@ -37,11 +37,12 @@ function renderItemRow(item: ToolItem): string {
   const tweetBadge = item.frontmatter.source_tweet
     ? ` [𝕏 Tweet](${item.frontmatter.source_tweet})`
     : '';
-  const isJob = item.frontmatter.entry_type === 'job_remote' || item.frontmatter.category === 'Trabajo & Freelance';
-  const isTip = !isJob && (item.frontmatter.entry_type === 'tech_tip' || item.frontmatter.category === 'Consejos & Buenas Prácticas');
+  const isJob = item.frontmatter.entry_type === 'job_remote' || (!item.frontmatter.entry_type && item.frontmatter.category === 'Trabajo & Freelance');
+  const isTip = !isJob && (item.frontmatter.entry_type === 'tech_tip' || (!item.frontmatter.entry_type && item.frontmatter.category === 'Consejos & Buenas Prácticas'));
   const isProduct = !isJob && !isTip && (
     item.frontmatter.entry_type === 'tech_product' ||
-    item.frontmatter.category === 'Productos Tecnológicos & Hardware'
+    item.frontmatter.entry_type === 'product_showcase' ||
+    (!item.frontmatter.entry_type && item.frontmatter.category === 'Productos Tecnológicos & Hardware')
   );
   const locationBadge = item.frontmatter.location ? ` (\`🌍 ${item.frontmatter.location}\`)` : '';
   const salaryBadge = item.frontmatter.salary ? ` (\`💰 ${item.frontmatter.salary}\`)` : '';
@@ -68,11 +69,12 @@ export function generateReadme(): string {
   const allTools = loadAllTools();
 
   // Partición exacta en los 4 apartados
-  const isJobItem = (t: ToolItem) => t.frontmatter.entry_type === 'job_remote' || t.frontmatter.category === 'Trabajo & Freelance';
-  const isTipItem = (t: ToolItem) => !isJobItem(t) && (t.frontmatter.entry_type === 'tech_tip' || t.frontmatter.category === 'Consejos & Buenas Prácticas');
+  const isJobItem = (t: ToolItem) => t.frontmatter.entry_type === 'job_remote' || (!t.frontmatter.entry_type && t.frontmatter.category === 'Trabajo & Freelance');
+  const isTipItem = (t: ToolItem) => !isJobItem(t) && (t.frontmatter.entry_type === 'tech_tip' || (!t.frontmatter.entry_type && t.frontmatter.category === 'Consejos & Buenas Prácticas'));
   const isProductItem = (t: ToolItem) => !isJobItem(t) && !isTipItem(t) && (
     t.frontmatter.entry_type === 'tech_product' ||
-    t.frontmatter.category === 'Productos Tecnológicos & Hardware'
+    t.frontmatter.entry_type === 'product_showcase' ||
+    (!t.frontmatter.entry_type && t.frontmatter.category === 'Productos Tecnológicos & Hardware')
   );
 
   const jobItems = allTools.filter(isJobItem);
