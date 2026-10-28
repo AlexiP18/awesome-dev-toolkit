@@ -1,0 +1,142 @@
+{
+  "success": true,
+  "count": 17,
+  "categories": [
+    {
+      "name": "CLI & Terminal",
+      "section": "tools",
+      "icon": "🛠️",
+      "color": "emerald",
+      "description": "Herramientas de línea de comandos, TUI y utilidades de terminal",
+      "isDefault": true
+    },
+    {
+      "name": "Frontend & UI",
+      "section": "tools",
+      "icon": "🎨",
+      "color": "rose",
+      "description": "Bibliotecas de componentes, CSS, diseño web y galerías",
+      "isDefault": true
+    },
+    {
+      "name": "Backend & APIs",
+      "section": "tools",
+      "icon": "⚙️",
+      "color": "sky",
+      "description": "Frameworks de servidor, pasarelas de API y microservicios",
+      "isDefault": true
+    },
+    {
+      "name": "DevOps & Cloud",
+      "section": "tools",
+      "icon": "🐳",
+      "color": "cyan",
+      "description": "Docker, CI/CD, despliegues e infraestructura en la nube",
+      "isDefault": true
+    },
+    {
+      "name": "AI & Machine Learning",
+      "section": "tools",
+      "icon": "🤖",
+      "color": "purple",
+      "description": "Modelos de lenguaje, agentes de IA, RAG y pipelines de ML",
+      "isDefault": true
+    },
+    {
+      "name": "Data Engineering & ETL",
+      "section": "tools",
+      "icon": "🔄",
+      "color": "emerald",
+      "description": "Extracción no estructurada, pipelines de datos, ETL/ELT e ingesta hacia almacenes de datos",
+      "isDefault": true
+    },
+    {
+      "name": "Document AI & Extracción",
+      "section": "tools",
+      "icon": "📑",
+      "color": "purple",
+      "description": "Extracción inteligente de PDFs, facturas, formularios KYC a JSON con LLMs",
+      "isDefault": true
+    },
+    {
+      "name": "Agentes & Protocolo MCP",
+      "section": "tools",
+      "icon": "🤖",
+      "color": "cyan",
+      "description": "Servidores Model Context Protocol (MCP), frameworks de memoria y agentes de IA",
+      "isDefault": true
+    },
+    {
+      "name": "Prompts, Art & Video",
+      "section": "tools",
+      "icon": "🎬",
+      "color": "violet",
+      "description": "Generación de video, arte 3D y audio con inteligencia artificial",
+      "isDefault": true
+    },
+    {
+      "name": "Databases & Storage",
+      "section": "tools",
+      "icon": "🗄️",
+      "color": "amber",
+      "description": "Bases de datos SQL/NoSQL, ORMs, almacenamiento y cachés",
+      "isDefault": true
+    },
+    {
+      "name": "Productivity & Tools",
+      "section": "tools",
+      "icon": "⚡",
+      "color": "teal",
+      "description": "Utilidades para desarrolladores, métricas y optimización",
+      "isDefault": true
+    },
+    {
+      "name": "Documentation & Resources",
+      "section": "tools",
+      "icon": "📚",
+      "color": "indigo",
+      "description": "Guías, libros, cheat sheets y documentación estática",
+      "isDefault": true
+    },
+    {
+      "name": "Empresas & Productos",
+      "section": "tools",
+      "icon": "🏢",
+      "color": "indigo",
+      "description": "Productos y herramientas desarrolladas por empresas o startups",
+      "isDefault": true
+    },
+    {
+      "name": "Productos Tecnológicos & Hardware",
+      "section": "products",
+      "icon": "🖥️",
+      "color": "amber",
+      "description": "Placas, microcontroladores, periféricos y gadgets físicos",
+      "isDefault": true
+    },
+    {
+      "name": "Consejos & Buenas Prácticas",
+      "section": "tips",
+      "icon": "💡",
+      "color": "violet",
+      "description": "Trucos de código, comandos y patrones de arquitectura",
+      "isDefault": true
+    },
+    {
+      "name": "Trabajo & Freelance",
+      "section": "jobs",
+      "icon": "💼",
+      "color": "sky",
+      "description": "Vacantes de empleo remoto y oportunidades de contratación",
+      "isDefault": true
+    },
+    {
+      "name": "Other",
+      "section": "all",
+      "icon": "📦",
+      "color": "slate",
+      "description": "Recursos varios y clasificaciones generales",
+      "isDefault": true
+    }
+  ]
+}
