@@ -259,9 +259,19 @@
 
     <!-- Filter Pills: Categories & Status -->
     <div class="space-y-3 mb-6">
-      <!-- Categories Scroll -->
-      <div id="categoryFilters" class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
-        <!-- Injected via JS depending on currentSection -->
+      <!-- Categories Scroll & Manager Button -->
+      <div class="flex items-center gap-2">
+        <div id="categoryFilters" class="flex-1 flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
+          <!-- Injected via JS depending on currentSection -->
+        </div>
+        <button 
+          onclick="openCategoryManagerModal()"
+          class="px-2.5 py-1.5 rounded-lg border border-dashed border-sky-500/40 bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 shrink-0 shadow-sm"
+          title="Abrir gestor para crear o administrar categorías"
+        >
+          <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+          <span>+ Categoría</span>
+        </button>
       </div>
       
       <!-- Status & Author Filters -->
@@ -590,6 +600,120 @@
     </div>
   </div>
 
+  <!-- Modal: Gestor de Categorías (Apartado para crear y gestionar nuevas categorías) -->
+  <div id="categoryManagerModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-xl w-full p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150 relative max-h-[90vh] flex flex-col">
+      <button onclick="closeCategoryManagerModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-800 transition">
+        ✕
+      </button>
+
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-500/30 text-sky-400 flex items-center justify-center flex-shrink-0">
+          <i data-lucide="layers" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-bold text-slate-100 flex items-center gap-2">
+            Gestor de Categorías
+          </h3>
+          <p class="text-xs text-slate-400 mt-0.5">
+            Crea y establece nuevas categorías personalizadas para filtrar, clasificar con IA y organizar tus recursos.
+          </p>
+        </div>
+      </div>
+
+      <!-- Formulario para Nueva Categoría -->
+      <form onsubmit="handleCreateCategory(event)" class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3 shrink-0">
+        <h4 class="text-xs font-bold text-sky-300 uppercase tracking-wider flex items-center gap-1.5">
+          <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+          <span>Establecer Nueva Categoría</span>
+        </h4>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Nombre de la Categoría:</label>
+            <input 
+              type="text" 
+              id="newCatName" 
+              placeholder="ej: Data Engineering & ETL, Agentes & MCP..." 
+              required 
+              class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Apartado Destino:</label>
+            <select id="newCatSection" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500">
+              <option value="tools">🛠️ 1. Herramientas</option>
+              <option value="tips">💡 2. Consejos</option>
+              <option value="jobs">💼 3. Trabajo</option>
+              <option value="products">🖥️ 4. Productos</option>
+              <option value="all">✨ Todos los Apartados</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Ícono / Emoji:</label>
+            <input 
+              type="text" 
+              id="newCatIcon" 
+              placeholder="ej: 🔄 o 📑" 
+              value="🏷️" 
+              maxlength="4"
+              class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200 text-center focus:outline-none focus:border-sky-500"
+            />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Paleta de Color:</label>
+            <select id="newCatColor" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500">
+              <option value="emerald">🟢 Emerald (Verde Esmeralda - Datos / CLI)</option>
+              <option value="purple">🟣 Purple (Morado - IA / Machine Learning)</option>
+              <option value="sky" selected>🔵 Sky (Azul Cielo - Herramientas / Backend)</option>
+              <option value="cyan">🌊 Cyan (Cian - Cloud / DevOps)</option>
+              <option value="amber">🟠 Amber (Ámbar - Storage / Bases de datos)</option>
+              <option value="violet">🔮 Violet (Violeta - Consejos / Arte)</option>
+              <option value="rose">🌸 Rose (Rosa - UI / Frontend)</option>
+              <option value="teal">🌿 Teal (Verde Azulado - Productividad)</option>
+              <option value="indigo">🌌 Indigo (Índigo - Recursos & Empresas)</option>
+              <option value="slate">⚪ Slate (Gris Neutro)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Directriz / Descripción (Guía para el análisis con IA):</label>
+          <input 
+            type="text" 
+            id="newCatDesc" 
+            placeholder="ej: Extracción no estructurada, pipelines de datos, ETL y procesamiento de documentos" 
+            class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500"
+          />
+        </div>
+
+        <div class="flex justify-end">
+          <button 
+            type="submit" 
+            id="btnSaveCategory" 
+            class="px-4 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs transition flex items-center gap-1.5 shadow-md shadow-sky-950/50"
+          >
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            <span>Guardar Categoría</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Lista de Categorías Existentes -->
+      <div class="flex-1 overflow-y-auto space-y-2 pr-1 custom-scroll">
+        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+          Categorías Registradas en el Sistema (<span id="catManagerCount">0</span>)
+        </h4>
+        <div id="catManagerList" class="space-y-1.5">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal: Recopilar / Actualizar Tweets del Hilo -->
   <div id="threadCollectorModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-xl w-full p-5 shadow-2xl flex flex-col space-y-4 animate-in fade-in duration-150">
@@ -675,7 +799,13 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label class="block font-semibold text-slate-300 mb-1">Categoría:</label>
+            <div class="flex items-center justify-between mb-1">
+              <label class="block font-semibold text-slate-300">Categoría:</label>
+              <button type="button" onclick="openCategoryManagerModal()" class="text-[11px] text-sky-400 hover:text-sky-300 transition flex items-center gap-1 font-medium">
+                <i data-lucide="plus" class="w-3 h-3"></i>
+                <span>Gestionar</span>
+              </button>
+            </div>
             <select id="editToolCategory" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500">
               <option value="CLI & Terminal">CLI & Terminal</option>
               <option value="Frontend & UI">Frontend & UI</option>
@@ -1020,6 +1150,20 @@
     let currentActiveAiShortName = 'Gemini Flash';
     let selectedAiProvider = localStorage.getItem('toolkit_selected_ai_provider') || 'gemini';
     let allAiProviders = [];
+    let allCategoriesList = [];
+
+    const COLOR_THEMES = {
+      emerald: { badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30', dot: 'bg-emerald-400', border: 'border-emerald-500/30 hover:border-emerald-400/60', topBorder: 'border-t-emerald-500', bgTint: 'from-emerald-950/20 via-slate-900 to-slate-900', titleHover: 'group-hover:text-emerald-300', dateColor: 'text-emerald-300/70' },
+      purple: { badge: 'bg-purple-500/15 text-purple-300 border-purple-500/30', dot: 'bg-purple-400', border: 'border-purple-500/30 hover:border-purple-400/60', topBorder: 'border-t-purple-500', bgTint: 'from-purple-950/20 via-slate-900 to-slate-900', titleHover: 'group-hover:text-purple-300', dateColor: 'text-purple-300/70' },
+      cyan: { badge: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30', dot: 'bg-cyan-400', border: 'border-cyan-500/30 hover:border-cyan-400/60', topBorder: 'border-t-cyan-500', bgTint: 'from-cyan-950/20 via-slate-900 to-slate-900', titleHover: 'group-hover:text-cyan-300', dateColor: 'text-cyan-300/70' },
+      amber: { badge: 'bg-amber-500/15 text-amber-300 border-amber-500/30', dot: 'bg-amber-400', border: 'border-amber-500/30 hover:border-amber-400/60', topBorder: 'border-t-amber-500', bgTint: 'from-amber-950/20 via-slate-900 to-slate-900', titleHover: 'group-hover:text-amber-300', dateColor: 'text-amber-300/70' },
+      sky: { badge: 'bg-sky-500/15 text-sky-300 border-sky-500/30', dot: 'bg-sky-400', border: 'border-sky-500/30 hover:border-sky-400/60', topBorder: 'border-t-sky-500', bgTint: 'from-sky-950/20 via-slate-900 to-slate-900', titleHover: 'group-hover:text-sky-300', dateColor: 'text-sky-300/70' },
+      indigo: { badge: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30', dot: 'bg-indigo-400', border: 'border-indigo-500/30 hover:border-indigo-400/60', topBorder: 'border-t-indigo-500', bgTint: 'from-indigo-950/20 via-slate-900 to-slate-900', titleHover: 'group-hover:text-indigo-300', dateColor: 'text-indigo-300/70' },
+      violet: { badge: 'bg-violet-500/15 text-violet-300 border-violet-500/30', dot: 'bg-violet-400', border: 'border-violet-500/30 hover:border-violet-400/60', topBorder: 'border-t-violet-500', bgTint: 'from-violet-950/20 via-slate-900 to-slate-900', titleHover: 'group-hover:text-violet-300', dateColor: 'text-violet-300/70' },
+      rose: { badge: 'bg-rose-500/15 text-rose-300 border-rose-500/30', dot: 'bg-rose-400', border: 'border-rose-500/30 hover:border-rose-400/60', topBorder: 'border-t-rose-500', bgTint: 'from-rose-950/20 via-slate-900 to-slate-900', titleHover: 'group-hover:text-rose-300', dateColor: 'text-rose-300/70' },
+      teal: { badge: 'bg-teal-500/15 text-teal-300 border-teal-500/30', dot: 'bg-teal-400', border: 'border-teal-500/30 hover:border-teal-400/60', topBorder: 'border-t-teal-500', bgTint: 'from-teal-950/20 via-slate-900 to-slate-900', titleHover: 'group-hover:text-teal-300', dateColor: 'text-teal-300/70' },
+      slate: { badge: 'bg-slate-700/30 text-slate-300 border-slate-600/40', dot: 'bg-slate-400', border: 'border-slate-700 hover:border-slate-600', topBorder: 'border-t-slate-500', bgTint: 'from-slate-900/40 via-slate-900 to-slate-900', titleHover: 'group-hover:text-slate-200', dateColor: 'text-slate-400' }
+    };
 
     function getSelectedAiShortName() {
       if (selectedAiProvider === 'auto') return 'Cascada IA';
@@ -1458,6 +1602,12 @@
 
     function getCategoryTheme(category) {
       const cat = (category || '').toLowerCase().trim();
+
+      // Chequear si la categoría está registrada en allCategoriesList y tiene color asignado
+      const foundDef = allCategoriesList.find(c => c.name.toLowerCase() === cat);
+      if (foundDef && foundDef.color && COLOR_THEMES[foundDef.color]) {
+        return COLOR_THEMES[foundDef.color];
+      }
 
       // 1. AI & Machine Learning / IA Devices & Robótica
       if (cat.includes('ai &') || cat.includes('machine learning') || cat.includes('ia devices') || cat.includes('robótica') || cat.includes('inteligencia artificial') || cat.includes('deep learning')) {
@@ -2111,6 +2261,7 @@
         }
         updateBatchBar();
         await fetchAiStatus();
+        await fetchCategories();
         await fetchAuthorProfiles();
         switchSection(currentSection);
       } catch (err) {
@@ -2123,16 +2274,239 @@
       }
     }
 
+    async function fetchCategories() {
+      try {
+        if (!isStaticMode && !window.location.hostname.endsWith('github.io')) {
+          const res = await fetch('/api/categories');
+          if (res.ok) {
+            const data = await res.json();
+            if (data.success && Array.isArray(data.categories)) {
+              allCategoriesList = data.categories;
+              localStorage.setItem('toolkit_custom_categories', JSON.stringify(allCategoriesList));
+              populateCategorySelects();
+              renderCategoryFilters();
+              return;
+            }
+          }
+        }
+
+        const local = localStorage.getItem('toolkit_custom_categories');
+        if (local) {
+          allCategoriesList = JSON.parse(local);
+        } else {
+          const res = await fetch('./data/categories.json');
+          if (res.ok) {
+            const data = await res.json();
+            allCategoriesList = Array.isArray(data) ? data : data.categories || [];
+          }
+        }
+      } catch (e) {
+        console.warn('Error fetching categories:', e);
+      }
+      populateCategorySelects();
+      renderCategoryFilters();
+    }
+
+    function getCategoriesForCurrentSection() {
+      const uniqueCats = new Set(['all']);
+
+      // 1. Agregar categorías registradas según el apartado
+      allCategoriesList.forEach(c => {
+        if (currentSection === 'all' || c.section === currentSection || c.section === 'all') {
+          uniqueCats.add(c.name);
+        }
+      });
+
+      // 2. Si hay categorías configuradas en SECTION_CONFIG
+      const sectionCats = SECTION_CONFIG[currentSection]?.categories || [];
+      sectionCats.forEach(c => {
+        if (c !== 'all') uniqueCats.add(c);
+      });
+
+      // 3. Agregar categorías presentes en las herramientas cargadas
+      allTools.forEach(t => {
+        const itemSec = getItemSection(t);
+        if (currentSection === 'all' || itemSec === currentSection) {
+          if (t.frontmatter?.category) {
+            uniqueCats.add(t.frontmatter.category);
+          }
+        }
+      });
+
+      return Array.from(uniqueCats);
+    }
+
+    function populateCategorySelects() {
+      const select = document.getElementById('editToolCategory');
+      if (!select) return;
+      const currentVal = select.value;
+
+      const catNames = Array.from(new Set([
+        ...allCategoriesList.map(c => c.name),
+        ...allTools.map(t => t.frontmatter?.category).filter(Boolean)
+      ]));
+
+      select.innerHTML = catNames.map(name => {
+        const catDef = allCategoriesList.find(c => c.name.toLowerCase() === name.toLowerCase());
+        const icon = catDef?.icon ? `${catDef.icon} ` : '';
+        return `<option value="${escapeHtml(name)}">${icon}${escapeHtml(name)}</option>`;
+      }).join('');
+
+      if (currentVal) select.value = currentVal;
+    }
+
+    function openCategoryManagerModal() {
+      renderCatManagerList();
+      document.getElementById('categoryManagerModal').classList.remove('hidden');
+      lucide.createIcons();
+      document.getElementById('newCatName').focus();
+    }
+
+    function closeCategoryManagerModal() {
+      document.getElementById('categoryManagerModal').classList.add('hidden');
+    }
+
+    async function handleCreateCategory(e) {
+      e.preventDefault();
+      const name = document.getElementById('newCatName').value.trim();
+      const section = document.getElementById('newCatSection').value;
+      const icon = document.getElementById('newCatIcon').value.trim() || '🏷️';
+      const color = document.getElementById('newCatColor').value;
+      const description = document.getElementById('newCatDesc').value.trim();
+
+      if (!name) return;
+
+      const newCat = { name, section, icon, color, description, isDefault: false };
+
+      if (isStaticMode) {
+        const idx = allCategoriesList.findIndex(c => c.name.toLowerCase() === name.toLowerCase());
+        if (idx >= 0) allCategoriesList[idx] = newCat;
+        else allCategoriesList.push(newCat);
+        localStorage.setItem('toolkit_custom_categories', JSON.stringify(allCategoriesList));
+        populateCategorySelects();
+        renderCategoryFilters();
+        renderCatManagerList();
+        document.getElementById('newCatName').value = '';
+        document.getElementById('newCatDesc').value = '';
+        openSaveConfirmModal(
+          'Categoría Establecida',
+          `La categoría <strong>"${escapeHtml(name)}"</strong> ha sido establecida con éxito en tu catálogo.`,
+          `🏷️ ${icon} ${escapeHtml(name)}`
+        );
+        return;
+      }
+
+      const btn = document.getElementById('btnSaveCategory');
+      btn.disabled = true;
+      try {
+        const res = await fetch('/api/categories', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newCat),
+        });
+        const data = await res.json();
+        if (data.success) {
+          allCategoriesList = data.categories;
+          localStorage.setItem('toolkit_custom_categories', JSON.stringify(allCategoriesList));
+          populateCategorySelects();
+          renderCategoryFilters();
+          renderCatManagerList();
+          document.getElementById('newCatName').value = '';
+          document.getElementById('newCatDesc').value = '';
+          openSaveConfirmModal(
+            'Categoría Establecida',
+            `La nueva categoría <strong>"${escapeHtml(name)}"</strong> ha sido guardada y sincronizada en el sistema.`,
+            `🏷️ ${icon} ${escapeHtml(name)}`
+          );
+        } else {
+          showToast('Error al crear categoría: ' + (data.error || 'Desconocido'), '⚠️');
+        }
+      } catch (err) {
+        showToast('Error de conexión al guardar categoría.', '⚠️');
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    async function handleDeleteCategory(name) {
+      if (!confirm(`¿Deseas eliminar la categoría personalizada "${name}"?`)) return;
+
+      if (isStaticMode) {
+        allCategoriesList = allCategoriesList.filter(c => c.name.toLowerCase() !== name.toLowerCase());
+        localStorage.setItem('toolkit_custom_categories', JSON.stringify(allCategoriesList));
+        populateCategorySelects();
+        renderCategoryFilters();
+        renderCatManagerList();
+        showToast(`Categoría "${name}" eliminada`, '🗑️');
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/categories/${encodeURIComponent(name)}`, {
+          method: 'DELETE'
+        });
+        const data = await res.json();
+        if (data.success) {
+          allCategoriesList = data.categories;
+          localStorage.setItem('toolkit_custom_categories', JSON.stringify(allCategoriesList));
+          populateCategorySelects();
+          renderCategoryFilters();
+          renderCatManagerList();
+          showToast(`Categoría "${name}" eliminada`, '🗑️');
+        } else {
+          showToast('Error al eliminar: ' + (data.error || 'Desconocido'), '⚠️');
+        }
+      } catch (err) {
+        showToast('Error de conexión al eliminar categoría.', '⚠️');
+      }
+    }
+
+    function renderCatManagerList() {
+      const container = document.getElementById('catManagerList');
+      const countEl = document.getElementById('catManagerCount');
+      if (!container) return;
+
+      countEl.innerText = allCategoriesList.length;
+
+      container.innerHTML = allCategoriesList.map(cat => {
+        const theme = getCategoryTheme(cat.name);
+        const isCustom = !cat.isDefault;
+        const sectionName = cat.section === 'tools' ? '1. Herramientas' : cat.section === 'tips' ? '2. Consejos' : cat.section === 'jobs' ? '3. Trabajo' : cat.section === 'products' ? '4. Productos' : 'Todos';
+
+        return `
+          <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between gap-3 hover:border-slate-700 transition">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <span class="text-base shrink-0">${cat.icon || '🏷️'}</span>
+              <div class="min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-bold text-xs text-slate-200 truncate">${escapeHtml(cat.name)}</span>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-medium border ${theme.badge}">
+                    ${sectionName}
+                  </span>
+                  ${isCustom ? `<span class="px-1.5 py-0.5 rounded text-[9px] bg-sky-500/20 text-sky-300 font-mono">Personalizada</span>` : `<span class="px-1.5 py-0.5 rounded text-[9px] bg-slate-800 text-slate-400 font-mono">Estándar</span>`}
+                </div>
+                ${cat.description ? `<p class="text-[11px] text-slate-400 truncate mt-0.5">${escapeHtml(cat.description)}</p>` : ''}
+              </div>
+            </div>
+            ${isCustom ? `
+              <button 
+                type="button" 
+                onclick="handleDeleteCategory('${escapeHtml(cat.name)}')" 
+                class="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800 transition" 
+                title="Eliminar categoría personalizada"
+              >
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              </button>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+      lucide.createIcons();
+    }
+
     function renderCategoryFilters() {
       const container = document.getElementById('categoryFilters');
-      let cats = SECTION_CONFIG[currentSection]?.categories || ['all', 'Other'];
-      if (currentSection === 'all') {
-        const uniqueCats = new Set(['all']);
-        allTools.forEach(t => {
-          if (t.frontmatter?.category) uniqueCats.add(t.frontmatter.category);
-        });
-        cats = Array.from(uniqueCats);
-      }
+      let cats = getCategoriesForCurrentSection();
       const activeColor = currentSection === 'all'
         ? 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40'
         : currentSection === 'tools' 
@@ -3757,6 +4131,7 @@
         e.preventDefault();
         document.getElementById('searchInput').focus();
       } else if (e.key === 'Escape') {
+        closeCategoryManagerModal();
         closeSaveConfirmModal();
         closeDeleteModal();
         closeEditToolModal();

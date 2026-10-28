@@ -1,4 +1,4 @@
-export type ToolCategory =
+export type StandardCategory =
   | 'CLI & Terminal'
   | 'Frontend & UI'
   | 'Backend & APIs'
@@ -13,6 +13,8 @@ export type ToolCategory =
   | 'Consejos & Buenas Prácticas'
   | 'Trabajo & Freelance'
   | 'Other';
+
+export type ToolCategory = StandardCategory | (string & {});
 
 export type EntryType = 'tool' | 'product_showcase' | 'tech_tip' | 'job_remote' | 'tech_product';
 

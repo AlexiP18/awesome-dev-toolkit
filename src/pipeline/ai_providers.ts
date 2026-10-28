@@ -3,25 +3,11 @@ import { GoogleGenAI, Type } from '@google/genai';
 import { ClassificationResult, ToolCategory, EntryType } from './types.js';
 import { GitHubMetadata } from './github.js';
 import { isIgnoredNonToolUrl, cleanTrackingParams, WebPageMetadata } from './link_resolver.js';
+import { getAllCategories, getAllCategoryNames } from './category_manager.js';
 
 dotenv.config();
 
-export const ALLOWED_CATEGORIES: ToolCategory[] = [
-  'CLI & Terminal',
-  'Frontend & UI',
-  'Backend & APIs',
-  'DevOps & Cloud',
-  'AI & Machine Learning',
-  'Prompts, Art & Video',
-  'Databases & Storage',
-  'Productivity & Tools',
-  'Documentation & Resources',
-  'Empresas & Productos',
-  'Productos Tecnológicos & Hardware',
-  'Consejos & Buenas Prácticas',
-  'Trabajo & Freelance',
-  'Other',
-];
+export const ALLOWED_CATEGORIES: ToolCategory[] = getAllCategoryNames();
 
 export interface ClassifyInput {
   rawText: string;
@@ -179,7 +165,7 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * 'recommendedNotes': Casos de uso ideales, disponibilidad o compatibilidad.
 
 Categorías válidas (selecciona EXACTAMENTE una para cada herramienta):
-${ALLOWED_CATEGORIES.map((c) => `- "${c}"`).join('\n')}
+${getAllCategories().map((c) => `- "${c.name}"${c.description ? `: ${c.description}` : ''}`).join('\n')}
 
 Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
 {
@@ -212,7 +198,8 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
   }
 
   return parsedList.map((parsed: any, index: number) => {
-    let validCategory = ALLOWED_CATEGORIES.includes(parsed.category as ToolCategory)
+    const availableCats = getAllCategoryNames();
+    let validCategory = availableCats.includes(parsed.category as string)
       ? (parsed.category as ToolCategory)
       : 'Other';
 

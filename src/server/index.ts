@@ -9,6 +9,7 @@ import { loadAllAuthorProfiles, analyzeAuthorWithAI } from '../pipeline/author_m
 import { getActivePrimaryProviderName, getConfiguredProvidersList, structureThreadStepsWithAI } from '../pipeline/ai_providers.js';
 import { fetchTweetDetailsFromX, fetchThreadTweetsFromX } from '../pipeline/twitter_scraper.js';
 import { classifyToolsWithGemini } from '../pipeline/gemini.js';
+import { getAllCategories, addCustomCategory, deleteCustomCategory } from '../pipeline/category_manager.js';
 import fs from 'fs';
 
 dotenv.config();
@@ -53,6 +54,59 @@ app.get('/api/authors', (req, res) => {
     res.json({ success: true, count: Object.keys(authors).length, authors });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// GET all categories (default + custom)
+app.get('/api/categories', (req, res) => {
+  try {
+    const categories = getAllCategories();
+    res.json({ success: true, count: categories.length, categories });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// POST create custom category
+app.post('/api/categories', (req, res) => {
+  try {
+    const { name, section, icon, color, description } = req.body;
+    if (!name || !name.trim()) {
+      return res.status(400).json({ success: false, error: 'El nombre de la categoría es requerido.' });
+    }
+    const created = addCustomCategory({ name, section, icon, color, description });
+
+    // Auto-update README.md
+    try {
+      const readme = generateReadme();
+      fs.writeFileSync(path.resolve(process.cwd(), 'README.md'), readme, 'utf-8');
+    } catch (e) {
+      console.warn('[API] Could not update README.md on category add:', e);
+    }
+
+    res.json({ success: true, category: created, categories: getAllCategories() });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// DELETE custom category
+app.delete('/api/categories/:name', (req, res) => {
+  try {
+    const { name } = req.params;
+    deleteCustomCategory(name);
+
+    // Auto-update README.md
+    try {
+      const readme = generateReadme();
+      fs.writeFileSync(path.resolve(process.cwd(), 'README.md'), readme, 'utf-8');
+    } catch (e) {
+      console.warn('[API] Could not update README.md on category delete:', e);
+    }
+
+    res.json({ success: true, categories: getAllCategories() });
+  } catch (error: any) {
+    res.status(400).json({ success: false, error: error.message });
   }
 });
 

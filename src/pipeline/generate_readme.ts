@@ -2,23 +2,12 @@ import fs from 'fs';
 import path from 'path';
 import { loadAllTools } from './note_generator.js';
 import { ToolCategory, ToolItem } from './types.js';
+import { getAllCategories } from './category_manager.js';
 
-const CATEGORY_ICONS: Record<ToolCategory, string> = {
-  'CLI & Terminal': '🛠️',
-  'Frontend & UI': '🎨',
-  'Backend & APIs': '⚙️',
-  'DevOps & Cloud': '🐳',
-  'AI & Machine Learning': '🤖',
-  'Prompts, Art & Video': '🎬',
-  'Databases & Storage': '🗄️',
-  'Productivity & Tools': '⚡',
-  'Documentation & Resources': '📚',
-  'Empresas & Productos': '🏢',
-  'Productos Tecnológicos & Hardware': '🖥️',
-  'Consejos & Buenas Prácticas': '💡',
-  'Trabajo & Freelance': '💼',
-  'Other': '📦',
-};
+function getCategoryIcon(catName: string): string {
+  const found = getAllCategories().find((c) => c.name.toLowerCase() === catName.toLowerCase());
+  return found?.icon || '📦';
+}
 
 function renderItemRow(item: ToolItem): string {
   const starsBadge = item.frontmatter.stars
@@ -110,11 +99,11 @@ export function generateReadme(): string {
       toolGroups[cat]!.push(t);
     }
 
-    const categories = Object.keys(CATEGORY_ICONS) as ToolCategory[];
+    const categories = Array.from(new Set([...getAllCategories().map((c) => c.name), ...Object.keys(toolGroups)])) as ToolCategory[];
     for (const cat of categories) {
       const items = toolGroups[cat];
       if (!items || items.length === 0) continue;
-      const icon = CATEGORY_ICONS[cat];
+      const icon = getCategoryIcon(cat);
       body += `### ${icon} ${cat} (${items.length})\n\n`;
       for (const item of items) {
         body += renderItemRow(item);
@@ -138,11 +127,11 @@ export function generateReadme(): string {
       tipGroups[cat]!.push(t);
     }
 
-    const categories = Object.keys(CATEGORY_ICONS) as ToolCategory[];
+    const categories = Array.from(new Set([...getAllCategories().map((c) => c.name), ...Object.keys(tipGroups)])) as ToolCategory[];
     for (const cat of categories) {
       const items = tipGroups[cat];
       if (!items || items.length === 0) continue;
-      const icon = CATEGORY_ICONS[cat];
+      const icon = getCategoryIcon(cat);
       body += `### ${icon} ${cat} (${items.length})\n\n`;
       for (const item of items) {
         body += renderItemRow(item);

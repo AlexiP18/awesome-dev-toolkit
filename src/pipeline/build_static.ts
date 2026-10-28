@@ -3,6 +3,7 @@ import path from 'path';
 import { loadAllTools } from './note_generator.js';
 import { generateReadme } from './generate_readme.js';
 import { loadAllAuthorProfiles } from './author_manager.js';
+import { getAllCategories } from './category_manager.js';
 
 export function buildStaticSite(): void {
   const rootDir = process.cwd();
@@ -28,6 +29,12 @@ export function buildStaticSite(): void {
   const authorsJsonPath = path.join(distDataDir, 'authors.json');
   fs.writeFileSync(authorsJsonPath, JSON.stringify({ success: true, count: Object.keys(authors).length, authors }, null, 2), 'utf-8');
   console.log(`[Build] 👥 Exportados ${Object.keys(authors).length} perfiles de autores a ${authorsJsonPath}`);
+
+  // 2c. Export categories
+  const categories = getAllCategories();
+  const categoriesJsonPath = path.join(distDataDir, 'categories.json');
+  fs.writeFileSync(categoriesJsonPath, JSON.stringify({ success: true, count: categories.length, categories }, null, 2), 'utf-8');
+  console.log(`[Build] 🏷️ Exportadas ${categories.length} categorías a ${categoriesJsonPath}`);
 
   // 3. Copy public assets (index.html, bookmarklet)
   const publicDir = path.resolve(rootDir, 'src/web/public');
