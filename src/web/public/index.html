@@ -804,6 +804,43 @@
     </div>
   </div>
 
+  <!-- Modal: Confirmación de Edición / Cambios Guardados (Adecuado y pequeño del sistema) -->
+  <div id="saveConfirmModal" onclick="if(event.target === this) closeSaveConfirmModal()" class="fixed inset-0 z-[60] hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-sm w-full p-5 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150 relative">
+      <button onclick="closeSaveConfirmModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-200 p-1 rounded-lg hover:bg-slate-800 transition">
+        ✕
+      </button>
+
+      <div class="flex items-start gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center flex-shrink-0">
+          <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+        </div>
+        <div class="min-w-0 pr-4">
+          <h3 id="saveConfirmModalTitle" class="text-sm font-bold text-slate-100">Cambios guardados con éxito</h3>
+          <p id="saveConfirmModalMessage" class="text-xs text-slate-400 mt-1 leading-relaxed">
+            La ficha ha sido actualizada y sincronizada en disco correctamente.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800/80 text-[11px] text-slate-300 font-mono break-words flex items-center gap-2" id="saveConfirmModalBadge">
+        <i data-lucide="file-text" class="w-3.5 h-3.5 text-emerald-400 shrink-0"></i>
+        <span id="saveConfirmModalBadgeText" class="truncate"></span>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-800/80">
+        <button 
+          type="button" 
+          onclick="closeSaveConfirmModal()" 
+          class="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition flex items-center gap-1.5 shadow-md shadow-emerald-950/50"
+        >
+          <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          <span>Aceptar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal: Ingestar Recurso en Apartado Específico -->
   <div id="ingestModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl">
@@ -2918,13 +2955,36 @@
       document.getElementById('editToolModal').classList.add('hidden');
     }
 
+    function openSaveConfirmModal(title, message, badgeText) {
+      document.getElementById('saveConfirmModalTitle').innerText = title || 'Cambios guardados con éxito';
+      document.getElementById('saveConfirmModalMessage').innerHTML = message || 'La ficha ha sido actualizada y sincronizada en disco correctamente.';
+      const badgeContainer = document.getElementById('saveConfirmModalBadge');
+      const badgeElem = document.getElementById('saveConfirmModalBadgeText');
+      if (badgeText) {
+        badgeElem.innerHTML = badgeText;
+        badgeContainer.classList.remove('hidden');
+      } else {
+        badgeContainer.classList.add('hidden');
+      }
+      document.getElementById('saveConfirmModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeSaveConfirmModal() {
+      document.getElementById('saveConfirmModal').classList.add('hidden');
+    }
+
     async function handleEditToolSubmit(event) {
       event.preventDefault();
       const slug = document.getElementById('editToolSlug').value;
       if (!slug) return;
 
       if (isStaticMode) {
-        alert('💡 Modo Lectura (GitHub Pages):\nPara guardar cambios en los archivos de tu disco, corre la aplicación localmente con "npm run dev".');
+        openSaveConfirmModal(
+          'Modo Lectura (GitHub Pages)',
+          'Para guardar cambios en los archivos de tu disco, corre la aplicación localmente con <code class="text-sky-300 font-mono">npm run dev</code>.',
+          `📄 Archivo: ${escapeHtml(slug)}.md`
+        );
         return;
       }
 
@@ -2981,12 +3041,16 @@
           if (activeEditingSlug === slug) {
             openNoteModal(slug);
           }
-          alert('✅ Ficha actualizada y sincronizada en disco.');
+          openSaveConfirmModal(
+            'Cambios guardados con éxito',
+            `La ficha <strong>"${escapeHtml(name)}"</strong> ha sido actualizada y sincronizada en disco correctamente.`,
+            `📄 Archivo: ${escapeHtml(slug)}.md`
+          );
         } else {
-          alert('Error al actualizar: ' + (data.error || 'Desconocido'));
+          showToast('Error al actualizar: ' + (data.error || 'Desconocido'), '⚠️');
         }
       } catch (err) {
-        alert('Error de conexión al guardar cambios.');
+        showToast('Error de conexión al guardar cambios.', '⚠️');
       } finally {
         btn.disabled = false;
         btn.innerHTML = `<span>Guardar Cambios</span>`;
@@ -3490,7 +3554,11 @@
       const btn = document.getElementById('saveNoteBtn');
 
       if (isStaticMode) {
-        alert('💡 Modo Lectura (GitHub Pages):\nLas notas y cambios se sincronizan en tu disco ejecutando "npm run dev" en tu computadora o abriendo la carpeta content/tools en Obsidian.');
+        openSaveConfirmModal(
+          'Modo Lectura (GitHub Pages)',
+          'Las notas y cambios se sincronizan en tu disco ejecutando <code class="text-sky-300 font-mono">npm run dev</code> en tu computadora o abriendo la carpeta content/tools en Obsidian.',
+          `📄 Archivo: ${escapeHtml(activeEditingSlug)}.md`
+        );
         closeNoteModal();
         return;
       }
@@ -3525,7 +3593,7 @@
           renderTools();
         }, 600);
       } catch (err) {
-        alert('Error al guardar la nota.');
+        showToast('Error al guardar la nota.', '⚠️');
         btn.innerText = 'Guardar Cambios';
       }
     }
@@ -3689,6 +3757,7 @@
         e.preventDefault();
         document.getElementById('searchInput').focus();
       } else if (e.key === 'Escape') {
+        closeSaveConfirmModal();
         closeDeleteModal();
         closeEditToolModal();
         closeNoteModal();
