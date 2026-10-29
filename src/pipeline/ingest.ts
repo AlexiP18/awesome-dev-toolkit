@@ -14,7 +14,7 @@ import {
   findExistingTool,
   loadAllTools,
 } from './note_generator.js';
-import { fetchTweetDetailsFromX, fetchThreadTweetsFromX, formatTweetCard, ThreadTweet } from './twitter_scraper.js';
+import { fetchTweetDetailsFromX, fetchThreadTweetsFromX } from './twitter_scraper.js';
 import { structureThreadStepsWithAI } from './ai_providers.js';
 import { ToolStatus, EntryType } from './types.js';
 
@@ -61,7 +61,7 @@ export async function ingestResource(input: IngestInput) {
 
   let extractedThreadResult: {
     rootTweet?: any;
-    threadTweets: ThreadTweet[];
+    threadTweets: Array<{ id: string; text: string; url: string }>;
   } | null = null;
 
   // Si tenemos URL de tweet, obtener automáticamente el contenido y autor desde X,
@@ -75,24 +75,11 @@ export async function ingestResource(input: IngestInput) {
       if (!input.author) {
         input.author = rootTweet.authorName || rootTweet.authorHandle;
       }
-      const rootCardBlock = formatTweetCard(rootTweet);
-      let fullThreadText = rootCardBlock ? `${rootTweet.text}\n\n${rootCardBlock}` : rootTweet.text;
+      let fullThreadText = rootTweet.text;
       if (threadResult.threadTweets.length > 0) {
-        console.log(`[Pipeline] 🧵 Detectados ${threadResult.threadTweets.length} tweets del hilo/respuestas del autor (excluidos anuncios y publicidad).`);
-        const formattedSteps = threadResult.threadTweets
-          .map((t, idx) => {
-            const cardBlock = formatTweetCard(t);
-            return `[Paso / Tweet ${idx + 1}]:\n${t.text}${cardBlock ? `\n${cardBlock}` : ''}`;
-          })
-          .join('\n\n');
-        fullThreadText = `${fullThreadText}\n\n${formattedSteps}`;
-      }
-      // Las tarjetas de enlace (imagen que redirige al recurso) tienen prioridad como URL del recurso
-      const cardUrls = [rootTweet.cardUrl, ...threadResult.threadTweets.map((t) => t.cardUrl)].filter(
-        (u): u is string => Boolean(u)
-      );
-      for (const cu of cardUrls) {
-        if (!candidateUrls.includes(cu)) candidateUrls.push(cu);
+        console.log(`[Pipeline] 🧵 Detectados ${threadResult.threadTweets.length} tweets del hilo (excluidos anuncios y publicidad).`);
+        const formattedSteps = threadResult.threadTweets.map((t, idx) => `[Paso / Tweet ${idx + 1}]:\n${t.text}`).join('\n\n');
+        fullThreadText = `${rootTweet.text}\n\n${formattedSteps}`;
       }
       text = text ? `${text}\n\n${fullThreadText}` : fullThreadText;
       const tweetEmbeddedUrls = extractUrlsFromText(fullThreadText);
@@ -280,21 +267,11 @@ export async function ingestResource(input: IngestInput) {
   }
 
   // Si detectamos un hilo con múltiples tweets/prompts en X, estructurar cada paso/prompt
-  // Las autorrespuestas que solo aportan el enlace del recurso (con tarjeta/URL) no son pasos de un hilo:
-  // alimentan la URL y descripción de la ficha, pero no deben convertirla en un consejo con acordeón de pasos.
-  const stepTweets = (extractedThreadResult?.threadTweets || []).filter(
-    (t) => !t.cardUrl && extractUrlsFromText(t.text).length === 0
-  );
-  const hasLinkReply = (extractedThreadResult?.threadTweets || []).some(
-    (t) => t.cardUrl || extractUrlsFromText(t.text).length > 0
-  );
-  const isStepThread = stepTweets.length >= (hasLinkReply ? 2 : 1);
-
-  if (extractedThreadResult && isStepThread) {
+  if (extractedThreadResult && extractedThreadResult.threadTweets.length > 0) {
     const threadTarget = classifications.find((c) => c.entryType === 'tech_tip') || classifications[0];
     if (threadTarget) {
-      console.log(`[Pipeline] 🤖 Estructurando ${stepTweets.length} prompts/pasos del hilo con IA...`);
-      const threadTextToStructure = stepTweets
+      console.log(`[Pipeline] 🤖 Estructurando ${extractedThreadResult.threadTweets.length} prompts/pasos del hilo con IA...`);
+      const threadTextToStructure = extractedThreadResult.threadTweets
         .map((t, idx) => `[Paso / Tweet ${idx + 1}]:\n${t.text}`)
         .join('\n\n');
 
@@ -317,7 +294,7 @@ export async function ingestResource(input: IngestInput) {
         threadTarget.keyHighlights.length === 0 ||
         !threadTarget.keyHighlights.some((h) => h.includes('###'))
       ) {
-        threadTarget.keyHighlights = stepTweets.map((t, idx) => {
+        threadTarget.keyHighlights = extractedThreadResult.threadTweets.map((t, idx) => {
           return `### Paso ${idx + 1}\n\`\`\`text\n${t.text.trim()}\n\`\`\``;
         });
       }

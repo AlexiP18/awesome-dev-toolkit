@@ -10,38 +10,15 @@ export interface ExtractedTweet {
   authorName?: string;
   authorHandle?: string;
   avatarUrl?: string;
-  /** ID del tweet al que responde (autorrespuesta del autor con el enlace, hilos, etc.) */
-  replyingToStatus?: string;
-  /** Tarjeta de enlace (imagen que redirige al recurso) adjunta al tweet */
-  cardUrl?: string;
-  cardTitle?: string;
-  cardDescription?: string;
-}
-
-export interface ThreadTweet {
-  id: string;
-  text: string;
-  url: string;
-  cardUrl?: string;
-  cardTitle?: string;
-  cardDescription?: string;
 }
 
 export interface ExtractedThread {
   rootTweet: ExtractedTweet | null;
-  threadTweets: ThreadTweet[];
-}
-
-/**
- * Convierte la tarjeta de enlace de un tweet (imagen/preview que redirige al recurso)
- * en un bloque de texto explícito para que la IA y el extractor de URLs lo detecten.
- */
-export function formatTweetCard(t: { cardUrl?: string; cardTitle?: string; cardDescription?: string }): string {
-  if (!t.cardUrl) return '';
-  const parts = [`[Enlace en tarjeta del tweet: ${t.cardUrl}`];
-  if (t.cardTitle) parts.push(`Título: ${t.cardTitle}`);
-  if (t.cardDescription) parts.push(`Descripción: ${t.cardDescription}`);
-  return parts.join(' | ') + ']';
+  threadTweets: Array<{
+    id: string;
+    text: string;
+    url: string;
+  }>;
 }
 
 /**
@@ -89,10 +66,6 @@ export async function fetchTweetDetailsFromX(tweetUrl: string, timeoutMs = 4500)
       authorName: tweet.author?.name,
       authorHandle: tweet.author?.screen_name,
       avatarUrl: tweet.author?.avatar_url,
-      replyingToStatus: tweet.replying_to_status ? String(tweet.replying_to_status) : undefined,
-      cardUrl: tweet.card?.url || undefined,
-      cardTitle: tweet.card?.title || undefined,
-      cardDescription: tweet.card?.description || undefined,
     };
   } catch (err: any) {
     console.warn(`[Twitter API] No se pudo obtener contenido automático de X (${tweetUrl}):`, err?.message || err);
@@ -143,7 +116,7 @@ export async function fetchThreadTweetsFromX(
     }
 
     const mdContent = await jinaRes.text();
-    const threadTweets: ThreadTweet[] = [];
+    const threadTweets: Array<{ id: string; text: string; url: string }> = [];
 
     // Estrategia 1: Buscar enlaces de status directos en el contenido markdown
     const statusRegex = /https:\/\/(?:x|twitter)\.com\/([a-zA-Z0-9_]+)\/status\/(\d+)/gi;
@@ -169,46 +142,17 @@ export async function fetchThreadTweetsFromX(
         })
       );
 
-      const fetchedTweets: ExtractedTweet[] = [];
       for (const res of fetchedResults) {
-        if (res.status === 'fulfilled' && res.value && (res.value.text || res.value.cardUrl)) {
-          fetchedTweets.push(res.value);
-        }
-      }
-
-      // Conservar solo los tweets que pertenecen a la cadena de respuestas del tweet raíz
-      // (autorrespuestas con el enlace, hilos) y descartar tweets sueltos posteriores del autor.
-      const chainIds = new Set<string>([rootId]);
-      const accepted = new Set<string>();
-      let grew = true;
-      while (grew) {
-        grew = false;
-        for (const t of fetchedTweets) {
-          if (accepted.has(t.id)) continue;
-          const sameAuthor = !targetHandle || !t.authorHandle || t.authorHandle.toLowerCase() === targetHandle;
-          const inChain = Boolean(t.replyingToStatus && chainIds.has(t.replyingToStatus));
-          if (sameAuthor && inChain) {
-            accepted.add(t.id);
-            chainIds.add(t.id);
-            grew = true;
+        if (res.status === 'fulfilled' && res.value && res.value.text) {
+          const tweetText = res.value.text.trim();
+          if (!isPromoTweet(tweetText)) {
+            threadTweets.push({
+              id: res.value.id,
+              text: tweetText,
+              url: res.value.url,
+            });
           }
         }
-      }
-
-      for (const t of fetchedTweets) {
-        if (!accepted.has(t.id)) continue;
-        const tweetText = (t.text || '').trim();
-        if (tweetText && isPromoTweet(tweetText)) continue;
-        // Descartar comentarios del autor que solo citan/enlazan otro tweet (contenido ajeno al recurso)
-        if (!t.cardUrl && /https?:\/\/(?:x|twitter)\.com\/[a-zA-Z0-9_]+\/status\/\d+/i.test(tweetText)) continue;
-        threadTweets.push({
-          id: t.id,
-          text: tweetText,
-          url: t.url,
-          cardUrl: t.cardUrl,
-          cardTitle: t.cardTitle,
-          cardDescription: t.cardDescription,
-        });
       }
     }
 
