@@ -50,6 +50,15 @@ export function formatTweetCard(t: { cardUrl?: string; cardTitle?: string; cardD
  */
 export const PROMO_TWEET_PATTERN = /(?:antes de seguir|con @\w+.*hemos reunido|hemos reunido.*herramientas|base.*3000.*herramientas|consíguela gratis|aquí la tienes\s*→|newsletter|patrocinado|sponsor|patrocinador|¡esto es todo amigos!|gracias por acompañarme|sígueme para más|sigueme para mas|rt y me gusta|repost y me gusta|dale rt y like)/i;
 
+/** Normaliza texto para comparar tweets ignorando markdown, enlaces, emojis y espacios. */
+export function normalizeForCompare(text: string): string {
+  return (text || '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/https?:\/\/\S+/g, '')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, '');
+}
+
 export function isPromoTweet(text: string): boolean {
   if (!text) return false;
   return PROMO_TWEET_PATTERN.test(text);
@@ -230,8 +239,12 @@ export async function fetchThreadTweetsFromX(
         chunk = chunk.replace(/Show more$/i, '').trim();
 
         if (chunk.length > 20 && !isPromoTweet(chunk)) {
-          const rootSnippet = (rootTweet?.text || '').slice(0, 45).trim();
-          if (!rootSnippet || !chunk.includes(rootSnippet)) {
+          // Descartar el propio tweet raíz (aparece como primer bloque del autor en el markdown de Jina)
+          const rootNorm = normalizeForCompare(rootTweet?.text || '');
+          const chunkNorm = normalizeForCompare(chunk);
+          const rootProbe = rootNorm.slice(0, 20);
+          const isRootItself = rootProbe.length >= 10 && chunkNorm.includes(rootProbe);
+          if (!isRootItself) {
             if (!threadTweets.some((t) => t.text.includes(chunk.slice(0, 45)))) {
               threadTweets.push({
                 id: `${rootId}_step_${threadTweets.length + 1}`,
@@ -242,6 +255,12 @@ export async function fetchThreadTweetsFromX(
           }
         }
       }
+    }
+
+    // Un único bloque suelto del autor (sin enlaces de status) suele ser una respuesta a un comentarista,
+    // no un hilo: solo se acepta el respaldo cuando hay al menos 2 tweets consecutivos.
+    if (threadStatusIds.length === 0 && threadTweets.length === 1) {
+      threadTweets.length = 0;
     }
 
     console.log(`[Twitter API] 🧵 Total tweets del hilo extraídos para @${targetHandle}: ${threadTweets.length}`);

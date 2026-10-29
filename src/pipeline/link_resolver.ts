@@ -75,9 +75,10 @@ export function extractUrlsFromText(text: string): string[] {
   const httpRegex = /(https?:\/\/[^\s<>"'()]+)/gi;
   const httpMatches = text.match(httpRegex) || [];
   for (const match of httpMatches) {
-    // Descartar enlaces truncados visualmente por X/Twitter (terminan en "..." o "…")
-    if (/\.\.\.$|…$/.test(match)) continue;
-    const cleaned = match.replace(/[.,;:!?)]+$/, '');
+    // Quitar restos de markdown (]) y descartar enlaces truncados visualmente por X/Twitter ("..." o "…")
+    const stripped = match.replace(/[\]\[.,;:!?)]+$/, '');
+    if (/\.\.\.|…|%E2%80%A6/i.test(stripped)) continue;
+    const cleaned = stripped;
     if (!isIgnoredNonToolUrl(cleaned)) {
       if (!foundUrls.some((u) => u.toLowerCase() === cleaned.toLowerCase())) {
         foundUrls.push(cleaned);
@@ -90,16 +91,20 @@ export function extractUrlsFromText(text: string): string[] {
   const domainMatches = text.match(domainRegex) || [];
   for (const match of domainMatches) {
     // Descartar enlaces truncados visualmente por X/Twitter (ej. "github.com/diegosouzapw/O..." o "…")
-    if (/\.\.\.$|…$/.test(match)) continue;
-    const cleaned = match.replace(/[.,;:!?)]+$/, '');
+    const strippedDomain = match.replace(/[\]\[.,;:!?)]+$/, '');
+    if (/\.\.\.|…|%E2%80%A6/i.test(strippedDomain)) continue;
+    const cleaned = strippedDomain;
     // Ignorar si solo es el dominio "github.com" sin ruta (ej. del pie "From github.com")
     if (/^(?:www\.)?(?:github|gitlab)\.com$/i.test(cleaned)) continue;
 
     const withProtocol = `https://${cleaned}`;
     if (!isIgnoredNonToolUrl(withProtocol)) {
-      const alreadyHas = foundUrls.some(
-        (u) => u.replace(/^https?:\/\//, '').toLowerCase() === cleaned.toLowerCase()
-      );
+      // Evitar duplicados y sufijos de un host ya encontrado (ej. "vercel.app" dentro de "dvklab.vercel.app")
+      const alreadyHas = foundUrls.some((u) => {
+        const bare = u.replace(/^https?:\/\//, '').toLowerCase();
+        const c = cleaned.toLowerCase();
+        return bare === c || bare.replace(/\/.*$/, '').endsWith(`.${c}`) || bare.startsWith(`${c}/`);
+      });
       if (!alreadyHas) {
         foundUrls.push(withProtocol);
       }
