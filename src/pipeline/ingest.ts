@@ -285,10 +285,8 @@ export async function ingestResource(input: IngestInput) {
   const stepTweets = (extractedThreadResult?.threadTweets || []).filter(
     (t) => !t.cardUrl && extractUrlsFromText(t.text).length === 0
   );
-  const hasLinkReply = (extractedThreadResult?.threadTweets || []).some(
-    (t) => t.cardUrl || extractUrlsFromText(t.text).length > 0
-  );
-  const isStepThread = stepTweets.length >= (hasLinkReply ? 2 : 1);
+  // Un hilo de pasos (consejo o prompts tutoriales) requiere estrictamente al menos 2 pasos reales
+  const isStepThread = stepTweets.length >= 2;
 
   if (extractedThreadResult && isStepThread) {
     const threadTarget = classifications.find((c) => c.entryType === 'tech_tip') || classifications[0];

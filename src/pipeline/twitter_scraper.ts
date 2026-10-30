@@ -1,6 +1,10 @@
 /**
- * Extractor ligero y resiliente para publicaciones e hilos de X (Twitter).
- * Utiliza api.fxtwitter.com con timeout rápido y r.jina.ai para desenrollar hilos completos.
+ * Scraper especializado y resiliente para publicaciones e hilos de X (Twitter).
+ * Arquitectura multi-nivel en cascada:
+ *   1. FxTwitter v2 Thread API (nativo de hilos y tarjetas con URLs expandidas)
+ *   2. FxTwitter v1 Status API (detalles de tweet individual)
+ *   3. Twitter Syndication API (CDN oficial de Twitter sin autenticación)
+ *   4. Fallback de emergencia con Jina Reader
  */
 
 export interface ExtractedTweet {
@@ -30,6 +34,7 @@ export interface ThreadTweet {
 export interface ExtractedThread {
   rootTweet: ExtractedTweet | null;
   threadTweets: ThreadTweet[];
+  providerUsed?: 'fxtwitter_v2' | 'fxtwitter_v1' | 'syndication' | 'jina';
 }
 
 /**
@@ -65,14 +70,55 @@ export function isPromoTweet(text: string): boolean {
 }
 
 /**
- * Obtiene los detalles de un único tweet raíz desde api.fxtwitter.com.
+ * Extrae el ID numérico de cualquier variante de enlace a un tweet en X / Twitter.
  */
-export async function fetchTweetDetailsFromX(tweetUrl: string, timeoutMs = 4500): Promise<ExtractedTweet | null> {
+export function extractTweetId(tweetUrl: string): string | null {
   if (!tweetUrl) return null;
-  const match = tweetUrl.match(/https?:\/\/(?:x|twitter)\.com\/(?:[a-zA-Z0-9_]+\/)?status\/(\d+)/i);
-  if (!match) return null;
-  const tweetId = match[1];
+  const match = tweetUrl.match(/https?:\/\/(?:x|twitter)\.com\/(?:[a-zA-Z0-9_]+\/)?status(?:es)?\/(\d+)/i);
+  if (match) return match[1];
+  const digitsOnly = tweetUrl.trim().match(/^(\d{15,25})$/);
+  return digitsOnly ? digitsOnly[1] : null;
+}
 
+/**
+ * Nivel 3: Obtiene el tweet directamente desde la CDN oficial de sindicación de Twitter.
+ * Ultra rápido (<200 ms), público y sin autenticación requerida.
+ */
+export async function fetchTweetFromSyndication(tweetId: string, timeoutMs = 3500): Promise<ExtractedTweet | null> {
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+    const res = await fetch(`https://cdn.syndication.twimg.com/tweet-result?id=${tweetId}&token=a`, {
+      signal: controller.signal,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        Accept: 'application/json',
+      },
+    });
+    clearTimeout(timer);
+
+    if (!res.ok) return null;
+    const data = (await res.json()) as any;
+    if (!data || !data.text) return null;
+
+    return {
+      id: data.id_str || tweetId,
+      url: `https://x.com/${data.user?.screen_name || 'i'}/status/${tweetId}`,
+      text: data.text,
+      authorName: data.user?.name,
+      authorHandle: data.user?.screen_name,
+      avatarUrl: data.user?.profile_image_url_https,
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Nivel 2: Obtiene los detalles de un único tweet raíz desde api.fxtwitter.com/status/{id}.
+ */
+export async function fetchTweetFromFxTwitterV1(tweetId: string, timeoutMs = 4000): Promise<ExtractedTweet | null> {
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -103,40 +149,162 @@ export async function fetchTweetDetailsFromX(tweetUrl: string, timeoutMs = 4500)
       cardTitle: tweet.card?.title || undefined,
       cardDescription: tweet.card?.description || undefined,
     };
-  } catch (err: any) {
-    console.warn(`[Twitter API] No se pudo obtener contenido automático de X (${tweetUrl}):`, err?.message || err);
+  } catch {
     return null;
   }
 }
 
 /**
- * Obtiene el tweet raíz y desenrolla todos los tweets del hilo pertenecientes al autor,
- * filtrando automáticamente publicidad intermedia y cierres promocionales.
+ * Nivel 1: Scraper Especializado de Hilos y Tarjetas vía FxTwitter v2 Thread API.
+ * Devuelve el tweet raíz, todas las autorrespuestas con enlaces/tarjetas y los pasos cronológicos del hilo.
+ */
+export async function fetchThreadFromFxTwitterV2(
+  tweetId: string,
+  authorHandle?: string,
+  timeoutMs = 6000
+): Promise<ExtractedThread | null> {
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+    const res = await fetch(`https://api.fxtwitter.com/2/thread/${tweetId}`, {
+      signal: controller.signal,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        Accept: 'application/json',
+      },
+    });
+    clearTimeout(timer);
+
+    if (!res.ok) return null;
+    const data = (await res.json()) as any;
+    if (data.code !== 200 || !Array.isArray(data.thread) || data.thread.length === 0) {
+      return null;
+    }
+
+    const threadItems = data.thread;
+    const rootRaw = threadItems[0];
+    if (!rootRaw || !rootRaw.text) return null;
+
+    const rootTweet: ExtractedTweet = {
+      id: String(rootRaw.id || tweetId),
+      url: rootRaw.url || `https://x.com/i/status/${tweetId}`,
+      text: rootRaw.text || '',
+      authorName: rootRaw.author?.name,
+      authorHandle: rootRaw.author?.screen_name,
+      avatarUrl: rootRaw.author?.avatar_url,
+      cardUrl: rootRaw.card?.url || undefined,
+      cardTitle: rootRaw.card?.title || undefined,
+      cardDescription: rootRaw.card?.description || undefined,
+    };
+
+    const targetHandle = (authorHandle || rootTweet.authorHandle || '').toLowerCase();
+    const threadTweets: ThreadTweet[] = [];
+
+    // Procesar autorrespuestas o pasos subsecuentes del hilo
+    for (let i = 1; i < threadItems.length; i++) {
+      const item = threadItems[i];
+      if (!item) continue;
+
+      const itemAuthor = (item.author?.screen_name || '').toLowerCase();
+      // Descartar respuestas de otros usuarios que no sean el autor original
+      if (targetHandle && itemAuthor && itemAuthor !== targetHandle) {
+        continue;
+      }
+
+      const itemText = (item.text || '').trim();
+      // Filtrar tweets publicitarios, patrocinios o llamadas a acción
+      if (itemText && isPromoTweet(itemText)) {
+        continue;
+      }
+
+      // Descartar comentarios que solo citan otro tweet ajeno sin tarjeta de recurso
+      if (!item.card?.url && /https?:\/\/(?:x|twitter)\.com\/[a-zA-Z0-9_]+\/status\/\d+/i.test(itemText)) {
+        continue;
+      }
+
+      threadTweets.push({
+        id: String(item.id),
+        text: itemText,
+        url: item.url || `https://x.com/${itemAuthor || targetHandle || 'i'}/status/${item.id}`,
+        cardUrl: item.card?.url || undefined,
+        cardTitle: item.card?.title || undefined,
+        cardDescription: item.card?.description || undefined,
+      });
+    }
+
+    console.log(
+      `[Twitter Scraper] ⚡ Hilo obtenido con éxito vía FxTwitter v2: ${threadTweets.length} respuesta(s)/paso(s) para @${targetHandle || 'autor'}`
+    );
+
+    return {
+      rootTweet,
+      threadTweets,
+      providerUsed: 'fxtwitter_v2',
+    };
+  } catch (err: any) {
+    console.warn(`[Twitter Scraper] FxTwitter v2 no disponible para tweet ${tweetId}:`, err?.message || err);
+    return null;
+  }
+}
+
+/**
+ * Obtiene los detalles de un único tweet raíz con cascada FxTwitter -> Twitter Syndication.
+ */
+export async function fetchTweetDetailsFromX(tweetUrl: string, timeoutMs = 4500): Promise<ExtractedTweet | null> {
+  const tweetId = extractTweetId(tweetUrl);
+  if (!tweetId) return null;
+
+  // 1. Probar FxTwitter v1
+  const fxResult = await fetchTweetFromFxTwitterV1(tweetId, timeoutMs);
+  if (fxResult) return fxResult;
+
+  // 2. Probar Twitter Syndication CDN
+  console.log(`[Twitter Scraper] Usando fallback a Twitter Syndication CDN para ${tweetId}...`);
+  const synResult = await fetchTweetFromSyndication(tweetId, timeoutMs);
+  if (synResult) return synResult;
+
+  return null;
+}
+
+/**
+ * Obtiene el tweet raíz y desenrolla todos los tweets del hilo pertenecientes al autor.
+ * Aplica la cascada:
+ *   1. FxTwitter v2 (Hilo nativo + Tarjetas)
+ *   2. FxTwitter v1 / Syndication (Tweet raíz) + Jina Reader (Respaldo para hilos extensos)
  */
 export async function fetchThreadTweetsFromX(
   tweetUrl: string,
   authorHandle?: string,
   timeoutMs = 9000
 ): Promise<ExtractedThread> {
-  const rootTweet = await fetchTweetDetailsFromX(tweetUrl, 4000);
-  const match = tweetUrl.match(/https?:\/\/(?:x|twitter)\.com\/(?:([a-zA-Z0-9_]+)\/)?status\/(\d+)/i);
-  if (!match) {
-    return { rootTweet, threadTweets: [] };
+  const tweetId = extractTweetId(tweetUrl);
+  if (!tweetId) {
+    return { rootTweet: null, threadTweets: [] };
   }
 
-  const rootId = rootTweet?.id || match[2];
+  // Nivel 1: Intentar FxTwitter v2 Thread API (ultra rápido, nativo y exacto)
+  const v2Thread = await fetchThreadFromFxTwitterV2(tweetId, authorHandle, 5500);
+  if (v2Thread && v2Thread.rootTweet) {
+    return v2Thread;
+  }
+
+  // Nivel 2: Obtener tweet raíz vía FxTwitter v1 o Syndication CDN
+  console.log(`[Twitter Scraper] FxTwitter v2 no respondió; usando cascada de respaldo para ${tweetUrl}...`);
+  const rootTweet = await fetchTweetDetailsFromX(tweetUrl, 4000);
+
   const targetHandle = (
     authorHandle ||
     rootTweet?.authorHandle ||
-    (match[1] && !['i', 'status'].includes(match[1].toLowerCase()) ? match[1] : '')
+    ''
   ).toLowerCase();
 
+  // Nivel 4: Si no tenemos hilo directo de la API, usar Jina Reader como respaldo de emergencia
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
 
     const jinaUrl = `https://r.jina.ai/${tweetUrl}`;
-    // Usar 'Mozilla/5.0' simple para evitar 403 de Cloudflare/Jina
     const jinaRes = await fetch(jinaUrl, {
       signal: controller.signal,
       headers: {
@@ -147,8 +315,8 @@ export async function fetchThreadTweetsFromX(
     clearTimeout(timer);
 
     if (!jinaRes.ok) {
-      console.warn(`[Twitter API] Jina respondió con status ${jinaRes.status} para ${tweetUrl}`);
-      return { rootTweet, threadTweets: [] };
+      console.warn(`[Twitter Scraper] Jina respondió con status ${jinaRes.status} para ${tweetUrl}`);
+      return { rootTweet, threadTweets: [], providerUsed: rootTweet ? 'fxtwitter_v1' : undefined };
     }
 
     const mdContent = await jinaRes.text();
@@ -164,7 +332,7 @@ export async function fetchThreadTweetsFromX(
       const statusId = m[2];
 
       const matchesAuthor = targetHandle ? tweetAuthor === targetHandle : true;
-      if (matchesAuthor && statusId !== rootId && !threadStatusIds.includes(statusId)) {
+      if (matchesAuthor && statusId !== tweetId && !threadStatusIds.includes(statusId)) {
         threadStatusIds.push(statusId);
       }
     }
@@ -186,8 +354,7 @@ export async function fetchThreadTweetsFromX(
       }
 
       // Conservar solo los tweets que pertenecen a la cadena de respuestas del tweet raíz
-      // (autorrespuestas con el enlace, hilos) y descartar tweets sueltos posteriores del autor.
-      const chainIds = new Set<string>([rootId]);
+      const chainIds = new Set<string>([tweetId]);
       const accepted = new Set<string>();
       let grew = true;
       while (grew) {
@@ -208,7 +375,6 @@ export async function fetchThreadTweetsFromX(
         if (!accepted.has(t.id)) continue;
         const tweetText = (t.text || '').trim();
         if (tweetText && isPromoTweet(tweetText)) continue;
-        // Descartar comentarios del autor que solo citan/enlazan otro tweet (contenido ajeno al recurso)
         if (!t.cardUrl && /https?:\/\/(?:x|twitter)\.com\/[a-zA-Z0-9_]+\/status\/\d+/i.test(tweetText)) continue;
         threadTweets.push({
           id: t.id,
@@ -221,8 +387,7 @@ export async function fetchThreadTweetsFromX(
       }
     }
 
-    // Estrategia 2 (Respaldo robusto): Si los IDs de status no aparecieron o fallaron,
-    // extraer directamente los bloques de texto de los tweets del autor en el markdown de Jina
+    // Estrategia 2: Respaldo por bloques de autor si los IDs no aparecieron
     if (threadTweets.length === 0 && targetHandle) {
       const escapedHandle = targetHandle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const avatarSplitRegex = new RegExp(`\\[\\!\\[Image \\d+:[^\\]]*\\]\\([^)]+\\)\\]\\(https?:\\/\\/x\\.com\\/${escapedHandle}\\)`, 'gi');
@@ -230,16 +395,13 @@ export async function fetchThreadTweetsFromX(
 
       for (let i = 1; i < chunks.length; i++) {
         let chunk = chunks[i];
-        // Detener si empieza la respuesta de otro usuario
         chunk = chunk.split(new RegExp(`\\[\\!\\[Image \\d+:[^\\]]*\\]\\([^)]+\\)\\]\\(https?:\\/\\/x\\.com\\/(?!${escapedHandle})[^)]+\\)`, 'i'))[0];
         chunk = chunk.split(/\n\s*[*#]/)[0];
         chunk = chunk.replace(/^[*•\s]+/, '').trim();
-        // Limpiar botones de interacción al final del tweet
         chunk = chunk.replace(/\[\d+\]\(https?:\/\/x\.com\/compose\/post[^)]+\)[\s\d.KMkm]+$/i, '').trim();
         chunk = chunk.replace(/Show more$/i, '').trim();
 
         if (chunk.length > 20 && !isPromoTweet(chunk)) {
-          // Descartar el propio tweet raíz (aparece como primer bloque del autor en el markdown de Jina)
           const rootNorm = normalizeForCompare(rootTweet?.text || '');
           const chunkNorm = normalizeForCompare(chunk);
           const rootProbe = rootNorm.slice(0, 20);
@@ -247,9 +409,9 @@ export async function fetchThreadTweetsFromX(
           if (!isRootItself) {
             if (!threadTweets.some((t) => t.text.includes(chunk.slice(0, 45)))) {
               threadTweets.push({
-                id: `${rootId}_step_${threadTweets.length + 1}`,
+                id: `${tweetId}_step_${threadTweets.length + 1}`,
                 text: chunk,
-                url: `https://x.com/${targetHandle}/status/${rootId}#step-${threadTweets.length + 1}`,
+                url: `https://x.com/${targetHandle}/status/${tweetId}#step-${threadTweets.length + 1}`,
               });
             }
           }
@@ -257,16 +419,14 @@ export async function fetchThreadTweetsFromX(
       }
     }
 
-    // Un único bloque suelto del autor (sin enlaces de status) suele ser una respuesta a un comentarista,
-    // no un hilo: solo se acepta el respaldo cuando hay al menos 2 tweets consecutivos.
     if (threadStatusIds.length === 0 && threadTweets.length === 1) {
       threadTweets.length = 0;
     }
 
-    console.log(`[Twitter API] 🧵 Total tweets del hilo extraídos para @${targetHandle}: ${threadTweets.length}`);
-    return { rootTweet, threadTweets };
+    console.log(`[Twitter Scraper] 🧵 Total tweets del hilo extraídos para @${targetHandle}: ${threadTweets.length} (vía Jina)`);
+    return { rootTweet, threadTweets, providerUsed: 'jina' };
   } catch (err: any) {
-    console.warn(`[Twitter API] Error al desenrollar hilo de X (${tweetUrl}):`, err?.message || err);
-    return { rootTweet, threadTweets: [] };
+    console.warn(`[Twitter Scraper] Error en respaldo Jina (${tweetUrl}):`, err?.message || err);
+    return { rootTweet, threadTweets: [], providerUsed: rootTweet ? 'fxtwitter_v1' : undefined };
   }
 }
