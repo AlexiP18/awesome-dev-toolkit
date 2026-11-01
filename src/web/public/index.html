@@ -1181,6 +1181,7 @@
       const found = allAiProviders.find(p => p.id === selectedAiProvider);
       if (found) return found.shortName;
       switch (selectedAiProvider) {
+        case 'nvidia': return 'NVIDIA Build';
         case 'gemini': return 'Gemini Flash';
         case 'deepseek': return 'DeepSeek v4.1';
         case 'minimax': return 'MiniMax 3.1';
@@ -1205,6 +1206,7 @@
                 currentActiveAiProvider = data.activeProvider;
                 const low = data.activeProvider.toLowerCase();
                 if (low.includes('deepseek')) currentActiveAiShortName = 'DeepSeek';
+                else if (low.includes('nvidia')) currentActiveAiShortName = 'NVIDIA Build';
                 else if (low.includes('minimax')) currentActiveAiShortName = 'MiniMax 3.1';
                 else if (low.includes('gemini')) currentActiveAiShortName = 'Gemini Flash';
                 else if (low.includes('claude')) currentActiveAiShortName = 'Claude Haiku';
@@ -1230,9 +1232,10 @@
 
       const providerOptions = [
         { id: 'gemini', icon: '🧠', name: 'Google Gemini (3.8 Flash)', desc: 'Por defecto' },
+        { id: 'nvidia', icon: '🟢', name: 'NVIDIA Build (NIM)', desc: 'Ultra-rápido' },
         { id: 'deepseek', icon: '🚀', name: 'DeepSeek (v4.1 Flash / Directo)', desc: '' },
         { id: 'minimax', icon: '⚡', name: 'MiniMax 3.1 Flash', desc: '' },
-        { id: 'auto', icon: '🔄', name: 'Cascada Automática', desc: 'Gemini ➔ DeepSeek ➔ MiniMax' },
+        { id: 'auto', icon: '🔄', name: 'Cascada Automática', desc: 'Gemini ➔ NVIDIA ➔ DeepSeek' },
       ];
 
       select.innerHTML = providerOptions.map(opt => {
@@ -1267,7 +1270,7 @@
           badge.className = 'font-mono font-medium text-sky-400 text-[10px] px-2 py-0.5 rounded-md bg-sky-500/10 border border-sky-500/20';
         }
         if (noticeText) {
-          noticeText.innerText = `Evaluará en cascada: Gemini ➔ DeepSeek ➔ MiniMax en orden de prioridad.`;
+          noticeText.innerText = `Evaluará en cascada: Gemini ➔ NVIDIA ➔ DeepSeek en orden de prioridad.`;
         }
       } else {
         const cfg = allAiProviders.find(p => p.id === selectedAiProvider);

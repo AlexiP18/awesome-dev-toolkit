@@ -534,6 +534,83 @@ async function callOpenAICompatible(options: {
 }
 
 // -------------------------------------------------------------
+// NVIDIA Build / NIM API (https://build.nvidia.com)
+// Admite DeepSeek, GLM, MiniMax, Llama, Qwen, etc.
+// -------------------------------------------------------------
+function getNvidiaEndpoint(): string {
+  const base = (process.env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1').replace(/\/$/, '');
+  return `${base}/chat/completions`;
+}
+
+// NVIDIA Build - DeepSeek
+async function tryNvidiaDeepSeek(params: ClassifyInput): Promise<ClassificationResult[]> {
+  const apiKey = process.env.NVIDIA_API_KEY;
+  if (!apiKey) throw new Error('NVIDIA_API_KEY no configurada');
+
+  const model = process.env.NVIDIA_DEEPSEEK_MODEL || process.env.NVIDIA_MODEL || 'deepseek-v4.1-flash';
+  const raw = await callOpenAICompatible({
+    providerName: `NVIDIA Build (${model})`,
+    endpoint: getNvidiaEndpoint(),
+    apiKey,
+    model,
+    prompt: buildUserPrompt(params),
+  });
+
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
+}
+
+// NVIDIA Build - GLM
+async function tryNvidiaGLM(params: ClassifyInput): Promise<ClassificationResult[]> {
+  const apiKey = process.env.NVIDIA_API_KEY;
+  if (!apiKey) throw new Error('NVIDIA_API_KEY no configurada');
+
+  const model = process.env.NVIDIA_GLM_MODEL || 'glm-5-3-flash';
+  const raw = await callOpenAICompatible({
+    providerName: `NVIDIA Build (${model})`,
+    endpoint: getNvidiaEndpoint(),
+    apiKey,
+    model,
+    prompt: buildUserPrompt(params),
+  });
+
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
+}
+
+// NVIDIA Build - MiniMax
+async function tryNvidiaMiniMax(params: ClassifyInput): Promise<ClassificationResult[]> {
+  const apiKey = process.env.NVIDIA_API_KEY;
+  if (!apiKey) throw new Error('NVIDIA_API_KEY no configurada');
+
+  const model = process.env.NVIDIA_MINIMAX_MODEL || 'minimax-m3.1-flash';
+  const raw = await callOpenAICompatible({
+    providerName: `NVIDIA Build (${model})`,
+    endpoint: getNvidiaEndpoint(),
+    apiKey,
+    model,
+    prompt: buildUserPrompt(params),
+  });
+
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
+}
+
+// NVIDIA Build - General / Default
+async function tryNvidiaGeneral(params: ClassifyInput): Promise<ClassificationResult[]> {
+  const apiKey = process.env.NVIDIA_API_KEY;
+  if (!apiKey) throw new Error('NVIDIA_API_KEY no configurada');
+
+  const model = process.env.NVIDIA_MODEL || process.env.NVIDIA_DEEPSEEK_MODEL || 'deepseek-v4.1-flash';
+  const raw = await callOpenAICompatible({
+    providerName: `NVIDIA Build (${model})`,
+    endpoint: getNvidiaEndpoint(),
+    apiKey,
+    model,
+    prompt: buildUserPrompt(params),
+  });
+
+  return normalizeRawOutput(raw, params.urls, params.sourceTweet);
+}
+
+// -------------------------------------------------------------
 // ZenMux Gateway (https://zenmux.ai)
 // Admite Claude Haiku, MiniMax 3.1, DeepSeek Flash, etc.
 // -------------------------------------------------------------
@@ -712,16 +789,90 @@ export async function classifyWithProviderCascade(
   params: ClassifyInput,
   preferredProvider?: string
 ): Promise<{ results: ClassificationResult[]; providerUsed: string; switchNotice?: string }> {
-  let providers = [
-    // 1. Google Gemini (Flash) - Prioridad principal por defecto
-    {
-      id: 'gemini',
-      name: 'Google Gemini (Flash)',
-      fn: tryGemini,
-      hasKey: () => Boolean(process.env.GEMINI_API_KEY),
-    },
+  const preferNvidia = process.env.DEFAULT_AI_PROVIDER === 'nvidia' || preferredProvider === 'nvidia';
 
-    // 2. DeepSeek (ZenMux v4.1 Flash o Directo)
+  let providers = [
+    // NVIDIA Build (NIM) - Si está configurado como preferido
+    ...(preferNvidia && process.env.NVIDIA_API_KEY
+      ? [
+          {
+            id: 'nvidia',
+            name: `NVIDIA Build (${process.env.NVIDIA_MODEL || process.env.NVIDIA_DEEPSEEK_MODEL || 'deepseek-v4.1-flash'})`,
+            fn: tryNvidiaGeneral,
+            hasKey: () => Boolean(process.env.NVIDIA_API_KEY),
+          },
+        ]
+      : []),
+
+    // 1. Google Gemini (Flash) - Si no se especificó NVIDIA por defecto
+    ...(!preferNvidia
+      ? [
+          {
+            id: 'gemini',
+            name: 'Google Gemini (Flash)',
+            fn: tryGemini,
+            hasKey: () => Boolean(process.env.GEMINI_API_KEY),
+          },
+        ]
+      : []),
+
+    // 2. NVIDIA Build (Si no se colocó primero arriba)
+    ...(!preferNvidia && process.env.NVIDIA_API_KEY
+      ? [
+          {
+            id: 'nvidia',
+            name: `NVIDIA Build (${process.env.NVIDIA_MODEL || process.env.NVIDIA_DEEPSEEK_MODEL || 'deepseek-v4.1-flash'})`,
+            fn: tryNvidiaGeneral,
+            hasKey: () => Boolean(process.env.NVIDIA_API_KEY),
+          },
+        ]
+      : []),
+
+    // Modelos específicos de NVIDIA Build en cascada si están configurados
+    ...(process.env.NVIDIA_API_KEY && process.env.NVIDIA_DEEPSEEK_MODEL
+      ? [
+          {
+            id: 'nvidia-deepseek',
+            name: `NVIDIA DeepSeek (${process.env.NVIDIA_DEEPSEEK_MODEL})`,
+            fn: tryNvidiaDeepSeek,
+            hasKey: () => Boolean(process.env.NVIDIA_API_KEY),
+          },
+        ]
+      : []),
+    ...(process.env.NVIDIA_API_KEY && process.env.NVIDIA_GLM_MODEL
+      ? [
+          {
+            id: 'nvidia-glm',
+            name: `NVIDIA GLM (${process.env.NVIDIA_GLM_MODEL})`,
+            fn: tryNvidiaGLM,
+            hasKey: () => Boolean(process.env.NVIDIA_API_KEY),
+          },
+        ]
+      : []),
+    ...(process.env.NVIDIA_API_KEY && process.env.NVIDIA_MINIMAX_MODEL
+      ? [
+          {
+            id: 'nvidia-minimax',
+            name: `NVIDIA MiniMax (${process.env.NVIDIA_MINIMAX_MODEL})`,
+            fn: tryNvidiaMiniMax,
+            hasKey: () => Boolean(process.env.NVIDIA_API_KEY),
+          },
+        ]
+      : []),
+
+    // Si Gemini estaba postergado por preferencia de NVIDIA, ponerlo de respaldo
+    ...(preferNvidia && process.env.GEMINI_API_KEY
+      ? [
+          {
+            id: 'gemini',
+            name: 'Google Gemini (Flash)',
+            fn: tryGemini,
+            hasKey: () => Boolean(process.env.GEMINI_API_KEY),
+          },
+        ]
+      : []),
+
+    // 3. DeepSeek (ZenMux v4.1 Flash o Directo)
     {
       id: 'deepseek',
       name: `ZenMux (${process.env.ZENMUX_DEEPSEEK_MODEL || 'deepseek/deepseek-v4.1-flash'})`,
@@ -735,7 +886,7 @@ export async function classifyWithProviderCascade(
       hasKey: () => Boolean(process.env.DEEPSEEK_API_KEY),
     },
 
-    // 3. MiniMax (3.1 Flash vía ZenMux)
+    // 4. MiniMax (3.1 Flash vía ZenMux)
     {
       id: 'minimax',
       name: `ZenMux (${process.env.ZENMUX_MINIMAX_MODEL || 'minimax/minimax-m3.1-flash'})`,
@@ -743,7 +894,7 @@ export async function classifyWithProviderCascade(
       hasKey: () => Boolean(process.env.ZENMUX_MINIMAX_KEY || process.env.ZENMUX_API_KEY),
     },
 
-    // 4. ZenMux - Claude Haiku 5.5
+    // 5. ZenMux - Claude Haiku 5.5
     {
       id: 'claude',
       name: `ZenMux (${process.env.ZENMUX_CLAUDE_MODEL || 'anthropic/claude-haiku-5.5'})`,
@@ -763,16 +914,16 @@ export async function classifyWithProviderCascade(
         ]
       : []),
 
-    // 5. Groq (Llama 3.3)
+    // 6. Groq (Llama 3.3)
     { id: 'groq', name: 'Groq (Llama 3.3)', fn: tryGroq, hasKey: () => Boolean(process.env.GROQ_API_KEY) },
 
-    // 6. OpenRouter
+    // 7. OpenRouter
     { id: 'openrouter', name: 'OpenRouter', fn: tryOpenRouter, hasKey: () => Boolean(process.env.OPENROUTER_API_KEY) },
 
-    // 7. OpenAI (GPT-4o-mini)
+    // 8. OpenAI (GPT-4o-mini)
     { id: 'openai', name: 'OpenAI (GPT-4o-mini)', fn: tryOpenAI, hasKey: () => Boolean(process.env.OPENAI_API_KEY) },
 
-    // 8. Ollama (Local)
+    // 9. Ollama (Local)
     { id: 'ollama', name: 'Ollama (Local)', fn: tryOllama, hasKey: () => Boolean(process.env.OLLAMA_BASE_URL) },
   ];
 
@@ -798,10 +949,16 @@ export async function classifyWithProviderCascade(
 
       let switchNotice: string | undefined = undefined;
       const geminiFailed = errors.find(
-        (e) => e.includes('Google Gemini') && (e.includes('503') || e.includes('UNAVAILABLE') || e.includes('high demand'))
+        (e) => e.includes('Google Gemini') && (
+          e.includes('503') || e.includes('UNAVAILABLE') || e.includes('high demand') ||
+          e.includes('429') || e.includes('quota') || e.includes('RESOURCE_EXHAUSTED')
+        )
       );
       if (geminiFailed && !provider.name.includes('Gemini')) {
-        switchNotice = `⚠️ Google Gemini (3.8 Flash) experimentó una sobrecarga temporal (503). Se cambió de API automáticamente a ${provider.name} para completar el análisis.`;
+        const isQuota = geminiFailed.includes('429') || geminiFailed.includes('quota') || geminiFailed.includes('RESOURCE_EXHAUSTED');
+        switchNotice = isQuota
+          ? `⚠️ Google Gemini agotó su cuota gratuita diaria (429). Se cambió automáticamente a ${provider.name} para completar el análisis.`
+          : `⚠️ Google Gemini experimentó una sobrecarga temporal (503). Se cambió automáticamente a ${provider.name} para completar el análisis.`;
         console.log(`[IA Resiliencia] ${switchNotice}`);
       }
 
@@ -1169,17 +1326,78 @@ export async function analyzeAuthorWithCascade(
   preferredProvider?: string
 ): Promise<{ result: AuthorProfileResult; providerUsed: string; switchNotice?: string }> {
   const prompt = buildAuthorAnalysisPrompt(params);
+  const preferNvidia = process.env.DEFAULT_AI_PROVIDER === 'nvidia' || preferredProvider === 'nvidia';
 
   let providers = [
-    // 1. Google Gemini (Flash) - Prioridad principal por defecto
-    {
-      id: 'gemini',
-      name: 'Google Gemini (Flash)',
-      fn: () => tryGeminiAuthor(params),
-      hasKey: () => Boolean(process.env.GEMINI_API_KEY),
-    },
+    // NVIDIA Build - Si está preferido
+    ...(preferNvidia && process.env.NVIDIA_API_KEY
+      ? [
+          {
+            id: 'nvidia',
+            name: `NVIDIA Build (${process.env.NVIDIA_MODEL || process.env.NVIDIA_DEEPSEEK_MODEL || 'deepseek-v4.1-flash'})`,
+            fn: async () => {
+              const model = process.env.NVIDIA_MODEL || process.env.NVIDIA_DEEPSEEK_MODEL || 'deepseek-v4.1-flash';
+              const raw = await callOpenAICompatibleAuthor({
+                providerName: `NVIDIA Build (${model})`,
+                endpoint: getNvidiaEndpoint(),
+                apiKey: process.env.NVIDIA_API_KEY,
+                model,
+                prompt,
+              });
+              return normalizeAuthorProfile(raw, params);
+            },
+            hasKey: () => Boolean(process.env.NVIDIA_API_KEY),
+          },
+        ]
+      : []),
 
-    // 2. DeepSeek Flash (ZenMux)
+    // 1. Google Gemini (Flash) - Si no se especificó NVIDIA por defecto
+    ...(!preferNvidia
+      ? [
+          {
+            id: 'gemini',
+            name: 'Google Gemini (Flash)',
+            fn: () => tryGeminiAuthor(params),
+            hasKey: () => Boolean(process.env.GEMINI_API_KEY),
+          },
+        ]
+      : []),
+
+    // 2. NVIDIA Build (Si no se colocó primero)
+    ...(!preferNvidia && process.env.NVIDIA_API_KEY
+      ? [
+          {
+            id: 'nvidia',
+            name: `NVIDIA Build (${process.env.NVIDIA_MODEL || process.env.NVIDIA_DEEPSEEK_MODEL || 'deepseek-v4.1-flash'})`,
+            fn: async () => {
+              const model = process.env.NVIDIA_MODEL || process.env.NVIDIA_DEEPSEEK_MODEL || 'deepseek-v4.1-flash';
+              const raw = await callOpenAICompatibleAuthor({
+                providerName: `NVIDIA Build (${model})`,
+                endpoint: getNvidiaEndpoint(),
+                apiKey: process.env.NVIDIA_API_KEY,
+                model,
+                prompt,
+              });
+              return normalizeAuthorProfile(raw, params);
+            },
+            hasKey: () => Boolean(process.env.NVIDIA_API_KEY),
+          },
+        ]
+      : []),
+
+    // Si Gemini estaba postergado por preferencia de NVIDIA, ponerlo de respaldo
+    ...(preferNvidia && process.env.GEMINI_API_KEY
+      ? [
+          {
+            id: 'gemini',
+            name: 'Google Gemini (Flash)',
+            fn: () => tryGeminiAuthor(params),
+            hasKey: () => Boolean(process.env.GEMINI_API_KEY),
+          },
+        ]
+      : []),
+
+    // 3. DeepSeek Flash (ZenMux)
     {
       id: 'deepseek',
       name: `ZenMux (${process.env.ZENMUX_DEEPSEEK_MODEL || 'deepseek/deepseek-v4.1-flash'})`,
@@ -1384,12 +1602,24 @@ export async function analyzeAuthorWithCascade(
 // Utilidades de consulta para la interfaz y ventanas de análisis
 // -------------------------------------------------------------
 export function getActivePrimaryProviderName(): string {
+  // 0. Si el usuario configuró explícitamente DEFAULT_AI_PROVIDER=nvidia:
+  if (process.env.DEFAULT_AI_PROVIDER === 'nvidia' && process.env.NVIDIA_API_KEY) {
+    const model = process.env.NVIDIA_MODEL || process.env.NVIDIA_DEEPSEEK_MODEL || 'deepseek-v4.1-flash';
+    return `NVIDIA Build (${model})`;
+  }
+
   // 1. Google Gemini (3.8 Flash) - Proveedor Principal por defecto
-  if (process.env.GEMINI_API_KEY) {
+  if (process.env.GEMINI_API_KEY && process.env.DEFAULT_AI_PROVIDER !== 'nvidia') {
     return 'Google Gemini (3.8 Flash)';
   }
 
-  // 2. DeepSeek (ZenMux o Directo)
+  // 2. NVIDIA Build (si Gemini no está configurado)
+  if (process.env.NVIDIA_API_KEY) {
+    const model = process.env.NVIDIA_MODEL || process.env.NVIDIA_DEEPSEEK_MODEL || 'deepseek-v4.1-flash';
+    return `NVIDIA Build (${model})`;
+  }
+
+  // 3. DeepSeek (ZenMux o Directo)
   if (process.env.ZENMUX_DEEPSEEK_KEY || (process.env.ZENMUX_API_KEY && (!process.env.ZENMUX_MODEL || process.env.ZENMUX_MODEL.includes('deepseek')))) {
     const model = process.env.ZENMUX_DEEPSEEK_MODEL || 'deepseek/deepseek-v4.1-flash';
     return `ZenMux (${model})`;
@@ -1398,7 +1628,7 @@ export function getActivePrimaryProviderName(): string {
     return `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || 'deepseek-chat'})`;
   }
 
-  // 3. MiniMax (ZenMux 3.1 Flash)
+  // 4. MiniMax (ZenMux 3.1 Flash)
   if (process.env.ZENMUX_MINIMAX_KEY || (process.env.ZENMUX_API_KEY && process.env.ZENMUX_MODEL?.includes('minimax'))) {
     const model = process.env.ZENMUX_MINIMAX_MODEL || 'minimax/minimax-m3.1-flash';
     return `ZenMux (${model})`;
@@ -1410,28 +1640,28 @@ export function getActivePrimaryProviderName(): string {
     return `ZenMux (${model})`;
   }
 
-  // 4. Claude Haiku
+  // 5. Claude Haiku
   if (process.env.ZENMUX_CLAUDE_KEY) {
     const model = process.env.ZENMUX_CLAUDE_MODEL || 'anthropic/claude-haiku-5.5';
     return `ZenMux (${model})`;
   }
 
-  // 5. Groq
+  // 6. Groq
   if (process.env.GROQ_API_KEY) {
     return `Groq (${process.env.GROQ_MODEL || 'llama-3.3-70b-versatile'})`;
   }
 
-  // 6. OpenRouter
+  // 7. OpenRouter
   if (process.env.OPENROUTER_API_KEY) {
     return `OpenRouter (${process.env.OPENROUTER_MODEL || 'meta-llama/llama-3.3-70b-instruct:free'})`;
   }
 
-  // 7. OpenAI
+  // 8. OpenAI
   if (process.env.OPENAI_API_KEY) {
     return `OpenAI (${process.env.OPENAI_MODEL || 'gpt-4o-mini'})`;
   }
 
-  // 8. Ollama
+  // 9. Ollama
   if (process.env.OLLAMA_BASE_URL) {
     return `Ollama (${process.env.OLLAMA_MODEL || 'llama3.2'})`;
   }
@@ -1449,37 +1679,113 @@ export function getConfiguredProvidersList(): Array<{ id: string; name: string; 
       configured: Boolean(process.env.GEMINI_API_KEY),
     },
     {
+      id: 'nvidia',
+      name: `NVIDIA Build (${process.env.NVIDIA_MODEL || process.env.NVIDIA_DEEPSEEK_MODEL || 'NIM'})`,
+      shortName: 'NVIDIA Build',
+      priority: 2,
+      configured: Boolean(process.env.NVIDIA_API_KEY),
+    },
+    {
       id: 'deepseek',
       name: `ZenMux DeepSeek (${process.env.ZENMUX_DEEPSEEK_MODEL || 'v4.1-flash'})`,
       shortName: 'DeepSeek v4.1',
-      priority: 2,
+      priority: 3,
       configured: Boolean(process.env.ZENMUX_DEEPSEEK_KEY || process.env.ZENMUX_API_KEY || process.env.DEEPSEEK_API_KEY),
     },
     {
       id: 'minimax',
       name: `ZenMux MiniMax (${process.env.ZENMUX_MINIMAX_MODEL || '3.1-flash'})`,
       shortName: 'MiniMax 3.1',
-      priority: 3,
+      priority: 4,
       configured: Boolean(process.env.ZENMUX_MINIMAX_KEY || process.env.ZENMUX_API_KEY),
     },
   ];
+}
+
+async function callOpenAICompatibleSteps(options: {
+  endpoint: string;
+  apiKey: string;
+  model: string;
+  toolName: string;
+  rawText: string;
+}): Promise<Array<{ title: string; prompt?: string; description?: string }>> {
+  const prompt = `Analiza los siguientes tweets adicionales o prompts de un hilo en X sobre "${options.toolName}":
+"""
+${options.rawText}
+"""
+Extrae de manera estructurada cada uno de los pasos, prompts o recomendaciones encontrados.
+REGLA OBLIGATORIA: Descarta por completo cualquier tweet que sea publicidad, patrocinio, promoción de bases de datos de herramientas, cursos, newsletters o invitaciones a dar RT/seguir la cuenta. Solo extrae pasos o prompts técnicos útiles.
+Devuelve un array JSON de objetos donde cada elemento tenga:
+- "title": Título breve y numerado del paso (ej: "1) El diagnóstico de la conexión", "2) Los ladrones de ancho de banda", etc.)
+- "prompt": El texto exacto del prompt o comando entre comillas para copiar y pegar. Si no es un prompt exacto, el contenido central.
+- "description": Explicación breve de lo que hace o requisitos (opcional)`;
+
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${options.apiKey}`,
+  };
+
+  const payload: any = {
+    model: options.model,
+    messages: [
+      {
+        role: 'system',
+        content:
+          'Eres un asistente técnico que extrae prompts y pasos estructurados de hilos técnicos en X. Responde ÚNICAMENTE en JSON con un array de objetos [ { "title": "...", "prompt": "...", "description": "..." } ]. No agregues texto fuera del JSON.',
+      },
+      { role: 'user', content: prompt },
+    ],
+    temperature: 0.1,
+  };
+
+  const res = await fetch(options.endpoint, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const errorBody = await res.text();
+    throw new Error(`HTTP ${res.status}: ${errorBody.slice(0, 150)}`);
+  }
+
+  const data = await res.json();
+  const rawTextRes = data.choices?.[0]?.message?.content?.trim();
+  if (!rawTextRes) throw new Error('Respuesta vacía');
+
+  const parsed = parseJsonSafely(rawTextRes);
+  if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+  if (parsed && Array.isArray(parsed.steps)) return parsed.steps;
+  if (parsed && Array.isArray(parsed.items)) return parsed.items;
+  return [];
 }
 
 export async function structureThreadStepsWithAI(
   toolName: string,
   rawText: string
 ): Promise<Array<{ title: string; prompt?: string; description?: string }>> {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    return rawText
-      .split(/\n\s*\n/)
-      .map((chunk, idx) => ({ title: `Paso ${idx + 1}`, prompt: chunk.trim() }))
-      .filter((s) => Boolean(s.prompt));
+  // 1. Si NVIDIA Build está preferido como proveedor por defecto:
+  if (process.env.DEFAULT_AI_PROVIDER === 'nvidia' && process.env.NVIDIA_API_KEY) {
+    try {
+      const model = process.env.NVIDIA_MODEL || process.env.NVIDIA_DEEPSEEK_MODEL || 'deepseek-v4.1-flash';
+      const steps = await callOpenAICompatibleSteps({
+        endpoint: getNvidiaEndpoint(),
+        apiKey: process.env.NVIDIA_API_KEY,
+        model,
+        toolName,
+        rawText,
+      });
+      if (steps.length > 0) return steps;
+    } catch (err: any) {
+      console.warn('[Thread AI] NVIDIA Build falló al estructurar hilo:', err?.message || err);
+    }
   }
 
-  try {
-    const ai = new GoogleGenAI({ apiKey });
-    const prompt = `Analiza los siguientes tweets adicionales o prompts de un hilo en X sobre "${toolName}":
+  // 2. Intentar con Google Gemini si está disponible
+  if (process.env.GEMINI_API_KEY) {
+    try {
+      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      const prompt = `Analiza los siguientes tweets adicionales o prompts de un hilo en X sobre "${toolName}":
 """
 ${rawText}
 """
@@ -1490,34 +1796,70 @@ Devuelve un array JSON de objetos donde cada elemento tenga:
 - "prompt": El texto exacto del prompt o comando entre comillas para copiar y pegar. Si no es un prompt exacto, el contenido central.
 - "description": Explicación breve de lo que hace o requisitos (opcional)`;
 
-    const res = await ai.models.generateContent({
-      model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
-      contents: prompt,
-      config: {
-        responseMimeType: 'application/json',
-        responseJsonSchema: {
-          type: Type.ARRAY,
-          items: {
-            type: Type.OBJECT,
-            properties: {
-              title: { type: Type.STRING },
-              prompt: { type: Type.STRING },
-              description: { type: Type.STRING },
+      const res = await ai.models.generateContent({
+        model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
+        contents: prompt,
+        config: {
+          responseMimeType: 'application/json',
+          responseJsonSchema: {
+            type: Type.ARRAY,
+            items: {
+              type: Type.OBJECT,
+              properties: {
+                title: { type: Type.STRING },
+                prompt: { type: Type.STRING },
+                description: { type: Type.STRING },
+              },
+              required: ['title', 'prompt'],
             },
-            required: ['title', 'prompt'],
           },
         },
-      },
-    });
+      });
 
-    const parsed = JSON.parse(res.text || '[]');
-    if (Array.isArray(parsed) && parsed.length > 0) {
-      return parsed;
+      const parsed = JSON.parse(res.text || '[]');
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    } catch (err: any) {
+      console.warn('[Thread AI] Gemini falló al estructurar hilo con IA:', err?.message || err);
     }
-  } catch (err: any) {
-    console.warn('[Thread AI] Error al estructurar hilo con IA, usando fallback estructurado:', err?.message || err);
   }
 
+  // 3. Respaldo: NVIDIA Build (si Gemini falló o no estaba configurado)
+  if (process.env.NVIDIA_API_KEY) {
+    try {
+      const model = process.env.NVIDIA_MODEL || process.env.NVIDIA_DEEPSEEK_MODEL || 'deepseek-v4.1-flash';
+      const steps = await callOpenAICompatibleSteps({
+        endpoint: getNvidiaEndpoint(),
+        apiKey: process.env.NVIDIA_API_KEY,
+        model,
+        toolName,
+        rawText,
+      });
+      if (steps.length > 0) return steps;
+    } catch (err: any) {
+      console.warn('[Thread AI] NVIDIA Build (respaldo) falló al estructurar hilo:', err?.message || err);
+    }
+  }
+
+  // 4. Respaldo: ZenMux (si está configurado)
+  if (process.env.ZENMUX_API_KEY) {
+    try {
+      const model = process.env.ZENMUX_MODEL || process.env.ZENMUX_DEEPSEEK_MODEL || 'deepseek/deepseek-v4.1-flash';
+      const steps = await callOpenAICompatibleSteps({
+        endpoint: getZenMuxEndpoint(),
+        apiKey: process.env.ZENMUX_API_KEY,
+        model,
+        toolName,
+        rawText,
+      });
+      if (steps.length > 0) return steps;
+    } catch (err: any) {
+      console.warn('[Thread AI] ZenMux (respaldo) falló al estructurar hilo:', err?.message || err);
+    }
+  }
+
+  // 5. Fallback por expresiones regulares si ninguna IA estuvo disponible
   return rawText
     .split(/\n\s*\n/)
     .map((chunk, idx) => {
