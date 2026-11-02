@@ -9,6 +9,24 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: GITHUB_REPO
+        value: AlexiP18/awesome-dev-toolkit
+      - key: GITHUB_BRANCH
+        value: main
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: DEFAULT_AI_PROVIDER
+        sync: false
+      - key: NVIDIA_API_KEY
+        sync: false
+      - key: NVIDIA_MODEL
+        sync: false
+      - key: NVIDIA_DEEPSEEK_MODEL
+        sync: false
+      - key: NVIDIA_GLM_MODEL
+        sync: false
+      - key: NVIDIA_MINIMAX_MODEL
+        sync: false
       - key: GEMINI_API_KEY
         sync: false
       - key: ZENMUX_DEEPSEEK_KEY

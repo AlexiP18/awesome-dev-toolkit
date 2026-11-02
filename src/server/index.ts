@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
-import { loadAllTools, updateToolNote, deleteToolNote, deleteToolNotes } from '../pipeline/note_generator.js';
+import { loadAllTools, updateToolNote, deleteToolNote, deleteToolNotes, restoreToolNotes } from '../pipeline/note_generator.js';
 import { ingestResource } from '../pipeline/ingest.js';
 import { generateReadme } from '../pipeline/generate_readme.js';
 import { loadAllAuthorProfiles, analyzeAuthorWithAI } from '../pipeline/author_manager.js';
@@ -10,6 +10,7 @@ import { getActivePrimaryProviderName, getConfiguredProvidersList, structureThre
 import { fetchTweetDetailsFromX, fetchThreadTweetsFromX } from '../pipeline/twitter_scraper.js';
 import { classifyToolsWithGemini } from '../pipeline/gemini.js';
 import { getAllCategories, addCustomCategory, deleteCustomCategory } from '../pipeline/category_manager.js';
+import { syncCatalogToGitHubRepo, syncFromGitHubRepoOnStartup, isGitHubSyncConfigured } from '../pipeline/github_sync.js';
 import fs from 'fs';
 
 dotenv.config();
@@ -18,7 +19,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 // Serve static frontend assets
 const publicDir = path.resolve(process.cwd(), 'src/web/public');
@@ -84,6 +85,8 @@ app.post('/api/categories', (req, res) => {
       console.warn('[API] Could not update README.md on category add:', e);
     }
 
+    syncCatalogToGitHubRepo(`chore(categories): añadir categoría ${created.name}`).catch(() => {});
+
     res.json({ success: true, category: created, categories: getAllCategories() });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
@@ -104,6 +107,8 @@ app.delete('/api/categories/:name', (req, res) => {
       console.warn('[API] Could not update README.md on category delete:', e);
     }
 
+    syncCatalogToGitHubRepo(`chore(categories): eliminar categoría ${name}`).catch(() => {});
+
     res.json({ success: true, categories: getAllCategories() });
   } catch (error: any) {
     res.status(400).json({ success: false, error: error.message });
@@ -115,7 +120,12 @@ app.get('/api/ai/status', (req, res) => {
   try {
     const activeProvider = getActivePrimaryProviderName();
     const allConfigured = getConfiguredProvidersList();
-    res.json({ success: true, activeProvider, allConfigured });
+    res.json({
+      success: true,
+      activeProvider,
+      allConfigured,
+      githubSyncConfigured: isGitHubSyncConfigured(),
+    });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
   }
@@ -130,6 +140,7 @@ app.post('/api/authors/analyze', async (req, res) => {
     }
 
     const { profile, providerUsed, switchNotice } = await analyzeAuthorWithAI(authorName, authorHandle, aiProvider);
+    syncCatalogToGitHubRepo(`chore(authors): analizar perfil de ${authorName}`).catch(() => {});
     res.json({ success: true, profile, providerUsed, switchNotice });
   } catch (error: any) {
     console.error('[API Author Analyze Error]', error);
@@ -162,9 +173,47 @@ app.post('/api/ingest', async (req, res) => {
       console.warn('[API] Could not update README.md:', e);
     }
 
-    res.json({ success: true, data: result });
+    if (result.addedCount > 0) {
+      syncCatalogToGitHubRepo(`chore(catalog): guardar ${result.addedCount} recurso(s) analizado(s)`).catch(() => {});
+    }
+
+    const allTools = loadAllTools();
+    res.json({ success: true, data: result, tools: allTools });
   } catch (error: any) {
     console.error('[API Ingest Error]', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// POST auto-restore tools from browser persistent backup if ephemeral server restarted
+app.post('/api/tools/restore', async (req, res) => {
+  try {
+    const { tools } = req.body;
+    if (!Array.isArray(tools) || tools.length === 0) {
+      return res.json({ success: true, restoredCount: 0, updatedCount: 0, tools: loadAllTools() });
+    }
+
+    const { restoredCount, updatedCount } = restoreToolNotes(tools);
+
+    if (restoredCount > 0 || updatedCount > 0) {
+      try {
+        const readme = generateReadme();
+        fs.writeFileSync(path.resolve(process.cwd(), 'README.md'), readme, 'utf-8');
+      } catch {}
+
+      console.log(`[API Restore] ♻️ Restauradas ${restoredCount} ficha(s) y actualizadas ${updatedCount} desde respaldo persistente.`);
+      syncCatalogToGitHubRepo(`chore(catalog): restaurar ${restoredCount} ficha(s) en el repositorio`).catch(() => {});
+    }
+
+    const allTools = loadAllTools();
+    res.json({
+      success: true,
+      restoredCount,
+      updatedCount,
+      tools: allTools,
+    });
+  } catch (error: any) {
+    console.error('[API Restore Error]', error);
     res.status(500).json({ success: false, error: error.message });
   }
 });
@@ -220,6 +269,8 @@ app.patch('/api/tools/:slug', (req, res) => {
       fs.writeFileSync(path.resolve(process.cwd(), 'README.md'), readme, 'utf-8');
     } catch {}
 
+    syncCatalogToGitHubRepo(`chore(catalog): actualizar ficha ${slug}`).catch(() => {});
+
     const allTools = loadAllTools();
     const updated = allTools.find((t) => t.slug === slug);
 
@@ -243,6 +294,8 @@ app.delete('/api/tools/:slug', (req, res) => {
       fs.writeFileSync(path.resolve(process.cwd(), 'README.md'), readme, 'utf-8');
     } catch {}
 
+    syncCatalogToGitHubRepo(`chore(catalog): eliminar ficha ${slug}`).catch(() => {});
+
     res.json({ success: true, message: `Ficha "${slug}" eliminada correctamente` });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
@@ -263,6 +316,10 @@ app.post('/api/tools/batch-delete', (req, res) => {
       const readme = generateReadme();
       fs.writeFileSync(path.resolve(process.cwd(), 'README.md'), readme, 'utf-8');
     } catch {}
+
+    if (result.deleted.length > 0) {
+      syncCatalogToGitHubRepo(`chore(catalog): eliminar ${result.deleted.length} ficha(s)`).catch(() => {});
+    }
 
     res.json({ 
       success: true, 
@@ -344,6 +401,8 @@ app.post('/api/tools/:slug/thread', async (req, res) => {
       fs.writeFileSync(path.resolve(process.cwd(), 'README.md'), readme, 'utf-8');
     } catch {}
 
+    syncCatalogToGitHubRepo(`chore(catalog): anexar hilo a ${slug}`).catch(() => {});
+
     const updatedTools = loadAllTools();
     const updated = updatedTools.find((t) => t.slug === slug);
     res.json({ success: true, tool: updated, providerUsed });
@@ -358,4 +417,5 @@ app.listen(PORT, () => {
   console.log(`👉 http://localhost:${PORT}`);
   console.log(`👉 Bookmarklet instalador: http://localhost:${PORT}/bookmarklet`);
   console.log(`======================================================\n`);
+  syncFromGitHubRepoOnStartup().catch(() => {});
 });

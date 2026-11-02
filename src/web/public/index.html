@@ -2255,6 +2255,93 @@
       lucide.createIcons();
     }
 
+    const LOCAL_TOOLS_BACKUP_KEY = 'toolkit_cards_backup_v1';
+    const LOCAL_DELETED_SLUGS_KEY = 'toolkit_deleted_slugs_v1';
+
+    function getDeletedSlugsSet() {
+      try {
+        const raw = localStorage.getItem(LOCAL_DELETED_SLUGS_KEY);
+        const arr = raw ? JSON.parse(raw) : [];
+        return new Set(Array.isArray(arr) ? arr : []);
+      } catch {
+        return new Set();
+      }
+    }
+
+    function recordDeletedSlugs(slugs) {
+      try {
+        const deleted = getDeletedSlugsSet();
+        for (const s of slugs || []) {
+          if (s) deleted.add(s);
+        }
+        localStorage.setItem(LOCAL_DELETED_SLUGS_KEY, JSON.stringify(Array.from(deleted)));
+
+        const backup = getLocalToolsBackup().filter(t => t && !deleted.has(t.slug));
+        localStorage.setItem(LOCAL_TOOLS_BACKUP_KEY, JSON.stringify(backup));
+      } catch (e) {
+        console.warn('No se pudo registrar baja en respaldo local:', e);
+      }
+    }
+
+    function unrecordDeletedSlugs(slugs) {
+      try {
+        const deleted = getDeletedSlugsSet();
+        let changed = false;
+        for (const s of slugs || []) {
+          if (deleted.has(s)) {
+            deleted.delete(s);
+            changed = true;
+          }
+        }
+        if (changed) {
+          localStorage.setItem(LOCAL_DELETED_SLUGS_KEY, JSON.stringify(Array.from(deleted)));
+        }
+      } catch {}
+    }
+
+    function getLocalToolsBackup() {
+      try {
+        const raw = localStorage.getItem(LOCAL_TOOLS_BACKUP_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveLocalToolsBackup(toolsList) {
+      try {
+        if (!Array.isArray(toolsList)) return;
+        const deleted = getDeletedSlugsSet();
+        const existingBackup = getLocalToolsBackup();
+        const map = new Map();
+
+        for (const item of existingBackup) {
+          if (item && item.slug && !deleted.has(item.slug)) {
+            map.set(item.slug, item);
+          }
+        }
+        for (const item of toolsList) {
+          if (item && item.slug && !deleted.has(item.slug)) {
+            const prev = map.get(item.slug);
+            if (prev) {
+              const prevUpd = prev.frontmatter?.updated_at ? new Date(prev.frontmatter.updated_at).getTime() : 0;
+              const currUpd = item.frontmatter?.updated_at ? new Date(item.frontmatter.updated_at).getTime() : 0;
+              if (prevUpd > currUpd) {
+                continue;
+              }
+            }
+            map.set(item.slug, item);
+          }
+        }
+
+        localStorage.setItem(LOCAL_TOOLS_BACKUP_KEY, JSON.stringify(Array.from(map.values())));
+      } catch (e) {
+        console.warn('No se pudo guardar respaldo local de cards:', e);
+      }
+    }
+
     async function fetchTools() {
       try {
         let res = null;
@@ -2271,7 +2358,56 @@
         }
 
         const data = await res.json();
-        allTools = data.tools || [];
+        let serverTools = data.tools || [];
+
+        // Auto-recuperación: verificar si hay fichas guardadas en el respaldo local que faltan tras un reinicio del servidor
+        const deletedSlugs = getDeletedSlugsSet();
+        const localBackup = getLocalToolsBackup().filter(t => t && t.slug && !deletedSlugs.has(t.slug));
+        const serverMap = new Map(serverTools.map(t => [t.slug, t]));
+        const toolsToRestore = [];
+
+        for (const bItem of localBackup) {
+          const sItem = serverMap.get(bItem.slug);
+          if (!sItem) {
+            toolsToRestore.push(bItem);
+          } else {
+            const bUpd = bItem.frontmatter?.updated_at ? new Date(bItem.frontmatter.updated_at).getTime() : 0;
+            const sUpd = sItem.frontmatter?.updated_at ? new Date(sItem.frontmatter.updated_at).getTime() : 0;
+            if (bUpd > sUpd && bUpd > 0) {
+              toolsToRestore.push(bItem);
+            }
+          }
+        }
+
+        if (toolsToRestore.length > 0 && !isStaticMode) {
+          try {
+            const restoreRes = await fetch('/api/tools/restore', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ tools: toolsToRestore }),
+            });
+            if (restoreRes.ok) {
+              const restoreData = await restoreRes.json();
+              if (restoreData.success && Array.isArray(restoreData.tools)) {
+                serverTools = restoreData.tools;
+              }
+            }
+          } catch (restoreErr) {
+            console.warn('No se pudo sincronizar restauración con el servidor, usando respaldo local:', restoreErr);
+          }
+        }
+
+        // Asegurar que ninguna ficha del respaldo local se pierda en pantalla (incluso en modo estático)
+        const finalMap = new Map(serverTools.filter(t => !deletedSlugs.has(t.slug)).map(t => [t.slug, t]));
+        for (const bItem of toolsToRestore) {
+          if (!finalMap.has(bItem.slug)) {
+            finalMap.set(bItem.slug, bItem);
+          }
+        }
+
+        allTools = Array.from(finalMap.values());
+        saveLocalToolsBackup(allTools);
+
         // Limpiar de la selección elementos que ya no existan
         const currentValidSlugs = new Set(allTools.map(t => t.slug));
         for (const s of Array.from(selectedSlugs)) {
@@ -2284,6 +2420,12 @@
         switchSection(currentSection);
       } catch (err) {
         console.error('Error fetching tools:', err);
+        const fallbackBackup = getLocalToolsBackup();
+        if (fallbackBackup.length > 0) {
+          allTools = fallbackBackup;
+          switchSection(currentSection);
+          return;
+        }
         document.getElementById('toolsGrid').innerHTML = `
           <div class="col-span-full py-12 text-center text-red-400">
             Error cargando recursos del catálogo.
@@ -3261,6 +3403,7 @@
           });
           const data = await res.json();
           if (data.success) {
+            recordDeletedSlugs([slug]);
             selectedSlugs.delete(slug);
             updateBatchBar();
             if (activeEditingSlug === slug) {
@@ -3281,6 +3424,7 @@
           });
           const data = await res.json();
           if (data.success) {
+            recordDeletedSlugs(slugsToDelete);
             selectedSlugs.clear();
             updateBatchBar();
             closeDeleteModal();
@@ -3999,6 +4143,8 @@
         if (tool) {
           tool.content = newContent;
           tool.frontmatter.status = newStatus;
+          tool.frontmatter.updated_at = new Date().toISOString();
+          saveLocalToolsBackup(allTools);
         }
 
         btn.innerText = '¡Guardado!';
@@ -4123,6 +4269,10 @@
         });
         const data = await res.json();
         if (data.success) {
+          if (Array.isArray(data.tools)) {
+            unrecordDeletedSlugs(data.tools.map(t => t.slug));
+            saveLocalToolsBackup(data.tools);
+          }
           closeIngestModal();
           document.getElementById('ingestUrlInput').value = '';
           document.getElementById('ingestTextInput').value = '';

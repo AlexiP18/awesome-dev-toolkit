@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { ClassificationResult, EntryType, ToolFrontmatter, ToolItem, ToolStatus } from './types.js';
 import { GitHubMetadata } from './github.js';
+import { markRepoPathDeleted, unmarkRepoPathDeleted } from './github_sync.js';
 
 const TOOLS_DIR = path.resolve(process.cwd(), 'content/tools');
 const PRODUCTS_DIR = path.resolve(process.cwd(), 'content/products');
@@ -302,6 +303,7 @@ ${frontmatter.website_url ? `- Sitio Web oficial: [${frontmatter.website_url}]($
 
   const fileContent = matter.stringify(markdownBody.trim() + '\n', cleanFrontmatter(frontmatter));
   fs.writeFileSync(filePath, fileContent, 'utf-8');
+  unmarkRepoPathDeleted(filePath);
 
   return { filePath, slug, alreadyExisted: false };
 }
@@ -438,6 +440,7 @@ export function updateToolNote(slug: string, updates: {
     ...(updates.has_academic_promo !== undefined ? { has_academic_promo: updates.has_academic_promo } : {}),
     ...(updates.academic_promo_details !== undefined ? { academic_promo_details: updates.academic_promo_details } : {}),
     ...(updates.entry_type ? { entry_type: updates.entry_type } : {}),
+    updated_at: new Date().toISOString(),
   };
 
   let body = parsed.content;
@@ -466,8 +469,10 @@ export function updateToolNote(slug: string, updates: {
   const newContent = matter.stringify(body, cleanFrontmatter(updatedFrontmatter));
 
   fs.writeFileSync(targetPath, newContent, 'utf-8');
+  unmarkRepoPathDeleted(targetPath);
   if (targetPath !== filePath && fs.existsSync(filePath)) {
     fs.unlinkSync(filePath);
+    markRepoPathDeleted(filePath);
   }
   return true;
 }
@@ -489,6 +494,7 @@ export function deleteToolNote(slug: string): boolean {
 
   try {
     fs.unlinkSync(filePath);
+    markRepoPathDeleted(filePath);
     return true;
   } catch (err) {
     console.error(`Error al eliminar archivo ${filePath}:`, err);
@@ -507,4 +513,79 @@ export function deleteToolNotes(slugs: string[]): { deleted: string[]; notFound:
     }
   }
   return { deleted, notFound };
+}
+
+/**
+ * Restaura en disco (y prepara para sincronización con GitHub) fichas provenientes del
+ * respaldo persistente del navegador cuando un contenedor efímero (ej. Render) se reinicia.
+ */
+export function restoreToolNotes(items: Array<{
+  slug: string;
+  frontmatter: ToolFrontmatter;
+  content?: string;
+}>): { restoredCount: number; updatedCount: number } {
+  ensureToolsDirExists();
+  let restoredCount = 0;
+  let updatedCount = 0;
+
+  const allDirs = [TOOLS_DIR, PRODUCTS_DIR, TIPS_DIR, JOBS_DIR];
+
+  for (const item of items) {
+    if (!item || !item.slug || !item.frontmatter || !item.frontmatter.name) continue;
+    const safeSlug = slugify(item.slug);
+    const fm = item.frontmatter;
+
+    let targetDir = TOOLS_DIR;
+    if (fm.entry_type === 'job_remote') {
+      targetDir = JOBS_DIR;
+    } else if (fm.entry_type === 'tech_tip') {
+      targetDir = TIPS_DIR;
+    } else if (fm.entry_type === 'tech_product' || fm.entry_type === 'product_showcase') {
+      targetDir = PRODUCTS_DIR;
+    } else if (fm.entry_type === 'tool') {
+      targetDir = TOOLS_DIR;
+    } else {
+      if (fm.category === 'Trabajo & Freelance') targetDir = JOBS_DIR;
+      else if (fm.category === 'Consejos & Buenas Prácticas') targetDir = TIPS_DIR;
+      else if (fm.category === 'Productos Tecnológicos & Hardware') targetDir = PRODUCTS_DIR;
+    }
+
+    const targetPath = path.join(targetDir, `${safeSlug}.md`);
+    let existingPath: string | null = null;
+    for (const d of allDirs) {
+      const candidate = path.join(d, `${safeSlug}.md`);
+      if (fs.existsSync(candidate)) {
+        existingPath = candidate;
+        break;
+      }
+    }
+
+    if (!existingPath) {
+      const fileContent = matter.stringify((item.content || '').trim() + '\n', cleanFrontmatter(fm));
+      fs.writeFileSync(targetPath, fileContent, 'utf-8');
+      unmarkRepoPathDeleted(targetPath);
+      restoredCount++;
+    } else {
+      // Si ya existe en disco, verificar si la versión del respaldo tiene ediciones más recientes
+      try {
+        const diskRaw = fs.readFileSync(existingPath, 'utf-8');
+        const diskParsed = matter(diskRaw);
+        const diskUpdated = diskParsed.data?.updated_at ? new Date(diskParsed.data.updated_at).getTime() : 0;
+        const clientUpdated = fm.updated_at ? new Date(fm.updated_at).getTime() : 0;
+
+        if (clientUpdated > diskUpdated && clientUpdated > 0) {
+          const fileContent = matter.stringify((item.content ?? diskParsed.content).trim() + '\n', cleanFrontmatter(fm));
+          fs.writeFileSync(targetPath, fileContent, 'utf-8');
+          unmarkRepoPathDeleted(targetPath);
+          if (existingPath !== targetPath && fs.existsSync(existingPath)) {
+            fs.unlinkSync(existingPath);
+            markRepoPathDeleted(existingPath);
+          }
+          updatedCount++;
+        }
+      } catch {}
+    }
+  }
+
+  return { restoredCount, updatedCount };
 }

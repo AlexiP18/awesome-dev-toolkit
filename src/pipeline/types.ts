@@ -30,6 +30,7 @@ export interface ToolFrontmatter {
   status: ToolStatus;
   date_added: string;
   created_at?: string;
+  updated_at?: string;
   source_tweet?: string;
   author?: string;
   author_handle?: string;
