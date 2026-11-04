@@ -1181,9 +1181,9 @@
       const found = allAiProviders.find(p => p.id === selectedAiProvider);
       if (found) return found.shortName;
       switch (selectedAiProvider) {
+        case 'deepseek': return 'DeepSeek Directo';
         case 'nvidia': return 'NVIDIA Build';
         case 'gemini': return 'Gemini Flash';
-        case 'deepseek': return 'DeepSeek v4.1';
         case 'minimax': return 'MiniMax 3.1';
         default: return 'Gemini Flash';
       }
@@ -1231,11 +1231,11 @@
       if (!select) return;
 
       const providerOptions = [
-        { id: 'gemini', icon: '🧠', name: 'Google Gemini (3.8 Flash)', desc: 'Por defecto' },
+        { id: 'deepseek', icon: '🚀', name: 'DeepSeek Platform (deepseek-chat)', desc: 'Oficial' },
+        { id: 'gemini', icon: '🧠', name: 'Google Gemini (3.8 Flash)', desc: 'Respaldo' },
         { id: 'nvidia', icon: '🟢', name: 'NVIDIA Build (NIM)', desc: 'Ultra-rápido' },
-        { id: 'deepseek', icon: '🚀', name: 'DeepSeek (v4.1 Flash / Directo)', desc: '' },
         { id: 'minimax', icon: '⚡', name: 'MiniMax 3.1 Flash', desc: '' },
-        { id: 'auto', icon: '🔄', name: 'Cascada Automática', desc: 'Gemini ➔ NVIDIA ➔ DeepSeek' },
+        { id: 'auto', icon: '🔄', name: 'Cascada Automática', desc: 'DeepSeek ➔ Gemini ➔ NVIDIA' },
       ];
 
       select.innerHTML = providerOptions.map(opt => {

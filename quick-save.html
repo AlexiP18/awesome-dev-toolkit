@@ -71,7 +71,7 @@
           <span id="badge-nvidia" class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 font-medium">NVIDIA NIM</span>
         </button>
 
-        <!-- DeepSeek v4.1 -->
+        <!-- DeepSeek Platform -->
         <button 
           type="button"
           onclick="selectAndRun('deepseek')" 
@@ -83,12 +83,12 @@
             <div>
               <div class="text-xs font-bold text-slate-200 group-hover:text-blue-300 flex items-center gap-1.5">
                 <span>DeepSeek</span>
-                <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">v4.1 Flash</span>
+                <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">Oficial</span>
               </div>
-              <div class="text-[10px] text-slate-400">Recomendado cuando Gemini está sobrecargado</div>
+              <div class="text-[10px] text-slate-400">DeepSeek Platform API (deepseek-chat)</div>
             </div>
           </div>
-          <span id="badge-deepseek" class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 font-medium">Directo / ZenMux</span>
+          <span id="badge-deepseek" class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 font-medium">Oficial / Directo</span>
         </button>
 
         <!-- MiniMax 3.1 -->
@@ -246,9 +246,9 @@
 
     function getModelDisplayName(providerId) {
       switch (providerId) {
+        case 'deepseek': return 'DeepSeek Platform (deepseek-chat)';
         case 'gemini': return 'Google Gemini (3.8 Flash)';
         case 'nvidia': return 'NVIDIA Build (NIM)';
-        case 'deepseek': return 'DeepSeek (v4.1 Flash)';
         case 'minimax': return 'MiniMax (3.1 Flash)';
         default: return 'IA';
       }
