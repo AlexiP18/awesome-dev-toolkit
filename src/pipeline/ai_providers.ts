@@ -687,6 +687,8 @@ async function tryZenMuxGeneral(params: ClassifyInput): Promise<ClassificationRe
   return normalizeRawOutput(raw, params.urls, params.sourceTweet);
 }
 
+const DEFAULT_DEEPSEEK_MODEL = 'DeepSeek-V4.1-Flash-1017';
+
 function getDeepSeekEndpoint(): string {
   const base = (process.env.DEEPSEEK_BASE_URL || 'https://api.deepseek.com').trim().replace(/\/+$/, '');
   return base.endsWith('/chat/completions') ? base : `${base}/chat/completions`;
@@ -697,7 +699,7 @@ async function tryDeepSeekDirect(params: ClassifyInput): Promise<ClassificationR
   const apiKey = process.env.DEEPSEEK_API_KEY?.trim();
   if (!apiKey) throw new Error('DEEPSEEK_API_KEY no configurada');
 
-  const model = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
+  const model = process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL;
   const raw = await callOpenAICompatible({
     providerName: `DeepSeek Directo (${model})`,
     endpoint: getDeepSeekEndpoint(),
@@ -807,7 +809,7 @@ export async function classifyWithProviderCascade(
       ? [
           {
             id: 'deepseek',
-            name: `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || 'deepseek-chat'})`,
+            name: `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL})`,
             fn: tryDeepSeekDirect,
             hasKey: () => Boolean(process.env.DEEPSEEK_API_KEY),
           },
@@ -849,7 +851,7 @@ export async function classifyWithProviderCascade(
       ? [
           {
             id: 'deepseek',
-            name: `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || 'deepseek-chat'})`,
+            name: `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL})`,
             fn: tryDeepSeekDirect,
             hasKey: () => Boolean(process.env.DEEPSEEK_API_KEY),
           },
@@ -917,7 +919,7 @@ export async function classifyWithProviderCascade(
       ? [
           {
             id: 'deepseek',
-            name: `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || 'deepseek-chat'})`,
+            name: `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL})`,
             fn: tryDeepSeekDirect,
             hasKey: () => Boolean(process.env.DEEPSEEK_API_KEY),
           },
@@ -1369,7 +1371,7 @@ async function tryDeepSeekAuthor(prompt: string, params: AuthorAnalysisInput): P
   const apiKey = process.env.DEEPSEEK_API_KEY?.trim();
   if (!apiKey) throw new Error('DEEPSEEK_API_KEY no configurada');
 
-  const model = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
+  const model = process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL;
   const raw = await callOpenAICompatibleAuthor({
     providerName: `DeepSeek Directo (${model})`,
     endpoint: getDeepSeekEndpoint(),
@@ -1398,7 +1400,7 @@ export async function analyzeAuthorWithCascade(
       ? [
           {
             id: 'deepseek',
-            name: `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || 'deepseek-chat'})`,
+            name: `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL})`,
             fn: () => tryDeepSeekAuthor(prompt, params),
             hasKey: () => Boolean(process.env.DEEPSEEK_API_KEY),
           },
@@ -1461,7 +1463,7 @@ export async function analyzeAuthorWithCascade(
       ? [
           {
             id: 'deepseek',
-            name: `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || 'deepseek-chat'})`,
+            name: `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL})`,
             fn: () => tryDeepSeekAuthor(prompt, params),
             hasKey: () => Boolean(process.env.DEEPSEEK_API_KEY),
           },
@@ -1716,7 +1718,7 @@ export function getActivePrimaryProviderName(): string {
     (process.env.DEFAULT_AI_PROVIDER === 'deepseek' || (!process.env.DEFAULT_AI_PROVIDER && process.env.DEEPSEEK_API_KEY)) &&
     process.env.DEEPSEEK_API_KEY
   ) {
-    const model = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
+    const model = process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL;
     return `DeepSeek Directo (${model})`;
   }
 
@@ -1733,7 +1735,7 @@ export function getActivePrimaryProviderName(): string {
 
   // 3. DeepSeek Directo (si no se activó arriba)
   if (process.env.DEEPSEEK_API_KEY) {
-    return `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || 'deepseek-chat'})`;
+    return `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL})`;
   }
 
   // 4. NVIDIA Build (si Gemini no está configurado)
@@ -1800,7 +1802,7 @@ export function getConfiguredProvidersList(): Array<{ id: string; name: string; 
       {
         id: 'deepseek',
         name: process.env.DEEPSEEK_API_KEY
-          ? `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || 'deepseek-chat'})`
+          ? `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL})`
           : `ZenMux DeepSeek (${process.env.ZENMUX_DEEPSEEK_MODEL || 'v4.1-flash'})`,
         shortName: 'DeepSeek Directo',
         priority: 1,
@@ -1849,7 +1851,7 @@ export function getConfiguredProvidersList(): Array<{ id: string; name: string; 
       {
         id: 'deepseek',
         name: process.env.DEEPSEEK_API_KEY
-          ? `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || 'deepseek-chat'})`
+          ? `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL})`
           : `ZenMux DeepSeek (${process.env.ZENMUX_DEEPSEEK_MODEL || 'v4.1-flash'})`,
         shortName: 'DeepSeek Directo',
         priority: 3,
@@ -1876,7 +1878,7 @@ export function getConfiguredProvidersList(): Array<{ id: string; name: string; 
     {
       id: 'deepseek',
       name: process.env.DEEPSEEK_API_KEY
-        ? `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || 'deepseek-chat'})`
+        ? `DeepSeek Directo (${process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL})`
         : `ZenMux DeepSeek (${process.env.ZENMUX_DEEPSEEK_MODEL || 'v4.1-flash'})`,
       shortName: 'DeepSeek Directo',
       priority: 2,
@@ -1968,7 +1970,7 @@ export async function structureThreadStepsWithAI(
   // 0. Si DeepSeek Directo está preferido como proveedor por defecto:
   if (preferDeepSeek && process.env.DEEPSEEK_API_KEY) {
     try {
-      const model = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
+      const model = process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL;
       const steps = await callOpenAICompatibleSteps({
         endpoint: getDeepSeekEndpoint(),
         apiKey: process.env.DEEPSEEK_API_KEY.trim(),
@@ -2046,7 +2048,7 @@ Devuelve un array JSON de objetos donde cada elemento tenga:
   // 3. Respaldo: DeepSeek Directo (si no se ejecutó primero)
   if (!preferDeepSeek && process.env.DEEPSEEK_API_KEY) {
     try {
-      const model = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
+      const model = process.env.DEEPSEEK_MODEL || DEFAULT_DEEPSEEK_MODEL;
       const steps = await callOpenAICompatibleSteps({
         endpoint: getDeepSeekEndpoint(),
         apiKey: process.env.DEEPSEEK_API_KEY.trim(),
