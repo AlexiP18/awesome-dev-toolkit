@@ -387,7 +387,7 @@
       
       if (isOverloaded) {
         errorTitleEl.innerText = `Servidores de ${getModelDisplayName(failedProvider)} sobrecargados`;
-        errorDescEl.innerText = `Google Gemini ha respondido con sobrecarga temporal (503). Puedes analizar este tweet de inmediato cambiando a DeepSeek o MiniMax:`;
+        errorDescEl.innerText = `${getModelDisplayName(failedProvider)} respondió con sobrecarga temporal. Puedes reintentar de inmediato con otro modelo:`;
       } else {
         errorTitleEl.innerText = `Error al analizar con ${getModelDisplayName(failedProvider)}`;
         errorDescEl.innerText = errorMsg;
@@ -396,9 +396,10 @@
       // Generate retry buttons for the OTHER providers
       const retryContainer = document.getElementById('retryButtons');
       const otherProviders = [
-        { id: 'deepseek', icon: '🚀', name: 'DeepSeek v4.1 Flash' },
-        { id: 'minimax', icon: '⚡', name: 'MiniMax 3.1 Flash' },
+        { id: 'deepseek', icon: '🚀', name: 'DeepSeek V4.1 Flash' },
         { id: 'gemini', icon: '🧠', name: 'Google Gemini (Flash)' },
+        { id: 'nvidia', icon: '🟢', name: 'NVIDIA Build (NIM)' },
+        { id: 'minimax', icon: '⚡', name: 'MiniMax 3.1 Flash' },
       ].filter(p => p.id !== failedProvider);
 
       retryContainer.innerHTML = otherProviders.map(p => `
@@ -418,9 +419,11 @@
       showView('viewError');
     }
 
-    // Init
+    // Init: todo se analiza con DeepSeek automáticamente, sin pedir elegir motor.
+    // (La selección manual solo aparece si ocurre un error, vía "Ver todos los modelos".)
     highlightSelectedProvider();
     loadAiStatus();
+    selectAndRun('deepseek');
   </script>
 </body>
 </html>
