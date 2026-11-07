@@ -10,6 +10,7 @@
     "build": "tsx src/pipeline/build_static.ts",
     "deploy": "npm run build && gh-pages -d dist -m 'deploy: update GitHub Pages catalog'",
     "add": "tsx src/pipeline/cli.ts",
+    "pull:deployed": "tsx src/pipeline/pull_from_deployed.ts",
     "parse:archive": "tsx src/parsers/x_archive_parser.ts",
     "build:readme": "tsx src/pipeline/generate_readme.ts"
   },

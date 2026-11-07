@@ -218,6 +218,22 @@ app.post('/api/tools/restore', async (req, res) => {
   }
 });
 
+// POST push the whole current catalog to the GitHub repo (requires GITHUB_TOKEN on the server)
+app.post('/api/sync/push', async (req, res) => {
+  try {
+    if (!isGitHubSyncConfigured()) {
+      return res.status(400).json({
+        success: false,
+        error: 'GITHUB_TOKEN no está configurado en el servidor. Agrégalo en Render > Environment.',
+      });
+    }
+    const result = await syncCatalogToGitHubRepo('chore(catalog): sincronizar catálogo completo al repositorio');
+    res.json({ success: result.synced, ...result });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 // PATCH update tool metadata and personal notes
 app.patch('/api/tools/:slug', (req, res) => {
   try {
