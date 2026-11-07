@@ -62,6 +62,10 @@
           <i data-lucide="bookmark" class="w-3.5 h-3.5 text-sky-400"></i>
           <span class="hidden sm:inline">Bookmarklet</span> 1-Clic
         </a>
+        <button onclick="exportCatalogBackupJson()" class="text-xs px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5 text-slate-200" title="Descargar copia de seguridad en JSON de todas las fichas guardadas en el navegador">
+          <i data-lucide="download" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span class="hidden sm:inline">Exportar</span> JSON
+        </button>
         <button onclick="openIngestModal()" class="text-xs px-3.5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 font-semibold transition flex items-center gap-1.5 shadow-lg shadow-sky-600/20">
           <i data-lucide="plus" class="w-3.5 h-3.5"></i>
           <span id="headerAddBtnText">Añadir Recurso</span>
@@ -2340,6 +2344,26 @@
       } catch (e) {
         console.warn('No se pudo guardar respaldo local de cards:', e);
       }
+    }
+
+    function exportCatalogBackupJson() {
+      const deleted = getDeletedSlugsSet();
+      const backup = getLocalToolsBackup().filter(t => t && t.slug && !deleted.has(t.slug));
+      const source = (allTools && allTools.length > 0) ? allTools : backup;
+      if (!source || source.length === 0) {
+        alert('No hay fichas guardadas para exportar en este navegador.');
+        return;
+      }
+      const json = JSON.stringify(source, null, 2);
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `toolkit-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     }
 
     async function fetchTools() {
