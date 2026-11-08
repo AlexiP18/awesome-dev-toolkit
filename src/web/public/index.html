@@ -3312,150 +3312,134 @@
 
     function renderToolListRow(tool, ctx = getToolItemContext(tool)) {
       const fm = ctx.fm;
+      const xSvg = `<svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
+
+      const xUrl = (fm.source_tweet && fm.source_tweet !== 'undefined' && fm.source_tweet !== 'null')
+        ? fm.source_tweet
+        : (ctx.isTwitter ? ctx.safeUrl : '');
+
+      const toolLinkUrl = (ctx.safeUrl && ctx.safeUrl !== '#' && !ctx.isTwitter)
+        ? ctx.safeUrl
+        : ((fm.website_url && fm.website_url !== 'undefined' && fm.website_url !== 'null') ? fm.website_url : (ctx.safeUrl !== '#' ? ctx.safeUrl : ''));
+
+      const rowSelectedClass = ctx.isCardSelected ? 'bg-sky-950/30 ring-1 ring-sky-500/50' : 'hover:bg-slate-900/90';
 
       return `
-        <div class="bg-slate-900/85 hover:bg-slate-900 border ${ctx.catTheme.border} ${ctx.cardSelectionRing} border-l-4 ${ctx.catTheme.topBorder.replace('border-t-', 'border-l-')} transition-all duration-150 rounded-xl p-3 sm:p-3.5 group shadow-sm hover:shadow-md relative">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-            
-            <!-- Left Column: Checkbox, Metadatos, Título, Badges, Resumen, Tags, Autor -->
-            <div class="flex items-start gap-2.5 sm:gap-3 flex-1 min-w-0">
-              
-              <!-- Checkbox de selección -->
-              <label class="inline-flex items-center cursor-pointer mt-1 flex-shrink-0" title="Seleccionar para acciones por lotes" onclick="event.stopPropagation();">
-                <input 
-                  type="checkbox" 
-                  onchange="toggleSelectTool('${tool.slug}', this.checked)" 
-                  ${ctx.isCardSelected ? 'checked' : ''} 
-                  class="w-4 h-4 rounded border-slate-700 bg-slate-950 text-sky-500 focus:ring-0 cursor-pointer accent-sky-500" 
-                />
-              </label>
+        <li class="flex items-center justify-between gap-3 py-2 px-3 transition ${rowSelectedClass} text-xs group">
+          <!-- Izquierda: Checkbox + Viñeta + Nombre de la herramienta + Creador -->
+          <div class="flex items-center gap-2 min-w-0 flex-1">
+            <label class="inline-flex items-center cursor-pointer flex-shrink-0" title="Seleccionar para acciones por lotes" onclick="event.stopPropagation();">
+              <input 
+                type="checkbox" 
+                onchange="toggleSelectTool('${tool.slug}', this.checked)" 
+                ${ctx.isCardSelected ? 'checked' : ''} 
+                class="w-3.5 h-3.5 rounded border-slate-700 bg-slate-950 text-sky-500 focus:ring-0 cursor-pointer accent-sky-500" 
+              />
+            </label>
 
-              <div class="flex-1 min-w-0">
-                <!-- Fila superior: Tipo/Apartado, Categoría, Título con enlace, Estrellas, Promos -->
-                <div class="flex items-center gap-2 flex-wrap mb-1">
-                  ${ctx.isAllFilter ? `
-                    <span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700" title="Apartado: ${ctx.apartadoBarTheme.fullName}">
-                      <i data-lucide="${ctx.apartadoBarTheme.icon}" class="w-3 h-3 text-slate-400"></i>
-                      <span>${ctx.apartadoBarTheme.label}</span>
-                    </span>
-                  ` : ''}
+            <!-- Viñeta (Bullet) -->
+            <span class="w-2 h-2 rounded-full ${ctx.catTheme.dot} flex-shrink-0" aria-hidden="true"></span>
 
-                  <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-bold tracking-wider uppercase border ${ctx.catTheme.badge}">
-                    <span class="w-1.5 h-1.5 rounded-full ${ctx.catTheme.dot}"></span>
-                    <span>${fm.category || 'Other'}</span>
-                  </span>
+            <!-- Nombre de la herramienta -->
+            <a 
+              href="${ctx.safeUrl !== '#' ? ctx.safeUrl : 'javascript:void(0)'}" 
+              target="${ctx.safeUrl !== '#' ? '_blank' : '_self'}" 
+              title="${escapeHtml(fm.name)} — ${escapeHtml(ctx.summary)}"
+              class="font-semibold text-slate-100 ${ctx.catTheme.titleHover} hover:underline truncate"
+            >
+              ${escapeHtml(fm.name)}
+            </a>
 
-                  <h3 class="font-bold text-slate-100 text-sm ${ctx.catTheme.titleHover} transition flex items-center gap-1.5">
-                    <a href="${ctx.safeUrl !== '#' ? ctx.safeUrl : 'javascript:void(0)'}" target="${ctx.safeUrl !== '#' ? '_blank' : '_self'}" class="hover:underline">
-                      ${fm.name}
-                    </a>
-                  </h3>
-
-                  ${ctx.starsBadge}
-                  ${ctx.academicBadge}
-                </div>
-
-                <!-- Pills de empleo o producto si aplican -->
-                ${(ctx.isJob && (fm.company || fm.location || fm.salary)) || (ctx.isProduct && (fm.company || fm.price)) ? `
-                  <div class="flex flex-wrap items-center gap-1.5 my-1">
-                    ${fm.company ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-medium"><span>🏢</span> ${escapeHtml(fm.company)}</span>` : ''}
-                    ${fm.location ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-sky-950/50 text-sky-300 border border-sky-800/40 font-medium"><span>🌍</span> ${escapeHtml(fm.location)}</span>` : ''}
-                    ${fm.salary ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-emerald-950/40 text-emerald-400 border border-emerald-800/40 font-mono font-medium"><span>💰</span> ${escapeHtml(fm.salary)}</span>` : ''}
-                    ${fm.price ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-amber-950/40 text-amber-300 border border-amber-800/40 font-mono font-medium"><span>💰</span> ${escapeHtml(fm.price)}</span>` : ''}
-                  </div>
-                ` : ''}
-
-                <!-- Resumen conciso -->
-                <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed my-1">
-                  ${ctx.summary}
-                </p>
-
-                <!-- Metadatos inferiores: Tags & Autor -->
-                <div class="flex items-center gap-3 flex-wrap mt-1 text-xs">
-                  <div class="flex flex-wrap gap-1">
-                    ${ctx.tagsHtml}
-                  </div>
-
-                  ${ctx.authorName ? `
-                    <div class="flex items-center gap-1 text-[11px] text-slate-400">
-                      <span class="text-slate-600">•</span>
-                      <span class="text-slate-500 text-[10px]">Por:</span>
-                      <button onclick="setAuthorFilter('${escapeJsString(ctx.authorName)}')" title="Filtrar recomendaciones de ${escapeHtml(ctx.authorName)}" class="font-medium text-slate-300 hover:text-sky-300 hover:underline transition truncate max-w-[140px] text-left">
-                        ${escapeHtml(ctx.authorName)}
-                      </button>
-                      ${ctx.authorHandle ? `
-                        <a href="https://x.com/${escapeHtml(ctx.authorHandle)}" target="_blank" title="Ver perfil @${escapeHtml(ctx.authorHandle)} en X" class="text-slate-500 hover:text-white transition flex items-center gap-0.5 font-mono text-[10px]">
-                          <span>@${escapeHtml(ctx.authorHandle)}</span>
-                        </a>
-                      ` : ''}
-                    </div>
-                  ` : ''}
-                </div>
-
-                <!-- Acordeón de prompts / hilos si aplica -->
-                ${ctx.threadAccordionHtml}
-              </div>
-            </div>
-
-            <!-- Right Column: Estado, Fecha y Botones de Acción -->
-            <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap justify-between lg:justify-end flex-shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-800/60 pl-6 sm:pl-7 lg:pl-0">
-              
-              <!-- Selector de estado inline -->
-              <select onchange="updateToolStatusInline('${tool.slug}', this.value)" class="bg-slate-950 border border-slate-800 text-[11px] rounded-lg px-2 py-1 text-slate-300 focus:outline-none">
-                <option value="to_try" ${fm.status === 'to_try' ? 'selected' : ''}>${ctx.isJob ? '🟡 Por postular' : ctx.isProduct ? '🟡 Por adquirir' : '🟡 Por probar'}</option>
-                <option value="in_use" ${fm.status === 'in_use' ? 'selected' : ''}>${ctx.isJob ? '🟢 Postulado' : ctx.isProduct ? '🟢 En posesión' : '🟢 En uso'}</option>
-                <option value="archived" ${fm.status === 'archived' ? 'selected' : ''}>⚪ Archivado</option>
-              </select>
-
-              ${fm.date_added ? `
-                <span class="text-[10px] ${ctx.catTheme.dateColor} font-mono flex items-center gap-1 whitespace-nowrap" title="Añadido: ${fm.date_added}">
-                  <i data-lucide="calendar" class="w-2.5 h-2.5 opacity-75"></i>
-                  <span>${formatDateSimple(fm.date_added)}</span>
-                </span>
-              ` : ''}
-
-              <!-- Enlaces externos y Acciones -->
-              <div class="flex items-center gap-1">
-                ${ctx.tweetLink}
-                ${ctx.websiteLink}
-                ${ctx.primaryLink}
-
-                <!-- Botón Ver Ficha -->
-                <button 
-                  type="button" 
-                  onclick="openNoteModal('${tool.slug}')" 
-                  class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1 transition whitespace-nowrap"
-                  title="Ver ficha técnica completa y notas"
-                >
-                  <i data-lucide="file-text" class="w-3 h-3 text-sky-400"></i>
-                  <span class="hidden sm:inline">Ver Ficha</span>
-                </button>
-
-                <!-- Botón Editar -->
-                <button 
-                  type="button" 
-                  onclick="openEditToolModal('${tool.slug}')" 
-                  class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-amber-300 transition" 
-                  title="Editar ficha"
-                >
-                  <i data-lucide="pencil" class="w-3.5 h-3.5 text-amber-400"></i>
-                </button>
-
-                <!-- Botón Eliminar -->
-                <button 
-                  type="button" 
-                  onclick="deleteSingleTool('${tool.slug}')" 
-                  class="p-1.5 rounded-lg bg-slate-800 hover:bg-rose-950/60 text-slate-400 hover:text-rose-400 transition" 
-                  title="Eliminar recurso"
-                >
-                  <i data-lucide="trash-2" class="w-3.5 h-3.5 text-rose-400"></i>
-                </button>
-              </div>
-
-            </div>
-
+            <!-- Creador -->
+            ${ctx.authorName ? `
+              <span class="text-slate-600 flex-shrink-0">•</span>
+              <button 
+                type="button"
+                onclick="setAuthorFilter('${escapeJsString(ctx.authorName)}')" 
+                title="Filtrar por creador: ${escapeHtml(ctx.authorName)}" 
+                class="inline-flex items-center gap-1 text-[11px] text-slate-400 hover:text-sky-300 hover:underline truncate max-w-[180px] flex-shrink-0"
+              >
+                <i data-lucide="user" class="w-3 h-3 text-slate-500 flex-shrink-0"></i>
+                <span class="font-medium text-slate-300 truncate">${escapeHtml(ctx.authorName)}</span>
+                ${ctx.authorHandle ? `<span class="text-slate-500 font-mono text-[10px] hidden sm:inline">(@${escapeHtml(ctx.authorHandle)})</span>` : ''}
+              </button>
+            ` : `
+              <span class="text-slate-600 flex-shrink-0 hidden sm:inline">•</span>
+              <span class="text-[11px] text-slate-600 italic flex-shrink-0 hidden sm:inline">Sin autor</span>
+            `}
           </div>
-        </div>
+
+          <!-- Derecha: Opciones (X, Link, Ver ficha, Editar, Eliminar) + Fecha en una sola fila -->
+          <div class="flex items-center gap-1.5 flex-shrink-0">
+            <!-- Opción: X -->
+            ${xUrl ? `
+              <a 
+                href="${xUrl}" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                title="Ver publicación en X" 
+                class="px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 transition inline-flex items-center gap-1"
+              >
+                ${xSvg}
+              </a>
+            ` : ''}
+
+            <!-- Opción: Link -->
+            ${toolLinkUrl ? `
+              <a 
+                href="${toolLinkUrl}" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                title="Abrir enlace directo (${toolLinkUrl})" 
+                class="px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-sky-400 border border-slate-800 transition inline-flex items-center gap-1"
+              >
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+                <span class="hidden xl:inline text-[11px]">Link</span>
+              </a>
+            ` : ''}
+
+            <!-- Opción: Ver ficha -->
+            <button 
+              type="button" 
+              onclick="openNoteModal('${tool.slug}')" 
+              class="px-2 py-1 rounded-md bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-sky-300 border border-slate-700/70 transition inline-flex items-center gap-1"
+              title="Ver ficha técnica"
+            >
+              <i data-lucide="file-text" class="w-3 h-3 text-sky-400"></i>
+              <span class="hidden sm:inline text-[11px]">Ver ficha</span>
+            </button>
+
+            <!-- Opción: Editar -->
+            <button 
+              type="button" 
+              onclick="openEditToolModal('${tool.slug}')" 
+              class="px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-amber-300 border border-slate-800 transition inline-flex items-center gap-1" 
+              title="Editar recurso"
+            >
+              <i data-lucide="pencil" class="w-3 h-3 text-amber-400"></i>
+              <span class="hidden lg:inline text-[11px]">Editar</span>
+            </button>
+
+            <!-- Opción: Eliminar -->
+            <button 
+              type="button" 
+              onclick="deleteSingleTool('${tool.slug}')" 
+              class="px-2 py-1 rounded-md bg-slate-900 hover:bg-rose-950/60 text-slate-300 hover:text-rose-400 border border-slate-800 hover:border-rose-500/40 transition inline-flex items-center gap-1" 
+              title="Eliminar recurso"
+            >
+              <i data-lucide="trash-2" class="w-3 h-3 text-rose-400"></i>
+              <span class="hidden lg:inline text-[11px]">Eliminar</span>
+            </button>
+
+            <!-- Fecha -->
+            <span 
+              class="text-[11px] font-mono ${ctx.catTheme.dateColor} min-w-[54px] text-right pl-2 border-l border-slate-800/80 whitespace-nowrap" 
+              title="Fecha: ${fm.date_added || 'Sin fecha'}"
+            >
+              ${fm.date_added ? formatDateSimple(fm.date_added) : '—'}
+            </span>
+          </div>
+        </li>
       `;
     }
 
@@ -3491,55 +3475,95 @@
         return;
       }
 
-      // MODALIDAD 2: VISTA DE LISTADO (List - Agrupado con encabezado visible por cada categoría)
-      grid.className = 'flex flex-col gap-6 w-full';
+      // MODALIDAD 2: VISTA DE LISTADO (Heading por Área -> Subheading por Categoría -> Lista de viñetas en una sola fila)
+      grid.className = 'flex flex-col gap-8 w-full';
 
-      // Ordenar categorías: primero las conocidas del apartado, luego cualquier otra categoría presente
-      const knownCategories = getCategoriesForCurrentSection().filter(c => c !== 'all');
-      const presentCats = Array.from(new Set(filtered.map(t => t.frontmatter?.category || 'Other')));
-
-      const sortedCategories = [];
-      knownCategories.forEach(c => {
-        if (presentCats.includes(c) && !sortedCategories.includes(c)) {
-          sortedCategories.push(c);
+      const AREA_DEFINITIONS = [
+        {
+          id: 'tools',
+          title: 'Herramientas',
+          icon: '🛠️',
+          badge: 'bg-sky-500/15 text-sky-300 border-sky-500/30',
+          border: 'border-sky-500/40',
+          accent: 'from-sky-500/15 via-slate-900 to-slate-900'
+        },
+        {
+          id: 'tips',
+          title: 'Consejos',
+          icon: '💡',
+          badge: 'bg-violet-500/15 text-violet-300 border-violet-500/30',
+          border: 'border-violet-500/40',
+          accent: 'from-violet-500/15 via-slate-900 to-slate-900'
+        },
+        {
+          id: 'jobs',
+          title: 'Trabajo',
+          icon: '💼',
+          badge: 'bg-blue-500/15 text-blue-300 border-blue-500/30',
+          border: 'border-blue-500/40',
+          accent: 'from-blue-500/15 via-slate-900 to-slate-900'
+        },
+        {
+          id: 'products',
+          title: 'Productos',
+          icon: '🖥️',
+          badge: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+          border: 'border-amber-500/40',
+          accent: 'from-amber-500/15 via-slate-900 to-slate-900'
         }
-      });
-      presentCats.forEach(c => {
-        if (!sortedCategories.includes(c)) {
-          sortedCategories.push(c);
-        }
-      });
+      ];
 
-      grid.innerHTML = sortedCategories.map(catName => {
-        const catTools = filtered.filter(t => (t.frontmatter?.category || 'Other') === catName);
-        if (catTools.length === 0) return '';
+      const activeAreas = currentSection === 'all'
+        ? AREA_DEFINITIONS
+        : AREA_DEFINITIONS.filter(a => a.id === currentSection);
 
-        const catTheme = getCategoryTheme(catName);
-        const catDef = allCategoriesList.find(c => c.name.toLowerCase() === catName.toLowerCase());
-        const catIcon = catDef?.icon || '📁';
-        const catDesc = catDef?.description || '';
+      grid.innerHTML = activeAreas.map(area => {
+        const areaTools = filtered.filter(t => getItemSection(t) === area.id);
+        if (areaTools.length === 0) return '';
 
-        return `
-          <section class="category-group-block space-y-2.5" id="cat-group-${encodeURIComponent(catName)}">
-            <!-- Encabezado de la Categoría -->
-            <div class="flex items-center justify-between py-2.5 px-4 rounded-xl bg-slate-900/95 border ${catTheme.border} border-l-4 ${catTheme.topBorder.replace('border-t-', 'border-l-')} shadow-sm backdrop-blur sticky top-16 z-10">
-              <div class="flex items-center gap-2.5 min-w-0">
-                <span class="w-2.5 h-2.5 rounded-full ${catTheme.dot} flex-shrink-0"></span>
-                <h3 class="font-bold text-sm sm:text-base text-slate-100 flex items-center gap-2 truncate">
-                  ${catIcon ? `<span class="flex-shrink-0 text-base">${catIcon}</span>` : ''}
+        // Ordenar categorías presentes dentro de esta área
+        const sectionKnownCats = (SECTION_CONFIG[area.id]?.categories || []).filter(c => c !== 'all');
+        const customAreaCats = allCategoriesList
+          .filter(c => c.section === area.id || c.section === 'all')
+          .map(c => c.name);
+        const knownOrder = Array.from(new Set([...sectionKnownCats, ...customAreaCats]));
+
+        const presentCats = Array.from(new Set(areaTools.map(t => t.frontmatter?.category || 'Other')));
+        const sortedCategories = [];
+        knownOrder.forEach(c => {
+          if (presentCats.includes(c) && !sortedCategories.includes(c)) {
+            sortedCategories.push(c);
+          }
+        });
+        presentCats.forEach(c => {
+          if (!sortedCategories.includes(c)) {
+            sortedCategories.push(c);
+          }
+        });
+
+        const categoriesHtml = sortedCategories.map(catName => {
+          const catTools = areaTools.filter(t => (t.frontmatter?.category || 'Other') === catName);
+          if (catTools.length === 0) return '';
+
+          const catTheme = getCategoryTheme(catName);
+          const catDef = allCategoriesList.find(c => c.name.toLowerCase() === catName.toLowerCase());
+          const catIcon = catDef?.icon || '📁';
+
+          return `
+            <div class="category-subgroup space-y-1.5">
+              <!-- SUBHEADING DE LA CATEGORÍA -->
+              <div class="flex items-center justify-between py-1.5 px-3 rounded-lg bg-slate-900/90 border ${catTheme.border} border-l-4 ${catTheme.topBorder.replace('border-t-', 'border-l-')}">
+                <h3 class="font-bold text-xs sm:text-sm text-slate-200 flex items-center gap-2 truncate">
+                  <span class="w-2 h-2 rounded-full ${catTheme.dot} flex-shrink-0"></span>
+                  <span>${catIcon}</span>
                   <span class="truncate">${escapeHtml(catName)}</span>
+                  <span class="text-[11px] font-mono font-normal text-slate-400">(${catTools.length})</span>
                 </h3>
-                ${catDesc ? `<span class="hidden md:inline text-xs text-slate-400 border-l border-slate-800 pl-2.5 truncate max-w-md">${escapeHtml(catDesc)}</span>` : ''}
-              </div>
-              <div class="flex items-center gap-2 flex-shrink-0">
-                <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700/60">
-                  ${catTools.length} ${catTools.length === 1 ? 'recurso' : 'recursos'}
-                </span>
                 ${currentCategory === 'all' ? `
                   <button 
                     type="button"
                     onclick="setCategoryFilter('${escapeJsString(catName)}')" 
-                    class="hidden sm:inline-flex items-center gap-1 text-[11px] text-sky-400 hover:text-sky-300 hover:underline px-1.5 py-0.5 transition" 
+                    class="hidden sm:inline-flex items-center gap-1 text-[11px] text-sky-400 hover:text-sky-300 hover:underline px-1.5 py-0.5 transition flex-shrink-0" 
                     title="Filtrar solo la categoría ${escapeHtml(catName)}"
                   >
                     <span>Solo esta</span>
@@ -3547,11 +3571,31 @@
                   </button>
                 ` : ''}
               </div>
+
+              <!-- LISTADO DE VIÑETAS EN UNA SOLA FILA -->
+              <ul class="divide-y divide-slate-800/50 bg-slate-950/60 border border-slate-800/70 rounded-xl overflow-hidden">
+                ${catTools.map(tool => renderToolListRow(tool)).join('')}
+              </ul>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <section class="area-group-block space-y-4" id="area-group-${area.id}">
+            <!-- HEADING DEL ÁREA RESPECTIVA (Herramientas, Consejos, Trabajo, Productos) -->
+            <div class="flex items-center justify-between px-4 py-3 rounded-2xl bg-gradient-to-r ${area.accent} border ${area.border} shadow-md sticky top-16 z-10 backdrop-blur">
+              <h2 class="text-base sm:text-lg font-extrabold tracking-tight text-slate-100 flex items-center gap-2.5">
+                <span class="text-xl">${area.icon}</span>
+                <span>${area.title}</span>
+              </h2>
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-full border ${area.badge}">
+                ${areaTools.length} ${areaTools.length === 1 ? 'recurso' : 'recursos'}
+              </span>
             </div>
 
-            <!-- Filas en formato listado -->
-            <div class="flex flex-col gap-2">
-              ${catTools.map(tool => renderToolListRow(tool)).join('')}
+            <!-- CONTENEDOR DE SUBHEADINGS DE CATEGORÍAS -->
+            <div class="space-y-4 pl-2 sm:pl-4 border-l-2 border-slate-800/70">
+              ${categoriesHtml}
             </div>
           </section>
         `;
