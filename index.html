@@ -312,10 +312,33 @@
         </div>
 
         <span class="text-slate-700 hidden sm:inline">|</span>
-        <button id="batchSelectAllBtn" onclick="toggleSelectAllVisible()" class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 transition flex items-center gap-1.5" title="Seleccionar todos los cards visibles para eliminar por lotes">
+        <button id="batchSelectAllBtn" onclick="toggleSelectAllVisible()" class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 transition flex items-center gap-1.5" title="Seleccionar todos los recursos visibles para acciones por lotes">
           <i data-lucide="check-square" class="w-3.5 h-3.5 text-sky-400"></i>
           <span id="batchSelectAllBtnText">Seleccionar varios</span>
         </button>
+
+        <span class="text-slate-700 hidden sm:inline">|</span>
+        <!-- Selector de Modo de Vista: Cards / Listado -->
+        <div class="inline-flex items-center bg-slate-900 border border-slate-800 rounded-lg p-0.5" id="viewModeToggleGroup">
+          <button 
+            id="viewModeCardsBtn" 
+            onclick="setViewMode('cards')" 
+            class="px-2.5 py-1 rounded-md text-xs font-medium transition flex items-center gap-1.5 bg-sky-500/20 text-sky-300 border border-sky-500/30"
+            title="Vista en tarjetas (Cards)"
+          >
+            <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+            <span class="hidden sm:inline">Tarjetas</span>
+          </button>
+          <button 
+            id="viewModeListBtn" 
+            onclick="setViewMode('list')" 
+            class="px-2.5 py-1 rounded-md text-xs font-medium transition flex items-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-800/60"
+            title="Vista de listado agrupado por categorías"
+          >
+            <i data-lucide="list" class="w-3.5 h-3.5"></i>
+            <span class="hidden sm:inline">Listado</span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -1158,6 +1181,7 @@
     let currentAuthor = 'all';
     let filterRecent = true; // Activo por defecto según requerimiento
     let filterOnlyAcademic = false;
+    let currentViewMode = localStorage.getItem('toolkit_view_mode') || 'cards'; // 'cards' | 'list'
     let activeEditingSlug = null;
     let modalSelectedDest = 'tool'; // 'tool' | 'tech_tip' | 'job_remote' | 'tech_product'
     let isStaticMode = false;
@@ -2892,13 +2916,558 @@
       if (headerAuthorCountEl) headerAuthorCountEl.innerText = allAuthors.length;
     }
 
+    function setViewMode(mode) {
+      currentViewMode = mode === 'list' ? 'list' : 'cards';
+      localStorage.setItem('toolkit_view_mode', currentViewMode);
+      updateViewModeButtons();
+      renderTools();
+    }
+
+    function updateViewModeButtons() {
+      const cardsBtn = document.getElementById('viewModeCardsBtn');
+      const listBtn = document.getElementById('viewModeListBtn');
+      if (!cardsBtn || !listBtn) return;
+
+      if (currentViewMode === 'cards') {
+        cardsBtn.className = 'px-2.5 py-1 rounded-md text-xs font-medium transition flex items-center gap-1.5 bg-sky-500/20 text-sky-300 border border-sky-500/30';
+        listBtn.className = 'px-2.5 py-1 rounded-md text-xs font-medium transition flex items-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-800/60';
+      } else {
+        cardsBtn.className = 'px-2.5 py-1 rounded-md text-xs font-medium transition flex items-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-800/60';
+        listBtn.className = 'px-2.5 py-1 rounded-md text-xs font-medium transition flex items-center gap-1.5 bg-sky-500/20 text-sky-300 border border-sky-500/30';
+      }
+    }
+
+    function getToolItemContext(tool) {
+      const fm = tool.frontmatter || {};
+      const itemSec = getItemSection(tool);
+      const isJob = itemSec === 'jobs';
+      const isTip = itemSec === 'tips';
+      const isProduct = itemSec === 'products';
+      const isTool = itemSec === 'tools';
+
+      const starsBadge = fm.stars ? `
+        <span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">
+          ⭐ ${fm.stars.toLocaleString()}
+        </span>
+      ` : '';
+
+      const tagsHtml = (fm.tags || []).slice(0, 4).map(t => `
+        <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">#${escapeHtml(t)}</span>
+      `).join('');
+
+      // Extract summary blockquote
+      const quoteMatch = (tool.content || '').match(/^>\s*(.+)$/m);
+      const summary = quoteMatch ? quoteMatch[1] : 'Sin descripción adicional.';
+
+      const safeUrl = (fm.url && fm.url !== 'undefined' && fm.url !== 'null') ? fm.url : (fm.website_url || '#');
+      const isGithub = safeUrl.includes('github.com');
+      const isTwitter = safeUrl.includes('x.com') || safeUrl.includes('twitter.com');
+
+      const mainLinkTitle = isGithub ? 'Ver repositorio en GitHub' : isJob ? 'Ver oferta o enlace para postular' : isProduct ? 'Ver ficha del producto / web' : isTwitter ? 'Ver tweet en X' : 'Visitar enlace principal';
+
+      const githubSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>`;
+      const xSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
+
+      const mainIconHtml = isGithub ? githubSvg : (isTwitter && !isJob) ? xSvg : isJob ? `<i data-lucide="briefcase" class="w-3.5 h-3.5"></i>` : `<i data-lucide="external-link" class="w-3.5 h-3.5"></i>`;
+
+      // Determinar si está activo el filtro de Todos (apartado 'all' o categoría 'all')
+      const isAllFilter = (currentSection === 'all' || currentCategory === 'all');
+
+      let apartadoBarTheme;
+      if (isJob) {
+        apartadoBarTheme = {
+          label: 'TRABAJO',
+          fullName: 'Trabajo & Freelance',
+          icon: 'briefcase',
+          bg: 'bg-gradient-to-b from-blue-600 to-blue-700',
+          border: 'border-r border-blue-500/40'
+        };
+      } else if (isTip) {
+        apartadoBarTheme = {
+          label: 'CONSEJOS',
+          fullName: 'Consejos Técnicos',
+          icon: 'lightbulb',
+          bg: 'bg-gradient-to-b from-violet-600 to-violet-700',
+          border: 'border-r border-violet-500/40'
+        };
+      } else if (isProduct) {
+        apartadoBarTheme = {
+          label: 'PRODUCTOS',
+          fullName: 'Productos Tech & Hardware',
+          icon: 'cpu',
+          bg: 'bg-gradient-to-b from-amber-600 to-amber-700',
+          border: 'border-r border-amber-500/40'
+        };
+      } else {
+        apartadoBarTheme = {
+          label: 'HERRAMIENTAS',
+          fullName: 'Herramientas',
+          icon: 'wrench',
+          bg: 'bg-gradient-to-b from-sky-600 to-sky-700',
+          border: 'border-r border-sky-500/40'
+        };
+      }
+
+      const tweetLink = (
+        fm.source_tweet &&
+        fm.source_tweet !== 'undefined' &&
+        fm.source_tweet !== 'null' &&
+        fm.source_tweet !== safeUrl
+      ) ? `
+        <a href="${fm.source_tweet}" target="_blank" title="Ver tweet original en X / Twitter" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition flex items-center justify-center">
+          ${xSvg}
+        </a>
+      ` : '';
+
+      const websiteLink = (
+        fm.website_url &&
+        fm.website_url !== 'undefined' &&
+        fm.website_url !== 'null' &&
+        fm.website_url !== safeUrl &&
+        !fm.website_url.toLowerCase().includes('github.com') &&
+        !fm.website_url.toLowerCase().includes('gitlab.com')
+      ) ? `
+        <a href="${fm.website_url}" target="_blank" rel="noopener noreferrer" title="Visitar sitio web oficial" class="p-1.5 rounded-lg text-slate-400 hover:text-emerald-400 hover:bg-slate-800 transition flex items-center justify-center">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+        </a>
+      ` : '';
+
+      const primaryLink = (safeUrl && safeUrl !== '#') ? `
+        <a href="${safeUrl}" target="_blank" title="${mainLinkTitle}" class="p-1.5 rounded-lg text-slate-400 hover:text-sky-400 hover:bg-slate-800 transition flex items-center justify-center">
+          ${mainIconHtml}
+        </a>
+      ` : '';
+
+      const isAcademic = isAcademicTool(tool);
+      const promoDetails = (fm.academic_promo_details || 'Cuenta con promoción o descuento para estudiantes y sector educativo').replace(/"/g, '&quot;');
+      const academicBadge = (isTool && isAcademic) ? `
+        <span title="${promoDetails}" class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 cursor-help transition hover:bg-emerald-500/25">
+          <span>🎓</span> Promo Académica
+        </span>
+      ` : '';
+
+      // Job specific pills
+      const jobPills = isJob && (fm.company || fm.location || fm.salary) ? `
+        <div class="flex flex-wrap items-center gap-1.5 mb-2.5">
+          ${fm.company ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-medium"><span>🏢</span> ${escapeHtml(fm.company)}</span>` : ''}
+          ${fm.location ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-sky-950/50 text-sky-300 border border-sky-800/40 font-medium"><span>🌍</span> ${escapeHtml(fm.location)}</span>` : ''}
+          ${fm.salary ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-emerald-950/40 text-emerald-400 border border-emerald-800/40 font-mono font-medium"><span>💰</span> ${escapeHtml(fm.salary)}</span>` : ''}
+        </div>
+      ` : '';
+
+      // Product specific pills
+      const productPills = isProduct && (fm.company || fm.price) ? `
+        <div class="flex flex-wrap items-center gap-1.5 mb-2.5">
+          ${fm.company ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-medium"><span>🏢</span> ${escapeHtml(fm.company)}</span>` : ''}
+          ${fm.price ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-amber-950/40 text-amber-300 border border-amber-800/40 font-mono font-medium"><span>💰</span> ${escapeHtml(fm.price)}</span>` : ''}
+        </div>
+      ` : '';
+
+      const authorName = getToolAuthor(tool);
+      const authorHandle = getToolAuthorHandle(tool);
+
+      // Tema visual distintivo por categoría
+      const catTheme = getCategoryTheme(fm.category);
+
+      // Extracción de pasos/prompts de hilos para visualización directa en el card
+      const cardSteps = extractThreadSteps(tool.content || '');
+      const hasCardSteps = cardSteps.length > 0;
+      const isThreadItem = isTip || (fm.tags || []).includes('prompts') || (fm.tags || []).includes('hilo') || (fm.source_tweet && fm.source_tweet.includes('/status/'));
+
+      let threadAccordionHtml = '';
+      if (hasCardSteps) {
+        threadAccordionHtml = `
+          <div class="mt-2.5 pt-2 border-t border-slate-800/60">
+            <div class="flex items-center justify-between">
+              <button 
+                type="button" 
+                onclick="toggleCardThread('${tool.slug}')" 
+                id="btnToggleThread-${tool.slug}"
+                class="text-[11px] font-semibold text-sky-400 hover:text-sky-300 transition flex items-center gap-1.5 py-0.5"
+              >
+                <span class="inline-block transition-transform duration-200" id="arrowThread-${tool.slug}">▶</span>
+                <span>🧵 Ver Prompts / Hilo (${cardSteps.length})</span>
+              </button>
+
+              <button 
+                type="button" 
+                onclick="openThreadCollectorModal('${tool.slug}')" 
+                class="text-[10px] text-slate-400 hover:text-sky-300 transition flex items-center gap-1 px-1.5 py-0.5 rounded bg-slate-800/60 hover:bg-slate-800"
+                title="Añadir más tweets del hilo a este card"
+              >
+                <span>➕ Recopilar</span>
+              </button>
+            </div>
+
+            <div id="cardThreadBody-${tool.slug}" class="hidden mt-2 space-y-2 max-h-56 overflow-y-auto pr-1 text-xs">
+              ${cardSteps.map((st, idx) => `
+                <div class="p-2 rounded-xl bg-slate-950/80 border border-slate-800/80 text-[11px]">
+                  <div class="flex items-center justify-between font-semibold text-slate-200 mb-1">
+                    <span class="truncate pr-2">${escapeHtml(st.title)}</span>
+                    ${(st.prompt || st.rawBody) ? `
+                      <button 
+                        onclick="copyToClipboard('${escapeJsString(st.prompt || st.rawBody)}', this)" 
+                        class="flex-shrink-0 px-1.5 py-0.5 rounded bg-slate-800 hover:bg-sky-600 text-[10px] text-slate-300 hover:text-white transition flex items-center gap-1"
+                        title="Copiar prompt al portapapeles"
+                      >
+                        <i data-lucide="copy" class="w-2.5 h-2.5"></i>
+                        <span>Copiar</span>
+                      </button>
+                    ` : ''}
+                  </div>
+                  ${st.prompt ? `
+                    <pre class="bg-black/60 p-1.5 rounded-lg text-emerald-300 font-mono text-[10px] whitespace-pre-wrap break-words border border-slate-900 select-all">${escapeHtml(st.prompt)}</pre>
+                  ` : st.description ? `
+                    <p class="text-slate-400 text-[10px] whitespace-pre-wrap">${escapeHtml(st.description)}</p>
+                  ` : `
+                    <p class="text-slate-400 text-[10px] whitespace-pre-wrap">${escapeHtml(st.rawBody)}</p>
+                  `}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      } else if (isThreadItem) {
+        threadAccordionHtml = `
+          <div class="mt-2.5 pt-2 border-t border-slate-800/60 flex items-center justify-between text-[11px]">
+            <span class="text-slate-500 text-[10px] flex items-center gap-1">
+              <span>🧵</span> Hilo de X
+            </span>
+            <button 
+              type="button" 
+              onclick="openThreadCollectorModal('${tool.slug}')" 
+              class="text-[10px] text-sky-400 hover:text-sky-300 transition flex items-center gap-1 px-2 py-0.5 rounded bg-sky-950/40 border border-sky-800/40 hover:bg-sky-900/50"
+            >
+              <span>➕ Recopilar tweets del hilo</span>
+            </button>
+          </div>
+        `;
+      }
+
+      // Estado de selección del card para acciones por lotes
+      const isCardSelected = selectedSlugs.has(tool.slug);
+      const cardSelectionRing = isCardSelected ? 'ring-2 ring-sky-500 shadow-lg shadow-sky-950/60 bg-sky-950/20' : '';
+
+      return {
+        fm, itemSec, isJob, isTip, isProduct, isTool,
+        starsBadge, tagsHtml, summary, safeUrl, isGithub, isTwitter,
+        mainLinkTitle, mainIconHtml, isAllFilter, apartadoBarTheme,
+        tweetLink, websiteLink, primaryLink, isAcademic, promoDetails, academicBadge,
+        jobPills, productPills, authorName, authorHandle, catTheme,
+        cardSteps, hasCardSteps, isThreadItem, threadAccordionHtml,
+        isCardSelected, cardSelectionRing
+      };
+    }
+
+    function renderToolCard(tool, ctx = getToolItemContext(tool)) {
+      const fm = ctx.fm;
+
+      const lettersHtml = ctx.apartadoBarTheme.label.split('').map(ch => {
+        if (ch === ' ' || ch === '/') {
+          return `<span class="h-2 w-full flex items-center justify-center"><span class="w-1 h-1 rounded-full bg-white/40"></span></span>`;
+        }
+        return `<span class="leading-none drop-shadow-sm font-black">${ch}</span>`;
+      }).join('');
+
+      const apartadoVerticalBarHtml = ctx.isAllFilter ? `
+        <div class="w-8 sm:w-9 flex flex-col items-center justify-between py-3 px-1 ${ctx.apartadoBarTheme.bg} ${ctx.apartadoBarTheme.border} flex-shrink-0 select-none shadow-inner" title="Apartado: ${ctx.apartadoBarTheme.fullName}">
+          <div class="text-white flex items-center justify-center p-1.5 rounded-lg bg-black/25 shadow-sm">
+            <i data-lucide="${ctx.apartadoBarTheme.icon}" class="w-3.5 h-3.5"></i>
+          </div>
+          <div class="flex flex-col items-center justify-center gap-0.5 select-none text-[10px] sm:text-[11px] text-white my-auto py-1 font-black" aria-label="${ctx.apartadoBarTheme.label}">
+            ${lettersHtml}
+          </div>
+          <div class="w-1.5 h-1.5 rounded-full bg-white/50"></div>
+        </div>
+      ` : '';
+
+      const authorRow = ctx.authorName ? `
+        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-2.5 border-t border-slate-800/60 mt-3">
+          <div class="flex items-center gap-1.5 min-w-0">
+            <i data-lucide="user" class="w-3 h-3 text-slate-500 flex-shrink-0"></i>
+            <span class="text-slate-500 text-[10px]">Por:</span>
+            <button onclick="setAuthorFilter('${escapeJsString(ctx.authorName)}')" title="Filtrar recomendaciones de ${escapeHtml(ctx.authorName)}" class="font-medium text-slate-300 hover:text-sky-300 hover:underline transition truncate max-w-[130px] text-left">
+              ${escapeHtml(ctx.authorName)}
+            </button>
+          </div>
+          ${ctx.authorHandle ? `
+            <a href="https://x.com/${escapeHtml(ctx.authorHandle)}" target="_blank" title="Ver perfil @${escapeHtml(ctx.authorHandle)} en X" class="text-slate-500 hover:text-white transition flex items-center gap-1 flex-shrink-0 ml-1 font-mono text-[10px]">
+              <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <span>@${escapeHtml(ctx.authorHandle)}</span>
+            </a>
+          ` : ''}
+        </div>
+      ` : '';
+
+      return `
+        <div class="bg-gradient-to-b ${ctx.catTheme.bgTint} border ${ctx.catTheme.border} ${ctx.cardSelectionRing} border-t-2 ${ctx.catTheme.topBorder} transition-all duration-200 rounded-2xl flex flex-row items-stretch group shadow-sm hover:shadow-xl relative overflow-hidden">
+          ${apartadoVerticalBarHtml}
+          <div class="p-4 flex flex-col justify-between flex-1 min-w-0 pr-8 sm:pr-9">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="min-w-0">
+                  <div class="flex items-center gap-1.5 flex-wrap mb-1">
+                    <label class="inline-flex items-center cursor-pointer mr-0.5" title="Seleccionar para acciones por lotes" onclick="event.stopPropagation();">
+                      <input 
+                        type="checkbox" 
+                        onchange="toggleSelectTool('${tool.slug}', this.checked)" 
+                        ${ctx.isCardSelected ? 'checked' : ''} 
+                        class="w-3.5 h-3.5 rounded border-slate-700 bg-slate-950 text-sky-500 focus:ring-0 cursor-pointer accent-sky-500" 
+                      />
+                    </label>
+                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-bold tracking-wider uppercase border ${ctx.catTheme.badge}">
+                      <span class="w-1.5 h-1.5 rounded-full ${ctx.catTheme.dot}"></span>
+                      <span>${fm.category || 'Other'}</span>
+                    </span>
+                    ${ctx.academicBadge}
+                  </div>
+                  <h3 class="font-bold text-slate-100 text-sm ${ctx.catTheme.titleHover} transition flex items-center gap-1.5">
+                    <a href="${ctx.safeUrl !== '#' ? ctx.safeUrl : 'javascript:void(0)'}" target="${ctx.safeUrl !== '#' ? '_blank' : '_self'}" class="hover:underline">
+                      ${fm.name}
+                    </a>
+                  </h3>
+                </div>
+                <div class="flex items-center gap-1 flex-shrink-0">
+                  ${ctx.starsBadge}
+                  ${ctx.tweetLink}
+                  ${ctx.websiteLink}
+                  ${ctx.primaryLink}
+                </div>
+              </div>
+
+              ${ctx.jobPills}
+              ${ctx.productPills}
+
+              <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed mb-3">
+                ${ctx.summary}
+              </p>
+
+              <div class="flex flex-wrap gap-1 mb-1">
+                ${ctx.tagsHtml}
+              </div>
+
+              ${authorRow}
+            </div>
+
+            ${ctx.threadAccordionHtml}
+
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs mt-3">
+              <!-- Inline Status Selector -->
+              <select onchange="updateToolStatusInline('${tool.slug}', this.value)" class="bg-slate-950 border border-slate-800 text-[11px] rounded-lg px-2 py-1 text-slate-300 focus:outline-none">
+                <option value="to_try" ${fm.status === 'to_try' ? 'selected' : ''}>${ctx.isJob ? '🟡 Por postular' : ctx.isProduct ? '🟡 Por adquirir/probar' : '🟡 Por probar'}</option>
+                <option value="in_use" ${fm.status === 'in_use' ? 'selected' : ''}>${ctx.isJob ? '🟢 Postulado' : ctx.isProduct ? '🟢 En posesión' : '🟢 En uso'}</option>
+                <option value="archived" ${fm.status === 'archived' ? 'selected' : ''}>⚪ Archivado</option>
+              </select>
+
+              <div class="flex items-center gap-2">
+                ${fm.date_added ? `
+                  <span class="text-[10px] ${ctx.catTheme.dateColor} font-mono flex items-center gap-1" title="Añadido: ${fm.date_added}">
+                    <i data-lucide="calendar" class="w-2.5 h-2.5 opacity-75"></i>
+                    <span>${formatDateSimple(fm.date_added)}</span>
+                  </span>
+                ` : ''}
+
+                <!-- Open Note Button -->
+                <button 
+                  type="button" 
+                  onclick="openNoteModal('${tool.slug}')" 
+                  class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1.5 transition"
+                >
+                  <i data-lucide="file-text" class="w-3 h-3 text-sky-400"></i>
+                  <span>Ver Ficha</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Barra vertical derecha de acciones (Visible SOLO al hacer hover en esa área / borde) -->
+          <div 
+            class="absolute right-0 top-0 bottom-0 w-9 sm:w-10 bg-slate-950/90 backdrop-blur-md border-l border-slate-800/80 flex flex-col items-center justify-center gap-3 z-20 opacity-0 hover:opacity-100 transition-all duration-200 shadow-xl cursor-default"
+            title="Acciones de la ficha"
+            onclick="event.stopPropagation();"
+          >
+            <!-- Edit Button -->
+            <button 
+              type="button" 
+              onclick="openEditToolModal('${tool.slug}')" 
+              class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-amber-300 border border-slate-700/60 hover:border-amber-500/50 transition-all shadow-md hover:scale-110 active:scale-95" 
+              title="Editar ficha técnica y metadatos"
+            >
+              <i data-lucide="pencil" class="w-3.5 h-3.5 text-amber-400"></i>
+            </button>
+
+            <!-- Delete Button -->
+            <button 
+              type="button" 
+              onclick="deleteSingleTool('${tool.slug}')" 
+              class="p-2 rounded-xl bg-slate-800 hover:bg-rose-950/80 text-slate-300 hover:text-rose-400 border border-slate-700/60 hover:border-rose-500/50 transition-all shadow-md hover:scale-110 active:scale-95" 
+              title="Eliminar ficha de disco"
+            >
+              <i data-lucide="trash-2" class="w-3.5 h-3.5 text-rose-400"></i>
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderToolListRow(tool, ctx = getToolItemContext(tool)) {
+      const fm = ctx.fm;
+
+      return `
+        <div class="bg-slate-900/85 hover:bg-slate-900 border ${ctx.catTheme.border} ${ctx.cardSelectionRing} border-l-4 ${ctx.catTheme.topBorder.replace('border-t-', 'border-l-')} transition-all duration-150 rounded-xl p-3 sm:p-3.5 group shadow-sm hover:shadow-md relative">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+            
+            <!-- Left Column: Checkbox, Metadatos, Título, Badges, Resumen, Tags, Autor -->
+            <div class="flex items-start gap-2.5 sm:gap-3 flex-1 min-w-0">
+              
+              <!-- Checkbox de selección -->
+              <label class="inline-flex items-center cursor-pointer mt-1 flex-shrink-0" title="Seleccionar para acciones por lotes" onclick="event.stopPropagation();">
+                <input 
+                  type="checkbox" 
+                  onchange="toggleSelectTool('${tool.slug}', this.checked)" 
+                  ${ctx.isCardSelected ? 'checked' : ''} 
+                  class="w-4 h-4 rounded border-slate-700 bg-slate-950 text-sky-500 focus:ring-0 cursor-pointer accent-sky-500" 
+                />
+              </label>
+
+              <div class="flex-1 min-w-0">
+                <!-- Fila superior: Tipo/Apartado, Categoría, Título con enlace, Estrellas, Promos -->
+                <div class="flex items-center gap-2 flex-wrap mb-1">
+                  ${ctx.isAllFilter ? `
+                    <span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700" title="Apartado: ${ctx.apartadoBarTheme.fullName}">
+                      <i data-lucide="${ctx.apartadoBarTheme.icon}" class="w-3 h-3 text-slate-400"></i>
+                      <span>${ctx.apartadoBarTheme.label}</span>
+                    </span>
+                  ` : ''}
+
+                  <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-bold tracking-wider uppercase border ${ctx.catTheme.badge}">
+                    <span class="w-1.5 h-1.5 rounded-full ${ctx.catTheme.dot}"></span>
+                    <span>${fm.category || 'Other'}</span>
+                  </span>
+
+                  <h3 class="font-bold text-slate-100 text-sm ${ctx.catTheme.titleHover} transition flex items-center gap-1.5">
+                    <a href="${ctx.safeUrl !== '#' ? ctx.safeUrl : 'javascript:void(0)'}" target="${ctx.safeUrl !== '#' ? '_blank' : '_self'}" class="hover:underline">
+                      ${fm.name}
+                    </a>
+                  </h3>
+
+                  ${ctx.starsBadge}
+                  ${ctx.academicBadge}
+                </div>
+
+                <!-- Pills de empleo o producto si aplican -->
+                ${(ctx.isJob && (fm.company || fm.location || fm.salary)) || (ctx.isProduct && (fm.company || fm.price)) ? `
+                  <div class="flex flex-wrap items-center gap-1.5 my-1">
+                    ${fm.company ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-medium"><span>🏢</span> ${escapeHtml(fm.company)}</span>` : ''}
+                    ${fm.location ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-sky-950/50 text-sky-300 border border-sky-800/40 font-medium"><span>🌍</span> ${escapeHtml(fm.location)}</span>` : ''}
+                    ${fm.salary ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-emerald-950/40 text-emerald-400 border border-emerald-800/40 font-mono font-medium"><span>💰</span> ${escapeHtml(fm.salary)}</span>` : ''}
+                    ${fm.price ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-amber-950/40 text-amber-300 border border-amber-800/40 font-mono font-medium"><span>💰</span> ${escapeHtml(fm.price)}</span>` : ''}
+                  </div>
+                ` : ''}
+
+                <!-- Resumen conciso -->
+                <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed my-1">
+                  ${ctx.summary}
+                </p>
+
+                <!-- Metadatos inferiores: Tags & Autor -->
+                <div class="flex items-center gap-3 flex-wrap mt-1 text-xs">
+                  <div class="flex flex-wrap gap-1">
+                    ${ctx.tagsHtml}
+                  </div>
+
+                  ${ctx.authorName ? `
+                    <div class="flex items-center gap-1 text-[11px] text-slate-400">
+                      <span class="text-slate-600">•</span>
+                      <span class="text-slate-500 text-[10px]">Por:</span>
+                      <button onclick="setAuthorFilter('${escapeJsString(ctx.authorName)}')" title="Filtrar recomendaciones de ${escapeHtml(ctx.authorName)}" class="font-medium text-slate-300 hover:text-sky-300 hover:underline transition truncate max-w-[140px] text-left">
+                        ${escapeHtml(ctx.authorName)}
+                      </button>
+                      ${ctx.authorHandle ? `
+                        <a href="https://x.com/${escapeHtml(ctx.authorHandle)}" target="_blank" title="Ver perfil @${escapeHtml(ctx.authorHandle)} en X" class="text-slate-500 hover:text-white transition flex items-center gap-0.5 font-mono text-[10px]">
+                          <span>@${escapeHtml(ctx.authorHandle)}</span>
+                        </a>
+                      ` : ''}
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- Acordeón de prompts / hilos si aplica -->
+                ${ctx.threadAccordionHtml}
+              </div>
+            </div>
+
+            <!-- Right Column: Estado, Fecha y Botones de Acción -->
+            <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap justify-between lg:justify-end flex-shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-800/60 pl-6 sm:pl-7 lg:pl-0">
+              
+              <!-- Selector de estado inline -->
+              <select onchange="updateToolStatusInline('${tool.slug}', this.value)" class="bg-slate-950 border border-slate-800 text-[11px] rounded-lg px-2 py-1 text-slate-300 focus:outline-none">
+                <option value="to_try" ${fm.status === 'to_try' ? 'selected' : ''}>${ctx.isJob ? '🟡 Por postular' : ctx.isProduct ? '🟡 Por adquirir' : '🟡 Por probar'}</option>
+                <option value="in_use" ${fm.status === 'in_use' ? 'selected' : ''}>${ctx.isJob ? '🟢 Postulado' : ctx.isProduct ? '🟢 En posesión' : '🟢 En uso'}</option>
+                <option value="archived" ${fm.status === 'archived' ? 'selected' : ''}>⚪ Archivado</option>
+              </select>
+
+              ${fm.date_added ? `
+                <span class="text-[10px] ${ctx.catTheme.dateColor} font-mono flex items-center gap-1 whitespace-nowrap" title="Añadido: ${fm.date_added}">
+                  <i data-lucide="calendar" class="w-2.5 h-2.5 opacity-75"></i>
+                  <span>${formatDateSimple(fm.date_added)}</span>
+                </span>
+              ` : ''}
+
+              <!-- Enlaces externos y Acciones -->
+              <div class="flex items-center gap-1">
+                ${ctx.tweetLink}
+                ${ctx.websiteLink}
+                ${ctx.primaryLink}
+
+                <!-- Botón Ver Ficha -->
+                <button 
+                  type="button" 
+                  onclick="openNoteModal('${tool.slug}')" 
+                  class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1 transition whitespace-nowrap"
+                  title="Ver ficha técnica completa y notas"
+                >
+                  <i data-lucide="file-text" class="w-3 h-3 text-sky-400"></i>
+                  <span class="hidden sm:inline">Ver Ficha</span>
+                </button>
+
+                <!-- Botón Editar -->
+                <button 
+                  type="button" 
+                  onclick="openEditToolModal('${tool.slug}')" 
+                  class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-amber-300 transition" 
+                  title="Editar ficha"
+                >
+                  <i data-lucide="pencil" class="w-3.5 h-3.5 text-amber-400"></i>
+                </button>
+
+                <!-- Botón Eliminar -->
+                <button 
+                  type="button" 
+                  onclick="deleteSingleTool('${tool.slug}')" 
+                  class="p-1.5 rounded-lg bg-slate-800 hover:bg-rose-950/60 text-slate-400 hover:text-rose-400 transition" 
+                  title="Eliminar recurso"
+                >
+                  <i data-lucide="trash-2" class="w-3.5 h-3.5 text-rose-400"></i>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      `;
+    }
+
     function renderTools() {
       updateAuthorProfileBanner();
+      updateViewModeButtons();
       const grid = document.getElementById('toolsGrid');
       const filtered = getFilteredTools();
 
       if (filtered.length === 0) {
         const config = SECTION_CONFIG[currentSection] || SECTION_CONFIG.tools;
+        grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4';
         grid.innerHTML = `
           <div class="col-span-full py-16 text-center text-slate-500 border border-dashed border-slate-800 rounded-2xl">
             <span class="text-3xl block mb-2">${config.icon}</span>
@@ -2914,362 +3483,77 @@
         return;
       }
 
-      grid.innerHTML = filtered.map(tool => {
-        const fm = tool.frontmatter;
-        const itemSec = getItemSection(tool);
-        const isJob = itemSec === 'jobs';
-        const isTip = itemSec === 'tips';
-        const isProduct = itemSec === 'products';
-        const isTool = itemSec === 'tools';
+      // MODALIDAD 1: VISTA DE TARJETAS (Cards - Cuadrícula responsive de 3 columnas)
+      if (currentViewMode === 'cards') {
+        grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4';
+        grid.innerHTML = filtered.map(tool => renderToolCard(tool)).join('');
+        lucide.createIcons();
+        return;
+      }
 
-        const starsBadge = fm.stars ? `
-          <span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">
-            ⭐ ${fm.stars.toLocaleString()}
-          </span>
-        ` : '';
+      // MODALIDAD 2: VISTA DE LISTADO (List - Agrupado con encabezado visible por cada categoría)
+      grid.className = 'flex flex-col gap-6 w-full';
 
-        const tagsHtml = (fm.tags || []).slice(0, 4).map(t => `
-          <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">#${t}</span>
-        `).join('');
+      // Ordenar categorías: primero las conocidas del apartado, luego cualquier otra categoría presente
+      const knownCategories = getCategoriesForCurrentSection().filter(c => c !== 'all');
+      const presentCats = Array.from(new Set(filtered.map(t => t.frontmatter?.category || 'Other')));
 
-        // Extract summary blockquote
-        const quoteMatch = tool.content.match(/^>\s*(.+)$/m);
-        const summary = quoteMatch ? quoteMatch[1] : 'Sin descripción adicional.';
-
-        const safeUrl = (fm.url && fm.url !== 'undefined' && fm.url !== 'null') ? fm.url : (fm.website_url || '#');
-        const isGithub = safeUrl.includes('github.com');
-        const isTwitter = safeUrl.includes('x.com') || safeUrl.includes('twitter.com');
-
-        const mainLinkTitle = isGithub ? 'Ver repositorio en GitHub' : isJob ? 'Ver oferta o enlace para postular' : isProduct ? 'Ver ficha del producto / web' : isTwitter ? 'Ver tweet en X' : 'Visitar enlace principal';
-
-        const githubSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>`;
-        const xSvg = `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
-
-        const mainIconHtml = isGithub ? githubSvg : (isTwitter && !isJob) ? xSvg : isJob ? `<i data-lucide="briefcase" class="w-3.5 h-3.5"></i>` : `<i data-lucide="external-link" class="w-3.5 h-3.5"></i>`;
-
-        // Determinar si está activo el filtro de Todos (apartado 'all' o categoría 'all')
-        const isAllFilter = (currentSection === 'all' || currentCategory === 'all');
-
-        // Configuración de la barra vertical izquierda del área/apartado (solo en filtro de Todos)
-        let apartadoBarTheme;
-        if (isJob) {
-          apartadoBarTheme = {
-            label: 'TRABAJO',
-            fullName: 'Trabajo & Freelance',
-            icon: 'briefcase',
-            bg: 'bg-gradient-to-b from-blue-600 to-blue-700',
-            border: 'border-r border-blue-500/40'
-          };
-        } else if (isTip) {
-          apartadoBarTheme = {
-            label: 'CONSEJOS',
-            fullName: 'Consejos Técnicos',
-            icon: 'lightbulb',
-            bg: 'bg-gradient-to-b from-violet-600 to-violet-700',
-            border: 'border-r border-violet-500/40'
-          };
-        } else if (isProduct) {
-          apartadoBarTheme = {
-            label: 'PRODUCTOS',
-            fullName: 'Productos Tech & Hardware',
-            icon: 'cpu',
-            bg: 'bg-gradient-to-b from-amber-600 to-amber-700',
-            border: 'border-r border-amber-500/40'
-          };
-        } else {
-          apartadoBarTheme = {
-            label: 'HERRAMIENTAS',
-            fullName: 'Herramientas',
-            icon: 'wrench',
-            bg: 'bg-gradient-to-b from-sky-600 to-sky-700',
-            border: 'border-r border-sky-500/40'
-          };
+      const sortedCategories = [];
+      knownCategories.forEach(c => {
+        if (presentCats.includes(c) && !sortedCategories.includes(c)) {
+          sortedCategories.push(c);
         }
-
-        const lettersHtml = apartadoBarTheme.label.split('').map(ch => {
-          if (ch === ' ' || ch === '/') {
-            return `<span class="h-2 w-full flex items-center justify-center"><span class="w-1 h-1 rounded-full bg-white/40"></span></span>`;
-          }
-          return `<span class="leading-none drop-shadow-sm font-black">${ch}</span>`;
-        }).join('');
-
-        const apartadoVerticalBarHtml = isAllFilter ? `
-          <div class="w-8 sm:w-9 flex flex-col items-center justify-between py-3 px-1 ${apartadoBarTheme.bg} ${apartadoBarTheme.border} flex-shrink-0 select-none shadow-inner" title="Apartado: ${apartadoBarTheme.fullName}">
-            <div class="text-white flex items-center justify-center p-1.5 rounded-lg bg-black/25 shadow-sm">
-              <i data-lucide="${apartadoBarTheme.icon}" class="w-3.5 h-3.5"></i>
-            </div>
-            <div class="flex flex-col items-center justify-center gap-0.5 select-none text-[10px] sm:text-[11px] text-white my-auto py-1 font-black" aria-label="${apartadoBarTheme.label}">
-              ${lettersHtml}
-            </div>
-            <div class="w-1.5 h-1.5 rounded-full bg-white/50"></div>
-          </div>
-        ` : '';
-
-        const tweetLink = (
-          fm.source_tweet &&
-          fm.source_tweet !== 'undefined' &&
-          fm.source_tweet !== 'null' &&
-          fm.source_tweet !== safeUrl
-        ) ? `
-          <a href="${fm.source_tweet}" target="_blank" title="Ver tweet original en X / Twitter" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition flex items-center justify-center">
-            ${xSvg}
-          </a>
-        ` : '';
-
-        const websiteLink = (
-          fm.website_url &&
-          fm.website_url !== 'undefined' &&
-          fm.website_url !== 'null' &&
-          fm.website_url !== safeUrl &&
-          !fm.website_url.toLowerCase().includes('github.com') &&
-          !fm.website_url.toLowerCase().includes('gitlab.com')
-        ) ? `
-          <a href="${fm.website_url}" target="_blank" rel="noopener noreferrer" title="Visitar sitio web oficial" class="p-1.5 rounded-lg text-slate-400 hover:text-emerald-400 hover:bg-slate-800 transition flex items-center justify-center">
-            <i data-lucide="globe" class="w-3.5 h-3.5"></i>
-          </a>
-        ` : '';
-
-        const primaryLink = (safeUrl && safeUrl !== '#') ? `
-          <a href="${safeUrl}" target="_blank" title="${mainLinkTitle}" class="p-1.5 rounded-lg text-slate-400 hover:text-sky-400 hover:bg-slate-800 transition flex items-center justify-center">
-            ${mainIconHtml}
-          </a>
-        ` : '';
-
-        const isAcademic = isAcademicTool(tool);
-        const promoDetails = (fm.academic_promo_details || 'Cuenta con promoción o descuento para estudiantes y sector educativo').replace(/"/g, '&quot;');
-        const academicBadge = (isTool && isAcademic) ? `
-          <span title="${promoDetails}" class="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 cursor-help transition hover:bg-emerald-500/25">
-            <span>🎓</span> Promo Académica
-          </span>
-        ` : '';
-
-        // Job specific pills
-        const jobPills = isJob && (fm.company || fm.location || fm.salary) ? `
-          <div class="flex flex-wrap items-center gap-1.5 mb-2.5">
-            ${fm.company ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-medium"><span>🏢</span> ${fm.company}</span>` : ''}
-            ${fm.location ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-sky-950/50 text-sky-300 border border-sky-800/40 font-medium"><span>🌍</span> ${fm.location}</span>` : ''}
-            ${fm.salary ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-emerald-950/40 text-emerald-400 border border-emerald-800/40 font-mono font-medium"><span>💰</span> ${fm.salary}</span>` : ''}
-          </div>
-        ` : '';
-
-        // Product specific pills
-        const productPills = isProduct && (fm.company || fm.price) ? `
-          <div class="flex flex-wrap items-center gap-1.5 mb-2.5">
-            ${fm.company ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-medium"><span>🏢</span> ${fm.company}</span>` : ''}
-            ${fm.price ? `<span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-amber-950/40 text-amber-300 border border-amber-800/40 font-mono font-medium"><span>💰</span> ${fm.price}</span>` : ''}
-          </div>
-        ` : '';
-
-        const authorName = getToolAuthor(tool);
-        const authorHandle = getToolAuthorHandle(tool);
-        const authorRow = authorName ? `
-          <div class="flex items-center justify-between text-[11px] text-slate-400 pt-2.5 border-t border-slate-800/60 mt-3">
-            <div class="flex items-center gap-1.5 min-w-0">
-              <i data-lucide="user" class="w-3 h-3 text-slate-500 flex-shrink-0"></i>
-              <span class="text-slate-500 text-[10px]">Por:</span>
-              <button onclick="setAuthorFilter('${authorName}')" title="Filtrar recomendaciones de ${authorName}" class="font-medium text-slate-300 hover:text-sky-300 hover:underline transition truncate max-w-[130px] text-left">
-                ${authorName}
-              </button>
-            </div>
-            ${authorHandle ? `
-              <a href="https://x.com/${authorHandle}" target="_blank" title="Ver perfil @${authorHandle} en X" class="text-slate-500 hover:text-white transition flex items-center gap-1 flex-shrink-0 ml-1 font-mono text-[10px]">
-                <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                <span>@${authorHandle}</span>
-              </a>
-            ` : ''}
-          </div>
-        ` : '';
-
-        // Tema visual distintivo por categoría
-        const catTheme = getCategoryTheme(fm.category);
-
-        // Extracción de pasos/prompts de hilos para visualización directa en el card
-        const cardSteps = extractThreadSteps(tool.content || '');
-        const hasCardSteps = cardSteps.length > 0;
-        const isThreadItem = isTip || (fm.tags || []).includes('prompts') || (fm.tags || []).includes('hilo') || (fm.source_tweet && fm.source_tweet.includes('/status/'));
-
-        let threadAccordionHtml = '';
-        if (hasCardSteps) {
-          threadAccordionHtml = `
-            <div class="mt-2.5 pt-2 border-t border-slate-800/60">
-              <div class="flex items-center justify-between">
-                <button 
-                  type="button" 
-                  onclick="toggleCardThread('${tool.slug}')" 
-                  id="btnToggleThread-${tool.slug}"
-                  class="text-[11px] font-semibold text-sky-400 hover:text-sky-300 transition flex items-center gap-1.5 py-0.5"
-                >
-                  <span class="inline-block transition-transform duration-200" id="arrowThread-${tool.slug}">▶</span>
-                  <span>🧵 Ver Prompts / Hilo (${cardSteps.length})</span>
-                </button>
-
-                <button 
-                  type="button" 
-                  onclick="openThreadCollectorModal('${tool.slug}')" 
-                  class="text-[10px] text-slate-400 hover:text-sky-300 transition flex items-center gap-1 px-1.5 py-0.5 rounded bg-slate-800/60 hover:bg-slate-800"
-                  title="Añadir más tweets del hilo a este card"
-                >
-                  <span>➕ Recopilar</span>
-                </button>
-              </div>
-
-              <div id="cardThreadBody-${tool.slug}" class="hidden mt-2 space-y-2 max-h-56 overflow-y-auto pr-1 text-xs">
-                ${cardSteps.map((st, idx) => `
-                  <div class="p-2 rounded-xl bg-slate-950/80 border border-slate-800/80 text-[11px]">
-                    <div class="flex items-center justify-between font-semibold text-slate-200 mb-1">
-                      <span class="truncate pr-2">${escapeHtml(st.title)}</span>
-                      ${(st.prompt || st.rawBody) ? `
-                        <button 
-                          onclick="copyToClipboard('${escapeJsString(st.prompt || st.rawBody)}', this)" 
-                          class="flex-shrink-0 px-1.5 py-0.5 rounded bg-slate-800 hover:bg-sky-600 text-[10px] text-slate-300 hover:text-white transition flex items-center gap-1"
-                          title="Copiar prompt al portapapeles"
-                        >
-                          <i data-lucide="copy" class="w-2.5 h-2.5"></i>
-                          <span>Copiar</span>
-                        </button>
-                      ` : ''}
-                    </div>
-                    ${st.prompt ? `
-                      <pre class="bg-black/60 p-1.5 rounded-lg text-emerald-300 font-mono text-[10px] whitespace-pre-wrap break-words border border-slate-900 select-all">${escapeHtml(st.prompt)}</pre>
-                    ` : st.description ? `
-                      <p class="text-slate-400 text-[10px] whitespace-pre-wrap">${escapeHtml(st.description)}</p>
-                    ` : `
-                      <p class="text-slate-400 text-[10px] whitespace-pre-wrap">${escapeHtml(st.rawBody)}</p>
-                    `}
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          `;
-        } else if (isThreadItem) {
-          threadAccordionHtml = `
-            <div class="mt-2.5 pt-2 border-t border-slate-800/60 flex items-center justify-between text-[11px]">
-              <span class="text-slate-500 text-[10px] flex items-center gap-1">
-                <span>🧵</span> Hilo de X
-              </span>
-              <button 
-                type="button" 
-                onclick="openThreadCollectorModal('${tool.slug}')" 
-                class="text-[10px] text-sky-400 hover:text-sky-300 transition flex items-center gap-1 px-2 py-0.5 rounded bg-sky-950/40 border border-sky-800/40 hover:bg-sky-900/50"
-              >
-                <span>➕ Recopilar tweets del hilo</span>
-              </button>
-            </div>
-          `;
+      });
+      presentCats.forEach(c => {
+        if (!sortedCategories.includes(c)) {
+          sortedCategories.push(c);
         }
+      });
 
-        // Estado de selección del card para acciones por lotes
-        const isCardSelected = selectedSlugs.has(tool.slug);
-        const cardSelectionRing = isCardSelected ? 'ring-2 ring-sky-500 shadow-lg shadow-sky-950/60 bg-sky-950/20' : '';
+      grid.innerHTML = sortedCategories.map(catName => {
+        const catTools = filtered.filter(t => (t.frontmatter?.category || 'Other') === catName);
+        if (catTools.length === 0) return '';
+
+        const catTheme = getCategoryTheme(catName);
+        const catDef = allCategoriesList.find(c => c.name.toLowerCase() === catName.toLowerCase());
+        const catIcon = catDef?.icon || '📁';
+        const catDesc = catDef?.description || '';
 
         return `
-          <div class="bg-gradient-to-b ${catTheme.bgTint} border ${catTheme.border} ${cardSelectionRing} border-t-2 ${catTheme.topBorder} transition-all duration-200 rounded-2xl flex flex-row items-stretch group shadow-sm hover:shadow-xl relative overflow-hidden">
-            ${apartadoVerticalBarHtml}
-            <div class="p-4 flex flex-col justify-between flex-1 min-w-0 pr-8 sm:pr-9">
-              <div>
-                <div class="flex items-start justify-between gap-2 mb-2">
-                  <div class="min-w-0">
-                    <div class="flex items-center gap-1.5 flex-wrap mb-1">
-                      <label class="inline-flex items-center cursor-pointer mr-0.5" title="Seleccionar para acciones por lotes" onclick="event.stopPropagation();">
-                        <input 
-                          type="checkbox" 
-                          onchange="toggleSelectTool('${tool.slug}', this.checked)" 
-                          ${isCardSelected ? 'checked' : ''} 
-                          class="w-3.5 h-3.5 rounded border-slate-700 bg-slate-950 text-sky-500 focus:ring-0 cursor-pointer accent-sky-500" 
-                        />
-                      </label>
-                      <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-bold tracking-wider uppercase border ${catTheme.badge}">
-                        <span class="w-1.5 h-1.5 rounded-full ${catTheme.dot}"></span>
-                        <span>${fm.category || 'Other'}</span>
-                      </span>
-                      ${academicBadge}
-                    </div>
-                    <h3 class="font-bold text-slate-100 text-sm ${catTheme.titleHover} transition flex items-center gap-1.5">
-                      <a href="${safeUrl !== '#' ? safeUrl : 'javascript:void(0)'}" target="${safeUrl !== '#' ? '_blank' : '_self'}" class="hover:underline">
-                        ${fm.name}
-                      </a>
-                    </h3>
-                  </div>
-                  <div class="flex items-center gap-1 flex-shrink-0">
-                    ${starsBadge}
-                    ${tweetLink}
-                    ${websiteLink}
-                    ${primaryLink}
-                  </div>
-                </div>
-
-                ${jobPills}
-                ${productPills}
-
-                <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed mb-3">
-                  ${summary}
-                </p>
-
-                <div class="flex flex-wrap gap-1 mb-1">
-                  ${tagsHtml}
-                </div>
-
-                ${authorRow}
+          <section class="category-group-block space-y-2.5" id="cat-group-${encodeURIComponent(catName)}">
+            <!-- Encabezado de la Categoría -->
+            <div class="flex items-center justify-between py-2.5 px-4 rounded-xl bg-slate-900/95 border ${catTheme.border} border-l-4 ${catTheme.topBorder.replace('border-t-', 'border-l-')} shadow-sm backdrop-blur sticky top-16 z-10">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full ${catTheme.dot} flex-shrink-0"></span>
+                <h3 class="font-bold text-sm sm:text-base text-slate-100 flex items-center gap-2 truncate">
+                  ${catIcon ? `<span class="flex-shrink-0 text-base">${catIcon}</span>` : ''}
+                  <span class="truncate">${escapeHtml(catName)}</span>
+                </h3>
+                ${catDesc ? `<span class="hidden md:inline text-xs text-slate-400 border-l border-slate-800 pl-2.5 truncate max-w-md">${escapeHtml(catDesc)}</span>` : ''}
               </div>
-
-              ${threadAccordionHtml}
-
-              <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs mt-3">
-                <!-- Inline Status Selector -->
-                <select onchange="updateToolStatusInline('${tool.slug}', this.value)" class="bg-slate-950 border border-slate-800 text-[11px] rounded-lg px-2 py-1 text-slate-300 focus:outline-none">
-                  <option value="to_try" ${fm.status === 'to_try' ? 'selected' : ''}>${isJob ? '🟡 Por postular' : isProduct ? '🟡 Por adquirir/probar' : '🟡 Por probar'}</option>
-                  <option value="in_use" ${fm.status === 'in_use' ? 'selected' : ''}>${isJob ? '🟢 Postulado' : isProduct ? '🟢 En posesión' : '🟢 En uso'}</option>
-                  <option value="archived" ${fm.status === 'archived' ? 'selected' : ''}>⚪ Archivado</option>
-                </select>
-
-                <div class="flex items-center gap-2">
-                  ${fm.date_added ? `
-                    <span class="text-[10px] ${catTheme.dateColor} font-mono flex items-center gap-1" title="Añadido: ${fm.date_added}">
-                      <i data-lucide="calendar" class="w-2.5 h-2.5 opacity-75"></i>
-                      <span>${formatDateSimple(fm.date_added)}</span>
-                    </span>
-                  ` : ''}
-
-                  <!-- Open Note Button -->
+              <div class="flex items-center gap-2 flex-shrink-0">
+                <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700/60">
+                  ${catTools.length} ${catTools.length === 1 ? 'recurso' : 'recursos'}
+                </span>
+                ${currentCategory === 'all' ? `
                   <button 
-                    type="button" 
-                    onclick="openNoteModal('${tool.slug}')" 
-                    class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center gap-1.5 transition"
+                    type="button"
+                    onclick="setCategoryFilter('${escapeJsString(catName)}')" 
+                    class="hidden sm:inline-flex items-center gap-1 text-[11px] text-sky-400 hover:text-sky-300 hover:underline px-1.5 py-0.5 transition" 
+                    title="Filtrar solo la categoría ${escapeHtml(catName)}"
                   >
-                    <i data-lucide="file-text" class="w-3 h-3 text-sky-400"></i>
-                    <span>Ver Ficha</span>
+                    <span>Solo esta</span>
+                    <i data-lucide="chevron-right" class="w-3 h-3"></i>
                   </button>
-                </div>
+                ` : ''}
               </div>
             </div>
 
-            <!-- Barra vertical derecha de acciones (Visible SOLO al hacer hover en esa área / borde) -->
-            <div 
-              class="absolute right-0 top-0 bottom-0 w-9 sm:w-10 bg-slate-950/90 backdrop-blur-md border-l border-slate-800/80 flex flex-col items-center justify-center gap-3 z-20 opacity-0 hover:opacity-100 transition-all duration-200 shadow-xl cursor-default"
-              title="Acciones de la ficha"
-              onclick="event.stopPropagation();"
-            >
-              <!-- Edit Button -->
-              <button 
-                type="button" 
-                onclick="openEditToolModal('${tool.slug}')" 
-                class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-amber-300 border border-slate-700/60 hover:border-amber-500/50 transition-all shadow-md hover:scale-110 active:scale-95" 
-                title="Editar ficha técnica y metadatos"
-              >
-                <i data-lucide="pencil" class="w-3.5 h-3.5 text-amber-400"></i>
-              </button>
-
-              <!-- Delete Button -->
-              <button 
-                type="button" 
-                onclick="deleteSingleTool('${tool.slug}')" 
-                class="p-2 rounded-xl bg-slate-800 hover:bg-rose-950/80 text-slate-300 hover:text-rose-400 border border-slate-700/60 hover:border-rose-500/50 transition-all shadow-md hover:scale-110 active:scale-95" 
-                title="Eliminar ficha de disco"
-              >
-                <i data-lucide="trash-2" class="w-3.5 h-3.5 text-rose-400"></i>
-              </button>
+            <!-- Filas en formato listado -->
+            <div class="flex flex-col gap-2">
+              ${catTools.map(tool => renderToolListRow(tool)).join('')}
             </div>
-          </div>
+          </section>
         `;
       }).join('');
 
@@ -4374,6 +4658,7 @@
       }, 400);
     }
 
+    updateViewModeButtons();
     fetchTools();
   </script>
 </body>
