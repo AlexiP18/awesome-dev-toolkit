@@ -25,6 +25,7 @@ price: Gratis
 academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 updated_at: '2026-11-02T03:18:43.947Z'
+conjunto: recursos
 ---
 # t3code
 

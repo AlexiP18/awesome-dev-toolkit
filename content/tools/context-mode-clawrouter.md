@@ -19,6 +19,7 @@ author_handle: nikosolenne
 entry_type: tool
 company: mksglu
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # context-mode (clawrouter)
 

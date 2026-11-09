@@ -15,6 +15,7 @@ author: Tran Mau Tri Tam ✪
 author_handle: tranmautritam
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # Posts.design
 

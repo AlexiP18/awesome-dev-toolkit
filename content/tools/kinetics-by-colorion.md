@@ -16,6 +16,7 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Colorion
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # Kinetics by Colorion
 

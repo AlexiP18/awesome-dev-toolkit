@@ -16,6 +16,7 @@ author_handle: neropursue
 entry_type: tool
 company: Paper
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Paper
 

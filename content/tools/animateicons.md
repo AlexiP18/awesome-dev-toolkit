@@ -18,6 +18,7 @@ author_handle: midudev
 entry_type: tool
 classified_by: Fallback (Sin IA)
 updated_at: '2026-11-02T17:39:37.798Z'
+conjunto: recursos
 ---
 # animateicons
 

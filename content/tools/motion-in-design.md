@@ -16,6 +16,7 @@ author: Vullnet Ademaj
 author_handle: VullnetAdemaj
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # Motion in Design
 

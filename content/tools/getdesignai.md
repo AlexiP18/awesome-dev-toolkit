@@ -16,6 +16,7 @@ author: Viktor Oddy
 author_handle: viktoroddy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # getdesign.ai
 

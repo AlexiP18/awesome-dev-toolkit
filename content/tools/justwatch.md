@@ -16,6 +16,7 @@ author_handle: precisox
 entry_type: tool
 company: JustWatch
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: producto
 ---
 # JustWatch
 

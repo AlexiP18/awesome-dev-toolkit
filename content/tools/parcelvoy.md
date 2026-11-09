@@ -18,6 +18,7 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Parcelvoy
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Parcelvoy
 

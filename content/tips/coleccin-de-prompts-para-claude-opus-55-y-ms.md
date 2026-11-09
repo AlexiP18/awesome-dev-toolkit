@@ -19,6 +19,7 @@ author: おかぴ｜@AI副業40代会社員
 author_handle: okapi_fukugyo
 entry_type: tech_tip
 classified_by: Google Gemini (Flash)
+conjunto: consejos
 ---
 # 💡 Colección de Prompts para Claude Opus 5.5 (y más)
 

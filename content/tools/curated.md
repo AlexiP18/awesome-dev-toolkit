@@ -17,6 +17,7 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Curated
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # Curated
 

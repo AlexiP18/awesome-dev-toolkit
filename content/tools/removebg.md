@@ -16,6 +16,7 @@ author_handle: precisox
 entry_type: tool
 company: remove.bg (Kaleido AI)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # remove.bg
 

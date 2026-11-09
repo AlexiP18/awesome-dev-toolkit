@@ -20,6 +20,7 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: mromidev
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Claude Animated Shorts
 

@@ -16,6 +16,7 @@ author_handle: precisox
 entry_type: tool
 company: Have I Been Pwned (HIBP)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Have I Been Pwned
 

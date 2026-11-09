@@ -16,6 +16,7 @@ author_handle: mdancho84
 entry_type: tool
 company: punkpeye
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Awesome MCP Servers
 

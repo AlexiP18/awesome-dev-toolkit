@@ -20,6 +20,7 @@ location: Remoto (Mundial)
 salary: $12 - $20 USD/h
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # 💼 TELUS International AI
 

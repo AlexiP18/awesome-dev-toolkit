@@ -18,6 +18,7 @@ author_handle: precisox
 entry_type: tool
 company: mlabonne
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # llm-course
 

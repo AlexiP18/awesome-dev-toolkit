@@ -1,7 +1,7 @@
 ---
 name: Radio Garden
 url: 'http://radio.garden/'
-category: Other
+category: Productivity & Tools
 tags:
   - radio
   - audio
@@ -14,6 +14,7 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Radio Garden
 

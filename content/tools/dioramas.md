@@ -21,6 +21,7 @@ entry_type: tool
 company: blendi-remade
 price: Gratis
 classified_by: Google Gemini (Flash)
+conjunto: inspiracion
 ---
 # dioramas
 

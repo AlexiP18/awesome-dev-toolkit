@@ -16,6 +16,7 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Fresh Folk
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Fresh Folk
 

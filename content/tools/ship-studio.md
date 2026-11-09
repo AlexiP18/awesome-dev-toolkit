@@ -16,6 +16,7 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Ship Studio
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: producto
 ---
 # Ship Studio
 

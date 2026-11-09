@@ -20,6 +20,7 @@ author_handle: MoureDev
 entry_type: tool
 company: Academa
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # ManimGX
 

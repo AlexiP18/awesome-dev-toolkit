@@ -18,6 +18,7 @@ author_handle: madamayo_
 entry_type: tool
 company: Station X (@ved4vyasan)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: consejos
 ---
 # Curso de Ciberseguridad de Station X (Google Drive)
 

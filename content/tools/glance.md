@@ -18,6 +18,7 @@ author_handle: noahelhadedy
 entry_type: tool
 price: $9.99 USD (edición; lectura gratis)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Glance
 

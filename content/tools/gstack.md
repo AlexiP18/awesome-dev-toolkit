@@ -16,6 +16,7 @@ author_handle: hasantoxr
 entry_type: tool
 company: Garry Tan
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # gstack
 

@@ -20,6 +20,7 @@ entry_type: tool
 company: MaxLiu22
 price: Gratis
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # Motion2MixamoRig
 

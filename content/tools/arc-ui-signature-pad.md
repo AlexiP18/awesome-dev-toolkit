@@ -19,6 +19,7 @@ author_handle: eliakuratli
 entry_type: tool
 company: Arc UI
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Arc UI Signature Pad
 

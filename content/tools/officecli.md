@@ -19,6 +19,7 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: iOfficeAI
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # OfficeCLI
 

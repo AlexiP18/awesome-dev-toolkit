@@ -19,6 +19,7 @@ entry_type: tool
 company: Everyday Mac Tools
 price: $14 USD (pago único)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Shoji
 

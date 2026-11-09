@@ -17,6 +17,7 @@ author_handle: madamayo_
 entry_type: tool
 company: AHM7TECH (@Ahm7Tech)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: consejos
 ---
 # Creating Viral Short Form Content with Generative AI (Curso)
 

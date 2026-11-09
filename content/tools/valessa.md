@@ -17,6 +17,7 @@ author_handle: tranmautritam
 entry_type: tool
 company: Riotters
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Valessa
 

@@ -23,6 +23,7 @@ entry_type: tool
 company: Vincentwei1021
 price: Gratis
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # video-shotcraft
 

@@ -19,6 +19,7 @@ author_handle: katsudev
 entry_type: tool
 company: AMAP-ML
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # SkillClaw
 

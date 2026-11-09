@@ -17,6 +17,7 @@ author_handle: exploraX_
 entry_type: tool
 company: Google
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Google AI Studio / Gemini API (free tier)
 

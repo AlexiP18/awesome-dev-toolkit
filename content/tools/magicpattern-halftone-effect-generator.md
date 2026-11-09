@@ -19,6 +19,7 @@ author_handle: d__raptis
 entry_type: tool
 company: MagicPattern
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # MagicPattern Halftone Effect Generator
 

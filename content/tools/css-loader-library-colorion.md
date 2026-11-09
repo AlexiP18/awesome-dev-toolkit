@@ -19,6 +19,7 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Colorion
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # CSS Loader Library (Colorion)
 

@@ -19,6 +19,7 @@ author_handle: lucian__03
 entry_type: tool
 company: Lucian Labs
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Lucian UX/UI Prompt
 

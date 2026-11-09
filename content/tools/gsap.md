@@ -21,6 +21,7 @@ location: 'null'
 salary: 'null'
 price: 'null'
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
+conjunto: recursos
 ---
 # GSAP
 

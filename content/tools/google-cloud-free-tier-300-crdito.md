@@ -18,6 +18,7 @@ entry_type: tool
 company: Google
 price: $300 USD de crédito por 90 días
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Google Cloud Free Tier ($300 crédito)
 

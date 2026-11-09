@@ -19,6 +19,7 @@ entry_type: tool
 company: Collletttivo
 price: Gratis
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Ortica
 

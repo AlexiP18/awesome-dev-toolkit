@@ -20,6 +20,7 @@ author_handle: UnTalNixon_exe
 entry_type: tool
 company: FoundationAgents (equipo de MetaGPT)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # OpenManus
 

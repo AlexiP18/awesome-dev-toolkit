@@ -18,6 +18,7 @@ entry_type: tool
 company: Amazon Web Services
 price: Hasta $200 USD de crédito en 6 meses
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # AWS Free Tier (hasta $200 en 6 meses)
 

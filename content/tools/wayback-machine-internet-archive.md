@@ -17,6 +17,7 @@ author_handle: precisox
 entry_type: tool
 company: Internet Archive
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Wayback Machine (Internet Archive)
 

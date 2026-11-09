@@ -18,6 +18,7 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: MadsLorentzen
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # ai-job-search
 

@@ -18,6 +18,7 @@ author_handle: yuliaisc
 entry_type: tool
 company: Anil Matcha
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Open Higgsfield AI
 

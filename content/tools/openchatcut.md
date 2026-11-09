@@ -23,6 +23,7 @@ author_handle: heyrimsha
 entry_type: tool
 company: 0xsline
 classified_by: Google Gemini (Flash)
+conjunto: producto
 ---
 # OpenChatCut
 

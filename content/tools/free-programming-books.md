@@ -16,6 +16,7 @@ author_handle: Shruti_0810
 entry_type: tool
 company: Ebook Foundation
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # free-programming-books
 

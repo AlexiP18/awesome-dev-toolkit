@@ -18,6 +18,7 @@ author_handle: dkare1009
 entry_type: tool
 company: Pathway
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # LLM App (serviette)
 

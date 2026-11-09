@@ -17,6 +17,7 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Made by So and So
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Perch
 

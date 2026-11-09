@@ -20,6 +20,7 @@ author_handle: Manixh02
 entry_type: tool
 company: miqdadbadjuber
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # anti-slop
 

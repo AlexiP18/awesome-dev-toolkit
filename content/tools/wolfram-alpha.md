@@ -16,6 +16,7 @@ author_handle: precisox
 entry_type: tool
 company: Wolfram Research
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Wolfram Alpha
 

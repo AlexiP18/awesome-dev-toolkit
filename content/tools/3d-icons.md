@@ -16,6 +16,7 @@ author: Himanshu Hingorani
 author_handle: himanshubuildss
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # 3D Icons
 

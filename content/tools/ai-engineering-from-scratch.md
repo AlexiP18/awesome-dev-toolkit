@@ -18,6 +18,7 @@ author_handle: santtiagom_
 entry_type: tool
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # AI Engineering from Scratch
 

@@ -17,6 +17,7 @@ author_handle: viktoroddy
 entry_type: tool
 company: Kim Boutin (Kim Lê Boutin)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # loadmo.re
 

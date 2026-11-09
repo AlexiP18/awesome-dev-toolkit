@@ -19,6 +19,7 @@ author_handle: shipper_now
 entry_type: tool
 company: Shipper
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: consejos
 ---
 # epstein.md
 

@@ -23,6 +23,7 @@ author_handle: Nona_xai
 entry_type: tool
 company: prompts.chat
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: consejos
 ---
 # prompts.chat (antes Awesome ChatGPT Prompts)
 

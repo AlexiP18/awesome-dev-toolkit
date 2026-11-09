@@ -17,6 +17,7 @@ author_handle: heyrimsha
 entry_type: tool
 company: ScrapeCreators
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Social Media Research Skills
 

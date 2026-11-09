@@ -19,6 +19,7 @@ author_handle: himanshubuildss
 entry_type: tool
 company: Scrolltide
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Scrolltide
 

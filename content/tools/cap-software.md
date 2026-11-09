@@ -17,6 +17,7 @@ author_handle: hasantoxr
 entry_type: tool
 company: Cap Software
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: producto
 ---
 # Cap Software
 

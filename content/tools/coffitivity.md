@@ -1,7 +1,7 @@
 ---
 name: Coffitivity
 url: 'https://coffitivity.com/'
-category: Other
+category: Productivity & Tools
 tags:
   - audio
   - productividad
@@ -14,6 +14,7 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Coffitivity
 

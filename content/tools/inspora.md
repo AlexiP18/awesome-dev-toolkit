@@ -16,6 +16,7 @@ author_handle: neropursue
 entry_type: tool
 company: Inspora
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # Inspora
 

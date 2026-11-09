@@ -19,6 +19,7 @@ author_handle: RoundtableSpace
 entry_type: tool
 company: UI Layouts
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # UI Layouts
 

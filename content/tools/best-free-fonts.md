@@ -17,6 +17,7 @@ author_handle: neropursue
 entry_type: tool
 company: Best Free Fonts
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Best Free Fonts
 

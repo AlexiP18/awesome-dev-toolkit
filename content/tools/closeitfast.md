@@ -15,6 +15,7 @@ author_handle: VullnetAdemaj
 entry_type: tool
 company: closeit.fast
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # closeit.fast
 

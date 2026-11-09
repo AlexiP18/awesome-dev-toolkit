@@ -18,6 +18,7 @@ author_handle: yuliaisc
 entry_type: tool
 company: Fincept Corporation
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: producto
 ---
 # Fincept Terminal
 

@@ -17,6 +17,7 @@ author_handle: hasantoxr
 entry_type: tool
 company: coreyhaines31
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Marketing Skills for AI Agents
 

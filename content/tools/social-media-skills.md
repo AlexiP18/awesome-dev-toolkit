@@ -18,6 +18,7 @@ author_handle: tom_doerr
 entry_type: tool
 company: charlie947
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # social-media-skills
 

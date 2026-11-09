@@ -17,6 +17,7 @@ author: ayo.artss
 author_handle: madamayo_
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: consejos
 ---
 # Curso de n8n y Automatización con IA (Google Drive)
 

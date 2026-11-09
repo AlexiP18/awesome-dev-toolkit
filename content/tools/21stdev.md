@@ -16,6 +16,7 @@ author_handle: noahelhadedy
 entry_type: tool
 company: 21st.dev
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # 21st.dev
 

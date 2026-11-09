@@ -25,6 +25,7 @@ salary: 'null'
 price: Free
 academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # Hacktemplates: Landing Page Heroes
 

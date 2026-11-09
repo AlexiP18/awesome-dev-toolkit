@@ -18,6 +18,7 @@ author_handle: hasantoxr
 entry_type: tool
 company: Novu
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Novu
 

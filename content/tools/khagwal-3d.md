@@ -16,6 +16,7 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Khagwal
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Khagwal 3D
 

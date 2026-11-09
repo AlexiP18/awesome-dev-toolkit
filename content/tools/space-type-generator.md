@@ -18,6 +18,7 @@ author_handle: toolfolio
 entry_type: tool
 company: Toolfolio
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # Space Type Generator
 

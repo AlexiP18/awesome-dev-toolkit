@@ -18,6 +18,7 @@ author_handle: brenzhills
 entry_type: tool
 company: Genspark AI
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # GenOffice
 

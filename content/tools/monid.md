@@ -22,6 +22,7 @@ salary: 'null'
 price: Paga por llamada
 academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # Monid
 

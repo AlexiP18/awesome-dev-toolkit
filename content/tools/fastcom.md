@@ -15,6 +15,7 @@ author_handle: ecommartinez
 entry_type: tool
 company: Netflix
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Fast.com
 

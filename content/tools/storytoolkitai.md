@@ -23,6 +23,7 @@ author_handle: heyrimsha
 entry_type: tool
 company: octimot
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # StoryToolkitAI
 

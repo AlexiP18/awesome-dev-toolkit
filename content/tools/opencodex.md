@@ -19,6 +19,7 @@ author_handle: brenzhills
 entry_type: tool
 company: lidge-jun
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # opencodex
 

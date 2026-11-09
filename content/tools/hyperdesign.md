@@ -20,6 +20,7 @@ author_handle: Abmankendrick
 entry_type: tool
 company: Hyperbrowser
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # HyperDesign
 

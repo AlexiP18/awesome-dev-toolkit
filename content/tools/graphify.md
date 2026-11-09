@@ -23,6 +23,7 @@ author_handle: heyfredds
 entry_type: tool
 company: Graphify Labs
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Graphify
 

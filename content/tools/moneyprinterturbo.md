@@ -19,6 +19,7 @@ author_handle: albacnt
 entry_type: tool
 company: harry0703
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # MoneyPrinterTurbo
 

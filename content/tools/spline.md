@@ -17,6 +17,7 @@ author_handle: neropursue
 entry_type: tool
 company: Spline
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Spline
 

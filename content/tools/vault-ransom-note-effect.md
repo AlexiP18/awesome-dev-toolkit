@@ -17,6 +17,7 @@ author_handle: arlanmarat
 entry_type: tool
 company: Design How
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Vault - Ransom Note Effect
 

@@ -18,6 +18,7 @@ author_handle: tranmautritam
 entry_type: tool
 company: MengTo
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # MengTo Skills
 

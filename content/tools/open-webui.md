@@ -20,6 +20,7 @@ author_handle: Shruti_0810
 entry_type: tool
 company: Open WebUI
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Open WebUI
 

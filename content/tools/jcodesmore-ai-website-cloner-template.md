@@ -19,6 +19,7 @@ author_handle: sweexx9
 entry_type: tool
 company: JCodesMore
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # JCodesMore AI Website Cloner Template
 

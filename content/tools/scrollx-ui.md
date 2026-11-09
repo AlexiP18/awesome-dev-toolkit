@@ -18,6 +18,7 @@ author_handle: kasuncfdo
 entry_type: tool
 company: ScrollX UI (@Ahdeetai)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # ScrollX UI
 

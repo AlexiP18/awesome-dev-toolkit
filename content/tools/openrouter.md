@@ -17,6 +17,7 @@ author_handle: exploraX_
 entry_type: tool
 company: OpenRouter
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: producto
 ---
 # OpenRouter
 

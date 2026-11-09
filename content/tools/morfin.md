@@ -17,6 +17,7 @@ author_handle: kasuncfdo
 entry_type: tool
 company: Morfin (@morphindev)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Morfin
 

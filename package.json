@@ -13,7 +13,8 @@
     "pull:deployed": "tsx src/pipeline/pull_from_deployed.ts",
     "import:backup": "tsx src/pipeline/import_backup.ts",
     "parse:archive": "tsx src/parsers/x_archive_parser.ts",
-    "build:readme": "tsx src/pipeline/generate_readme.ts"
+    "build:readme": "tsx src/pipeline/generate_readme.ts",
+    "classify:conjuntos": "tsx src/pipeline/classify_conjuntos.ts"
   },
   "repository": {
     "type": "git",

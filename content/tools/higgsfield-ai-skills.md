@@ -20,6 +20,7 @@ author_handle: rammcodes
 entry_type: tool
 company: Higgsfield
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # Higgsfield AI Skills
 

@@ -30,6 +30,7 @@ salary: 'null'
 price: 'null'
 academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # opus-video-skills
 

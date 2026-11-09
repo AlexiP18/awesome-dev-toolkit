@@ -16,6 +16,7 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Tracedr
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Tracedr
 

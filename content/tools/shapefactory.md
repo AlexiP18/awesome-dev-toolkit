@@ -17,6 +17,7 @@ author_handle: tranmautritam
 entry_type: tool
 company: ShapeFactory
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # ShapeFactory
 

@@ -19,6 +19,7 @@ company: Raspberry Pi
 price: $60 - $80 USD
 classified_by: Google Gemini (3.8 Flash)
 created_at: '2026-10-25T21:42:54.372Z'
+conjunto: producto
 ---
 # 🖥️ Raspberry Pi 5
 

@@ -23,6 +23,7 @@ author_handle: josesilesdata
 entry_type: tool
 company: floci-io
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Floci
 

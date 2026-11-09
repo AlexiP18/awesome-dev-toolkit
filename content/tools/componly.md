@@ -16,6 +16,7 @@ author: Abraham John
 author_handle: Abmankendrick
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Componly
 

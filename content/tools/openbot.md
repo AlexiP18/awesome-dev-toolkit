@@ -19,6 +19,7 @@ author_handle: brenzhills
 entry_type: tool
 company: CopilotKit
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # OpenBot
 

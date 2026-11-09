@@ -16,6 +16,7 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Coolify
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Coolify
 

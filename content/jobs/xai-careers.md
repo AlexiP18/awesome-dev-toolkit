@@ -21,6 +21,7 @@ location: Remoto (Mundial) / Presencial (EE.UU.)
 salary: $40 - $80 USD/h
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # 💼 xAI (Careers)
 

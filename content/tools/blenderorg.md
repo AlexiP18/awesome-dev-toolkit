@@ -1,7 +1,7 @@
 ---
 name: blender.org
 url: 'http://blender.org/'
-category: Other
+category: 'Prompts, Art & Video'
 tags:
   - dev
   - tool
@@ -13,6 +13,7 @@ author: Dumble
 author_handle: Y0urDumble
 entry_type: tool
 classified_by: Fallback (Sin IA)
+conjunto: producto
 ---
 # blender.org
 

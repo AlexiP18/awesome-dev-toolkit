@@ -18,6 +18,7 @@ author_handle: hasantoxr
 entry_type: tool
 company: Devopness
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Devopness
 

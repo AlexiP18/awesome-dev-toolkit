@@ -17,6 +17,7 @@ author_handle: dkare1009
 entry_type: tool
 company: Sebastian Raschka (rasbt)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # LLMs From Scratch
 

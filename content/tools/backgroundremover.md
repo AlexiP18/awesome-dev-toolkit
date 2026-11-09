@@ -23,6 +23,7 @@ author_handle: heyrimsha
 entry_type: tool
 company: nadermx
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # BackgroundRemover
 

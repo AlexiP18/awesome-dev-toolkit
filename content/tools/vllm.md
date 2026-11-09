@@ -18,6 +18,7 @@ author: Nahid
 author_handle: nahid_pro09
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # vLLM
 

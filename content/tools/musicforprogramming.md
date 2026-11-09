@@ -1,7 +1,7 @@
 ---
 name: musicForProgramming
 url: 'https://musicforprogramming.net/'
-category: Other
+category: Productivity & Tools
 tags:
   - musica
   - concentracion
@@ -14,6 +14,7 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # musicForProgramming
 

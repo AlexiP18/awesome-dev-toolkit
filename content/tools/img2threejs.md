@@ -21,6 +21,7 @@ entry_type: tool
 company: img2threejs
 price: Gratis
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # img2threejs
 

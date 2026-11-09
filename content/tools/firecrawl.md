@@ -20,6 +20,7 @@ author_handle: katsudev
 entry_type: tool
 company: Firecrawl
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Firecrawl
 

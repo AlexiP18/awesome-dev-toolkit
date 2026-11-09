@@ -18,6 +18,7 @@ author_handle: csaba_kissi
 entry_type: tool
 company: ashishpatel26
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # 500 AI Agents Projects
 

@@ -22,6 +22,7 @@ author_handle: robiartec
 entry_type: tool
 company: Browser Use (Y Combinator)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Browser Use
 

@@ -20,6 +20,7 @@ author_handle: ErickSky
 entry_type: tool
 company: Shubham Saboo
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Awesome LLM Apps
 

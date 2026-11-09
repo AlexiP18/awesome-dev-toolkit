@@ -17,6 +17,7 @@ author_handle: RodmanAi
 entry_type: tool
 company: Sunblaze UC Berkeley
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Vero
 

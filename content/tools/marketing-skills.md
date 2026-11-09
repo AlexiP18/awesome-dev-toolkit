@@ -16,6 +16,7 @@ author_handle: RoundtableSpace
 entry_type: tool
 company: Corey Haines
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Marketing Skills
 

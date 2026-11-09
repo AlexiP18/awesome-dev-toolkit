@@ -17,6 +17,7 @@ author: Dev Patel
 author_handle: DevDsgn
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # All SVG Icons
 

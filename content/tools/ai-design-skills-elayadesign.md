@@ -18,6 +18,7 @@ author_handle: elayadesigns
 entry_type: tool
 company: elayadesign
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # AI Design Skills (elayadesign)
 

@@ -17,6 +17,7 @@ author_handle: VullnetAdemaj
 entry_type: tool
 company: WeDoFlow
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # WeDoFlow
 

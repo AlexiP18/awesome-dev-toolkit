@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { ClassificationResult, EntryType, ToolFrontmatter, ToolItem, ToolStatus } from './types.js';
+import { ClassificationResult, EntryType, ToolConjunto, ToolFrontmatter, ToolItem, ToolStatus } from './types.js';
 import { GitHubMetadata } from './github.js';
 import { markRepoPathDeleted, unmarkRepoPathDeleted } from './github_sync.js';
 
@@ -217,6 +217,7 @@ export function createOrUpdateToolNote(
     url: finalUrl,
     website_url: params.classification.websiteUrl,
     category: params.classification.category,
+    conjunto: params.classification.conjunto || (isTip ? 'consejos' : isProduct ? 'producto' : 'recursos'),
     tags: params.classification.tags,
     stars: params.githubMeta?.stars,
     status: params.initialStatus || 'to_try',
@@ -350,6 +351,9 @@ export function loadAllTools(): ToolItem[] {
       if (!data.entry_type) {
         data.entry_type = defaultType;
       }
+      if (!data.conjunto) {
+        data.conjunto = data.entry_type === 'tech_tip' ? 'consejos' : data.entry_type === 'tech_product' || data.entry_type === 'product_showcase' ? 'producto' : 'recursos';
+      }
 
       const stat = fs.statSync(filePath);
       const mtimeMs = stat.mtimeMs;
@@ -394,6 +398,7 @@ export function updateToolNote(slug: string, updates: {
   status?: ToolStatus;
   notes?: string;
   category?: string;
+  conjunto?: ToolConjunto;
   tags?: string[];
   author?: string;
   author_handle?: string;
@@ -429,6 +434,7 @@ export function updateToolNote(slug: string, updates: {
     ...(updates.url ? { url: updates.url } : {}),
     ...(updates.status ? { status: updates.status } : {}),
     ...(updates.category ? { category: updates.category } : {}),
+    ...(updates.conjunto ? { conjunto: updates.conjunto } : {}),
     ...(updates.tags ? { tags: updates.tags } : {}),
     ...(updates.author !== undefined ? { author: updates.author } : {}),
     ...(updates.author_handle !== undefined ? { author_handle: updates.author_handle } : {}),

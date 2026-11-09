@@ -1,7 +1,7 @@
 ---
 name: myNoise
 url: 'https://mynoise.net/'
-category: Other
+category: Productivity & Tools
 tags:
   - audio
   - concentracion
@@ -14,6 +14,7 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # myNoise
 

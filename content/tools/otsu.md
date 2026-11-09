@@ -15,6 +15,7 @@ author: Jarek
 author_handle: jarekceborski
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # Otsu
 

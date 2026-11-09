@@ -18,6 +18,7 @@ academic_promo_details: >-
   Contenido y cursos totalmente gratuitos de universidades y plataformas
   educativas abiertas.
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Open Culture
 

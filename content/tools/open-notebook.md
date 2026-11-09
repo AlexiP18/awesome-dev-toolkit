@@ -18,6 +18,7 @@ author_handle: DivyanshT91162
 entry_type: tool
 company: lfnovo
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Open Notebook
 

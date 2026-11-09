@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { GoogleGenAI, Type } from '@google/genai';
-import { ClassificationResult, ToolCategory, EntryType } from './types.js';
+import { ClassificationResult, ToolCategory, EntryType, ToolConjunto } from './types.js';
 import { GitHubMetadata } from './github.js';
 import { isIgnoredNonToolUrl, cleanTrackingParams, WebPageMetadata } from './link_resolver.js';
 import { getAllCategories, getAllCategoryNames } from './category_manager.js';
@@ -175,6 +175,7 @@ Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
       "canonicalUrl": "https://github.com/... (priorizar repo de GitHub/GitLab, o enlace/tweet de referencia/postulación/producto)",
       "websiteUrl": "https://... (web oficial si existe)",
       "category": "Una de las categorías válidas listadas arriba",
+      "conjunto": "recursos, inspiracion, producto o consejos",
       "entryType": "tool, tech_product, tech_tip o job_remote",
       "company": "Nombre del fabricante o empresa si aplica",
       "location": "Modalidad o región (ej: Remoto (Mundial), Remoto (LATAM)) o null",
@@ -348,11 +349,17 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
 
     const academicPromoDetails = parsed.academicPromoDetails || parsed.academic_promo_details || undefined;
 
+    const rawConjunto = String(parsed.conjunto || '').toLowerCase().trim();
+    const validConjunto: ToolConjunto = (['recursos', 'inspiracion', 'producto', 'consejos'].includes(rawConjunto)
+      ? rawConjunto
+      : (isTip ? 'consejos' : isProduct ? 'producto' : 'recursos')) as ToolConjunto;
+
     return {
       name: parsed.name || (isJob ? 'Oportunidad / Recurso Laboral' : isTip ? 'Consejo Técnico' : isProduct ? 'Producto Tecnológico / Hardware' : 'Nueva Herramienta'),
       canonicalUrl: url,
       websiteUrl,
       category: validCategory,
+      conjunto: validConjunto,
       tags: Array.isArray(parsed.tags) ? parsed.tags.map((t: string) => t.toLowerCase()) : [],
       oneLiner: parsed.oneLiner || (isJob ? 'Oportunidad o recurso de trabajo remoto/freelance.' : isTip ? 'Consejo técnico guardado de X.' : isProduct ? 'Producto tecnológico o hardware de desarrollo.' : 'Herramienta guardada de X.'),
       keyHighlights: Array.isArray(parsed.keyHighlights) ? parsed.keyHighlights : [],

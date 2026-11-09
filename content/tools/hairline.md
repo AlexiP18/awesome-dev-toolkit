@@ -21,6 +21,7 @@ entry_type: tool
 company: Lucas Marques
 academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # Hairline
 

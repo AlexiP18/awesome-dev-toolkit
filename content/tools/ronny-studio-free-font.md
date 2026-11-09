@@ -19,6 +19,7 @@ entry_type: tool
 company: Ronny Studio
 price: Gratis
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Ronny Studio Free Font
 

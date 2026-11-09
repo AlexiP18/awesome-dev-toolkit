@@ -18,6 +18,7 @@ entry_type: tool
 company: Microsoft
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Machine Learning for Beginners
 

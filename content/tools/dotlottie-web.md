@@ -19,6 +19,7 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: LottieFiles
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # dotLottie Web
 

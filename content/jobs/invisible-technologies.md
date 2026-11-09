@@ -20,6 +20,7 @@ location: Remoto (Mundial)
 salary: $15 - $30 USD/h
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # 💼 Invisible Technologies
 

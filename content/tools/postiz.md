@@ -21,6 +21,7 @@ entry_type: tool
 company: gitroomhq
 price: Gratis
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # Postiz
 

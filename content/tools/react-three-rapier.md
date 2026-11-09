@@ -18,6 +18,7 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Poimandres (pmndrs)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # React Three Rapier
 

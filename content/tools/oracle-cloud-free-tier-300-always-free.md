@@ -18,6 +18,7 @@ entry_type: tool
 company: Oracle
 price: $300 USD por 30 días + capa Always Free permanente
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Oracle Cloud Free Tier ($300 + Always Free)
 

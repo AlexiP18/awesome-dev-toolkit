@@ -16,6 +16,7 @@ author_handle: HoudayfaDesign
 entry_type: tool
 company: Imageory
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # Imageory
 

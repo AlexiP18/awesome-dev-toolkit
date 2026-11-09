@@ -16,6 +16,7 @@ author_handle: sentient_agency
 entry_type: tool
 company: mikf
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # gallery-dl
 

@@ -1,7 +1,7 @@
 ---
 name: yoinks
 url: 'https://github.com/pablostanley/yoinks'
-category: Other
+category: CLI & Terminal
 tags: []
 stars: 6493
 status: to_try
@@ -12,6 +12,7 @@ author: liam.
 author_handle: liambraus
 entry_type: tool
 classified_by: Fallback (Sin IA)
+conjunto: recursos
 ---
 # yoinks
 

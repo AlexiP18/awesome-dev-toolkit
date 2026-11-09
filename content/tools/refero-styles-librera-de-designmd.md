@@ -21,6 +21,7 @@ author_handle: ftcarpe
 entry_type: tool
 company: Refero
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # Refero Styles — Librería de DESIGN.md
 

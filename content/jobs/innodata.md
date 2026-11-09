@@ -21,6 +21,7 @@ location: Remoto (Mundial)
 salary: $15 - $25 USD/h
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # 💼 Innodata
 

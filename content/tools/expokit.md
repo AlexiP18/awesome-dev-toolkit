@@ -21,6 +21,7 @@ author_handle: itsmeekaran
 entry_type: tool
 company: Anshkaran7 (expo_kit)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # ExpoKit
 

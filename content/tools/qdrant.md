@@ -17,6 +17,7 @@ author_handle: mdancho84
 entry_type: tool
 company: Qdrant
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Qdrant
 

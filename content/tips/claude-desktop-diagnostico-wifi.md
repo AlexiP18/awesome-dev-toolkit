@@ -17,6 +17,7 @@ author_handle: SantiTorAI
 entry_type: tech_tip
 classified_by: Google Gemini (3.8 Flash)
 created_at: '2026-10-26T21:20:04.631Z'
+conjunto: consejos
 ---
 # 💡 Claude Desktop: 7 Prompts para Diagnosticar y Acelerar tu Red WiFi
 

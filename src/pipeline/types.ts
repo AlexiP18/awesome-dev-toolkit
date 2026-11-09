@@ -18,6 +18,8 @@ export type ToolCategory = StandardCategory | (string & {});
 
 export type EntryType = 'tool' | 'product_showcase' | 'tech_tip' | 'job_remote' | 'tech_product';
 
+export type ToolConjunto = 'recursos' | 'inspiracion' | 'producto' | 'consejos';
+
 export type ToolStatus = 'to_try' | 'in_use' | 'archived';
 
 export interface ToolFrontmatter {
@@ -25,6 +27,7 @@ export interface ToolFrontmatter {
   url: string; // URL principal (prioriza repositorios de GitHub/GitLab)
   website_url?: string; // Web oficial o landing page si existe
   category: ToolCategory;
+  conjunto?: ToolConjunto; // 'recursos' | 'inspiracion' | 'producto' | 'consejos'
   tags: string[];
   stars?: number;
   status: ToolStatus;
@@ -58,6 +61,7 @@ export interface ClassificationResult {
   canonicalUrl: string;
   websiteUrl?: string;
   category: ToolCategory;
+  conjunto?: ToolConjunto;
   tags: string[];
   oneLiner: string;
   keyHighlights: string[];

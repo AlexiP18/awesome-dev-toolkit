@@ -20,6 +20,7 @@ location: Remoto (Mundial)
 salary: $5 - $60 USD/h
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # 💼 Toloka
 

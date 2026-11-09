@@ -1,7 +1,7 @@
 ---
 name: mcp-for-blender
 url: 'https://github.com/ahujasid/blender-mcp'
-category: Other
+category: 'Prompts, Art & Video'
 tags:
   - 3d-modeling
   - ai
@@ -17,6 +17,7 @@ author: Dumble
 author_handle: Y0urDumble
 entry_type: tool
 classified_by: Fallback (Sin IA)
+conjunto: producto
 ---
 # mcp-for-blender
 

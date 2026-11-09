@@ -60,7 +60,17 @@ function renderItemRow(item: ToolItem): string {
     ? `content/products/${item.slug}.md`
     : `content/tools/${item.slug}.md`;
 
-  let row = `- **[${item.frontmatter.name}](${item.frontmatter.url})**${companyBadge}${authorBadge}${locationBadge}${salaryBadge}${priceBadge}${starsBadge}${websiteBadge}${tweetBadge}${academicBadge}${statusBadge}  \n`;
+  const conjuntoIcons: Record<string, string> = {
+    recursos: '📦 Recursos',
+    inspiracion: '💡 Inspiración',
+    producto: '🚀 Producto',
+    consejos: '🧠 Consejos',
+  };
+  const conjuntoBadge = item.frontmatter.conjunto
+    ? ` \`${conjuntoIcons[item.frontmatter.conjunto] || item.frontmatter.conjunto}\``
+    : '';
+
+  let row = `- **[${item.frontmatter.name}](${item.frontmatter.url})**${conjuntoBadge}${companyBadge}${authorBadge}${locationBadge}${salaryBadge}${priceBadge}${starsBadge}${websiteBadge}${tweetBadge}${academicBadge}${statusBadge}  \n`;
   row += `  ${summary} [📝 Ver ficha](${notePath})${tags}\n\n`;
   return row;
 }

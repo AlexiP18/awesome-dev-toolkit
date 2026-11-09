@@ -16,6 +16,7 @@ author_handle: BardhylBytyqi
 entry_type: tool
 company: Modulify
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: producto
 ---
 # Modulify Templates
 

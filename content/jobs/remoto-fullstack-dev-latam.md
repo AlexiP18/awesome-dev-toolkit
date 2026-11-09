@@ -20,6 +20,7 @@ location: Remoto (LATAM)
 salary: '$4,000 - $6,000 USD / mes'
 job_type: remote_job
 created_at: '2026-10-25T18:05:58.440Z'
+conjunto: recursos
 ---
 # 💼 Full Stack Engineer (Remoto LATAM)
 

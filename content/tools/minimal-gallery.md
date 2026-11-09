@@ -15,6 +15,7 @@ author: Tanzil Chowdhury
 author_handle: iamtanzil_
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # Minimal Gallery
 

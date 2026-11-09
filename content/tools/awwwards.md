@@ -16,6 +16,7 @@ author: UxUi Tega (Design & Ai)
 author_handle: Tegadesigns
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # Awwwards
 

@@ -18,6 +18,7 @@ author_handle: exploraX_
 entry_type: tool
 company: Cloudflare
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Cloudflare Workers AI
 

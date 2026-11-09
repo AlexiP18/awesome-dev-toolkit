@@ -19,6 +19,7 @@ author_handle: harshjdhv
 entry_type: tool
 company: Componentry
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # ASCII Effect (Componentry)
 

@@ -18,6 +18,7 @@ entry_type: tool
 company: Cerebras
 price: $5 USD de crédito gratuito
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Cerebras Inference ($5 crédito)
 

@@ -21,6 +21,7 @@ author_handle: franpradasAI
 entry_type: tool
 company: ByteDance
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # DeerFlow
 

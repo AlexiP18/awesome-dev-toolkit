@@ -19,6 +19,7 @@ author_handle: josesilesdata
 entry_type: tool
 company: Prime Intellect
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Prime Agent
 

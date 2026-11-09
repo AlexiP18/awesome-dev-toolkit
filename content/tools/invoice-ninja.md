@@ -18,6 +18,7 @@ author_handle: Cypher1984
 entry_type: tool
 company: Invoice Ninja
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Invoice Ninja
 

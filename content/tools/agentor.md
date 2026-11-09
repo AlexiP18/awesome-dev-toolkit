@@ -17,6 +17,7 @@ author_handle: RodmanAi
 entry_type: tool
 company: CelestoAI
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Agentor
 

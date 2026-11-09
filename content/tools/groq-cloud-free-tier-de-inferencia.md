@@ -18,6 +18,7 @@ author_handle: exploraX_
 entry_type: tool
 company: Groq
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Groq Cloud (free tier de inferencia)
 

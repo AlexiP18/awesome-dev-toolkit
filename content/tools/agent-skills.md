@@ -17,6 +17,7 @@ author_handle: brenzhills
 entry_type: tool
 company: Addy Osmani
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # agent-skills
 

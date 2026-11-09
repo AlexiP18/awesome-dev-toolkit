@@ -18,6 +18,7 @@ entry_type: tool
 company: Microsoft
 price: $200 USD por 30 días + servicios gratuitos 12 meses
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Microsoft Azure Free Account ($200 crédito)
 

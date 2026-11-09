@@ -19,6 +19,7 @@ salary: 'null'
 price: 'null'
 academic_promo_details: 'null'
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
+conjunto: recursos
 ---
 # Zencoder
 

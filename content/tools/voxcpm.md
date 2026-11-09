@@ -18,6 +18,7 @@ author_handle: brenzhills
 entry_type: tool
 company: OpenBMB
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # VoxCPM
 

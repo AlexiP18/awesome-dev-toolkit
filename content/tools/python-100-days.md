@@ -18,6 +18,7 @@ entry_type: tool
 company: jackfrued
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: consejos
 ---
 # Python-100-Days
 

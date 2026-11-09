@@ -21,6 +21,7 @@ author_handle: _guillecasaus
 entry_type: tech_tip
 company: Google
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: consejos
 ---
 # 💡 LangExtract
 

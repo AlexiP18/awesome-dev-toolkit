@@ -20,6 +20,7 @@ entry_type: tool
 company: Fireworks AI
 price: $50 USD en créditos gratuitos (90 días)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Fireworks AI — $50 en créditos de API (AMD × Fireworks)
 

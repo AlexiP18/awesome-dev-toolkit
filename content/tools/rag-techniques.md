@@ -18,6 +18,7 @@ author_handle: precisox
 entry_type: tool
 company: NirDiamant
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # RAG_Techniques
 

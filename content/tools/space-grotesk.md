@@ -18,6 +18,7 @@ entry_type: tool
 company: Google Fonts / Colophon Foundry
 price: Gratis
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Space Grotesk
 

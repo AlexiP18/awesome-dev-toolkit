@@ -21,6 +21,7 @@ entry_type: tool
 company: sixtysevenlf
 price: Gratis
 classified_by: Google Gemini (Flash)
+conjunto: producto
 ---
 # dsh-blender-plugin
 

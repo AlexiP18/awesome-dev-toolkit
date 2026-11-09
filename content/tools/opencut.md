@@ -17,6 +17,7 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: OpenCut-app
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: producto
 ---
 # OpenCut
 

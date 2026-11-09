@@ -19,6 +19,7 @@ author_handle: csaba_kissi
 entry_type: tool
 academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # OpenDesign
 

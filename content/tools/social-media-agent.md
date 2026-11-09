@@ -17,6 +17,7 @@ author_handle: heyrimsha
 entry_type: tool
 company: LangChain
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Social Media Agent
 

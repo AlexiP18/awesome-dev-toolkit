@@ -23,6 +23,7 @@ entry_type: tool
 company: supabase
 price: Gratis
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # Supabase
 

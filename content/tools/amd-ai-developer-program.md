@@ -26,6 +26,7 @@ academic_promo_details: >-
   StudentOffers.co, orientado a estudiantes y builders que acrediten condición
   académica.
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: producto
 ---
 # AMD AI Developer Program
 

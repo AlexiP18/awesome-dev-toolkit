@@ -17,6 +17,7 @@ author_handle: neropursue
 entry_type: tool
 academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
+conjunto: inspiracion
 ---
 # One Prompt Design
 

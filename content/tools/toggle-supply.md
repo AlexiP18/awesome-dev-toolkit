@@ -18,6 +18,7 @@ author_handle: kasuncfdo
 entry_type: tool
 company: Toggle Supply (@togglesupply)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Toggle Supply
 

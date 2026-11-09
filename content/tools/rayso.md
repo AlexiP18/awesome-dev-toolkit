@@ -15,6 +15,7 @@ author_handle: ecommartinez
 entry_type: tool
 company: Raycast
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Ray.so
 

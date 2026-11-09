@@ -17,6 +17,7 @@ author_handle: jarekceborski
 entry_type: tool
 company: LocalCan
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # LocalCan Snapshot
 

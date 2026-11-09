@@ -20,6 +20,7 @@ location: Remoto (Mundial)
 salary: Pago por estudio (variable)
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # 💼 Prolific
 

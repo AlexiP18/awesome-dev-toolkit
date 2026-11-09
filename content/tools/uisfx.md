@@ -19,6 +19,7 @@ author_handle: Manixh02
 entry_type: tool
 company: uisfx
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # uisfx
 

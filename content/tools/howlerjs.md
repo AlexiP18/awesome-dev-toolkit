@@ -19,6 +19,7 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Goldfire Studios
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Howler.js
 

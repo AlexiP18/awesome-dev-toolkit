@@ -17,6 +17,7 @@ author_handle: exploraX_
 entry_type: tool
 company: Mistral AI
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Mistral AI (plan gratuito)
 

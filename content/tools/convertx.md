@@ -18,6 +18,7 @@ author: Nix0n
 author_handle: UnTalNixon_exe
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # ConvertX
 

@@ -18,6 +18,7 @@ author_handle: DivyanshT91162
 entry_type: tool
 company: Excalidraw
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Excalidraw
 

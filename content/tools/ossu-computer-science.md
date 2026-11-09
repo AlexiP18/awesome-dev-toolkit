@@ -20,6 +20,7 @@ entry_type: tool
 company: Open Source Society University
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # OSSU Computer Science
 

@@ -18,6 +18,7 @@ author_handle: Hartdrawss
 entry_type: tool
 company: Backgrounds Supply
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Gradient Lab (Backgrounds Supply)
 

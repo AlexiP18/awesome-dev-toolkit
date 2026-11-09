@@ -22,6 +22,7 @@ author_handle: Sn0wbrave
 entry_type: tool
 company: Fleetbase
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Fleetbase
 

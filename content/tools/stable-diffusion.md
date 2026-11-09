@@ -17,6 +17,7 @@ author_handle: dkare1009
 entry_type: tool
 company: CompVis (LMU Munich)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Stable Diffusion
 

@@ -16,6 +16,7 @@ author_handle: BardhylBytyqi
 entry_type: tool
 company: Sent
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: producto
 ---
 # Sent
 

@@ -17,6 +17,7 @@ author_handle: aresotik
 entry_type: tool
 company: Aura Build
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Aura Build
 

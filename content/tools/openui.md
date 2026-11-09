@@ -18,6 +18,7 @@ author_handle: precisox
 entry_type: tool
 classified_by: Fallback (Sin IA)
 updated_at: '2026-11-03T03:06:43.232Z'
+conjunto: recursos
 ---
 # openui
 

@@ -17,6 +17,7 @@ author_handle: neropursue
 entry_type: tool
 company: Unicorn Studio
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Unicorn Studio
 

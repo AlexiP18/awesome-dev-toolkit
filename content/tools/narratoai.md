@@ -24,6 +24,7 @@ author_handle: heyrimsha
 entry_type: tool
 company: linyqh
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # NarratoAI
 

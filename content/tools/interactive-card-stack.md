@@ -19,6 +19,7 @@ author_handle: uiNerd
 entry_type: tool
 company: AI Canvas
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Interactive Card Stack
 

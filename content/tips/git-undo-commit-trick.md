@@ -14,6 +14,7 @@ author: '@tech_tips_daily'
 author_handle: tech_tips_daily
 entry_type: tech_tip
 created_at: '2026-10-25T18:05:48.979Z'
+conjunto: consejos
 ---
 # 💡 Git: Deshacer el último commit manteniendo los cambios
 

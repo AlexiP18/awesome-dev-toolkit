@@ -18,6 +18,7 @@ author: おかぴ｜@AI副業40代会社員
 author_handle: okapi_fukugyo
 entry_type: tool
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # liquid-glass
 

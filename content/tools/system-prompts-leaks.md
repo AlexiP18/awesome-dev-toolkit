@@ -17,6 +17,7 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: asgeirtj
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: consejos
 ---
 # system_prompts_leaks
 

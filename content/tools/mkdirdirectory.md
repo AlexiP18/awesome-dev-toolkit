@@ -19,6 +19,7 @@ author_handle: csaba_kissi
 entry_type: tool
 price: Gratis
 classified_by: Google Gemini (Flash)
+conjunto: inspiracion
 ---
 # mkdir.directory
 

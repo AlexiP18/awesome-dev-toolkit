@@ -18,6 +18,7 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Julian Garnier
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Anime.js
 

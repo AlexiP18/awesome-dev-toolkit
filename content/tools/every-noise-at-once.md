@@ -1,7 +1,7 @@
 ---
 name: Every Noise at Once
 url: 'https://everynoise.com/'
-category: Other
+category: Productivity & Tools
 tags:
   - musica
   - generos
@@ -14,6 +14,7 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Every Noise at Once
 

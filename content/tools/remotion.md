@@ -18,6 +18,7 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Remotion
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Remotion
 

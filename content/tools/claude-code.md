@@ -1,7 +1,7 @@
 ---
 name: claude code
 url: 'http://claude.com/claude-code'
-category: Other
+category: Agentes & Protocolo MCP
 tags:
   - dev
   - tool
@@ -13,6 +13,7 @@ author: Dumble
 author_handle: Y0urDumble
 entry_type: tool
 classified_by: Fallback (Sin IA)
+conjunto: recursos
 ---
 # claude code
 

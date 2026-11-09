@@ -21,6 +21,7 @@ author_handle: marcusyul
 entry_type: tool
 company: Meta
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Astryx
 

@@ -15,6 +15,7 @@ author_handle: ecommartinez
 entry_type: tool
 company: Canva
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: producto
 ---
 # Smartmockups
 

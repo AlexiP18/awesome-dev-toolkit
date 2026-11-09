@@ -21,6 +21,7 @@ author_handle: maarcoofdezz
 entry_type: tool
 company: Affaan Mustafa
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # ECC (Everything Claude Code) 2.0
 

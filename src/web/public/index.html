@@ -261,8 +261,19 @@
       </div>
     </div>
 
-    <!-- Filter Pills: Categories & Status -->
+    <!-- Filter Pills: Conjuntos, Categories & Status -->
     <div class="space-y-3 mb-6">
+      <!-- Conjuntos Filter Bar (Recursos, Inspiración, Producto, Consejos) -->
+      <div class="flex items-center gap-2">
+        <div class="text-xs font-semibold text-slate-400 flex items-center gap-1.5 shrink-0 pl-1 mr-1">
+          <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-sky-400"></i>
+          <span class="hidden sm:inline">Conjuntos:</span>
+        </div>
+        <div id="conjuntoFilters" class="flex-1 flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
+          <!-- Injected via JS depending on currentSection / tools -->
+        </div>
+      </div>
+
       <!-- Categories Scroll & Manager Button -->
       <div class="flex items-center gap-2">
         <div id="categoryFilters" class="flex-1 flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
@@ -449,6 +460,7 @@
             <span id="modalClassifiedByBadge" class="hidden text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 font-mono">
               🤖 <span id="modalClassifiedByText"></span>
             </span>
+            <span id="modalConjuntoBadge" class="hidden text-[10px] px-2 py-0.5 rounded-full font-semibold border"></span>
           </div>
         </div>
         <button onclick="closeNoteModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800">
@@ -824,7 +836,7 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div>
             <label class="block font-semibold text-slate-300 mb-1">Apartado / Área:</label>
             <select id="editToolEntryType" onchange="handleEditToolEntryTypeChange()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-medium">
@@ -832,6 +844,15 @@
               <option value="tech_tip">💡 2. Consejos & Buenas Prácticas</option>
               <option value="job_remote">💼 3. Empleo Remoto & Freelance</option>
               <option value="tech_product">🖥️ 4. Productos Tecnológicos & Hardware</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">Conjunto:</label>
+            <select id="editToolConjunto" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-medium">
+              <option value="recursos">📦 Recursos</option>
+              <option value="inspiracion">💡 Inspiración</option>
+              <option value="producto">🚀 Producto</option>
+              <option value="consejos">🧠 Consejos</option>
             </select>
           </div>
           <div>
@@ -1177,6 +1198,7 @@
     let allAuthorProfiles = {};
     let currentSection = 'all'; // 'all' | 'tools' | 'tips' | 'jobs' | 'products'
     let currentCategory = 'all';
+    let currentConjunto = 'all'; // 'all' | 'recursos' | 'inspiracion' | 'producto' | 'consejos'
     let currentStatus = 'all';
     let currentAuthor = 'all';
     let filterRecent = true; // Activo por defecto según requerimiento
@@ -1203,6 +1225,51 @@
       teal: { badge: 'bg-teal-500/15 text-teal-300 border-teal-500/30', dot: 'bg-teal-400', border: 'border-teal-500/30 hover:border-teal-400/60', topBorder: 'border-t-teal-500', bgTint: 'from-teal-950/20 via-slate-900 to-slate-900', titleHover: 'group-hover:text-teal-300', dateColor: 'text-teal-300/70' },
       slate: { badge: 'bg-slate-700/30 text-slate-300 border-slate-600/40', dot: 'bg-slate-400', border: 'border-slate-700 hover:border-slate-600', topBorder: 'border-t-slate-500', bgTint: 'from-slate-900/40 via-slate-900 to-slate-900', titleHover: 'group-hover:text-slate-200', dateColor: 'text-slate-400' }
     };
+
+    const CONJUNTO_CONFIG = {
+      recursos: {
+        name: 'Recursos',
+        icon: '📦',
+        badge: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30',
+        dot: 'bg-cyan-400',
+        border: 'border-cyan-500/30',
+        pillActive: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40'
+      },
+      inspiracion: {
+        name: 'Inspiración',
+        icon: '💡',
+        badge: 'bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30',
+        dot: 'bg-fuchsia-400',
+        border: 'border-fuchsia-500/30',
+        pillActive: 'bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-500/40'
+      },
+      producto: {
+        name: 'Producto',
+        icon: '🚀',
+        badge: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+        dot: 'bg-amber-400',
+        border: 'border-amber-500/30',
+        pillActive: 'bg-amber-500/20 text-amber-300 border-amber-500/40'
+      },
+      consejos: {
+        name: 'Consejos',
+        icon: '🧠',
+        badge: 'bg-violet-500/15 text-violet-300 border-violet-500/30',
+        dot: 'bg-violet-400',
+        border: 'border-violet-500/30',
+        pillActive: 'bg-violet-500/20 text-violet-300 border-violet-500/40'
+      }
+    };
+
+    function getToolConjunto(tool) {
+      if (!tool) return 'recursos';
+      const fm = tool.frontmatter || {};
+      if (fm.conjunto) return fm.conjunto;
+      const sec = getItemSection(tool);
+      if (sec === 'tips') return 'consejos';
+      if (sec === 'products') return 'producto';
+      return 'recursos';
+    }
 
     function getSelectedAiShortName() {
       if (selectedAiProvider === 'auto') return 'Cascada IA';
@@ -1578,6 +1645,8 @@
         }
       }
 
+      currentConjunto = 'all';
+      renderConjuntoFilters();
       renderCategoryFilters();
       renderAuthorFilterSelect();
       updateStats();
@@ -2712,6 +2781,65 @@
       lucide.createIcons();
     }
 
+    function renderConjuntoFilters() {
+      const container = document.getElementById('conjuntoFilters');
+      if (!container) return;
+
+      const scopedTools = currentSection === 'all'
+        ? allTools
+        : allTools.filter(t => getItemSection(t) === currentSection);
+
+      const counts = {
+        all: scopedTools.length,
+        recursos: scopedTools.filter(t => getToolConjunto(t) === 'recursos').length,
+        inspiracion: scopedTools.filter(t => getToolConjunto(t) === 'inspiracion').length,
+        producto: scopedTools.filter(t => getToolConjunto(t) === 'producto').length,
+        consejos: scopedTools.filter(t => getToolConjunto(t) === 'consejos').length,
+      };
+
+      const items = [
+        { id: 'all', label: 'Todos', icon: '✨', count: counts.all },
+        { id: 'recursos', label: 'Recursos', icon: '📦', count: counts.recursos },
+        { id: 'inspiracion', label: 'Inspiración', icon: '💡', count: counts.inspiracion },
+        { id: 'producto', label: 'Producto', icon: '🚀', count: counts.producto },
+        { id: 'consejos', label: 'Consejos', icon: '🧠', count: counts.consejos },
+      ];
+
+      container.innerHTML = items.map(item => {
+        const isActive = currentConjunto === item.id;
+        const cfg = CONJUNTO_CONFIG[item.id];
+        let activeClass = 'bg-sky-500/20 text-sky-300 border-sky-500/40 font-semibold shadow-sm';
+        if (cfg) {
+          activeClass = `${cfg.pillActive} font-semibold shadow-sm`;
+        }
+
+        return `
+          <button 
+            type="button" 
+            onclick="setConjuntoFilter('${item.id}')"
+            class="px-2.5 py-1 rounded-lg border whitespace-nowrap transition flex items-center gap-1.5 text-xs ${
+              isActive 
+                ? activeClass 
+                : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800 hover:text-slate-200'
+            }"
+            title="Filtrar por conjunto: ${item.label}"
+          >
+            <span>${item.icon}</span>
+            <span>${item.label}</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.2 rounded-full ${isActive ? 'bg-black/30' : 'bg-slate-800 text-slate-400'}">
+              ${item.count}
+            </span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function setConjuntoFilter(conjunto) {
+      currentConjunto = conjunto;
+      renderConjuntoFilters();
+      renderTools();
+    }
+
     function renderCategoryFilters() {
       const container = document.getElementById('categoryFilters');
       let cats = getCategoriesForCurrentSection();
@@ -2796,6 +2924,11 @@
         // 1. FILTRO PRIMARIO OBLIGATORIO: Apartado activo (Herramientas, Consejos, Empleo o Productos, o 'all' para todos)
         const itemSec = getItemSection(tool);
         if (currentSection !== 'all' && itemSec !== currentSection) {
+          return false;
+        }
+
+        // 1.1. Filtro de Conjunto (Recursos, Inspiración, Producto, Consejos)
+        if (currentConjunto !== 'all' && getToolConjunto(tool) !== currentConjunto) {
           return false;
         }
 
@@ -3148,8 +3281,18 @@
       const isCardSelected = selectedSlugs.has(tool.slug);
       const cardSelectionRing = isCardSelected ? 'ring-2 ring-sky-500 shadow-lg shadow-sky-950/60 bg-sky-950/20' : '';
 
+      const conjunto = getToolConjunto(tool);
+      const conjuntoCfg = CONJUNTO_CONFIG[conjunto] || CONJUNTO_CONFIG.recursos;
+      const conjuntoBadge = `
+        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold border ${conjuntoCfg.badge}" title="Conjunto: ${conjuntoCfg.name}">
+          <span>${conjuntoCfg.icon}</span>
+          <span>${conjuntoCfg.name}</span>
+        </span>
+      `;
+
       return {
         fm, itemSec, isJob, isTip, isProduct, isTool,
+        conjunto, conjuntoCfg, conjuntoBadge,
         starsBadge, tagsHtml, summary, safeUrl, isGithub, isTwitter,
         mainLinkTitle, mainIconHtml, isAllFilter, apartadoBarTheme,
         tweetLink, websiteLink, primaryLink, isAcademic, promoDetails, academicBadge,
@@ -3219,6 +3362,7 @@
                       <span class="w-1.5 h-1.5 rounded-full ${ctx.catTheme.dot}"></span>
                       <span>${fm.category || 'Other'}</span>
                     </span>
+                    ${ctx.conjuntoBadge}
                     ${ctx.academicBadge}
                   </div>
                   <h3 class="font-bold text-slate-100 text-sm ${ctx.catTheme.titleHover} transition flex items-center gap-1.5">
@@ -3339,6 +3483,12 @@
 
             <!-- Viñeta (Bullet) -->
             <span class="w-2 h-2 rounded-full ${ctx.catTheme.dot} flex-shrink-0" aria-hidden="true"></span>
+
+            <!-- Conjunto Badge Mini -->
+            <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-semibold border ${ctx.conjuntoCfg.badge} flex-shrink-0" title="Conjunto: ${ctx.conjuntoCfg.name}">
+              <span>${ctx.conjuntoCfg.icon}</span>
+              <span class="hidden sm:inline">${ctx.conjuntoCfg.name}</span>
+            </span>
 
             <!-- Nombre de la herramienta -->
             <a 
@@ -3824,6 +3974,7 @@
       document.getElementById('editToolUrl').value = fm.url || '';
       document.getElementById('editToolSourceTweet').value = (fm.source_tweet && fm.source_tweet !== 'undefined' && fm.source_tweet !== 'null') ? fm.source_tweet : '';
       document.getElementById('editToolCategory').value = fm.category || 'Other';
+      document.getElementById('editToolConjunto').value = fm.conjunto || getToolConjunto(tool);
       document.getElementById('editToolStatus').value = fm.status || 'to_try';
       document.getElementById('editToolTags').value = (fm.tags || []).join(', ');
       document.getElementById('editToolAuthor').value = fm.author || '';
@@ -3896,6 +4047,7 @@
       const url = document.getElementById('editToolUrl').value.trim();
       const source_tweet = document.getElementById('editToolSourceTweet').value.trim();
       const category = document.getElementById('editToolCategory').value;
+      const conjunto = document.getElementById('editToolConjunto').value;
       const status = document.getElementById('editToolStatus').value;
       const rawTags = document.getElementById('editToolTags').value;
       const tags = rawTags.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
@@ -3910,6 +4062,7 @@
         url,
         source_tweet: source_tweet || undefined,
         category,
+        conjunto,
         status,
         tags,
         author: author || undefined,
@@ -4330,6 +4483,15 @@
         } else {
           classifiedBadge.classList.add('hidden');
         }
+      }
+
+      const modalConjuntoBadge = document.getElementById('modalConjuntoBadge');
+      if (modalConjuntoBadge) {
+        const c = getToolConjunto(tool);
+        const cCfg = CONJUNTO_CONFIG[c] || CONJUNTO_CONFIG.recursos;
+        modalConjuntoBadge.className = `inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full font-semibold border ${cCfg.badge}`;
+        modalConjuntoBadge.innerHTML = `<span>${cCfg.icon}</span> <span>${cCfg.name}</span>`;
+        modalConjuntoBadge.classList.remove('hidden');
       }
       
       const tweetLinkEl = document.getElementById('modalTweetLink');

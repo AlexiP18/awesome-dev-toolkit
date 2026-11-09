@@ -20,6 +20,7 @@ author_handle: heyrimsha
 entry_type: tool
 company: ByteDance
 classified_by: Google Gemini (Flash)
+conjunto: recursos
 ---
 # LatentSync
 

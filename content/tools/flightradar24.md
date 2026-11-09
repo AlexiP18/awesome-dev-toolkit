@@ -16,6 +16,7 @@ author_handle: precisox
 entry_type: tool
 company: Flightradar24
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Flightradar24
 

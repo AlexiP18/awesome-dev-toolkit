@@ -20,6 +20,7 @@ author: Alvaro
 author_handle: alvarombt
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Reverse Linear Sync Engine
 

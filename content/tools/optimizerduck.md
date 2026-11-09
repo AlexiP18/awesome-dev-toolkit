@@ -19,6 +19,7 @@ author_handle: liambraus
 entry_type: tool
 company: itsfatduck
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # OptimizerDuck
 

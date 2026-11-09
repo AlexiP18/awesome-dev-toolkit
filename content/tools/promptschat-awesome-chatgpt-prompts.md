@@ -21,6 +21,7 @@ author_handle: 0xJokker
 entry_type: tool
 company: prompts.chat
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # prompts.chat (Awesome ChatGPT Prompts)
 

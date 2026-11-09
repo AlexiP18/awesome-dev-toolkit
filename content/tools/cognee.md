@@ -18,6 +18,7 @@ author_handle: Shruti_0810
 entry_type: tool
 company: topoteretes
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Cognee
 

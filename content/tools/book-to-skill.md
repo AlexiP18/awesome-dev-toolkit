@@ -21,6 +21,7 @@ entry_type: tool
 company: virgiliojr94
 price: ~$1 USD por libro convertido
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # book-to-skill
 

@@ -23,6 +23,7 @@ author_handle: tom_doerr
 entry_type: tool
 company: plugin87
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # ux-ui-agent-skills
 

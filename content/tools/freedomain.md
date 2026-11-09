@@ -18,6 +18,7 @@ author_handle: DivyanshT91162
 entry_type: tool
 company: DigitalPlatDev
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # FreeDomain
 

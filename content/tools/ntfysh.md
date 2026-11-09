@@ -17,6 +17,7 @@ author_handle: csaba_kissi
 entry_type: tool
 company: ntfy
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # ntfy.sh
 

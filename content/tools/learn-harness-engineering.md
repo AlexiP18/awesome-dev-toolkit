@@ -22,6 +22,7 @@ entry_type: tool
 company: walkinglabs
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: consejos
 ---
 # learn-harness-engineering
 

@@ -16,6 +16,7 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: inspiracion
 ---
 # DesignforB2B
 

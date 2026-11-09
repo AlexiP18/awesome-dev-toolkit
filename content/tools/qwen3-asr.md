@@ -19,6 +19,7 @@ author_handle: Shruti_0810
 entry_type: tool
 company: Qwen (Alibaba Cloud)
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Qwen3-ASR
 

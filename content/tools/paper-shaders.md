@@ -18,6 +18,7 @@ author_handle: RoundtableSpace
 entry_type: tool
 company: Paper Design
 classified_by: DeepSeek Directo (deepseek-flash)
+conjunto: recursos
 ---
 # Paper Shaders
 
