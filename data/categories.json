@@ -108,7 +108,7 @@
     },
     {
       "name": "Productos Tecnológicos & Hardware",
-      "section": "products",
+      "section": "tools",
       "icon": "🖥️",
       "color": "amber",
       "description": "Placas, microcontroladores, periféricos y gadgets físicos",

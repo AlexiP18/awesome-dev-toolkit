@@ -18645,7 +18645,7 @@
     },
     {
       "slug": "raspberry-pi-5",
-      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/products/raspberry-pi-5.md",
+      "filePath": "/home/joelpp/Escritorio/awesome-dev-toolkit/content/tools/raspberry-pi-5.md",
       "frontmatter": {
         "name": "Raspberry Pi 5",
         "url": "https://www.raspberrypi.com/products/raspberry-pi-5/",
@@ -18663,7 +18663,7 @@
         "source_tweet": "https://x.com/Raspberry_Pi/status/1707300000000000000",
         "author": "@Raspberry_Pi",
         "author_handle": "Raspberry_Pi",
-        "entry_type": "tech_product",
+        "entry_type": "tool",
         "company": "Raspberry Pi",
         "price": "$60 - $80 USD",
         "classified_by": "Google Gemini (3.8 Flash)",
@@ -18671,7 +18671,7 @@
         "conjunto": "producto"
       },
       "content": "# 🖥️ Raspberry Pi 5\n\n> Computadora monoplaca (SBC) de nueva generación con procesador Arm Cortex-A76 quad-core de 2.4GHz, PCIe 2.0 y rendimiento 2-3x superior para servidores caseros y proyectos de hardware.\n\n**👤 Publicado / Recomendado por:** @Raspberry_Pi ([@Raspberry_Pi](https://x.com/Raspberry_Pi))\n**🏢 Fabricante / Empresa:** Raspberry Pi\n\n### 📌 Información del Producto / Hardware\n- **🏢 Fabricante / Marca:** Raspberry Pi\n- **💰 Precio / Disponibilidad:** $60 - $80 USD\n\n## ⚙️ Especificaciones & Características Clave\n- Procesador Broadcom BCM2712 quad-core Arm Cortex-A76 de 64 bits a 2.4 GHz.\n- Opciones de memoria LPDDR4X-4267 de 4 GB y 8 GB.\n- Interfaz PCIe 2.0 x1 para conexión de almacenamiento SSD NVMe ultrarrápido.\n- Dos puertos micro HDMI 4Kp60 con soporte HDR simultáneo.\n- Controlador de E/S RP1 diseñado por Raspberry Pi que duplica el ancho de banda USB.\n\n## 📝 Notas de Evaluación & Casos de Uso\n- Ideal para montar un nodo de Kubernetes local (k3s), servidor de automatización con Docker o estación de desarrollo ligera.\n\n## 🔗 Referencias\n- Sitio oficial o ficha del producto: [https://www.raspberrypi.com/products/raspberry-pi-5/](https://www.raspberrypi.com/products/raspberry-pi-5/)\n- Tweet original en X: [https://x.com/Raspberry_Pi/status/1707300000000000000](https://x.com/Raspberry_Pi/status/1707300000000000000)\n",
-      "mtimeMs": 1794262312600.2751
+      "mtimeMs": 1794332666173.5757
     },
     {
       "slug": "remoto-fullstack-dev-latam",
