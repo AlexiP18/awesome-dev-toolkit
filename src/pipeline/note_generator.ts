@@ -6,16 +6,12 @@ import { GitHubMetadata } from './github.js';
 import { markRepoPathDeleted, unmarkRepoPathDeleted } from './github_sync.js';
 
 const TOOLS_DIR = path.resolve(process.cwd(), 'content/tools');
-const PRODUCTS_DIR = path.resolve(process.cwd(), 'content/products');
 const TIPS_DIR = path.resolve(process.cwd(), 'content/tips');
 const JOBS_DIR = path.resolve(process.cwd(), 'content/jobs');
 
 export function ensureToolsDirExists(): void {
   if (!fs.existsSync(TOOLS_DIR)) {
     fs.mkdirSync(TOOLS_DIR, { recursive: true });
-  }
-  if (!fs.existsSync(PRODUCTS_DIR)) {
-    fs.mkdirSync(PRODUCTS_DIR, { recursive: true });
   }
   if (!fs.existsSync(TIPS_DIR)) {
     fs.mkdirSync(TIPS_DIR, { recursive: true });
@@ -189,12 +185,8 @@ export function createOrUpdateToolNote(
   }
 
   const isJob = params.classification.entryType === 'job_remote' || params.classification.category === 'Trabajo & Freelance';
-  const isTip = !isJob && params.classification.entryType === 'tech_tip';
-  const isProduct = !isJob && !isTip && (
-    params.classification.entryType === 'tech_product' ||
-    params.classification.category === 'Productos Tecnológicos & Hardware'
-  );
-  const targetDir = isJob ? JOBS_DIR : isTip ? TIPS_DIR : isProduct ? PRODUCTS_DIR : TOOLS_DIR;
+  const isTip = !isJob && (params.classification.entryType === 'tech_tip' || params.classification.category === 'Consejos & Buenas Prácticas');
+  const targetDir = isJob ? JOBS_DIR : isTip ? TIPS_DIR : TOOLS_DIR;
 
   const slug = slugify(params.classification.name);
   const filePath = path.join(targetDir, `${slug}.md`);
@@ -217,7 +209,7 @@ export function createOrUpdateToolNote(
     url: finalUrl,
     website_url: params.classification.websiteUrl,
     category: params.classification.category,
-    conjunto: params.classification.conjunto || (isTip ? 'consejos' : isProduct ? 'producto' : 'recursos'),
+    conjunto: params.classification.conjunto || (isTip ? 'consejos' : 'recursos'),
     tags: params.classification.tags,
     stars: params.githubMeta?.stars,
     status: params.initialStatus || 'to_try',
@@ -226,8 +218,8 @@ export function createOrUpdateToolNote(
     source_tweet: params.sourceTweet,
     author: authorName,
     author_handle: authorHandle,
-    entry_type: isJob ? 'job_remote' : isTip ? 'tech_tip' : isProduct ? 'tech_product' : 'tool',
-    company: params.classification.company || (isProduct ? params.author : undefined),
+    entry_type: isJob ? 'job_remote' : isTip ? 'tech_tip' : 'tool',
+    company: params.classification.company || params.author,
     location: params.classification.location || undefined,
     salary: params.classification.salary || undefined,
     price: params.classification.price || undefined,
@@ -236,6 +228,8 @@ export function createOrUpdateToolNote(
     academic_promo_details: params.classification.academicPromoDetails || undefined,
     classified_by: params.providerUsed || undefined,
   };
+
+  const isProduct = !isJob && !isTip && (frontmatter.conjunto === 'producto' || !!frontmatter.price);
 
   const highlightsMd = params.classification.keyHighlights.length
     ? params.classification.keyHighlights
@@ -332,7 +326,6 @@ export function loadAllTools(): ToolItem[] {
 
   const dirs = [
     { dir: TOOLS_DIR, defaultType: 'tool' as const },
-    { dir: PRODUCTS_DIR, defaultType: 'tech_product' as const },
     { dir: TIPS_DIR, defaultType: 'tech_tip' as const },
     { dir: JOBS_DIR, defaultType: 'job_remote' as const },
   ];
@@ -413,14 +406,11 @@ export function updateToolNote(slug: string, updates: {
 }): boolean {
   let filePath = path.join(TOOLS_DIR, `${slug}.md`);
   if (!fs.existsSync(filePath)) {
-    filePath = path.join(PRODUCTS_DIR, `${slug}.md`);
+    filePath = path.join(TIPS_DIR, `${slug}.md`);
     if (!fs.existsSync(filePath)) {
-      filePath = path.join(TIPS_DIR, `${slug}.md`);
+      filePath = path.join(JOBS_DIR, `${slug}.md`);
       if (!fs.existsSync(filePath)) {
-        filePath = path.join(JOBS_DIR, `${slug}.md`);
-        if (!fs.existsSync(filePath)) {
-          return false;
-        }
+        return false;
       }
     }
   }
@@ -457,18 +447,12 @@ export function updateToolNote(slug: string, updates: {
   ensureToolsDirExists();
 
   let targetDir = TOOLS_DIR;
-  if (updatedFrontmatter.entry_type === 'job_remote') {
+  if (updatedFrontmatter.entry_type === 'job_remote' || updatedFrontmatter.category === 'Trabajo & Freelance') {
     targetDir = JOBS_DIR;
-  } else if (updatedFrontmatter.entry_type === 'tech_tip') {
+  } else if (updatedFrontmatter.entry_type === 'tech_tip' || updatedFrontmatter.category === 'Consejos & Buenas Prácticas') {
     targetDir = TIPS_DIR;
-  } else if (updatedFrontmatter.entry_type === 'tech_product' || updatedFrontmatter.entry_type === 'product_showcase') {
-    targetDir = PRODUCTS_DIR;
-  } else if (updatedFrontmatter.entry_type === 'tool') {
-    targetDir = TOOLS_DIR;
   } else {
-    if (updatedFrontmatter.category === 'Trabajo & Freelance') targetDir = JOBS_DIR;
-    else if (updatedFrontmatter.category === 'Consejos & Buenas Prácticas') targetDir = TIPS_DIR;
-    else if (updatedFrontmatter.category === 'Productos Tecnológicos & Hardware') targetDir = PRODUCTS_DIR;
+    targetDir = TOOLS_DIR;
   }
 
   const targetPath = path.join(targetDir, `${slug}.md`);
@@ -486,14 +470,11 @@ export function updateToolNote(slug: string, updates: {
 export function deleteToolNote(slug: string): boolean {
   let filePath = path.join(TOOLS_DIR, `${slug}.md`);
   if (!fs.existsSync(filePath)) {
-    filePath = path.join(PRODUCTS_DIR, `${slug}.md`);
+    filePath = path.join(TIPS_DIR, `${slug}.md`);
     if (!fs.existsSync(filePath)) {
-      filePath = path.join(TIPS_DIR, `${slug}.md`);
+      filePath = path.join(JOBS_DIR, `${slug}.md`);
       if (!fs.existsSync(filePath)) {
-        filePath = path.join(JOBS_DIR, `${slug}.md`);
-        if (!fs.existsSync(filePath)) {
-          return false;
-        }
+        return false;
       }
     }
   }
@@ -534,7 +515,7 @@ export function restoreToolNotes(items: Array<{
   let restoredCount = 0;
   let updatedCount = 0;
 
-  const allDirs = [TOOLS_DIR, PRODUCTS_DIR, TIPS_DIR, JOBS_DIR];
+  const allDirs = [TOOLS_DIR, TIPS_DIR, JOBS_DIR];
 
   for (const item of items) {
     if (!item || !item.slug || !item.frontmatter || !item.frontmatter.name) continue;
@@ -542,18 +523,12 @@ export function restoreToolNotes(items: Array<{
     const fm = item.frontmatter;
 
     let targetDir = TOOLS_DIR;
-    if (fm.entry_type === 'job_remote') {
+    if (fm.entry_type === 'job_remote' || fm.category === 'Trabajo & Freelance') {
       targetDir = JOBS_DIR;
-    } else if (fm.entry_type === 'tech_tip') {
+    } else if (fm.entry_type === 'tech_tip' || fm.category === 'Consejos & Buenas Prácticas') {
       targetDir = TIPS_DIR;
-    } else if (fm.entry_type === 'tech_product' || fm.entry_type === 'product_showcase') {
-      targetDir = PRODUCTS_DIR;
-    } else if (fm.entry_type === 'tool') {
-      targetDir = TOOLS_DIR;
     } else {
-      if (fm.category === 'Trabajo & Freelance') targetDir = JOBS_DIR;
-      else if (fm.category === 'Consejos & Buenas Prácticas') targetDir = TIPS_DIR;
-      else if (fm.category === 'Productos Tecnológicos & Hardware') targetDir = PRODUCTS_DIR;
+      targetDir = TOOLS_DIR;
     }
 
     const targetPath = path.join(targetDir, `${safeSlug}.md`);

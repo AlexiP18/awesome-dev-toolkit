@@ -198,7 +198,6 @@ export function runClassificationMigration(): void {
   const dirs = [
     { name: 'tools', path: path.resolve(rootDir, 'content/tools') },
     { name: 'tips', path: path.resolve(rootDir, 'content/tips') },
-    { name: 'products', path: path.resolve(rootDir, 'content/products') },
     { name: 'jobs', path: path.resolve(rootDir, 'content/jobs') },
   ];
 

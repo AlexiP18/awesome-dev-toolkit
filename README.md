@@ -1,27 +1,25 @@
 # 🚀 Awesome Dev Toolkit & Segundo Cerebro
 
-> Colección curada en **4 apartados esenciales** (Herramientas, Consejos Técnicos, Trabajo Remoto/Freelance y Productos Tech/Hardware) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA (Gemini 3.8 Flash).
+> Colección curada en **3 apartados esenciales** (Herramientas, Consejos Técnicos y Trabajo Remoto/Freelance) y clasificada por **Conjuntos** (📦 Recursos, 💡 Inspiración, 🚀 Producto y 🧠 Consejos) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA.
 
-[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-619-blue?style=for-the-badge)]()
+[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-620-blue?style=for-the-badge)]()
 [![Consejos](https://img.shields.io/badge/💡_Consejos-4-8E75C2?style=for-the-badge)]()
 [![Trabajo Remoto](https://img.shields.io/badge/💼_Trabajo_Remoto-21-0284C7?style=for-the-badge)]()
-[![Productos Tech](https://img.shields.io/badge/🖥️_Productos_Tech-1-D97706?style=for-the-badge)]()
 [![Obsidian Ready](https://img.shields.io/badge/Obsidian-Segundo_Cerebro-7C3AED?style=for-the-badge&logo=obsidian)]()
 
 ---
 
-## 📑 Los 4 Apartados del Toolkit
+## 📑 Los 3 Apartados del Toolkit
 
-- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-619) (619)
+- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-620) (620)
 - [💡 Apartado 2: Consejos Técnicos & Buenas Prácticas](#-apartado-2-consejos-técnicos--buenas-prácticas-4) (4)
 - [💼 Apartado 3: Trabajo Remoto & Freelance](#-apartado-3-trabajo-remoto--oportunidades-freelance-21) (21)
-- [🖥️ Apartado 4: Productos Tecnológicos & Hardware](#-apartado-4-productos-tecnológicos--hardware-1) (1)
 
 ---
 
-## 🛠️ Apartado 1: Herramientas & Repositorios de Software (619)
+## 🛠️ Apartado 1: Herramientas & Repositorios de Software (620)
 
-> Bibliotecas, utilidades CLI, herramientas de desarrollo, devtools y productos técnicos guardados desde X.
+> Bibliotecas, utilidades CLI, herramientas de desarrollo, devtools, productos técnicos y hardware guardados desde X.
 
 ### 🛠️ CLI & Terminal (11)
 
@@ -1901,6 +1899,11 @@
 - **[epstein.md](https://shipper.now/)** `🧠 Consejos` (`🏢 Shipper`) [𝕏 Tweet](https://x.com/shipper_now/status/2110637576935891122) `🟡 Por probar`  
   Archivo Markdown de más de 927.400 caracteres que actúa como guía de estilo y reglas de diseño para asistentes de código con IA, impidiendo que generen interfaces genéricas propias del 'AI slop' y forzando decisiones visuales sobrias y profesionales. Está integrado en el vibe coder de Shipper.now. [📝 Ver ficha](content/tools/epsteinmd.md) `#design` `#ui` `#ai-agents` `#markdown` `#prompt-engineering` `#showcase` `#vibecoding`
 
+### 🖥️ Productos Tecnológicos & Hardware (1)
+
+- **[Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/)** `🚀 Producto` (`🏢 Raspberry Pi`) (`💰 $60 - $80 USD`) [🌐 Web](https://www.raspberrypi.com/products/raspberry-pi-5/) [𝕏 Tweet](https://x.com/Raspberry_Pi/status/1707300000000000000) `🟡 Por probar`  
+  Computadora monoplaca (SBC) de nueva generación con procesador Arm Cortex-A76 quad-core de 2.4GHz, PCIe 2.0 y rendimiento 2-3x superior para servidores caseros y proyectos de hardware. [📝 Ver ficha](content/tools/raspberry-pi-5.md) `#hardware` `#sbc` `#raspberrypi` `#iot` `#linux`
+
 ### 📦 IDEs & Development Software (1)
 
 - **[t3code](https://github.com/pingdotgg/t3code)** `📦 Recursos` (`🏢 pingdotgg`) (`🌍 null`) (`💰 null`) (`💰 Gratis`) ⭐ **38.343** [𝕏 Tweet](https://x.com/csaba_kissi/status/2116071103206724053) `🟡 Por probar`  
@@ -1997,15 +2000,6 @@
 - **[Full Stack Engineer (Remoto LATAM)](https://x.com/remote_jobs_tech/status/1789555666777888999)** `📦 Recursos` (`🏢 Global Tech LATAM`) (`🌍 Remoto (LATAM)`) (`💰 $4,000 - $6,000 USD / mes`) [🌐 Web](https://remoteok.com) [𝕏 Tweet](https://x.com/remote_jobs_tech/status/1789555666777888999) `🟡 Por probar`  
   Vacante 100% remota para desarrolladores en América Latina con experiencia en TypeScript, React y Node.js, contrato directo internacional en USD. [📝 Ver ficha](content/jobs/remoto-fullstack-dev-latam.md) `#remote` `#latam` `#typescript` `#react` `#nodejs`
 
----
-
-## 🖥️ Apartado 4: Productos Tecnológicos & Hardware (1)
-
-> Dispositivos para devs, placas de desarrollo (Raspberry Pi, ESP32, Arduino), laptops, periféricos, gadgets y hardware técnico.
-
-- **[Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/)** `🚀 Producto` (`🏢 Raspberry Pi`) (`💰 $60 - $80 USD`) [🌐 Web](https://www.raspberrypi.com/products/raspberry-pi-5/) [𝕏 Tweet](https://x.com/Raspberry_Pi/status/1707300000000000000) `🟡 Por probar`  
-  Computadora monoplaca (SBC) de nueva generación con procesador Arm Cortex-A76 quad-core de 2.4GHz, PCIe 2.0 y rendimiento 2-3x superior para servidores caseros y proyectos de hardware. [📝 Ver ficha](content/products/raspberry-pi-5.md) `#hardware` `#sbc` `#raspberrypi` `#iot` `#linux`
-
 
 
 ---
@@ -2016,7 +2010,7 @@
 ```bash
 npm run dev
 ```
-Abre `http://localhost:4000` en tu navegador para ver el catálogo con buscador instantáneo (`Cmd+K`), selector de los 4 apartados y notas personales.
+Abre `http://localhost:4000` en tu navegador para ver el catálogo con buscador instantáneo (`Cmd+K`), selector de apartados, conjuntos y notas personales.
 
 ### 2. Añadir un recurso rápidamente desde la terminal
 ```bash
@@ -2025,10 +2019,9 @@ npm run add "https://github.com/astral-sh/uv"
 
 ### 3. Usar como Segundo Cerebro en Obsidian
 Abre las carpetas directamente como un **Vault en Obsidian**:
-- `content/tools/`: Herramientas y bibliotecas.
+- `content/tools/`: Herramientas, bibliotecas, apps y hardware.
 - `content/tips/`: Consejos técnicos y trucos.
 - `content/jobs/`: Oportunidades de trabajo remoto y freelance.
-- `content/products/`: Productos tecnológicos y hardware.
 
 ### 4. Guardado en 1-Clic desde X (Bookmarklet)
 Arrastra el enlace desde la carpeta `bookmarklet/` a tu barra de favoritos de Chrome/Brave/Firefox. Al ver un tweet interesante en X, haz clic en el botón y se enviará directo a tu toolkit local.

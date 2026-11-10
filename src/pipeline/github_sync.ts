@@ -75,7 +75,6 @@ export async function syncFromGitHubRepoOnStartup(): Promise<{ downloaded: numbe
     const targetPrefixes = [
       'content/tools/',
       'content/tips/',
-      'content/products/',
       'content/jobs/',
       'content/authors/',
     ];
@@ -128,7 +127,6 @@ function collectLocalCatalogFiles(): string[] {
   const dirs = [
     'content/tools',
     'content/tips',
-    'content/products',
     'content/jobs',
     'content/authors',
   ];

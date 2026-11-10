@@ -4,7 +4,7 @@ import { ToolCategory } from './types.js';
 
 export interface CategoryDefinition {
   name: string;
-  section: 'all' | 'tools' | 'tips' | 'jobs' | 'products';
+  section: 'all' | 'tools' | 'tips' | 'jobs';
   icon: string;
   color: string; // 'sky' | 'emerald' | 'amber' | 'violet' | 'rose' | 'indigo' | 'cyan' | 'purple' | 'teal' | 'slate'
   description?: string;
@@ -25,7 +25,7 @@ export const DEFAULT_CATEGORIES: CategoryDefinition[] = [
   { name: 'Productivity & Tools', section: 'tools', icon: '⚡', color: 'teal', description: 'Utilidades para desarrolladores, métricas y optimización', isDefault: true },
   { name: 'Documentation & Resources', section: 'tools', icon: '📚', color: 'indigo', description: 'Guías, libros, cheat sheets y documentación estática', isDefault: true },
   { name: 'Empresas & Productos', section: 'tools', icon: '🏢', color: 'indigo', description: 'Productos y herramientas desarrolladas por empresas o startups', isDefault: true },
-  { name: 'Productos Tecnológicos & Hardware', section: 'products', icon: '🖥️', color: 'amber', description: 'Placas, microcontroladores, periféricos y gadgets físicos', isDefault: true },
+  { name: 'Productos Tecnológicos & Hardware', section: 'tools', icon: '🖥️', color: 'amber', description: 'Placas, microcontroladores, periféricos y gadgets físicos', isDefault: true },
   { name: 'Consejos & Buenas Prácticas', section: 'tips', icon: '💡', color: 'violet', description: 'Trucos de código, comandos y patrones de arquitectura', isDefault: true },
   { name: 'Trabajo & Freelance', section: 'jobs', icon: '💼', color: 'sky', description: 'Vacantes de empleo remoto y oportunidades de contratación', isDefault: true },
   { name: 'Other', section: 'all', icon: '📦', color: 'slate', description: 'Recursos varios y clasificaciones generales', isDefault: true },
