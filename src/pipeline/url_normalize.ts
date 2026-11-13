@@ -176,6 +176,62 @@ function hostOf(raw?: string | null): string {
   }
 }
 
+const GENERIC_NAME_TOKENS = new Set([
+  'app', 'web', 'dev', 'design', 'styles', 'style', 'tool', 'tools', 'software',
+  'platform', 'studio', 'pro', 'kit', 'the', 'and', 'for', 'con', 'para', 'open',
+  'source', 'video', 'videos', 'free', 'oficial', 'library', 'libreria',
+]);
+
+function withoutParenthetical(name: string): string {
+  return name.replace(/\s*[([].*?[)\]]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function nameTokens(name: string): string[] {
+  const spaced = name
+    .replace(/([a-z\d])([A-Z])/g, '$1 $2')
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
+  return spaced
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((token) => token.length >= 3 && !GENERIC_NAME_TOKENS.has(token));
+}
+
+function tokensNear(a: string, b: string): boolean {
+  if (a === b) return true;
+  if (a.length < 4 || b.length < 4) return false;
+  const [short, long] = a.length <= b.length ? [a, b] : [b, a];
+  return long.startsWith(short) && long.length - short.length <= 3;
+}
+
+/**
+ * Nombres del mismo producto (Motionin / Motion in Design, Be UI / BeUI).
+ * cmux y shaper, u OpenShorts y MoneyPrinterTurbo, no lo son: aunque compartan URL.
+ * Un paréntesis no cuenta como alias si el nombre principal es otro producto.
+ */
+export function namesLookLikeSameProduct(a?: string | null, b?: string | null): boolean {
+  const left = withoutParenthetical((a || '').trim());
+  const right = withoutParenthetical((b || '').trim());
+  if (!left || !right) return true;
+
+  const aa = alnum(left);
+  const bb = alnum(right);
+  if (!aa || !bb) return true;
+  if (aa === bb) return true;
+
+  const [short, long] = aa.length <= bb.length ? [aa, bb] : [bb, aa];
+  if (short.length >= 4 && long.startsWith(short) && long.length - short.length <= 8) return true;
+
+  const ta = nameTokens(left);
+  const tb = nameTokens(right);
+  if (ta.length === 0 || tb.length === 0) return false;
+  const share = ta.some((token) => tb.some((other) => tokensNear(token, other)));
+  if (!share) return false;
+
+  const exclusive = (tokens: string[], other: string[]) =>
+    tokens.filter((token) => token.length >= 5 && !other.some((candidate) => tokensNear(token, candidate)));
+  return exclusive(ta, tb).length === 0 || exclusive(tb, ta).length === 0;
+}
+
 function namesCompatible(repoToken: string, repoName: string, landingName: string): boolean {
   const nameRepo = alnum(repoName);
   const nameLand = alnum(landingName);
@@ -235,7 +291,7 @@ function explicitRepoLanding(repoSide: ProductRef, landingSide: ProductRef): boo
 export function sameProduct(a: ProductRef, b: ProductRef): boolean {
   const aUrl = canonicalUrlKey(a.url);
   const bUrl = canonicalUrlKey(b.url);
-  if (aUrl && bUrl && aUrl === bUrl) return true;
+  if (aUrl && bUrl && aUrl === bUrl) return namesLookLikeSameProduct(a.name, b.name);
   if (a.url && b.url && repoMatchesLanding(a.url, a.name, b.url, b.name)) return true;
   if (b.url && a.url && repoMatchesLanding(b.url, b.name, a.url, a.name)) return true;
   if (explicitRepoLanding(a, b) || explicitRepoLanding(b, a)) return true;

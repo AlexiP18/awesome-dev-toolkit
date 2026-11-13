@@ -1,5 +1,5 @@
 import { ToolItem } from './types.js';
-import { sameProduct } from './url_normalize.js';
+import { canonicalUrlKey, namesLookLikeSameProduct, sameProduct } from './url_normalize.js';
 
 /** Agrupa fichas que son el mismo producto (URL canónica o repo + landing). */
 export function groupDuplicateTools(tools: ToolItem[]): ToolItem[][] {
@@ -44,4 +44,29 @@ export function groupDuplicateTools(tools: ToolItem[]): ToolItem[][] {
   });
 
   return [...groups.values()].filter((group) => group.length > 1);
+}
+
+/**
+ * Misma URL canónica, pero los nombres no son el mismo producto.
+ * El merge no debe unirlos: se listan para revisión manual.
+ */
+export function groupsNeedingReview(tools: ToolItem[]): ToolItem[][] {
+  const byUrl = new Map<string, ToolItem[]>();
+  for (const tool of tools) {
+    const key = canonicalUrlKey(tool.frontmatter.url);
+    if (!key) continue;
+    const list = byUrl.get(key) || [];
+    list.push(tool);
+    byUrl.set(key, list);
+  }
+
+  const flagged: ToolItem[][] = [];
+  for (const group of byUrl.values()) {
+    if (group.length < 2) continue;
+    const distinct = group.some((left, index) =>
+      group.slice(index + 1).some((right) => !namesLookLikeSameProduct(left.frontmatter.name, right.frontmatter.name))
+    );
+    if (distinct) flagged.push(group);
+  }
+  return flagged;
 }

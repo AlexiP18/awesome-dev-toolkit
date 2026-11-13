@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { groupDuplicateTools } from './dedup_groups.js';
+import { groupDuplicateTools, groupsNeedingReview } from './dedup_groups.js';
 import { coerceCategory } from './category_manager.js';
 import { markRepoPathDeleted, unmarkRepoPathDeleted } from './github_sync.js';
 import {
@@ -98,11 +98,18 @@ export interface MergeStats {
   entryTypesFixed: number;
   nullNotesCleaned: number;
   groupSummaries: string[];
+  flaggedForReview: string[];
 }
 
 export function applyCatalogRepair(dryRun = false): MergeStats {
   const tools = loadAllTools();
-  const groups = groupDuplicateTools(tools);
+  const flagged = groupsNeedingReview(tools);
+  const flaggedPaths = new Set(flagged.flat().map((tool) => tool.filePath));
+  const groups = groupDuplicateTools(tools).filter((group) => !group.some((tool) => flaggedPaths.has(tool.filePath)));
+  const flaggedForReview = flagged.map(
+    (group) =>
+      group.map((tool) => `${tool.frontmatter.name} <${tool.frontmatter.url}>`).join(' || ')
+  );
   const removed = new Set<string>();
   const summaries: string[] = [];
   let categoriesMigrated = tools.filter((tool) => {
@@ -170,6 +177,7 @@ export function applyCatalogRepair(dryRun = false): MergeStats {
     entryTypesFixed,
     nullNotesCleaned,
     groupSummaries: summaries,
+    flaggedForReview,
   };
 }
 
@@ -182,6 +190,8 @@ async function main() {
   console.log(`Categorías migradas: ${stats.categoriesMigrated}`);
   console.log(`entry_type corregidos: ${stats.entryTypesFixed}`);
   console.log(`Fichas con "null" literal limpiadas: ${stats.nullNotesCleaned}`);
+  console.log(`Grupos con la misma URL y productos distintos (no fusionados): ${stats.flaggedForReview.length}`);
+  for (const line of stats.flaggedForReview) console.log(' - REVISIÓN MANUAL: ' + line);
   console.log('\nGrupos:');
   for (const line of stats.groupSummaries) console.log(' - ' + line);
 

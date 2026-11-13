@@ -15,7 +15,7 @@ import {
   resolveEntryType,
 } from './note_generator.js';
 import { ToolItem } from './types.js';
-import { canonicalUrlKey, sameProduct } from './url_normalize.js';
+import { canonicalUrlKey, namesLookLikeSameProduct, sameProduct } from './url_normalize.js';
 
 function fakeTool(partial: Partial<ToolItem> & { slug: string; url: string; name: string }): ToolItem {
   return {
@@ -104,6 +104,29 @@ test('findExistingTool detecta la misma URL canónica y el website del repo', ()
 
   const other = findExistingTool({ url: 'https://godly.website/', name: 'Godly' }, catalog);
   assert.equal(other, undefined);
+});
+
+test('nombres distintos no se fusionan aunque compartan URL', () => {
+  assert.equal(namesLookLikeSameProduct('Motionin', 'Motion in Design'), true);
+  assert.equal(namesLookLikeSameProduct('Be UI', 'BeUI'), true);
+  assert.equal(namesLookLikeSameProduct('3D Icons', '3Dicons'), true);
+  assert.equal(namesLookLikeSameProduct('cmux', 'shaper'), false);
+  assert.equal(namesLookLikeSameProduct('OpenShorts', 'MoneyPrinterTurbo'), false);
+  assert.equal(namesLookLikeSameProduct('ClawRouter', 'context-mode (clawrouter)'), false);
+
+  const shared = 'https://github.com/taleshape-com/shaper';
+  assert.equal(
+    sameProduct({ url: shared, name: 'cmux' }, { url: shared, name: 'shaper' }),
+    false
+  );
+  const groups = groupDuplicateTools([
+    fakeTool({ slug: 'cmux', name: 'cmux', url: shared }),
+    fakeTool({ slug: 'shaper', name: 'shaper', url: shared }),
+    fakeTool({ slug: 'a', name: 'Motionin', url: 'https://motionin.design/' }),
+    fakeTool({ slug: 'b', name: 'Motion in Design', url: 'https://www.motionin.design/' }),
+  ]);
+  assert.equal(groups.length, 1);
+  assert.deepEqual(groups[0].map((tool) => tool.slug).sort(), ['a', 'b']);
 });
 
 test('groupDuplicateTools agrupa solo el mismo producto', () => {

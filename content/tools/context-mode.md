@@ -1,21 +1,16 @@
 ---
-name: context-mode (clawrouter)
+name: context-mode
 url: 'https://github.com/mksglu/context-mode'
+website_url: 'https://contextmode.ai'
 category: Agentes & Protocolo MCP
 tags:
-  - llm
-  - router
-  - inference
-  - gestion-de-contexto
-  - costes
-  - agentes
   - mcp
   - mcp-server
   - claude-code
   - context-mode
   - coding-agents
   - javascript
-stars: 33449
+stars: 34006
 status: to_try
 date_added: '2026-11-04'
 created_at: '2026-11-04T17:52:27.634Z'
@@ -26,12 +21,8 @@ entry_type: tool
 company: mksglu
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: recursos
-source_tweets:
-  - 'https://x.com/nikosolenne/status/2110845366920745234'
-  - 'https://x.com/yuliaisc/status/2096897540847255613'
-updated_at: '2026-11-13T05:00:36.266Z'
 ---
-# context-mode (clawrouter)
+# context-mode
 
 > Plugin local y gratuito que mantiene la salida de herramientas fuera de la ventana de contexto de tu agente de código usando sandbox y búsqueda SQLite FTS5, reduciendo hasta un 99% los bytes en contexto.
 
@@ -49,7 +40,5 @@ updated_at: '2026-11-13T05:00:36.266Z'
 
 ## 🔗 Referencias
 - Repositorio de código (GitHub): [https://github.com/mksglu/context-mode](https://github.com/mksglu/context-mode)
+- Sitio Web oficial: [https://contextmode.ai](https://contextmode.ai)
 - Tweet origen: [Ver en X](https://x.com/nikosolenne/status/2110845366920745234)
-
-## Tweets de origen adicionales
-- Tweet origen adicional: [Ver en X](https://x.com/yuliaisc/status/2096897540847255613)

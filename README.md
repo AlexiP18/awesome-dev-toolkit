@@ -2,7 +2,7 @@
 
 > Colección curada en **3 apartados esenciales** (Herramientas, Consejos Técnicos y Trabajo Remoto/Freelance) y clasificada por **Conjuntos** (📦 Recursos, 💡 Inspiración, 🚀 Producto y 🧠 Consejos) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA.
 
-[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-573-blue?style=for-the-badge)]()
+[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-576-blue?style=for-the-badge)]()
 [![Consejos](https://img.shields.io/badge/💡_Consejos-4-8E75C2?style=for-the-badge)]()
 [![Trabajo Remoto](https://img.shields.io/badge/💼_Trabajo_Remoto-21-0284C7?style=for-the-badge)]()
 [![Obsidian Ready](https://img.shields.io/badge/Obsidian-Segundo_Cerebro-7C3AED?style=for-the-badge&logo=obsidian)]()
@@ -11,17 +11,20 @@
 
 ## 📑 Los 3 Apartados del Toolkit
 
-- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-573) (573)
+- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-576) (576)
 - [💡 Apartado 2: Consejos Técnicos & Buenas Prácticas](#-apartado-2-consejos-técnicos--buenas-prácticas-4) (4)
 - [💼 Apartado 3: Trabajo Remoto & Freelance](#-apartado-3-trabajo-remoto--oportunidades-freelance-21) (21)
 
 ---
 
-## 🛠️ Apartado 1: Herramientas & Repositorios de Software (573)
+## 🛠️ Apartado 1: Herramientas & Repositorios de Software (576)
 
 > Bibliotecas, utilidades CLI, herramientas de desarrollo, devtools, productos técnicos y hardware guardados desde X.
 
-### 🛠️ CLI & Terminal (11)
+### 🛠️ CLI & Terminal (12)
+
+- **[cmux](https://github.com/manaflow-ai/cmux)** `📦 Recursos` (`👤 𝐍𝐨𝐚𝐡`) ⭐ **28,780** [🌐 Web](https://cmux.com) [𝕏 Tweet](https://x.com/noahelhadedy/status/2118750897454944486) `🟡 Por probar`  
+  Terminal open source para macOS, basada en Ghostty, con pestañas verticales y notificaciones pensadas para trabajar con varios agentes de código a la vez. [📝 Ver ficha](content/tools/cmux.md) `#terminal` `#macos` `#ghostty` `#ai-agents` `#cli`
 
 - **[TermUI Registry](https://arindam200.github.io/termui/)** `📦 Recursos` (`🏢 Arindam`) [𝕏 Tweet](https://x.com/noahelhadedy/status/2118750897454944486) `🟡 Por probar`  
   Registro de componentes y demos de interfaz de usuario para terminal, pensado para construir TUIs con buen diseño. [📝 Ver ficha](content/tools/termui-registry.md) `#cli` `#terminal` `#tui` `#components`
@@ -824,7 +827,7 @@
 - **[agents-towards-production](https://github.com/NirDiamant/agents-towards-production)** `📦 Recursos` (`🏢 NirDiamant`) ⭐ **21,823** [𝕏 Tweet](https://x.com/precisox/status/2108699884891037743) `🟡 Por probar`  
   Tutoriales end-to-end para llevar agentes GenAI a producción con evaluaciones, guardrails, despliegue, observabilidad y control de costes. [📝 Ver ficha](content/tools/agents-towards-production.md) `#ai-agents` `#production` `#deployment` `#observability` `#mlops`
 
-### 🤖 AI & Machine Learning (103)
+### 🤖 AI & Machine Learning (104)
 
 - **[Modulify](https://modulify.ai/)** `🚀 Producto` (`🏢 Modulify`) [𝕏 Tweet](https://x.com/BardhylBytyqi/status/2118838961602748834) `🟡 Por probar`  
   Herramienta de 'vibecoding' que genera sitios web y secciones completas a partir de prompts en lenguaje natural, pensada para diseñadores que quieren maquetación funcional sin escribir HTML y CSS a mano. [📝 Ver ficha](content/tools/modulify.md) `#vibecoding` `#ai-web-builder` `#design` `#no-code`
@@ -954,6 +957,9 @@
 
 - **[Marketing Skills](https://github.com/coreyhaines31/marketingskills)** `📦 Recursos` (`🏢 Corey Haines`) [𝕏 Tweet](https://x.com/RoundtableSpace/status/2096844664980832620) `🟡 Por probar`  
   Conjunto de skills de IA para tareas de marketing como CRO, copywriting, SEO, analítica y crecimiento. [📝 Ver ficha](content/tools/marketing-skills.md) `#ai-agents` `#marketing` `#cro` `#seo` `#growth` `#ai` `#copywriting`
+
+- **[ClawRouter](https://github.com/BlockRunAI/ClawRouter)** `📦 Recursos` (`👤 yuulia ✟`) ⭐ **6,663** [🌐 Web](https://www.npmjs.com/package/@blockrun/clawrouter) [𝕏 Tweet](https://x.com/yuliaisc/status/2096897540847255613) `🟡 Por probar`  
+  Router de modelos para agentes autónomos: expone los modelos de frontera detrás de una sola billetera, con enrutado local por debajo de 1 ms y pagos en USDC sobre Base y Solana vía x402. [📝 Ver ficha](content/tools/clawrouter.md) `#llm` `#router` `#inference` `#agentes` `#costes`
 
 - **[ExploitGym](https://github.com/sunblaze-ucb/exploitgym)** `📦 Recursos` (`🏢 Sunblaze UC Berkeley`) ⭐ **1,257** [𝕏 Tweet](https://x.com/RodmanAi/status/2097703769777856612) `🟡 Por probar`  
   Entorno de benchmark realista para evaluar la capacidad de agentes de IA en tareas de explotación de software. [📝 Ver ficha](content/tools/exploitgym.md) `#security` `#ai-agents` `#benchmark` `#exploitation`
@@ -1199,8 +1205,8 @@
 - **[Social Media Agent](https://github.com/langchain-ai/social-media-agent)** `📦 Recursos` (`🏢 LangChain`) ⭐ **2,987** [𝕏 Tweet](https://x.com/heyrimsha/status/2110687947423088920) `🟡 Por probar`  
   Agente de LangChain que convierte una URL en borradores para X y LinkedIn, permite revisión humana y programa publicaciones. [📝 Ver ficha](content/tools/social-media-agent.md) `#agente-ia` `#langchain` `#social-media` `#human-in-the-loop`
 
-- **[context-mode (clawrouter)](https://github.com/mksglu/context-mode)** `📦 Recursos` (`🏢 mksglu`) ⭐ **33,449** [𝕏 Tweet](https://x.com/nikosolenne/status/2110845366920745234) `🟡 Por probar`  
-  Plugin local y gratuito que mantiene la salida de herramientas fuera de la ventana de contexto de tu agente de código usando sandbox y búsqueda SQLite FTS5, reduciendo hasta un 99% los bytes en contexto. [📝 Ver ficha](content/tools/context-mode-clawrouter.md) `#llm` `#router` `#inference` `#gestion-de-contexto` `#costes` `#agentes` `#mcp` `#mcp-server` `#claude-code` `#context-mode` `#coding-agents` `#javascript`
+- **[context-mode](https://github.com/mksglu/context-mode)** `📦 Recursos` (`🏢 mksglu`) ⭐ **34,006** [🌐 Web](https://contextmode.ai) [𝕏 Tweet](https://x.com/nikosolenne/status/2110845366920745234) `🟡 Por probar`  
+  Plugin local y gratuito que mantiene la salida de herramientas fuera de la ventana de contexto de tu agente de código usando sandbox y búsqueda SQLite FTS5, reduciendo hasta un 99% los bytes en contexto. [📝 Ver ficha](content/tools/context-mode.md) `#mcp` `#mcp-server` `#claude-code` `#context-mode` `#coding-agents` `#javascript`
 
 - **[CLI-Anything Hub](https://clianything.cc/)** `📦 Recursos` (`👤 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2112068533924626841) `🟡 Por probar`  
   Un hub y gestor de paquetes de código abierto amigable para agentes de IA, que les permite descubrir, instalar y operar herramientas CLI, aplicaciones GUI y APIs. [📝 Ver ficha](content/tools/cli-anything-hub.md) `#ai` `#agents` `#cli` `#registry` `#package-manager` `#open-source`
@@ -1226,7 +1232,7 @@
 - **[Reason](https://reasonmachines.com/)** `📦 Recursos` (`👤 Yash`) [𝕏 Tweet](https://x.com/dewyashtwts/status/2114337945427857916) `🟡 Por probar`  
   Reason Machines es un agente de codificación de vanguardia y de código abierto que se integra con otros agentes de IA como Claude Code, Codex, Cursor, Grok Bot y Muse, unificándolos en una única red. [📝 Ver ficha](content/tools/reason.md) `#ai` `#agents` `#coding` `#open-source` `#llm`
 
-### 🎬 Prompts, Art & Video (67)
+### 🎬 Prompts, Art & Video (68)
 
 - **[Paper Animation](https://paperanimation.ai/)** `🚀 Producto` (`👤 Bardhyl Bytyqi`) [𝕏 Tweet](https://x.com/BardhylBytyqi/status/2118838961602748834) `🟡 Por probar`  
   Generador de animaciones con inteligencia artificial que produce piezas de motion visual a partir de descripciones textuales, útil para intros, ilustraciones animadas y contenido de marca. [📝 Ver ficha](content/tools/paper-animation.md) `#animacion` `#ia-generativa` `#video` `#motion` `#ia`
@@ -1240,8 +1246,8 @@
 - **[Creating Viral Short Form Content with Generative AI (Curso)](https://drive.google.com/drive/folders/1wIcOQgQvFul7NhxD29a6jIhcmmS0Zdpl)** `🧠 Consejos` (`🏢 AHM7TECH (@Ahm7Tech)`) [𝕏 Tweet](https://x.com/madamayo_/status/2085839926520578313) `🟡 Por probar`  
   Curso sobre creación de contenido vertical viral (Reels, Shorts, TikTok) usando herramientas de IA generativa, desde la ideación del guion hasta la generación de vídeo y publicación automatizada. [📝 Ver ficha](content/tools/creating-viral-short-form-content-with-generative-ai-curso.md) `#video` `#ia-generativa` `#contenido-corto` `#prompts` `#automatizacion`
 
-- **[MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo)** `📦 Recursos` (`🏢 harry0703`) ⭐ **139,146** [𝕏 Tweet](https://x.com/albacnt/status/2086901875979559130) `🟡 Por probar`  
-  Proyecto open source que automatiza la creación completa de vídeos cortos a partir de un simple tema: la IA redacta el guion, selecciona clips HD, sintetiza la voz, añade subtítulos y música, y entrega el vídeo final listo para publicar. [📝 Ver ficha](content/tools/moneyprinterturbo.md) `#video` `#ia` `#open-source` `#shorts` `#automatizacion` `#tiktok` `#youtube` `#clips` `#subtitulos` `#reels`
+- **[MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo)** `📦 Recursos` (`🏢 harry0703`) ⭐ **143,011** [𝕏 Tweet](https://x.com/albacnt/status/2086901875979559130) `🟡 Por probar`  
+  Proyecto open source que automatiza la creación completa de vídeos cortos a partir de un simple tema: la IA redacta el guion, selecciona clips HD, sintetiza la voz, añade subtítulos y música, y entrega el vídeo final listo para publicar. [📝 Ver ficha](content/tools/moneyprinterturbo.md) `#video` `#ia` `#open-source` `#shorts` `#automatizacion` `#tiktok` `#youtube`
 
 - **[Unscreen](https://unscreen.com/)** `📦 Recursos` (`🏢 Kaleido AI`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Herramienta que elimina automáticamente el fondo de vídeos sin croma usando segmentación por IA en la nube. [📝 Ver ficha](content/tools/unscreen.md) `#video` `#fondo` `#edicion`
@@ -1266,6 +1272,9 @@
 
 - **[ManimGX](https://manimgx.academa.ai/)** `📦 Recursos` (`🏢 Academa`) [🌐 Web](https://academa.ai/) [𝕏 Tweet](https://x.com/MoureDev/status/2109631365939397092) `🟡 Por probar`  
   Motor de animación 3D en Python de código abierto, construido sobre el ecosistema Manim, para generar vídeos matemáticos y explicaciones visuales de algoritmos con un rendimiento muy superior a Blender. [📝 Ver ficha](content/tools/manimgx.md) `#manim` `#python` `#animacion-3d` `#open-source` `#agentes-ia` `#renderizado` `#matematicas`
+
+- **[OpenShorts](https://github.com/mutonby/openshorts)** `📦 Recursos` (`👤 Alba`) ⭐ **7,944** [🌐 Web](https://openshorts.app) [𝕏 Tweet](https://x.com/albacnt/status/2109965800824078419) `🟡 Por probar`  
+  Herramienta open source que analiza vídeos largos para detectar automáticamente los mejores momentos y exportarlos como clips verticales con subtítulos listos para redes sociales. [📝 Ver ficha](content/tools/openshorts.md) `#open-source` `#video` `#clips` `#subtitulos` `#shorts` `#tiktok` `#reels`
 
 - **[FFmpeg](https://github.com/FFmpeg/FFmpeg)** `📦 Recursos` (`🏢 FFmpeg`) [🌐 Web](https://ffmpeg.org/) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
   Suite multimedia de referencia para codificar, decodificar, escalar, recortar y convertir vídeo y audio desde línea de comandos o como biblioteca. [📝 Ver ficha](content/tools/ffmpeg.md) `#video` `#encoding` `#cli` `#audio` `#transcoding`
@@ -1432,7 +1441,7 @@
 ### 🗄️ Databases & Storage (2)
 
 - **[shaper](https://github.com/taleshape-com/shaper)** `📦 Recursos` (`🏢 Taleshape`) ⭐ **1,275** [𝕏 Tweet](https://x.com/noahelhadedy/status/2118750897454944486) `🟡 Por probar`  
-  Herramienta open source escrita en Go para visualizar y compartir datos usando SQL, impulsada por DuckDB. [📝 Ver ficha](content/tools/shaper.md) `#sql` `#duckdb` `#analytics` `#dashboards` `#go` `#frontend` `#ui` `#design-engineering` `#web`
+  Herramienta open source escrita en Go para visualizar y compartir datos usando SQL, impulsada por DuckDB. [📝 Ver ficha](content/tools/shaper.md) `#sql` `#duckdb` `#analytics` `#dashboards` `#go`
 
 - **[Qdrant](https://github.com/qdrant/qdrant)** `📦 Recursos` (`🏢 Qdrant`) [🌐 Web](https://qdrant.tech/) [𝕏 Tweet](https://x.com/mdancho84/status/2086054601556410832) `🟡 Por probar`  
   Base de datos vectorial de alto rendimiento escrita en Rust para búsqueda por similitud y recuperación semántica a escala. [📝 Ver ficha](content/tools/qdrant.md) `#vector-database` `#rust` `#search` `#embeddings`

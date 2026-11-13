@@ -8,10 +8,6 @@ tags:
   - analytics
   - dashboards
   - go
-  - frontend
-  - ui
-  - design-engineering
-  - web
 stars: 1275
 status: to_try
 date_added: '2026-11-07'
