@@ -3,12 +3,15 @@ name: Libraries.dev
 url: 'https://libraries.dev/'
 category: Frontend & UI
 tags:
+  - frontend
+  - librerias
+  - ml
+  - react-native
+  - swiftui
   - ui
   - animations
   - react
-  - swiftui
   - react native
-  - ml
   - effects
   - front-end
 status: to_try
@@ -18,13 +21,12 @@ source_tweet: 'https://x.com/k2sbhai/status/2111340914576863731'
 author: K2S
 author_handle: k2sbhai
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
 conjunto: recursos
+source_tweets:
+  - 'https://x.com/k2sbhai/status/2111340914576863731'
+  - 'https://x.com/Hartdrawss/status/2108799722727059563'
+updated_at: '2026-11-13T05:00:36.268Z'
 ---
 # Libraries.dev
 
@@ -45,3 +47,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://libraries.dev/](https://libraries.dev/)
 - Tweet origen: [Ver en X](https://x.com/k2sbhai/status/2111340914576863731)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/Hartdrawss/status/2108799722727059563)

@@ -3,6 +3,9 @@ name: Sevalla.com Hosting
 url: 'https://sevalla.com/'
 category: Backend & APIs
 tags:
+  - deploy
+  - cloud
+  - infraestructura
   - hosting
   - full-stack
   - php
@@ -17,13 +20,12 @@ source_tweet: 'https://x.com/csaba_kissi/status/2112068533924626841'
 author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2112068533924626841'
+  - 'https://x.com/csaba_kissi/status/2079093085955657992'
+updated_at: '2026-11-13T05:00:36.264Z'
 ---
 # Sevalla.com Hosting
 
@@ -44,3 +46,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://sevalla.com/](https://sevalla.com/)
 - Tweet origen: [Ver en X](https://x.com/csaba_kissi/status/2112068533924626841)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/csaba_kissi/status/2079093085955657992)

@@ -8,6 +8,8 @@ tags:
   - css
   - spring
   - animaciones
+  - tipografia
+  - animacion
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:52:51.924Z'
@@ -18,6 +20,10 @@ entry_type: tool
 company: Colorion
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: recursos
+source_tweets:
+  - 'https://x.com/tranmautritam/status/2076963534307790926'
+  - 'https://x.com/noahelhadedy/status/2108461831928811941'
+updated_at: '2026-11-13T05:00:36.263Z'
 ---
 # Kinetics
 
@@ -38,3 +44,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://kinetics.colorion.co/](https://kinetics.colorion.co/)
 - Tweet origen: [Ver en X](https://x.com/tranmautritam/status/2076963534307790926)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/noahelhadedy/status/2108461831928811941)

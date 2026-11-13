@@ -3,9 +3,12 @@ name: Marketing Skills
 url: 'https://github.com/coreyhaines31/marketingskills'
 category: AI & Machine Learning
 tags:
-  - ai
+  - ai-agents
   - marketing
+  - cro
   - seo
+  - growth
+  - ai
   - copywriting
 status: to_try
 date_added: '2026-11-06'
@@ -17,6 +20,10 @@ entry_type: tool
 company: Corey Haines
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: recursos
+source_tweets:
+  - 'https://x.com/RoundtableSpace/status/2096844664980832620'
+  - 'https://x.com/hasantoxr/status/2096255783415779684'
+updated_at: '2026-11-13T05:00:36.266Z'
 ---
 # Marketing Skills
 
@@ -39,3 +46,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Repositorio de código (GitHub): [https://github.com/coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)
 - Tweet origen: [Ver en X](https://x.com/RoundtableSpace/status/2096844664980832620)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/hasantoxr/status/2096255783415779684)

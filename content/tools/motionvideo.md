@@ -18,10 +18,6 @@ author: Nero
 author_handle: neropursue
 entry_type: tool
 company: MotionVideo
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---

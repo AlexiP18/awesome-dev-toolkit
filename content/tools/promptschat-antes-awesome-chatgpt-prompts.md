@@ -5,13 +5,15 @@ website_url: 'https://prompts.chat/'
 category: AI & Machine Learning
 tags:
   - prompts
-  - prompt-engineering
   - llm
-  - mcp
   - open-source
-  - claude
+  - self-hosted
   - chatgpt
+  - claude
   - gemini
+  - biblioteca
+  - prompt-engineering
+  - mcp
   - cli
 stars: 175889
 status: to_try
@@ -24,6 +26,10 @@ entry_type: tool
 company: prompts.chat
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: consejos
+source_tweets:
+  - 'https://x.com/Nona_xai/status/2108594811196625386'
+  - 'https://x.com/0xJokker/status/2078242242142011624'
+updated_at: '2026-11-13T05:00:36.264Z'
 ---
 # prompts.chat (antes Awesome ChatGPT Prompts)
 
@@ -47,3 +53,6 @@ conjunto: consejos
 - Repositorio de código (GitHub): [https://github.com/f/prompts.chat](https://github.com/f/prompts.chat)
 - Sitio Web oficial: [https://prompts.chat/](https://prompts.chat/)
 - Tweet origen: [Ver en X](https://x.com/Nona_xai/status/2108594811196625386)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/0xJokker/status/2078242242142011624)

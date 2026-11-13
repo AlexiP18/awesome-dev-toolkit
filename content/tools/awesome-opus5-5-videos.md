@@ -7,10 +7,13 @@ tags:
   - awesome
   - awesome-list
   - claude
+  - claude-opus-5-5
+  - video-workflows
+  - prompts
+  - python
   - claude-opus
   - creative-coding
   - motion-graphics
-  - prompts
   - threejs
 stars: 935
 status: to_try
@@ -21,12 +24,9 @@ author: Leonard Rodman
 author_handle: RodmanAi
 entry_type: tool
 company: yihui-dev
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
+updated_at: '2026-11-13T05:00:36.271Z'
 ---
 # awesome-opus5-5-videos
 

@@ -7,6 +7,9 @@ tags:
   - tendencias
   - web-design
   - galeria
+  - inspiración
+  - curaduría
+  - ui
 status: to_try
 date_added: '2026-11-07'
 created_at: '2026-11-07T20:40:41.443Z'
@@ -16,6 +19,10 @@ author_handle: BardhylBytyqi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+source_tweets:
+  - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
+  - 'https://x.com/tranmautritam/status/2080583043929223469'
+updated_at: '2026-11-13T05:00:36.258Z'
 ---
 # Recent
 
@@ -36,3 +43,6 @@ conjunto: inspiracion
 ## 🔗 Referencias
 - Enlace de referencia: [https://recent.design/](https://recent.design/)
 - Tweet origen: [Ver en X](https://x.com/BardhylBytyqi/status/2118838961602748834)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/tranmautritam/status/2080583043929223469)

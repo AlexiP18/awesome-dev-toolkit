@@ -10,6 +10,9 @@ tags:
   - automatizacion
   - tiktok
   - youtube
+  - clips
+  - subtitulos
+  - reels
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T04:17:08.879Z'
@@ -20,6 +23,11 @@ entry_type: tool
 company: harry0703
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: recursos
+stars: 139146
+source_tweets:
+  - 'https://x.com/albacnt/status/2086901875979559130'
+  - 'https://x.com/albacnt/status/2109965800824078419'
+updated_at: '2026-11-13T05:00:36.265Z'
 ---
 # MoneyPrinterTurbo
 
@@ -42,3 +50,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Repositorio de código (GitHub): [https://github.com/harry0703/MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo)
 - Tweet origen: [Ver en X](https://x.com/albacnt/status/2086901875979559130)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/albacnt/status/2109965800824078419)

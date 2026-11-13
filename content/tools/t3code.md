@@ -1,12 +1,15 @@
 ---
 name: t3code
 url: 'https://github.com/pingdotgg/t3code'
-category: IDEs & Development Software
+category: Productivity & Tools
 tags:
   - ai
+  - agents
+  - coding
+  - open-source
+  - control-plane
   - agentes
   - dashboard
-  - open-source
   - ia
   - typescript
   - gratis
@@ -19,13 +22,14 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 company: pingdotgg
-location: 'null'
-salary: 'null'
 price: Gratis
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
-updated_at: '2026-11-02T03:18:43.947Z'
+updated_at: '2026-11-13T05:00:36.272Z'
 conjunto: recursos
+website_url: 'https://t3.codes/'
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2116071103206724053'
+  - 'https://x.com/dewyashtwts/status/2114337945427857916'
 ---
 # t3code
 
@@ -48,3 +52,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Repositorio de código (GitHub): [https://github.com/pingdotgg/t3code](https://github.com/pingdotgg/t3code)
 - Tweet origen: [Ver en X](https://x.com/csaba_kissi/status/2116071103206724053)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/dewyashtwts/status/2114337945427857916)

@@ -1,7 +1,6 @@
 ---
 name: Scrolltide
 url: 'https://www.scrolltide.co/'
-website_url: 'https://scrolltide.co/'
 category: Frontend & UI
 tags:
   - design

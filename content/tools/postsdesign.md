@@ -3,9 +3,12 @@ name: Posts.design
 url: 'https://posts.design/'
 category: Frontend & UI
 tags:
+  - social-media
+  - inspiracion
+  - branding
+  - diseno-grafico
   - diseño
   - inspiración
-  - social-media
   - ui
 status: to_try
 date_added: '2026-11-06'
@@ -16,6 +19,10 @@ author_handle: tranmautritam
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+source_tweets:
+  - 'https://x.com/tranmautritam/status/2080583043929223469'
+  - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
+updated_at: '2026-11-13T05:00:36.258Z'
 ---
 # Posts.design
 
@@ -36,3 +43,6 @@ conjunto: inspiracion
 ## 🔗 Referencias
 - Enlace de referencia: [https://posts.design/](https://posts.design/)
 - Tweet origen: [Ver en X](https://x.com/tranmautritam/status/2080583043929223469)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/BardhylBytyqi/status/2118838961602748834)

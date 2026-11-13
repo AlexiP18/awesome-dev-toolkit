@@ -8,6 +8,10 @@ tags:
   - analytics
   - dashboards
   - go
+  - frontend
+  - ui
+  - design-engineering
+  - web
 stars: 1275
 status: to_try
 date_added: '2026-11-07'
@@ -19,6 +23,7 @@ entry_type: tool
 company: Taleshape
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: recursos
+updated_at: '2026-11-13T05:00:36.261Z'
 ---
 # shaper
 

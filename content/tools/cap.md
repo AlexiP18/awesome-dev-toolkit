@@ -1,11 +1,12 @@
 ---
 name: Cap
-url: 'https://github.com/CapSoftware/Cap'
-website_url: 'https://cap.so/'
+url: 'https://github.com/CapSoftware/cap'
 category: Productivity & Tools
 tags:
-  - screen-recording
   - video
+  - screen-recording
+  - product-demo
+  - open-source
   - opensource
   - tauri
 stars: 24451
@@ -19,6 +20,10 @@ entry_type: tool
 company: Cap
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: producto
+source_tweets:
+  - 'https://x.com/RoundtableSpace/status/2096844664980832620'
+  - 'https://x.com/hasantoxr/status/2096255783415779684'
+updated_at: '2026-11-13T05:00:36.266Z'
 ---
 # Cap
 
@@ -42,3 +47,6 @@ conjunto: producto
 - Repositorio de código (GitHub): [https://github.com/CapSoftware/Cap](https://github.com/CapSoftware/Cap)
 - Sitio Web oficial: [https://cap.so/](https://cap.so/)
 - Tweet origen: [Ver en X](https://x.com/RoundtableSpace/status/2096844664980832620)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/hasantoxr/status/2096255783415779684)

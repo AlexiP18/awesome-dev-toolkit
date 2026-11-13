@@ -14,6 +14,7 @@ source_tweet: 'https://x.com/astral_sh/status/987654321'
 author: Astral
 created_at: '2026-10-16T21:05:36.327Z'
 conjunto: recursos
+entry_type: tool
 ---
 # Astral UV
 
