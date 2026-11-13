@@ -4,21 +4,51 @@ import matter from 'gray-matter';
 import { ClassificationResult, EntryType, ToolConjunto, ToolFrontmatter, ToolItem, ToolStatus } from './types.js';
 import { GitHubMetadata } from './github.js';
 import { markRepoPathDeleted, unmarkRepoPathDeleted } from './github_sync.js';
+import { coerceCategory } from './category_manager.js';
+import { canonicalUrlKey, preferredDisplayUrl, productKeys, sameProduct } from './url_normalize.js';
 
-const TOOLS_DIR = path.resolve(process.cwd(), 'content/tools');
-const TIPS_DIR = path.resolve(process.cwd(), 'content/tips');
-const JOBS_DIR = path.resolve(process.cwd(), 'content/jobs');
+export function contentRoot(): string {
+  return process.env.CONTENT_DIR
+    ? path.resolve(process.env.CONTENT_DIR)
+    : path.resolve(process.cwd(), 'content');
+}
+
+export function toolsDir(): string {
+  return path.join(contentRoot(), 'tools');
+}
+export function tipsDir(): string {
+  return path.join(contentRoot(), 'tips');
+}
+export function jobsDir(): string {
+  return path.join(contentRoot(), 'jobs');
+}
 
 export function ensureToolsDirExists(): void {
-  if (!fs.existsSync(TOOLS_DIR)) {
-    fs.mkdirSync(TOOLS_DIR, { recursive: true });
+  for (const dir of [toolsDir(), tipsDir(), jobsDir()]) {
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
   }
-  if (!fs.existsSync(TIPS_DIR)) {
-    fs.mkdirSync(TIPS_DIR, { recursive: true });
-  }
-  if (!fs.existsSync(JOBS_DIR)) {
-    fs.mkdirSync(JOBS_DIR, { recursive: true });
-  }
+}
+
+const VALID_ENTRY_TYPES: EntryType[] = ['tool', 'product_showcase', 'tech_tip', 'job_remote', 'tech_product'];
+
+/** Conserva tech_product y product_showcase; el tipo de empleo y el de consejo siguen mandando en su categoría. */
+export function resolveEntryType(requested: string | undefined, category: string): EntryType {
+  const req = (requested || '').trim() as EntryType;
+  if (category === 'Trabajo & Freelance' || req === 'job_remote') return 'job_remote';
+  if (req === 'tech_product' || req === 'product_showcase') return req;
+  if (category === 'Productos Tecnológicos & Hardware') return 'tech_product';
+  if (category === 'Empresas & Productos') return 'product_showcase';
+  if (req === 'tech_tip' || category === 'Consejos & Buenas Prácticas') return 'tech_tip';
+  if (VALID_ENTRY_TYPES.includes(req)) return req;
+  return 'tool';
+}
+
+export function directoryForEntry(entry: EntryType, category: string): string {
+  if (entry === 'job_remote' || category === 'Trabajo & Freelance') return jobsDir();
+  if (entry === 'tech_tip' || category === 'Consejos & Buenas Prácticas') return tipsDir();
+  return toolsDir();
 }
 
 export function slugify(text: string): string {
@@ -34,59 +64,75 @@ export function slugify(text: string): string {
 /**
  * Normalizes a URL for duplicate comparison:
  * e.g. "https://www.Jiro.build/?ref=x#top" -> "jiro.build"
- * e.g. "https://github.com/astral-sh/uv.git/" -> "github.com/astral-sh/uv"
+ * e.g. "https://github.com/Astral-Sh/uv.git/" -> "github.com/astral-sh/uv"
  */
 export function normalizeUrlForComparison(rawUrl?: string): string {
-  if (!rawUrl) return '';
-  let u = rawUrl.trim().toLowerCase();
-  if (!u) return '';
-  u = u.replace(/^https?:\/\//, '');
-  u = u.replace(/^www\./, '');
-  u = u.split('?')[0].split('#')[0];
-  u = u.replace(/\.git\/?$/, '');
-  u = u.replace(/\/+$/, '');
+  return canonicalUrlKey(rawUrl);
+}
 
-  // Normalizar dominios de X / Twitter
-  if (u.startsWith('twitter.com/')) {
-    u = 'x.com/' + u.slice('twitter.com/'.length);
-  }
-  if (u.startsWith('x.com/')) {
-    // Si no contiene un ID de status específico, ignorar para comparación de herramienta
-    if (!u.includes('/status/')) {
-      return '';
-    }
-  }
-  return u;
+export interface ExistingToolCandidate {
+  name?: string;
+  url?: string;
+  websiteUrl?: string;
+  website_url?: string;
 }
 
 /**
- * Checks if a tool already exists in the catalog by normalized URL or by slug/name.
+ * Misma ficha si comparten URL canónica, si el repo y la landing son el mismo producto,
+ * o si el slug coincide y las URLs no se contradicen.
  */
 export function findExistingTool(
-  candidate: { name?: string; url?: string },
+  candidate: ExistingToolCandidate,
   existingTools?: ToolItem[]
 ): ToolItem | undefined {
   const tools = existingTools || loadAllTools();
-  const targetUrl = normalizeUrlForComparison(candidate.url);
+  const website = candidate.websiteUrl || candidate.website_url;
   const targetSlug = candidate.name ? slugify(candidate.name) : '';
 
   for (const tool of tools) {
-    // 1. Check by normalized canonical URL
-    const toolUrl = normalizeUrlForComparison(tool.frontmatter.url);
-    if (targetUrl && toolUrl && targetUrl === toolUrl) {
+    if (
+      sameProduct(
+        { url: candidate.url, website, name: candidate.name },
+        { url: tool.frontmatter.url, website: tool.frontmatter.website_url, name: tool.frontmatter.name }
+      )
+    ) {
       return tool;
     }
+  }
 
-    // 2. Check by slug or normalized name
-    if (targetSlug) {
+  if (targetSlug) {
+    const candKey = canonicalUrlKey(candidate.url);
+    for (const tool of tools) {
       const existingNameSlug = slugify(tool.frontmatter.name || '');
-      if (tool.slug === targetSlug || existingNameSlug === targetSlug) {
-        return tool;
-      }
+      if (tool.slug !== targetSlug && existingNameSlug !== targetSlug) continue;
+      const toolKey = canonicalUrlKey(tool.frontmatter.url);
+      if (!candKey || !toolKey || candKey === toolKey) return tool;
     }
   }
 
   return undefined;
+}
+
+const saveTail = new Map<string, Promise<unknown>>();
+
+export function dedupLockKey(candidate: ExistingToolCandidate): string {
+  const keys = [...productKeys(candidate.url, candidate.websiteUrl || candidate.website_url)].sort();
+  if (keys.length) return keys.join('|');
+  return `slug:${slugify(candidate.name || 'nota')}`;
+}
+
+/** Serializa guardados concurrentes del mismo producto (dos quick-save a la vez). */
+export function withSaveLock<T>(key: string, fn: () => T | Promise<T>): Promise<T> {
+  const prev = saveTail.get(key) ?? Promise.resolve();
+  const run = prev.then(() => fn(), () => fn());
+  const settled = run.then(
+    () => undefined,
+    () => undefined
+  );
+  saveTail.set(key, settled);
+  return run.finally(() => {
+    if (saveTail.get(key) === settled) saveTail.delete(key);
+  });
 }
 
 export function extractAuthorFromTweet(sourceTweet?: string): { author?: string; handle?: string } {
@@ -102,14 +148,50 @@ export function extractAuthorFromTweet(sourceTweet?: string): { author?: string;
   return {};
 }
 
-function cleanFrontmatter(obj: Record<string, any>): Record<string, any> {
+export function isBlankishString(value: unknown): boolean {
+  if (typeof value !== 'string') return false;
+  const trimmed = value.trim().toLowerCase();
+  return trimmed === '' || trimmed === 'null' || trimmed === 'undefined';
+}
+
+export function cleanFrontmatter(obj: Record<string, any>): Record<string, any> {
   const cleaned: Record<string, any> = {};
   for (const [key, value] of Object.entries(obj)) {
+    if (typeof value === 'string') {
+      if (isBlankishString(value)) continue;
+      cleaned[key] = value.trim();
+      continue;
+    }
+    if (Array.isArray(value)) {
+      const items = value.filter((item) => {
+        if (item === undefined || item === null) return false;
+        if (typeof item === 'string') return !isBlankishString(item);
+        return true;
+      });
+      if (items.length) cleaned[key] = items;
+      continue;
+    }
     if (value !== undefined && value !== null && value !== '') {
       cleaned[key] = value;
     }
   }
+  const urlKey = canonicalUrlKey(cleaned.url);
+  const webKey = canonicalUrlKey(cleaned.website_url);
+  if (urlKey && webKey && urlKey === webKey) delete cleaned.website_url;
   return cleaned;
+}
+
+function uniqueStrings(values: Array<string | undefined | null>): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const value of values) {
+    if (!value || isBlankishString(value)) continue;
+    const trimmed = value.trim();
+    if (seen.has(trimmed)) continue;
+    seen.add(trimmed);
+    out.push(trimmed);
+  }
+  return out;
 }
 
 export interface CreateNoteParams {
@@ -134,34 +216,46 @@ export function createOrUpdateToolNote(
 ): { filePath: string; slug: string; alreadyExisted: boolean } {
   ensureToolsDirExists();
 
-  // Check if this tool is already registered (by URL or Name/Slug)
+  const fresh = loadAllTools();
+  const seenPaths = new Set<string>();
+  const tools = [...(existingTools || []), ...fresh].filter((tool) => {
+    if (!tool?.filePath || seenPaths.has(tool.filePath)) return false;
+    seenPaths.add(tool.filePath);
+    return true;
+  });
+
   const duplicate = findExistingTool(
     {
       name: params.classification.name,
       url: params.classification.canonicalUrl,
+      websiteUrl: params.classification.websiteUrl,
     },
-    existingTools
+    tools
   );
+
+  let isDupBroken = false;
+  let hasNewThreadPrompts = false;
 
   if (duplicate) {
     const dupUrl = duplicate.frontmatter.url;
     const newUrl = params.classification.canonicalUrl;
-    const isDupBroken =
+    isDupBroken =
       !dupUrl ||
-      dupUrl === 'undefined' ||
-      dupUrl === 'null' ||
+      isBlankishString(dupUrl) ||
       dupUrl.endsWith('/undefined') ||
       Boolean(
         newUrl &&
-          dupUrl.toLowerCase() !== newUrl.toLowerCase() &&
+          canonicalUrlKey(dupUrl) &&
+          canonicalUrlKey(dupUrl) !== canonicalUrlKey(newUrl) &&
           newUrl.toLowerCase().startsWith(dupUrl.toLowerCase())
       );
     const hasNewValidTweet = Boolean(
       params.sourceTweet &&
       /\/status\/\d{10,}/.test(params.sourceTweet) &&
-      duplicate.frontmatter.source_tweet !== params.sourceTweet
+      duplicate.frontmatter.source_tweet !== params.sourceTweet &&
+      !(duplicate.frontmatter.source_tweets || []).includes(params.sourceTweet)
     );
-    const hasNewThreadPrompts = Boolean(
+    hasNewThreadPrompts = Boolean(
       params.classification.keyHighlights.some((h) => h.includes('###') || h.includes('```')) &&
       (!duplicate.content.includes('```') ||
         duplicate.content.includes('Pendiente de recopilar') ||
@@ -184,52 +278,78 @@ export function createOrUpdateToolNote(
     );
   }
 
-  const isJob = params.classification.entryType === 'job_remote' || params.classification.category === 'Trabajo & Freelance';
-  const isTip = !isJob && (params.classification.entryType === 'tech_tip' || params.classification.category === 'Consejos & Buenas Prácticas');
-  const targetDir = isJob ? JOBS_DIR : isTip ? TIPS_DIR : TOOLS_DIR;
+  const category = coerceCategory(params.classification.category, params.classification.entryType);
+  const entryType = resolveEntryType(params.classification.entryType, category);
+  const isJob = entryType === 'job_remote';
+  const isTip = entryType === 'tech_tip';
+  const targetDir = directoryForEntry(entryType, category);
 
-  const slug = slugify(params.classification.name);
-  const filePath = path.join(targetDir, `${slug}.md`);
+  const slug = duplicate?.slug || slugify(params.classification.name);
+  let filePath = duplicate?.filePath || path.join(targetDir, `${slug}.md`);
+  if (duplicate && path.dirname(duplicate.filePath) !== targetDir) {
+    filePath = path.join(targetDir, `${slug}.md`);
+  }
 
   const now = new Date();
   const nowIso = now.toISOString();
   const today = nowIso.split('T')[0];
 
-  let finalUrl = (params.classification.canonicalUrl || '').trim();
-  if (!finalUrl || finalUrl === 'undefined' || finalUrl === 'null') {
-    finalUrl = params.classification.websiteUrl || params.sourceTweet || '#';
-  }
+  let finalUrl = preferredDisplayUrl([
+    params.classification.canonicalUrl,
+    duplicate?.frontmatter.url,
+    params.classification.websiteUrl,
+    params.sourceTweet,
+  ]);
+  if (!finalUrl) finalUrl = '#';
 
   const tweetAuthorInfo = extractAuthorFromTweet(params.sourceTweet);
   const authorName = params.author?.trim() || tweetAuthorInfo.author;
   const authorHandle = tweetAuthorInfo.handle || (authorName?.startsWith('@') ? authorName.slice(1) : undefined);
 
+  const mergedTags = uniqueStrings([
+    ...(duplicate?.frontmatter.tags || []),
+    ...(params.classification.tags || []),
+  ]).map((tag) => tag.toLowerCase());
+  const mergedTweets = uniqueStrings([
+    duplicate?.frontmatter.source_tweet,
+    ...(duplicate?.frontmatter.source_tweets || []),
+    params.sourceTweet,
+  ]);
+
   const frontmatter: ToolFrontmatter = {
-    name: params.classification.name,
+    name: duplicate?.frontmatter.name || params.classification.name,
     url: finalUrl,
-    website_url: params.classification.websiteUrl,
-    category: params.classification.category,
-    conjunto: params.classification.conjunto || (isTip ? 'consejos' : 'recursos'),
-    tags: params.classification.tags,
-    stars: params.githubMeta?.stars,
-    status: params.initialStatus || 'to_try',
-    date_added: today,
-    created_at: nowIso,
-    source_tweet: params.sourceTweet,
-    author: authorName,
-    author_handle: authorHandle,
-    entry_type: isJob ? 'job_remote' : isTip ? 'tech_tip' : 'tool',
-    company: params.classification.company || params.author,
-    location: params.classification.location || undefined,
-    salary: params.classification.salary || undefined,
-    price: params.classification.price || undefined,
-    job_type: params.classification.jobType || undefined,
-    has_academic_promo: params.classification.hasAcademicPromo || undefined,
-    academic_promo_details: params.classification.academicPromoDetails || undefined,
-    classified_by: params.providerUsed || undefined,
+    website_url: preferredDisplayUrl([
+      params.classification.websiteUrl,
+      duplicate?.frontmatter.website_url,
+      !canonicalUrlKey(params.classification.canonicalUrl).startsWith('github.com/')
+        ? params.classification.canonicalUrl
+        : undefined,
+    ]) || undefined,
+    category,
+    conjunto: params.classification.conjunto || duplicate?.frontmatter.conjunto || (isTip ? 'consejos' : 'recursos'),
+    tags: mergedTags,
+    stars: params.githubMeta?.stars ?? duplicate?.frontmatter.stars,
+    status: duplicate?.frontmatter.status || params.initialStatus || 'to_try',
+    date_added: duplicate?.frontmatter.date_added || today,
+    created_at: duplicate?.frontmatter.created_at || nowIso,
+    updated_at: duplicate ? nowIso : undefined,
+    source_tweet: mergedTweets[0],
+    source_tweets: mergedTweets.length > 1 ? mergedTweets : undefined,
+    author: authorName || duplicate?.frontmatter.author,
+    author_handle: authorHandle || duplicate?.frontmatter.author_handle,
+    entry_type: entryType,
+    company: params.classification.company || duplicate?.frontmatter.company || params.author,
+    location: params.classification.location || duplicate?.frontmatter.location,
+    salary: params.classification.salary || duplicate?.frontmatter.salary,
+    price: params.classification.price || duplicate?.frontmatter.price,
+    job_type: params.classification.jobType || duplicate?.frontmatter.job_type,
+    has_academic_promo: params.classification.hasAcademicPromo || duplicate?.frontmatter.has_academic_promo || undefined,
+    academic_promo_details: params.classification.academicPromoDetails || duplicate?.frontmatter.academic_promo_details,
+    classified_by: params.providerUsed || duplicate?.frontmatter.classified_by,
   };
 
-  const isProduct = !isJob && !isTip && (frontmatter.conjunto === 'producto' || !!frontmatter.price);
+  const isProduct = entryType === 'tech_product' || entryType === 'product_showcase' || (!isJob && !isTip && (frontmatter.conjunto === 'producto' || (!!frontmatter.price && !isBlankishString(frontmatter.price))));
 
   const highlightsMd = params.classification.keyHighlights.length
     ? params.classification.keyHighlights
@@ -296,11 +416,36 @@ ${highlightsMd}
 ${frontmatter.website_url ? `- Sitio Web oficial: [${frontmatter.website_url}](${frontmatter.website_url})\n` : ''}${params.sourceTweet && params.sourceTweet !== params.classification.canonicalUrl ? `- Tweet origen: [Ver en X](${params.sourceTweet})\n` : ''}
 `;
 
-  const fileContent = matter.stringify(markdownBody.trim() + '\n', cleanFrontmatter(frontmatter));
+  const keepExistingBody =
+    Boolean(duplicate) &&
+    !isDupBroken &&
+    !hasNewThreadPrompts &&
+    duplicate!.content.trim().length > 80;
+
+  const fileContent = matter.stringify(
+    (keepExistingBody ? duplicate!.content.trim() : markdownBody.trim()) + '\n',
+    cleanFrontmatter(frontmatter)
+  );
   fs.writeFileSync(filePath, fileContent, 'utf-8');
   unmarkRepoPathDeleted(filePath);
+  if (duplicate && duplicate.filePath !== filePath && fs.existsSync(duplicate.filePath)) {
+    fs.unlinkSync(duplicate.filePath);
+    markRepoPathDeleted(duplicate.filePath);
+  }
 
   return { filePath, slug, alreadyExisted: false };
+}
+
+export function createOrUpdateToolNoteLocked(
+  params: Parameters<typeof createOrUpdateToolNote>[0],
+  existingTools?: ToolItem[]
+): Promise<{ filePath: string; slug: string; alreadyExisted: boolean }> {
+  const key = dedupLockKey({
+    name: params.classification.name,
+    url: params.classification.canonicalUrl,
+    websiteUrl: params.classification.websiteUrl,
+  });
+  return withSaveLock(key, () => createOrUpdateToolNote(params, existingTools));
 }
 
 export function getToolRecency(item: { frontmatter?: ToolFrontmatter; mtimeMs?: number }): number {
@@ -325,9 +470,9 @@ export function loadAllTools(): ToolItem[] {
   const tools: ToolItem[] = [];
 
   const dirs = [
-    { dir: TOOLS_DIR, defaultType: 'tool' as const },
-    { dir: TIPS_DIR, defaultType: 'tech_tip' as const },
-    { dir: JOBS_DIR, defaultType: 'job_remote' as const },
+    { dir: toolsDir(), defaultType: 'tool' as const },
+    { dir: tipsDir(), defaultType: 'tech_tip' as const },
+    { dir: jobsDir(), defaultType: 'job_remote' as const },
   ];
 
   for (const { dir, defaultType } of dirs) {
@@ -340,7 +485,7 @@ export function loadAllTools(): ToolItem[] {
       const parsed = matter(content);
 
       const slug = path.basename(file, '.md');
-      const data = parsed.data as ToolFrontmatter;
+      const data = { ...(parsed.data as ToolFrontmatter) };
       if (!data.entry_type) {
         data.entry_type = defaultType;
       }
@@ -404,11 +549,11 @@ export function updateToolNote(slug: string, updates: {
   academic_promo_details?: string;
   entry_type?: EntryType;
 }): boolean {
-  let filePath = path.join(TOOLS_DIR, `${slug}.md`);
+  let filePath = path.join(toolsDir(), `${slug}.md`);
   if (!fs.existsSync(filePath)) {
-    filePath = path.join(TIPS_DIR, `${slug}.md`);
+    filePath = path.join(tipsDir(), `${slug}.md`);
     if (!fs.existsSync(filePath)) {
-      filePath = path.join(JOBS_DIR, `${slug}.md`);
+      filePath = path.join(jobsDir(), `${slug}.md`);
       if (!fs.existsSync(filePath)) {
         return false;
       }
@@ -439,6 +584,11 @@ export function updateToolNote(slug: string, updates: {
     updated_at: new Date().toISOString(),
   };
 
+  const category = coerceCategory(String(updatedFrontmatter.category || ''), updatedFrontmatter.entry_type);
+  const entryType = resolveEntryType(updatedFrontmatter.entry_type, category);
+  updatedFrontmatter.category = category;
+  updatedFrontmatter.entry_type = entryType;
+
   let body = parsed.content;
   if (updates.notes !== undefined) {
     body = updates.notes;
@@ -446,14 +596,7 @@ export function updateToolNote(slug: string, updates: {
 
   ensureToolsDirExists();
 
-  let targetDir = TOOLS_DIR;
-  if (updatedFrontmatter.entry_type === 'job_remote' || updatedFrontmatter.category === 'Trabajo & Freelance') {
-    targetDir = JOBS_DIR;
-  } else if (updatedFrontmatter.entry_type === 'tech_tip' || updatedFrontmatter.category === 'Consejos & Buenas Prácticas') {
-    targetDir = TIPS_DIR;
-  } else {
-    targetDir = TOOLS_DIR;
-  }
+  const targetDir = directoryForEntry(entryType, category);
 
   const targetPath = path.join(targetDir, `${slug}.md`);
   const newContent = matter.stringify(body, cleanFrontmatter(updatedFrontmatter));
@@ -468,11 +611,11 @@ export function updateToolNote(slug: string, updates: {
 }
 
 export function deleteToolNote(slug: string): boolean {
-  let filePath = path.join(TOOLS_DIR, `${slug}.md`);
+  let filePath = path.join(toolsDir(), `${slug}.md`);
   if (!fs.existsSync(filePath)) {
-    filePath = path.join(TIPS_DIR, `${slug}.md`);
+    filePath = path.join(tipsDir(), `${slug}.md`);
     if (!fs.existsSync(filePath)) {
-      filePath = path.join(JOBS_DIR, `${slug}.md`);
+      filePath = path.join(jobsDir(), `${slug}.md`);
       if (!fs.existsSync(filePath)) {
         return false;
       }
@@ -515,31 +658,39 @@ export function restoreToolNotes(items: Array<{
   let restoredCount = 0;
   let updatedCount = 0;
 
-  const allDirs = [TOOLS_DIR, TIPS_DIR, JOBS_DIR];
+  const allDirs = [toolsDir(), tipsDir(), jobsDir()];
 
   for (const item of items) {
     if (!item || !item.slug || !item.frontmatter || !item.frontmatter.name) continue;
     const safeSlug = slugify(item.slug);
-    const fm = item.frontmatter;
+    const category = coerceCategory(item.frontmatter.category, item.frontmatter.entry_type);
+    const entryType = resolveEntryType(item.frontmatter.entry_type, category);
+    const fm: ToolFrontmatter = {
+      ...item.frontmatter,
+      category,
+      entry_type: entryType,
+      url: preferredDisplayUrl([item.frontmatter.url, item.frontmatter.website_url]) || item.frontmatter.url,
+    };
+    const targetDir = directoryForEntry(entryType, category);
 
-    let targetDir = TOOLS_DIR;
-    if (fm.entry_type === 'job_remote' || fm.category === 'Trabajo & Freelance') {
-      targetDir = JOBS_DIR;
-    } else if (fm.entry_type === 'tech_tip' || fm.category === 'Consejos & Buenas Prácticas') {
-      targetDir = TIPS_DIR;
-    } else {
-      targetDir = TOOLS_DIR;
-    }
-
-    const targetPath = path.join(targetDir, `${safeSlug}.md`);
-    let existingPath: string | null = null;
-    for (const d of allDirs) {
-      const candidate = path.join(d, `${safeSlug}.md`);
-      if (fs.existsSync(candidate)) {
-        existingPath = candidate;
-        break;
+    const byIdentity = findExistingTool({
+      name: fm.name,
+      url: fm.url,
+      websiteUrl: fm.website_url,
+    });
+    let existingPath: string | null = byIdentity?.filePath || null;
+    if (!existingPath) {
+      for (const d of allDirs) {
+        const candidate = path.join(d, `${safeSlug}.md`);
+        if (fs.existsSync(candidate)) {
+          existingPath = candidate;
+          break;
+        }
       }
     }
+
+    const writeSlug = byIdentity?.slug || safeSlug;
+    const targetPath = path.join(targetDir, `${writeSlug}.md`);
 
     if (!existingPath) {
       const fileContent = matter.stringify((item.content || '').trim() + '\n', cleanFrontmatter(fm));

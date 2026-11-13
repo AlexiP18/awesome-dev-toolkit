@@ -3,6 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
 import { loadAllTools, updateToolNote, deleteToolNote, deleteToolNotes, restoreToolNotes } from '../pipeline/note_generator.js';
+import { buildVaultExport } from '../pipeline/export_vault.js';
 import { ingestResource } from '../pipeline/ingest.js';
 import { generateReadme } from '../pipeline/generate_readme.js';
 import { loadAllAuthorProfiles, analyzeAuthorWithAI } from '../pipeline/author_manager.js';
@@ -36,6 +37,20 @@ app.get(['/bookmarklet', '/bookmarklet.html'], (req, res) => {
 // Route for the popup quick-save window (bypasses X/Twitter Content-Security-Policy)
 app.get(['/quick-save', '/quick-save.html'], (req, res) => {
   res.sendFile(path.resolve(process.cwd(), 'src/web/public/quick-save.html'));
+});
+
+// GET lote JSON compatible con el inbox del segundo cerebro (vault)
+app.get('/api/export/vault', (req, res) => {
+  try {
+    const since = typeof req.query.since === 'string' ? req.query.since : undefined;
+    if (since && Number.isNaN(new Date(since).getTime())) {
+      return res.status(400).json({ success: false, error: 'since debe ser una fecha ISO o YYYY-MM-DD.' });
+    }
+    const batch = buildVaultExport(loadAllTools(), since);
+    res.json(batch);
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
 });
 
 // GET all tools

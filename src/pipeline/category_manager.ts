@@ -72,6 +72,43 @@ export function getAllCategoryNames(): string[] {
   return getAllCategories().map((c) => c.name);
 }
 
+/** Nombres que la IA o un respaldo escribieron y que no están en la taxonomía. */
+const CATEGORY_ALIASES: Record<string, string> = {
+  'ides & development software': 'Productivity & Tools',
+  'ides and development software': 'Productivity & Tools',
+  'ides': 'Productivity & Tools',
+  'document ai': 'Document AI & Extracción',
+  'document ai & extraccion': 'Document AI & Extracción',
+  'document ai & extracción': 'Document AI & Extracción',
+};
+
+export function isAllowedCategory(name?: string | null): boolean {
+  if (!name) return false;
+  const target = name.trim().toLowerCase();
+  return getAllCategoryNames().some((category) => category.toLowerCase() === target);
+}
+
+/**
+ * Devuelve una categoría de la lista permitida.
+ * Un alias conocido se migra; si el nombre no existe, manda el tipo de ficha y, en último caso, Other.
+ */
+export function coerceCategory(raw?: string | null, entryType?: string | null): string {
+  const allowed = getAllCategoryNames();
+  const trimmed = (raw || '').trim();
+  const direct = allowed.find((category) => category.toLowerCase() === trimmed.toLowerCase());
+  if (direct && direct.toLowerCase() !== 'other') return direct;
+
+  const alias = CATEGORY_ALIASES[trimmed.toLowerCase()];
+  if (alias && allowed.includes(alias)) return alias;
+
+  if (entryType === 'job_remote') return 'Trabajo & Freelance';
+  if (entryType === 'tech_tip') return 'Consejos & Buenas Prácticas';
+  if (entryType === 'tech_product') return 'Productos Tecnológicos & Hardware';
+  if (entryType === 'product_showcase') return 'Empresas & Productos';
+  if (direct) return direct;
+  return 'Other';
+}
+
 export function saveAllCategories(categories: CategoryDefinition[]): void {
   ensureCategoriesFile();
   fs.writeFileSync(CATEGORIES_FILE, JSON.stringify(categories, null, 2), 'utf-8');
