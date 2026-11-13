@@ -15,10 +15,11 @@
     "parse:archive": "tsx src/parsers/x_archive_parser.ts",
     "build:readme": "tsx src/pipeline/generate_readme.ts",
     "classify:conjuntos": "tsx src/pipeline/classify_conjuntos.ts",
-    "test": "tsx --test src/pipeline/catalog.test.ts",
+    "test": "tsx --test src/pipeline/catalog.test.ts src/pipeline/import_vault.test.ts",
     "validate": "tsx src/pipeline/validate_catalog.ts",
     "merge:duplicates": "tsx src/pipeline/merge_duplicates.ts",
-    "export:vault": "tsx src/pipeline/export_vault.ts"
+    "export:vault": "tsx src/pipeline/export_vault.ts",
+    "import:vault": "tsx src/pipeline/import_vault_batch.ts"
   },
   "repository": {
     "type": "git",

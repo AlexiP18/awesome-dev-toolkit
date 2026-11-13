@@ -224,6 +224,26 @@ curl "http://localhost:4000/api/export/vault?since=2026-11-01" -o inbox-x-bookma
 \`\`\`
 
 Copia ese archivo a \`inbox/x-bookmarks/\` del vault. El campo \`text\` es el resumen que quedó guardado en la ficha (el texto crudo del tweet no se almacena aparte). \`items[].summary\` va en español. \`note_tweet\` trae las notas personales si las hay y, si no, \`null\`.
+
+### 6. Importar un lote del vault
+Operación inversa: un JSON ya clasificado (el mismo arreglo de bookmarks) vuelve a \`content/\` sin llamar a la IA ni scrapear. Las categorías que no estén en la lista permitida se acercan a la más parecida. Si la URL ya existe y el nombre es otro producto, la ficha queda en revisión y no se escribe.
+
+\`\`\`bash
+npm run import:vault -- inbox-x-bookmarks.json
+npm run import:vault -- inbox-x-bookmarks.json --dry-run
+\`\`\`
+
+La salida es:
+
+\`\`\`text
+[Import vault] escritura inbox-x-bookmarks.json
+created: 0
+updated: 0
+skipped: 0
+needs-review: 0
+\`\`\`
+
+En simulación el prefijo es \`[Import vault] simulación\`. Repetir el mismo archivo no crea fichas: lo ya importado sale en \`skipped\`. Un tweet nuevo de un producto que ya estaba se anexa (\`updated\`).
 `;
 }
 
