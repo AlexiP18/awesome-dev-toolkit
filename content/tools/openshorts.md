@@ -1,6 +1,7 @@
 ---
 name: OpenShorts
-url: 'https://github.com/harry0703/MoneyPrinterTurbo'
+url: 'https://github.com/mutonby/openshorts'
+website_url: 'https://openshorts.app'
 category: 'Prompts, Art & Video'
 tags:
   - open-source
@@ -10,7 +11,7 @@ tags:
   - shorts
   - tiktok
   - reels
-stars: 139146
+stars: 7944
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:43:39.617Z'
@@ -37,8 +38,9 @@ conjunto: recursos
 - Código fuente disponible en GitHub para autoalojamiento y personalización
 
 ## 📝 Notas Personales (Segundo Cerebro)
-- Útil para reciclar podcasts, entrevistas o webinars largos y producir contenido social sin edición manual; revisa la licencia del repo antes de usarlo en producción.
+- Útil para reciclar podcasts, entrevistas o webinars largos y producir contenido social sin edición manual. No es MoneyPrinterTurbo: el repo es mutonby/openshorts y el sitio es openshorts.app.
 
 ## 🔗 Referencias
-- Repositorio de código (GitHub): [https://github.com/harry0703/MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo)
+- Repositorio de código (GitHub): [https://github.com/mutonby/openshorts](https://github.com/mutonby/openshorts)
+- Sitio Web oficial: [https://openshorts.app](https://openshorts.app)
 - Tweet origen: [Ver en X](https://x.com/albacnt/status/2109965800824078419)

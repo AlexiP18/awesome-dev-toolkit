@@ -19,6 +19,7 @@ entry_type: tool
 company: Taleshape
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: recursos
+updated_at: '2026-11-13T05:00:36.261Z'
 ---
 # shaper
 

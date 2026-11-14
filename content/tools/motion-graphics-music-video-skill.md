@@ -18,10 +18,6 @@ author: Leonard Rodman
 author_handle: RodmanAi
 entry_type: tool
 company: makevoid
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---

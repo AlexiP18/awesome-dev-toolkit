@@ -17,7 +17,6 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 company: Codrops (Tympanus)
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: inspiracion
 ---

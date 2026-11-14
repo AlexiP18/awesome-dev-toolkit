@@ -2,6 +2,8 @@
  * GitHub API enricher: fetches stars, description, primary language, and topics.
  */
 
+import { envInt, fetchWithRetry, safeErrorMessage } from './http_util.js';
+
 export interface GitHubMetadata {
   name: string;
   fullName: string;
@@ -29,8 +31,12 @@ export async function fetchGitHubRepoMetadata(
   }
 
   try {
-    const res = await fetch(url, { headers });
+    const res = await fetchWithRetry(url, {
+      headers,
+      timeoutMs: envInt('HTTP_TIMEOUT_MS', 8000),
+    }, { retries: envInt('HTTP_RETRIES', 2), label: `GitHub ${owner}/${repo}` });
     if (!res.ok) {
+      console.warn(`[GitHub Enricher] ${owner}/${repo} HTTP ${res.status}`);
       return null;
     }
 
@@ -46,7 +52,7 @@ export async function fetchGitHubRepoMetadata(
       license: data.license?.spdx_id || undefined,
     };
   } catch (error) {
-    console.error(`[GitHub Enricher] Error fetching ${owner}/${repo}:`, error);
+    console.error(`[GitHub Enricher] Error fetching ${owner}/${repo}: ${safeErrorMessage(error)}`);
     return null;
   }
 }

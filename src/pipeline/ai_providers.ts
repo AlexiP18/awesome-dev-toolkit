@@ -3,7 +3,8 @@ import { GoogleGenAI, Type } from '@google/genai';
 import { ClassificationResult, ToolCategory, EntryType, ToolConjunto } from './types.js';
 import { GitHubMetadata } from './github.js';
 import { isIgnoredNonToolUrl, cleanTrackingParams, WebPageMetadata } from './link_resolver.js';
-import { getAllCategories, getAllCategoryNames } from './category_manager.js';
+import { coerceCategory, getAllCategories, getAllCategoryNames } from './category_manager.js';
+import { envInt, fetchWithRetry, safeErrorMessage, withTimeout } from './http_util.js';
 
 dotenv.config();
 
@@ -193,16 +194,20 @@ Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
 `;
 }
 
+function blankish(value: unknown): string | undefined {
+  if (value == null) return undefined;
+  const text = String(value).trim();
+  if (!text || text.toLowerCase() === 'null' || text.toLowerCase() === 'undefined') return undefined;
+  return text;
+}
+
 function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: string): ClassificationResult[] {
   if (!Array.isArray(parsedList) || parsedList.length === 0) {
     return [];
   }
 
   return parsedList.map((parsed: any, index: number) => {
-    const availableCats = getAllCategoryNames();
-    let validCategory = availableCats.includes(parsed.category as string)
-      ? (parsed.category as ToolCategory)
-      : 'Other';
+    let validCategory = coerceCategory(parsed.category, parsed.entryType) as ToolCategory;
 
     const isJob = parsed.entryType === 'job_remote' || validCategory === 'Trabajo & Freelance';
     const isTip = !isJob && (parsed.entryType === 'tech_tip' || validCategory === 'Consejos & Buenas Prácticas');
@@ -347,7 +352,7 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
       (Array.isArray(parsed.tags) && parsed.tags.some((t: string) => ['academic', 'academico', 'académico', 'estudiante', 'estudiantes', 'educacion', 'educación', 'student', 'students'].includes(t.toLowerCase())))
     );
 
-    const academicPromoDetails = parsed.academicPromoDetails || parsed.academic_promo_details || undefined;
+    const academicPromoDetails = blankish(parsed.academicPromoDetails || parsed.academic_promo_details);
 
     const rawConjunto = String(parsed.conjunto || '').toLowerCase().trim();
     const validConjunto: ToolConjunto = (['recursos', 'inspiracion', 'producto', 'consejos'].includes(rawConjunto)
@@ -365,10 +370,10 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
       keyHighlights: Array.isArray(parsed.keyHighlights) ? parsed.keyHighlights : [],
       recommendedNotes: parsed.recommendedNotes || '',
       entryType,
-      company: parsed.company || undefined,
-      location: parsed.location || undefined,
-      salary: parsed.salary || undefined,
-      price: parsed.price || undefined,
+      company: blankish(parsed.company),
+      location: blankish(parsed.location),
+      salary: blankish(parsed.salary),
+      price: blankish(parsed.price),
       jobType: parsed.jobType || (isJob ? 'remote_job' : undefined),
       hasAcademicPromo,
       academicPromoDetails,
@@ -416,23 +421,24 @@ async function tryGemini(params: ClassifyInput): Promise<ClassificationResult[]>
     },
   };
 
+  const geminiTimeout = envInt('AI_REQUEST_TIMEOUT_MS', 45000);
   try {
-    const response = await ai.models.generateContent({
+    const response = await withTimeout(ai.models.generateContent({
       model: targetModel,
       contents: prompt,
       config: schemaConfig,
-    });
+    }), geminiTimeout, `Gemini ${targetModel}`);
 
     const parsed = JSON.parse(response.text || '[]');
     return normalizeRawOutput(parsed, params.urls, params.sourceTweet);
   } catch (err: any) {
     if (targetModel !== 'gemini-2.5-flash') {
-      console.warn(`[Gemini] ${targetModel} falló (${err?.message || err}). Intentando respaldo inmediato con gemini-2.5-flash...`);
-      const retryRes = await ai.models.generateContent({
+      console.warn(`[Gemini] ${targetModel} falló (${safeErrorMessage(err)}). Intentando respaldo inmediato con gemini-2.5-flash...`);
+      const retryRes = await withTimeout(ai.models.generateContent({
         model: 'gemini-2.5-flash',
         contents: prompt,
         config: schemaConfig,
-      });
+      }), geminiTimeout, 'Gemini gemini-2.5-flash');
       const parsed = JSON.parse(retryRes.text || '[]');
       return normalizeRawOutput(parsed, params.urls, params.sourceTweet);
     }
@@ -500,11 +506,14 @@ async function callOpenAICompatible(options: {
     temperature: 0.1,
   };
 
-  let res = await fetch(options.endpoint, {
+  const timeoutMs = envInt('AI_REQUEST_TIMEOUT_MS', 45000);
+  const retries = envInt('AI_REQUEST_RETRIES', 2);
+  let res = await fetchWithRetry(options.endpoint, {
     method: 'POST',
     headers,
     body: JSON.stringify(payload),
-  });
+    timeoutMs,
+  }, { retries, label: options.providerName });
 
   // Si el proxy o modelo no soporta response_format: { type: 'json_object' } (ej. ciertos modelos Claude/MiniMax)
   if (!res.ok && (res.status === 400 || res.status === 422)) {
@@ -514,11 +523,13 @@ async function callOpenAICompatible(options: {
       errorBody.toLowerCase().includes('json_object')
     ) {
       delete payload.response_format;
-      res = await fetch(options.endpoint, {
+      console.warn(`[IA] ${options.providerName} no acepta response_format json_object. Reintentando sin ese campo.`);
+      res = await fetchWithRetry(options.endpoint, {
         method: 'POST',
         headers,
         body: JSON.stringify(payload),
-      });
+        timeoutMs,
+      }, { retries, label: `${options.providerName} (sin response_format)` });
     } else {
       throw new Error(`[${options.providerName}] HTTP ${res.status}: ${errorBody.slice(0, 180)}`);
     }
@@ -996,9 +1007,10 @@ export async function classifyWithProviderCascade(
     if (!provider.hasKey()) continue;
 
     try {
+      const started = Date.now();
       console.log(`[IA] Intentando clasificar con: ${provider.name}...`);
       const results = await provider.fn(params);
-      console.log(`[IA] ✅ Éxito con proveedor: ${provider.name} (${results.length} herramientas identificadas)`);
+      console.log(`[IA] ✅ Éxito con proveedor: ${provider.name} (${results.length} herramientas, ${Date.now() - started}ms)`);
 
       let switchNotice: string | undefined = undefined;
       const geminiFailed = errors.find(
@@ -1017,8 +1029,9 @@ export async function classifyWithProviderCascade(
 
       return { results, providerUsed: provider.name, switchNotice };
     } catch (err: any) {
-      console.warn(`[IA] ⚠️ Falló ${provider.name}: ${err?.message || err}. Probando siguiente proveedor...`);
-      errors.push(`${provider.name}: ${err?.message || err}`);
+      const message = safeErrorMessage(err);
+      console.warn(`[IA] ⚠️ Falló ${provider.name}: ${message}. Probando siguiente proveedor...`);
+      errors.push(`${provider.name}: ${message}`);
     }
   }
 
@@ -1032,7 +1045,7 @@ export async function classifyWithProviderCascade(
       console.log(`[IA Resiliencia] Gemini 3.8 Flash en 503 y sin otros proveedores disponibles. Probando rescate de emergencia con Gemini 2.5 Flash...`);
       const emergencyAi = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
       const prompt = buildUserPrompt(params);
-      const res = await emergencyAi.models.generateContent({
+      const res = await withTimeout(emergencyAi.models.generateContent({
         model: 'gemini-2.5-flash',
         contents: prompt,
         config: {
@@ -1063,7 +1076,7 @@ export async function classifyWithProviderCascade(
             },
           },
         },
-      });
+      }), envInt('AI_REQUEST_TIMEOUT_MS', 45000), 'Gemini 2.5 Flash emergencia');
       const parsed = JSON.parse(res.text || '[]');
       const results = normalizeRawOutput(parsed, params.urls, params.sourceTweet);
       const switchNotice = `⚠️ Google Gemini (3.8 Flash) experimentó una sobrecarga temporal (503). Al no haber claves configuradas para DeepSeek o MiniMax en tu .env, se usó temporalmente Gemini 2.5 Flash de emergencia para no perder el análisis.`;
@@ -1303,22 +1316,22 @@ async function tryGeminiAuthor(params: AuthorAnalysisInput): Promise<AuthorProfi
   };
 
   try {
-    const response = await ai.models.generateContent({
+    const response = await withTimeout(ai.models.generateContent({
       model: targetModel,
       contents: prompt,
       config: authorSchemaConfig,
-    });
+    }), envInt('AI_REQUEST_TIMEOUT_MS', 45000), `Gemini autor ${targetModel}`);
 
     const parsed = JSON.parse(response.text || '{}');
     return normalizeAuthorProfile(parsed, params);
   } catch (err: any) {
     if (targetModel !== 'gemini-2.5-flash') {
       console.warn(`[Gemini Author] ${targetModel} falló. Reintentando con gemini-2.5-flash...`);
-      const retry = await ai.models.generateContent({
+      const retry = await withTimeout(ai.models.generateContent({
         model: 'gemini-2.5-flash',
         contents: prompt,
         config: authorSchemaConfig,
-      });
+      }), envInt('AI_REQUEST_TIMEOUT_MS', 45000), 'Gemini autor respaldo');
       const parsed = JSON.parse(retry.text || '{}');
       return normalizeAuthorProfile(parsed, params);
     }
@@ -1356,11 +1369,12 @@ async function callOpenAICompatibleAuthor(options: {
     temperature: 0.2,
   };
 
-  const res = await fetch(options.endpoint, {
+  const res = await fetchWithRetry(options.endpoint, {
     method: 'POST',
     headers,
     body: JSON.stringify(payload),
-  });
+    timeoutMs: envInt('AI_REQUEST_TIMEOUT_MS', 45000),
+  }, { retries: envInt('AI_REQUEST_RETRIES', 2), label: options.providerName || 'autor' });
 
   if (!res.ok) {
     const errorBody = await res.text();
@@ -1944,11 +1958,12 @@ Devuelve un array JSON de objetos donde cada elemento tenga:
     temperature: 0.1,
   };
 
-  const res = await fetch(options.endpoint, {
+  const res = await fetchWithRetry(options.endpoint, {
     method: 'POST',
     headers,
     body: JSON.stringify(payload),
-  });
+    timeoutMs: envInt('AI_REQUEST_TIMEOUT_MS', 45000),
+  }, { retries: envInt('AI_REQUEST_RETRIES', 2), label: `hilo ${options.model}` });
 
   if (!res.ok) {
     const errorBody = await res.text();
@@ -2023,7 +2038,7 @@ Devuelve un array JSON de objetos donde cada elemento tenga:
 - "prompt": El texto exacto del prompt o comando entre comillas para copiar y pegar. Si no es un prompt exacto, el contenido central.
 - "description": Explicación breve de lo que hace o requisitos (opcional)`;
 
-      const res = await ai.models.generateContent({
+      const res = await withTimeout(ai.models.generateContent({
         model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
         contents: prompt,
         config: {
@@ -2041,7 +2056,7 @@ Devuelve un array JSON de objetos donde cada elemento tenga:
             },
           },
         },
-      });
+      }), envInt('AI_REQUEST_TIMEOUT_MS', 45000), 'Gemini hilo');
 
       const parsed = JSON.parse(res.text || '[]');
       if (Array.isArray(parsed) && parsed.length > 0) {
@@ -2084,7 +2099,7 @@ Devuelve un array JSON de objetos donde cada elemento tenga:
 - "prompt": El texto exacto del prompt o comando entre comillas para copiar y pegar. Si no es un prompt exacto, el contenido central.
 - "description": Explicación breve de lo que hace o requisitos (opcional)`;
 
-      const res = await ai.models.generateContent({
+      const res = await withTimeout(ai.models.generateContent({
         model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
         contents: prompt,
         config: {
@@ -2102,7 +2117,7 @@ Devuelve un array JSON de objetos donde cada elemento tenga:
             },
           },
         },
-      });
+      }), envInt('AI_REQUEST_TIMEOUT_MS', 45000), 'Gemini hilo');
 
       const parsed = JSON.parse(res.text || '[]');
       if (Array.isArray(parsed) && parsed.length > 0) {

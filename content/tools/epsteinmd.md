@@ -16,7 +16,7 @@ created_at: '2026-11-04T18:32:44.887Z'
 source_tweet: 'https://x.com/shipper_now/status/2110637576935891122'
 author: Shipper
 author_handle: shipper_now
-entry_type: tool
+entry_type: product_showcase
 company: Shipper
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: consejos

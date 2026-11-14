@@ -1,18 +1,20 @@
 ---
 name: cmux
-url: 'https://github.com/taleshape-com/shaper'
-category: Frontend & UI
+url: 'https://github.com/manaflow-ai/cmux'
+website_url: 'https://cmux.com'
+category: CLI & Terminal
 tags:
-  - frontend
-  - ui
-  - design-engineering
-  - web
-stars: 1275
+  - terminal
+  - macos
+  - ghostty
+  - ai-agents
+  - cli
+stars: 28780
 status: to_try
 date_added: '2026-11-07'
 created_at: '2026-11-07T20:38:59.247Z'
 source_tweet: 'https://x.com/noahelhadedy/status/2118750897454944486'
-author: "\U0001D40D\U0001D428\U0001D41A\U0001D421"
+author: "𝐍𝐨𝐚𝐡"
 author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
@@ -20,20 +22,21 @@ conjunto: recursos
 ---
 # cmux
 
-> Sitio de cmux orientado a ingeniería de diseño, con recursos y experimentos visuales para construir interfaces web.
+> Terminal open source para macOS, basada en Ghostty, con pestañas verticales y notificaciones pensadas para trabajar con varios agentes de código a la vez.
 
 **👤 Publicado / Recomendado por:** 𝐍𝐨𝐚𝐡 ([@noahelhadedy](https://x.com/noahelhadedy))
 
 ## 💡 ¿Por qué destaca?
-- Recursos visuales para frontend y diseño de interfaces
+- Pestañas verticales para seguir varias sesiones de agentes sin perder el hilo
 
-- Enfoque en composición y experimentación web
+- Notificaciones cuando un agente termina o pide atención
 
-- Acceso directo como sitio de referencia para design engineers
+- Base Ghostty, con enfoque en multitarea y en poder automatizar el terminal
 
 ## 📝 Notas Personales (Segundo Cerebro)
-- Visítalo para inspirarte en composiciones de UI y enfoques de diseño-ingeniería aplicables a prototipos frontend.
+- La ficha original apuntaba por error al repo de shaper. El proyecto es el terminal de manaflow-ai, con sitio en cmux.com.
 
 ## 🔗 Referencias
-- Repositorio de código (GitHub): [https://github.com/taleshape-com/shaper](https://github.com/taleshape-com/shaper)
+- Repositorio de código (GitHub): [https://github.com/manaflow-ai/cmux](https://github.com/manaflow-ai/cmux)
+- Sitio Web oficial: [https://cmux.com](https://cmux.com)
 - Tweet origen: [Ver en X](https://x.com/noahelhadedy/status/2118750897454944486)

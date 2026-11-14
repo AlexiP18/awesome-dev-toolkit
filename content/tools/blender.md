@@ -9,6 +9,8 @@ tags:
   - rendering
   - open-source
   - computer-graphics
+  - dev
+  - tool
 stars: 21589
 status: to_try
 date_added: '2026-11-03'
@@ -17,13 +19,13 @@ source_tweet: 'https://x.com/Marlenuii/status/2111419391271186795'
 author: Marlen
 author_handle: Marlenuii
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
 conjunto: producto
+website_url: 'https://blender.org/'
+source_tweets:
+  - 'https://x.com/Marlenuii/status/2111419391271186795'
+  - 'https://x.com/Y0urDumble/status/2114084322227503206'
+updated_at: '2026-11-13T05:00:36.271Z'
 ---
 # Blender
 
@@ -44,3 +46,6 @@ conjunto: producto
 ## 🔗 Referencias
 - Repositorio de código (GitHub): [https://github.com/blender/blender](https://github.com/blender/blender)
 - Tweet origen: [Ver en X](https://x.com/Marlenuii/status/2111419391271186795)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/Y0urDumble/status/2114084322227503206)

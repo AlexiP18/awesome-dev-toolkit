@@ -1,8 +1,13 @@
 import fs from 'fs';
 import path from 'path';
-import { loadAllTools } from './note_generator.js';
+import { isBlankishString, loadAllTools } from './note_generator.js';
 import { ToolCategory, ToolItem } from './types.js';
 import { getAllCategories } from './category_manager.js';
+
+function shown(value?: string): string {
+  if (!value || isBlankishString(value)) return '';
+  return value;
+}
 
 function getCategoryIcon(catName: string): string {
   const found = getAllCategories().find((c) => c.name.toLowerCase() === catName.toLowerCase());
@@ -27,9 +32,11 @@ function renderItemRow(item: ToolItem): string {
   const quoteMatch = item.content.match(/^>\s*(.+)$/m);
   const summary = quoteMatch ? quoteMatch[1] : 'Sin descripción adicional.';
 
-  const companyBadge = item.frontmatter.company ? ` (\`🏢 ${item.frontmatter.company}\`)` : '';
-  const authorBadge = item.frontmatter.author && !item.frontmatter.company
-    ? ` (\`👤 ${item.frontmatter.author}\`)`
+  const company = shown(item.frontmatter.company);
+  const author = shown(item.frontmatter.author);
+  const companyBadge = company ? ` (\`🏢 ${company}\`)` : '';
+  const authorBadge = author && !company
+    ? ` (\`👤 ${author}\`)`
     : '';
   const websiteBadge = item.frontmatter.website_url
     ? ` [🌐 Web](${item.frontmatter.website_url})`
@@ -39,9 +46,12 @@ function renderItemRow(item: ToolItem): string {
     : '';
   const isJob = item.frontmatter.entry_type === 'job_remote' || (!item.frontmatter.entry_type && item.frontmatter.category === 'Trabajo & Freelance');
   const isTip = !isJob && (item.frontmatter.entry_type === 'tech_tip' || (!item.frontmatter.entry_type && item.frontmatter.category === 'Consejos & Buenas Prácticas'));
-  const locationBadge = item.frontmatter.location ? ` (\`🌍 ${item.frontmatter.location}\`)` : '';
-  const salaryBadge = item.frontmatter.salary ? ` (\`💰 ${item.frontmatter.salary}\`)` : '';
-  const priceBadge = item.frontmatter.price ? ` (\`💰 ${item.frontmatter.price}\`)` : '';
+  const location = shown(item.frontmatter.location);
+  const salary = shown(item.frontmatter.salary);
+  const price = shown(item.frontmatter.price);
+  const locationBadge = location ? ` (\`🌍 ${location}\`)` : '';
+  const salaryBadge = salary ? ` (\`💰 ${salary}\`)` : '';
+  const priceBadge = price ? ` (\`💰 ${price}\`)` : '';
   const isAcademic = Boolean(
     item.frontmatter.has_academic_promo ||
     (item.frontmatter.tags && item.frontmatter.tags.some((t: string) => ['academic', 'academico', 'académico', 'estudiante', 'estudiantes', 'student', 'students', 'education', 'educacion', 'educación'].includes(t.toLowerCase())))
@@ -198,7 +208,48 @@ Abre las carpetas directamente como un **Vault en Obsidian**:
 
 ### 4. Guardado en 1-Clic desde X (Bookmarklet)
 Arrastra el enlace desde la carpeta \`bookmarklet/\` a tu barra de favoritos de Chrome/Brave/Firefox. Al ver un tweet interesante en X, haz clic en el botón y se enviará directo a tu toolkit local.
+
+### 5. Exportar al segundo cerebro (vault de Obsidian)
+El vault consume un JSON por día en \`inbox/x-bookmarks/YYYY-MM-DD.json\`: un arreglo de bookmarks. Cada bookmark agrupa las fichas que salieron del mismo tweet.
+
+\`\`\`bash
+# Todo lo nuevo o editado desde una fecha (inclusive)
+npm run export:vault -- --since 2026-11-01 --out inbox-x-bookmarks.json
+\`\`\`
+
+También está el endpoint del servidor (local o el de Render):
+
+\`\`\`bash
+curl "http://localhost:4000/api/export/vault?since=2026-11-01" -o inbox-x-bookmarks.json
+\`\`\`
+
+Copia ese archivo a \`inbox/x-bookmarks/\` del vault. El campo \`text\` es el resumen que quedó guardado en la ficha (el texto crudo del tweet no se almacena aparte). \`items[].summary\` va en español. \`note_tweet\` trae las notas personales si las hay y, si no, \`null\`.
+
+### 6. Importar un lote del vault
+Operación inversa: un JSON ya clasificado (el mismo arreglo de bookmarks) vuelve a \`content/\` sin llamar a la IA ni scrapear. Las categorías que no estén en la lista permitida se acercan a la más parecida. Si la URL ya existe y el nombre es otro producto, la ficha queda en revisión y no se escribe.
+
+\`\`\`bash
+npm run import:vault -- inbox-x-bookmarks.json
+npm run import:vault -- inbox-x-bookmarks.json --dry-run
+\`\`\`
+
+La salida es:
+
+\`\`\`text
+[Import vault] escritura inbox-x-bookmarks.json
+created: 0
+updated: 0
+skipped: 0
+needs-review: 0
+\`\`\`
+
+En simulación el prefijo es \`[Import vault] simulación\`. Repetir el mismo archivo no crea fichas: lo ya importado sale en \`skipped\`. Un tweet nuevo de un producto que ya estaba se anexa (\`updated\`).
 `;
+}
+
+function isDirectRun(): boolean {
+  const entry = process.argv[1] ? path.resolve(process.argv[1]) : '';
+  return entry.endsWith(`${path.sep}generate_readme.ts`) || entry.endsWith(`${path.sep}generate_readme.js`);
 }
 
 function main() {
@@ -207,4 +258,6 @@ function main() {
   console.log('[README] ✅ README.md actualizado con éxito.');
 }
 
-main();
+if (isDirectRun()) {
+  main();
+}

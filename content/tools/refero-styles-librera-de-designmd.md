@@ -12,6 +12,11 @@ tags:
   - css
   - tipografia
   - ai-readable
+  - estilos
+  - ui
+  - diseno-producto
+  - referencias
+  - ux
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:32:16.126Z'
@@ -22,6 +27,11 @@ entry_type: tool
 company: Refero
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+source_tweets:
+  - 'https://x.com/ftcarpe/status/2077683479869833526'
+  - 'https://x.com/himanshubuildss/status/2108738253239255073'
+  - 'https://x.com/iamtanzil_/status/2110941301344481761'
+updated_at: '2026-11-13T05:00:36.264Z'
 ---
 # Refero Styles — Librería de DESIGN.md
 
@@ -47,3 +57,7 @@ conjunto: inspiracion
 - Enlace de referencia: [https://styles.refero.design/](https://styles.refero.design/)
 - Sitio Web oficial: [https://refero.design/](https://refero.design/)
 - Tweet origen: [Ver en X](https://x.com/ftcarpe/status/2077683479869833526)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/himanshubuildss/status/2108738253239255073)
+- Tweet origen adicional: [Ver en X](https://x.com/iamtanzil_/status/2110941301344481761)

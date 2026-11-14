@@ -3,6 +3,8 @@
  * and detects GitHub repositories or project homepages.
  */
 
+import { TRACKING_PARAMS } from './url_normalize.js';
+
 export interface ResolvedLink {
   originalUrl: string;
   finalUrl: string;
@@ -33,12 +35,11 @@ export const IGNORED_DOMAINS = [
 export function cleanTrackingParams(rawUrl: string): string {
   try {
     const u = new URL(rawUrl);
-    const tracking = [
-      'oref', 'ref', 'ref_src', 'utm_source', 'utm_medium',
-      'utm_campaign', 'utm_term', 'utm_content', 'fbclid', 'gclid'
-    ];
-    for (const p of tracking) {
-      u.searchParams.delete(p);
+    for (const key of [...u.searchParams.keys()]) {
+      const lower = key.toLowerCase();
+      if (TRACKING_PARAMS.includes(lower) || lower.startsWith('utm_')) {
+        u.searchParams.delete(key);
+      }
     }
     return u.toString().replace(/\?$/, '');
   } catch {

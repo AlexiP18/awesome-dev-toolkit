@@ -3,7 +3,10 @@ name: Bencho.dev
 url: 'https://bencho.dev/'
 category: Frontend & UI
 tags:
+  - frontend
   - react
+  - ui
+  - microinteracciones
   - animations
   - interactive ui
   - modern interfaces
@@ -16,6 +19,10 @@ author_handle: HoudayfaDesign
 entry_type: tool
 classified_by: Google Gemini (Flash)
 conjunto: recursos
+source_tweets:
+  - 'https://x.com/HoudayfaDesign/status/2112166735826579845'
+  - 'https://x.com/Hartdrawss/status/2108799722727059563'
+updated_at: '2026-11-13T05:00:36.268Z'
 ---
 # Bencho.dev
 
@@ -36,3 +43,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://bencho.dev/](https://bencho.dev/)
 - Tweet origen: [Ver en X](https://x.com/HoudayfaDesign/status/2112166735826579845)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/Hartdrawss/status/2108799722727059563)

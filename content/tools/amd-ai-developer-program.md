@@ -18,7 +18,7 @@ created_at: '2026-11-06T04:04:14.687Z'
 source_tweet: 'https://x.com/nahid_pro09/status/2087762950845284595'
 author: Nahid
 author_handle: nahid_pro09
-entry_type: tool
+entry_type: product_showcase
 company: AMD
 has_academic_promo: true
 academic_promo_details: >-

@@ -16,11 +16,7 @@ source_tweet: 'https://x.com/dewyashtwts/status/2114214177162264895'
 author: Yash
 author_handle: dewyashtwts
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
 price: Paga por llamada
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---

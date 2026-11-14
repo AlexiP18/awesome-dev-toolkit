@@ -1,0 +1,391 @@
+[
+  {
+    "tweet_id": "2121105365115052201",
+    "text": "7 Websites to Learn Anything for FREE! \n\n1️⃣ https://t.co/qvAExSRqvJ\n2️⃣ https://t.co/MKwM23KBH1\n3️⃣ https://t.co/l19ipuivAC\n4️⃣ https://t.co/cLeG0VHyWE\n5️⃣ https://t.co/YYEDxq4GkK\n6️⃣ https://t.co/mskoqaQecP\n7️⃣ https://t.co/qom2X0jDfb",
+    "author_name": "Omoalhaja",
+    "author_handle": "omoalhajaabiola",
+    "created_at": "2026-11-13T04:58:21Z",
+    "urls": [
+      "https://www.learnvern.com/",
+      "https://alison.com/",
+      "https://www.mygreatlearning.com",
+      "https://digitaldefynd.com/",
+      "https://www.theodinproject.com/",
+      "https://www.openculture.com/",
+      "https://www.classcentral.com/"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "LearnVern",
+        "url": "https://www.learnvern.com/",
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "cursos",
+          "aprendizaje",
+          "certificados"
+        ],
+        "summary": "Plataforma de cursos online gratuitos de TI con certificado: desarrollo web, PHP, Java, C++, Android, iOS, testing y Excel.",
+        "highlights": [
+          "Cursos gratis con certificado",
+          "Cubre web, móvil, testing y ofimática"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Alison",
+        "url": "https://alison.com/",
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "cursos",
+          "aprendizaje",
+          "certificados"
+        ],
+        "summary": "Plataforma de cursos online gratuitos con certificados para formación profesional.",
+        "highlights": [
+          "Cursos gratuitos con certificación",
+          "Orientada a mejorar la carrera"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Great Learning",
+        "url": "https://www.mygreatlearning.com",
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "cursos",
+          "ia",
+          "data-science",
+          "cloud"
+        ],
+        "summary": "Plataforma de cursos, certificados y programas de posgrado en IA, ML, data science, cloud e ingeniería de software.",
+        "highlights": [
+          "Programas con universidades",
+          "Temas de IA, datos y cloud"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "DigitalDefynd",
+        "url": "https://digitaldefynd.com/",
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "cursos",
+          "directorio",
+          "aprendizaje"
+        ],
+        "summary": "Buscador y directorio de cursos online, incluidos gratuitos, de distintas plataformas y universidades.",
+        "highlights": [
+          "Agrega programas de muchas plataformas",
+          "Permite encontrar cursos gratis"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "The Odin Project",
+        "url": "https://www.theodinproject.com/",
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "desarrollo-web",
+          "javascript",
+          "curriculum",
+          "open-source"
+        ],
+        "summary": "Currículum gratuito y comunitario para aprender desarrollo web full stack.",
+        "highlights": [
+          "Ruta de aprendizaje completa y gratuita",
+          "Aprendizaje en comunidad"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Open Culture",
+        "url": "https://www.openculture.com/",
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "cursos",
+          "ebooks",
+          "aprendizaje"
+        ],
+        "summary": "Directorio de cursos online gratuitos, audiolibros, libros de texto, ebooks y lecciones de idiomas.",
+        "highlights": [
+          "Miles de cursos gratuitos",
+          "Incluye libros y audiolibros"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Class Central",
+        "url": "https://www.classcentral.com/",
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "cursos",
+          "mooc",
+          "buscador"
+        ],
+        "summary": "Buscador de cursos online que agrega ofertas de distintas plataformas y universidades.",
+        "highlights": [
+          "Compara cursos de varias plataformas",
+          "Útil para encontrar MOOCs gratis"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121117896634192008",
+    "text": "花了近 100 万美元开发的理财 App，商业化没跑通，现在开源免费用了。\n\nGitHub 上这个项目叫 Sure，目前已有 1.39 万 Stars。\n\n它的前身是 Maybe Finance，原团队停止运营后，由社区接手继续维护。\n\n主要特点：\n\n统一管理个人资产、负债和现金流\n查看净资产、收支和财务变化\n支持 AI",
+    "author_name": "旺旺",
+    "author_handle": "TiagerBao",
+    "created_at": "2026-11-13T05:48:09Z",
+    "urls": [
+      "https://github.com/we-promise/sure"
+    ],
+    "note_tweet": "花了近 100 万美元开发的理财 App，商业化没跑通，现在开源免费用了。\n\nGitHub 上这个项目叫 Sure，目前已有 1.39 万 Stars。\n\n它的前身是 Maybe Finance，原团队停止运营后，由社区接手继续维护。\n\n主要特点：\n\n统一管理个人资产、负债和现金流\n查看净资产、收支和财务变化\n支持 AI 助手分析个人财务数据\n支持 Docker 自托管，数据由自己管理\n可通过网页、桌面端和移动端访问\n提供 API，支持接入 AI Agent\n\n我比较看重自托管和 AI 接口。个人财务数据比较敏感，能自己控制存储环境，比单纯多几个分析图表更有吸引力。\n\n不过，自托管也意味着备份、更新和安全维护都得自己负责。\n\n你会选择把财务数据交给成熟的云端 App，还是自己部署一套开源理财系统？\n\nGitHub：https://t.co/UvLjr3ZMqD\n\n#开源 #AI #个人理财 #独立开发",
+    "items": [
+      {
+        "name": "Sure",
+        "url": "https://github.com/we-promise/sure",
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "finanzas-personales",
+          "self-hosted",
+          "docker",
+          "open-source"
+        ],
+        "summary": "App open source de finanzas personales (sucesora comunitaria de Maybe Finance) para gestionar activos, deudas y flujo de caja, autoalojable con Docker.",
+        "highlights": [
+          "Patrimonio neto, ingresos y gastos en un solo lugar",
+          "Asistente de IA para analizar tus finanzas",
+          "Self-hosting con Docker y API para agentes",
+          "Acceso web, escritorio y móvil"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121148030305153039",
+    "text": "500+ components for web developers\n\nhttps://t.co/uI62SbWwo9 - 100+ open-source Shadcn components\n\nhttps://t.co/6sQVouNqX2 - 195 free Shadcn UI components\n\nhttps://t.co/bgvOolByZy - Open-source animated Shadcn MCP components\n\nhttps://t.co/ATFrwsAG0D - 157+ free animated React https://t.co/c5Uq0UI5yL",
+    "author_name": "Csaba Kissi",
+    "author_handle": "csaba_kissi",
+    "created_at": "2026-11-13T07:47:54Z",
+    "urls": [
+      "https://github.com/shadcnspace/shadcnspace",
+      "https://avaraui.com",
+      "https://godui.design",
+      "https://animata.design",
+      "http://github.com/shadcnspace/shadcnspace",
+      "http://avaraui.com",
+      "http://godui.design",
+      "http://animata.design",
+      "http://collected.li"
+    ],
+    "note_tweet": "500+ components for web developers\n\nhttps://t.co/QHYWlxjeze - 100+ open-source Shadcn components\n\nhttps://t.co/Q03E0P9FKt - 195 free Shadcn UI components\n\nhttps://t.co/mI0nW2f4AM - Open-source animated Shadcn MCP components\n\nhttps://t.co/3jqo3pLWWr - 157+ free animated React components\n\nhttps://t.co/e1S7qOgfsH - 5,656 curated website design examples",
+    "items": [
+      {
+        "name": "Shadcn Space",
+        "url": "https://github.com/shadcnspace/shadcnspace",
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "shadcn",
+          "react",
+          "tailwind",
+          "componentes"
+        ],
+        "summary": "Bloques, componentes, plantillas y layouts open source de shadcn/ui hechos con React, Tailwind, Radix UI y Base UI.",
+        "highlights": [
+          "Más de 100 componentes open source",
+          "Incluye bloques y plantillas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Avara UI",
+        "url": "https://avaraui.com",
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "shadcn",
+          "componentes",
+          "mcp",
+          "react"
+        ],
+        "summary": "Colección de componentes y bloques gratuitos de Shadcn UI con servidor MCP.",
+        "highlights": [
+          "195 componentes gratuitos",
+          "Integración vía MCP"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "GodUI",
+        "url": "https://godui.design",
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "shadcn",
+          "animaciones",
+          "componentes",
+          "mcp"
+        ],
+        "summary": "Colección de componentes Shadcn animados y open source para interfaces modernas, con soporte MCP.",
+        "highlights": [
+          "Componentes animados",
+          "Open source"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Animata",
+        "url": "https://animata.design",
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "animaciones",
+          "componentes"
+        ],
+        "summary": "Componentes React animados gratuitos para copiar en tus proyectos.",
+        "highlights": [
+          "Más de 157 componentes animados",
+          "Gratis"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Collected",
+        "url": "http://collected.li",
+        "category": "Frontend & UI",
+        "conjunto": "inspiracion",
+        "tags": [
+          "galeria",
+          "diseno-web",
+          "inspiracion"
+        ],
+        "summary": "Galería curada de ejemplos de diseño web para inspirarse.",
+        "highlights": [
+          "5.656 ejemplos curados",
+          "Para buscar referencias visuales"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2120952769259733282",
+    "text": "Segunda parte: \n\n5 REPOS DE GITHUB QUE PARECEN ILEGALES PERO SON 100% LEGALES\n\n1. Pi-hole: bloquea los anuncios en todos los aparatos de tu casa a la vez. 61.8K estrellas.\nhttps://t.co/dBhH2FqLSu\n\n2. Jellyfin: tu propio Netflix con tus pelis y series, en tu servidor. 59.2K https://t.co/XNwZPUFbxP https://t.co/bNjLvrbaHA",
+    "author_name": "PA13L0",
+    "author_handle": "Fluyeporlaweb",
+    "created_at": "2026-11-12T18:52:00Z",
+    "urls": [
+      "https://github.com/pi-hole/pi-hole",
+      "https://github.com/jellyfin/jellyfin",
+      "https://github.com/TeamNewPipe/NewPipe",
+      "https://github.com/upscayl/upscayl",
+      "https://github.com/Raphire/Win11Debloat"
+    ],
+    "note_tweet": "Segunda parte: \n\n5 REPOS DE GITHUB QUE PARECEN ILEGALES PERO SON 100% LEGALES\n\n1. Pi-hole: bloquea los anuncios en todos los aparatos de tu casa a la vez. 61.8K estrellas.\nhttps://t.co/QZJDMaNNY2\n\n2. Jellyfin: tu propio Netflix con tus pelis y series, en tu servidor. 59.2K estrellas.\nhttps://t.co/1FtijNOVGv\n\n3. NewPipe: YouTube en Android sin anuncios y sin cuenta. 40.6K estrellas.\nhttps://t.co/ZYlear6Ndx\n\n4. Upscayl: sube la resolución de cualquier foto con IA en tu ordenador. 52.3K estrellas.\nhttps://t.co/Fex3y9hZ5i\n\n5. Win11Debloat: quita apps de serie y telemetría de Windows con un script. 62.4K estrellas.\nhttps://t.co/uTfIf77UP9\n\nSi solo montas uno este finde, que sea el 1.",
+    "items": [
+      {
+        "name": "Pi-hole",
+        "url": "https://github.com/pi-hole/pi-hole",
+        "category": "DevOps & Cloud",
+        "conjunto": "recursos",
+        "tags": [
+          "self-hosted",
+          "dns",
+          "bloqueo-anuncios",
+          "red"
+        ],
+        "summary": "Servidor DNS autoalojado que bloquea anuncios en todos los dispositivos de la red de casa.",
+        "highlights": [
+          "Bloqueo de anuncios a nivel de red",
+          "61.8K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Jellyfin",
+        "url": "https://github.com/jellyfin/jellyfin",
+        "category": "DevOps & Cloud",
+        "conjunto": "recursos",
+        "tags": [
+          "self-hosted",
+          "media-server",
+          "streaming",
+          "open-source"
+        ],
+        "summary": "Servidor multimedia autoalojado para tener tu propio \"Netflix\" con tus películas y series.",
+        "highlights": [
+          "Streaming desde tu propio servidor",
+          "59.2K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "NewPipe",
+        "url": "https://github.com/TeamNewPipe/NewPipe",
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "android",
+          "youtube",
+          "privacidad",
+          "open-source"
+        ],
+        "summary": "Cliente de YouTube para Android sin anuncios y sin necesidad de cuenta.",
+        "highlights": [
+          "Sin anuncios ni cuenta de Google",
+          "40.6K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Upscayl",
+        "url": "https://github.com/upscayl/upscayl",
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "upscaling",
+          "imagenes",
+          "ia",
+          "escritorio"
+        ],
+        "summary": "App de escritorio que aumenta la resolución de fotos con IA de forma local.",
+        "highlights": [
+          "Escalado de imágenes con IA en tu equipo",
+          "52.3K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Win11Debloat",
+        "url": "https://github.com/Raphire/Win11Debloat",
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "windows",
+          "powershell",
+          "privacidad",
+          "script"
+        ],
+        "summary": "Script para quitar apps preinstaladas y telemetría de Windows.",
+        "highlights": [
+          "Elimina bloatware y telemetría",
+          "62.4K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  }
+]

@@ -8,6 +8,8 @@ tags:
   - texto
   - copy-paste
   - frontend
+  - text-effects
+  - ui
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:52:51.924Z'
@@ -18,6 +20,10 @@ entry_type: tool
 company: Colorion
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+source_tweets:
+  - 'https://x.com/tranmautritam/status/2076963534307790926'
+  - 'https://x.com/csaba_kissi/status/2081639101170585623'
+updated_at: '2026-11-13T05:00:36.262Z'
 ---
 # Colorion Text Effects
 
@@ -38,3 +44,6 @@ conjunto: inspiracion
 ## 🔗 Referencias
 - Enlace de referencia: [https://text-effects.colorion.co/](https://text-effects.colorion.co/)
 - Tweet origen: [Ver en X](https://x.com/tranmautritam/status/2076963534307790926)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/csaba_kissi/status/2081639101170585623)

@@ -3,6 +3,11 @@ name: ponytail
 url: 'https://github.com/DietrichGebert/ponytail'
 category: AI & Machine Learning
 tags:
+  - ai
+  - coding-agents
+  - open-source
+  - code-generation
+  - tokens
   - ai-agents
   - llm
   - prompt-engineering
@@ -19,6 +24,11 @@ author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
 conjunto: consejos
+website_url: 'https://ponytail.dev/'
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2115357959341703241'
+  - 'https://x.com/csaba_kissi/status/2110993750596222986'
+updated_at: '2026-11-13T05:00:36.270Z'
 ---
 # ponytail
 
@@ -41,3 +51,6 @@ conjunto: consejos
 ## 🔗 Referencias
 - Repositorio de código (GitHub): [https://github.com/DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail)
 - Tweet origen: [Ver en X](https://x.com/csaba_kissi/status/2115357959341703241)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/csaba_kissi/status/2110993750596222986)

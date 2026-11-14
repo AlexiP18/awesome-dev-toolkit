@@ -19,10 +19,7 @@ author: Tobi
 author_handle: tobiadonadon_
 entry_type: tool
 company: Tobia Donadon
-location: 'null'
-salary: 'null'
 price: Gratis
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---

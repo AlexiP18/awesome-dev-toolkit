@@ -3,6 +3,10 @@ name: Godly.website
 url: 'https://godly.website/'
 category: Frontend & UI
 tags:
+  - inspiracion
+  - webs-premiadas
+  - web-design
+  - galeria
   - diseño web
   - inspiración
   - sitios web
@@ -16,13 +20,12 @@ source_tweet: 'https://x.com/VullnetAdemaj/status/2112101526336364705'
 author: Vullnet Ademaj
 author_handle: VullnetAdemaj
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: inspiracion
+source_tweets:
+  - 'https://x.com/VullnetAdemaj/status/2112101526336364705'
+  - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
+updated_at: '2026-11-13T05:00:36.258Z'
 ---
 # Godly.website
 
@@ -43,3 +46,6 @@ conjunto: inspiracion
 ## 🔗 Referencias
 - Enlace de referencia: [https://godly.website/](https://godly.website/)
 - Tweet origen: [Ver en X](https://x.com/VullnetAdemaj/status/2112101526336364705)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/BardhylBytyqi/status/2118838961602748834)

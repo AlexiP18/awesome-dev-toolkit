@@ -15,11 +15,6 @@ source_tweet: 'https://x.com/jakubkrehel/status/2112204760606802214'
 author: Jakub Krehel
 author_handle: jakubkrehel
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---

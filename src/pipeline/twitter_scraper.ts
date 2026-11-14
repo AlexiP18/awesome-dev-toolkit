@@ -1,3 +1,5 @@
+import { envInt, fetchWithRetry, safeErrorMessage } from './http_util.js';
+
 /**
  * Scraper especializado y resiliente para publicaciones e hilos de X (Twitter).
  * Arquitectura multi-nivel en cascada:
@@ -85,22 +87,25 @@ export function extractTweetId(tweetUrl: string): string | null {
  * Ultra rápido (<200 ms), público y sin autenticación requerida.
  */
 export async function fetchTweetFromSyndication(tweetId: string, timeoutMs = 3500): Promise<ExtractedTweet | null> {
+  const label = `Twitter Syndication ${tweetId}`;
   try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeoutMs);
-
-    const res = await fetch(`https://cdn.syndication.twimg.com/tweet-result?id=${tweetId}&token=a`, {
-      signal: controller.signal,
+    const res = await fetchWithRetry(`https://cdn.syndication.twimg.com/tweet-result?id=${tweetId}&token=a`, {
+      timeoutMs,
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         Accept: 'application/json',
       },
-    });
-    clearTimeout(timer);
+    }, { retries: envInt('SCRAPER_RETRIES', 2), label });
 
-    if (!res.ok) return null;
+    if (!res.ok) {
+      console.warn(`[Twitter Scraper] ${label} respondió HTTP ${res.status}`);
+      return null;
+    }
     const data = (await res.json()) as any;
-    if (!data || !data.text) return null;
+    if (!data || !data.text) {
+      console.warn(`[Twitter Scraper] ${label} no trajo texto`);
+      return null;
+    }
 
     return {
       id: data.id_str || tweetId,
@@ -110,7 +115,8 @@ export async function fetchTweetFromSyndication(tweetId: string, timeoutMs = 350
       authorHandle: data.user?.screen_name,
       avatarUrl: data.user?.profile_image_url_https,
     };
-  } catch {
+  } catch (err) {
+    console.warn(`[Twitter Scraper] ${label} no disponible: ${safeErrorMessage(err)}`);
     return null;
   }
 }
@@ -119,20 +125,20 @@ export async function fetchTweetFromSyndication(tweetId: string, timeoutMs = 350
  * Nivel 2: Obtiene los detalles de un único tweet raíz desde api.fxtwitter.com/status/{id}.
  */
 export async function fetchTweetFromFxTwitterV1(tweetId: string, timeoutMs = 4000): Promise<ExtractedTweet | null> {
+  const label = `FxTwitter v1 ${tweetId}`;
   try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeoutMs);
-
-    const res = await fetch(`https://api.fxtwitter.com/status/${tweetId}`, {
-      signal: controller.signal,
+    const res = await fetchWithRetry(`https://api.fxtwitter.com/status/${tweetId}`, {
+      timeoutMs,
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         Accept: 'application/json',
       },
-    });
-    clearTimeout(timer);
+    }, { retries: envInt('SCRAPER_RETRIES', 2), label });
 
-    if (!res.ok) return null;
+    if (!res.ok) {
+      console.warn(`[Twitter Scraper] ${label} respondió HTTP ${res.status}`);
+      return null;
+    }
     const data = (await res.json()) as any;
     if (!data.tweet) return null;
 
@@ -149,7 +155,8 @@ export async function fetchTweetFromFxTwitterV1(tweetId: string, timeoutMs = 400
       cardTitle: tweet.card?.title || undefined,
       cardDescription: tweet.card?.description || undefined,
     };
-  } catch {
+  } catch (err) {
+    console.warn(`[Twitter Scraper] ${label} no disponible: ${safeErrorMessage(err)}`);
     return null;
   }
 }
@@ -163,20 +170,20 @@ export async function fetchThreadFromFxTwitterV2(
   authorHandle?: string,
   timeoutMs = 6000
 ): Promise<ExtractedThread | null> {
+  const label = `FxTwitter v2 ${tweetId}`;
   try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeoutMs);
-
-    const res = await fetch(`https://api.fxtwitter.com/2/thread/${tweetId}`, {
-      signal: controller.signal,
+    const res = await fetchWithRetry(`https://api.fxtwitter.com/2/thread/${tweetId}`, {
+      timeoutMs,
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         Accept: 'application/json',
       },
-    });
-    clearTimeout(timer);
+    }, { retries: envInt('SCRAPER_RETRIES', 2), label });
 
-    if (!res.ok) return null;
+    if (!res.ok) {
+      console.warn(`[Twitter Scraper] ${label} respondió HTTP ${res.status}`);
+      return null;
+    }
     const data = (await res.json()) as any;
     if (data.code !== 200 || !Array.isArray(data.thread) || data.thread.length === 0) {
       return null;
@@ -243,7 +250,7 @@ export async function fetchThreadFromFxTwitterV2(
       providerUsed: 'fxtwitter_v2',
     };
   } catch (err: any) {
-    console.warn(`[Twitter Scraper] FxTwitter v2 no disponible para tweet ${tweetId}:`, err?.message || err);
+    console.warn(`[Twitter Scraper] ${label} no disponible: ${safeErrorMessage(err)}`);
     return null;
   }
 }
@@ -301,18 +308,14 @@ export async function fetchThreadTweetsFromX(
 
   // Nivel 4: Si no tenemos hilo directo de la API, usar Jina Reader como respaldo de emergencia
   try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeoutMs);
-
     const jinaUrl = `https://r.jina.ai/${tweetUrl}`;
-    const jinaRes = await fetch(jinaUrl, {
-      signal: controller.signal,
+    const jinaRes = await fetchWithRetry(jinaUrl, {
+      timeoutMs,
       headers: {
         'User-Agent': 'Mozilla/5.0',
         Accept: 'text/plain',
       },
-    });
-    clearTimeout(timer);
+    }, { retries: envInt('SCRAPER_RETRIES', 2), label: `Jina ${tweetId}` });
 
     if (!jinaRes.ok) {
       console.warn(`[Twitter Scraper] Jina respondió con status ${jinaRes.status} para ${tweetUrl}`);

@@ -19,11 +19,7 @@ source_tweet: 'https://x.com/divikkk1/status/2115106985062568086'
 author: Divikkk
 author_handle: divikkk1
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
 price: Free
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---

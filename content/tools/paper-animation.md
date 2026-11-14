@@ -7,6 +7,7 @@ tags:
   - ia-generativa
   - video
   - motion
+  - ia
 status: to_try
 date_added: '2026-11-07'
 created_at: '2026-11-07T20:40:41.546Z'
@@ -16,6 +17,10 @@ author_handle: BardhylBytyqi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: producto
+source_tweets:
+  - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
+  - 'https://x.com/VullnetAdemaj/status/2108894975635423306'
+updated_at: '2026-11-13T05:00:36.253Z'
 ---
 # Paper Animation
 
@@ -36,3 +41,6 @@ conjunto: producto
 ## 🔗 Referencias
 - Enlace de referencia: [https://paperanimation.ai/](https://paperanimation.ai/)
 - Tweet origen: [Ver en X](https://x.com/BardhylBytyqi/status/2118838961602748834)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/VullnetAdemaj/status/2108894975635423306)

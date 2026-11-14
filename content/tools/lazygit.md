@@ -14,6 +14,7 @@ source_tweet: 'https://x.com/jesseduffield/status/123456789'
 author: Jesse Duffield
 created_at: '2026-10-16T21:05:14.396Z'
 conjunto: recursos
+entry_type: tool
 ---
 # Lazygit
 
