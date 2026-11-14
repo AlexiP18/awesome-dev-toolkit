@@ -2,23 +2,29 @@
 name: Open Culture
 url: 'https://openculture.com/'
 category: Documentation & Resources
+conjunto: recursos
 tags:
   - cursos
   - educacion
   - aprendizaje
+  - ebooks
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:45:43.721Z'
+updated_at: '2026-11-14T04:14:30.544Z'
 source_tweet: 'https://x.com/ecommartinez/status/2093765893381595627'
-author: Alejo
-author_handle: ecommartinez
+source_tweets:
+  - 'https://x.com/ecommartinez/status/2093765893381595627'
+  - 'https://x.com/omoalhajaabiola/status/2121105365115052201'
+author: Omoalhaja
+author_handle: omoalhajaabiola
 entry_type: tool
+company: Omoalhaja
 has_academic_promo: true
 academic_promo_details: >-
   Contenido y cursos totalmente gratuitos de universidades y plataformas
   educativas abiertas.
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Open Culture
 
