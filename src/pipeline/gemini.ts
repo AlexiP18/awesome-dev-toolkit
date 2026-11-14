@@ -20,15 +20,3 @@ export async function classifyToolsWithGemini(
   return { results, providerUsed, switchNotice };
 }
 
-export async function classifyToolWithGemini(params: {
-  rawText: string;
-  url: string;
-  githubMeta?: GitHubMetadata | null;
-}): Promise<ClassificationResult> {
-  const { results } = await classifyToolsWithGemini({
-    rawText: params.rawText,
-    urls: params.url ? [params.url] : [],
-    githubMetas: params.githubMeta && params.url ? { [params.url]: params.githubMeta } : {},
-  });
-  return results[0];
-}

@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { ClassificationResult, EntryType, ToolConjunto, ToolFrontmatter, ToolItem, ToolStatus } from './types.js';
 import { GitHubMetadata } from './github.js';
+import { getCachedTools, setCachedTools } from './catalog_state.js';
 import { markRepoPathDeleted, unmarkRepoPathDeleted } from './github_sync.js';
 import { coerceCategory } from './category_manager.js';
 import { canonicalUrlKey, preferredDisplayUrl, productKeys, sameProduct } from './url_normalize.js';
@@ -466,6 +467,10 @@ export function getToolRecency(item: { frontmatter?: ToolFrontmatter; mtimeMs?: 
 }
 
 export function loadAllTools(): ToolItem[] {
+  const root = contentRoot();
+  const cached = getCachedTools(root);
+  if (cached) return cached.slice();
+
   ensureToolsDirExists();
   const tools: ToolItem[] = [];
 
@@ -522,12 +527,14 @@ export function loadAllTools(): ToolItem[] {
   }
 
   // Sort descending by recency (most recently added/analyzed first), then by stars
-  return tools.sort((a, b) => {
+  const sorted = tools.sort((a, b) => {
     const recA = getToolRecency(a);
     const recB = getToolRecency(b);
     if (recB !== recA) return recB - recA;
     return (b.frontmatter.stars || 0) - (a.frontmatter.stars || 0);
   });
+  setCachedTools(root, sorted);
+  return sorted.slice();
 }
 
 export function updateToolNote(slug: string, updates: {
