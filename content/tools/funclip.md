@@ -1,9 +1,9 @@
 ---
 name: FunClip
 url: 'https://github.com/modelscope/FunClip'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - ai
+  - ia
   - video-editing
   - subtitles
   - transcription
@@ -24,7 +24,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: modelscope
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # FunClip
 

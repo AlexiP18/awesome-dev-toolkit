@@ -1,7 +1,7 @@
 ---
 name: Paper Animation
 url: 'https://paperanimation.ai/'
-category: 'Prompts, Art & Video'
+category: Prompts & generación visual con IA
 tags:
   - animacion
   - ia-generativa
@@ -16,11 +16,12 @@ author: Bardhyl Bytyqi
 author_handle: BardhylBytyqi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
 source_tweets:
   - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
   - 'https://x.com/VullnetAdemaj/status/2108894975635423306'
 updated_at: '2026-11-13T05:00:36.253Z'
+area: diseno-creatividad
 ---
 # Paper Animation
 

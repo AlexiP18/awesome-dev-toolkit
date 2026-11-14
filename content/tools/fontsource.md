@@ -1,11 +1,11 @@
 ---
 name: Fontsource
 url: 'https://github.com/fontsource/fontsource'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - fonts
   - typography
-  - self-hosting
+  - self-hosted
   - web-fonts
   - css
   - npm
@@ -19,7 +19,8 @@ author: Marlen
 author_handle: Marlenuii
 entry_type: tool
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Fontsource
 

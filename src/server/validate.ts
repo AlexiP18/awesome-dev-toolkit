@@ -3,7 +3,7 @@ import type { EntryType, ToolConjunto, ToolStatus } from '../pipeline/types.js';
 
 const STATUSES: ToolStatus[] = ['to_try', 'in_use', 'archived'];
 const ENTRY_TYPES: EntryType[] = ['tool', 'product_showcase', 'tech_tip', 'job_remote', 'tech_product'];
-const CONJUNTOS: ToolConjunto[] = ['recursos', 'inspiracion', 'producto', 'consejos'];
+const CONJUNTOS: ToolConjunto[] = ['codigo', 'app', 'inspiracion', 'aprender', 'consejos'];
 const SECTIONS = ['all', 'tools', 'tips', 'jobs'] as const;
 const COLORS = ['sky', 'emerald', 'amber', 'violet', 'rose', 'indigo', 'cyan', 'purple', 'teal', 'slate'] as const;
 const SLUG = /^[a-z0-9][a-z0-9_-]{0,159}$/i;
@@ -219,7 +219,7 @@ export function parseToolPatch(body: unknown): ToolPatch {
   if ('category' in data) patch.category = requiredString(data.category, 'category', 80);
   if ('conjunto' in data) {
     if (typeof data.conjunto !== 'string' || !CONJUNTOS.includes(data.conjunto as ToolConjunto)) {
-      throw new HttpError(400, 'conjunto debe ser recursos, inspiracion, producto o consejos.');
+      throw new HttpError(400, 'conjunto debe ser codigo, app, inspiracion, aprender o consejos.');
     }
     patch.conjunto = data.conjunto as ToolConjunto;
   }

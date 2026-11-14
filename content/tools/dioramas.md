@@ -1,11 +1,11 @@
 ---
 name: dioramas
 url: 'https://github.com/blendi-remade/dioramas'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - 3d
   - webgl
-  - three.js
+  - three-js
   - generative-ai
   - creative-coding
   - landing-page
@@ -21,7 +21,8 @@ entry_type: tool
 company: blendi-remade
 price: Gratis
 classified_by: Google Gemini (Flash)
-conjunto: inspiracion
+conjunto: codigo
+area: diseno-creatividad
 ---
 # dioramas
 

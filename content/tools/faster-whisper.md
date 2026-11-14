@@ -1,14 +1,14 @@
 ---
 name: faster-whisper
 url: 'https://github.com/SYSTRAN/faster-whisper'
-category: AI & Machine Learning
+category: 'Voz, visión & IA aplicada'
 tags:
+  - python
   - whisper
   - speech-to-text
   - transcription
-  - ai
+  - ia
   - deep-learning
-  - python
   - inference
   - openai
   - quantization
@@ -22,7 +22,8 @@ author_handle: e1genqq
 entry_type: tool
 company: SYSTRAN
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # faster-whisper
 

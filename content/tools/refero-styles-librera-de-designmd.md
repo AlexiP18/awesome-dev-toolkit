@@ -2,12 +2,11 @@
 name: Refero Styles — Librería de DESIGN.md
 url: 'https://styles.refero.design/'
 website_url: 'https://refero.design/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
-  - design
+  - diseno
   - design-system
   - ui-ux
-  - inspiracion
   - frontend
   - css
   - tipografia
@@ -32,6 +31,7 @@ source_tweets:
   - 'https://x.com/himanshubuildss/status/2108738253239255073'
   - 'https://x.com/iamtanzil_/status/2110941301344481761'
 updated_at: '2026-11-13T05:00:36.264Z'
+area: diseno-creatividad
 ---
 # Refero Styles — Librería de DESIGN.md
 

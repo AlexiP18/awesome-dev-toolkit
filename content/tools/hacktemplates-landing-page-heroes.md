@@ -2,13 +2,13 @@
 name: 'Hacktemplates: Landing Page Heroes'
 url: 'https://github.com/diiviikk5/Hacktemplates'
 website_url: 'https://dvklab.vercel.app/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - frontend
   - ui
-  - landing pages
+  - landing-pages
   - plantillas
-  - open source
+  - open-source
   - ia
   - componentes
 stars: 54
@@ -21,7 +21,8 @@ author_handle: divikkk1
 entry_type: tool
 price: Free
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Hacktemplates: Landing Page Heroes
 

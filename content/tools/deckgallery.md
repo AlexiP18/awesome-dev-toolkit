@@ -1,11 +1,10 @@
 ---
 name: Deck.Gallery
 url: 'https://www.deck.gallery/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - presentaciones
-  - diseño
-  - inspiración
+  - diseno
   - slides
 status: to_try
 date_added: '2026-11-06'
@@ -16,6 +15,7 @@ author_handle: tranmautritam
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Deck.Gallery
 

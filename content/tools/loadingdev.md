@@ -1,12 +1,12 @@
 ---
 name: loading.dev
 url: 'https://loading.dev/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
   - ui
   - componentes
-  - animaciones
+  - animacion
   - loading
 status: to_try
 date_added: '2026-11-03'
@@ -16,7 +16,8 @@ author: Jakub Krehel
 author_handle: jakubkrehel
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # loading.dev
 

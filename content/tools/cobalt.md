@@ -1,7 +1,7 @@
 ---
 name: Cobalt
 url: 'https://cobalt.tools/'
-category: Productivity & Tools
+category: 'Video, audio, imagen & 3D'
 tags:
   - descarga
   - video
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: cobalt
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: diseno-creatividad
 ---
 # Cobalt
 

@@ -2,13 +2,13 @@
 name: Ronny Studio Free Font
 url: 'https://ronny-studio.com/b/vqQEA'
 website_url: 'https://ronny-studio.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - fuentes
   - tipografia
   - display
   - frontend
-  - diseño
+  - diseno
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:56:06.774Z'
@@ -19,7 +19,8 @@ entry_type: tool
 company: Ronny Studio
 price: Gratis
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Ronny Studio Free Font
 

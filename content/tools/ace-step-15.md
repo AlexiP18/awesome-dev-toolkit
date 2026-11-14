@@ -1,7 +1,7 @@
 ---
 name: ACE-Step 1.5
 url: 'https://github.com/ace-step/ACE-Step-1.5'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - music-generation
   - audio
@@ -15,7 +15,8 @@ author: Rimsha Bhardwaj
 author_handle: heyrimsha
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # ACE-Step 1.5
 

@@ -1,7 +1,7 @@
 ---
 name: motion-graphics-music-video-skill
 url: 'https://github.com/makevoid/motion-graphics-music-video-skill'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - motion-graphics
   - music-video
@@ -19,7 +19,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: makevoid
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # motion-graphics-music-video-skill
 

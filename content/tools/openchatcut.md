@@ -1,9 +1,9 @@
 ---
 name: OpenChatCut
 url: 'https://github.com/0xsline/OpenChatCut'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - ai
+  - ia
   - video-editing
   - conversational-ai
   - open-source
@@ -23,7 +23,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: 0xsline
 classified_by: Google Gemini (Flash)
-conjunto: producto
+conjunto: codigo
+area: diseno-creatividad
 ---
 # OpenChatCut
 

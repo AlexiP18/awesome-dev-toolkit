@@ -1,11 +1,11 @@
 ---
 name: Best Free Fonts
 url: 'https://bestfreefonts.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - typography
   - fonts
-  - design
+  - diseno
   - branding
   - web-design
 status: to_try
@@ -17,7 +17,8 @@ author_handle: neropursue
 entry_type: tool
 company: Best Free Fonts
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Best Free Fonts
 

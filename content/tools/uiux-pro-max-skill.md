@@ -1,16 +1,16 @@
 ---
 name: UI/UX Pro Max Skill
 url: 'https://github.com/nextlevelbuilder/ui-ux-pro-max-skill'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
-  - ai
+  - react
+  - ia
   - ui-design
   - ux
   - styles
-  - react
   - tailwindcss
   - ai-skill
-  - free
+  - gratis
 stars: 144657
 status: to_try
 date_added: '2026-11-03'
@@ -20,7 +20,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # UI/UX Pro Max Skill
 

@@ -1,9 +1,9 @@
 ---
 name: FrontAgent
 url: 'https://github.com/ceilf6/FrontAgent'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
-  - agente
+  - agentes
   - ia
   - frontend
   - mcp
@@ -19,7 +19,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # FrontAgent
 

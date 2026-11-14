@@ -1,9 +1,9 @@
 ---
 name: agents-towards-production
 url: 'https://github.com/NirDiamant/agents-towards-production'
-category: DevOps & Cloud
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai-agents
+  - agentes
   - production
   - deployment
   - observability
@@ -18,7 +18,8 @@ author_handle: precisox
 entry_type: tool
 company: NirDiamant
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: inteligencia-artificial
 ---
 # agents-towards-production
 

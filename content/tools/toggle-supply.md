@@ -1,14 +1,14 @@
 ---
 name: Toggle Supply
 url: 'https://toggle.supply/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - ui
   - componentes
-  - animaciones
+  - animacion
   - interacciones
   - frontend
-  - design
+  - diseno
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:03:13.818Z'
@@ -18,7 +18,8 @@ author_handle: kasuncfdo
 entry_type: tool
 company: Toggle Supply (@togglesupply)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Toggle Supply
 

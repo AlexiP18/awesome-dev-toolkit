@@ -1,14 +1,14 @@
 ---
 name: Bag UI
 url: 'https://github.com/anelkabag/bag-ui'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
-  - shadcn-ui
   - react
-  - nextjs
   - tailwind
-  - componentes
   - typescript
+  - shadcn-ui
+  - nextjs
+  - componentes
 stars: 513
 status: to_try
 date_added: '2026-11-06'
@@ -19,7 +19,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: anelkabag
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Bag UI
 

@@ -1,8 +1,9 @@
 ---
 name: Sevalla.com Hosting
 url: 'https://sevalla.com/'
-category: Backend & APIs
+category: 'Backend, APIs & datos'
 tags:
+  - python
   - deploy
   - cloud
   - infraestructura
@@ -11,7 +12,6 @@ tags:
   - php
   - javascript
   - go
-  - python
   - backend
 status: to_try
 date_added: '2026-11-03'
@@ -21,11 +21,12 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
 source_tweets:
   - 'https://x.com/csaba_kissi/status/2112068533924626841'
   - 'https://x.com/csaba_kissi/status/2079093085955657992'
 updated_at: '2026-11-13T05:00:36.264Z'
+area: desarrollo-software
 ---
 # Sevalla.com Hosting
 

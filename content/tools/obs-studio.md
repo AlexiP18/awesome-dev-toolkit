@@ -1,7 +1,7 @@
 ---
 name: OBS Studio
 url: 'https://github.com/obsproject/obs-studio'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - screen-capture
   - streaming
@@ -18,7 +18,8 @@ author_handle: e1genqq
 entry_type: tool
 company: obsproject
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # OBS Studio
 

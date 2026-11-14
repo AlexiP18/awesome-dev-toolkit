@@ -1,9 +1,9 @@
 ---
 name: 500 AI Agents Projects
 url: 'https://github.com/ashishpatel26/500-AI-Agents-Projects'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai-agents
+  - agentes
   - genai
   - github
   - machine-learning
@@ -18,7 +18,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: ashishpatel26
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # 500 AI Agents Projects
 

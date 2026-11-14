@@ -1,14 +1,13 @@
 ---
 name: Name That UI
 url: 'https://namethatui.com/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - ui
   - diseno
   - referencia
   - qa
   - frontend
-  - design
   - prompts
   - ia
   - diccionario
@@ -20,11 +19,12 @@ author: Miguel Ángel Durán
 author_handle: midudev
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
 source_tweets:
   - 'https://x.com/midudev/status/2077379128811020433'
   - 'https://x.com/tranmautritam/status/2076963534307790926'
 updated_at: '2026-11-13T05:00:36.262Z'
+area: diseno-creatividad
 ---
 # Name That UI
 

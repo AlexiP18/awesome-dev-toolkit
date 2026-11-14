@@ -1,10 +1,10 @@
 ---
 name: HeroUI
 url: 'https://heroui.com/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - react
-  - components
+  - componentes
   - ui-library
   - open-source
 status: to_try
@@ -16,7 +16,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: HeroUI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # HeroUI
 

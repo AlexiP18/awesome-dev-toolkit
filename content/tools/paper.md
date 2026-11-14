@@ -1,7 +1,7 @@
 ---
 name: Paper
 url: 'https://paper.design/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - design-tool
   - web-design
@@ -16,7 +16,8 @@ author_handle: neropursue
 entry_type: tool
 company: Paper
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Paper
 

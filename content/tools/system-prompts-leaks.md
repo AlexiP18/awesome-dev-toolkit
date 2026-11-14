@@ -1,12 +1,12 @@
 ---
 name: system_prompts_leaks
 url: 'https://github.com/asgeirtj/system_prompts_leaks'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - prompts
   - llm
   - system-prompt
-  - ai
+  - ia
   - engineering
 status: to_try
 date_added: '2026-11-06'
@@ -18,6 +18,7 @@ entry_type: tool
 company: asgeirtj
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: consejos
+area: inteligencia-artificial
 ---
 # system_prompts_leaks
 

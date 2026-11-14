@@ -1,7 +1,7 @@
 ---
 name: Backgrounds Supply
 url: 'https://backgrounds.supply/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - fondos
   - recursos-graficos
@@ -15,7 +15,8 @@ author: Bardhyl Bytyqi
 author_handle: BardhylBytyqi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Backgrounds Supply
 

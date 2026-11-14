@@ -1,13 +1,12 @@
 ---
 name: MotionSites
 url: 'https://motionsites.ai/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - prompts
-  - animaciones
-  - inspiracion
+  - animacion
   - web-design
-  - ai
+  - ia
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:52:51.922Z'
@@ -17,6 +16,7 @@ author_handle: tranmautritam
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # MotionSites
 

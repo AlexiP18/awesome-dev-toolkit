@@ -1,7 +1,7 @@
 ---
 name: Tabler Icons
 url: 'https://tablericons.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - iconos
   - svg
@@ -16,7 +16,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Tabler Icons
 

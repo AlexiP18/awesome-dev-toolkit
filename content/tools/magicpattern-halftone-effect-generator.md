@@ -2,13 +2,13 @@
 name: MagicPattern Halftone Effect Generator
 url: 'https://www.magicpattern.design/tools/halftone-generator'
 website_url: 'https://www.magicpattern.design/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
-  - diseño
+  - diseno
   - generador
-  - imágenes
+  - imagenes
   - css
-  - recursos-gráficos
+  - recursos-graficos
   - halftone
 status: to_try
 date_added: '2026-11-06'
@@ -19,7 +19,8 @@ author_handle: d__raptis
 entry_type: tool
 company: MagicPattern
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # MagicPattern Halftone Effect Generator
 

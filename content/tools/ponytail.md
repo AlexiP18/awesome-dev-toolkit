@@ -1,14 +1,14 @@
 ---
 name: ponytail
 url: 'https://github.com/DietrichGebert/ponytail'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai
+  - ia
   - coding-agents
   - open-source
   - code-generation
   - tokens
-  - ai-agents
+  - agentes
   - llm
   - prompt-engineering
   - coding
@@ -29,6 +29,7 @@ source_tweets:
   - 'https://x.com/csaba_kissi/status/2115357959341703241'
   - 'https://x.com/csaba_kissi/status/2110993750596222986'
 updated_at: '2026-11-13T05:00:36.270Z'
+area: inteligencia-artificial
 ---
 # ponytail
 

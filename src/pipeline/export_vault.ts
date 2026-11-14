@@ -9,7 +9,9 @@ export interface VaultBookmarkItem {
   url: string;
   website_url: string | null;
   category: string;
+  area?: string | null;
   conjunto: string | null;
+  review?: boolean;
   tags: string[];
   summary: string;
   highlights: string[];
@@ -118,7 +120,9 @@ export function buildVaultExport(tools: ToolItem[], since?: string): VaultBookma
         url: item.frontmatter.url,
         website_url: item.frontmatter.website_url || null,
         category: item.frontmatter.category,
+        area: item.frontmatter.area || null,
         conjunto: item.frontmatter.conjunto || null,
+        review: item.frontmatter.review === true,
         tags: item.frontmatter.tags || [],
         summary: extractSummary(item.content),
         highlights: extractHighlights(item.content),

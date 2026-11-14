@@ -1,12 +1,11 @@
 ---
 name: Design Systems Surf
 url: 'https://designsystems.surf/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - design-system
   - database
-  - components
-  - inspiration
+  - componentes
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T18:09:07.607Z'
@@ -16,6 +15,7 @@ author_handle: Abmankendrick
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Design Systems Surf
 

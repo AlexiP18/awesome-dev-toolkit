@@ -1,7 +1,7 @@
 ---
 name: Agent-Reach
 url: 'https://github.com/Panniantong/Agent-Reach'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
   - mcp
   - ai-agent
@@ -21,7 +21,8 @@ author_handle: katsudev
 entry_type: tool
 company: Panniantong
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Agent-Reach
 

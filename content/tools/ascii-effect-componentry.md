@@ -2,7 +2,7 @@
 name: ASCII Effect (Componentry)
 url: 'https://componentry.dev/docs/components/ascii-effect'
 website_url: 'https://componentry.dev/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - react
   - componentes
@@ -19,7 +19,8 @@ author_handle: harshjdhv
 entry_type: tool
 company: Componentry
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # ASCII Effect (Componentry)
 

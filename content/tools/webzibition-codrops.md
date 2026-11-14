@@ -1,14 +1,13 @@
 ---
 name: Webzibition (Codrops)
 url: 'https://tympanus.net/codrops/webzibition'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - web-design
-  - inspiration
   - gallery
   - frontend
   - resources
-  - free
+  - gratis
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:37:11.195Z'
@@ -19,6 +18,7 @@ entry_type: tool
 company: Codrops (Tympanus)
 classified_by: Google Gemini (Flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Webzibition (Codrops)
 

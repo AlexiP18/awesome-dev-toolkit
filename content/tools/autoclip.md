@@ -1,9 +1,9 @@
 ---
 name: AutoClip
 url: 'https://github.com/zhouxiaoka/autoclip'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - ai
+  - ia
   - video-clipping
   - podcast
   - subtitles
@@ -24,7 +24,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: zhouxiaoka
 classified_by: Google Gemini (Flash)
-conjunto: producto
+conjunto: codigo
+area: diseno-creatividad
 ---
 # AutoClip
 

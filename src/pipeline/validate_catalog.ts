@@ -2,11 +2,11 @@ import path from 'path';
 import { isAllowedCategory } from './category_manager.js';
 import { groupDuplicateTools } from './dedup_groups.js';
 import { isBlankishString, loadAllTools } from './note_generator.js';
-import { EntryType, ToolConjunto, ToolStatus } from './types.js';
+import { areaIdForCategory, categoryOmitsConjunto, isConjuntoId } from './taxonomy.js';
+import { EntryType, ToolStatus } from './types.js';
 
 const ENTRY_TYPES = new Set<EntryType>(['tool', 'product_showcase', 'tech_tip', 'job_remote', 'tech_product']);
 const STATUSES = new Set<ToolStatus>(['to_try', 'in_use', 'archived']);
-const CONJUNTOS = new Set<ToolConjunto>(['recursos', 'inspiracion', 'producto', 'consejos']);
 
 function literalNull(value: unknown): boolean {
   return typeof value === 'string' && ['null', 'undefined'].includes(value.trim().toLowerCase());
@@ -22,12 +22,25 @@ export function validateCatalog(): string[] {
     const where = path.relative(process.cwd(), tool.filePath);
     if (!fm.name || !fm.name.trim()) errors.push(`${where}: falta name`);
     if (!fm.url || isBlankishString(fm.url)) errors.push(`${where}: url vacía o nula`);
-    if (!isAllowedCategory(fm.category)) errors.push(`${where}: categoría no permitida "${fm.category || ''}"`);
+    const inReview = fm.review === true;
+    if (!inReview && !isAllowedCategory(fm.category)) errors.push(`${where}: categoría no permitida "${fm.category || ''}"`);
+    if (fm.category && String(fm.category).trim().toLowerCase() === 'other') errors.push(`${where}: categoría Other no está permitida`);
+    if (isAllowedCategory(fm.category)) {
+      const expectedArea = areaIdForCategory(fm.category);
+      if (fm.area && fm.area !== expectedArea) errors.push(`${where}: área "${fm.area}" no corresponde a "${fm.category}"`);
+      if (!fm.area) errors.push(`${where}: falta area`);
+      if (categoryOmitsConjunto(fm.category)) {
+        if (fm.conjunto) errors.push(`${where}: un empleo no lleva conjunto`);
+      } else if (!fm.conjunto) {
+        errors.push(`${where}: falta conjunto`);
+      }
+    }
+    if (inReview && fm.conjunto) errors.push(`${where}: la bandeja de revisión no lleva conjunto`);
     if (!fm.entry_type || !ENTRY_TYPES.has(fm.entry_type)) {
       errors.push(`${where}: entry_type inválido "${fm.entry_type || ''}"`);
     }
     if (!fm.status || !STATUSES.has(fm.status)) errors.push(`${where}: status inválido "${fm.status || ''}"`);
-    if (fm.conjunto && !CONJUNTOS.has(fm.conjunto)) errors.push(`${where}: conjunto inválido "${fm.conjunto}"`);
+    if (fm.conjunto && !isConjuntoId(fm.conjunto)) errors.push(`${where}: conjunto inválido "${fm.conjunto}"`);
     if (!Array.isArray(fm.tags)) errors.push(`${where}: tags debe ser una lista`);
     else if (fm.tags.some((tag) => literalNull(tag))) errors.push(`${where}: tags contiene "null"`);
     if (!fm.date_added) errors.push(`${where}: falta date_added`);

@@ -1,7 +1,7 @@
 ---
 name: Fast.com
 url: 'https://fast.com/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - red
   - velocidad
@@ -15,7 +15,8 @@ author_handle: ecommartinez
 entry_type: tool
 company: Netflix
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # Fast.com
 

@@ -1,13 +1,13 @@
 ---
 name: call.md
 url: 'https://github.com/video-db/call.md'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
+  - typescript
   - meeting-notes
   - transcription
   - agentic-ai
   - mcp
-  - typescript
   - open-source
   - sqlite
   - n8n
@@ -22,7 +22,8 @@ author_handle: josesilesdata
 entry_type: tool
 company: video-db
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # call.md
 

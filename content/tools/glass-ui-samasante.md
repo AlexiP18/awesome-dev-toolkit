@@ -1,19 +1,18 @@
 ---
 name: Glass UI (samasante)
 url: 'https://glass.samasante.com/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
+  - react
   - frontend
   - ui
   - design-engineering
   - glassmorphism
-  - design
+  - diseno
   - css
   - componentes
-  - react
-  - css_effects
-  - components
-  - web_development
+  - css-effects
+  - web-development
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:08:38.655Z'
@@ -23,12 +22,13 @@ author_handle: himanshubuildss
 entry_type: tool
 company: Samasante
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
 source_tweets:
   - 'https://x.com/himanshubuildss/status/2108738253239255073'
   - 'https://x.com/noahelhadedy/status/2118750897454944486'
   - 'https://x.com/okapi_fukugyo/status/2111262269887971459'
 updated_at: '2026-11-13T05:00:36.261Z'
+area: diseno-creatividad
 ---
 # Glass UI (samasante)
 

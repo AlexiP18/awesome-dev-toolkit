@@ -1,7 +1,7 @@
 ---
 name: free-programming-books
 url: 'https://github.com/EbookFoundation/free-programming-books'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - books
   - education
@@ -16,7 +16,8 @@ author_handle: Shruti_0810
 entry_type: tool
 company: Ebook Foundation
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # free-programming-books
 

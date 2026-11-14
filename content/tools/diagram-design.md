@@ -1,7 +1,7 @@
 ---
 name: diagram-design
 url: 'https://github.com/cathrynlavery/diagram-design'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - diagrams
   - svg
@@ -17,7 +17,8 @@ author: niko.
 author_handle: nikosolenne
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # diagram-design
 

@@ -1,10 +1,10 @@
 ---
 name: Manim
 url: 'https://github.com/ManimCommunity/manim'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - animations
   - python
+  - animacion
   - math
   - educational-content
   - explainer-videos
@@ -17,7 +17,8 @@ author: rachit
 author_handle: rachiitgr
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Manim
 

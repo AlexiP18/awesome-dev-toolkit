@@ -1,7 +1,7 @@
 ---
 name: Social Media Research Skills
 url: 'https://github.com/ScrapeCreators/social-media-research-skills'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - agent-skills
   - social-media
@@ -17,7 +17,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: ScrapeCreators
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Social Media Research Skills
 

@@ -1,12 +1,11 @@
 ---
 name: CTA Gallery
 url: 'https://www.cta.gallery/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - cta
   - ux
   - conversion
-  - inspiracion
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:14:31.405Z'
@@ -16,6 +15,7 @@ author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # CTA Gallery
 

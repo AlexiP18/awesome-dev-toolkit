@@ -2,7 +2,7 @@
 name: LibreTranslate
 url: 'https://github.com/LibreTranslate/LibreTranslate'
 website_url: 'https://libretranslate.com/'
-category: AI & Machine Learning
+category: 'Voz, visión & IA aplicada'
 tags:
   - traduccion
   - nlp
@@ -17,7 +17,8 @@ author_handle: sentient_agency
 entry_type: tool
 company: LibreTranslate
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # LibreTranslate
 

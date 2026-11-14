@@ -1,7 +1,7 @@
 ---
 name: TELUS International AI
 url: 'https://www.telusinternational.com/'
-category: Trabajo & Freelance
+category: Entrenamiento de IA & microtareas
 tags:
   - remoto
   - freelance
@@ -20,7 +20,7 @@ location: Remoto (Mundial)
 salary: $12 - $20 USD/h
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+area: trabajo-oportunidades
 ---
 # 💼 TELUS International AI
 

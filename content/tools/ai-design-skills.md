@@ -1,10 +1,10 @@
 ---
 name: AI Design Skills
 url: 'https://github.com/elayadesign/ai-design-skills'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
-  - ai
-  - design
+  - ia
+  - diseno
   - frontend
   - cursor
   - ui
@@ -12,7 +12,6 @@ tags:
   - landing-page
   - automation
   - github
-  - ia
   - coding-assistant
 stars: 13629
 status: to_try
@@ -24,11 +23,12 @@ author_handle: CY160909
 entry_type: tool
 company: elayadesign
 classified_by: Google Gemini (Flash)
-conjunto: inspiracion
+conjunto: codigo
 source_tweets:
   - 'https://x.com/CY160909/status/2114213361982296227'
   - 'https://x.com/elayadesigns/status/2088200103719059700'
 updated_at: '2026-11-13T05:00:36.265Z'
+area: diseno-creatividad
 ---
 # AI Design Skills
 

@@ -1,9 +1,9 @@
 ---
 name: raphael.ai
 url: 'https://raphael.ai/'
-category: 'Prompts, Art & Video'
+category: Prompts & generación visual con IA
 tags:
-  - ai
+  - ia
   - generacion-imagenes
   - arte-digital
   - gratis
@@ -15,7 +15,8 @@ author: chaos
 author_handle: konig0000
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # raphael.ai
 

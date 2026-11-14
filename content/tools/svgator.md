@@ -1,13 +1,13 @@
 ---
 name: SVGator
 url: 'https://www.svgator.com/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - svg
-  - animaciones
+  - animacion
   - editor
   - web
-  - diseño
+  - diseno
   - exportacion
 status: to_try
 date_added: '2026-11-05'
@@ -17,7 +17,8 @@ author: Dev Patel
 author_handle: DevDsgn
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: diseno-creatividad
 ---
 # SVGator
 

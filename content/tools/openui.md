@@ -1,12 +1,11 @@
 ---
 name: openui
 url: 'https://github.com/thesysdev/openui'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - ag-ui
-  - agent
-  - agents
-  - ai
+  - agentes
+  - ia
   - generative-ui
 stars: 14701
 status: to_try
@@ -18,7 +17,8 @@ author_handle: precisox
 entry_type: tool
 classified_by: Fallback (Sin IA)
 updated_at: '2026-11-03T03:06:43.232Z'
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # openui
 

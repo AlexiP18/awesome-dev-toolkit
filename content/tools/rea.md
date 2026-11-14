@@ -1,10 +1,10 @@
 ---
 name: REA
 url: 'https://github.com/morluto/rea'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
   - reverse-engineering
-  - ai-agents
+  - agentes
   - mcp
   - cli
   - security
@@ -17,7 +17,8 @@ author: niko.
 author_handle: nikosolenne
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # REA
 

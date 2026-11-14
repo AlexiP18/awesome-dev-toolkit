@@ -1,9 +1,9 @@
 ---
 name: 3D Icons
 url: 'https://3dicons.co/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
-  - design
+  - diseno
   - iconos
   - 3d
   - assets
@@ -11,7 +11,6 @@ tags:
   - iconos-3d
   - recursos-graficos
   - frontend
-  - diseno
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:08:38.654Z'
@@ -20,11 +19,12 @@ author: Himanshu Hingorani
 author_handle: himanshubuildss
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
 source_tweets:
   - 'https://x.com/himanshubuildss/status/2108738253239255073'
   - 'https://x.com/iamtanzil_/status/2110941301344481761'
 updated_at: '2026-11-13T05:00:36.268Z'
+area: diseno-creatividad
 ---
 # 3D Icons
 

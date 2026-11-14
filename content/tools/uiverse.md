@@ -1,7 +1,7 @@
 ---
 name: Uiverse
 url: 'https://uiverse.io/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - ui
   - componentes
@@ -17,7 +17,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Uiverse
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Uiverse
 

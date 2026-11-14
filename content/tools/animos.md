@@ -1,7 +1,7 @@
 ---
 name: animos
 url: 'https://animos.app/editor'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - motion
   - animacion
@@ -18,7 +18,8 @@ author_handle: Hartdrawss
 entry_type: tool
 company: animos
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # animos
 

@@ -1,10 +1,10 @@
 ---
 name: affectUI
 url: 'https://www.affectui.com/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - react
-  - ui-components
+  - componentes
   - frontend
   - saas
   - ai-products
@@ -17,7 +17,8 @@ author_handle: neropursue
 entry_type: tool
 company: affectUI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: diseno-creatividad
 ---
 # affectUI
 

@@ -1,10 +1,9 @@
 ---
 name: Footer
 url: 'https://www.footer.design/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - footer
-  - inspiracion
   - web-design
   - componentes
 status: to_try
@@ -16,6 +15,7 @@ author_handle: BardhylBytyqi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Footer
 

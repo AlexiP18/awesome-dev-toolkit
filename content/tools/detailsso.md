@@ -2,12 +2,11 @@
 name: Details.so
 url: 'https://details.so/'
 website_url: 'https://www.details.so/inspo'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - web-design
-  - inspiracion
   - hero-sections
-  - animaciones
+  - animacion
   - css
 status: to_try
 date_added: '2026-11-04'
@@ -19,6 +18,7 @@ entry_type: tool
 company: Details.so
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Details.so
 

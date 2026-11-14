@@ -1,7 +1,7 @@
 ---
 name: React Three Rapier
 url: 'https://github.com/pmndrs/react-three-rapier'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - physics
   - 3d
@@ -18,7 +18,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Poimandres (pmndrs)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # React Three Rapier
 

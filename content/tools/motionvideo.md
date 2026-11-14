@@ -2,14 +2,14 @@
 name: MotionVideo
 url: 'https://motionvideo.xyz/'
 website_url: 'https://motionvideo.xyz/en'
-category: 'Prompts, Art & Video'
+category: Prompts & generación visual con IA
 tags:
-  - motion design
-  - ai
-  - claude opus
+  - motion-design
+  - ia
+  - claude-opus
   - prompts
-  - video inspiration
-  - generación de video
+  - video-inspiration
+  - generacion-de-video
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:51:19.133Z'
@@ -19,7 +19,8 @@ author_handle: neropursue
 entry_type: tool
 company: MotionVideo
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # MotionVideo
 

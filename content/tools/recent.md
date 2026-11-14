@@ -1,14 +1,12 @@
 ---
 name: Recent
 url: 'https://recent.design/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - inspiracion
   - tendencias
   - web-design
   - galeria
-  - inspiración
-  - curaduría
+  - curaduria
   - ui
 status: to_try
 date_added: '2026-11-07'
@@ -23,6 +21,7 @@ source_tweets:
   - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
   - 'https://x.com/tranmautritam/status/2080583043929223469'
 updated_at: '2026-11-13T05:00:36.258Z'
+area: diseno-creatividad
 ---
 # Recent
 

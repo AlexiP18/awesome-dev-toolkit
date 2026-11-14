@@ -1,7 +1,7 @@
 ---
 name: Ikonik
 url: 'https://ikonik.modulify.ai/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - iconos
   - libreria
@@ -17,7 +17,8 @@ author_handle: VullnetAdemaj
 entry_type: tool
 company: Modulify
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Ikonik
 

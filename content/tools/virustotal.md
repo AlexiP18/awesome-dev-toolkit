@@ -1,7 +1,7 @@
 ---
 name: VirusTotal
 url: 'https://www.virustotal.com/'
-category: DevOps & Cloud
+category: Seguridad & privacidad
 tags:
   - seguridad
   - malware
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: VirusTotal (Google)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # VirusTotal
 

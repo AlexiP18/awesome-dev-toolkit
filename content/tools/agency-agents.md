@@ -1,9 +1,9 @@
 ---
 name: agency-agents
 url: 'https://github.com/msitarzewski/agency-agents'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
-  - agentes-ia
+  - agentes
   - multi-agente
   - llm
   - open-source
@@ -22,7 +22,8 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: msitarzewski
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: inteligencia-artificial
 ---
 # agency-agents
 

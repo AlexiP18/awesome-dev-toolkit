@@ -1,16 +1,16 @@
 ---
 name: Hairline
 url: 'https://hairline.lucasmarkes.com/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
-  - animations
+  - animacion
   - svg
   - ui
   - frontend
-  - free
+  - gratis
   - figures
-  - components
+  - componentes
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:37:11.194Z'
@@ -20,7 +20,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Lucas Marques
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Hairline
 

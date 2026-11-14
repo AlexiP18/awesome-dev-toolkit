@@ -1,7 +1,7 @@
 ---
 name: Inspora
 url: 'https://www.inspora.design/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - design-inspiration
   - ui
@@ -17,6 +17,7 @@ entry_type: tool
 company: Inspora
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Inspora
 

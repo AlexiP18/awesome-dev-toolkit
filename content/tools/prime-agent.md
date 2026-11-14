@@ -1,14 +1,14 @@
 ---
 name: Prime Agent
 url: 'https://github.com/PrimeIntellect-ai/prime-agent'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
+  - rust
   - agentes
   - ia
   - open-source
   - automatizacion
   - coding-agent
-  - rust
 stars: 22597
 status: to_try
 date_added: '2026-11-06'
@@ -19,7 +19,8 @@ author_handle: josesilesdata
 entry_type: tool
 company: Prime Intellect
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Prime Agent
 

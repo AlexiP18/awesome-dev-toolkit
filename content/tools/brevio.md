@@ -1,7 +1,7 @@
 ---
 name: Brevio
 url: 'https://brevio.pro/'
-category: Productivity & Tools
+category: Seguridad & privacidad
 tags:
   - utilidades
   - multi-herramienta
@@ -19,7 +19,8 @@ author_handle: ihteshamali
 entry_type: tool
 company: Brevio
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # Brevio
 

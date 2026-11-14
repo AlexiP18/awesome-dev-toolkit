@@ -1,10 +1,10 @@
 ---
 name: Sky-Agent
 url: 'https://github.com/arteemg/sky-agent'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
   - superagent
-  - ai-agents
+  - agentes
   - tools
   - memory
 stars: 115
@@ -17,7 +17,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: arteemg
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Sky-Agent
 

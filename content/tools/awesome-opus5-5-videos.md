@@ -1,8 +1,9 @@
 ---
 name: awesome-opus5-5-videos
 url: 'https://github.com/athemeroy/awesome-opus-5-5-videos'
-category: 'Prompts, Art & Video'
+category: Prompts & generación visual con IA
 tags:
+  - python
   - ai-video
   - awesome
   - awesome-list
@@ -10,7 +11,6 @@ tags:
   - claude-opus-5-5
   - video-workflows
   - prompts
-  - python
   - claude-opus
   - creative-coding
   - motion-graphics
@@ -25,8 +25,9 @@ author_handle: RodmanAi
 entry_type: tool
 company: yihui-dev
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: consejos
 updated_at: '2026-11-13T05:00:36.271Z'
+area: diseno-creatividad
 ---
 # awesome-opus5-5-videos
 

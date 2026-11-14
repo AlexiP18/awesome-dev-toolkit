@@ -1,7 +1,7 @@
 ---
 name: Valessa
 url: 'https://valessa.riotters.com/'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - 3d
   - visualizacion
@@ -17,7 +17,8 @@ author_handle: tranmautritam
 entry_type: tool
 company: Riotters
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Valessa
 

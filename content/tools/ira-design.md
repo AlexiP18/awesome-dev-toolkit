@@ -1,7 +1,7 @@
 ---
 name: IRA Design
 url: 'https://iradesign.io/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - ilustraciones
   - generador
@@ -16,7 +16,8 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Creative Tim
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # IRA Design
 

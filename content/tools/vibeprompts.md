@@ -1,11 +1,11 @@
 ---
 name: VibePrompts
 url: 'https://vibeprompts.dev/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - ui
   - prompts
-  - design
+  - diseno
   - frontend
   - ai-assisted-coding
 status: to_try
@@ -16,7 +16,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # VibePrompts
 

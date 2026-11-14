@@ -1,15 +1,15 @@
 ---
 name: EasyUI
 url: 'https://easyui.site/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - ui library
   - react
-  - tailwind css
-  - framer motion
+  - ui-library
+  - tailwind-css
+  - framer-motion
   - componentes
   - frontend
-  - animaciones
+  - animacion
   - gratis
 status: to_try
 date_added: '2026-11-03'
@@ -19,7 +19,8 @@ author: Zakaria
 author_handle: Zakariaweb1
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # EasyUI
 

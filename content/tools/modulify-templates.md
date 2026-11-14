@@ -1,7 +1,7 @@
 ---
 name: Modulify Templates
 url: 'https://modulify.ai/templates'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - plantillas
   - templates
@@ -16,7 +16,8 @@ author_handle: BardhylBytyqi
 entry_type: tool
 company: Modulify
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: diseno-creatividad
 ---
 # Modulify Templates
 

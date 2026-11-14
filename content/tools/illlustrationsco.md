@@ -1,7 +1,7 @@
 ---
 name: illlustrations.co
 url: 'https://illlustrations.co/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - ilustraciones
   - open-source
@@ -16,7 +16,8 @@ author_handle: noahelhadedy
 entry_type: tool
 company: illlustrations
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # illlustrations.co
 

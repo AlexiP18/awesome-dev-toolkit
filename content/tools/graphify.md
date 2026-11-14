@@ -1,10 +1,10 @@
 ---
 name: Graphify
 url: 'https://github.com/Graphify-Labs/graphify'
-category: Agentes & Protocolo MCP
+category: Asistentes de código & skills
 tags:
   - knowledge-graph
-  - ai-agents
+  - agentes
   - claude-code
   - cursor
   - mcp
@@ -23,7 +23,8 @@ author_handle: heyfredds
 entry_type: tool
 company: Graphify Labs
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Graphify
 

@@ -1,14 +1,14 @@
 ---
 name: UI Layouts
 url: 'https://github.com/ui-layouts/ui-layouts'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
   - tailwindcss
   - framer-motion
   - component-library
   - shadcn
-  - animations
+  - animacion
 stars: 3842
 status: to_try
 date_added: '2026-11-05'
@@ -19,7 +19,8 @@ author_handle: RoundtableSpace
 entry_type: tool
 company: UI Layouts
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # UI Layouts
 

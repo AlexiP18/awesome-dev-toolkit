@@ -1,7 +1,7 @@
 ---
 name: Gradient Buttons (Colorion)
 url: 'https://gradientbuttons.colorion.co/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - css
   - frontend
@@ -17,6 +17,7 @@ author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Gradient Buttons (Colorion)
 

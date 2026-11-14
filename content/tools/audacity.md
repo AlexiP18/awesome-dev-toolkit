@@ -1,7 +1,7 @@
 ---
 name: Audacity
 url: 'https://github.com/audacity/audacity'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - audio-editor
   - sound-effects
@@ -17,7 +17,8 @@ author: Marlen
 author_handle: Marlenuii
 entry_type: tool
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
+conjunto: codigo
+area: productividad-utilidades
 ---
 # Audacity
 

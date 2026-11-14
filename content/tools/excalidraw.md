@@ -2,11 +2,11 @@
 name: Excalidraw
 url: 'https://github.com/excalidraw/excalidraw'
 website_url: 'https://excalidraw.com/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
+  - react
   - whiteboard
   - diagramas
-  - react
   - colaboracion
   - canvas
 status: to_try
@@ -18,7 +18,8 @@ author_handle: DivyanshT91162
 entry_type: tool
 company: Excalidraw
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Excalidraw
 

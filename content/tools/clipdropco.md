@@ -1,9 +1,9 @@
 ---
 name: clipdrop.co
 url: 'https://clipdrop.co/'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - ai
+  - ia
   - edicion-imagenes
   - eliminar-fondo
   - retoque-fotografico
@@ -16,7 +16,8 @@ author: chaos
 author_handle: konig0000
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: producto
+conjunto: app
+area: diseno-creatividad
 ---
 # clipdrop.co
 

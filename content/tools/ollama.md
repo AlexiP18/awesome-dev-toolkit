@@ -1,7 +1,7 @@
 ---
 name: Ollama
 url: 'https://github.com/ollama/ollama'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - llm
   - local-inference
@@ -16,7 +16,8 @@ author_handle: mdancho84
 entry_type: tool
 company: Ollama
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Ollama
 

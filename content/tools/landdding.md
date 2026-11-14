@@ -1,10 +1,9 @@
 ---
 name: Landdding
 url: 'https://landdding.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - landing-pages
-  - inspiracion
   - web-design
   - conversion
 status: to_try
@@ -16,6 +15,7 @@ author_handle: BardhylBytyqi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Landdding
 

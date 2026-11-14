@@ -270,7 +270,7 @@ export async function ingestResource(input: IngestInput) {
     classifications.push({
       name: cleanTitle,
       canonicalUrl: canonicalUrls[0] || input.sourceTweet || explicitUrl || 'https://x.com',
-      category: input.entryType === 'job_remote' ? 'Trabajo & Freelance' : input.entryType === 'tech_product' ? 'Productos Tecnológicos & Hardware' : 'Consejos & Buenas Prácticas',
+      category: input.entryType === 'job_remote' ? 'Empleo remoto & bolsas' : input.entryType === 'tech_product' ? 'Terminal, IDE & hardware' : 'Guías, tips & buenas prácticas',
       tags: ['tips', 'hilo', 'x'],
       oneLiner: (text || '').slice(0, 160).replace(/\n/g, ' ').trim() || 'Publicación técnica o hilo recopilado.',
       keyHighlights: steps.length > 0 ? steps.slice(0, 8) : [(text || '').slice(0, 200)],
@@ -322,7 +322,7 @@ export async function ingestResource(input: IngestInput) {
 
       if (threadTarget.entryType !== 'job_remote' && threadTarget.entryType !== 'tech_product') {
         threadTarget.entryType = 'tech_tip';
-        threadTarget.category = 'Consejos & Buenas Prácticas';
+        threadTarget.category = 'Guías, tips & buenas prácticas';
       }
     }
   }
@@ -403,14 +403,14 @@ export async function ingestResource(input: IngestInput) {
 
     if (input.entryType && input.entryType !== 'tool') {
       classification.entryType = input.entryType;
-      if (input.entryType === 'job_remote') {
-        classification.category = 'Trabajo & Freelance';
-      } else if (input.entryType === 'tech_tip' && (!classification.category || classification.category === 'Other')) {
-        classification.category = 'Consejos & Buenas Prácticas';
-      } else if (input.entryType === 'tech_product' && (!classification.category || classification.category === 'Other')) {
-        classification.category = 'Productos Tecnológicos & Hardware';
-      } else if (input.entryType === 'product_showcase' && (!classification.category || classification.category === 'Other')) {
-        classification.category = 'Empresas & Productos';
+      if (input.entryType === 'job_remote' && !classification.category) {
+        classification.category = 'Empleo remoto & bolsas';
+      } else if (input.entryType === 'tech_tip' && !classification.category) {
+        classification.category = 'Guías, tips & buenas prácticas';
+      } else if (input.entryType === 'tech_product' && !classification.category) {
+        classification.category = 'Terminal, IDE & hardware';
+      } else if (input.entryType === 'product_showcase' && !classification.category) {
+        classification.category = 'Apps de productividad & negocio';
       }
     } else if (!classification.entryType) {
       classification.entryType = input.entryType || 'tool';

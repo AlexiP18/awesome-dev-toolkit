@@ -1,7 +1,7 @@
 ---
 name: Gradient Lab (Backgrounds Supply)
 url: 'http://backgrounds.supply/gradient-lab'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - gradientes
   - shaders
@@ -17,7 +17,8 @@ author_handle: Hartdrawss
 entry_type: tool
 company: Backgrounds Supply
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Gradient Lab (Backgrounds Supply)
 

@@ -124,8 +124,8 @@ export function namesLookLikeSameProduct(a, b) {
 export function entryTypeOf(tool) {
   const fm = tool?.frontmatter || {};
   if (fm.entry_type) return fm.entry_type;
-  if (fm.category === 'Trabajo & Freelance') return 'job_remote';
-  if (fm.category === 'Consejos & Buenas Prácticas') return 'tech_tip';
+  if (fm.category === 'Empleo remoto & bolsas' || fm.category === 'Entrenamiento de IA & microtareas' || fm.category === 'Bounties, Web3 & concursos') return 'job_remote';
+  if (fm.category === 'Guías, tips & buenas prácticas') return 'tech_tip';
   return 'tool';
 }
 
@@ -142,6 +142,8 @@ export function flagToolsNeedingReview(tools) {
     const fm = tool.frontmatter || {};
     const explicit = fm.needs_review === true
       || fm.needs_review === 'true'
+      || fm.review === true
+      || fm.review === 'true'
       || /REVISI[ÓO]N MANUAL/i.test(String(tool.content || ''));
     if (explicit) {
       reasons[tool.slug] = 'Marcada para revisión manual.';
@@ -204,4 +206,51 @@ export function pageWindow(total, page, size) {
   const current = Math.min(Math.max(1, page || 1), pages);
   const start = (current - 1) * safeSize;
   return { pages, page: current, start, end: Math.min(total || 0, start + safeSize) };
+}
+
+/**
+ * Traduce filtros viejos de la URL (categoría legacy, section=tools|tips|jobs, conjunto producto)
+ * a área, categoría y conjunto de la taxonomía. `recursos` sigue filtrando codigo y app.
+ */
+export function resolveLegacyFilters(input, tables) {
+  const aliases = tables?.aliases || {};
+  const sections = tables?.legacySections || {};
+  const conjuntos = tables?.legacyConjuntos || {};
+  let cat = input?.cat || 'all';
+  let conjunto = input?.conjunto || 'all';
+  let area = input?.area || 'all';
+  let rewritten = false;
+
+  if (cat && cat !== 'all') {
+    const mapped = aliases[String(cat).toLowerCase()];
+    if (mapped && mapped !== cat) {
+      cat = mapped;
+      rewritten = true;
+    }
+  }
+
+  if (conjunto && conjunto !== 'all') {
+    const mapped = conjuntos[conjunto];
+    if (typeof mapped === 'string' && mapped !== conjunto) {
+      conjunto = mapped;
+      rewritten = true;
+    }
+  }
+
+  const section = input?.section || '';
+  if ((!input?.area || input.area === 'all') && section && sections[section]) {
+    const target = sections[section];
+    if (target.area) area = target.area;
+    if (target.category && (cat === 'all' || !cat)) cat = target.category;
+    rewritten = true;
+  }
+
+  return { cat: cat || 'all', conjunto: conjunto || 'all', area: area || 'all', rewritten };
+}
+
+export function conjuntoMatches(value, filter) {
+  if (!filter || filter === 'all') return true;
+  if (filter === 'recursos') return value === 'codigo' || value === 'app';
+  if (filter === 'producto') return value === 'app';
+  return value === filter;
 }

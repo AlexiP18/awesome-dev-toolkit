@@ -1,11 +1,11 @@
 ---
 name: Context
 url: 'https://www.context.dev/'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai
-  - agents
-  - web scraping
+  - ia
+  - agentes
+  - web-scraping
   - api
   - llm
   - search
@@ -17,7 +17,8 @@ author: Yash
 author_handle: dewyashtwts
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # Context
 

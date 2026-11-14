@@ -2,7 +2,7 @@
 name: Ortica
 url: 'https://www.collletttivo.it/typefaces/ortica'
 website_url: 'https://www.collletttivo.it/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - fuentes
   - tipografia
@@ -19,7 +19,8 @@ entry_type: tool
 company: Collletttivo
 price: Gratis
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Ortica
 

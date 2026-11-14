@@ -1,11 +1,11 @@
 ---
 name: Curso de n8n y Automatización con IA (Google Drive)
 url: 'https://drive.google.com/drive/folders/1SXEHwuEL1OwzMe9sdkYf2zTxU2uZSugJ'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
   - n8n
   - automatizacion
-  - ai
+  - ia
   - workflows
   - no-code
   - agentes
@@ -17,7 +17,8 @@ author: ayo.artss
 author_handle: madamayo_
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: consejos
+conjunto: app
+area: inteligencia-artificial
 ---
 # Curso de n8n y Automatización con IA (Google Drive)
 

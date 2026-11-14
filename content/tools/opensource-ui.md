@@ -1,16 +1,16 @@
 ---
 name: Opensource UI
 url: 'https://opensourceui.in/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
-  - free
-  - open-source
   - react
-  - next.js
-  - ui components
-  - tailwind css
-  - copy-paste
   - typescript
+  - gratis
+  - open-source
+  - next-js
+  - componentes
+  - tailwind-css
+  - copy-paste
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:04:42.095Z'
@@ -19,7 +19,8 @@ author: Houdayfa
 author_handle: HoudayfaDesign
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Opensource UI
 

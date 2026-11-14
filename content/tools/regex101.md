@@ -1,7 +1,7 @@
 ---
 name: Regex101
 url: 'https://regex101.com/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - regex
   - debugging
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # Regex101
 

@@ -1,7 +1,7 @@
 ---
 name: TinyWow
 url: 'https://tinywow.com/'
-category: Productivity & Tools
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - pdf
   - utilidades
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: TinyWow
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # TinyWow
 

@@ -1,7 +1,7 @@
 ---
 name: claude-opus-5-5-demo
 url: 'https://github.com/riba2534/claude-opus-5-5-demo'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - web-games
   - 3d
@@ -19,7 +19,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: riba2534
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # claude-opus-5-5-demo
 

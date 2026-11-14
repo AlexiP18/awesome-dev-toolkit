@@ -1,7 +1,7 @@
 ---
 name: Ship Studio
 url: 'https://www.ship.studio/'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
   - agentes
   - desarrollo
@@ -16,7 +16,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Ship Studio
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: inteligencia-artificial
 ---
 # Ship Studio
 

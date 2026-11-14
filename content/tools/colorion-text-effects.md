@@ -1,10 +1,10 @@
 ---
 name: Colorion Text Effects
 url: 'https://text-effects.colorion.co/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - css
-  - animaciones
+  - animacion
   - texto
   - copy-paste
   - frontend
@@ -24,6 +24,7 @@ source_tweets:
   - 'https://x.com/tranmautritam/status/2076963534307790926'
   - 'https://x.com/csaba_kissi/status/2081639101170585623'
 updated_at: '2026-11-13T05:00:36.262Z'
+area: diseno-creatividad
 ---
 # Colorion Text Effects
 

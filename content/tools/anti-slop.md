@@ -1,9 +1,9 @@
 ---
 name: anti-slop
 url: 'https://github.com/miqdadbadjuber/anti-slop'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
-  - ai-agents
+  - agentes
   - claude-code
   - cursor
   - codex
@@ -20,7 +20,8 @@ author_handle: Manixh02
 entry_type: tool
 company: miqdadbadjuber
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # anti-slop
 

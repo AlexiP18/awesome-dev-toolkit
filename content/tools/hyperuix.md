@@ -1,7 +1,7 @@
 ---
 name: HyperUIX
 url: 'https://kobra.systems/components/input-otp'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - frontend
   - ui
@@ -15,7 +15,8 @@ author: Harshil Tomar
 author_handle: Hartdrawss
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # HyperUIX
 

@@ -1,14 +1,14 @@
 ---
 name: Motion2MixamoRig
 url: 'https://github.com/MaxLiu22/Motion2MixamoRig'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - 3d
   - animacion
   - captura-movimiento
   - mixamo
   - video
-  - ai
+  - ia
 stars: 1876
 status: to_try
 date_added: '2026-11-02'
@@ -20,7 +20,8 @@ entry_type: tool
 company: MaxLiu22
 price: Gratis
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Motion2MixamoRig
 

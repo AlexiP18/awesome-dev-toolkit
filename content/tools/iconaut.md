@@ -1,14 +1,14 @@
 ---
 name: Iconaut
 url: 'https://www.iconaut.design/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
+  - react
   - iconos
   - frontend
   - ui
-  - diseño
+  - diseno
   - svg
-  - react
   - figma
   - codigo-abierto
   - libreria
@@ -20,7 +20,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Iconaut
 

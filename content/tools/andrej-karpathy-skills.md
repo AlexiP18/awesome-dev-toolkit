@@ -1,11 +1,11 @@
 ---
 name: andrej-karpathy-skills
 url: 'https://github.com/multica-ai/andrej-karpathy-skills'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - claude-code
   - prompts
-  - ai
+  - ia
   - coding-rules
 stars: 229553
 status: to_try
@@ -16,7 +16,8 @@ author: niko.
 author_handle: nikosolenne
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: inteligencia-artificial
 ---
 # andrej-karpathy-skills
 

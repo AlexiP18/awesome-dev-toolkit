@@ -1,7 +1,7 @@
 ---
 name: NanoBot
 url: 'https://github.com/HKUDS/nanobot'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
   - self-hosted
   - ai-agent
@@ -17,7 +17,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: HKUDS
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # NanoBot
 

@@ -1,10 +1,9 @@
 ---
 name: Refs.gallery
 url: 'https://refs.gallery/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - inspiracion
-  - diseño
+  - diseno
   - web
   - referencias
   - ui
@@ -20,6 +19,7 @@ author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Refs.gallery
 

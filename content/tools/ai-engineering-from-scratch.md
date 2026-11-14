@@ -1,7 +1,7 @@
 ---
 name: AI Engineering from Scratch
 url: 'https://aiengineeringfromscratch.com/'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - ai-engineering
   - rag
@@ -18,7 +18,8 @@ author_handle: santtiagom_
 entry_type: tool
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # AI Engineering from Scratch
 

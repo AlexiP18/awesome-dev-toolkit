@@ -1,9 +1,9 @@
 ---
 name: 10 Minute Mail
 url: 'https://10minutemail.com/'
-category: Productivity & Tools
+category: Seguridad & privacidad
 tags:
-  - email temporal
+  - email-temporal
   - privacidad
   - testing
 status: to_try
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: desarrollo-software
 ---
 # 10 Minute Mail
 

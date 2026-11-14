@@ -1,7 +1,7 @@
 ---
 name: Khagwal 3D
 url: 'https://3d.khagwal.com/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - ilustraciones-3d
   - render
@@ -16,7 +16,8 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Khagwal
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Khagwal 3D
 

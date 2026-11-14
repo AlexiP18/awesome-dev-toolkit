@@ -1,13 +1,13 @@
 ---
 name: WhisperX
 url: 'https://github.com/m-bain/whisperX'
-category: AI & Machine Learning
+category: 'Voz, visión & IA aplicada'
 tags:
+  - python
   - asr
   - speech-recognition
   - speech-to-text
   - subtitles
-  - python
   - diarization
 stars: 25015
 status: to_try
@@ -18,7 +18,8 @@ author: rachit
 author_handle: rachiitgr
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # WhisperX
 

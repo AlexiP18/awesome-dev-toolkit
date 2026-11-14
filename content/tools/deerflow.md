@@ -1,12 +1,12 @@
 ---
 name: DeerFlow
 url: 'https://github.com/bytedance/deer-flow'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - agent
+  - python
+  - agentes
   - multi-agent
   - langgraph
-  - python
   - deep-research
   - superagent
   - open-source
@@ -21,7 +21,8 @@ author_handle: franpradasAI
 entry_type: tool
 company: ByteDance
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # DeerFlow
 

@@ -1,18 +1,18 @@
 ---
 name: AutoSubs
 url: 'https://github.com/tmoroney/auto-subs'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
+  - rust
+  - typescript
   - subtitles
-  - ai
+  - ia
   - speech-to-text
   - video-editing
   - davinci-resolve
   - premiere
   - after-effects
   - transcription
-  - rust
-  - typescript
 stars: 4496
 status: to_try
 date_added: '2026-11-03'
@@ -23,7 +23,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: tmoroney
 classified_by: Google Gemini (Flash)
-conjunto: producto
+conjunto: codigo
+area: diseno-creatividad
 ---
 # AutoSubs
 

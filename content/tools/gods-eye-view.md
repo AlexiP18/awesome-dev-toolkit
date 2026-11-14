@@ -1,7 +1,7 @@
 ---
 name: gods-eye-view
 url: 'https://github.com/bilawalsidhu/gods-eye-view'
-category: Productivity & Tools
+category: Seguridad & privacidad
 tags:
   - geospatial
   - osint
@@ -17,7 +17,8 @@ author: niko.
 author_handle: nikosolenne
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # gods-eye-view
 

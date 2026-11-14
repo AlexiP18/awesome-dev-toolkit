@@ -1,7 +1,7 @@
 ---
 name: the-art-of-command-line
 url: 'https://github.com/jlevy/the-art-of-command-line'
-category: CLI & Terminal
+category: 'Terminal, IDE & hardware'
 tags:
   - bash
   - cli
@@ -18,6 +18,7 @@ author_handle: Shruti_0810
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: consejos
+area: desarrollo-software
 ---
 # the-art-of-command-line
 

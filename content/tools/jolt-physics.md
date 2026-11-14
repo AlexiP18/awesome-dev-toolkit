@@ -1,10 +1,10 @@
 ---
 name: Jolt Physics
 url: 'https://github.com/jrouwe/JoltPhysics'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - physics-engine
-  - c++
+  - c
   - game-development
   - vr
   - simulation
@@ -18,7 +18,8 @@ author: rachit
 author_handle: rachiitgr
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Jolt Physics
 

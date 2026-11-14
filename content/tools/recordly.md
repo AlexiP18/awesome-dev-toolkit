@@ -1,7 +1,7 @@
 ---
 name: Recordly
 url: 'https://github.com/webadderallorg/Recordly'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - screen-recorder
   - electron
@@ -20,7 +20,8 @@ author_handle: katsudev
 entry_type: tool
 company: webadderallorg
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: codigo
+area: productividad-utilidades
 ---
 # Recordly
 

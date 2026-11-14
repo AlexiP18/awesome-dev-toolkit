@@ -3,7 +3,9 @@ import { GoogleGenAI, Type } from '@google/genai';
 import { ClassificationResult, ToolCategory, EntryType, ToolConjunto } from './types.js';
 import { GitHubMetadata } from './github.js';
 import { isIgnoredNonToolUrl, cleanTrackingParams, WebPageMetadata } from './link_resolver.js';
-import { coerceCategory, getAllCategories, getAllCategoryNames } from './category_manager.js';
+import { coerceCategory, getAllCategoryNames } from './category_manager.js';
+import { resolveClassification } from './classify_rules.js';
+import { GUIAS_CATEGORY, categoryOmitsConjunto, normalizeTags, taxonomyPromptBlock } from './taxonomy.js';
 import { envInt, fetchWithRetry, safeErrorMessage, withTimeout } from './http_util.js';
 
 dotenv.config();
@@ -51,16 +53,8 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
    - DEBES extraer y devolver CADA UNA de las herramientas como un objeto independiente dentro del arreglo JSON 'tools'.
    - Asocia a cada herramienta su URL canónica correspondiente (repositorio de GitHub si existe, o su sitio web oficial).
    - REGLA ESTRICTA DE CATEGORIZACIÓN INDEPENDIENTE (PROHIBIDO CATEGORÍA GENÉRICA COMÚN):
-     * NUNCA asignes a todas las herramientas la categoría del tweet o una categoría genérica/vaga (como "Documentation & Resources", "Consejos & Buenas Prácticas" u "Other").
-     * Cada herramienta DEBE ser evaluada y clasificada individualmente en su categoría técnica especializada correspondiente según su función real:
-       • "Frontend & UI": Bibliotecas de componentes React/Vue/Svelte/Web Components, UI kits, librerías de diseño, iconotecas, CSS/Tailwind, animaciones, motion y galerías de inspiración web (ej. beui.dev, iconaut.design, minimal.gallery).
-       • "AI & Machine Learning": Sistemas de memoria para agentes, skills para codificación asistida por IA, frameworks de agentes LLM, motores de inferencia, RAG, modelos y prompts de ingeniería (ej. claude-mem, agent-skills, vLLM, Ollama).
-       • "Productivity & Tools": Monitoreo y analítica para desarrolladores, métricas de tokens/costes, extensiones de productividad, utilidades para devs (ej. usagerank.com, raycast, launchers).
-       • "CLI & Terminal": Herramientas de línea de comandos, interfaces TUI, atajos de terminal, utilidades para bash/zsh o git (ej. lazygit, uv, ripgrep).
-       • "Backend & APIs": Frameworks de servidor, pasarelas de API, microservicios, autenticación backend, routing HTTP.
-       • "Databases & Storage": Bases de datos relacionales, vectoriales, NoSQL, ORMs, cachés, sistemas de archivos.
-       • "DevOps & Cloud": Docker, Kubernetes, CI/CD, despliegue, infraestructura como código, observabilidad en la nube.
-       • Reserva "Documentation & Resources" ÚNICA Y EXCLUSIVAMENTE para recursos que sean estrictamente libros, listas curadas de lectura o tutoriales estáticos que NO sean herramientas de software ni bibliotecas ejecutables.
+     * NUNCA asignes a todas las herramientas la categoría del tweet o una categoría genérica/vaga (como "Cursos, libros & rutas", "Guías, tips & buenas prácticas" u "Other").
+     * Cada herramienta DEBE ser evaluada y clasificada individualmente en una categoría de la taxonomía vigente, según su función real. No uses nombres de categorías anteriores.
    - REGLA ESTRICTA DE DESCRIPCIÓN RICA E INDEPENDIENTE (PROHIBIDO DESCRIPCIONES COPIADAS O VACÍAS):
      * Cada herramienta DEBE tener su propio 'oneLiner' técnico y específico en español (mínimo 10-15 palabras), explicando exactamente qué hace la herramienta, con qué tecnologías funciona y por qué es valiosa para un desarrollador. PROHIBIDO repetir el título del tweet o usar frases genéricas como "Recurso gratuito para desarrolladores".
      * 'keyHighlights': 2 a 4 características técnicas distintivas de ESA herramienta en particular (ej. tecnologías soportadas, formato de exportación, comandos CLI, integración con frameworks).
@@ -79,12 +73,12 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
    - Si el tweet incluye un enlace a una herramienta Y TAMBIÉN enlaces a canales de Telegram (t.me/...), servidores de Discord (discord.gg/...), grupos de WhatsApp, canales personales de YouTube o enlaces de donación/café:
    - RECHAZA Y DESCARTA por completo los enlaces comunitarios/sociales. La herramienta NUNCA es el canal de Telegram o Discord. Solo debes registrar la herramienta de software o sitio web técnico real.
 
-5. TWEETS DE EMPRESAS O CREADORES ANUNCIANDO UN PRODUCTO SIN ENLACE DIRECTO (Apartado: 'Empresas & Productos'):
+5. TWEETS DE EMPRESAS O CREADORES ANUNCIANDO UN PRODUCTO SIN ENLACE DIRECTO:
    - Si una empresa o creador anuncia un producto técnico, archivo o recurso pero no incluye un link web/repo directo (ej: "Introducing epstein.md A 927,400+ Character .MD File trained to skip vibe coded AI slop..."):
    - Si describe un producto técnico real y utilizable para desarrolladores, regístralo como producto de empresa:
      * 'name': Nombre del producto o archivo (ej: "epstein.md").
      * 'canonicalUrl': Si no hay link web en el texto, usa la URL de la empresa/creador o el enlace del tweet de origen.
-     * 'category': "Empresas & Productos".
+     * 'category': "Apps de productividad & negocio" si es una app de uso diario; si es código, UI, IA u otra área, usa la categoría de la taxonomía que corresponda. No existe "Empresas & Productos".
      * 'entryType': "product_showcase".
      * 'company': Nombre de la empresa o cuenta creadora (ej: "Shipper").
      * 'tags': Incluye etiquetas relevantes como 'showcase', 'design', etc.
@@ -96,10 +90,17 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * Si además tiene un sitio web oficial, asígnalo en el campo 'websiteUrl' (ej: "https://voice-pro.ai").
      * NUNCA elijas un enlace a una landing page comercial o con redirecciones (/lander) como 'canonicalUrl' si existe un repositorio de código disponible.
 
-7. DISTINCIÓN IMPORTANTE ENTRE CATEGORÍAS (Frontend & UI vs Prompts, Art & Video vs AI & Machine Learning):
-   - "Frontend & UI": Asigna esta categoría a herramientas, repositorios, bibliotecas, componentes, design systems, plantillas web, y skills o utilidades para agentes de código dedicadas a diseñar, maquetar, estructurar o mejorar interfaces de usuario y páginas web (ej. "taste-skill", skills de UI/UX, Tailwind, CSS, React, inspectores de frontend). Todo lo enfocado en que el código o la UI web sea atractiva, profesional y funcional pertenece aquí.
-   - "Prompts, Art & Video": Reserva esta categoría EXCLUSIVAMENTE para generación de video (ffmpeg, clips cinematográficos como "lemo-opuscar", Sora, Runway, Kling), arte visual 3D procedural/shaders, generadores de música/audio o catálogos de prompts para generadores de imágenes (Midjourney, DALL-E). NUNCA la uses para herramientas de diseño web, interfaces de usuario o componentes frontend.
-   - "AI & Machine Learning": Reserva esta categoría estrictamente para modelos de base, motores de inferencia (DeepInfer, vLLM, Ollama), entrenamiento, PyTorch, TensorFlow, embeddings, RAG o infraestructura técnica de ML.
+7. DISTINCIÓN IMPORTANTE ENTRE CATEGORÍAS DE DISEÑO E IA:
+   - "Componentes & frameworks UI": librerías y kits que se instalan en una interfaz (React, Tailwind, shadcn).
+   - "Animación & motion web": GSAP, WebGL, Three.js, shaders y scroll en la web.
+   - "Inspiración, UX & design systems": galerías, landings y design systems para mirar, no para instalar.
+   - "Recursos gráficos": iconos, fuentes, paletas, ilustraciones y mockups.
+   - "Video, audio, imagen & 3D": edición o generación de piezas multimedia fuera del navegador (ffmpeg, Blender, Sora, Kling).
+   - "Prompts & generación visual con IA": el centro es el prompt o la plataforma generativa de imagen o video.
+   - "Modelos, inferencia & APIs de IA": usas o sirves un modelo, sin agente ni RAG.
+   - "Agentes, MCP & automatización": el software actúa con herramientas (MCP, n8n, navegador).
+   - "Asistentes de código & skills": Claude Code, Codex, Cursor y skills de programación.
+   - "RAG, búsqueda & datos para IA": embeddings, PDF, bases vectoriales y búsqueda para un modelo.
 
 8. DETECCIÓN DE PROMOCIONES ACADÉMICAS O BENEFICIOS PARA ESTUDIANTES:
    - Si el tweet o recurso menciona promociones académicas, beneficios para estudiantes o profesores, licencias gratis con correo universitario (.edu o institucional), inclusión en GitHub Student Developer Pack, o descuentos educativos:
@@ -118,7 +119,7 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
    - Si el tweet comparte consejos prácticos, trucos o buenas prácticas técnicas (ej: comandos útiles de Docker o Git, trucos de CSS/React, optimización de consultas SQL, patrones de diseño de APIs, atajos de terminal, reglas de arquitectura o tips de debugging):
      * 'name': Título descriptivo y conciso del consejo o técnica (ej: "Optimización de Pools de Conexión en PostgreSQL", "Multi-stage Builds Eficientes en Docker", "Patrón Compound Components en React").
      * 'canonicalUrl': Si el tweet incluye un enlace de referencia técnica o documentación, úsalo. Si NO tiene ningún enlace externo, usa el tweet de origen o déjalo vacío para que se asocie al tweet.
-     * 'category': Asigna el área técnica correspondiente (ej: 'DevOps & Cloud' para Docker/K8s/CI, 'Databases & Storage' para SQL/Postgres, 'Frontend & UI' para React/CSS/Tailwind, 'Backend & APIs' para NodeJS/APIs, 'CLI & Terminal' para bash/git). Si es un consejo general de ingeniería de software o no encaja en una específica, usa 'Consejos & Buenas Prácticas'.
+     * 'category': La categoría técnica de la taxonomía (ej: 'DevOps, cloud & self-hosting' para Docker/K8s/CI, 'Backend, APIs & datos' para SQL/Postgres, 'Componentes & frameworks UI' para React/CSS/Tailwind, 'Terminal, IDE & hardware' para bash/git). Si es un consejo general, usa 'Guías, tips & buenas prácticas'.
      * 'entryType': "tech_tip".
      * 'oneLiner': Resumen conciso y claro en español del consejo y su utilidad práctica.
      * 'keyHighlights': Pasos, comandos clave o puntos esenciales del truco explicados claramente.
@@ -129,7 +130,7 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
    - Si el tweet o texto representa un HILO con múltiples pasos, recomendaciones o prompts (ej: '1) El diagnóstico de la conexión...', '2) Los ladrones de ancho de banda...', prompts para Claude/ChatGPT, o guías técnicas secuenciales):
      * 'name': Título conciso del hilo (ej: 'Claude Desktop: 7 Prompts para Diagnosticar y Acelerar tu Red WiFi').
      * 'canonicalUrl': Si el tweet incluye un enlace externo de herramienta o repositorio, úsalo. Si NO tiene link externo, usa el tweet de origen o URL del tweet.
-     * 'category': 'Consejos & Buenas Prácticas' o la categoría más afín a la temática.
+     * 'category': 'Guías, tips & buenas prácticas' o la categoría más afín a la temática.
      * 'entryType': "tech_tip".
      * 'oneLiner': Resumen claro en español del objetivo del hilo y qué problema soluciona.
      * 'keyHighlights': DEBES extraer CADA UNO de los prompts, pasos o recomendaciones del hilo como un elemento independiente dentro de 'keyHighlights', manteniendo el título del paso y el texto del prompt exacto.
@@ -140,7 +141,7 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
    - Si el tweet comparte ofertas de trabajo remoto, vacantes, convocatorias de contratación (hiring), oportunidades freelance, bolsas de empleo remoto, plataformas freelance (ej: RemoteOK, We Work Remotely, Torre, Contra, Upwork), guías de tarifas freelance, plantillas de contratos para desarrolladores o consejos específicos para conseguir trabajo remoto:
      * 'name': Título descriptivo de la posición, plataforma o recurso (ej: "Senior Frontend Engineer (Remoto LATAM)", "Remotive - Directorio de Empleos Remotos", "Plantilla de Propuesta Freelance para Desarrolladores").
      * 'canonicalUrl': Enlace directo para postular, web oficial de la plataforma/empresa o documentación. Si el tweet no incluye link externo, usa el enlace del tweet de origen.
-     * 'category': "Trabajo & Freelance".
+     * 'category': "Empleo remoto & bolsas" si es una vacante o bolsa; "Entrenamiento de IA & microtareas" si pagan por anotar o evaluar IA; "Bounties, Web3 & concursos" si es un bounty o quest. Esas tres van sin conjunto.
      * 'entryType': "job_remote".
      * 'company': Nombre de la empresa, startup o cliente contratante (si se especifica).
      * 'location': Modalidad y región geográfica (ej: "Remoto (Mundial)", "Remoto (LATAM)", "Remoto (EE.UU.)", "Híbrido").
@@ -151,12 +152,12 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * 'recommendedNotes': Consejos para aplicar, requisitos de nivel de inglés o recomendaciones para la postulación.
 
 12. TWEETS DE PRODUCTOS TECNOLÓGICOS Y HARDWARE ('tech_product'):
-   - Asigna 'tech_product' y la categoría "Productos Tecnológicos & Hardware" ÚNICA Y EXCLUSIVAMENTE si el tweet presenta productos tecnológicos FÍSICOS, hardware tangible, gadgets para desarrolladores, microcontroladores, placas de desarrollo (Raspberry Pi, ESP32, Arduino), laptops/computadoras de desarrollo, periféricos (teclados mecánicos, pantallas), chips/procesadores o dispositivos de IA física.
+   - Asigna 'tech_product' y la categoría "Terminal, IDE & hardware" ÚNICA Y EXCLUSIVAMENTE si el tweet presenta productos tecnológicos FÍSICOS, hardware tangible, gadgets para desarrolladores, microcontroladores, placas de desarrollo (Raspberry Pi, ESP32, Arduino), laptops/computadoras de desarrollo, periféricos (teclados mecánicos, pantallas), chips/procesadores o dispositivos de IA física.
    - REGLA DE ORO DE HARDWARE VS SOFTWARE: Un repositorio de código en GitHub o GitLab (ej. "https://github.com/..."), biblioteca npm, skill de agente de código, script o software NUNCA es un producto de hardware físico. Todo repositorio de código o software es SIEMPRE 'tool' (Herramienta).
    - Para hardware real:
      * 'name': Nombre del producto tecnológico o dispositivo (ej: "Raspberry Pi 5", "Framework Laptop 16", "Flipper Zero", "ESP32-S3 DevKit", "Keychron Q1 Pro").
      * 'canonicalUrl': Enlace a la tienda oficial, página de producto o documentación técnica. Si no hay link externo, usa el enlace del tweet de origen.
-     * 'category': "Productos Tecnológicos & Hardware".
+     * 'category': "Terminal, IDE & hardware".
      * 'entryType': "tech_product".
      * 'company': Fabricante, marca o creador (ej: "Raspberry Pi", "Framework", "Apple", "Espressif", "Keychron").
      * 'price': Precio o coste si se menciona (ej: "$80 USD", "€35", etc.) o null.
@@ -165,8 +166,7 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
      * 'keyHighlights': Especificaciones técnicas destacadas (procesador, RAM, puertos, conectividad, consumo, compatibilidad).
      * 'recommendedNotes': Casos de uso ideales, disponibilidad o compatibilidad.
 
-Categorías válidas (selecciona EXACTAMENTE una para cada herramienta):
-${getAllCategories().map((c) => `- "${c.name}"${c.description ? `: ${c.description}` : ''}`).join('\n')}
+${taxonomyPromptBlock()}
 
 Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
 {
@@ -176,7 +176,7 @@ Debes responder EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
       "canonicalUrl": "https://github.com/... (priorizar repo de GitHub/GitLab, o enlace/tweet de referencia/postulación/producto)",
       "websiteUrl": "https://... (web oficial si existe)",
       "category": "Una de las categorías válidas listadas arriba",
-      "conjunto": "recursos, inspiracion, producto o consejos",
+      "conjunto": "codigo, app, inspiracion, aprender o consejos (omite el campo en empleos)",
       "entryType": "tool, tech_product, tech_tip o job_remote",
       "company": "Nombre del fabricante o empresa si aplica",
       "location": "Modalidad o región (ej: Remoto (Mundial), Remoto (LATAM)) o null",
@@ -207,10 +207,10 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
   }
 
   return parsedList.map((parsed: any, index: number) => {
-    let validCategory = coerceCategory(parsed.category, parsed.entryType) as ToolCategory;
-
-    const isJob = parsed.entryType === 'job_remote' || validCategory === 'Trabajo & Freelance';
-    const isTip = !isJob && (parsed.entryType === 'tech_tip' || validCategory === 'Consejos & Buenas Prácticas');
+    const hintedJob = parsed.entryType === 'job_remote';
+    const hintedTip = !hintedJob && parsed.entryType === 'tech_tip';
+    const isJob = hintedJob;
+    const isTip = hintedTip;
 
     let url = (parsed.canonicalUrl || urls[index] || urls[0] || ((isJob || isTip) ? sourceTweet : '') || '').trim();
     if (url === 'undefined' || url === 'null') {
@@ -305,40 +305,38 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
       websiteUrl = undefined;
     }
 
-    // Auto-corrección si la IA confunde un skill de UI o diseño web con "Prompts, Art & Video":
-    if (validCategory === 'Prompts, Art & Video') {
-      const allText = `${parsed.name || ''} ${parsed.oneLiner || ''} ${(parsed.tags || []).join(' ')} ${(parsed.keyHighlights || []).join(' ')} ${url}`.toLowerCase();
-      if (
-        /frontend|ui-design|web-design|design-system|landing-page|css|html|tailwind|interfaz|navegador|browser|taste-skill/i.test(allText) &&
-        !/video|cinemat|film|ffmpeg|sora|runway|kling|clip/i.test(allText)
-      ) {
-        console.log(`[Pipeline] 🎨 Reclasificando "${parsed.name || url}" de "Prompts, Art & Video" a "Frontend & UI"`);
-        validCategory = 'Frontend & UI';
-      }
-    }
-
-    // Regla estricta: Un repositorio de código en GitHub o GitLab NUNCA es un producto de hardware físico, salvo que sea explícitamente hardware/firmware
+    // Un repo de código no es hardware, salvo que el texto lo diga.
     const isGhRepo = url.includes('github.com') || url.includes('gitlab.com');
     const isExplicitHardware = /hardware|gadget|placa|sbc|raspberry|esp32|arduino|microcontrolador|pcb|teclado mec[aá]nico|laptop/i.test(
       `${parsed.name || ''} ${parsed.oneLiner || ''} ${(parsed.tags || []).join(' ')}`
     );
+    let entryHint = String(parsed.entryType || '').trim();
+    if (entryHint === 'tech_product' && isGhRepo && !isExplicitHardware) entryHint = 'tool';
 
-    const isProduct = !isJob && !isTip && (!isGhRepo || isExplicitHardware) && (
-      parsed.entryType === 'tech_product' ||
-      validCategory === 'Productos Tecnológicos & Hardware'
-    );
+    const resolved = resolveClassification({
+      slug: String(parsed.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+      category: parsed.category,
+      conjunto: parsed.conjunto,
+      entryType: entryHint,
+      tags: Array.isArray(parsed.tags) ? parsed.tags : [],
+      name: parsed.name,
+      summary: parsed.oneLiner,
+      url,
+      applySplit: true,
+    });
+    const validCategory = (resolved.category || coerceCategory(parsed.category, entryHint, {
+      name: parsed.name,
+      tags: Array.isArray(parsed.tags) ? parsed.tags : [],
+      summary: parsed.oneLiner,
+      url,
+      conjunto: parsed.conjunto,
+    })) as ToolCategory;
 
-    const isShowcase =
-      !isJob &&
-      !isTip &&
-      !isProduct &&
-      (parsed.entryType === 'product_showcase' ||
-        validCategory === 'Empresas & Productos' ||
-        Boolean(parsed.company && !url.includes('github.com')));
-
-    const entryType: EntryType = isJob
+    const isProduct = !categoryOmitsConjunto(validCategory) && entryHint !== 'tech_tip' && (!isGhRepo || isExplicitHardware) && entryHint === 'tech_product';
+    const isShowcase = !categoryOmitsConjunto(validCategory) && entryHint !== 'tech_tip' && !isProduct && entryHint === 'product_showcase';
+    const entryType: EntryType = categoryOmitsConjunto(validCategory) || entryHint === 'job_remote'
       ? 'job_remote'
-      : isTip
+      : entryHint === 'tech_tip' || validCategory === GUIAS_CATEGORY
       ? 'tech_tip'
       : isProduct
       ? 'tech_product'
@@ -354,10 +352,7 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
 
     const academicPromoDetails = blankish(parsed.academicPromoDetails || parsed.academic_promo_details);
 
-    const rawConjunto = String(parsed.conjunto || '').toLowerCase().trim();
-    const validConjunto: ToolConjunto = (['recursos', 'inspiracion', 'producto', 'consejos'].includes(rawConjunto)
-      ? rawConjunto
-      : (isTip ? 'consejos' : isProduct ? 'producto' : 'recursos')) as ToolConjunto;
+    const validConjunto = (categoryOmitsConjunto(validCategory) ? undefined : resolved.conjunto) as ToolConjunto | undefined;
 
     return {
       name: parsed.name || (isJob ? 'Oportunidad / Recurso Laboral' : isTip ? 'Consejo Técnico' : isProduct ? 'Producto Tecnológico / Hardware' : 'Nueva Herramienta'),
@@ -365,7 +360,7 @@ function normalizeRawOutput(parsedList: any[], urls: string[], sourceTweet?: str
       websiteUrl,
       category: validCategory,
       conjunto: validConjunto,
-      tags: Array.isArray(parsed.tags) ? parsed.tags.map((t: string) => t.toLowerCase()) : [],
+      tags: normalizeTags(Array.isArray(parsed.tags) ? parsed.tags : [], validConjunto, 6),
       oneLiner: parsed.oneLiner || (isJob ? 'Oportunidad o recurso de trabajo remoto/freelance.' : isTip ? 'Consejo técnico guardado de X.' : isProduct ? 'Producto tecnológico o hardware de desarrollo.' : 'Herramienta guardada de X.'),
       keyHighlights: Array.isArray(parsed.keyHighlights) ? parsed.keyHighlights : [],
       recommendedNotes: parsed.recommendedNotes || '',
@@ -1100,7 +1095,7 @@ export async function classifyWithProviderCascade(
     ? params.urls.map((u) => ({
         name: params.githubMetas?.[u]?.name || u.split('/').filter(Boolean).pop()?.replace(/-/g, ' ') || 'Herramienta',
         canonicalUrl: u,
-        category: (params.githubMetas?.[u]?.topics.includes('cli') ? 'CLI & Terminal' : 'Other') as ToolCategory,
+        category: (params.githubMetas?.[u]?.topics.includes('cli') ? 'Terminal, IDE & hardware' : 'Apps de productividad & negocio') as ToolCategory,
         tags: params.githubMetas?.[u]?.topics.slice(0, 5) || ['dev', 'tool'],
         oneLiner: params.githubMetas?.[u]?.description || params.rawText.slice(0, 140),
         keyHighlights: params.githubMetas?.[u]?.language ? [`Escrito en ${params.githubMetas[u].language}`] : [],
@@ -1114,7 +1109,7 @@ export async function classifyWithProviderCascade(
         return [{
           name: isJobFallback ? 'Oportunidad / Recurso Laboral' : isProductFallback ? 'Producto Tecnológico / Hardware' : 'Consejo Técnico',
           canonicalUrl: params.sourceTweet || '',
-          category: (isJobFallback ? 'Trabajo & Freelance' : isProductFallback ? 'Productos Tecnológicos & Hardware' : 'Consejos & Buenas Prácticas') as ToolCategory,
+          category: (isJobFallback ? 'Empleo remoto & bolsas' : isProductFallback ? 'Terminal, IDE & hardware' : 'Guías, tips & buenas prácticas') as ToolCategory,
           tags: isJobFallback ? ['remoto', 'trabajo', 'freelance', 'dev'] : isProductFallback ? ['hardware', 'gadgets', 'tech', 'dev'] : ['consejos', 'tips', 'dev'],
           oneLiner: params.rawText.slice(0, 140),
           keyHighlights: [params.rawText.slice(0, 200)],

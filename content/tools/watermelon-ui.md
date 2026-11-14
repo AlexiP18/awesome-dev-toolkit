@@ -2,15 +2,15 @@
 name: Watermelon UI
 url: 'https://ui.watermelon.sh/'
 website_url: 'https://watermelon.sh/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - react
-  - ui-components
+  - componentes
   - frontend
   - open-source
   - tailwind-css
   - shadcn
-  - free
+  - gratis
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:27:28.261Z'
@@ -20,7 +20,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Watermelon
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Watermelon UI
 

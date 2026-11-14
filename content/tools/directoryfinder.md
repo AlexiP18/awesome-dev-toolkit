@@ -1,7 +1,7 @@
 ---
 name: DirectoryFinder
 url: 'https://directoryfinder.com/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - directories
   - backlinks
@@ -14,7 +14,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
+area: productividad-utilidades
 ---
 # DirectoryFinder
 

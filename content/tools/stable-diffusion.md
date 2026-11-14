@@ -1,7 +1,7 @@
 ---
 name: Stable Diffusion
 url: 'https://github.com/CompVis/stable-diffusion'
-category: AI & Machine Learning
+category: 'Voz, visión & IA aplicada'
 tags:
   - stable-diffusion
   - image-generation
@@ -17,7 +17,8 @@ author_handle: dkare1009
 entry_type: tool
 company: CompVis (LMU Munich)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Stable Diffusion
 

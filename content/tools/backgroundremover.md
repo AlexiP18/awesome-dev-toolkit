@@ -1,15 +1,15 @@
 ---
 name: BackgroundRemover
 url: 'https://github.com/nadermx/backgroundremover'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - ai
+  - python
+  - ia
   - background-removal
   - video-editing
   - image-editing
   - open-source
   - cli
-  - python
   - pytorch
   - remove-background
   - remove-background-video
@@ -23,7 +23,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: nadermx
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # BackgroundRemover
 

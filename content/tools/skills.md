@@ -1,13 +1,13 @@
 ---
 name: skills
 url: 'https://github.com/mattpocock/skills'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - claude-code
   - agent-skills
   - prompts
-  - ai
-  - ai-agents
+  - ia
+  - agentes
   - workflows
   - shell
   - engineering
@@ -20,11 +20,12 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: inspiracion
 source_tweets:
   - 'https://x.com/csaba_kissi/status/2115357959341703241'
   - 'https://x.com/nikosolenne/status/2109316695617573241'
 updated_at: '2026-11-13T05:00:36.269Z'
+area: inteligencia-artificial
 ---
 # skills
 

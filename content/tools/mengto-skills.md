@@ -1,7 +1,7 @@
 ---
 name: MengTo Skills
 url: 'https://github.com/MengTo/Skills'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - claude
   - agentes
@@ -18,7 +18,8 @@ author_handle: tranmautritam
 entry_type: tool
 company: MengTo
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # MengTo Skills
 

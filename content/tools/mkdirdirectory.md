@@ -1,15 +1,14 @@
 ---
 name: mkdir.directory
 url: 'https://mkdir.directory/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - design
+  - diseno
   - galleries
-  - inspiration
   - web-design
   - frontend
   - resources
-  - free
+  - gratis
 status: to_try
 date_added: '2026-11-02'
 created_at: '2026-11-02T03:24:23.141Z'
@@ -20,6 +19,7 @@ entry_type: tool
 price: Gratis
 classified_by: Google Gemini (Flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # mkdir.directory
 

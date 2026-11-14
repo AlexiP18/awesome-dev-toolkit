@@ -1,0 +1,242 @@
+[
+  {
+    "name": "Backend, APIs & datos",
+    "id": "backend-apis-datos",
+    "area": "desarrollo-software",
+    "section": "tools",
+    "icon": "⚙️",
+    "color": "sky",
+    "description": "Servidores, APIs, bases de datos, colas, notificaciones, scraping y ETL.",
+    "isDefault": true
+  },
+  {
+    "name": "DevOps, cloud & self-hosting",
+    "id": "devops-cloud-self-hosting",
+    "area": "desarrollo-software",
+    "section": "tools",
+    "icon": "🐳",
+    "color": "sky",
+    "description": "Despliegue, CI, hosting, redes y apps que se autoalojan.",
+    "isDefault": true
+  },
+  {
+    "name": "Terminal, IDE & hardware",
+    "id": "terminal-ide-hardware",
+    "area": "desarrollo-software",
+    "section": "tools",
+    "icon": "🖥️",
+    "color": "sky",
+    "description": "CLIs, TUIs, git, editores, extensiones y hardware de desarrollo.",
+    "isDefault": true
+  },
+  {
+    "name": "Seguridad & privacidad",
+    "id": "seguridad-privacidad",
+    "area": "desarrollo-software",
+    "section": "tools",
+    "icon": "🔒",
+    "color": "sky",
+    "description": "Ciberseguridad, VPN, contraseñas, correo temporal, malware.",
+    "isDefault": true
+  },
+  {
+    "name": "Modelos, inferencia & APIs de IA",
+    "id": "modelos-inferencia-apis-de-ia",
+    "area": "inteligencia-artificial",
+    "section": "tools",
+    "icon": "🧠",
+    "color": "purple",
+    "description": "LLMs locales o en la nube, gateways, chats de IA, entrenar modelos.",
+    "isDefault": true
+  },
+  {
+    "name": "Agentes, MCP & automatización",
+    "id": "agentes-mcp-automatizacion",
+    "area": "inteligencia-artificial",
+    "section": "tools",
+    "icon": "🤖",
+    "color": "purple",
+    "description": "Frameworks de agentes, servidores MCP, memoria, navegador automatizado, n8n.",
+    "isDefault": true
+  },
+  {
+    "name": "Asistentes de código & skills",
+    "id": "asistentes-de-codigo-skills",
+    "area": "inteligencia-artificial",
+    "section": "tools",
+    "icon": "✨",
+    "color": "purple",
+    "description": "Claude Code, Codex, Cursor y skills o plugins para agentes de código.",
+    "isDefault": true
+  },
+  {
+    "name": "RAG, búsqueda & datos para IA",
+    "id": "rag-busqueda-datos-para-ia",
+    "area": "inteligencia-artificial",
+    "section": "tools",
+    "icon": "🔎",
+    "color": "purple",
+    "description": "RAG, embeddings, bases vectoriales, extracción de PDF y APIs de búsqueda para agentes.",
+    "isDefault": true
+  },
+  {
+    "name": "Voz, visión & IA aplicada",
+    "id": "voz-vision-ia-aplicada",
+    "area": "inteligencia-artificial",
+    "section": "tools",
+    "icon": "🎙️",
+    "color": "purple",
+    "description": "Voz a texto, texto a voz, visión por computadora, geoespacial, traducción.",
+    "isDefault": true
+  },
+  {
+    "name": "Componentes & frameworks UI",
+    "id": "componentes-frameworks-ui",
+    "area": "diseno-creatividad",
+    "section": "tools",
+    "icon": "🧩",
+    "color": "rose",
+    "description": "Librerías de componentes, kits shadcn y Tailwind, CSS y frameworks web.",
+    "isDefault": true
+  },
+  {
+    "name": "Animación & motion web",
+    "id": "animacion-motion-web",
+    "area": "diseno-creatividad",
+    "section": "tools",
+    "icon": "🌀",
+    "color": "rose",
+    "description": "GSAP, WebGL, Three.js, shaders, scroll y microinteracciones.",
+    "isDefault": true
+  },
+  {
+    "name": "Recursos gráficos",
+    "id": "recursos-graficos",
+    "area": "diseno-creatividad",
+    "section": "tools",
+    "icon": "🎨",
+    "color": "rose",
+    "description": "Iconos, fuentes, paletas, ilustraciones, mockups y fondos.",
+    "isDefault": true
+  },
+  {
+    "name": "Inspiración, UX & design systems",
+    "id": "inspiracion-ux-design-systems",
+    "area": "diseno-creatividad",
+    "section": "tools",
+    "icon": "💡",
+    "color": "rose",
+    "description": "Galerías, landings, design systems, branding y guías de UX.",
+    "isDefault": true
+  },
+  {
+    "name": "Video, audio, imagen & 3D",
+    "id": "video-audio-imagen-3d",
+    "area": "diseno-creatividad",
+    "section": "tools",
+    "icon": "🎬",
+    "color": "rose",
+    "description": "Edición y generación de video, música, voz en off, imagen y Blender.",
+    "isDefault": true
+  },
+  {
+    "name": "Prompts & generación visual con IA",
+    "id": "prompts-generacion-visual-con-ia",
+    "area": "diseno-creatividad",
+    "section": "tools",
+    "icon": "🖼️",
+    "color": "rose",
+    "description": "Colecciones de prompts y plataformas de imagen o video con IA.",
+    "isDefault": true
+  },
+  {
+    "name": "Apps de productividad & negocio",
+    "id": "apps-de-productividad-negocio",
+    "area": "productividad-utilidades",
+    "section": "tools",
+    "icon": "⚡",
+    "color": "teal",
+    "description": "Notas, finanzas, facturación, compartir archivos, directorios de apps.",
+    "isDefault": true
+  },
+  {
+    "name": "Utilidades web & archivos",
+    "id": "utilidades-web-archivos",
+    "area": "productividad-utilidades",
+    "section": "tools",
+    "icon": "📎",
+    "color": "teal",
+    "description": "Conversores, PDF, formateadores, descargadores y archivo web.",
+    "isDefault": true
+  },
+  {
+    "name": "Cursos, libros & rutas",
+    "id": "cursos-libros-rutas",
+    "area": "aprendizaje",
+    "section": "tools",
+    "icon": "📚",
+    "color": "violet",
+    "description": "Cursos, libros, currículos, roadmaps y bibliotecas.",
+    "isDefault": true
+  },
+  {
+    "name": "Guías, tips & buenas prácticas",
+    "id": "guias-tips-buenas-practicas",
+    "area": "aprendizaje",
+    "section": "tips",
+    "icon": "📝",
+    "color": "violet",
+    "description": "Hilos de pasos, trucos de git o terminal, cheatsheets, metodología.",
+    "isDefault": true
+  },
+  {
+    "name": "Investigación & papers",
+    "id": "investigacion-papers",
+    "area": "aprendizaje",
+    "section": "tools",
+    "icon": "🔬",
+    "color": "violet",
+    "description": "Papers, buscadores académicos y asistentes de investigación.",
+    "isDefault": true
+  },
+  {
+    "name": "Empleo remoto & bolsas",
+    "id": "empleo-remoto-bolsas",
+    "area": "trabajo-oportunidades",
+    "section": "jobs",
+    "icon": "💼",
+    "color": "amber",
+    "description": "Vacantes y bolsas de empleo, también las de otros países.",
+    "isDefault": true
+  },
+  {
+    "name": "Entrenamiento de IA & microtareas",
+    "id": "entrenamiento-de-ia-microtareas",
+    "area": "trabajo-oportunidades",
+    "section": "jobs",
+    "icon": "🧪",
+    "color": "amber",
+    "description": "RLHF, anotación de datos, evaluadores y microtareas.",
+    "isDefault": true
+  },
+  {
+    "name": "Bounties, Web3 & concursos",
+    "id": "bounties-web3-concursos",
+    "area": "trabajo-oportunidades",
+    "section": "jobs",
+    "icon": "🏆",
+    "color": "amber",
+    "description": "Bug bounties, auditorías, quests y concursos con premio.",
+    "isDefault": true
+  },
+  {
+    "name": "Créditos, planes gratis & programas",
+    "id": "creditos-planes-gratis-programas",
+    "area": "trabajo-oportunidades",
+    "section": "jobs",
+    "icon": "🎟️",
+    "color": "amber",
+    "description": "Créditos cloud o de API, planes gratis, beneficios de estudiante y hackathons.",
+    "isDefault": true
+  }
+]

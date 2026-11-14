@@ -1,12 +1,12 @@
 ---
 name: Unicorn Studio
 url: 'https://www.unicorn.studio/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - webgl
   - shaders
   - interactive-effects
-  - animation
+  - animacion
   - frontend
 status: to_try
 date_added: '2026-11-05'
@@ -17,7 +17,8 @@ author_handle: neropursue
 entry_type: tool
 company: Unicorn Studio
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Unicorn Studio
 

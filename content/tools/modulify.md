@@ -1,11 +1,11 @@
 ---
 name: Modulify
 url: 'https://modulify.ai/'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - vibecoding
   - ai-web-builder
-  - design
+  - diseno
   - no-code
 status: to_try
 date_added: '2026-11-07'
@@ -16,7 +16,8 @@ author_handle: BardhylBytyqi
 entry_type: tool
 company: Modulify
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: consejos
+area: inteligencia-artificial
 ---
 # Modulify
 

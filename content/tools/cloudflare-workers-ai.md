@@ -2,7 +2,7 @@
 name: Cloudflare Workers AI
 url: 'https://developers.cloudflare.com/workers-ai'
 website_url: 'https://www.cloudflare.com/workers-ai/'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - serverless
   - inference
@@ -18,7 +18,8 @@ author_handle: exploraX_
 entry_type: tool
 company: Cloudflare
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # Cloudflare Workers AI
 

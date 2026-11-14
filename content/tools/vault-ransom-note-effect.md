@@ -1,7 +1,7 @@
 ---
 name: Vault - Ransom Note Effect
 url: 'https://design.how/vault'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - frontend
   - ui
@@ -17,7 +17,8 @@ author_handle: arlanmarat
 entry_type: tool
 company: Design How
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Vault - Ransom Note Effect
 

@@ -1,10 +1,10 @@
 ---
 name: Herk Edit Kit
 url: 'https://github.com/nateherkai/herk-edit-kit'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - video-editing
-  - ai
+  - ia
   - codex
   - claude-code
   - motion-graphics
@@ -21,7 +21,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: nateherkai
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Herk Edit Kit
 

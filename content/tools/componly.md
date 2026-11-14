@@ -2,10 +2,10 @@
 name: Componly
 url: 'http://collection.componly.co/'
 website_url: 'https://componly.co/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - design-system
-  - components
+  - componentes
   - ui
   - frontend
 status: to_try
@@ -16,7 +16,8 @@ author: Abraham John
 author_handle: Abmankendrick
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Componly
 

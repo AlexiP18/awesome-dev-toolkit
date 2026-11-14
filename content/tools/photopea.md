@@ -1,7 +1,7 @@
 ---
 name: Photopea
 url: 'https://www.photopea.com/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - editor-de-imagenes
   - photoshop
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: Photopea
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # Photopea
 

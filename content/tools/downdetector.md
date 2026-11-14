@@ -1,7 +1,7 @@
 ---
 name: Downdetector
 url: 'https://downdetector.com/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - monitoreo
   - incidencias
@@ -15,7 +15,8 @@ author_handle: ecommartinez
 entry_type: tool
 company: Ookla
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # Downdetector
 

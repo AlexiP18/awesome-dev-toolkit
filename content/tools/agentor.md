@@ -1,9 +1,9 @@
 ---
 name: Agentor
 url: 'https://github.com/CelestoAI/agentor'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai-agents
+  - agentes
   - a2a
   - mcp
   - agent-framework
@@ -17,7 +17,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: CelestoAI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Agentor
 

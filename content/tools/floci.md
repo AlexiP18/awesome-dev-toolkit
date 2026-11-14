@@ -1,7 +1,7 @@
 ---
 name: Floci
 url: 'https://github.com/floci-io/floci'
-category: DevOps & Cloud
+category: 'DevOps, cloud & self-hosting'
 tags:
   - aws
   - localstack
@@ -23,7 +23,8 @@ author_handle: josesilesdata
 entry_type: tool
 company: floci-io
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # Floci
 

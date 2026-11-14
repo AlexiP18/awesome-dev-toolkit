@@ -1,7 +1,7 @@
 ---
 name: Flightradar24
 url: 'https://www.flightradar24.com/'
-category: Productivity & Tools
+category: 'Backend, APIs & datos'
 tags:
   - datos
   - api
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: Flightradar24
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # Flightradar24
 

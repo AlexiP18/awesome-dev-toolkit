@@ -1,12 +1,11 @@
 ---
 name: MNMM
 url: 'https://mnmm.xyz/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - minimalismo
   - directorio
   - web-design
-  - inspiración
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T15:37:09.403Z'
@@ -16,6 +15,7 @@ author_handle: tranmautritam
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # MNMM
 

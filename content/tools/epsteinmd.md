@@ -1,11 +1,11 @@
 ---
 name: epstein.md
 url: 'https://shipper.now/'
-category: Empresas & Productos
+category: 'Inspiración, UX & design systems'
 tags:
-  - design
+  - diseno
   - ui
-  - ai-agents
+  - agentes
   - markdown
   - prompt-engineering
   - showcase
@@ -19,7 +19,8 @@ author_handle: shipper_now
 entry_type: product_showcase
 company: Shipper
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: consejos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # epstein.md
 

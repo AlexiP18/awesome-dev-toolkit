@@ -1,11 +1,11 @@
 ---
 name: Spline
 url: 'https://spline.design/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - 3d
   - web-design
-  - animation
+  - animacion
   - frontend
   - collaboration
 status: to_try
@@ -17,7 +17,8 @@ author_handle: neropursue
 entry_type: tool
 company: Spline
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Spline
 

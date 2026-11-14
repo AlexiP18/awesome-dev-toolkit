@@ -1,10 +1,10 @@
 ---
 name: SimilarSites
 url: 'https://similarsites.com/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - descubrimiento
-  - sitios web
+  - sitios-web
   - competencia
 status: to_try
 date_added: '2026-11-06'
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # SimilarSites
 

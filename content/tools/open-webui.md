@@ -1,7 +1,7 @@
 ---
 name: Open WebUI
 url: 'https://github.com/open-webui/open-webui'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
   - llm-ui
   - self-hosted
@@ -20,7 +20,8 @@ author_handle: Shruti_0810
 entry_type: tool
 company: Open WebUI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Open WebUI
 

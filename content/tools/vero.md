@@ -1,9 +1,9 @@
 ---
 name: Vero
 url: 'https://github.com/sunblaze-ucb/vero'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai-agents
+  - agentes
   - lean4
   - code-verification
   - coding-agent
@@ -17,7 +17,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: Sunblaze UC Berkeley
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Vero
 

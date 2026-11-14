@@ -1,13 +1,13 @@
 ---
 name: OpenHands
 url: 'https://github.com/OpenHands/OpenHands'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - agente
+  - typescript
+  - agentes
   - programacion
   - llm
   - developer-tools
-  - typescript
 stars: 92760
 status: to_try
 date_added: '2026-11-06'
@@ -18,7 +18,8 @@ author_handle: brenzhills
 entry_type: tool
 company: OpenHands
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # OpenHands
 

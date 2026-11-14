@@ -1,10 +1,10 @@
 ---
 name: Monid
 url: 'https://monid.ai/'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai
-  - agents
+  - ia
+  - agentes
   - tools
   - apis
   - discovery
@@ -18,7 +18,8 @@ author_handle: dewyashtwts
 entry_type: tool
 price: Paga por llamada
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # Monid
 

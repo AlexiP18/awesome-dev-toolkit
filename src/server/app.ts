@@ -11,6 +11,7 @@ import { loadAllAuthorProfiles, analyzeAuthorWithAI } from '../pipeline/author_m
 import { getActivePrimaryProviderName, getConfiguredProvidersList, structureThreadStepsWithAI } from '../pipeline/ai_providers.js';
 import { fetchThreadTweetsFromX } from '../pipeline/twitter_scraper.js';
 import { getAllCategories, addCustomCategory, deleteCustomCategory } from '../pipeline/category_manager.js';
+import { taxonomyUiPayload } from '../pipeline/taxonomy.js';
 import {
   syncCatalogToGitHubRepo,
   isGitHubSyncConfigured,
@@ -184,6 +185,10 @@ export function createApp() {
     res.json({ success: true, count: Object.keys(authors).length, authors });
   });
 
+  app.get('/api/taxonomy', (_req, res) => {
+    res.json({ success: true, taxonomy: taxonomyUiPayload() });
+  });
+
   app.get('/api/categories', (_req, res) => {
     const categories = getAllCategories();
     res.json({ success: true, count: categories.length, categories });
@@ -191,7 +196,10 @@ export function createApp() {
 
   app.post('/api/categories', (req, res) => {
     const input = parseCategoryBody(req.body);
-    const created = addCustomCategory(input);
+    const created = addCustomCategory({
+      ...input,
+      section: input.section === 'all' ? undefined : input.section,
+    });
     refreshReadme();
     queueSync(`chore(categories): añadir categoría ${created.name}`);
     res.json({ success: true, category: created, categories: getAllCategories() });

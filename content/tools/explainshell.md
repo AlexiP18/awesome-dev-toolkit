@@ -1,7 +1,7 @@
 ---
 name: ExplainShell
 url: 'https://explainshell.com/'
-category: CLI & Terminal
+category: 'Terminal, IDE & hardware'
 tags:
   - bash
   - comandos
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # ExplainShell
 

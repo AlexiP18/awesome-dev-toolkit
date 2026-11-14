@@ -1,16 +1,16 @@
 ---
 name: NarratoAI
 url: 'https://github.com/linyqh/NarratoAI'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - ai
+  - python
+  - ia
   - video-editing
   - scriptwriting
   - voiceovers
   - subtitles
   - llm
   - gemini-api
-  - python
   - aiagent
   - aiops
   - moviepy
@@ -24,7 +24,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: linyqh
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # NarratoAI
 

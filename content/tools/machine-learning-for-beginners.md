@@ -1,12 +1,12 @@
 ---
 name: Machine Learning for Beginners
 url: 'https://github.com/microsoft/ML-For-Beginners'
-category: AI & Machine Learning
+category: 'Cursos, libros & rutas'
 tags:
+  - python
   - machine-learning
   - scikit-learn
   - educacion
-  - python
 stars: 92025
 status: to_try
 date_added: '2026-11-06'
@@ -18,7 +18,8 @@ entry_type: tool
 company: Microsoft
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # Machine Learning for Beginners
 

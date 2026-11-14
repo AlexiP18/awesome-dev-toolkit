@@ -1,7 +1,7 @@
 ---
 name: Satori
 url: 'https://github.com/vercel/satori'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - svg
   - jsx
@@ -18,7 +18,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Vercel
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Satori
 

@@ -1,14 +1,14 @@
 ---
 name: Tavily
 url: 'https://www.tavily.com/'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai
-  - agents
-  - search engine
+  - ia
+  - agentes
+  - search-engine
   - real-time
   - api
-  - content extraction
+  - content-extraction
 status: to_try
 date_added: '2026-11-02'
 created_at: '2026-11-02T17:28:50.345Z'
@@ -17,7 +17,8 @@ author: Yash
 author_handle: dewyashtwts
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # Tavily
 

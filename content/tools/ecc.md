@@ -1,7 +1,7 @@
 ---
 name: ECC
 url: 'https://github.com/affaan-m/ECC'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - claude-code
   - agent-skills
@@ -17,7 +17,8 @@ author: niko.
 author_handle: nikosolenne
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # ECC
 

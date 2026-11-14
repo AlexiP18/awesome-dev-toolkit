@@ -1,24 +1,34 @@
 export type StandardCategory =
-  | 'CLI & Terminal'
-  | 'Frontend & UI'
-  | 'Backend & APIs'
-  | 'DevOps & Cloud'
-  | 'AI & Machine Learning'
-  | 'Prompts, Art & Video'
-  | 'Databases & Storage'
-  | 'Productivity & Tools'
-  | 'Documentation & Resources'
-  | 'Empresas & Productos'
-  | 'Productos Tecnológicos & Hardware'
-  | 'Consejos & Buenas Prácticas'
-  | 'Trabajo & Freelance'
-  | 'Other';
+  | 'Backend, APIs & datos'
+  | 'DevOps, cloud & self-hosting'
+  | 'Terminal, IDE & hardware'
+  | 'Seguridad & privacidad'
+  | 'Modelos, inferencia & APIs de IA'
+  | 'Agentes, MCP & automatización'
+  | 'Asistentes de código & skills'
+  | 'RAG, búsqueda & datos para IA'
+  | 'Voz, visión & IA aplicada'
+  | 'Componentes & frameworks UI'
+  | 'Animación & motion web'
+  | 'Recursos gráficos'
+  | 'Inspiración, UX & design systems'
+  | 'Video, audio, imagen & 3D'
+  | 'Prompts & generación visual con IA'
+  | 'Apps de productividad & negocio'
+  | 'Utilidades web & archivos'
+  | 'Cursos, libros & rutas'
+  | 'Guías, tips & buenas prácticas'
+  | 'Investigación & papers'
+  | 'Empleo remoto & bolsas'
+  | 'Entrenamiento de IA & microtareas'
+  | 'Bounties, Web3 & concursos'
+  | 'Créditos, planes gratis & programas';
 
 export type ToolCategory = StandardCategory | (string & {});
 
 export type EntryType = 'tool' | 'product_showcase' | 'tech_tip' | 'job_remote' | 'tech_product';
 
-export type ToolConjunto = 'recursos' | 'inspiracion' | 'producto' | 'consejos';
+export type ToolConjunto = 'codigo' | 'app' | 'inspiracion' | 'aprender' | 'consejos';
 
 export type ToolStatus = 'to_try' | 'in_use' | 'archived';
 
@@ -27,7 +37,10 @@ export interface ToolFrontmatter {
   url: string; // URL principal (prioriza repositorios de GitHub/GitLab)
   website_url?: string; // Web oficial o landing page si existe
   category: ToolCategory;
-  conjunto?: ToolConjunto; // 'recursos' | 'inspiracion' | 'producto' | 'consejos'
+  area?: string;
+  conjunto?: ToolConjunto;
+  /** Bandeja de revisión: la nota todavía no tiene categoría. */
+  review?: boolean;
   tags: string[];
   stars?: number;
   status: ToolStatus;

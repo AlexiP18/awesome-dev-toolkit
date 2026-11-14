@@ -1,7 +1,7 @@
 ---
 name: 'Git: Deshacer el último commit manteniendo los cambios'
 url: 'https://x.com/tech_tips_daily/status/1789012345678901234'
-category: Consejos & Buenas Prácticas
+category: 'Guías, tips & buenas prácticas'
 tags:
   - git
   - terminal
@@ -15,6 +15,7 @@ author_handle: tech_tips_daily
 entry_type: tech_tip
 created_at: '2026-10-25T18:05:48.979Z'
 conjunto: consejos
+area: aprendizaje
 ---
 # 💡 Git: Deshacer el último commit manteniendo los cambios
 

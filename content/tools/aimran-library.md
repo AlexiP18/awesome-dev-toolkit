@@ -1,13 +1,13 @@
 ---
 name: AIMRAN Library
 url: 'https://library.aimran.es/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
+  - react
   - ui
   - componentes
-  - animaciones
+  - animacion
   - css
-  - react
   - html
 status: to_try
 date_added: '2026-11-07'
@@ -17,7 +17,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # AIMRAN Library
 

@@ -1,7 +1,7 @@
 ---
 name: Coolify
 url: 'https://coolify.io/'
-category: DevOps & Cloud
+category: 'DevOps, cloud & self-hosting'
 tags:
   - self-hosted
   - deployment
@@ -16,7 +16,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Coolify
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # Coolify
 

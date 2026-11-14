@@ -1,9 +1,9 @@
 ---
 name: Whisper
 url: 'https://github.com/openai/whisper'
-category: AI & Machine Learning
+category: 'Voz, visión & IA aplicada'
 tags:
-  - ai
+  - ia
   - speech-recognition
   - transcription
   - subtitles
@@ -19,7 +19,8 @@ author: Marlen
 author_handle: Marlenuii
 entry_type: tool
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Whisper
 

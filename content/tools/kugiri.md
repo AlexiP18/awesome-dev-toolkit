@@ -1,7 +1,7 @@
 ---
 name: kugiri
 url: 'https://edoardolunardi.github.io/kugiri/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - frontend
   - typography
@@ -16,7 +16,8 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Edoardo Lunardi
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # kugiri
 

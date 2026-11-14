@@ -1,7 +1,7 @@
 ---
 name: UI Maxxing
 url: 'https://uimaxx.ing/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - frontend
   - design-system
@@ -15,7 +15,8 @@ author: Harshil Tomar
 author_handle: Hartdrawss
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # UI Maxxing
 

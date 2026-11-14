@@ -1,13 +1,12 @@
 ---
 name: getdesign.ai
 url: 'https://getdesign.ai/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - design
-  - ai-agents
+  - diseno
+  - agentes
   - design-md
   - frontend
-  - inspiracion
 status: to_try
 date_added: '2026-11-04'
 created_at: '2026-11-04T18:27:31.512Z'
@@ -17,6 +16,7 @@ author_handle: viktoroddy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # getdesign.ai
 

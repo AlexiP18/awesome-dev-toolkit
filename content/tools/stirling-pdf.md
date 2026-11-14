@@ -1,7 +1,7 @@
 ---
 name: Stirling PDF
 url: 'https://github.com/Stirling-Tools/Stirling-PDF'
-category: Productivity & Tools
+category: 'DevOps, cloud & self-hosting'
 tags:
   - pdf
   - self-hosted
@@ -18,7 +18,8 @@ author_handle: DivyanshT91162
 entry_type: tool
 company: Stirling-Tools
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # Stirling PDF
 

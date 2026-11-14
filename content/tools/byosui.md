@@ -1,13 +1,13 @@
 ---
 name: ByosUI
 url: 'https://byosui.vercel.app/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
+  - react
+  - tailwind
   - shadcn
   - ui
   - componentes
-  - react
-  - tailwind
   - frontend
   - open-source
 status: to_try
@@ -18,7 +18,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # ByosUI
 

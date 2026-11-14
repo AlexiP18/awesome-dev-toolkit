@@ -1,13 +1,13 @@
 ---
 name: agentmemory
 url: 'https://www.agent-memory.dev/'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai
-  - agents
+  - ia
+  - agentes
   - memory
   - open-source
-  - apache-2.0
+  - apache-2-0
 status: to_try
 date_added: '2026-11-07'
 created_at: '2026-11-07T20:38:59.341Z'
@@ -16,7 +16,8 @@ author: "\U0001D40D\U0001D428\U0001D41A\U0001D421"
 author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # agentmemory
 

@@ -1,12 +1,12 @@
 ---
 name: CrewAI
 url: 'https://github.com/crewAIInc/crewAI'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
-  - multi-agent
-  - agents
-  - orchestration
   - python
+  - multi-agent
+  - agentes
+  - orchestration
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T04:24:23.980Z'
@@ -16,7 +16,8 @@ author_handle: mdancho84
 entry_type: tool
 company: CrewAI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # CrewAI
 

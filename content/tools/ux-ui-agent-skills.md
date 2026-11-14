@@ -1,16 +1,16 @@
 ---
 name: ux-ui-agent-skills
 url: 'https://github.com/plugin87/ux-ui-agent-skills'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
+  - react
   - claude-skills
-  - ai-agents
+  - agentes
   - design-tokens
   - dtcg
   - design-system
   - wcag
   - accessibility
-  - react
   - tailwindcss
   - design-to-code
 stars: 3102
@@ -23,7 +23,8 @@ author_handle: tom_doerr
 entry_type: tool
 company: plugin87
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # ux-ui-agent-skills
 

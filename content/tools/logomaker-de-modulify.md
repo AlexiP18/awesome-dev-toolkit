@@ -1,13 +1,12 @@
 ---
 name: LogoMaker de Modulify
 url: 'https://logomaker.modulify.ai/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - ia
   - logos
   - branding
   - generacion-automatica
-  - diseño
   - diseno
 status: to_try
 date_added: '2026-11-05'
@@ -18,12 +17,13 @@ author_handle: VullnetAdemaj
 entry_type: tool
 company: Modulify
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
 source_tweets:
   - 'https://x.com/VullnetAdemaj/status/2108281499686478021'
   - 'https://x.com/VullnetAdemaj/status/2108894975635423306'
   - 'https://x.com/BardhylBytyqi/status/2110741928287342867'
 updated_at: '2026-11-13T05:00:36.267Z'
+area: diseno-creatividad
 ---
 # LogoMaker de Modulify
 

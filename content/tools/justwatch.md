@@ -1,7 +1,7 @@
 ---
 name: JustWatch
 url: 'https://www.justwatch.com/'
-category: Productivity & Tools
+category: Utilidades web & archivos
 tags:
   - streaming
   - busqueda
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: JustWatch
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: productividad-utilidades
 ---
 # JustWatch
 

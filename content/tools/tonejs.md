@@ -1,14 +1,14 @@
 ---
 name: Tone.js
 url: 'https://github.com/Tonejs/Tone.js'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
+  - typescript
   - web-audio
   - music
   - synthesis
   - sound-effects
   - javascript
-  - typescript
   - interactive-audio
   - midi
 stars: 14873
@@ -21,7 +21,8 @@ author_handle: e1genqq
 entry_type: tool
 company: Tonejs
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Tone.js
 

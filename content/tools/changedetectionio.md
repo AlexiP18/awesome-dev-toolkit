@@ -2,7 +2,7 @@
 name: changedetection.io
 url: 'https://github.com/dgtlmoon/changedetection.io'
 website_url: 'https://changedetection.io/'
-category: Productivity & Tools
+category: 'DevOps, cloud & self-hosting'
 tags:
   - monitorizacion
   - scraping
@@ -17,7 +17,8 @@ author_handle: sentient_agency
 entry_type: tool
 company: dgtlmoon
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # changedetection.io
 

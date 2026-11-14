@@ -1,11 +1,11 @@
 ---
 name: ClearCam
 url: 'https://github.com/roryclear/clearcam'
-category: AI & Machine Learning
+category: 'Voz, visión & IA aplicada'
 tags:
   - yolov9
   - rtsp
-  - selfhosted
+  - self-hosted
   - object-detection
   - cctv
   - notificaciones
@@ -18,7 +18,8 @@ author: Nix0n
 author_handle: UnTalNixon_exe
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # ClearCam
 

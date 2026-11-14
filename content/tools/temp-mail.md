@@ -1,7 +1,7 @@
 ---
 name: Temp-Mail
 url: 'https://temp-mail.org/'
-category: Productivity & Tools
+category: Seguridad & privacidad
 tags:
   - email
   - privacidad
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: Temp-Mail
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # Temp-Mail
 

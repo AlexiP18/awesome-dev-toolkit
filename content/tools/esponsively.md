@@ -1,7 +1,7 @@
 ---
 name: Esponsively
 url: 'https://esponsively.app/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - responsive
   - preview
@@ -16,7 +16,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Esponsively
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: diseno-creatividad
 ---
 # Esponsively
 

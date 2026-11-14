@@ -1,7 +1,7 @@
 ---
 name: Sent
 url: 'https://www.sent.dm/'
-category: Backend & APIs
+category: 'Backend, APIs & datos'
 tags:
   - sms
   - api
@@ -16,7 +16,8 @@ author_handle: BardhylBytyqi
 entry_type: tool
 company: Sent
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: desarrollo-software
 ---
 # Sent
 

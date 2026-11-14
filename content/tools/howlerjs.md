@@ -2,7 +2,7 @@
 name: Howler.js
 url: 'https://github.com/goldfire/howler.js'
 website_url: 'https://howlerjs.com/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - audio
   - javascript
@@ -19,7 +19,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Goldfire Studios
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Howler.js
 

@@ -2,7 +2,7 @@
 name: Devopness
 url: 'https://github.com/devopness/devopness'
 website_url: 'https://www.devopness.com/'
-category: DevOps & Cloud
+category: 'DevOps, cloud & self-hosting'
 tags:
   - devops
   - iac
@@ -18,7 +18,8 @@ author_handle: hasantoxr
 entry_type: tool
 company: Devopness
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # Devopness
 

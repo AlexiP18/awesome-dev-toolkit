@@ -1,7 +1,7 @@
 ---
 name: Best AI Builder
 url: 'https://bestaibuilder.website/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - ia
   - website-builder
@@ -17,11 +17,12 @@ author: Vullnet Ademaj
 author_handle: VullnetAdemaj
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
 source_tweets:
   - 'https://x.com/VullnetAdemaj/status/2108281499686478021'
   - 'https://x.com/VullnetAdemaj/status/2108894975635423306'
 updated_at: '2026-11-13T05:00:36.267Z'
+area: diseno-creatividad
 ---
 # Best AI Builder
 

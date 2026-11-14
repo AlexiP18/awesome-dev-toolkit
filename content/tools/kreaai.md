@@ -1,12 +1,12 @@
 ---
 name: krea.ai
 url: 'https://www.krea.ai/'
-category: 'Prompts, Art & Video'
+category: Prompts & generación visual con IA
 tags:
-  - ai
+  - ia
   - generacion-imagenes
   - tiempo-real
-  - diseño-interactivo
+  - diseno-interactivo
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:53:53.073Z'
@@ -15,7 +15,8 @@ author: chaos
 author_handle: konig0000
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # krea.ai
 

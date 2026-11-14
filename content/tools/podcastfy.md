@@ -1,7 +1,7 @@
 ---
 name: Podcastfy
 url: 'https://github.com/souzatharsis/podcastfy'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - podcast
   - audio
@@ -15,7 +15,8 @@ author: Rimsha Bhardwaj
 author_handle: heyrimsha
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Podcastfy
 

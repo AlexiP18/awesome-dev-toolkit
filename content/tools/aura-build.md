@@ -1,7 +1,7 @@
 ---
 name: Aura Build
 url: 'https://x.com/aresotik/status/2079554555860144185'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - design-system
   - frontend
@@ -17,7 +17,8 @@ author_handle: aresotik
 entry_type: tool
 company: Aura Build
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Aura Build
 

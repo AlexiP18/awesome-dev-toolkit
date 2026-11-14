@@ -1,9 +1,9 @@
 ---
 name: Buzz
 url: 'https://github.com/block/buzz'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai-agents
+  - agentes
   - open-source
   - workspace
 status: to_try
@@ -15,7 +15,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Block
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Buzz
 

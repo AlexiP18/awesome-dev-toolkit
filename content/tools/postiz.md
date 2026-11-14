@@ -1,15 +1,15 @@
 ---
 name: Postiz
 url: 'https://github.com/gitroomhq/postiz-app'
-category: Productivity & Tools
+category: 'Agentes, MCP & automatización'
 tags:
+  - typescript
   - social-media
   - scheduling-tool
   - open-source
   - nextjs
-  - typescript
   - productivity
-  - ai-agents
+  - agentes
 stars: 40684
 status: to_try
 date_added: '2026-11-02'
@@ -21,7 +21,8 @@ entry_type: tool
 company: gitroomhq
 price: Gratis
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Postiz
 

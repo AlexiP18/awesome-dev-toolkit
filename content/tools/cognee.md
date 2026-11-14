@@ -1,12 +1,12 @@
 ---
 name: Cognee
 url: 'https://github.com/topoteretes/cognee'
-category: Agentes & Protocolo MCP
+category: 'RAG, búsqueda & datos para IA'
 tags:
+  - python
   - agent-memory
   - knowledge-graph
   - rag
-  - python
   - vector-database
 stars: 33093
 status: to_try
@@ -18,7 +18,8 @@ author_handle: Shruti_0810
 entry_type: tool
 company: topoteretes
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Cognee
 

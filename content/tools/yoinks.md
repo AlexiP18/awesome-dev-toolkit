@@ -1,7 +1,7 @@
 ---
 name: yoinks
 url: 'https://github.com/pablostanley/yoinks'
-category: CLI & Terminal
+category: 'Terminal, IDE & hardware'
 tags: []
 stars: 6493
 status: to_try
@@ -12,7 +12,8 @@ author: liam.
 author_handle: liambraus
 entry_type: tool
 classified_by: Fallback (Sin IA)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # yoinks
 

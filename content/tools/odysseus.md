@@ -1,9 +1,9 @@
 ---
 name: Odysseus
 url: 'https://github.com/pewdiepie-archive/odysseus'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai-agents
+  - agentes
   - self-hosted
   - local-first
   - workspace
@@ -17,7 +17,8 @@ author_handle: DivyanshT91162
 entry_type: tool
 company: pewdiepie-archive
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Odysseus
 

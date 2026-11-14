@@ -1,9 +1,9 @@
 ---
 name: Phind
 url: 'https://phind.com/'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
-  - buscador ia
+  - buscador-ia
   - desarrollo
   - debugging
 status: to_try
@@ -15,7 +15,8 @@ author_handle: ecommartinez
 entry_type: tool
 company: Phind
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: inteligencia-artificial
 ---
 # Phind
 

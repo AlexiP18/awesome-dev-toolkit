@@ -1,13 +1,13 @@
 ---
 name: Flaticon Animated Icons
 url: 'https://www.flaticon.com/animated-icons'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - icons
-  - animaciones
+  - animacion
   - svg
   - descargas
-  - diseño
+  - diseno
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:13:58.723Z'
@@ -16,7 +16,8 @@ author: Dev Patel
 author_handle: DevDsgn
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Flaticon Animated Icons
 

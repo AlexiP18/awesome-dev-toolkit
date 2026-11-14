@@ -2,7 +2,7 @@
 name: Papermark
 url: 'https://github.com/papermark/papermark'
 website_url: 'https://www.papermark.com/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - document-sharing
   - analytics
@@ -17,7 +17,8 @@ author_handle: hasantoxr
 entry_type: tool
 company: Papermark
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: productividad-utilidades
 ---
 # Papermark
 

@@ -1,12 +1,11 @@
 ---
 name: Brand Guidelines
 url: 'https://www.brandguidelines.net/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - branding
   - design-system
-  - documentación
-  - inspiración
+  - documentacion
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T15:37:09.508Z'
@@ -16,6 +15,7 @@ author_handle: tranmautritam
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Brand Guidelines
 

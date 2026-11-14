@@ -1,9 +1,8 @@
 ---
 name: Awwwards
 url: 'https://awwwards.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - inspiracion
   - premios
   - web-design
   - ui
@@ -17,6 +16,7 @@ author_handle: Tegadesigns
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Awwwards
 

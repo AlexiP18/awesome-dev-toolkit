@@ -2,7 +2,7 @@
 name: FFmpeg
 url: 'https://github.com/FFmpeg/FFmpeg'
 website_url: 'https://ffmpeg.org/'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - video
   - encoding
@@ -18,7 +18,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: FFmpeg
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # FFmpeg
 

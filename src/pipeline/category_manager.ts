@@ -1,222 +1,206 @@
 import fs from 'fs';
 import path from 'path';
 import { unmarkRepoPathDeleted } from './github_sync.js';
-import { ToolCategory } from './types.js';
+import { ClassifyInput, mapImportedCategory, resolveClassification } from './classify_rules.js';
+import {
+  CatalogSection,
+  CategoryDefinition,
+  LEGACY_ALIASES,
+  aliasTarget,
+  canonicalCategoryName,
+  categoryDefinitions,
+  isTaxonomyCategory,
+  legacyAlias,
+} from './taxonomy.js';
 
-export interface CategoryDefinition {
-  name: string;
-  section: 'all' | 'tools' | 'tips' | 'jobs';
-  icon: string;
-  color: string; // 'sky' | 'emerald' | 'amber' | 'violet' | 'rose' | 'indigo' | 'cyan' | 'purple' | 'teal' | 'slate'
-  description?: string;
-  isDefault?: boolean;
-}
+export type { CategoryDefinition };
 
-export const DEFAULT_CATEGORIES: CategoryDefinition[] = [
-  { name: 'CLI & Terminal', section: 'tools', icon: '🛠️', color: 'emerald', description: 'Herramientas de línea de comandos, TUI y utilidades de terminal', isDefault: true },
-  { name: 'Frontend & UI', section: 'tools', icon: '🎨', color: 'rose', description: 'Bibliotecas de componentes, CSS, diseño web y galerías', isDefault: true },
-  { name: 'Backend & APIs', section: 'tools', icon: '⚙️', color: 'sky', description: 'Frameworks de servidor, pasarelas de API y microservicios', isDefault: true },
-  { name: 'DevOps & Cloud', section: 'tools', icon: '🐳', color: 'cyan', description: 'Docker, CI/CD, despliegues e infraestructura en la nube', isDefault: true },
-  { name: 'AI & Machine Learning', section: 'tools', icon: '🤖', color: 'purple', description: 'Modelos de lenguaje, agentes de IA, RAG y pipelines de ML', isDefault: true },
-  { name: 'Data Engineering & ETL', section: 'tools', icon: '🔄', color: 'emerald', description: 'Extracción no estructurada, pipelines de datos, ETL/ELT e ingesta hacia almacenes de datos', isDefault: true },
-  { name: 'Document AI & Extracción', section: 'tools', icon: '📑', color: 'purple', description: 'Extracción inteligente de PDFs, facturas, formularios KYC a JSON con LLMs', isDefault: true },
-  { name: 'Agentes & Protocolo MCP', section: 'tools', icon: '🤖', color: 'cyan', description: 'Servidores Model Context Protocol (MCP), frameworks de memoria y agentes de IA', isDefault: true },
-  { name: 'Prompts, Art & Video', section: 'tools', icon: '🎬', color: 'violet', description: 'Generación de video, arte 3D y audio con inteligencia artificial', isDefault: true },
-  { name: 'Databases & Storage', section: 'tools', icon: '🗄️', color: 'amber', description: 'Bases de datos SQL/NoSQL, ORMs, almacenamiento y cachés', isDefault: true },
-  { name: 'Productivity & Tools', section: 'tools', icon: '⚡', color: 'teal', description: 'Utilidades para desarrolladores, métricas y optimización', isDefault: true },
-  { name: 'Documentation & Resources', section: 'tools', icon: '📚', color: 'indigo', description: 'Guías, libros, cheat sheets y documentación estática', isDefault: true },
-  { name: 'Empresas & Productos', section: 'tools', icon: '🏢', color: 'indigo', description: 'Productos y herramientas desarrolladas por empresas o startups', isDefault: true },
-  { name: 'Productos Tecnológicos & Hardware', section: 'tools', icon: '🖥️', color: 'amber', description: 'Placas, microcontroladores, periféricos y gadgets físicos', isDefault: true },
-  { name: 'Consejos & Buenas Prácticas', section: 'tips', icon: '💡', color: 'violet', description: 'Trucos de código, comandos y patrones de arquitectura', isDefault: true },
-  { name: 'Trabajo & Freelance', section: 'jobs', icon: '💼', color: 'sky', description: 'Vacantes de empleo remoto y oportunidades de contratación', isDefault: true },
-  { name: 'Other', section: 'all', icon: '📦', color: 'slate', description: 'Recursos varios y clasificaciones generales', isDefault: true },
-];
+export const DEFAULT_CATEGORIES: CategoryDefinition[] = categoryDefinitions();
 
 const CATEGORIES_FILE = path.resolve(process.cwd(), 'data/categories.json');
 
 export function ensureCategoriesFile(): void {
   const dir = path.dirname(CATEGORIES_FILE);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   if (!fs.existsSync(CATEGORIES_FILE)) {
     fs.writeFileSync(CATEGORIES_FILE, JSON.stringify(DEFAULT_CATEGORIES, null, 2), 'utf-8');
   }
 }
 
+function isLegacyName(name: string): boolean {
+  return LEGACY_ALIASES.some((alias) => alias.old.toLowerCase() === name.trim().toLowerCase());
+}
+
+/**
+ * Los defaults salen de taxonomy.json. El archivo solo puede ajustar icono,
+ * color o descripción de una categoría de la taxonomía. Un nombre legacy no reaparece.
+ */
 export function getAllCategories(): CategoryDefinition[] {
   ensureCategoriesFile();
+  const map = new Map<string, CategoryDefinition>();
+  for (const category of categoryDefinitions()) map.set(category.name.toLowerCase(), category);
   try {
-    const raw = fs.readFileSync(CATEGORIES_FILE, 'utf-8');
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed) && parsed.length > 0) {
-      // Combinar con los defaults asegurando que los defaults no se pierdan
-      const map = new Map<string, CategoryDefinition>();
-      DEFAULT_CATEGORIES.forEach((c) => map.set(c.name.toLowerCase(), c));
-      parsed.forEach((c: CategoryDefinition) => {
-        if (c && c.name) {
-          map.set(c.name.toLowerCase(), {
-            ...c,
-            isDefault: DEFAULT_CATEGORIES.some((d) => d.name.toLowerCase() === c.name.toLowerCase()),
-          });
-        }
-      });
-      return Array.from(map.values());
+    const parsed = JSON.parse(fs.readFileSync(CATEGORIES_FILE, 'utf-8'));
+    if (Array.isArray(parsed)) {
+      for (const item of parsed as CategoryDefinition[]) {
+        if (!item?.name || isLegacyName(item.name) || !isTaxonomyCategory(item.name)) continue;
+        const key = item.name.toLowerCase();
+        const base = map.get(key);
+        if (!base) continue;
+        map.set(key, {
+          ...base,
+          icon: item.icon?.trim() || base.icon,
+          color: item.color || base.color,
+          description: item.description?.trim() || base.description,
+          isDefault: true,
+        });
+      }
     }
   } catch (err) {
     console.warn('[Category Manager] Error leyendo data/categories.json:', err);
   }
-  return DEFAULT_CATEGORIES;
+  return categoryDefinitions().map((category) => map.get(category.name.toLowerCase()) || category);
 }
 
 export function getAllCategoryNames(): string[] {
-  return getAllCategories().map((c) => c.name);
+  return getAllCategories().map((category) => category.name);
 }
 
-/** Nombres que la IA o un respaldo escribieron y que no están en la taxonomía. */
-const CATEGORY_ALIASES: Record<string, string> = {
-  'ides & development software': 'Productivity & Tools',
-  'ides and development software': 'Productivity & Tools',
-  'ides': 'Productivity & Tools',
-  'document ai': 'Document AI & Extracción',
-  'document ai & extraccion': 'Document AI & Extracción',
-  'document ai & extracción': 'Document AI & Extracción',
+/** legacy → sucesora por defecto. Los splits finos viven en classify_rules. */
+export const CATEGORY_ALIASES: Record<string, string> = Object.fromEntries([
+  ...LEGACY_ALIASES.map((alias) => [alias.old.toLowerCase(), alias.defaultNew]),
+  ['ides & development software', 'Terminal, IDE & hardware'],
+  ['ides and development software', 'Terminal, IDE & hardware'],
+  ['ides', 'Terminal, IDE & hardware'],
+  ['document ai', 'RAG, búsqueda & datos para IA'],
+  ['document ai & extraccion', 'RAG, búsqueda & datos para IA'],
+  ['document ai & extracción', 'RAG, búsqueda & datos para IA'],
+]);
+
+/** Palabras de las reglas heurísticas, para quien clasifique sin el texto completo. */
+export const CATEGORY_KEYWORDS: Record<string, string[]> = {
+  'Backend, APIs & datos': ['backend', 'api', 'apis', 'database', 'sql', 'scraping', 'crawler'],
+  'DevOps, cloud & self-hosting': ['devops', 'cloud', 'docker', 'self-hosted', 'homelab', 'dns'],
+  'Terminal, IDE & hardware': ['cli', 'terminal', 'git', 'editor', 'vscode', 'hardware', 'ide'],
+  'Seguridad & privacidad': ['seguridad', 'security', 'vpn', 'malware', 'privacy', 'osint'],
+  'Modelos, inferencia & APIs de IA': ['llm', 'modelo', 'inferencia', 'chatgpt'],
+  'Agentes, MCP & automatización': ['mcp', 'agente', 'agent', 'n8n', 'automation'],
+  'Asistentes de código & skills': ['claude-code', 'codex', 'cursor', 'skill', 'copilot'],
+  'RAG, búsqueda & datos para IA': ['rag', 'embeddings', 'ocr', 'pdf', 'vector-database'],
+  'Voz, visión & IA aplicada': ['tts', 'whisper', 'vision', 'voz', 'transcripcion'],
+  'Componentes & frameworks UI': ['react', 'css', 'tailwind', 'componente', 'ui'],
+  'Animación & motion web': ['gsap', 'motion', 'webgl', 'threejs', 'shader', 'lottie'],
+  'Recursos gráficos': ['icon', 'font', 'mockup', 'ilustracion', 'palette'],
+  'Inspiración, UX & design systems': ['inspiracion', 'gallery', 'figma', 'ux', 'design-system'],
+  'Video, audio, imagen & 3D': ['video', 'audio', 'blender', 'musica', 'imagen'],
+  'Prompts & generación visual con IA': ['prompt', 'midjourney', 'sora', 'text-to-image'],
+  'Apps de productividad & negocio': ['productividad', 'notas', 'finanzas', 'saas'],
+  'Utilidades web & archivos': ['pdf', 'convertidor', 'downloader', 'paywall', 'json'],
+  'Cursos, libros & rutas': ['curso', 'libro', 'roadmap', 'tutorial', 'curriculum'],
+  'Guías, tips & buenas prácticas': ['tip', 'guia', 'cheatsheet', 'practica'],
+  'Investigación & papers': ['paper', 'arxiv', 'survey'],
+  'Empleo remoto & bolsas': ['empleo', 'vacante', 'remoto', 'hiring'],
+  'Entrenamiento de IA & microtareas': ['rlhf', 'microtarea', 'anotacion'],
+  'Bounties, Web3 & concursos': ['bounty', 'web3', 'dao'],
+  'Créditos, planes gratis & programas': ['credito', 'free-tier', 'hackathon', 'estudiante'],
 };
 
 export function isAllowedCategory(name?: string | null): boolean {
-  if (!name) return false;
-  const target = name.trim().toLowerCase();
-  return getAllCategoryNames().some((category) => category.toLowerCase() === target);
+  return isTaxonomyCategory(name);
+}
+
+export interface CoerceContext {
+  slug?: string;
+  name?: string;
+  tags?: string[];
+  summary?: string;
+  conjunto?: string | null;
+  url?: string | null;
 }
 
 /**
- * Devuelve una categoría de la lista permitida.
- * Un alias conocido se migra; si el nombre no existe, manda el tipo de ficha y, en último caso, Other.
+ * Categoría de la taxonomía.
+ * Un nombre vigente se conserva. Un legacy con split pasa por las reglas si hay contexto;
+ * si no, cae en la sucesora por defecto. Sin categoría reconocible, la ficha va a revisión.
  */
-export function coerceCategory(raw?: string | null, entryType?: string | null): string {
-  const allowed = getAllCategoryNames();
+export function coerceCategory(raw?: string | null, entryType?: string | null, context?: CoerceContext): string {
   const trimmed = (raw || '').trim();
-  const direct = allowed.find((category) => category.toLowerCase() === trimmed.toLowerCase());
-  if (direct && direct.toLowerCase() !== 'other') return direct;
-
-  const alias = CATEGORY_ALIASES[trimmed.toLowerCase()];
-  if (alias && allowed.includes(alias)) return alias;
-
-  if (entryType === 'job_remote') return 'Trabajo & Freelance';
-  if (entryType === 'tech_tip') return 'Consejos & Buenas Prácticas';
-  if (entryType === 'tech_product') return 'Productos Tecnológicos & Hardware';
-  if (entryType === 'product_showcase') return 'Empresas & Productos';
+  const direct = canonicalCategoryName(trimmed);
   if (direct) return direct;
-  return 'Other';
+
+  const input: ClassifyInput = {
+    slug: context?.slug || '',
+    category: trimmed,
+    conjunto: context?.conjunto,
+    entryType,
+    tags: context?.tags,
+    name: context?.name,
+    summary: context?.summary,
+    url: context?.url,
+  };
+  const alias = legacyAlias(trimmed);
+  if (alias?.splitRequired && context) {
+    const resolved = resolveClassification({ ...input, applySplit: true });
+    if (resolved.category) return resolved.category;
+  }
+  const target = aliasTarget(trimmed);
+  if (target) return target;
+
+  if (entryType === 'tech_tip' || entryType === 'tech_product' || entryType === 'job_remote' || entryType === 'product_showcase') {
+    const resolved = resolveClassification({ ...input, applySplit: true });
+    if (resolved.category) return resolved.category;
+  }
+  return '';
 }
 
-const CATEGORY_KEYWORDS: Record<string, string[]> = {
-  'CLI & Terminal': ['cli', 'terminal', 'shell', 'bash', 'tui', 'consola', 'comando'],
-  'Frontend & UI': ['frontend', 'ui', 'css', 'react', 'interfaz', 'diseno', 'design', 'web'],
-  'Backend & APIs': ['backend', 'api', 'apis', 'servidor', 'server', 'http'],
-  'DevOps & Cloud': ['devops', 'cloud', 'docker', 'kubernetes', 'infra', 'nube', 'deploy'],
-  'AI & Machine Learning': ['ai', 'ml', 'llm', 'machine', 'learning', 'modelo', 'inteligencia', 'neural'],
-  'Data Engineering & ETL': ['etl', 'elt', 'pipeline', 'warehouse', 'ingesta'],
-  'Document AI & Extracción': ['pdf', 'ocr', 'invoice', 'factura', 'extraccion', 'documento'],
-  'Agentes & Protocolo MCP': ['mcp', 'agente', 'agentes', 'agent', 'agents'],
-  'Prompts, Art & Video': ['video', 'arte', 'art', 'prompt', 'prompts', 'audio', 'imagen', 'image'],
-  'Databases & Storage': ['database', 'sql', 'storage', 'postgres', 'almacen'],
-  'Productivity & Tools': ['productivity', 'productividad', 'ide', 'editor'],
-  'Documentation & Resources': ['docs', 'documentation', 'documentacion', 'libro', 'book', 'guia', 'guide', 'curso'],
-  'Empresas & Productos': ['empresa', 'startup', 'showcase', 'saas'],
-  'Productos Tecnológicos & Hardware': ['hardware', 'gadget', 'placa', 'device', 'iot'],
-  'Consejos & Buenas Prácticas': ['tip', 'tips', 'consejo', 'consejos', 'practica', 'practice'],
-  'Trabajo & Freelance': ['job', 'jobs', 'trabajo', 'empleo', 'freelance', 'hiring', 'remoto', 'remote', 'vacante'],
-};
-
-function foldTokens(value: string): string[] {
-  return value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .split(/[^a-z0-9]+/)
-    .filter((token) => token.length >= 2);
-}
-
-/**
- * Categoría del vault → una de DEFAULT_CATEGORIES.
- * Coincidencia exacta o alias primero; si no, la categoría cuyo nombre y palabras clave se parecen más.
- */
+/** Identidad en las 24 categorías. Los 19 nombres legacy usan el alias, sin parecido por palabras. */
 export function mapVaultCategory(raw?: string | null, entryType?: string | null): string {
-  const trimmed = (raw || '').trim();
-  if (trimmed && isAllowedCategory(trimmed)) {
-    return getAllCategoryNames().find((category) => category.toLowerCase() === trimmed.toLowerCase()) || trimmed;
-  }
-  const alias = CATEGORY_ALIASES[trimmed.toLowerCase()];
-  if (alias) return alias;
+  const mapped = mapImportedCategory(raw, entryType);
+  return mapped.category;
+}
 
-  if (trimmed) {
-    const query = new Set(foldTokens(trimmed));
-    let bestName = '';
-    let bestScore = 0;
-    for (const category of getAllCategories()) {
-      if (category.name === 'Other') continue;
-      const blob = new Set([
-        ...foldTokens(category.name),
-        ...foldTokens(category.description || ''),
-        ...(CATEGORY_KEYWORDS[category.name] || []),
-      ]);
-      let score = 0;
-      for (const token of query) {
-        if (blob.has(token)) score += token.length >= 5 ? 3 : 1;
-      }
-      if (score > bestScore) {
-        bestScore = score;
-        bestName = category.name;
-      }
-    }
-    if (bestName && bestScore > 0) return bestName;
-  }
-
-  return coerceCategory(undefined, entryType);
+export function categoryNeedsReview(raw?: string | null, entryType?: string | null): boolean {
+  return mapImportedCategory(raw, entryType).review;
 }
 
 export function saveAllCategories(categories: CategoryDefinition[]): void {
   ensureCategoriesFile();
-  fs.writeFileSync(CATEGORIES_FILE, JSON.stringify(categories, null, 2), 'utf-8');
+  const allowed = categories.filter((category) => isTaxonomyCategory(category.name) && !isLegacyName(category.name));
+  fs.writeFileSync(CATEGORIES_FILE, JSON.stringify(allowed, null, 2), 'utf-8');
   unmarkRepoPathDeleted(CATEGORIES_FILE);
 }
 
-export function addCustomCategory(newCat: Partial<CategoryDefinition> & { name: string }): CategoryDefinition {
-  const cleanName = newCat.name.trim();
-  if (!cleanName) throw new Error('El nombre de la categoría es requerido.');
-
-  const all = getAllCategories();
-  const existingIdx = all.findIndex((c) => c.name.toLowerCase() === cleanName.toLowerCase());
-
-  const categoryItem: CategoryDefinition = {
-    name: cleanName,
-    section: newCat.section || 'tools',
-    icon: newCat.icon?.trim() || '🏷️',
-    color: newCat.color || 'sky',
-    description: newCat.description?.trim() || `Herramientas y recursos de ${cleanName}`,
-    isDefault: existingIdx >= 0 ? all[existingIdx].isDefault : false,
-  };
-
-  if (existingIdx >= 0) {
-    all[existingIdx] = categoryItem;
-  } else {
-    all.push(categoryItem);
+export function addCustomCategory(newCat: Partial<CategoryDefinition> & { name: string; section?: CatalogSection | 'all' }): CategoryDefinition {
+  const canonical = canonicalCategoryName(newCat.name);
+  if (!canonical) {
+    throw new Error(`"${newCat.name.trim()}" no está en la taxonomía. Elige una de las 24 categorías.`);
   }
-
+  const all = getAllCategories();
+  const existingIdx = all.findIndex((category) => category.name.toLowerCase() === canonical.toLowerCase());
+  const base = all[existingIdx];
+  const requested = newCat.section;
+  const section: CatalogSection = requested === 'tips' || requested === 'jobs' || requested === 'tools' ? requested : base.section;
+  const categoryItem: CategoryDefinition = {
+    ...base,
+    name: canonical,
+    section,
+    icon: newCat.icon?.trim() || base.icon,
+    color: newCat.color || base.color,
+    description: newCat.description?.trim() || base.description,
+    isDefault: true,
+  };
+  all[existingIdx] = categoryItem;
   saveAllCategories(all);
   return categoryItem;
 }
 
 export function deleteCustomCategory(name: string): boolean {
   const all = getAllCategories();
-  const target = all.find((c) => c.name.toLowerCase() === name.toLowerCase());
+  const target = all.find((category) => category.name.toLowerCase() === name.toLowerCase());
   if (!target) return false;
-  if (target.isDefault) {
-    throw new Error(`La categoría estándar "${target.name}" no se puede eliminar.`);
+  if (target.isDefault || isTaxonomyCategory(target.name)) {
+    throw new Error(`La categoría "${target.name}" pertenece a la taxonomía y no se puede eliminar.`);
   }
-
-  const filtered = all.filter((c) => c.name.toLowerCase() !== name.toLowerCase());
-  saveAllCategories(filtered);
+  saveAllCategories(all.filter((category) => category.name.toLowerCase() !== name.toLowerCase()));
   return true;
 }

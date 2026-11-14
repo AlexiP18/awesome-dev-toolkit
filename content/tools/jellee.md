@@ -1,13 +1,13 @@
 ---
 name: Jellee
 url: 'https://hanken.co/products/jellee'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - fuentes
   - tipografia
   - display
   - frontend
-  - diseño
+  - diseno
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:56:06.771Z'
@@ -18,7 +18,8 @@ entry_type: tool
 company: Hanken Design Co.
 price: Gratis
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Jellee
 

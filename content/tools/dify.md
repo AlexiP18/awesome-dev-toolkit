@@ -2,10 +2,10 @@
 name: Dify
 url: 'https://github.com/langgenius/dify'
 website_url: 'https://dify.ai/'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
   - llm
-  - ai-agents
+  - agentes
   - workflows
   - rag
   - open-source
@@ -18,7 +18,8 @@ author_handle: hasantoxr
 entry_type: tool
 company: LangGenius
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Dify
 

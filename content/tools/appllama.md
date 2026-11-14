@@ -1,9 +1,8 @@
 ---
 name: Appllama
 url: 'https://appllama.io/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - inspiracion
   - mobile
   - ios
   - ux
@@ -17,6 +16,7 @@ author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Appllama
 

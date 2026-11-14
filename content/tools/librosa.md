@@ -1,11 +1,11 @@
 ---
 name: librosa
 url: 'https://github.com/librosa/librosa'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
+  - python
   - audio-analysis
   - music
-  - python
   - dsp
   - beat-detection
   - animation-sync
@@ -18,7 +18,8 @@ author: rachit
 author_handle: rachiitgr
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # librosa
 

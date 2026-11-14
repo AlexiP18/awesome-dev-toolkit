@@ -22,12 +22,13 @@ function bookmark(partial: Partial<VaultBookmark> & Pick<VaultBookmark, 'tweet_i
   };
 }
 
-test('mapVaultCategory acerca una categoría desconocida a la lista permitida', () => {
-  assert.equal(mapVaultCategory('Frontend & UI'), 'Frontend & UI');
-  assert.equal(mapVaultCategory('IDEs & Development Software'), 'Productivity & Tools');
-  assert.equal(mapVaultCategory('Machine Learning Models'), 'AI & Machine Learning');
-  assert.equal(mapVaultCategory('Remote hiring board'), 'Trabajo & Freelance');
-  assert.equal(mapVaultCategory('Zzz desconocida', 'tech_tip'), 'Consejos & Buenas Prácticas');
+test('mapVaultCategory conserva la taxonomía nueva y traduce los nombres legacy', () => {
+  assert.equal(mapVaultCategory('Componentes & frameworks UI'), 'Componentes & frameworks UI');
+  assert.equal(mapVaultCategory('Frontend & UI'), 'Componentes & frameworks UI');
+  assert.equal(mapVaultCategory('Modelos, inferencia & APIs de IA'), 'Modelos, inferencia & APIs de IA');
+  assert.equal(mapVaultCategory('Trabajo & Freelance'), 'Empleo remoto & bolsas');
+  assert.equal(mapVaultCategory('IDEs & Development Software'), 'Terminal, IDE & hardware');
+  assert.equal(mapVaultCategory('Zzz desconocida', 'tech_tip'), 'Guías, tips & buenas prácticas');
 });
 
 test('import:vault crea, es idempotente, anexa el tweet y no fusiona otro producto', () => {
@@ -44,7 +45,7 @@ test('import:vault crea, es idempotente, anexa el tweet y no fusiona otro produc
             name: 'Widget',
             url: 'https://github.com/acme/widget',
             website_url: 'https://widget.example',
-            category: 'Machine Learning Models',
+            category: 'Modelos, inferencia & APIs de IA',
             conjunto: 'recursos',
             tags: ['llm'],
             summary: 'Un router de modelos para pruebas.',
@@ -55,7 +56,7 @@ test('import:vault crea, es idempotente, anexa el tweet y no fusiona otro produc
             name: 'Consejo de logs',
             url: 'https://example.com/logs',
             website_url: null,
-            category: 'Consejos & Buenas Prácticas',
+            category: 'Guías, tips & buenas prácticas',
             conjunto: 'consejos',
             tags: ['logs'],
             summary: 'Cómo leer logs sin ruido.',
@@ -66,7 +67,7 @@ test('import:vault crea, es idempotente, anexa el tweet y no fusiona otro produc
             name: 'Vacante remota',
             url: 'https://jobs.example/remote',
             website_url: null,
-            category: 'Remote hiring board',
+            category: 'Empleo remoto & bolsas',
             conjunto: 'recursos',
             tags: ['remoto'],
             summary: 'Puesto remoto de backend.',
@@ -103,7 +104,7 @@ test('import:vault crea, es idempotente, anexa el tweet y no fusiona otro produc
     assert.equal(fs.existsSync(path.join(dir, 'authors', 'ada.md')), true);
 
     const widget = matter(fs.readFileSync(path.join(dir, 'tools', 'widget.md'), 'utf-8'));
-    assert.equal(widget.data.category, 'AI & Machine Learning');
+    assert.equal(widget.data.category, 'Modelos, inferencia & APIs de IA');
     assert.equal(widget.data.url, 'https://github.com/acme/widget');
     assert.equal(widget.data.website_url, 'https://widget.example/');
     assert.match(widget.content, /Un router de modelos/);
@@ -127,7 +128,7 @@ test('import:vault crea, es idempotente, anexa el tweet y no fusiona otro produc
             name: 'Widget',
             url: 'https://www.github.com/acme/widget/',
             website_url: null,
-            category: 'AI & Machine Learning',
+            category: 'Modelos, inferencia & APIs de IA',
             conjunto: 'recursos',
             tags: ['router'],
             summary: 'Un router de modelos para pruebas.',
@@ -153,7 +154,7 @@ test('import:vault crea, es idempotente, anexa el tweet y no fusiona otro produc
             name: 'cmux',
             url: 'https://github.com/acme/widget',
             website_url: null,
-            category: 'CLI & Terminal',
+            category: 'Terminal, IDE & hardware',
             conjunto: 'recursos',
             tags: ['terminal'],
             summary: 'Otro producto con la URL equivocada.',
@@ -183,7 +184,7 @@ test('import no pisa un tweet que ya estaba en una ficha previa', () => {
       classification: {
         name: 'Widget',
         canonicalUrl: 'https://github.com/acme/widget',
-        category: 'AI & Machine Learning',
+        category: 'Modelos, inferencia & APIs de IA',
         tags: ['llm'],
         oneLiner: 'Ya estaba en el catálogo.',
         keyHighlights: ['Existente'],
@@ -201,7 +202,7 @@ test('import no pisa un tweet que ya estaba en una ficha previa', () => {
             name: 'Widget',
             url: 'https://github.com/Acme/Widget',
             website_url: null,
-            category: 'AI & Machine Learning',
+            category: 'Modelos, inferencia & APIs de IA',
             conjunto: 'recursos',
             tags: ['llm'],
             summary: 'Ya estaba en el catálogo.',

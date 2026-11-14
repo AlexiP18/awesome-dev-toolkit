@@ -1,13 +1,13 @@
 ---
 name: lemo-opuscar
 url: 'https://github.com/lemomo-ai/lemo-opuscar'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - claude-code
   - agent-skills
   - creative-coding
   - filmmaking
-  - animation
+  - animacion
   - threejs
   - ffmpeg
   - motion-graphics
@@ -20,7 +20,8 @@ author_handle: 7uanF
 entry_type: tool
 company: Lemomo
 created_at: '2026-10-23T04:36:05.083Z'
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # lemo-opuscar
 

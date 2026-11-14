@@ -1,7 +1,7 @@
 ---
 name: Aceternity UI
 url: 'https://ui.aceternity.com/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
   - tailwind
@@ -16,7 +16,8 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Aceternity
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Aceternity UI
 

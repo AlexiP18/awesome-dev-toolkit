@@ -1,11 +1,11 @@
 ---
 name: Internet Archive
 url: 'https://archive.org/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - wayback-machine
-  - archivo web
-  - biblioteca digital
+  - archivo-web
+  - biblioteca-digital
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:45:43.658Z'
@@ -15,7 +15,8 @@ author_handle: ecommartinez
 entry_type: tool
 company: Internet Archive
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # Internet Archive
 

@@ -1,7 +1,7 @@
 ---
 name: video-shotcraft
 url: 'https://github.com/Vincentwei1021/video-shotcraft'
-category: 'Prompts, Art & Video'
+category: Prompts & generación visual con IA
 tags:
   - ai-video
   - video-generation
@@ -10,7 +10,7 @@ tags:
   - product-video
   - motion-design
   - cinematic
-  - ai-agents
+  - agentes
   - video-production
 stars: 16137
 status: to_try
@@ -23,7 +23,8 @@ entry_type: tool
 company: Vincentwei1021
 price: Gratis
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # video-shotcraft
 

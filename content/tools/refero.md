@@ -1,9 +1,8 @@
 ---
 name: Refero
 url: 'https://refero.design/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - inspiracion
   - ui
   - ux
   - ios
@@ -17,6 +16,7 @@ author_handle: Tegadesigns
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Refero
 

@@ -1,7 +1,7 @@
 ---
 name: The Design System Guide
 url: 'https://thedesignsystem.guide/'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - design-system
   - guide
@@ -15,7 +15,8 @@ author: Abraham John
 author_handle: Abmankendrick
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: consejos
+conjunto: aprender
+area: aprendizaje
 ---
 # The Design System Guide
 

@@ -2,7 +2,7 @@
 name: SearXNG
 url: 'https://github.com/searxng/searxng'
 website_url: 'https://docs.searxng.org/'
-category: Productivity & Tools
+category: Seguridad & privacidad
 tags:
   - buscador
   - privacidad
@@ -17,7 +17,8 @@ author_handle: sentient_agency
 entry_type: tool
 company: SearXNG
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # SearXNG
 

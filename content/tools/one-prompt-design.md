@@ -1,13 +1,12 @@
 ---
 name: One Prompt Design
 url: 'https://onepromptdesign.com/'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
-  - ai
+  - ia
   - prompts
-  - design
-  - inspiration
-  - generative_ai
+  - diseno
+  - generative-ai
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:50:39.830Z'
@@ -17,6 +16,7 @@ author_handle: neropursue
 entry_type: tool
 classified_by: Google Gemini (Flash)
 conjunto: inspiracion
+area: inteligencia-artificial
 ---
 # One Prompt Design
 

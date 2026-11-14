@@ -1,7 +1,7 @@
 ---
 name: shaper
 url: 'https://github.com/taleshape-com/shaper'
-category: Databases & Storage
+category: 'Backend, APIs & datos'
 tags:
   - sql
   - duckdb
@@ -18,8 +18,9 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Taleshape
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
 updated_at: '2026-11-13T05:00:36.261Z'
+area: desarrollo-software
 ---
 # shaper
 

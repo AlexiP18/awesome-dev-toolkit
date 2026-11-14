@@ -1,9 +1,9 @@
 ---
 name: ECC (Everything Claude Code) 2.0
 url: 'https://x.com/maarcoofdezz/status/2083874888352252097'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
-  - agentes-ia
+  - agentes
   - claude-code
   - skills
   - memoria
@@ -21,7 +21,8 @@ author_handle: maarcoofdezz
 entry_type: tool
 company: Affaan Mustafa
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # ECC (Everything Claude Code) 2.0
 

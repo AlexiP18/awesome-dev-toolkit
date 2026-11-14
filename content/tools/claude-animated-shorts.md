@@ -1,7 +1,7 @@
 ---
 name: Claude Animated Shorts
 url: 'https://github.com/mromidev/claude-animated-shorts'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - claude
   - ia
@@ -20,7 +20,8 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: mromidev
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Claude Animated Shorts
 

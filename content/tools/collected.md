@@ -1,23 +1,30 @@
 ---
 name: Collected
 url: 'https://collected.li/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
+conjunto: inspiracion
 tags:
   - web-design
-  - inspiration
   - frontend
   - ui
   - gallery
   - curated
+  - galeria
+  - diseno-web
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:27:28.263Z'
+updated_at: '2026-11-14T04:14:30.762Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2117522406730572218'
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2117522406730572218'
+  - 'https://x.com/csaba_kissi/status/2121148030305153039'
 author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
-classified_by: Google Gemini (Flash)
-conjunto: inspiracion
+company: Csaba Kissi
+classified_by: Importado del vault
+area: diseno-creatividad
 ---
 # Collected
 

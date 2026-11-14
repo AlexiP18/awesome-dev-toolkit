@@ -2,7 +2,7 @@
 name: p5.js
 url: 'https://github.com/processing/p5.js'
 website_url: 'http://beta.p5js.org/'
-category: 'Prompts, Art & Video'
+category: 'Cursos, libros & rutas'
 tags:
   - creative-coding
   - generative-art
@@ -23,7 +23,8 @@ author_handle: e1genqq
 entry_type: tool
 company: processing
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # p5.js
 

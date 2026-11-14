@@ -1,9 +1,9 @@
 ---
 name: Orca
 url: 'https://www.onorca.dev/'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
-  - ai-agents
+  - agentes
   - ide
   - claude-code
   - codex
@@ -18,7 +18,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Orca
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: inteligencia-artificial
 ---
 # Orca
 

@@ -1,15 +1,15 @@
 ---
 name: PixiJS
 url: 'https://github.com/pixijs/pixijs'
-category: Frontend & UI
+category: Animación & motion web
 tags:
+  - typescript
   - 2d-graphics
   - webgl
   - canvas
   - html5
   - rendering
   - game-development
-  - typescript
   - renderer
   - gpu-accelerated
 stars: 48617
@@ -22,7 +22,8 @@ author_handle: e1genqq
 entry_type: tool
 company: pixijs
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # PixiJS
 

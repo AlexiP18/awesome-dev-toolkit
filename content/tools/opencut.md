@@ -1,7 +1,7 @@
 ---
 name: OpenCut
 url: 'https://github.com/OpenCut-app/OpenCut'
-category: Productivity & Tools
+category: Seguridad & privacidad
 tags:
   - video
   - editor
@@ -17,7 +17,8 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: OpenCut-app
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: codigo
+area: desarrollo-software
 ---
 # OpenCut
 

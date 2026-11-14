@@ -1,10 +1,9 @@
 ---
 name: Landing.love
 url: 'https://landing.love/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - landing-pages
-  - inspiracion
   - diseno
   - conversion
 status: to_try
@@ -16,6 +15,7 @@ author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Landing.love
 

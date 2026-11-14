@@ -2,11 +2,11 @@
 name: Remotion
 url: 'https://github.com/remotion-dev/remotion'
 website_url: 'https://www.remotion.dev/'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - video
   - react
   - typescript
+  - video
   - render
   - programmatic
 status: to_try
@@ -18,7 +18,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Remotion
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Remotion
 

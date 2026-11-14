@@ -1,7 +1,7 @@
 ---
 name: OpenCreator
 url: 'https://github.com/krillinai/OpenCreator'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - contenido-ia
   - video
@@ -15,7 +15,8 @@ author: Rimsha Bhardwaj
 author_handle: heyrimsha
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # OpenCreator
 

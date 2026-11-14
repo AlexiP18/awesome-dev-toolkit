@@ -1,7 +1,7 @@
 ---
 name: OptimizerDuck
 url: 'https://github.com/itsfatduck/optimizerDuck'
-category: Productivity & Tools
+category: Seguridad & privacidad
 tags:
   - windows
   - optimization
@@ -19,7 +19,8 @@ author_handle: liambraus
 entry_type: tool
 company: itsfatduck
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # OptimizerDuck
 

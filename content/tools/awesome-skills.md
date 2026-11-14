@@ -1,10 +1,10 @@
 ---
 name: Awesome Skills
 url: 'https://github.com/Itsriober/awesome-skills'
-category: Agentes & Protocolo MCP
+category: Asistentes de código & skills
 tags:
-  - ai
-  - agents
+  - ia
+  - agentes
   - claude
   - antigravity
   - cursor
@@ -19,7 +19,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Awesome Skills
 

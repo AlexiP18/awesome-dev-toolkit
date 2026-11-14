@@ -1,12 +1,12 @@
 ---
 name: developer-roadmap
 url: 'https://github.com/nilbuild/developer-roadmap'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
+  - typescript
   - roadmap
   - learning
   - career
-  - typescript
 stars: 371349
 status: to_try
 date_added: '2026-11-06'
@@ -16,7 +16,8 @@ author: Shruti Codes
 author_handle: Shruti_0810
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # developer-roadmap
 

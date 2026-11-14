@@ -1,7 +1,7 @@
 ---
 name: Elicit
 url: 'https://elicit.org/'
-category: AI & Machine Learning
+category: Investigación & papers
 tags:
   - investigacion
   - llm
@@ -15,7 +15,8 @@ author_handle: ecommartinez
 entry_type: tool
 company: Elicit
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # Elicit
 

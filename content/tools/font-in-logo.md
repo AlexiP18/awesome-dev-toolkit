@@ -1,7 +1,7 @@
 ---
 name: Font in Logo
 url: 'https://fontinlogo.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - tipografia
   - branding
@@ -15,11 +15,12 @@ author: Bardhyl Bytyqi
 author_handle: BardhylBytyqi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
 source_tweets:
   - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
   - 'https://x.com/VullnetAdemaj/status/2108894975635423306'
 updated_at: '2026-11-13T05:00:36.259Z'
+area: diseno-creatividad
 ---
 # Font in Logo
 

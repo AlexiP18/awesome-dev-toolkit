@@ -1,11 +1,11 @@
 ---
 name: BeautifulUI
 url: 'https://www.beautifului.dev/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - frontend
   - ui
-  - ai
+  - ia
   - agentes
   - componentes
 status: to_try
@@ -16,7 +16,8 @@ author: Harshil Tomar
 author_handle: Hartdrawss
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # BeautifulUI
 

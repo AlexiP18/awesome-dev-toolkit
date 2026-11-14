@@ -1,7 +1,7 @@
 ---
 name: Mobbin
 url: 'https://mobbin.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - mobile
   - ux
@@ -17,6 +17,7 @@ entry_type: tool
 company: Mobbin
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Mobbin
 

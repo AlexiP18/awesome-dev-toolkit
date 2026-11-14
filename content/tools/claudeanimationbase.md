@@ -1,9 +1,9 @@
 ---
 name: ClaudeAnimationBase
 url: 'https://github.com/JohnHeibel/ClaudeAnimationBase'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - animation
+  - animacion
   - cartoon
   - p5js
   - creative-coding
@@ -20,7 +20,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: JohnHeibel
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # ClaudeAnimationBase
 

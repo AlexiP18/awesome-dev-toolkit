@@ -1,9 +1,9 @@
 ---
 name: Theatre.js
 url: 'https://www.theatrejs.com/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - animation
+  - animacion
   - javascript
   - motion
   - frontend
@@ -17,7 +17,8 @@ author_handle: neropursue
 entry_type: tool
 company: Theatre.js
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Theatre.js
 

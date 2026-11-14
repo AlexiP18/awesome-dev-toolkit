@@ -1,7 +1,7 @@
 ---
 name: Astral UV
 url: 'https://github.com/astral-sh/uv'
-category: CLI & Terminal
+category: 'Terminal, IDE & hardware'
 tags:
   - python
   - rust
@@ -13,8 +13,9 @@ date_added: 2026-10-16T00:00:00.000Z
 source_tweet: 'https://x.com/astral_sh/status/987654321'
 author: Astral
 created_at: '2026-10-16T21:05:36.327Z'
-conjunto: recursos
+conjunto: codigo
 entry_type: tool
+area: desarrollo-software
 ---
 # Astral UV
 

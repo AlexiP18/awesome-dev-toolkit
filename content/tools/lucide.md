@@ -1,14 +1,14 @@
 ---
 name: Lucide
 url: 'https://github.com/lucide-icons/lucide'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
+  - react
   - icons
   - svg
-  - ui-components
-  - design
+  - componentes
+  - diseno
   - open-source
-  - react
   - vue
 stars: 25503
 status: to_try
@@ -19,7 +19,8 @@ author: Marlen
 author_handle: Marlenuii
 entry_type: tool
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Lucide
 

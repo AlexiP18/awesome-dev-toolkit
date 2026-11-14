@@ -2,7 +2,7 @@
 name: Shoji
 url: 'https://shoji.everydaymactools.com/'
 website_url: 'https://everydaymactools.com/shoji'
-category: Productivity & Tools
+category: Seguridad & privacidad
 tags:
   - macos
   - privacy
@@ -19,7 +19,8 @@ entry_type: tool
 company: Everyday Mac Tools
 price: $14 USD (pago único)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # Shoji
 

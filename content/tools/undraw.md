@@ -1,7 +1,7 @@
 ---
 name: unDraw
 url: 'https://undraw.co/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - ilustraciones
   - svg
@@ -16,7 +16,8 @@ author_handle: noahelhadedy
 entry_type: tool
 company: unDraw
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # unDraw
 

@@ -1,9 +1,9 @@
 ---
 name: Consensus
 url: 'https://consensus.app/'
-category: AI & Machine Learning
+category: Investigación & papers
 tags:
-  - busqueda cientifica
+  - busqueda-cientifica
   - ia
   - evidencia
 status: to_try
@@ -15,7 +15,8 @@ author_handle: ecommartinez
 entry_type: tool
 company: Consensus
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # Consensus
 

@@ -1,10 +1,10 @@
 ---
 name: FeralUI Gradients
 url: 'https://feralui.dev/gradients'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - gradients
-  - design
+  - diseno
   - ui
   - frontend
   - generator
@@ -19,7 +19,8 @@ author: Nero
 author_handle: neropursue
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # FeralUI Gradients
 

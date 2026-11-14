@@ -1,7 +1,7 @@
 ---
 name: Shots
 url: 'https://shots.so/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - mockups
   - diseno
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: diseno-creatividad
 ---
 # Shots
 

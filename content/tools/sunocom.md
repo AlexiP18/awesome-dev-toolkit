@@ -1,9 +1,9 @@
 ---
 name: suno.com
 url: 'https://suno.com/'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - ai
+  - ia
   - generacion-musica
   - composicion-musical
   - audio
@@ -16,7 +16,8 @@ author: chaos
 author_handle: konig0000
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # suno.com
 

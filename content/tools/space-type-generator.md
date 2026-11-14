@@ -1,14 +1,13 @@
 ---
 name: Space Type Generator
 url: 'https://toolfolio.com/tools/space-type-generator'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - tipografia
   - diseno-generativo
   - frontend
   - animacion
   - css
-  - inspiracion
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T15:52:20.912Z'
@@ -19,6 +18,7 @@ entry_type: tool
 company: Toolfolio
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Space Type Generator
 

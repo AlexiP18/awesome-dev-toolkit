@@ -1,7 +1,7 @@
 ---
 name: Tenuo
 url: 'https://tenuo.app/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - macos
   - keyboard
@@ -17,7 +17,8 @@ author: "\U0001D40D\U0001D428\U0001D41A\U0001D421"
 author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # Tenuo
 

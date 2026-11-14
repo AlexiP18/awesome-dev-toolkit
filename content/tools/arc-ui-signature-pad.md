@@ -2,7 +2,7 @@
 name: Arc UI Signature Pad
 url: 'https://uiarc.dev/components/signature-pad'
 website_url: 'https://uiarc.dev/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
   - componentes-ui
@@ -19,7 +19,8 @@ author_handle: eliakuratli
 entry_type: tool
 company: Arc UI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Arc UI Signature Pad
 

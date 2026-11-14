@@ -1,12 +1,12 @@
 ---
 name: Learn Claude Code
 url: 'https://github.com/shareAI-lab/learn-claude-code'
-category: AI & Machine Learning
+category: 'Cursos, libros & rutas'
 tags:
+  - python
   - claude-code
   - agent-harness
   - educational
-  - python
 stars: 79955
 status: to_try
 date_added: '2026-11-06'
@@ -17,7 +17,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: shareAI-lab
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: consejos
+conjunto: aprender
+area: aprendizaje
 ---
 # Learn Claude Code
 

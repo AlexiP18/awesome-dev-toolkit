@@ -1,13 +1,13 @@
 ---
 name: WeKnora
 url: 'https://github.com/Tencent/WeKnora'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
   - rag
   - knowledge-base
   - llm
   - go
-  - agent
+  - agentes
   - wiki
   - vector-search
 stars: 36578
@@ -20,7 +20,8 @@ author_handle: Shruti_0810
 entry_type: tool
 company: Tencent
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # WeKnora
 

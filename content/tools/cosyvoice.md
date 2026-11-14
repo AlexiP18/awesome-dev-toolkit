@@ -1,15 +1,15 @@
 ---
 name: CosyVoice
 url: 'https://github.com/QwenAudio/CosyVoice'
-category: AI & Machine Learning
+category: 'Voz, visión & IA aplicada'
 tags:
+  - python
   - audio-generation
   - multi-lingual
   - text-to-speech
   - tts
   - voice-cloning
-  - python
-  - ai
+  - ia
 stars: 24246
 status: to_try
 date_added: '2026-11-02'
@@ -19,7 +19,8 @@ author: rachit
 author_handle: rachiitgr
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # CosyVoice
 

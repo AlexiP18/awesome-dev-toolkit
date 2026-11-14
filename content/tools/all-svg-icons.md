@@ -1,12 +1,12 @@
 ---
 name: All SVG Icons
 url: 'https://allsvgicons.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
+  - react
   - icons
   - svg
   - descargas
-  - react
   - jsx
   - base64
 status: to_try
@@ -17,7 +17,8 @@ author: Dev Patel
 author_handle: DevDsgn
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # All SVG Icons
 

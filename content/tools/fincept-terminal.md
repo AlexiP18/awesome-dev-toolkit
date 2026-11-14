@@ -1,7 +1,7 @@
 ---
 name: Fincept Terminal
 url: 'https://github.com/Fincept-Corporation/FinceptTerminal'
-category: Productivity & Tools
+category: 'Terminal, IDE & hardware'
 tags:
   - finanzas
   - terminal
@@ -18,7 +18,8 @@ author_handle: yuliaisc
 entry_type: tool
 company: Fincept Corporation
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: codigo
+area: desarrollo-software
 ---
 # Fincept Terminal
 

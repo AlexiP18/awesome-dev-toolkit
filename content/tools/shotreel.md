@@ -1,7 +1,7 @@
 ---
 name: Shotreel
 url: 'https://shotreel.app/'
-category: Productivity & Tools
+category: 'Video, audio, imagen & 3D'
 tags:
   - video
   - showcase
@@ -16,6 +16,7 @@ author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Shotreel
 

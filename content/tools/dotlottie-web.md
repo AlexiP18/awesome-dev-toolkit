@@ -2,13 +2,13 @@
 name: dotLottie Web
 url: 'https://github.com/LottieFiles/dotlottie-web'
 website_url: 'https://dotlottie.io/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
+  - react
   - lottie
-  - animation
+  - animacion
   - wasm
   - web-components
-  - react
 stars: 938
 status: to_try
 date_added: '2026-11-05'
@@ -19,7 +19,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: LottieFiles
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # dotLottie Web
 

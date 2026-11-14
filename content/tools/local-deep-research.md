@@ -1,7 +1,7 @@
 ---
 name: Local Deep Research
 url: 'https://github.com/LearningCircuit/local-deep-research'
-category: AI & Machine Learning
+category: 'RAG, búsqueda & datos para IA'
 tags:
   - deep-research
   - rag
@@ -16,7 +16,8 @@ author: Rimsha Bhardwaj
 author_handle: heyrimsha
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Local Deep Research
 

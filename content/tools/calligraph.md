@@ -1,10 +1,10 @@
 ---
 name: Calligraph
 url: 'https://calligraph.raphaelsalaja.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - frontend
-  - animations
+  - animacion
   - typography
   - motion
 status: to_try
@@ -16,7 +16,8 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Raphael Salaja
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Calligraph
 

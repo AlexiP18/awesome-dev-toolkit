@@ -1,15 +1,15 @@
 ---
 name: Bencho.dev
 url: 'https://bencho.dev/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - frontend
   - react
+  - frontend
   - ui
   - microinteracciones
-  - animations
-  - interactive ui
-  - modern interfaces
+  - animacion
+  - interactive-ui
+  - modern-interfaces
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:04:42.094Z'
@@ -18,11 +18,12 @@ author: Houdayfa
 author_handle: HoudayfaDesign
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
 source_tweets:
   - 'https://x.com/HoudayfaDesign/status/2112166735826579845'
   - 'https://x.com/Hartdrawss/status/2108799722727059563'
 updated_at: '2026-11-13T05:00:36.268Z'
+area: diseno-creatividad
 ---
 # Bencho.dev
 

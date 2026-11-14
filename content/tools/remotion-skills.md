@@ -1,13 +1,13 @@
 ---
 name: Remotion Skills
 url: 'https://github.com/remotion-dev/skills'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - agent-skills
   - claude-code
   - video
   - workflow
-  - ai
+  - ia
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:40:13.003Z'
@@ -17,7 +17,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Remotion
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Remotion Skills
 

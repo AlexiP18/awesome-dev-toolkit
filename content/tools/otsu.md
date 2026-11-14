@@ -1,7 +1,7 @@
 ---
 name: Otsu
 url: 'https://otsu.localcan.dev/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - prototipo
   - experimento-visual
@@ -16,6 +16,7 @@ author_handle: jarekceborski
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Otsu
 

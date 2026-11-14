@@ -1,12 +1,11 @@
 ---
 name: Noiced
 url: 'https://noiced.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - inspiración
   - web-design
   - ui
-  - galería
+  - galeria
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T15:37:09.387Z'
@@ -15,7 +14,8 @@ author: Tran Mau Tri Tam ✪
 author_handle: tranmautritam
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Noiced
 

@@ -1,7 +1,7 @@
 ---
 name: Social Media Agent
 url: 'https://github.com/langchain-ai/social-media-agent'
-category: Agentes & Protocolo MCP
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - agente-ia
   - langchain
@@ -17,7 +17,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: LangChain
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Social Media Agent
 

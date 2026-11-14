@@ -1,7 +1,7 @@
 ---
 name: file.io
 url: 'https://file.io/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - archivos
   - transferencia
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # file.io
 

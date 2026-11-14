@@ -1,10 +1,10 @@
 ---
 name: Cline
 url: 'https://cline.bot/'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai
-  - agents
+  - ia
+  - agentes
   - coding
   - open-source
   - mcp
@@ -17,7 +17,8 @@ author: Yash
 author_handle: dewyashtwts
 entry_type: tool
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # Cline
 

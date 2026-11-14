@@ -1,7 +1,7 @@
 ---
 name: QuickPick
 url: 'https://www.quickpick.space/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - productividad
   - diseno
@@ -15,7 +15,8 @@ author: Raunak
 author_handle: Skirook
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
+area: productividad-utilidades
 ---
 # QuickPick
 

@@ -1,10 +1,9 @@
 ---
 name: Minimal Gallery
 url: 'https://minimal.gallery/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - minimalismo
-  - inspiracion
   - layout
   - diseno-web
 status: to_try
@@ -16,6 +15,7 @@ author_handle: iamtanzil_
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Minimal Gallery
 

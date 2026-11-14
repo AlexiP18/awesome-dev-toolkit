@@ -1,9 +1,9 @@
 ---
 name: The Component Gallery
 url: 'https://component.gallery/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - components
+  - componentes
   - design-system
   - ui
   - gallery
@@ -16,6 +16,7 @@ author_handle: Abmankendrick
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # The Component Gallery
 

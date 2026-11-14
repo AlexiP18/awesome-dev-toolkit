@@ -1,7 +1,7 @@
 ---
 name: Space Grotesk
 url: 'https://fonts.google.com/specimen/Space+Grotesk'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - fuentes
   - tipografia
@@ -18,7 +18,8 @@ entry_type: tool
 company: Google Fonts / Colophon Foundry
 price: Gratis
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Space Grotesk
 

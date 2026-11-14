@@ -1,14 +1,13 @@
 ---
 name: Cursor Plugins
 url: 'https://github.com/cursor/plugins'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
-  - ai
+  - typescript
+  - ia
   - coding
   - plugins
-  - ia
   - desarrollo
-  - typescript
   - gratis
 stars: 15035
 status: to_try
@@ -21,7 +20,8 @@ entry_type: tool
 company: Cursor
 price: Gratis
 classified_by: Google Gemini (Flash)
-conjunto: consejos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Cursor Plugins
 

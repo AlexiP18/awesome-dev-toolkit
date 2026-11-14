@@ -1,16 +1,16 @@
 ---
 name: BoardUI
 url: 'https://www.boardui.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - react
-  - ui components
+  - componentes
   - dashboards
-  - design system
-  - tailwind css
+  - design-system
+  - tailwind-css
   - templates
   - data-rich
-  - agentic products
+  - agentic-products
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:04:42.098Z'
@@ -19,7 +19,8 @@ author: Houdayfa
 author_handle: HoudayfaDesign
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # BoardUI
 

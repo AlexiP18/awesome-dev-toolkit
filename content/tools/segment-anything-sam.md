@@ -1,7 +1,7 @@
 ---
 name: Segment Anything (SAM)
 url: 'https://github.com/facebookresearch/segment-anything'
-category: AI & Machine Learning
+category: 'Voz, visión & IA aplicada'
 tags:
   - computer-vision
   - segmentation
@@ -17,7 +17,8 @@ author_handle: dkare1009
 entry_type: tool
 company: Meta AI (Facebook Research)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: inteligencia-artificial
 ---
 # Segment Anything (SAM)
 

@@ -1,7 +1,7 @@
 ---
 name: Raindrop.io
 url: 'https://raindrop.io/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - bookmarks
   - gestion
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: consejos
+area: productividad-utilidades
 ---
 # Raindrop.io
 

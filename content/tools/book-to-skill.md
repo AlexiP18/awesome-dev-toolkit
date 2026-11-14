@@ -1,10 +1,10 @@
 ---
 name: book-to-skill
 url: 'https://github.com/virgiliojr94/book-to-skill'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - claude-code
-  - ai-agents
+  - agentes
   - skills
   - tokens
   - pdf
@@ -21,7 +21,8 @@ entry_type: tool
 company: virgiliojr94
 price: ~$1 USD por libro convertido
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # book-to-skill
 

@@ -1,12 +1,12 @@
 ---
 name: React Spring
 url: 'https://github.com/pmndrs/react-spring'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - animation
   - react
-  - spring-physics
   - typescript
+  - animacion
+  - spring-physics
   - frontend
   - ui-animation
 stars: 29261
@@ -19,7 +19,8 @@ author_handle: e1genqq
 entry_type: tool
 company: pmndrs
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # React Spring
 

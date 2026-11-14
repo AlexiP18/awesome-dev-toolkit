@@ -1,13 +1,12 @@
 ---
 name: Landingfolio
 url: 'https://www.landingfolio.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - inspiracion
   - landing-pages
   - ui
   - templates
-  - design
+  - diseno
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:00:28.526Z'
@@ -17,6 +16,7 @@ author_handle: Tegadesigns
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Landingfolio
 

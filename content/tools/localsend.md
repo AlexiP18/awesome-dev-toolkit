@@ -1,7 +1,7 @@
 ---
 name: LocalSend
 url: 'https://localsend.org/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - file-sharing
   - open-source
@@ -16,7 +16,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: productividad-utilidades
 ---
 # LocalSend
 

@@ -1,9 +1,9 @@
 ---
 name: magnific.ai
 url: 'https://www.magnific.com/'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - ai
+  - ia
   - escalado-imagenes
   - super-resolucion
   - retoque-fotografico
@@ -15,7 +15,8 @@ author: chaos
 author_handle: konig0000
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # magnific.ai
 

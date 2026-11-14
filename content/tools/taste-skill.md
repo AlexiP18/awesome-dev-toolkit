@@ -1,10 +1,10 @@
 ---
 name: taste-skill
 url: 'https://github.com/Leonxlnx/taste-skill'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - agent-skills
-  - ai-agents
+  - agentes
   - anti-slop
   - claude-code
   - codex
@@ -14,7 +14,7 @@ tags:
   - landing-page
   - ui-design
   - web-design
-  - design
+  - diseno
   - code-generation
 stars: 102562
 status: to_try
@@ -25,7 +25,8 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 classified_by: Google Gemini (2.5 Flash)
 created_at: '2026-10-26T04:07:05.721Z'
-conjunto: inspiracion
+conjunto: consejos
+area: diseno-creatividad
 ---
 # taste-skill
 

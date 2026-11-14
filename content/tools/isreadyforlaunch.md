@@ -1,7 +1,7 @@
 ---
 name: IsReadyForLaunch
 url: 'https://isreadyforlaunch.com/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - web
   - auditoria
@@ -16,7 +16,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: productividad-utilidades
 ---
 # IsReadyForLaunch
 

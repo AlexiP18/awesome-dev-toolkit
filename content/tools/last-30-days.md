@@ -1,7 +1,7 @@
 ---
 name: Last 30 Days
 url: 'https://github.com/mvanhorn/last30days-skill'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - ai-skill
   - research
@@ -18,7 +18,8 @@ author_handle: hasantoxr
 entry_type: tool
 company: mvanhorn
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Last 30 Days
 

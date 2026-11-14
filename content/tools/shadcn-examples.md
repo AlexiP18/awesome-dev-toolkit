@@ -1,12 +1,12 @@
 ---
 name: Shadcn Examples
 url: 'https://www.shadcn.io/examples'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
+  - react
   - frontend
   - ui
-  - components
-  - react
+  - componentes
   - vue
   - svelte
   - solid
@@ -21,7 +21,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Shadcn Examples
 

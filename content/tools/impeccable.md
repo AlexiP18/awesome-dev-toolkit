@@ -1,14 +1,14 @@
 ---
 name: Impeccable
 url: 'https://github.com/pbakaus/impeccable'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
+  - rust
   - agent-skills
-  - design
+  - diseno
   - ui
   - accesibilidad
   - anti-slop
-  - rust
 stars: 102958
 status: to_try
 date_added: '2026-11-05'
@@ -18,7 +18,8 @@ author: Miguel Ángel Durán
 author_handle: midudev
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Impeccable
 

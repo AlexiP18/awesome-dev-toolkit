@@ -1,7 +1,7 @@
 ---
 name: Perch
 url: 'https://madebysoandso.com/perch'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - macos
   - menu-bar
@@ -17,7 +17,8 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Made by So and So
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # Perch
 

@@ -1,9 +1,8 @@
 ---
 name: One Page Love
 url: 'https://onepagelove.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - inspiracion
   - one-page
   - landing
   - plantillas
@@ -17,6 +16,7 @@ author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # One Page Love
 

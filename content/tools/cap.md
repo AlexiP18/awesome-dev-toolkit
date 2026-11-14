@@ -1,7 +1,7 @@
 ---
 name: Cap
 url: 'https://github.com/CapSoftware/cap'
-category: Productivity & Tools
+category: 'Video, audio, imagen & 3D'
 tags:
   - video
   - screen-recording
@@ -19,11 +19,12 @@ author_handle: RoundtableSpace
 entry_type: tool
 company: Cap
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: codigo
 source_tweets:
   - 'https://x.com/RoundtableSpace/status/2096844664980832620'
   - 'https://x.com/hasantoxr/status/2096255783415779684'
 updated_at: '2026-11-13T05:00:36.266Z'
+area: diseno-creatividad
 ---
 # Cap
 

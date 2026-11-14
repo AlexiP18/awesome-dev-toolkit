@@ -1,7 +1,7 @@
 ---
 name: Labelbox
 url: 'https://www.welocalize.com/wp-signup.php?new=welocalize.com'
-category: Trabajo & Freelance
+category: Entrenamiento de IA & microtareas
 tags:
   - remoto
   - freelance
@@ -20,7 +20,7 @@ location: Remoto (Mundial)
 salary: $25 - $50 USD/h
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+area: trabajo-oportunidades
 ---
 # 💼 Labelbox
 

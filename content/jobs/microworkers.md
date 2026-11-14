@@ -1,7 +1,7 @@
 ---
 name: Microworkers
 url: 'https://www.microworkers.com/'
-category: Trabajo & Freelance
+category: Entrenamiento de IA & microtareas
 tags:
   - remoto
   - freelance
@@ -20,7 +20,7 @@ location: Remoto (Mundial)
 salary: Pago por tarea (variable)
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+area: trabajo-oportunidades
 ---
 # 💼 Microworkers
 

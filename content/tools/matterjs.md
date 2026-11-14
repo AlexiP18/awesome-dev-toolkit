@@ -1,7 +1,7 @@
 ---
 name: Matter.js
 url: 'https://github.com/liabru/matter-js'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - physics-engine
   - 2d
@@ -20,7 +20,8 @@ author_handle: e1genqq
 entry_type: tool
 company: liabru
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Matter.js
 

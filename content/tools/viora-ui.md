@@ -1,7 +1,7 @@
 ---
 name: Viora UI
 url: 'https://vioraui.dedyn.io/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
   - tailwind
@@ -18,7 +18,8 @@ author_handle: kasuncfdo
 entry_type: tool
 company: Viora UI (@otisuiux)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Viora UI
 

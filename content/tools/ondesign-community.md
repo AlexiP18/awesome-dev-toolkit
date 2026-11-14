@@ -1,13 +1,13 @@
 ---
 name: on.design Community
 url: 'https://on.design/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - comunidad
-  - diseño
+  - diseno
   - networking
-  - colaboración
-  - diseñadores
+  - colaboracion
+  - disenadores
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:49:28.174Z'
@@ -16,7 +16,8 @@ author: Vullnet Ademaj
 author_handle: VullnetAdemaj
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # on.design Community
 

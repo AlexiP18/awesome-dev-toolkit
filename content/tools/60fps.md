@@ -1,9 +1,9 @@
 ---
 name: 60fps
 url: 'https://60fps.design/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - animaciones
+  - animacion
   - mobile
   - ui
   - motion
@@ -16,6 +16,7 @@ author_handle: BardhylBytyqi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # 60fps
 

@@ -1,7 +1,7 @@
 ---
 name: abtest.design
 url: 'https://abtest.design/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - frontend
   - ux
@@ -16,6 +16,7 @@ author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # abtest.design
 

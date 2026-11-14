@@ -1,13 +1,13 @@
 ---
 name: tsParticles
 url: 'https://github.com/tsparticles/tsparticles'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - particle-effects
-  - animations
-  - javascript
   - typescript
   - react
+  - particle-effects
+  - animacion
+  - javascript
   - vue
   - angular
   - web-components
@@ -23,7 +23,8 @@ author_handle: e1genqq
 entry_type: tool
 company: tsparticles
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # tsParticles
 

@@ -1,7 +1,7 @@
 ---
 name: Jiro
 url: 'https://jiro.build/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - diseno-web
   - prompts
@@ -16,7 +16,8 @@ author: Tanzil Chowdhury
 author_handle: iamtanzil_
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # Jiro
 

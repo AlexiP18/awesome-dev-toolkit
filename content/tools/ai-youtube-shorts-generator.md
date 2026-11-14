@@ -1,7 +1,7 @@
 ---
 name: AI YouTube Shorts Generator
 url: 'https://github.com/Anil-matcha/AI-Youtube-Shorts-Generator'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - youtube-shorts
   - video
@@ -15,7 +15,8 @@ author: Rimsha Bhardwaj
 author_handle: heyrimsha
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # AI YouTube Shorts Generator
 

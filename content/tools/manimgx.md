@@ -2,13 +2,13 @@
 name: ManimGX
 url: 'https://manimgx.academa.ai/'
 website_url: 'https://academa.ai/'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - manim
   - python
+  - manim
   - animacion-3d
   - open-source
-  - agentes-ia
+  - agentes
   - renderizado
   - matematicas
 status: to_try
@@ -20,7 +20,8 @@ author_handle: MoureDev
 entry_type: tool
 company: Academa
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # ManimGX
 

@@ -1,11 +1,11 @@
 ---
 name: Morphrig
 url: 'https://morphrig.dev/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - frontend
   - icons
-  - animation
+  - animacion
   - svg
 status: to_try
 date_added: '2026-11-07'
@@ -15,7 +15,8 @@ author: "\U0001D40D\U0001D428\U0001D41A\U0001D421"
 author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: consejos
+conjunto: app
+area: diseno-creatividad
 ---
 # Morphrig
 

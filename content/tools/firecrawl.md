@@ -2,7 +2,7 @@
 name: Firecrawl
 url: 'https://github.com/firecrawl/firecrawl'
 website_url: 'https://firecrawl.dev/'
-category: Data Engineering & ETL
+category: 'Backend, APIs & datos'
 tags:
   - web-scraping
   - crawler
@@ -20,7 +20,8 @@ author_handle: katsudev
 entry_type: tool
 company: Firecrawl
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # Firecrawl
 
