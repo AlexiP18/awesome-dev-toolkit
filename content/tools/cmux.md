@@ -2,23 +2,24 @@
 name: cmux
 url: 'https://github.com/manaflow-ai/cmux'
 website_url: 'https://cmux.com'
-category: CLI & Terminal
+category: 'Terminal, IDE & hardware'
 tags:
   - terminal
   - macos
   - ghostty
-  - ai-agents
+  - agentes
   - cli
 stars: 28780
 status: to_try
 date_added: '2026-11-07'
 created_at: '2026-11-07T20:38:59.247Z'
 source_tweet: 'https://x.com/noahelhadedy/status/2118750897454944486'
-author: "𝐍𝐨𝐚𝐡"
+author: "\U0001D40D\U0001D428\U0001D41A\U0001D421"
 author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # cmux
 

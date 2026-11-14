@@ -1,10 +1,9 @@
 ---
 name: Supahero
 url: 'https://supahero.io/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - hero
-  - inspiracion
   - diseno
   - landing
 status: to_try
@@ -16,6 +15,7 @@ author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Supahero
 

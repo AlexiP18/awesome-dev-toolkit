@@ -140,9 +140,10 @@ test('groupDuplicateTools agrupa solo el mismo producto', () => {
 });
 
 test('cleanFrontmatter y resolveEntryType no guardan "null" ni pierden tech_product', () => {
-  assert.equal(resolveEntryType('tech_product', 'Frontend & UI'), 'tech_product');
-  assert.equal(resolveEntryType('product_showcase', 'Empresas & Productos'), 'product_showcase');
-  assert.equal(resolveEntryType('tool', 'Productos Tecnológicos & Hardware'), 'tech_product');
+  assert.equal(resolveEntryType('tech_product', 'Componentes & frameworks UI'), 'tech_product');
+  assert.equal(resolveEntryType('product_showcase', 'Apps de productividad & negocio'), 'product_showcase');
+  assert.equal(resolveEntryType('tool', 'Terminal, IDE & hardware'), 'tool');
+  assert.equal(resolveEntryType('tech_product', 'Terminal, IDE & hardware'), 'tech_product');
   const cleaned = cleanFrontmatter({
     name: 'Pixel',
     url: 'https://pixelgui.com/',
@@ -183,7 +184,7 @@ test('createOrUpdateToolNote hace round-trip de frontmatter y bloquea el doble g
     const raw = fs.readFileSync(created.filePath, 'utf-8');
     const parsed = matter(raw);
     assert.equal(parsed.data.entry_type, 'tech_product');
-    assert.equal(parsed.data.category, 'Productivity & Tools');
+    assert.equal(parsed.data.category, 'Terminal, IDE & hardware');
     assert.equal(parsed.data.company, undefined);
     assert.equal(parsed.data.location, undefined);
     assert.equal(parsed.data.price, undefined);

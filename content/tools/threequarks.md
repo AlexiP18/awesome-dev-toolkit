@@ -1,13 +1,13 @@
 ---
 name: Three.quarks
 url: 'https://github.com/Alchemist0823/three.quarks'
-category: Frontend & UI
+category: Animación & motion web
 tags:
+  - typescript
   - three-js
   - particles
   - vfx
-  - animation
-  - typescript
+  - animacion
   - webgl
 stars: 1160
 status: to_try
@@ -18,7 +18,8 @@ author: rachit
 author_handle: rachiitgr
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Three.quarks
 

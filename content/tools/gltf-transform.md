@@ -1,14 +1,14 @@
 ---
 name: glTF Transform
 url: 'https://github.com/donmccurdy/glTF-Transform'
-category: Frontend & UI
+category: Animación & motion web
 tags:
+  - typescript
   - gltf
   - 3d
   - optimization
   - compression
-  - typescript
-  - node.js
+  - node-js
   - mesh-processing
   - scene-graph
 stars: 2058
@@ -21,7 +21,8 @@ author_handle: e1genqq
 entry_type: tool
 company: donmccurdy
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # glTF Transform
 

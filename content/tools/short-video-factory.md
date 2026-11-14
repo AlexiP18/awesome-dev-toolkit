@@ -1,7 +1,7 @@
 ---
 name: Short Video Factory
 url: 'https://github.com/YILS-LIN/short-video-factory'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - video
   - automatizacion
@@ -15,7 +15,8 @@ author: Rimsha Bhardwaj
 author_handle: heyrimsha
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # Short Video Factory
 

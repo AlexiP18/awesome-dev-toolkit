@@ -2,7 +2,7 @@
 name: Novu
 url: 'https://github.com/novuhq/novu'
 website_url: 'https://novu.co/'
-category: Backend & APIs
+category: 'Backend, APIs & datos'
 tags:
   - notifications
   - email
@@ -18,7 +18,8 @@ author_handle: hasantoxr
 entry_type: tool
 company: Novu
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # Novu
 

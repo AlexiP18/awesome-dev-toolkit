@@ -1,10 +1,10 @@
 ---
 name: OriginKit
 url: 'https://www.originkit.dev/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - componentes
-  - animaciones
+  - animacion
   - ui
   - design-system
   - frontend
@@ -16,7 +16,8 @@ author: Tran Mau Tri Tam ✪
 author_handle: tranmautritam
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # OriginKit
 

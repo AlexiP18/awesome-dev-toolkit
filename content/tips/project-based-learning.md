@@ -1,12 +1,12 @@
 ---
 name: project-based-learning
 url: 'https://github.com/practical-tutorials/project-based-learning'
-category: Documentation & Resources
+category: 'Guías, tips & buenas prácticas'
 tags:
+  - python
   - tutorials
   - project-based
   - learning
-  - python
   - javascript
 stars: 289146
 status: to_try
@@ -17,7 +17,8 @@ author: Shruti Codes
 author_handle: Shruti_0810
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: aprendizaje
 ---
 # project-based-learning
 

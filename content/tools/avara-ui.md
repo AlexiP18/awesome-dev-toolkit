@@ -1,13 +1,13 @@
 ---
 name: Avara UI
 url: 'https://avaraui.com/'
-category: Frontend & UI
-conjunto: recursos
+category: Componentes & frameworks UI
+conjunto: app
 tags:
+  - react
   - shadcn
   - componentes
   - mcp
-  - react
 status: to_try
 date_added: '2026-11-14'
 created_at: '2026-11-14T04:14:30.674Z'
@@ -17,6 +17,7 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Csaba Kissi
 classified_by: Importado del vault
+area: diseno-creatividad
 ---
 # Avara UI
 

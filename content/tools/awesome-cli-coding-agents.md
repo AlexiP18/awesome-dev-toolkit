@@ -1,13 +1,13 @@
 ---
 name: awesome-cli-coding-agents
 url: 'https://github.com/bradAGI/awesome-cli-coding-agents'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
+  - python
   - cli
   - ia
   - agentes
   - codigo
-  - python
   - herramientas
   - open-source
 stars: 1439
@@ -19,7 +19,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: inspiracion
+area: inteligencia-artificial
 ---
 # awesome-cli-coding-agents
 

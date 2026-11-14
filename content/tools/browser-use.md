@@ -2,11 +2,11 @@
 name: Browser Use
 url: 'https://github.com/browser-use/browser-use'
 website_url: 'https://browser-use.com/'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai-agents
-  - browser-automation
   - python
+  - agentes
+  - browser-automation
   - llm
   - web-scraping
   - mcp
@@ -22,7 +22,8 @@ author_handle: robiartec
 entry_type: tool
 company: Browser Use (Y Combinator)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Browser Use
 

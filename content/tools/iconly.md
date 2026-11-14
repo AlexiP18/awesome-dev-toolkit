@@ -1,7 +1,7 @@
 ---
 name: Iconly
 url: 'https://iconly.design/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - iconos
   - svg
@@ -15,7 +15,8 @@ author: Bardhyl Bytyqi
 author_handle: BardhylBytyqi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Iconly
 

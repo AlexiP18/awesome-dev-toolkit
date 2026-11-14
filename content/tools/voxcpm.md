@@ -1,12 +1,12 @@
 ---
 name: VoxCPM
 url: 'https://github.com/OpenBMB/VoxCPM'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
+  - python
   - tts
   - voice-cloning
   - audio
-  - python
   - pytorch
 stars: 41111
 status: to_try
@@ -18,7 +18,8 @@ author_handle: brenzhills
 entry_type: tool
 company: OpenBMB
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # VoxCPM
 

@@ -1,12 +1,12 @@
 ---
 name: Interactive Card Stack
 url: 'https://aicanvas.me/components/interactive-card-stack'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
   - shadcn
   - componentes
-  - animaciones
+  - animacion
   - ui
   - frontend
   - open-source
@@ -19,7 +19,8 @@ author_handle: uiNerd
 entry_type: tool
 company: AI Canvas
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Interactive Card Stack
 

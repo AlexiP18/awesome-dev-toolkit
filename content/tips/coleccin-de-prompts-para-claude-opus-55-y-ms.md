@@ -1,14 +1,14 @@
 ---
 name: Colección de Prompts para Claude Opus 5.5 (y más)
 url: 'https://note.com/okapi_fukugyo/n/n10efb0c51723?sub_rt=share_pw'
-category: AI & Machine Learning
+category: 'Guías, tips & buenas prácticas'
 tags:
-  - ai
+  - ia
   - llm
   - prompts
   - claude
-  - prompt_engineering
-  - content_generation
+  - prompt-engineering
+  - content-generation
   - marketing
   - video
 status: to_try
@@ -20,6 +20,7 @@ author_handle: okapi_fukugyo
 entry_type: tech_tip
 classified_by: Google Gemini (Flash)
 conjunto: consejos
+area: aprendizaje
 ---
 # 💡 Colección de Prompts para Claude Opus 5.5 (y más)
 

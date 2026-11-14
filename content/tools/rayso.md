@@ -1,9 +1,9 @@
 ---
 name: Ray.so
 url: 'https://ray.so/'
-category: Productivity & Tools
+category: 'Video, audio, imagen & 3D'
 tags:
-  - capturas de codigo
+  - capturas-de-codigo
   - imagenes
   - difusion
 status: to_try
@@ -15,7 +15,8 @@ author_handle: ecommartinez
 entry_type: tool
 company: Raycast
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Ray.so
 

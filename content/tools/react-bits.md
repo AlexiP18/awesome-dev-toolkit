@@ -1,11 +1,11 @@
 ---
 name: React Bits
 url: 'https://reactbits.dev/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
-  - components
-  - animations
+  - componentes
+  - animacion
   - open-source
   - frontend
   - ui
@@ -17,7 +17,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # React Bits
 

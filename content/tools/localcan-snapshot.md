@@ -1,7 +1,7 @@
 ---
 name: LocalCan Snapshot
 url: 'https://www.localcan.com/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - tunneling
   - localhost
@@ -17,7 +17,8 @@ author_handle: jarekceborski
 entry_type: tool
 company: LocalCan
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # LocalCan Snapshot
 

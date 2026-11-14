@@ -1,12 +1,12 @@
 ---
 name: Rapier
 url: 'https://github.com/dimforge/rapier'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
+  - rust
   - physics-engine
   - 3d-collisions
   - 2d-physics
-  - rust
   - performance
   - game-engine
 stars: 6018
@@ -19,7 +19,8 @@ author_handle: e1genqq
 entry_type: tool
 company: dimforge
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Rapier
 

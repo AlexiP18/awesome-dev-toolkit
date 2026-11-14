@@ -1,10 +1,10 @@
 ---
 name: mg-styles-15
 url: 'https://github.com/Vincentwei1021/mg-styles-15'
-category: 'Prompts, Art & Video'
+category: 'Guías, tips & buenas prácticas'
 tags:
   - motion-design
-  - animation
+  - animacion
   - styles
   - prompts
   - code-source
@@ -20,7 +20,8 @@ entry_type: tool
 company: Vincentwei1021
 price: Gratis
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: consejos
+area: aprendizaje
 ---
 # mg-styles-15
 

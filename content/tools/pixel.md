@@ -1,7 +1,7 @@
 ---
 name: Pixel
 url: 'https://pixelgui.com/'
-category: CLI & Terminal
+category: 'Terminal, IDE & hardware'
 tags:
   - gui
   - terminal
@@ -16,7 +16,8 @@ author: Rob Pruzan
 author_handle: RobKnight__
 entry_type: tool
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # Pixel
 

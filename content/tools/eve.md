@@ -1,11 +1,11 @@
 ---
 name: eve
 url: 'https://vercel.com/eve'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
+  - typescript
   - agentes
   - framework
-  - typescript
   - vercel
   - open-source
 status: to_try
@@ -17,7 +17,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Vercel
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # eve
 

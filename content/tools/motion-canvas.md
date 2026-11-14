@@ -2,10 +2,10 @@
 name: Motion Canvas
 url: 'https://github.com/motion-canvas/motion-canvas'
 website_url: 'https://motioncanvas.io/'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - typescript
-  - animation
+  - animacion
   - video
   - visualization
   - presentation
@@ -19,7 +19,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Motion Canvas
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # Motion Canvas
 

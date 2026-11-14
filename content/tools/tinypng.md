@@ -1,7 +1,7 @@
 ---
 name: TinyPNG
 url: 'https://tinypng.com/'
-category: Productivity & Tools
+category: 'Video, audio, imagen & 3D'
 tags:
   - imagenes
   - optimizacion
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: TinyPNG
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # TinyPNG
 

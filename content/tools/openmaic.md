@@ -1,11 +1,11 @@
 ---
 name: OpenMAIC
 url: 'https://github.com/THU-MAIC/OpenMAIC'
-category: AI & Machine Learning
+category: 'Cursos, libros & rutas'
 tags:
+  - typescript
   - multi-agent
   - education
-  - typescript
   - ai-classroom
   - llm
 stars: 42725
@@ -18,7 +18,8 @@ author_handle: Shruti_0810
 entry_type: tool
 company: THU-MAIC
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # OpenMAIC
 

@@ -1,7 +1,7 @@
 ---
 name: Cerebras Inference ($5 crédito)
 url: 'https://www.cerebras.ai/pricing'
-category: AI & Machine Learning
+category: 'Créditos, planes gratis & programas'
 tags:
   - inference
   - llm
@@ -18,7 +18,8 @@ entry_type: tool
 company: Cerebras
 price: $5 USD de crédito gratuito
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: trabajo-oportunidades
 ---
 # Cerebras Inference ($5 crédito)
 

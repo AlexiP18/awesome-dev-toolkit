@@ -2,12 +2,12 @@
 name: CSS Loader Library (Colorion)
 url: 'https://cssloaders.colorion.co/'
 website_url: 'https://colorion.co/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - css
   - loaders
   - spinners
-  - animations
+  - animacion
   - frontend
   - mit
 status: to_try
@@ -19,7 +19,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Colorion
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # CSS Loader Library (Colorion)
 

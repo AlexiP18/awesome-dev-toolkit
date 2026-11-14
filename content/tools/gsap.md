@@ -1,9 +1,9 @@
 ---
 name: GSAP
 url: 'https://github.com/greensock/GSAP'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - animation
+  - animacion
   - javascript
   - greensock
   - timeline
@@ -17,7 +17,8 @@ author: Marlen
 author_handle: Marlenuii
 entry_type: tool
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # GSAP
 

@@ -1,13 +1,13 @@
 ---
 name: iFixAI
 url: 'https://github.com/ifixai-ai/iFixAI'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
-  - ai
+  - python
+  - ia
   - ai-safety
   - llm-evaluation
   - auditing
-  - python
   - prompt-injection
 stars: 43691
 status: to_try
@@ -19,7 +19,8 @@ author_handle: Shruti_0810
 entry_type: tool
 company: ifixai-ai
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: inteligencia-artificial
 ---
 # iFixAI
 

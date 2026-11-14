@@ -1,10 +1,10 @@
 ---
 name: CLI-Anything Hub
 url: 'https://clianything.cc/'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai
-  - agents
+  - ia
+  - agentes
   - cli
   - registry
   - package-manager
@@ -17,7 +17,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # CLI-Anything Hub
 

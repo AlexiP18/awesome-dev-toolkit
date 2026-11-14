@@ -2,10 +2,10 @@
 name: Qdrant
 url: 'https://github.com/qdrant/qdrant'
 website_url: 'https://qdrant.tech/'
-category: Databases & Storage
+category: 'Backend, APIs & datos'
 tags:
-  - vector-database
   - rust
+  - vector-database
   - search
   - embeddings
 status: to_try
@@ -17,7 +17,8 @@ author_handle: mdancho84
 entry_type: tool
 company: Qdrant
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # Qdrant
 

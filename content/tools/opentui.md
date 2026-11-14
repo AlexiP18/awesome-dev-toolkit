@@ -1,12 +1,12 @@
 ---
 name: OpenTUI
 url: 'https://opentui.com/'
-category: CLI & Terminal
+category: 'Terminal, IDE & hardware'
 tags:
-  - tui
-  - terminal
   - typescript
   - react
+  - tui
+  - terminal
   - solid
 status: to_try
 date_added: '2026-11-06'
@@ -16,7 +16,8 @@ author: Tran Mau Tri Tam ✪
 author_handle: tranmautritam
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # OpenTUI
 

@@ -1,12 +1,12 @@
 ---
 name: devl
 url: 'https://devl.dev/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - react
+  - tailwind
   - shadcn
   - componentes
-  - tailwind
   - ui
 status: to_try
 date_added: '2026-11-06'
@@ -17,7 +17,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: devl
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # devl
 

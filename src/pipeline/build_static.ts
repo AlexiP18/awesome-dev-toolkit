@@ -4,6 +4,7 @@ import { loadAllTools } from './note_generator.js';
 import { generateReadme } from './generate_readme.js';
 import { loadAllAuthorProfiles } from './author_manager.js';
 import { getAllCategories } from './category_manager.js';
+import { taxonomyUiPayload } from './taxonomy.js';
 
 export function buildStaticSite(): void {
   const rootDir = process.cwd();
@@ -35,6 +36,10 @@ export function buildStaticSite(): void {
   const categoriesJsonPath = path.join(distDataDir, 'categories.json');
   fs.writeFileSync(categoriesJsonPath, JSON.stringify({ success: true, count: categories.length, categories }, null, 2), 'utf-8');
   console.log(`[Build] 🏷️ Exportadas ${categories.length} categorías a ${categoriesJsonPath}`);
+
+  const taxonomyPath = path.join(distDataDir, 'taxonomy-ui.json');
+  fs.writeFileSync(taxonomyPath, JSON.stringify({ success: true, taxonomy: taxonomyUiPayload() }, null, 2), 'utf-8');
+  fs.copyFileSync(path.resolve(rootDir, 'data/taxonomy.json'), path.join(distDataDir, 'taxonomy.json'));
 
   // 3. Copy public assets (index.html, bookmarklet)
   const publicDir = path.resolve(rootDir, 'src/web/public');

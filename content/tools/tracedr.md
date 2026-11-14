@@ -1,7 +1,7 @@
 ---
 name: Tracedr
 url: 'https://tracedr.com/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - domain-rating
   - seo
@@ -16,7 +16,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Tracedr
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # Tracedr
 

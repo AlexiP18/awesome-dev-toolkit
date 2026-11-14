@@ -1,9 +1,9 @@
 ---
 name: archive.today
 url: 'http://archive.ph/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
-  - archivo web
+  - archivo-web
   - capturas
   - preservacion
 status: to_try
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # archive.today
 

@@ -2,12 +2,12 @@
 name: Annnimate
 url: 'https://annnimate.com/animations'
 website_url: 'https://annnimate.com/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - frontend
-  - animaciones
-  - gsap
   - react
+  - frontend
+  - animacion
+  - gsap
   - vue
 status: to_try
 date_added: '2026-11-05'
@@ -17,7 +17,8 @@ author: Harshil Tomar
 author_handle: Hartdrawss
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Annnimate
 

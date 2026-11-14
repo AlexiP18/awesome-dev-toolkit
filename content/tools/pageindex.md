@@ -1,7 +1,7 @@
 ---
 name: PageIndex
 url: 'https://github.com/VectifyAI/PageIndex'
-category: AI & Machine Learning
+category: 'RAG, búsqueda & datos para IA'
 tags:
   - rag
   - document-navigation
@@ -16,7 +16,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: VectifyAI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # PageIndex
 

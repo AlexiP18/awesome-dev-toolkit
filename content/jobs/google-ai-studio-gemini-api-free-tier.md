@@ -1,7 +1,7 @@
 ---
 name: Google AI Studio / Gemini API (free tier)
 url: 'https://ai.google.dev/'
-category: AI & Machine Learning
+category: 'Créditos, planes gratis & programas'
 tags:
   - gemini
   - llm
@@ -17,7 +17,8 @@ author_handle: exploraX_
 entry_type: tool
 company: Google
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: trabajo-oportunidades
 ---
 # Google AI Studio / Gemini API (free tier)
 

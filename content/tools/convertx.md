@@ -1,13 +1,13 @@
 ---
 name: ConvertX
 url: 'https://github.com/C4illin/ConvertX'
-category: Productivity & Tools
+category: Seguridad & privacidad
 tags:
+  - typescript
   - file-converter
   - self-hosted
   - docker
   - privacidad
-  - typescript
   - bun
 stars: 19492
 status: to_try
@@ -18,7 +18,8 @@ author: Nix0n
 author_handle: UnTalNixon_exe
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # ConvertX
 

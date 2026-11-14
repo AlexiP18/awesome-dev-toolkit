@@ -1,10 +1,10 @@
 ---
 name: Semantic Scholar
 url: 'https://semanticscholar.org/'
-category: Documentation & Resources
+category: Investigación & papers
 tags:
   - papers
-  - busqueda academica
+  - busqueda-academica
   - api
 status: to_try
 date_added: '2026-11-06'
@@ -15,7 +15,8 @@ author_handle: ecommartinez
 entry_type: tool
 company: Allen Institute for AI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # Semantic Scholar
 

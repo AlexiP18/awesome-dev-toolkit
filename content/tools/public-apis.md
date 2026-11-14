@@ -1,7 +1,7 @@
 ---
 name: public-apis
 url: 'https://github.com/public-apis/public-apis'
-category: Backend & APIs
+category: 'Backend, APIs & datos'
 tags:
   - api
   - public-apis
@@ -16,7 +16,8 @@ author: Shruti Codes
 author_handle: Shruti_0810
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # public-apis
 

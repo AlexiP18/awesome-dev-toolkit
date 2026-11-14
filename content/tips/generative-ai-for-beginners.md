@@ -1,9 +1,9 @@
 ---
 name: Generative AI for Beginners
 url: 'https://github.com/microsoft/generative-ai-for-beginners'
-category: AI & Machine Learning
+category: 'Guías, tips & buenas prácticas'
 tags:
-  - ai
+  - ia
   - llm
   - generative-ai
   - rag
@@ -19,7 +19,8 @@ entry_type: tool
 company: Microsoft
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: aprendizaje
 ---
 # Generative AI for Beginners
 

@@ -2,14 +2,14 @@
 name: Tween UI
 url: 'https://github.com/StaticMania/tween-ui'
 website_url: 'https://tween-ui.vercel.app/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
+  - typescript
   - gsap
   - tailwindcss
   - shadcn-ui
-  - typescript
-  - animaciones
+  - animacion
   - componentes
 stars: 20
 status: to_try
@@ -21,7 +21,8 @@ author_handle: kasuncfdo
 entry_type: tool
 company: StaticMania
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Tween UI
 

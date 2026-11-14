@@ -1,7 +1,7 @@
 ---
 name: closeit.fast
 url: 'https://closeit.fast/'
-category: Productivity & Tools
+category: Seguridad & privacidad
 tags:
   - firma-electronica
   - documentos
@@ -15,7 +15,8 @@ author_handle: VullnetAdemaj
 entry_type: tool
 company: closeit.fast
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # closeit.fast
 

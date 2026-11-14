@@ -1,7 +1,7 @@
 ---
 name: tidewater
 url: 'https://github.com/dgreenheck/tidewater'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - webgpu
   - game-development
@@ -19,7 +19,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: dgreenheck
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # tidewater
 

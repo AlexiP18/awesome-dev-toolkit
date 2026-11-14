@@ -1,7 +1,7 @@
 ---
 name: ntfy.sh
 url: 'https://ntfy.sh/'
-category: Backend & APIs
+category: 'Backend, APIs & datos'
 tags:
   - notificaciones
   - push
@@ -17,7 +17,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: ntfy
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # ntfy.sh
 

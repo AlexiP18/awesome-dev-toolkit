@@ -1,13 +1,13 @@
 ---
 name: Tailgrids
 url: 'https://tailgrids.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - ui components
-  - tailwind css
   - react
-  - design system
-  - ui development
+  - componentes
+  - tailwind-css
+  - design-system
+  - ui-development
   - open-source
 status: to_try
 date_added: '2026-11-03'
@@ -17,7 +17,8 @@ author: Houdayfa
 author_handle: HoudayfaDesign
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Tailgrids
 

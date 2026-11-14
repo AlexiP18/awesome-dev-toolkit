@@ -2,7 +2,7 @@
 name: vLLM
 url: 'https://github.com/vllm-project/vllm'
 website_url: 'https://docs.vllm.ai/'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - inferencia
   - self-hosted
@@ -18,7 +18,8 @@ author: Nahid
 author_handle: nahid_pro09
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # vLLM
 

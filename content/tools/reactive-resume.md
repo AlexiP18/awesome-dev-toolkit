@@ -2,11 +2,11 @@
 name: Reactive Resume
 url: 'https://github.com/reactive-resume/reactive-resume'
 website_url: 'https://rxresu.me/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
-  - resume
   - react
   - typescript
+  - resume
   - self-hosted
 stars: 45397
 status: to_try
@@ -18,7 +18,8 @@ author_handle: sentient_agency
 entry_type: tool
 company: Amruth Pillai
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Reactive Resume
 

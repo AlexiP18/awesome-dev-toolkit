@@ -1,11 +1,10 @@
 ---
 name: Logosystem
 url: 'https://logosystem.co/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - logos
   - branding
-  - inspiración
   - design-system
 status: to_try
 date_added: '2026-11-06'
@@ -15,7 +14,8 @@ author: Tran Mau Tri Tam ✪
 author_handle: tranmautritam
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Logosystem
 

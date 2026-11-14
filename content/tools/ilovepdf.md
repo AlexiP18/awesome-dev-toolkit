@@ -1,7 +1,7 @@
 ---
 name: iLovePDF
 url: 'https://ilovepdf.com/'
-category: Productivity & Tools
+category: Utilidades web & archivos
 tags:
   - pdf
   - union
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # iLovePDF
 

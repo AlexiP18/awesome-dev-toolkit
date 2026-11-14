@@ -2,7 +2,7 @@
 name: OpenReplay
 url: 'https://github.com/openreplay/openreplay'
 website_url: 'https://openreplay.com/'
-category: Productivity & Tools
+category: 'DevOps, cloud & self-hosting'
 tags:
   - session-replay
   - analytics
@@ -17,7 +17,8 @@ author_handle: hasantoxr
 entry_type: tool
 company: OpenReplay
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # OpenReplay
 

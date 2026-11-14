@@ -1,7 +1,7 @@
 ---
 name: GL Transitions
 url: 'https://github.com/gl-transitions/gl-transitions'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - glsl
   - transitions
@@ -18,7 +18,8 @@ author_handle: e1genqq
 entry_type: tool
 company: gl-transitions
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # GL Transitions
 

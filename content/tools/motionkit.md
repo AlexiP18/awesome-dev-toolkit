@@ -1,11 +1,11 @@
 ---
 name: MotionKit
 url: 'https://www.motionkitui.com/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
-  - animaciones
   - tailwind
+  - animacion
   - componentes
   - motion
 status: to_try
@@ -16,7 +16,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # MotionKit
 

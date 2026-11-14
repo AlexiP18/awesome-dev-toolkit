@@ -1,8 +1,8 @@
 ---
 name: NewPipe
 url: 'https://github.com/TeamNewPipe/NewPipe'
-category: Productivity & Tools
-conjunto: recursos
+category: Seguridad & privacidad
+conjunto: codigo
 tags:
   - android
   - youtube
@@ -17,6 +17,7 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: PA13L0
 classified_by: Importado del vault
+area: desarrollo-software
 ---
 # NewPipe
 

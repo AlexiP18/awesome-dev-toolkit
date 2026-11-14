@@ -1,14 +1,14 @@
 ---
 name: Wonderlist Design
 url: 'https://wonderlist.design/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - figma
   - recursos
   - ui-kit
   - design-systems
-  - diseño
-  - ui kits
+  - diseno
+  - ui-kits
   - premium
   - frontend
 status: to_try
@@ -24,6 +24,7 @@ source_tweets:
   - 'https://x.com/VullnetAdemaj/status/2112101526336364705'
   - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
 updated_at: '2026-11-13T05:00:36.257Z'
+area: diseno-creatividad
 ---
 # Wonderlist Design
 

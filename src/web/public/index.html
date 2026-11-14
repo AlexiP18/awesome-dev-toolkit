@@ -23,8 +23,8 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./catalog.css">
   <script type="module">
-    import { flagToolsNeedingReview, sortTools, pageWindow } from './catalog-logic.js';
-    window.CatalogLogic = { flagToolsNeedingReview, sortTools, pageWindow };
+    import { flagToolsNeedingReview, sortTools, pageWindow, resolveLegacyFilters, conjuntoMatches } from './catalog-logic.js';
+    window.CatalogLogic = { flagToolsNeedingReview, sortTools, pageWindow, resolveLegacyFilters, conjuntoMatches };
     window.dispatchEvent(new Event('catalog-logic-ready'));
   </script>
   <!-- Tailwind CSS CDN -->
@@ -107,7 +107,7 @@
     
     <!-- 3 APARTADOS SELECTOR TABS -->
     <div class="mb-6">
-      <div id="sectionTabs" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl" role="tablist" aria-label="Apartados del catálogo">
+      <div id="sectionTabs" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl" role="tablist" aria-label="Áreas del catálogo">
         
         <!-- Tab 0: Todos los Apartados -->
         <button 
@@ -131,84 +131,6 @@
             </div>
           </div>
           <span id="tabCountAll" class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex-shrink-0 ml-1">
-            0
-          </span>
-        </button>
-
-        <!-- Tab 1: Herramientas -->
-        <button 
-          id="tabSectionTools" 
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="toolsGrid"
-          onclick="switchSection('tools')" 
-          class="relative p-3 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40"
-        >
-          <div class="flex items-center gap-2.5 min-w-0">
-            <div id="tabIconBoxTools" class="p-2 rounded-xl bg-slate-800 text-slate-400 border border-slate-700 flex-shrink-0">
-              <i data-lucide="wrench" class="w-4 h-4"></i>
-            </div>
-            <div class="min-w-0">
-              <div class="flex items-center gap-1.5">
-                <span class="font-bold text-xs sm:text-sm text-slate-100 group-hover:text-sky-300 transition truncate">1. Herramientas</span>
-              </div>
-              <p class="text-[10px] text-slate-400 mt-0.5 truncate hidden sm:block">Software, hardware & repos</p>
-            </div>
-          </div>
-          <span id="tabCountTools" class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700 flex-shrink-0 ml-1">
-            0
-          </span>
-        </button>
-
-        <!-- Tab 2: Consejos Técnicos -->
-        <button 
-          id="tabSectionTips" 
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="toolsGrid"
-          onclick="switchSection('tips')" 
-          class="relative p-3 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40"
-        >
-          <div class="flex items-center gap-2.5 min-w-0">
-            <div id="tabIconBoxTips" class="p-2 rounded-xl bg-slate-800 text-slate-400 border border-slate-700 flex-shrink-0">
-              <i data-lucide="lightbulb" class="w-4 h-4"></i>
-            </div>
-            <div class="min-w-0">
-              <div class="flex items-center gap-1.5">
-                <span class="font-bold text-xs sm:text-sm text-slate-100 group-hover:text-violet-300 transition truncate">2. Consejos</span>
-              </div>
-              <p class="text-[10px] text-slate-400 mt-0.5 truncate hidden sm:block">Buenas prácticas</p>
-            </div>
-          </div>
-          <span id="tabCountTips" class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700 flex-shrink-0 ml-1">
-            0
-          </span>
-        </button>
-
-        <!-- Tab 3: Empleo & Freelance -->
-        <button 
-          id="tabSectionJobs" 
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="toolsGrid"
-          onclick="switchSection('jobs')" 
-          class="relative p-3 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40"
-        >
-          <div class="flex items-center gap-2.5 min-w-0">
-            <div id="tabIconBoxJobs" class="p-2 rounded-xl bg-slate-800 text-slate-400 border border-slate-700 flex-shrink-0">
-              <i data-lucide="briefcase" class="w-4 h-4"></i>
-            </div>
-            <div class="min-w-0">
-              <div class="flex items-center gap-1.5">
-                <span class="font-bold text-xs sm:text-sm text-slate-100 group-hover:text-blue-300 transition truncate">3. Trabajo</span>
-              </div>
-              <p class="text-[10px] text-slate-400 mt-0.5 truncate hidden sm:block">Remoto & bolsas</p>
-            </div>
-          </div>
-          <span id="tabCountJobs" class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700 flex-shrink-0 ml-1">
             0
           </span>
         </button>
@@ -721,8 +643,8 @@
           <h3 class="text-base font-bold text-slate-100 flex items-center gap-2">
             Gestor de Categorías
           </h3>
-          <p class="text-xs text-slate-400 mt-0.5">
-            Crea y establece nuevas categorías personalizadas para filtrar, clasificar con IA y organizar tus recursos.
+            <p class="text-xs text-slate-400 mt-0.5">
+            Las 24 categorías salen de la taxonomía compartida. Aquí solo puedes ajustar el icono, el color o la descripción de una que ya existe.
           </p>
         </div>
       </div>
@@ -740,7 +662,7 @@
             <input 
               type="text" 
               id="newCatName" 
-              placeholder="ej: Data Engineering & ETL, Agentes & MCP..." 
+              placeholder="ej: Agentes, MCP & automatización" 
               required 
               class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
             />
@@ -748,10 +670,9 @@
           <div>
             <label class="block text-xs font-semibold text-slate-300 mb-1">Apartado Destino:</label>
             <select id="newCatSection" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-sky-500">
-              <option value="tools">🛠️ 1. Herramientas</option>
-              <option value="tips">💡 2. Consejos</option>
-              <option value="jobs">💼 3. Trabajo</option>
-              <option value="all">✨ Todos los Apartados</option>
+              <option value="tools">🛠️ Carpeta tools</option>
+              <option value="tips">💡 Carpeta tips</option>
+              <option value="jobs">💼 Carpeta jobs</option>
             </select>
           </div>
         </div>
@@ -904,19 +825,20 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div>
-            <label class="block font-semibold text-slate-300 mb-1">Apartado / Área:</label>
+            <label class="block font-semibold text-slate-300 mb-1">Tipo de ficha:</label>
             <select id="editToolEntryType" onchange="handleEditToolEntryTypeChange()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-medium">
-              <option value="tool">🛠️ 1. Herramientas & Repositorios</option>
-              <option value="tech_tip">💡 2. Consejos & Buenas Prácticas</option>
-              <option value="job_remote">💼 3. Empleo Remoto & Freelance</option>
+              <option value="tool">🛠️ Herramienta</option>
+              <option value="tech_tip">💡 Guía o consejo</option>
+              <option value="job_remote">💼 Empleo</option>
             </select>
           </div>
           <div>
             <label class="block font-semibold text-slate-300 mb-1">Conjunto:</label>
             <select id="editToolConjunto" onchange="handleEditToolEntryTypeChange()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-medium">
-              <option value="recursos">📦 Recursos</option>
+              <option value="codigo">📦 Código</option>
+              <option value="app">🚀 App</option>
               <option value="inspiracion">💡 Inspiración</option>
-              <option value="producto">🚀 Producto</option>
+              <option value="aprender">📚 Aprender</option>
               <option value="consejos">🧠 Consejos</option>
             </select>
           </div>
@@ -940,19 +862,6 @@
               </button>
             </div>
             <select id="editToolCategory" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500">
-              <option value="CLI & Terminal">CLI & Terminal</option>
-              <option value="Frontend & UI">Frontend & UI</option>
-              <option value="Backend & APIs">Backend & APIs</option>
-              <option value="DevOps & Cloud">DevOps & Cloud</option>
-              <option value="AI & Machine Learning">AI & Machine Learning</option>
-              <option value="Prompts, Art & Video">Prompts, Art & Video</option>
-              <option value="Databases & Storage">Databases & Storage</option>
-              <option value="Productivity & Tools">Productivity & Tools</option>
-              <option value="Documentation & Resources">Documentation & Resources</option>
-              <option value="Consejos & Buenas Prácticas">Consejos & Buenas Prácticas</option>
-              <option value="Trabajo & Freelance">Trabajo & Freelance</option>
-              <option value="Productos Tecnológicos & Hardware">Productos Tecnológicos & Hardware</option>
-              <option value="Other">Other</option>
             </select>
           </div>
           <div>
@@ -1252,9 +1161,10 @@
     let allTools = [];
     let selectedSlugs = new Set();
     let allAuthorProfiles = {};
-    let currentSection = 'all'; // 'all' | 'tools' | 'tips' | 'jobs'
+    let currentSection = 'all'; // 'all' o un id de área de la taxonomía
     let currentCategory = 'all';
-    let currentConjunto = 'all'; // 'all' | 'recursos' | 'inspiracion' | 'producto' | 'consejos'
+    let currentConjunto = 'all'; // 'all' | codigo | app | inspiracion | aprender | consejos
+    let taxonomyUi = null;
     let currentStatus = 'all';
     let currentAuthor = 'all';
     let filterRecent = true; // Activo por defecto según requerimiento
@@ -1296,13 +1206,21 @@
     };
 
     const CONJUNTO_CONFIG = {
-      recursos: {
-        name: 'Recursos',
+      codigo: {
+        name: 'Código',
         icon: '📦',
         badge: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30',
         dot: 'bg-cyan-400',
         border: 'border-cyan-500/30',
         pillActive: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40'
+      },
+      app: {
+        name: 'App',
+        icon: '🚀',
+        badge: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+        dot: 'bg-amber-400',
+        border: 'border-amber-500/30',
+        pillActive: 'bg-amber-500/20 text-amber-300 border-amber-500/40'
       },
       inspiracion: {
         name: 'Inspiración',
@@ -1312,13 +1230,13 @@
         border: 'border-fuchsia-500/30',
         pillActive: 'bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-500/40'
       },
-      producto: {
-        name: 'Producto',
-        icon: '🚀',
-        badge: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
-        dot: 'bg-amber-400',
-        border: 'border-amber-500/30',
-        pillActive: 'bg-amber-500/20 text-amber-300 border-amber-500/40'
+      aprender: {
+        name: 'Aprender',
+        icon: '📚',
+        badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+        dot: 'bg-emerald-400',
+        border: 'border-emerald-500/30',
+        pillActive: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
       },
       consejos: {
         name: 'Consejos',
@@ -1330,14 +1248,79 @@
       }
     };
 
+    const AREA_TAB_STYLES = {
+      sky: { active: 'bg-sky-500/15 border-sky-500/40 text-sky-300 shadow-inner', icon: 'bg-sky-500/20 text-sky-300 border-sky-500/30', count: 'bg-sky-500/20 text-sky-300 border-sky-500/30', banner: 'border-sky-500/30', bannerIcon: 'bg-sky-500/15 text-sky-400 border-sky-500/30', btn: 'bg-sky-600 hover:bg-sky-500 shadow-sky-600/25', chip: 'bg-sky-500/20 text-sky-300 border-sky-500/40' },
+      purple: { active: 'bg-purple-500/15 border-purple-500/40 text-purple-300 shadow-inner', icon: 'bg-purple-500/20 text-purple-300 border-purple-500/30', count: 'bg-purple-500/20 text-purple-300 border-purple-500/30', banner: 'border-purple-500/30', bannerIcon: 'bg-purple-500/15 text-purple-400 border-purple-500/30', btn: 'bg-purple-600 hover:bg-purple-500 shadow-purple-600/25', chip: 'bg-purple-500/20 text-purple-300 border-purple-500/40' },
+      rose: { active: 'bg-rose-500/15 border-rose-500/40 text-rose-300 shadow-inner', icon: 'bg-rose-500/20 text-rose-300 border-rose-500/30', count: 'bg-rose-500/20 text-rose-300 border-rose-500/30', banner: 'border-rose-500/30', bannerIcon: 'bg-rose-500/15 text-rose-400 border-rose-500/30', btn: 'bg-rose-600 hover:bg-rose-500 shadow-rose-600/25', chip: 'bg-rose-500/20 text-rose-300 border-rose-500/40' },
+      teal: { active: 'bg-teal-500/15 border-teal-500/40 text-teal-300 shadow-inner', icon: 'bg-teal-500/20 text-teal-300 border-teal-500/30', count: 'bg-teal-500/20 text-teal-300 border-teal-500/30', banner: 'border-teal-500/30', bannerIcon: 'bg-teal-500/15 text-teal-400 border-teal-500/30', btn: 'bg-teal-600 hover:bg-teal-500 shadow-teal-600/25', chip: 'bg-teal-500/20 text-teal-300 border-teal-500/40' },
+      violet: { active: 'bg-violet-500/15 border-violet-500/40 text-violet-300 shadow-inner', icon: 'bg-violet-500/20 text-violet-300 border-violet-500/30', count: 'bg-violet-500/20 text-violet-300 border-violet-500/30', banner: 'border-violet-500/30', bannerIcon: 'bg-violet-500/15 text-violet-400 border-violet-500/30', btn: 'bg-violet-600 hover:bg-violet-500 shadow-violet-600/25', chip: 'bg-violet-500/20 text-violet-300 border-violet-500/40' },
+      amber: { active: 'bg-amber-500/15 border-amber-500/40 text-amber-300 shadow-inner', icon: 'bg-amber-500/20 text-amber-300 border-amber-500/30', count: 'bg-amber-500/20 text-amber-300 border-amber-500/30', banner: 'border-amber-500/30', bannerIcon: 'bg-amber-500/15 text-amber-400 border-amber-500/30', btn: 'bg-amber-600 hover:bg-amber-500 shadow-amber-600/25', chip: 'bg-amber-500/20 text-amber-300 border-amber-500/40' }
+    };
+
+    function taxonomyAreas() {
+      return taxonomyUi?.areas || [];
+    }
+
+    function areaById(id) {
+      return taxonomyAreas().find((area) => area.id === id) || null;
+    }
+
+    function areaStyle(area) {
+      return AREA_TAB_STYLES[area?.color] || AREA_TAB_STYLES.sky;
+    }
+
+    function renderAreaTabs() {
+      const host = document.getElementById('sectionTabs');
+      if (!host) return;
+      host.querySelectorAll('[data-area-tab]').forEach((node) => node.remove());
+      for (const area of taxonomyAreas()) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.id = `tabSection-${area.id}`;
+        button.dataset.areaTab = area.id;
+        button.setAttribute('role', 'tab');
+        button.setAttribute('aria-controls', 'toolsGrid');
+        button.onclick = () => switchSection(area.id);
+        button.className = 'relative p-3 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40';
+        button.innerHTML = `
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div id="tabIconBox-${area.id}" class="p-2 rounded-xl bg-slate-800 text-slate-400 border border-slate-700 flex-shrink-0 text-base">${area.icon}</div>
+            <div class="min-w-0">
+              <div class="font-bold text-xs sm:text-sm text-slate-100 truncate">${escapeHtml(area.name)}</div>
+            </div>
+          </div>
+          <span id="tabCount-${area.id}" class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700 flex-shrink-0 ml-1">0</span>
+        `;
+        host.appendChild(button);
+      }
+    }
+
+    async function fetchTaxonomy() {
+      try {
+        let res = null;
+        if (!isStaticMode && !window.location.hostname.endsWith('github.io')) {
+          try {
+            const apiRes = await fetch('/api/taxonomy');
+            if (apiRes.ok) res = apiRes;
+          } catch {}
+        }
+        if (!res) res = await fetch('./data/taxonomy-ui.json');
+        if (res && res.ok) {
+          const data = await res.json();
+          taxonomyUi = data.taxonomy || data;
+          if (Array.isArray(taxonomyUi.categories)) allCategoriesList = taxonomyUi.categories;
+          renderAreaTabs();
+        }
+      } catch (err) {
+        console.warn('No se pudo cargar la taxonomía:', err);
+      }
+    }
+
     function getToolConjunto(tool) {
-      if (!tool) return 'recursos';
+      if (!tool) return '';
       const fm = tool.frontmatter || {};
-      if (fm.conjunto) return fm.conjunto;
-      const sec = getItemSection(tool);
-      if (sec === 'tips') return 'consejos';
-      if (fm.price || fm.company) return 'producto';
-      return 'recursos';
+      if (fm.conjunto && CONJUNTO_CONFIG[fm.conjunto]) return fm.conjunto;
+      return '';
     }
 
     function getSelectedAiShortName() {
@@ -1565,13 +1548,14 @@
     };
 
     /**
-     * Retorna a cuál de los 3 apartados pertenece un recurso: 'tools' | 'tips' | 'jobs'.
+     * Área de la taxonomía a la que pertenece la ficha.
      */
     function getItemSection(tool) {
-      const fm = tool.frontmatter || {};
-      if (fm.entry_type === 'job_remote' || fm.category === 'Trabajo & Freelance') return 'jobs';
-      if (fm.entry_type === 'tech_tip' || fm.category === 'Consejos & Buenas Prácticas') return 'tips';
-      return 'tools';
+      const fm = tool?.frontmatter || {};
+      if (fm.area && areaById(fm.area)) return fm.area;
+      const found = allCategoriesList.find((category) => category.name === fm.category);
+      if (found?.area) return found.area;
+      return '';
     }
 
     /**
@@ -1593,48 +1577,19 @@
         if (boot.page) currentPage = boot.page;
       }
 
-      // Actualizar estilo visual de las 4 tabs
-      const tabs = [
-        { id: 'all', btn: 'tabSectionAll', icon: 'tabIconBoxAll', count: 'tabCountAll', activeClass: 'bg-indigo-500/15 border-indigo-500/40 text-indigo-300 shadow-inner' },
-        { id: 'tools', btn: 'tabSectionTools', icon: 'tabIconBoxTools', count: 'tabCountTools', activeClass: 'bg-sky-500/15 border-sky-500/40 text-sky-300 shadow-inner' },
-        { id: 'tips', btn: 'tabSectionTips', icon: 'tabIconBoxTips', count: 'tabCountTips', activeClass: 'bg-violet-500/15 border-violet-500/40 text-violet-300 shadow-inner' },
-        { id: 'jobs', btn: 'tabSectionJobs', icon: 'tabIconBoxJobs', count: 'tabCountJobs', activeClass: 'bg-blue-500/15 border-blue-500/40 text-blue-300 shadow-inner' }
-      ];
-
-      tabs.forEach(t => {
-        const btnEl = document.getElementById(t.btn);
-        const iconEl = document.getElementById(t.icon);
-        const countEl = document.getElementById(t.count);
-        if (!btnEl || !iconEl || !countEl) return;
-        const isSelected = t.id === sectionId;
-
-        if (isSelected) {
-          btnEl.className = `relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group ${t.activeClass}`;
-          if (t.id === 'all') {
-            iconEl.className = 'p-2.5 rounded-xl bg-indigo-500/20 text-indigo-300 border border-indigo-500/30';
-            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30';
-          } else if (t.id === 'tools') {
-            iconEl.className = 'p-2.5 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30';
-            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-sky-500/20 text-sky-300 border border-sky-500/30';
-          } else if (t.id === 'tips') {
-            iconEl.className = 'p-2.5 rounded-xl bg-violet-500/20 text-violet-300 border border-violet-500/30';
-            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-violet-500/20 text-violet-300 border border-violet-500/30';
-          } else if (t.id === 'jobs') {
-            iconEl.className = 'p-2.5 rounded-xl bg-blue-500/20 text-blue-300 border border-blue-500/30';
-            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30';
-          } else {
-            iconEl.className = 'p-2.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/30';
-            countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30';
-          }
-        } else {
-          btnEl.className = 'relative p-3.5 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40';
-          iconEl.className = 'p-2.5 rounded-xl bg-slate-800 text-slate-400 border border-slate-700';
-          countEl.className = 'px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700';
-        }
-      });
+      paintAreaTabs(sectionId);
 
       // Actualizar Banner
-      const config = SECTION_CONFIG[sectionId] || SECTION_CONFIG.tools;
+      const area = areaById(sectionId);
+      const config = area
+        ? {
+            icon: area.icon,
+            badgeTitle: area.name,
+            subtitle: area.definition,
+            addBtnText: 'Añadir recurso',
+            searchPlaceholder: `Buscar en ${area.name}... (⌘K)`,
+          }
+        : (SECTION_CONFIG.all || SECTION_CONFIG.tools);
       const banner = document.getElementById('sectionBanner');
       const bannerIcon = document.getElementById('sectionBannerIcon');
       const bannerTitle = document.getElementById('sectionBannerTitle');
@@ -1652,22 +1607,15 @@
         if (headerAddText) headerAddText.innerText = config.addBtnText;
         if (searchInput) searchInput.placeholder = config.searchPlaceholder;
 
-        if (sectionId === 'all') {
+        const style = area ? areaStyle(area) : null;
+        if (!style) {
           banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-indigo-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
           bannerIcon.className = 'p-3 rounded-2xl bg-indigo-500/15 text-indigo-400 border border-indigo-500/30 text-2xl flex-shrink-0 shadow-inner';
           bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/25 flex items-center gap-2 transition flex-shrink-0';
-        } else if (sectionId === 'tools') {
-          banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-sky-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
-          bannerIcon.className = 'p-3 rounded-2xl bg-sky-500/15 text-sky-400 border border-sky-500/30 text-2xl flex-shrink-0 shadow-inner';
-          bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white shadow-lg shadow-sky-600/25 flex items-center gap-2 transition flex-shrink-0';
-        } else if (sectionId === 'tips') {
-          banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-violet-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
-          bannerIcon.className = 'p-3 rounded-2xl bg-violet-500/15 text-violet-400 border border-violet-500/30 text-2xl flex-shrink-0 shadow-inner';
-          bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-violet-600 hover:bg-violet-500 text-white shadow-lg shadow-violet-600/25 flex items-center gap-2 transition flex-shrink-0';
-        } else if (sectionId === 'jobs') {
-          banner.className = 'p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border border-blue-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden';
-          bannerIcon.className = 'p-3 rounded-2xl bg-blue-500/15 text-blue-400 border border-blue-500/30 text-2xl flex-shrink-0 shadow-inner';
-          bannerAddBtn.className = 'relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/25 flex items-center gap-2 transition flex-shrink-0';
+        } else {
+          banner.className = `p-4 sm:p-5 mb-6 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-900/60 border ${style.banner} flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg relative overflow-hidden`;
+          bannerIcon.className = `p-3 rounded-2xl ${style.bannerIcon} text-2xl flex-shrink-0 shadow-inner`;
+          bannerAddBtn.className = `relative z-10 self-start sm:self-center px-4 py-2.5 rounded-xl text-xs font-semibold ${style.btn} text-white shadow-lg flex items-center gap-2 transition flex-shrink-0`;
         }
       }
 
@@ -1675,7 +1623,7 @@
       const acadBtn = document.getElementById('academicFilterBtn');
       const acadSep = document.getElementById('academicFilterSeparator');
       if (acadBtn && acadSep) {
-        if (sectionId === 'tools' || sectionId === 'all') {
+        if (sectionId !== 'trabajo-oportunidades') {
           acadBtn.classList.remove('hidden');
           acadSep.classList.remove('hidden');
         } else {
@@ -1694,16 +1642,48 @@
       lucide.createIcons();
     }
 
+    function paintAreaTabs(sectionId) {
+      const allBtn = document.getElementById('tabSectionAll');
+      const allIcon = document.getElementById('tabIconBoxAll');
+      const allCount = document.getElementById('tabCountAll');
+      if (allBtn && allIcon && allCount) {
+        const selected = sectionId === 'all';
+        allBtn.className = selected
+          ? 'relative p-3 rounded-xl border text-left transition flex items-center justify-between group bg-indigo-500/15 border-indigo-500/40 text-indigo-300 shadow-inner'
+          : 'relative p-3 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40';
+        allIcon.className = selected
+          ? 'p-2 rounded-xl bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex-shrink-0'
+          : 'p-2 rounded-xl bg-slate-800 text-slate-400 border border-slate-700 flex-shrink-0';
+        allCount.className = selected
+          ? 'px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex-shrink-0 ml-1'
+          : 'px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700 flex-shrink-0 ml-1';
+      }
+      for (const area of taxonomyAreas()) {
+        const btnEl = document.getElementById(`tabSection-${area.id}`);
+        const iconEl = document.getElementById(`tabIconBox-${area.id}`);
+        const countEl = document.getElementById(`tabCount-${area.id}`);
+        if (!btnEl || !iconEl || !countEl) continue;
+        const style = areaStyle(area);
+        const selected = area.id === sectionId;
+        btnEl.className = selected
+          ? `relative p-3 rounded-xl border text-left transition flex items-center justify-between group ${style.active}`
+          : 'relative p-3 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40';
+        iconEl.className = selected
+          ? `p-2 rounded-xl ${style.icon} flex-shrink-0 text-base`
+          : 'p-2 rounded-xl bg-slate-800 text-slate-400 border border-slate-700 flex-shrink-0 text-base';
+        countEl.className = selected
+          ? `px-2 py-0.5 rounded-full text-xs font-mono font-bold ${style.count} flex-shrink-0 ml-1`
+          : 'px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700 flex-shrink-0 ml-1';
+      }
+    }
+
     function updateSectionTabAria() {
-      [
-        ['all', 'tabSectionAll'],
-        ['tools', 'tabSectionTools'],
-        ['tips', 'tabSectionTips'],
-        ['jobs', 'tabSectionJobs'],
-      ].forEach(([id, elId]) => {
-        const el = document.getElementById(elId);
-        if (el) el.setAttribute('aria-selected', id === currentSection ? 'true' : 'false');
-      });
+      const all = document.getElementById('tabSectionAll');
+      if (all) all.setAttribute('aria-selected', currentSection === 'all' ? 'true' : 'false');
+      for (const area of taxonomyAreas()) {
+        const el = document.getElementById(`tabSection-${area.id}`);
+        if (el) el.setAttribute('aria-selected', area.id === currentSection ? 'true' : 'false');
+      }
     }
 
     async function fetchAuthorProfiles() {
@@ -2581,9 +2561,11 @@
           if (!currentValidSlugs.has(s)) selectedSlugs.delete(s);
         }
         updateBatchBar();
+        await fetchTaxonomy();
         await fetchAiStatus();
         await fetchCategories();
         await fetchAuthorProfiles();
+        readUrlState();
         switchSection(currentSection);
         if (pendingNoteSlug) {
           const slug = pendingNoteSlug;
@@ -2650,13 +2632,13 @@
 
       // 1. Agregar categorías registradas según el apartado
       allCategoriesList.forEach(c => {
-        if (currentSection === 'all' || c.section === currentSection || c.section === 'all') {
+        if (currentSection === 'all' || c.area === currentSection) {
           uniqueCats.add(c.name);
         }
       });
 
       // 2. Si hay categorías configuradas en SECTION_CONFIG
-      const sectionCats = SECTION_CONFIG[currentSection]?.categories || [];
+      const sectionCats = (areaById(currentSection)?.categories || SECTION_CONFIG[currentSection]?.categories || []);
       sectionCats.forEach(c => {
         if (c !== 'all') uniqueCats.add(c);
       });
@@ -2809,7 +2791,7 @@
       container.innerHTML = allCategoriesList.map(cat => {
         const theme = getCategoryTheme(cat.name);
         const isCustom = !cat.isDefault;
-        const sectionName = cat.section === 'tools' ? '1. Herramientas' : cat.section === 'tips' ? '2. Consejos' : cat.section === 'jobs' ? '3. Trabajo' : 'Todos';
+        const sectionName = areaById(cat.area)?.name || cat.section || 'Catálogo';
 
         return `
           <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between gap-3 hover:border-slate-700 transition">
@@ -2850,20 +2832,13 @@
         ? allTools
         : allTools.filter(t => getItemSection(t) === currentSection);
 
-      const counts = {
-        all: scopedTools.length,
-        recursos: scopedTools.filter(t => getToolConjunto(t) === 'recursos').length,
-        inspiracion: scopedTools.filter(t => getToolConjunto(t) === 'inspiracion').length,
-        producto: scopedTools.filter(t => getToolConjunto(t) === 'producto').length,
-        consejos: scopedTools.filter(t => getToolConjunto(t) === 'consejos').length,
-      };
+      const conjuntoIds = ['codigo', 'app', 'inspiracion', 'aprender', 'consejos'];
+      const counts = { all: scopedTools.length };
+      for (const id of conjuntoIds) counts[id] = scopedTools.filter(t => getToolConjunto(t) === id).length;
 
       const items = [
         { id: 'all', label: 'Todos', icon: '✨', count: counts.all },
-        { id: 'recursos', label: 'Recursos', icon: '📦', count: counts.recursos },
-        { id: 'inspiracion', label: 'Inspiración', icon: '💡', count: counts.inspiracion },
-        { id: 'producto', label: 'Producto', icon: '🚀', count: counts.producto },
-        { id: 'consejos', label: 'Consejos', icon: '🧠', count: counts.consejos },
+        ...conjuntoIds.map((id) => ({ id, label: CONJUNTO_CONFIG[id].name, icon: CONJUNTO_CONFIG[id].icon, count: counts[id] })),
       ];
 
       container.innerHTML = items.map(item => {
@@ -2905,15 +2880,10 @@
     function renderCategoryFilters() {
       const container = document.getElementById('categoryFilters');
       let cats = getCategoriesForCurrentSection();
-      const activeColor = currentSection === 'all'
-        ? 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40'
-        : currentSection === 'tools' 
-        ? 'bg-sky-500/20 text-sky-300 border-sky-500/40' 
-        : currentSection === 'tips'
-        ? 'bg-violet-500/20 text-violet-300 border-violet-500/40'
-        : currentSection === 'jobs'
-        ? 'bg-blue-500/20 text-blue-300 border-blue-500/40'
-        : 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+      const activeArea = areaById(currentSection);
+      const activeColor = activeArea
+        ? areaStyle(activeArea).chip
+        : 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40';
 
       container.innerHTML = cats.map(cat => {
         const isAll = cat === 'all';
@@ -3048,9 +3018,8 @@
     function toolEntryType(tool) {
       const fm = tool?.frontmatter || {};
       if (fm.entry_type) return fm.entry_type;
-      const section = getItemSection(tool);
-      if (section === 'jobs') return 'job_remote';
-      if (section === 'tips') return 'tech_tip';
+      if (fm.category === 'Guías, tips & buenas prácticas') return 'tech_tip';
+      if (['Empleo remoto & bolsas', 'Entrenamiento de IA & microtareas', 'Bounties, Web3 & concursos'].includes(fm.category)) return 'job_remote';
       return 'tool';
     }
 
@@ -3088,10 +3057,19 @@
       const params = new URLSearchParams(window.location.search);
       const savedSection = sessionStorage.getItem('toolkit_active_section');
       if (savedSection) sessionStorage.removeItem('toolkit_active_section');
-      const allowedSections = ['all', 'tools', 'tips', 'jobs'];
-      const section = allowedSections.includes(params.get('section'))
-        ? params.get('section')
-        : (allowedSections.includes(savedSection) ? savedSection : currentSection);
+      const areaIds = taxonomyAreas().map((area) => area.id);
+      const requestedArea = params.get('area') || '';
+      const legacy = (window.CatalogLogic && taxonomyUi)
+        ? window.CatalogLogic.resolveLegacyFilters({
+            cat: params.get('cat') || 'all',
+            conjunto: params.get('conjunto') || 'all',
+            area: requestedArea,
+            section: params.get('section') || (areaIds.includes(savedSection) ? '' : savedSection),
+          }, taxonomyUi)
+        : null;
+      const section = legacy
+        ? (legacy.area && legacy.area !== 'all' ? legacy.area : 'all')
+        : (areaIds.includes(requestedArea) ? requestedArea : (areaIds.includes(savedSection) ? savedSection : 'all'));
       const sort = ['newest', 'name', 'stars'].includes(params.get('sort')) ? params.get('sort') : 'newest';
       const view = params.get('view') === 'list' ? 'list' : (params.get('view') === 'cards' ? 'cards' : null);
       currentSection = section;
@@ -3106,8 +3084,8 @@
       pendingNoteSlug = params.get('note') || '';
       const page = parseInt(params.get('page') || '1', 10);
       bootFilters = {
-        category: params.get('cat') || 'all',
-        conjunto: params.get('conjunto') || 'all',
+        category: legacy ? legacy.cat : (params.get('cat') || 'all'),
+        conjunto: legacy ? legacy.conjunto : (params.get('conjunto') || 'all'),
         author: params.get('author') || 'all',
         status: currentStatus,
         page: Number.isFinite(page) && page > 0 ? page : 1,
@@ -3119,7 +3097,7 @@
     function writeUrlState() {
       const params = new URLSearchParams();
       const query = (document.getElementById('searchInput')?.value || '').trim();
-      if (currentSection !== 'all') params.set('section', currentSection);
+      if (currentSection !== 'all') params.set('area', currentSection);
       if (currentCategory !== 'all') params.set('cat', currentCategory);
       if (currentConjunto !== 'all') params.set('conjunto', currentConjunto);
       if (currentStatus !== 'all') params.set('status', currentStatus);
@@ -3312,7 +3290,7 @@
         }
 
         // 1.1. Filtro de Conjunto (Recursos, Inspiración, Producto, Consejos)
-        if (currentConjunto !== 'all' && getToolConjunto(tool) !== currentConjunto) {
+        if (currentConjunto !== 'all' && !(window.CatalogLogic?.conjuntoMatches || ((value, filter) => value === filter))(getToolConjunto(tool), currentConjunto)) {
           return false;
         }
 
@@ -3373,16 +3351,13 @@
     }
 
     function updateStats() {
-      // Contadores globales por cada uno de los apartados
       const totalCount = allTools.length;
-      const toolsCount = allTools.filter(t => getItemSection(t) === 'tools').length;
-      const tipsCount = allTools.filter(t => getItemSection(t) === 'tips').length;
-      const jobsCount = allTools.filter(t => getItemSection(t) === 'jobs').length;
       const tabCountAllEl = document.getElementById('tabCountAll');
       if (tabCountAllEl) tabCountAllEl.innerText = totalCount;
-      document.getElementById('tabCountTools').innerText = toolsCount;
-      document.getElementById('tabCountTips').innerText = tipsCount;
-      document.getElementById('tabCountJobs').innerText = jobsCount;
+      for (const area of taxonomyAreas()) {
+        const el = document.getElementById(`tabCount-${area.id}`);
+        if (el) el.innerText = allTools.filter(t => getItemSection(t) === area.id).length;
+      }
 
       // Elementos del apartado actualmente activo
       const sectionItems = currentSection === 'all'
@@ -3394,17 +3369,18 @@
 
       const inUse = sectionItems.filter(t => t.frontmatter.status === 'in_use').length;
       const toTry = sectionItems.filter(t => t.frontmatter.status === 'to_try').length;
-      document.getElementById('statInUse').innerHTML = currentSection === 'jobs' 
-        ? `🟢 Postulado: <strong>${inUse}</strong>` 
+      const jobsArea = currentSection === 'trabajo-oportunidades';
+      document.getElementById('statInUse').innerHTML = jobsArea
+        ? `🟢 Postulado: <strong>${inUse}</strong>`
         : `🟢 En uso: <strong>${inUse}</strong>`;
-      document.getElementById('statToTry').innerHTML = currentSection === 'jobs'
+      document.getElementById('statToTry').innerHTML = jobsArea
         ? `🟡 Por postular: <strong>${toTry}</strong>`
         : `🟡 Por probar: <strong>${toTry}</strong>`;
 
       const academicCount = sectionItems.filter(isAcademicTool).length;
       const statAcademicEl = document.getElementById('statAcademic');
       if (statAcademicEl) {
-        if ((currentSection === 'tools' || currentSection === 'all') && academicCount > 0) {
+        if (currentSection !== 'trabajo-oportunidades' && academicCount > 0) {
           statAcademicEl.classList.remove('hidden');
           statAcademicEl.innerHTML = `🎓 Académicas: <strong>${academicCount}</strong>`;
         } else {
@@ -3449,10 +3425,11 @@
     function getToolItemContext(tool) {
       const fm = tool.frontmatter || {};
       const itemSec = getItemSection(tool);
-      const isJob = itemSec === 'jobs';
-      const isTip = itemSec === 'tips';
-      const isTool = itemSec === 'tools';
-      const isProduct = getToolConjunto(tool) === 'producto' || fm.entry_type === 'tech_product' || fm.entry_type === 'product_showcase';
+      const area = areaById(itemSec);
+      const isJob = fm.entry_type === 'job_remote';
+      const isTip = fm.entry_type === 'tech_tip' || fm.category === 'Guías, tips & buenas prácticas';
+      const isTool = !isJob && !isTip;
+      const isProduct = getToolConjunto(tool) === 'app' || fm.entry_type === 'tech_product' || fm.entry_type === 'product_showcase';
       const reviewReason = reviewReasons[tool.slug] || '';
       const reviewBadge = reviewReason
         ? `<span class="review-flag" title="${escapeHtml(reviewReason)}">Revisar</span>`
@@ -3487,32 +3464,22 @@
       // Determinar si está activo el filtro de Todos (apartado 'all' o categoría 'all')
       const isAllFilter = (currentSection === 'all' || currentCategory === 'all');
 
-      let apartadoBarTheme;
-      if (isJob) {
-        apartadoBarTheme = {
-          label: 'TRABAJO',
-          fullName: 'Trabajo & Freelance',
-          icon: 'briefcase',
-          bg: 'bg-gradient-to-b from-blue-600 to-blue-700',
-          border: 'border-r border-blue-500/40'
-        };
-      } else if (isTip) {
-        apartadoBarTheme = {
-          label: 'CONSEJOS',
-          fullName: 'Consejos Técnicos',
-          icon: 'lightbulb',
-          bg: 'bg-gradient-to-b from-violet-600 to-violet-700',
-          border: 'border-r border-violet-500/40'
-        };
-      } else {
-        apartadoBarTheme = {
-          label: 'HERRAMIENTAS',
-          fullName: 'Herramientas',
-          icon: 'wrench',
-          bg: 'bg-gradient-to-b from-sky-600 to-sky-700',
-          border: 'border-r border-sky-500/40'
-        };
-      }
+      const areaPalettes = {
+        sky: ['from-sky-600 to-sky-700', 'border-sky-500/40'],
+        purple: ['from-purple-600 to-purple-700', 'border-purple-500/40'],
+        rose: ['from-rose-600 to-rose-700', 'border-rose-500/40'],
+        teal: ['from-teal-600 to-teal-700', 'border-teal-500/40'],
+        violet: ['from-violet-600 to-violet-700', 'border-violet-500/40'],
+        amber: ['from-amber-600 to-amber-700', 'border-amber-500/40'],
+      };
+      const palette = areaPalettes[area?.color] || areaPalettes.sky;
+      const apartadoBarTheme = {
+        label: (area?.name || 'Catálogo').split(' ')[0].toUpperCase(),
+        fullName: area?.name || 'Catálogo',
+        icon: 'layers',
+        bg: `bg-gradient-to-b ${palette[0]}`,
+        border: `border-r ${palette[1]}`,
+      };
 
       const tweetLink = (
         fm.source_tweet &&
@@ -3655,7 +3622,7 @@
       const cardSelectionRing = isCardSelected ? 'ring-2 ring-sky-500 shadow-lg shadow-sky-950/60 bg-sky-950/20' : '';
 
       const conjunto = getToolConjunto(tool);
-      const conjuntoCfg = CONJUNTO_CONFIG[conjunto] || CONJUNTO_CONFIG.recursos;
+      const conjuntoCfg = CONJUNTO_CONFIG[conjunto] || CONJUNTO_CONFIG.app;
       const conjuntoBadge = `
         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold border ${conjuntoCfg.badge}" title="Conjunto: ${conjuntoCfg.name}">
           <span>${conjuntoCfg.icon}</span>
@@ -4017,32 +3984,18 @@
       // MODALIDAD 2: VISTA DE LISTADO (Heading por Área -> Subheading por Categoría -> Lista de viñetas en una sola fila)
       grid.className = 'flex flex-col gap-8 w-full';
 
-      const AREA_DEFINITIONS = [
-        {
-          id: 'tools',
-          title: 'Herramientas',
-          icon: '🛠️',
-          badge: 'bg-sky-500/15 text-sky-300 border-sky-500/30',
-          border: 'border-sky-500/40',
-          accent: 'from-sky-500/15 via-slate-900 to-slate-900'
-        },
-        {
-          id: 'tips',
-          title: 'Consejos',
-          icon: '💡',
-          badge: 'bg-violet-500/15 text-violet-300 border-violet-500/30',
-          border: 'border-violet-500/40',
-          accent: 'from-violet-500/15 via-slate-900 to-slate-900'
-        },
-        {
-          id: 'jobs',
-          title: 'Trabajo',
-          icon: '💼',
-          badge: 'bg-blue-500/15 text-blue-300 border-blue-500/30',
-          border: 'border-blue-500/40',
-          accent: 'from-blue-500/15 via-slate-900 to-slate-900'
-        }
-      ];
+      const AREA_DEFINITIONS = taxonomyAreas().map((area) => {
+        const style = areaStyle(area);
+        return {
+          id: area.id,
+          title: area.name,
+          icon: area.icon,
+          badge: style.count,
+          border: style.banner,
+          accent: 'from-slate-800/80 via-slate-900 to-slate-900',
+          categories: area.categories || [],
+        };
+      });
 
       const activeAreas = currentSection === 'all'
         ? AREA_DEFINITIONS
@@ -4053,9 +4006,9 @@
         if (areaTools.length === 0) return '';
 
         // Ordenar categorías presentes dentro de esta área
-        const sectionKnownCats = (SECTION_CONFIG[area.id]?.categories || []).filter(c => c !== 'all');
+        const sectionKnownCats = (area.categories || []).filter(c => c !== 'all');
         const customAreaCats = allCategoriesList
-          .filter(c => c.section === area.id || c.section === 'all')
+          .filter(c => c.area === area.id)
           .map(c => c.name);
         const knownOrder = Array.from(new Set([...sectionKnownCats, ...customAreaCats]));
 
@@ -4337,7 +4290,7 @@
         prodFields.classList.add('hidden');
       } else {
         jobFields.classList.add('hidden');
-        if (conjunto === 'producto') {
+        if (conjunto === 'app' || conjunto === 'producto') {
           prodFields.classList.remove('hidden');
         } else {
           prodFields.classList.add('hidden');
@@ -4367,8 +4320,8 @@
       const itemSec = getItemSection(tool);
       let initialEntryType = fm.entry_type;
       if (!initialEntryType || initialEntryType === 'tech_product' || initialEntryType === 'product_showcase') {
-        if (itemSec === 'jobs') initialEntryType = 'job_remote';
-        else if (itemSec === 'tips') initialEntryType = 'tech_tip';
+        if (itemSec === 'trabajo-oportunidades') initialEntryType = 'job_remote';
+        else if (fm.category === 'Guías, tips & buenas prácticas') initialEntryType = 'tech_tip';
         else initialEntryType = 'tool';
       }
 
@@ -4456,7 +4409,7 @@
         payload.company = document.getElementById('editToolCompany').value.trim() || undefined;
         payload.location = document.getElementById('editToolLocation').value.trim() || undefined;
         payload.salary = document.getElementById('editToolSalary').value.trim() || undefined;
-      } else if (conjunto === 'producto' || document.getElementById('editToolPrice').value.trim()) {
+      } else if (conjunto === 'app' || conjunto === 'producto' || document.getElementById('editToolPrice').value.trim()) {
         payload.company = document.getElementById('editToolProdCompany').value.trim() || undefined;
         payload.price = document.getElementById('editToolPrice').value.trim() || undefined;
       }
@@ -4479,12 +4432,7 @@
           if (activeEditingSlug === slug) {
             openNoteModal(slug);
           }
-          const areaLabels = {
-            tool: '🛠️ 1. Herramientas & Repositorios',
-            tech_tip: '💡 2. Consejos Técnicos & Buenas Prácticas',
-            job_remote: '💼 3. Empleo Remoto & Freelance'
-          };
-          const areaName = areaLabels[entry_type] || '🛠️ Herramientas';
+          const areaName = areaById(getItemSection({ frontmatter: { category } }))?.name || category;
 
           openSaveConfirmModal(
             'Cambios guardados con éxito',
@@ -4825,12 +4773,9 @@
 
       document.getElementById('modalToolName').innerText = tool.frontmatter.name;
       const itemSec = getItemSection(tool);
-      const noteFolder = itemSec === 'jobs'
-        ? 'content/jobs'
-        : itemSec === 'tips'
-        ? 'content/tips'
-        : 'content/tools';
-      document.getElementById('modalToolPath').innerText = `${noteFolder}/${slug}.md`;
+      const relative = String(tool.filePath || '').replace(/\\/g, '/');
+      const notePath = relative.includes('content/') ? relative.slice(relative.indexOf('content/')) : `content/tools/${slug}.md`;
+      document.getElementById('modalToolPath').innerText = notePath;
       document.getElementById('modalOfficialLink').href = tool.frontmatter.url;
 
       const authorBadgeEl = document.getElementById('modalAuthorBadge');
@@ -4866,7 +4811,7 @@
       const modalConjuntoBadge = document.getElementById('modalConjuntoBadge');
       if (modalConjuntoBadge) {
         const c = getToolConjunto(tool);
-        const cCfg = CONJUNTO_CONFIG[c] || CONJUNTO_CONFIG.recursos;
+        const cCfg = CONJUNTO_CONFIG[c] || CONJUNTO_CONFIG.app;
         modalConjuntoBadge.className = `inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full font-semibold border ${cCfg.badge}`;
         modalConjuntoBadge.innerHTML = `<span>${cCfg.icon}</span> <span>${cCfg.name}</span>`;
         modalConjuntoBadge.classList.remove('hidden');
@@ -4896,7 +4841,7 @@
       const jobInfoEl = document.getElementById('modalJobInfo');
       const jobDetailsEl = document.getElementById('modalJobDetails');
       if (jobInfoEl && jobDetailsEl) {
-        if (itemSec === 'jobs' && (tool.frontmatter.company || tool.frontmatter.location || tool.frontmatter.salary)) {
+        if (itemSec === 'trabajo-oportunidades' && (tool.frontmatter.company || tool.frontmatter.location || tool.frontmatter.salary)) {
           const parts = [];
           if (tool.frontmatter.company) parts.push(`<span>🏢 <strong>Empresa:</strong> ${tool.frontmatter.company}</span>`);
           if (tool.frontmatter.location) parts.push(`<span>🌍 <strong>Modalidad:</strong> ${tool.frontmatter.location}</span>`);
@@ -4911,7 +4856,7 @@
       const productInfoEl = document.getElementById('modalProductInfo');
       const productDetailsEl = document.getElementById('modalProductDetails');
       if (productInfoEl && productDetailsEl) {
-        if ((tool.frontmatter.company || tool.frontmatter.price) && itemSec !== 'jobs') {
+        if ((tool.frontmatter.company || tool.frontmatter.price) && tool.frontmatter.entry_type !== 'job_remote') {
           const parts = [];
           if (tool.frontmatter.company) parts.push(`<span>🏢 <strong>Fabricante:</strong> ${escapeHtml(tool.frontmatter.company)}</span>`);
           if (tool.frontmatter.price) parts.push(`<span>💰 <strong>Precio:</strong> ${escapeHtml(tool.frontmatter.price)}</span>`);
@@ -5153,10 +5098,10 @@
 
     function openIngestModal() {
       // Por defecto toma la sección activa actual
-      const defaultDest = currentSection === 'jobs' 
-        ? 'job_remote' 
-        : currentSection === 'tips' 
-        ? 'tech_tip' 
+      const defaultDest = currentSection === 'trabajo-oportunidades'
+        ? 'job_remote'
+        : currentSection === 'aprendizaje'
+        ? 'tech_tip'
         : 'tool';
       setModalTargetSection(defaultDest);
       document.getElementById('ingestModal').classList.remove('hidden');
@@ -5253,11 +5198,11 @@
         document.getElementById('searchInput').focus();
       } else if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && document.activeElement?.closest('#sectionTabs')) {
         e.preventDefault();
-        const order = ['all', 'tools', 'tips', 'jobs'];
+        const order = ['all', ...taxonomyAreas().map((area) => area.id)];
         const index = Math.max(0, order.indexOf(currentSection));
         const next = e.key === 'ArrowRight' ? order[(index + 1) % order.length] : order[(index + order.length - 1) % order.length];
         switchSection(next);
-        document.getElementById(next === 'all' ? 'tabSectionAll' : next === 'tools' ? 'tabSectionTools' : next === 'tips' ? 'tabSectionTips' : 'tabSectionJobs')?.focus();
+        document.getElementById(next === 'all' ? 'tabSectionAll' : `tabSection-${next}`)?.focus();
       } else if (e.key === 'Escape') {
         closeCategoryManagerModal();
         closeSaveConfirmModal();

@@ -1,7 +1,7 @@
 ---
 name: OmniRoute
 url: 'https://github.com/cheaper-inference/OmniRoute'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - ai-gateway
   - llm
@@ -19,7 +19,8 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: diegosouzapw
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # OmniRoute
 

@@ -1,7 +1,7 @@
 ---
 name: Grainient
 url: 'https://grainient.supply/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - gradientes
   - fondos
@@ -15,7 +15,8 @@ author: Raunak
 author_handle: Skirook
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Grainient
 

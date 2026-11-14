@@ -1,10 +1,9 @@
 ---
 name: polyhaven.com
 url: 'http://polyhaven.com/'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - dev
-  - tool
 status: to_try
 date_added: '2026-11-02'
 created_at: '2026-11-02T17:26:55.805Z'
@@ -13,7 +12,8 @@ author: Dumble
 author_handle: Y0urDumble
 entry_type: tool
 classified_by: Fallback (Sin IA)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # polyhaven.com
 

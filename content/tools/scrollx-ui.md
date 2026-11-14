@@ -1,12 +1,12 @@
 ---
 name: ScrollX UI
 url: 'https://scrollxui.dev/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
   - open-source
   - componentes
-  - animaciones
+  - animacion
   - interactividad
   - frontend
 status: to_try
@@ -18,7 +18,8 @@ author_handle: kasuncfdo
 entry_type: tool
 company: ScrollX UI (@Ahdeetai)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # ScrollX UI
 

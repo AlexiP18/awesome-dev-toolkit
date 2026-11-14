@@ -1,7 +1,7 @@
 ---
 name: Raspberry Pi 5
 url: 'https://www.raspberrypi.com/products/raspberry-pi-5/'
-category: Productos Tecnológicos & Hardware
+category: 'Terminal, IDE & hardware'
 tags:
   - hardware
   - sbc
@@ -18,7 +18,8 @@ company: Raspberry Pi
 price: $60 - $80 USD
 classified_by: Google Gemini (3.8 Flash)
 created_at: '2026-10-25T21:42:54.372Z'
-conjunto: producto
+conjunto: app
+area: desarrollo-software
 ---
 # 🖥️ Raspberry Pi 5
 

@@ -2,7 +2,7 @@
 name: Fleetbase
 url: 'https://github.com/fleetbase/fleetbase'
 website_url: 'https://fleetbase.io/'
-category: Backend & APIs
+category: 'Backend, APIs & datos'
 tags:
   - logistics
   - supply-chain
@@ -22,7 +22,8 @@ author_handle: Sn0wbrave
 entry_type: tool
 company: Fleetbase
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # Fleetbase
 

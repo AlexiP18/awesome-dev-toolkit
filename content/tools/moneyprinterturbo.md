@@ -1,7 +1,7 @@
 ---
 name: MoneyPrinterTurbo
 url: 'https://github.com/harry0703/MoneyPrinterTurbo'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - video
   - ia
@@ -19,8 +19,9 @@ author_handle: albacnt
 entry_type: tool
 company: harry0703
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
 stars: 143011
+area: diseno-creatividad
 ---
 # MoneyPrinterTurbo
 

@@ -2,7 +2,7 @@
 name: Suwayomi-Server
 url: 'https://github.com/Suwayomi/Suwayomi-Server'
 website_url: 'https://suwayomi.org/'
-category: Productivity & Tools
+category: 'DevOps, cloud & self-hosting'
 tags:
   - manga
   - self-hosted
@@ -17,7 +17,8 @@ author_handle: sentient_agency
 entry_type: tool
 company: Suwayomi
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # Suwayomi-Server
 

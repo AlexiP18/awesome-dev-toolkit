@@ -1,7 +1,7 @@
 ---
 name: ShapeFactory
 url: 'https://shapefactory.co/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - diseno
   - logos
@@ -17,7 +17,8 @@ author_handle: tranmautritam
 entry_type: tool
 company: ShapeFactory
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # ShapeFactory
 

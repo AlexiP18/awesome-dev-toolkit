@@ -2,12 +2,12 @@
 name: Motion AI Kit
 url: 'https://github.com/motiondivision/ai-kit'
 website_url: 'https://motion.dev/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - motion
   - agent-skills
   - cursor
-  - animation
+  - animacion
   - frontend
 stars: 70
 status: to_try
@@ -19,7 +19,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Motion (Framer)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Motion AI Kit
 

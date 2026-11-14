@@ -2,7 +2,7 @@
 name: Three.js
 url: 'https://github.com/mrdoob/three.js'
 website_url: 'https://threejs.org/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - 3d
   - webgl
@@ -18,7 +18,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Three.js
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Three.js
 

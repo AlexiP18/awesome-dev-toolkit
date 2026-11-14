@@ -1,12 +1,11 @@
 ---
 name: before.click
 url: 'https://before.click/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - app-store
   - screenshots
   - mobile
-  - inspiracion
   - aso
 status: to_try
 date_added: '2026-11-04'
@@ -18,6 +17,7 @@ entry_type: tool
 company: before.click
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # before.click
 

@@ -1,7 +1,7 @@
 ---
 name: Surge AI
 url: 'https://surgehq.ai/'
-category: Trabajo & Freelance
+category: Entrenamiento de IA & microtareas
 tags:
   - remoto
   - freelance
@@ -20,7 +20,7 @@ location: Remoto (Mundial)
 salary: $20 - $40 USD/h
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+area: trabajo-oportunidades
 ---
 # 💼 Surge AI
 

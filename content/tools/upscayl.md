@@ -1,8 +1,8 @@
 ---
 name: Upscayl
 url: 'https://github.com/upscayl/upscayl'
-category: 'Prompts, Art & Video'
-conjunto: recursos
+category: 'Video, audio, imagen & 3D'
+conjunto: codigo
 tags:
   - upscaling
   - imagenes
@@ -17,6 +17,7 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: PA13L0
 classified_by: Importado del vault
+area: diseno-creatividad
 ---
 # Upscayl
 

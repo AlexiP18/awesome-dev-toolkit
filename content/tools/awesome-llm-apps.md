@@ -1,12 +1,12 @@
 ---
 name: Awesome LLM Apps
 url: 'https://github.com/Shubhamsaboo/awesome-llm-apps'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - agents
+  - python
+  - agentes
   - llm
   - rag
-  - python
   - open-source
   - multi-agent
   - voice-agents
@@ -20,7 +20,8 @@ author_handle: ErickSky
 entry_type: tool
 company: Shubham Saboo
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Awesome LLM Apps
 

@@ -1,8 +1,8 @@
 ---
 name: Jellyfin
 url: 'https://github.com/jellyfin/jellyfin'
-category: DevOps & Cloud
-conjunto: recursos
+category: 'DevOps, cloud & self-hosting'
+conjunto: codigo
 tags:
   - self-hosted
   - media-server
@@ -17,6 +17,7 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: PA13L0
 classified_by: Importado del vault
+area: desarrollo-software
 ---
 # Jellyfin
 

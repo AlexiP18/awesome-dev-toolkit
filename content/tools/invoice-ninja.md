@@ -2,7 +2,7 @@
 name: Invoice Ninja
 url: 'https://nosubscription.org/software/invoice-ninja'
 website_url: 'https://www.invoiceninja.com/'
-category: Productivity & Tools
+category: 'DevOps, cloud & self-hosting'
 tags:
   - facturacion
   - self-hosted
@@ -18,7 +18,8 @@ author_handle: Cypher1984
 entry_type: tool
 company: Invoice Ninja
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # Invoice Ninja
 

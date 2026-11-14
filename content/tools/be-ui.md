@@ -1,12 +1,12 @@
 ---
 name: Be UI
 url: 'https://beui.dev/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - componentes
   - react
-  - animaciones
   - tailwind
+  - componentes
+  - animacion
   - frontend
   - nextjs
   - react-native
@@ -18,11 +18,12 @@ author: Bardhyl Bytyqi
 author_handle: BardhylBytyqi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
 source_tweets:
   - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
   - 'https://x.com/Hartdrawss/status/2108799722727059563'
 updated_at: '2026-11-13T05:00:36.257Z'
+area: diseno-creatividad
 ---
 # Be UI
 

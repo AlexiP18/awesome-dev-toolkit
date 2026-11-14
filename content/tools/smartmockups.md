@@ -1,7 +1,7 @@
 ---
 name: Smartmockups
 url: 'https://smartmockups.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - mockups
   - diseno
@@ -15,7 +15,8 @@ author_handle: ecommartinez
 entry_type: tool
 company: Canva
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: diseno-creatividad
 ---
 # Smartmockups
 

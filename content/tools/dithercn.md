@@ -2,15 +2,15 @@
 name: dithercn
 url: 'https://github.com/opencoredev/dithercn'
 website_url: 'https://dithercn.dev/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - open source
+  - typescript
+  - open-source
   - dither
   - shaders
   - shadcn
   - ui
   - frontend
-  - typescript
   - agent-skills
 stars: 119
 status: to_try
@@ -22,7 +22,8 @@ author_handle: leodev
 entry_type: tool
 company: opencoredev
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # dithercn
 

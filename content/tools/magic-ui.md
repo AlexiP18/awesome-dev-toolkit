@@ -1,12 +1,12 @@
 ---
 name: Magic UI
 url: 'https://magicui.design/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
   - tailwind
   - componentes
-  - animaciones
+  - animacion
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:14:31.407Z'
@@ -15,7 +15,8 @@ author: "\U0001D40D\U0001D428\U0001D41A\U0001D421"
 author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Magic UI
 

@@ -2,7 +2,7 @@
 name: Wayback Machine (Internet Archive)
 url: 'https://web.archive.org/'
 website_url: 'https://archive.org/'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - archivo
   - wayback
@@ -17,7 +17,8 @@ author_handle: precisox
 entry_type: tool
 company: Internet Archive
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # Wayback Machine (Internet Archive)
 

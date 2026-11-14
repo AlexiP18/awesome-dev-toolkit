@@ -1,13 +1,13 @@
 ---
 name: VoiceStudio
 url: 'https://github.com/debpalash/VoiceStudio'
-category: AI & Machine Learning
+category: 'Voz, visión & IA aplicada'
 tags:
+  - python
   - tts
   - voice-cloning
   - transcription
   - local-first
-  - python
 stars: 101127
 status: to_try
 date_added: '2026-11-05'
@@ -17,7 +17,8 @@ author: niko.
 author_handle: nikosolenne
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # VoiceStudio
 

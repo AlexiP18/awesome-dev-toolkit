@@ -1,13 +1,13 @@
 ---
 name: LosslessCut
 url: 'https://github.com/mifi/lossless-cut'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
+  - typescript
   - video-editor
   - audio-editor
   - lossless
   - ffmpeg
-  - typescript
   - video-files
 stars: 45618
 status: to_try
@@ -18,7 +18,8 @@ author: rachit
 author_handle: rachiitgr
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # LosslessCut
 

@@ -1,12 +1,12 @@
 ---
 name: Qwen3-ASR
 url: 'https://github.com/QwenLM/Qwen3-ASR'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
+  - python
   - asr
   - speech-recognition
   - multilingual
-  - python
   - audio
   - qwen
 stars: 3837
@@ -19,7 +19,8 @@ author_handle: Shruti_0810
 entry_type: tool
 company: Qwen (Alibaba Cloud)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Qwen3-ASR
 

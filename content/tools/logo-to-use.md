@@ -1,7 +1,7 @@
 ---
 name: Logo To Use
 url: 'https://logotouse.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - logos
   - branding
@@ -17,11 +17,12 @@ author: Bardhyl Bytyqi
 author_handle: BardhylBytyqi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
 source_tweets:
   - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
   - 'https://x.com/VullnetAdemaj/status/2108894975635423306'
 updated_at: '2026-11-13T05:00:36.256Z'
+area: diseno-creatividad
 ---
 # Logo To Use
 

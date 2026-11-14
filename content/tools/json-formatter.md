@@ -1,7 +1,7 @@
 ---
 name: JSON Formatter
 url: 'https://jsonformatter.org/'
-category: Productivity & Tools
+category: Utilidades web & archivos
 tags:
   - json
   - formateo
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # JSON Formatter
 

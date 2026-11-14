@@ -1,11 +1,11 @@
 ---
 name: Strix
 url: 'https://github.com/usestrix/strix'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - security
   - vulnerability-scanner
-  - ai
+  - ia
   - pentest
   - open-source
 status: to_try
@@ -17,7 +17,8 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: usestrix
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Strix
 

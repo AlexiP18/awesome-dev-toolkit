@@ -2,12 +2,12 @@
 name: Full Stack Engineer (Remoto LATAM)
 url: 'https://x.com/remote_jobs_tech/status/1789555666777888999'
 website_url: 'https://remoteok.com'
-category: Trabajo & Freelance
+category: Empleo remoto & bolsas
 tags:
-  - remote
-  - latam
   - typescript
   - react
+  - remote
+  - latam
   - nodejs
 status: to_try
 date_added: 2026-10-25T00:00:00.000Z
@@ -20,7 +20,7 @@ location: Remoto (LATAM)
 salary: '$4,000 - $6,000 USD / mes'
 job_type: remote_job
 created_at: '2026-10-25T18:05:58.440Z'
-conjunto: recursos
+area: trabajo-oportunidades
 ---
 # 💼 Full Stack Engineer (Remoto LATAM)
 

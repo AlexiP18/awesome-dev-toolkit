@@ -1,10 +1,10 @@
 ---
 name: mcp-for-blender
 url: 'https://github.com/ahujasid/blender-mcp'
-category: 'Prompts, Art & Video'
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - 3d-modeling
-  - ai
+  - ia
   - blender
   - blender-addon
   - blender-mcp
@@ -17,7 +17,8 @@ author: Dumble
 author_handle: Y0urDumble
 entry_type: tool
 classified_by: Fallback (Sin IA)
-conjunto: producto
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # mcp-for-blender
 

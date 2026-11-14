@@ -1,7 +1,7 @@
 ---
 name: PrivNote
 url: 'https://privnote.com/'
-category: Productivity & Tools
+category: Seguridad & privacidad
 tags:
   - seguridad
   - mensajes
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # PrivNote
 

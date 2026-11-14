@@ -1,7 +1,7 @@
 ---
 name: Semantica
 url: 'https://github.com/HKUDS/semantica'
-category: AI & Machine Learning
+category: 'RAG, búsqueda & datos para IA'
 tags:
   - knowledge-graph
   - context
@@ -16,7 +16,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: HKUDS
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Semantica
 

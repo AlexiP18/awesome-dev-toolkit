@@ -1,7 +1,7 @@
 ---
 name: NetBird
 url: 'https://netbird.io/'
-category: DevOps & Cloud
+category: Seguridad & privacidad
 tags:
   - networking
   - vpn
@@ -16,7 +16,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: desarrollo-software
 ---
 # NetBird
 

@@ -1,7 +1,7 @@
 ---
 name: LLM App (serviette)
 url: 'https://github.com/pathwaycom/llm-app'
-category: AI & Machine Learning
+category: 'RAG, búsqueda & datos para IA'
 tags:
   - rag
   - llm
@@ -18,7 +18,8 @@ author_handle: dkare1009
 entry_type: tool
 company: Pathway
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # LLM App (serviette)
 

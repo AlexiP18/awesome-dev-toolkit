@@ -1,12 +1,12 @@
 ---
 name: Reverse UI
 url: 'https://reverseui.com/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - premium
-  - animated components
-  - ui components
-  - web apps
+  - animated-components
+  - componentes
+  - web-apps
   - customizable
 status: to_try
 date_added: '2026-11-03'
@@ -16,7 +16,8 @@ author: Houdayfa
 author_handle: HoudayfaDesign
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Reverse UI
 

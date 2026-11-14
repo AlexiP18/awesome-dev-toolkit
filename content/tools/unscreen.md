@@ -1,7 +1,7 @@
 ---
 name: Unscreen
 url: 'https://unscreen.com/'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - video
   - fondo
@@ -15,7 +15,8 @@ author_handle: ecommartinez
 entry_type: tool
 company: Kaleido AI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Unscreen
 

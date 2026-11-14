@@ -1,7 +1,7 @@
 ---
 name: llm-course
 url: 'https://github.com/mlabonne/llm-course'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - llm
   - course
@@ -18,7 +18,8 @@ author_handle: precisox
 entry_type: tool
 company: mlabonne
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # llm-course
 

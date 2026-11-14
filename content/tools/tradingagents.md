@@ -1,12 +1,12 @@
 ---
 name: TradingAgents
 url: 'https://github.com/TauricResearch/TradingAgents'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
+  - python
   - ia
   - agentes
   - trading
-  - python
   - llm
 stars: 120850
 status: to_try
@@ -18,7 +18,8 @@ author_handle: brenzhills
 entry_type: tool
 company: TauricResearch
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # TradingAgents
 

@@ -1,7 +1,7 @@
 ---
 name: Objectways
 url: 'https://objectways.com/'
-category: Trabajo & Freelance
+category: Entrenamiento de IA & microtareas
 tags:
   - remoto
   - freelance
@@ -20,7 +20,7 @@ location: Remoto (Mundial)
 salary: $8 - $15 USD/h
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+area: trabajo-oportunidades
 ---
 # 💼 Objectways
 

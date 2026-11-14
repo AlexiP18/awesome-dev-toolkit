@@ -1,13 +1,13 @@
 ---
 name: Transitions.dev
 url: 'https://transitions.dev/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - ui transitions
-  - animations
-  - fluid interfaces
-  - web apps
-  - ai agents
+  - ui-transitions
+  - animacion
+  - fluid-interfaces
+  - web-apps
+  - agentes
   - copy-paste
 status: to_try
 date_added: '2026-11-03'
@@ -17,7 +17,8 @@ author: Houdayfa
 author_handle: HoudayfaDesign
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Transitions.dev
 

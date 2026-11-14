@@ -1,7 +1,7 @@
 ---
 name: Awesome MCP Servers
 url: 'https://github.com/punkpeye/awesome-mcp-servers'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - mcp
   - servers
@@ -16,7 +16,8 @@ author_handle: mdancho84
 entry_type: tool
 company: punkpeye
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # Awesome MCP Servers
 

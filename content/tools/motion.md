@@ -1,15 +1,15 @@
 ---
 name: Motion
 url: 'https://github.com/motiondivision/motion'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
-  - animation
+  - typescript
+  - animacion
   - ui
   - gestures
   - layout
   - javascript
-  - typescript
   - motion-design
   - ui-animation
 stars: 34846
@@ -21,12 +21,13 @@ author: Marlen
 author_handle: Marlenuii
 entry_type: tool
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
+conjunto: codigo
 website_url: 'https://motion.dev/'
 source_tweets:
   - 'https://x.com/Marlenuii/status/2111419391271186795'
   - 'https://x.com/Lucy_love_AI/status/2110203192831303920'
 updated_at: '2026-11-13T05:00:36.270Z'
+area: diseno-creatividad
 ---
 # Motion
 

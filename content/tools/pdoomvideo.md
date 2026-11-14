@@ -1,7 +1,7 @@
 ---
 name: PDoomVideo
 url: 'https://github.com/JohnHeibel/PDoomVideo'
-category: 'Prompts, Art & Video'
+category: Animación & motion web
 tags:
   - music-video
   - motion-graphics
@@ -18,7 +18,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: JohnHeibel
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # PDoomVideo
 

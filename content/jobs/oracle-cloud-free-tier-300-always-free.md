@@ -1,11 +1,11 @@
 ---
 name: Oracle Cloud Free Tier ($300 + Always Free)
 url: 'https://www.oracle.com/cloud/free'
-category: DevOps & Cloud
+category: 'Créditos, planes gratis & programas'
 tags:
   - cloud
   - oracle
-  - self-hosting
+  - self-hosted
   - infraestructura
   - always-free
 status: to_try
@@ -18,7 +18,8 @@ entry_type: tool
 company: Oracle
 price: $300 USD por 30 días + capa Always Free permanente
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: trabajo-oportunidades
 ---
 # Oracle Cloud Free Tier ($300 + Always Free)
 

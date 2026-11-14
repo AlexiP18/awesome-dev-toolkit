@@ -1,11 +1,11 @@
 ---
 name: LangExtract
 url: 'https://github.com/google/langextract'
-category: Consejos & Buenas Prácticas
+category: 'Guías, tips & buenas prácticas'
 tags:
+  - python
   - extraccion-datos
   - llm
-  - python
   - gemini
   - ollama
   - structured-data
@@ -22,6 +22,7 @@ entry_type: tech_tip
 company: Google
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: consejos
+area: aprendizaje
 ---
 # 💡 LangExtract
 

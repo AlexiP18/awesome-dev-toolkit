@@ -1,10 +1,9 @@
 ---
 name: claude code
 url: 'http://claude.com/claude-code'
-category: Agentes & Protocolo MCP
+category: Asistentes de código & skills
 tags:
   - dev
-  - tool
 status: to_try
 date_added: '2026-11-02'
 created_at: '2026-11-02T17:26:55.803Z'
@@ -13,7 +12,8 @@ author: Dumble
 author_handle: Y0urDumble
 entry_type: tool
 classified_by: Fallback (Sin IA)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # claude code
 

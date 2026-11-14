@@ -1,10 +1,10 @@
 ---
 name: gstack
 url: 'https://github.com/garrytan/gstack'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - claude-code
-  - ai-agents
+  - agentes
   - developer-tools
   - startup
 status: to_try
@@ -16,7 +16,8 @@ author_handle: hasantoxr
 entry_type: tool
 company: Garry Tan
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # gstack
 

@@ -1,9 +1,9 @@
 ---
 name: Scrolltide
 url: 'https://www.scrolltide.co/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - design
+  - diseno
   - prompts
   - scroll-animation
   - 3d
@@ -18,7 +18,8 @@ author_handle: himanshubuildss
 entry_type: tool
 company: Scrolltide
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # Scrolltide
 

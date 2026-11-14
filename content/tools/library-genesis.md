@@ -1,10 +1,10 @@
 ---
 name: Library Genesis
 url: 'https://libgen.is/'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - libros
-  - textos academicos
+  - textos-academicos
   - biblioteca
 status: to_try
 date_added: '2026-11-06'
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # Library Genesis
 

@@ -1,7 +1,7 @@
 ---
 name: Imageory
 url: 'https://imageory.in/'
-category: 'Prompts, Art & Video'
+category: Prompts & generación visual con IA
 tags:
   - prompts
   - ai-images
@@ -17,6 +17,7 @@ entry_type: tool
 company: Imageory
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Imageory
 

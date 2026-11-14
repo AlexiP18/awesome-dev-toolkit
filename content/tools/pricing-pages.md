@@ -1,9 +1,8 @@
 ---
 name: Pricing Pages
 url: 'https://pricingpages.design/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - inspiracion
   - pricing
   - saas
   - ui
@@ -17,6 +16,7 @@ author_handle: Tegadesigns
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Pricing Pages
 

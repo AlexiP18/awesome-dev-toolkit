@@ -1,11 +1,11 @@
 ---
 name: Mediabunny
 url: 'https://github.com/Vanilagy/mediabunny'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
+  - typescript
   - video
   - audio
-  - typescript
   - webcodecs
   - encoding
 stars: 7431
@@ -18,7 +18,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Vanilagy
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Mediabunny
 

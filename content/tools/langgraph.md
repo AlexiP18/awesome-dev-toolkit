@@ -1,9 +1,9 @@
 ---
 name: LangGraph
 url: 'https://github.com/langchain-ai/langgraph'
-category: Agentes & Protocolo MCP
+category: 'Agentes, MCP & automatización'
 tags:
-  - agents
+  - agentes
   - workflows
   - graphs
   - llm
@@ -16,7 +16,8 @@ author_handle: mdancho84
 entry_type: tool
 company: LangChain
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # LangGraph
 

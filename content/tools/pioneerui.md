@@ -1,11 +1,11 @@
 ---
 name: PioneerUI
 url: 'https://www.pioneerui.com/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - react
   - nextjs
-  - components
+  - componentes
   - ui-kit
   - rsc
   - frontend
@@ -18,7 +18,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: PioneerUI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # PioneerUI
 

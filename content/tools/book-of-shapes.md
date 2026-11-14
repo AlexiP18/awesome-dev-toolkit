@@ -1,12 +1,11 @@
 ---
 name: Book of Shapes
 url: 'https://bookofshapes.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - patrones
   - generativo
   - arte-algoritmico
-  - inspiracion
   - diseno
 status: to_try
 date_added: '2026-11-05'
@@ -17,6 +16,7 @@ author_handle: Hartdrawss
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Book of Shapes
 

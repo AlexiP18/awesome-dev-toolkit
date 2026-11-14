@@ -1,7 +1,7 @@
 ---
 name: system-design-primer
 url: 'https://github.com/donnemartin/system-design-primer'
-category: Documentation & Resources
+category: 'Guías, tips & buenas prácticas'
 tags:
   - system-design
   - architecture
@@ -16,6 +16,7 @@ author_handle: Shruti_0810
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: consejos
+area: aprendizaje
 ---
 # system-design-primer
 

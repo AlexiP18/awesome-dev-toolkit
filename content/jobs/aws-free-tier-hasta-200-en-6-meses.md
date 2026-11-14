@@ -1,7 +1,7 @@
 ---
 name: AWS Free Tier (hasta $200 en 6 meses)
 url: 'https://aws.amazon.com/free'
-category: DevOps & Cloud
+category: 'Créditos, planes gratis & programas'
 tags:
   - cloud
   - aws
@@ -18,7 +18,8 @@ entry_type: tool
 company: Amazon Web Services
 price: Hasta $200 USD de crédito en 6 meses
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: trabajo-oportunidades
 ---
 # AWS Free Tier (hasta $200 en 6 meses)
 

@@ -1,13 +1,12 @@
 ---
 name: learn-harness-engineering
 url: 'https://github.com/walkinglabs/learn-harness-engineering'
-category: Documentation & Resources
+category: 'Guías, tips & buenas prácticas'
 tags:
+  - typescript
   - harness-engineering
-  - ai-agents
   - agentes
   - tutorial
-  - typescript
   - claude-code
   - codex
   - educacion
@@ -23,6 +22,7 @@ company: walkinglabs
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: consejos
+area: aprendizaje
 ---
 # learn-harness-engineering
 

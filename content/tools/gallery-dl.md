@@ -1,12 +1,12 @@
 ---
 name: gallery-dl
 url: 'https://github.com/mikf/gallery-dl'
-category: CLI & Terminal
+category: 'Terminal, IDE & hardware'
 tags:
+  - python
   - cli
   - descargas
   - scraping
-  - python
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:16:04.721Z'
@@ -16,7 +16,8 @@ author_handle: sentient_agency
 entry_type: tool
 company: mikf
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
+area: desarrollo-software
 ---
 # gallery-dl
 

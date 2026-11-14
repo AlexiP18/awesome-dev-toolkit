@@ -1,8 +1,8 @@
 ---
 name: Open Culture
 url: 'https://openculture.com/'
-category: Documentation & Resources
-conjunto: recursos
+category: 'Cursos, libros & rutas'
+conjunto: inspiracion
 tags:
   - cursos
   - educacion
@@ -25,6 +25,7 @@ academic_promo_details: >-
   Contenido y cursos totalmente gratuitos de universidades y plataformas
   educativas abiertas.
 classified_by: Importado del vault
+area: aprendizaje
 ---
 # Open Culture
 

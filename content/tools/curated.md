@@ -1,11 +1,10 @@
 ---
 name: Curated
 url: 'https://curated.design/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - web-design
   - landing-pages
-  - inspiracion
   - filtros
   - live-sites
 status: to_try
@@ -18,6 +17,7 @@ entry_type: tool
 company: Curated
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Curated
 

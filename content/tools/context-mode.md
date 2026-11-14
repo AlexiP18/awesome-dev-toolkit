@@ -2,7 +2,7 @@
 name: context-mode
 url: 'https://github.com/mksglu/context-mode'
 website_url: 'https://contextmode.ai'
-category: Agentes & Protocolo MCP
+category: Asistentes de código & skills
 tags:
   - mcp
   - mcp-server
@@ -20,7 +20,8 @@ author_handle: nikosolenne
 entry_type: tool
 company: mksglu
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # context-mode
 

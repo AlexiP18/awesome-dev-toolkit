@@ -1,7 +1,7 @@
 ---
 name: Storyset
 url: 'https://storyset.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - ilustraciones
   - animacion
@@ -16,7 +16,8 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Freepik
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: diseno-creatividad
 ---
 # Storyset
 

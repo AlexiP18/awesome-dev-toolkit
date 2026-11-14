@@ -1,15 +1,15 @@
 ---
 name: HyperDesign
 url: 'https://github.com/hyperbrowserai/hyperbrowser-app-examples'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
+  - typescript
   - design-system
   - ui-ux
   - frontend
   - claude-code
   - cursor
   - hyperbrowser
-  - typescript
 stars: 1947
 status: to_try
 date_added: '2026-11-06'
@@ -20,7 +20,8 @@ author_handle: Abmankendrick
 entry_type: tool
 company: Hyperbrowser
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # HyperDesign
 

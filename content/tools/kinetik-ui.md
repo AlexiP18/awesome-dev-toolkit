@@ -1,17 +1,17 @@
 ---
 name: Kinetik UI
 url: 'https://kinetik-ui.dev/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - frontend
   - ui
-  - animations
+  - animacion
   - expo
   - react-native
   - reanimated
   - gesture-handler
   - skia
-  - components
+  - componentes
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:41:34.291Z'
@@ -20,7 +20,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Kinetik UI
 

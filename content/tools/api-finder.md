@@ -1,7 +1,7 @@
 ---
 name: API Finder
 url: 'https://apifinder.io/'
-category: Backend & APIs
+category: 'Backend, APIs & datos'
 tags:
   - apis
   - directory
@@ -16,7 +16,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
+area: desarrollo-software
 ---
 # API Finder
 

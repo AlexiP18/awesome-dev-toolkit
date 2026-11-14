@@ -1,12 +1,12 @@
 ---
 name: Creavit Studio
 url: 'https://creavit.studio/'
-category: Productivity & Tools
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - macos
   - screen-recorder
   - video-editor
-  - ai
+  - ia
   - product-demos
 status: to_try
 date_added: '2026-11-05'
@@ -17,7 +17,8 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Creavit Studio
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: consejos
+area: inteligencia-artificial
 ---
 # Creavit Studio
 

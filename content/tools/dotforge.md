@@ -1,7 +1,7 @@
 ---
 name: DotForge
 url: 'https://dotforge.vercel.app/'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - dither
   - shaders
@@ -16,7 +16,8 @@ author: Harshil Tomar
 author_handle: Hartdrawss
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # DotForge
 

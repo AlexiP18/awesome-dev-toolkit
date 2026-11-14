@@ -1,12 +1,12 @@
 ---
 name: img2threejs
 url: 'https://github.com/img2threejs/img2threejs'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - 3d
-  - ai
+  - ia
   - image-to-3d
-  - three.js
+  - three-js
   - procedural-generation
   - webgl
   - computer-graphics
@@ -21,7 +21,8 @@ entry_type: tool
 company: img2threejs
 price: Gratis
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # img2threejs
 

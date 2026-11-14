@@ -1,15 +1,15 @@
 ---
 name: Scroll Shaders
 url: 'https://scrollshaders.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
+  - react
   - frontend
   - ui
   - shaders
   - webgl
-  - animations
+  - animacion
   - css
-  - react
   - backgrounds
 status: to_try
 date_added: '2026-11-03'
@@ -19,7 +19,8 @@ author: Aman Singh
 author_handle: amananimates
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Scroll Shaders
 

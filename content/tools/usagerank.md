@@ -1,7 +1,7 @@
 ---
 name: UsageRank
 url: 'https://usagerank.com/'
-category: Productivity & Tools
+category: Asistentes de código & skills
 tags:
   - ia
   - claude
@@ -17,7 +17,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # UsageRank
 

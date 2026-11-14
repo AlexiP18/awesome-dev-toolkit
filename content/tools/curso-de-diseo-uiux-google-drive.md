@@ -2,7 +2,7 @@
 name: Curso de Diseño UI/UX (Google Drive)
 url: >-
   https://drive.google.com/drive/mobile/folders/1if09a9QyNfBRlAKey7If5preZ3BswudZ/132UlHNZiDH5aI9OyzgiI0UYa20xCoUUF?sort=13&direction=a
-category: Frontend & UI
+category: 'Cursos, libros & rutas'
 tags:
   - ui
   - ux
@@ -18,7 +18,8 @@ author: ayo.artss
 author_handle: madamayo_
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: consejos
+conjunto: aprender
+area: aprendizaje
 ---
 # Curso de Diseño UI/UX (Google Drive)
 

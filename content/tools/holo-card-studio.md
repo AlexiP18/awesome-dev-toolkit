@@ -1,7 +1,7 @@
 ---
 name: holo-card-studio
 url: 'https://github.com/EverettFish/holo-card-studio'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - blender
   - threejs
@@ -20,7 +20,8 @@ author_handle: ErickSky
 entry_type: tool
 company: EverettFish
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # holo-card-studio
 

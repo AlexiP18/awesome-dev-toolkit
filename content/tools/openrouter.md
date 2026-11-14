@@ -1,7 +1,7 @@
 ---
 name: OpenRouter
 url: 'https://openrouter.ai/'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - api-gateway
   - llm
@@ -17,7 +17,8 @@ author_handle: exploraX_
 entry_type: tool
 company: OpenRouter
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: consejos
+area: inteligencia-artificial
 ---
 # OpenRouter
 

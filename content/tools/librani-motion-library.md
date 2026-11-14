@@ -1,7 +1,7 @@
 ---
 name: librani Motion Library
 url: 'https://librani.org/'
-category: 'Prompts, Art & Video'
+category: Prompts & generación visual con IA
 tags:
   - motion
   - video
@@ -18,7 +18,8 @@ entry_type: tool
 company: librani
 price: Gratis
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # librani Motion Library
 

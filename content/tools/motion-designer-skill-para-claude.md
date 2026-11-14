@@ -2,15 +2,15 @@
 name: Motion Designer Skill para Claude
 url: >-
   https://www.tobiadonadon.com/projects/construct/material/skills/motion-designer
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - motion graphics
-  - video generation
-  - ai
+  - motion-graphics
+  - video-generation
+  - ia
   - claude
   - marketing
   - skill
-  - free
+  - gratis
 status: to_try
 date_added: '2026-11-02'
 created_at: '2026-11-02T17:27:53.220Z'
@@ -21,7 +21,8 @@ entry_type: tool
 company: Tobia Donadon
 price: Gratis
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Motion Designer Skill para Claude
 

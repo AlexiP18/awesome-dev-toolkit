@@ -1,7 +1,7 @@
 ---
 name: TapTone
 url: 'https://tap-tone.vercel.app/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - ui
   - sound
@@ -17,7 +17,8 @@ author_handle: angadbari01
 entry_type: tool
 company: TapTone
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # TapTone
 

@@ -1,9 +1,9 @@
 ---
 name: AI for Beginners
 url: 'https://github.com/microsoft/AI-For-Beginners'
-category: AI & Machine Learning
+category: 'Cursos, libros & rutas'
 tags:
-  - ai
+  - ia
   - neural-networks
   - deep-learning
   - computer-vision
@@ -19,7 +19,8 @@ entry_type: tool
 company: Microsoft
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # AI for Beginners
 

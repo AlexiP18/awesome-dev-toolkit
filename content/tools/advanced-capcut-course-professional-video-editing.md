@@ -1,7 +1,7 @@
 ---
 name: 'Advanced CapCut Course: Professional Video Editing'
 url: 'https://drive.google.com/drive/folders/1B8fUeKAjYUKLe6gEwOQtR9ODOtpWhKv-'
-category: 'Prompts, Art & Video'
+category: 'Cursos, libros & rutas'
 tags:
   - capcut
   - edicion-video
@@ -16,7 +16,8 @@ author: ayo.artss
 author_handle: madamayo_
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: consejos
+conjunto: aprender
+area: aprendizaje
 ---
 # Advanced CapCut Course: Professional Video Editing
 

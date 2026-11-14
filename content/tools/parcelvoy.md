@@ -1,7 +1,7 @@
 ---
 name: Parcelvoy
 url: 'https://parcelvoy.com/'
-category: Backend & APIs
+category: 'Backend, APIs & datos'
 tags:
   - marketing
   - email
@@ -18,7 +18,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Parcelvoy
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # Parcelvoy
 

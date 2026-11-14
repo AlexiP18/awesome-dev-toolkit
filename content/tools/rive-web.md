@@ -2,9 +2,9 @@
 name: Rive Web
 url: 'https://github.com/rive-app/rive-wasm'
 website_url: 'https://rive.app/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - animation
+  - animacion
   - vector
   - wasm
   - runtime
@@ -19,7 +19,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Rive
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Rive Web
 

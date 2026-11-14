@@ -2,13 +2,14 @@ import fs from 'fs';
 import path from 'path';
 import { ensureAuthorStub } from './author_manager.js';
 import { mapVaultCategory } from './category_manager.js';
+import { assignConjunto } from './classify_rules.js';
+import { categoryOmitsConjunto, isConjuntoId, normalizeTags } from './taxonomy.js';
 import { VaultBookmark, VaultBookmarkItem } from './export_vault.js';
 import { createOrUpdateToolNote, loadAllTools } from './note_generator.js';
 import { ClassificationResult, EntryType, ToolConjunto, ToolItem } from './types.js';
 import { canonicalUrlKey, namesLookLikeSameProduct, preferredDisplayUrl } from './url_normalize.js';
 
 const ENTRY_TYPES = new Set<EntryType>(['tool', 'product_showcase', 'tech_tip', 'job_remote', 'tech_product']);
-const CONJUNTOS = new Set<ToolConjunto>(['recursos', 'inspiracion', 'producto', 'consejos']);
 
 export interface ImportVaultStats {
   created: number;
@@ -60,19 +61,16 @@ function sharesCanonicalUrl(item: VaultBookmarkItem, tool: ToolItem): boolean {
 function entryTypeOf(raw: string | undefined, category: string): EntryType {
   const requested = blank(raw) as EntryType;
   if (ENTRY_TYPES.has(requested)) return requested;
-  if (category === 'Trabajo & Freelance') return 'job_remote';
-  if (category === 'Consejos & Buenas Prácticas') return 'tech_tip';
-  if (category === 'Productos Tecnológicos & Hardware') return 'tech_product';
-  if (category === 'Empresas & Productos') return 'product_showcase';
+  if (categoryOmitsConjunto(category)) return 'job_remote';
+  if (category === 'Guías, tips & buenas prácticas') return 'tech_tip';
   return 'tool';
 }
 
-function conjuntoOf(raw: string | null | undefined, entryType: EntryType): ToolConjunto | undefined {
-  const value = blank(raw).toLowerCase() as ToolConjunto;
-  if (CONJUNTOS.has(value)) return value;
-  if (entryType === 'tech_tip') return 'consejos';
-  if (entryType === 'tech_product' || entryType === 'product_showcase') return 'producto';
-  return undefined;
+function conjuntoOf(raw: string | null | undefined, entryType: EntryType, category: string, url: string): ToolConjunto | undefined {
+  if (categoryOmitsConjunto(category) || !category) return undefined;
+  const value = blank(raw).toLowerCase();
+  if (isConjuntoId(value)) return value as ToolConjunto;
+  return assignConjunto({ category, conjunto: value, entryType, url }) as ToolConjunto | undefined;
 }
 
 function toClassification(item: VaultBookmarkItem, bookmark: VaultBookmark): ClassificationResult {
@@ -81,13 +79,14 @@ function toClassification(item: VaultBookmarkItem, bookmark: VaultBookmark): Cla
   const entryType = entryTypeOf(entryHint, category);
   const url = preferredDisplayUrl([item.url, item.website_url]) || blank(item.url);
   const website = preferredDisplayUrl([item.website_url]);
+  const conjunto = conjuntoOf(item.conjunto, entryType, category, url);
   return {
     name: blank(item.name) || 'Recurso importado',
     canonicalUrl: url,
     websiteUrl: website && canonicalUrlKey(website) !== canonicalUrlKey(url) ? website : undefined,
     category,
-    conjunto: conjuntoOf(item.conjunto, entryType),
-    tags: Array.isArray(item.tags) ? item.tags.map((tag) => blank(tag).toLowerCase()).filter(Boolean) : [],
+    conjunto,
+    tags: normalizeTags(Array.isArray(item.tags) ? item.tags : [], conjunto, 6),
     oneLiner: blank(item.summary) || blank(bookmark.text) || 'Recurso importado desde el vault.',
     keyHighlights: Array.isArray(item.highlights) ? item.highlights.map((line) => blank(line)).filter(Boolean) : [],
     recommendedNotes: blank(bookmark.note_tweet),

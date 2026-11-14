@@ -1,7 +1,7 @@
 ---
 name: Project Gutenberg
 url: 'https://www.gutenberg.org/'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - ebooks
   - dominio-publico
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: Project Gutenberg
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # Project Gutenberg
 

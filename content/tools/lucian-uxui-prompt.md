@@ -1,11 +1,11 @@
 ---
 name: Lucian UX/UI Prompt
 url: 'https://lucianlabs.dev/uxui-prompt/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - ui
   - ux
-  - animaciones
+  - animacion
   - open-source
   - prompts
   - frontend
@@ -19,7 +19,8 @@ author_handle: lucian__03
 entry_type: tool
 company: Lucian Labs
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # Lucian UX/UI Prompt
 

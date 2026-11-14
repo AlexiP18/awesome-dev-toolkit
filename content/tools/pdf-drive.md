@@ -1,7 +1,7 @@
 ---
 name: PDF Drive
 url: 'https://www.pdfdrive.com/'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - libros
   - pdf
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: PDF Drive
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # PDF Drive
 

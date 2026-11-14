@@ -1,7 +1,7 @@
 ---
 name: Cleanup.pictures
 url: 'http://cleanup.pictures/'
-category: Productivity & Tools
+category: 'Video, audio, imagen & 3D'
 tags:
   - imagenes
   - inpainting
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Cleanup.pictures
 

@@ -2,7 +2,7 @@
 name: ArchiveBox
 url: 'https://github.com/ArchiveBox/ArchiveBox'
 website_url: 'https://archivebox.io/'
-category: Productivity & Tools
+category: 'DevOps, cloud & self-hosting'
 tags:
   - archivado
   - self-hosted
@@ -17,7 +17,8 @@ author_handle: sentient_agency
 entry_type: tool
 company: ArchiveBox
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # ArchiveBox
 

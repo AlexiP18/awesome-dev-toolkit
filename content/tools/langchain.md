@@ -1,12 +1,12 @@
 ---
 name: LangChain
 url: 'https://github.com/langchain-ai/langchain'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - llm
-  - agents
-  - framework
   - python
+  - llm
+  - agentes
+  - framework
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T04:24:23.976Z'
@@ -16,7 +16,8 @@ author_handle: mdancho84
 entry_type: tool
 company: LangChain
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # LangChain
 

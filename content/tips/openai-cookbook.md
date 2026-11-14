@@ -1,7 +1,7 @@
 ---
 name: OpenAI Cookbook
 url: 'https://github.com/openai/openai-cookbook'
-category: Documentation & Resources
+category: 'Guías, tips & buenas prácticas'
 tags:
   - openai
   - gpt
@@ -18,7 +18,8 @@ author_handle: dkare1009
 entry_type: tool
 company: OpenAI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: aprendizaje
 ---
 # OpenAI Cookbook
 

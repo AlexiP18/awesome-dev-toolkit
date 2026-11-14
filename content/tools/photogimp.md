@@ -1,12 +1,12 @@
 ---
 name: PhotoGIMP
 url: 'https://github.com/Diolinux/PhotoGIMP'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
+  - python
   - gimp
   - photoshop
-  - diseño
-  - python
+  - diseno
   - patch
 stars: 18542
 status: to_try
@@ -18,7 +18,8 @@ author_handle: DivyanshT91162
 entry_type: tool
 company: Diolinux
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: productividad-utilidades
 ---
 # PhotoGIMP
 

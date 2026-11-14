@@ -1,9 +1,9 @@
 ---
 name: social-media-skills
 url: 'https://github.com/charlie947/social-media-skills'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
-  - ai
+  - ia
   - claude
   - codex
   - social-media
@@ -18,7 +18,8 @@ author_handle: tom_doerr
 entry_type: tool
 company: charlie947
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # social-media-skills
 

@@ -1,14 +1,14 @@
 ---
 name: Easing Functions Cheat Sheet
 url: 'https://easings.net/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - frontend
   - ui
-  - animations
+  - animacion
   - css
   - easings
-  - design
+  - diseno
   - webdev
 status: to_try
 date_added: '2026-11-03'
@@ -18,7 +18,8 @@ author: Aman Singh
 author_handle: amananimates
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # Easing Functions Cheat Sheet
 

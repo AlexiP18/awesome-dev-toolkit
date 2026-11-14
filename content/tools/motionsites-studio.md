@@ -2,13 +2,13 @@
 name: MotionSites Studio
 url: 'https://studio.motionsites.ai/'
 website_url: 'https://motionsites.ai/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - frontend
-  - ai
+  - ia
   - web-design
   - 3d
-  - animaciones
+  - animacion
   - prompts
   - code-export
 status: to_try
@@ -20,7 +20,8 @@ author_handle: viktoroddy
 entry_type: tool
 company: MotionSites
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # MotionSites Studio
 

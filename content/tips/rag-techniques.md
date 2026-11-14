@@ -1,7 +1,7 @@
 ---
 name: RAG_Techniques
 url: 'https://github.com/NirDiamant/RAG_Techniques'
-category: AI & Machine Learning
+category: 'Guías, tips & buenas prácticas'
 tags:
   - rag
   - llm
@@ -18,7 +18,8 @@ author_handle: precisox
 entry_type: tool
 company: NirDiamant
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: aprendizaje
 ---
 # RAG_Techniques
 

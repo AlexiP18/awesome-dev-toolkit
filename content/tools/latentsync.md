@@ -1,15 +1,15 @@
 ---
 name: LatentSync
 url: 'https://github.com/bytedance/LatentSync'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - ai
+  - python
+  - ia
   - lipsync
   - video-gen
   - diffusion-models
   - research
   - virtual-avatars
-  - python
 stars: 6239
 status: to_try
 date_added: '2026-11-03'
@@ -20,7 +20,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: ByteDance
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # LatentSync
 

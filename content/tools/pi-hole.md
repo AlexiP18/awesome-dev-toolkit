@@ -1,8 +1,8 @@
 ---
 name: Pi-hole
 url: 'https://github.com/pi-hole/pi-hole'
-category: DevOps & Cloud
-conjunto: recursos
+category: 'DevOps, cloud & self-hosting'
+conjunto: codigo
 tags:
   - self-hosted
   - dns
@@ -17,6 +17,7 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: PA13L0
 classified_by: Importado del vault
+area: desarrollo-software
 ---
 # Pi-hole
 

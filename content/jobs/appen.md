@@ -2,7 +2,7 @@
 name: Appen
 url: 'https://connect.appen.com/register'
 website_url: 'https://www.appen.com/'
-category: Trabajo & Freelance
+category: Entrenamiento de IA & microtareas
 tags:
   - remoto
   - freelance
@@ -21,7 +21,7 @@ location: Remoto (Mundial)
 salary: $10 - $20 USD/h
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+area: trabajo-oportunidades
 ---
 # 💼 Appen
 

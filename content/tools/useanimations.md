@@ -1,11 +1,11 @@
 ---
 name: useAnimations
 url: 'https://useanimations.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
-  - animaciones
-  - icons
   - react
+  - animacion
+  - icons
   - shadcn-ui
   - lottie
   - mit
@@ -17,7 +17,8 @@ author: Dev Patel
 author_handle: DevDsgn
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # useAnimations
 

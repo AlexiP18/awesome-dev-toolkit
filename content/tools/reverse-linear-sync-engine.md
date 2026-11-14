@@ -1,7 +1,7 @@
 ---
 name: Reverse Linear Sync Engine
 url: 'https://github.com/wzhudev/reverse-linear-sync-engine'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - linear
   - sync-engine
@@ -20,7 +20,8 @@ author: Alvaro
 author_handle: alvarombt
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Reverse Linear Sync Engine
 

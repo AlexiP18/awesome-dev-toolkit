@@ -1,10 +1,10 @@
 ---
 name: Animated Buttons Colorion
 url: 'https://animatedbuttons.colorion.co/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - css
-  - animaciones
+  - animacion
   - botones
   - frontend
   - ui
@@ -17,7 +17,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Colorion
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Animated Buttons Colorion
 

@@ -2,7 +2,7 @@
 name: iMerit
 url: 'https://imerit.ai/careers/'
 website_url: 'https://imerit.ai/'
-category: Trabajo & Freelance
+category: Entrenamiento de IA & microtareas
 tags:
   - remoto
   - freelance
@@ -21,7 +21,7 @@ location: Remoto (Mundial)
 salary: $15 - $25 USD/h
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+area: trabajo-oportunidades
 ---
 # 💼 iMerit
 

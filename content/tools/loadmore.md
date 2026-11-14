@@ -1,11 +1,10 @@
 ---
 name: loadmo.re
 url: 'https://loadmo.re/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - design
+  - diseno
   - mobile-first
-  - inspiracion
   - ux
   - galeria
 status: to_try
@@ -18,6 +17,7 @@ entry_type: tool
 company: Kim Boutin (Kim Lê Boutin)
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # loadmo.re
 

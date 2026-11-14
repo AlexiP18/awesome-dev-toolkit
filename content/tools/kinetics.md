@@ -1,15 +1,14 @@
 ---
 name: Kinetics
 url: 'https://kinetics.colorion.co/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - motion
   - react
+  - motion
   - css
   - spring
-  - animaciones
-  - tipografia
   - animacion
+  - tipografia
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:52:51.924Z'
@@ -19,11 +18,12 @@ author_handle: tranmautritam
 entry_type: tool
 company: Colorion
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
 source_tweets:
   - 'https://x.com/tranmautritam/status/2076963534307790926'
   - 'https://x.com/noahelhadedy/status/2108461831928811941'
 updated_at: '2026-11-13T05:00:36.263Z'
+area: diseno-creatividad
 ---
 # Kinetics
 

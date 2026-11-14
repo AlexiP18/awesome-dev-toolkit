@@ -1,10 +1,10 @@
 ---
 name: AI Agents for Beginners
 url: 'https://github.com/microsoft/ai-agents-for-beginners'
-category: Documentation & Resources
+category: 'Guías, tips & buenas prácticas'
 tags:
   - educacion
-  - agents
+  - agentes
   - tutorial
   - microsoft
   - open-source
@@ -19,6 +19,7 @@ company: Microsoft
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: consejos
+area: aprendizaje
 ---
 # AI Agents for Beginners
 

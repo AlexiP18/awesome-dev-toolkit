@@ -1,7 +1,7 @@
 ---
 name: Logdy
 url: 'https://logdy.dev/'
-category: DevOps & Cloud
+category: 'DevOps, cloud & self-hosting'
 tags:
   - logs
   - observability
@@ -16,7 +16,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: desarrollo-software
 ---
 # Logdy
 

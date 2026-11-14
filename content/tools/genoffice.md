@@ -1,7 +1,7 @@
 ---
 name: GenOffice
 url: 'https://github.com/genspark-ai/genoffice'
-category: Productivity & Tools
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - ofimatica
   - docs
@@ -18,7 +18,8 @@ author_handle: brenzhills
 entry_type: tool
 company: Genspark AI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # GenOffice
 

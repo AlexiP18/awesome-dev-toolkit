@@ -1,11 +1,11 @@
 ---
 name: Squoosh
 url: 'https://squoosh.app/'
-category: Productivity & Tools
+category: 'Video, audio, imagen & 3D'
 tags:
   - imagenes
   - compresion
-  - rendimiento web
+  - rendimiento-web
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:45:43.655Z'
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Squoosh
 

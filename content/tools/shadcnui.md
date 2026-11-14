@@ -2,11 +2,11 @@
 name: shadcn/ui
 url: 'https://github.com/shadcn-ui/ui'
 website_url: 'https://ui.shadcn.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - react
-  - ui-components
   - tailwind
+  - componentes
   - radix-ui
   - design-system
 status: to_try
@@ -18,7 +18,8 @@ author_handle: hasantoxr
 entry_type: tool
 company: shadcn
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # shadcn/ui
 

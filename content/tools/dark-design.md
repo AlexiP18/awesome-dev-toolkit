@@ -1,9 +1,8 @@
 ---
 name: Dark Design
 url: 'https://dark.design/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - inspiracion
   - dark-mode
   - web-design
   - galeria
@@ -16,6 +15,7 @@ author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Dark Design
 

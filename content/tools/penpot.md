@@ -1,9 +1,9 @@
 ---
 name: Penpot
 url: 'https://penpot.app/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
-  - design
+  - diseno
   - ui
   - open-source
   - prototipado
@@ -16,7 +16,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Penpot
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Penpot
 

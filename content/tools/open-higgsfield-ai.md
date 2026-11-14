@@ -1,7 +1,7 @@
 ---
 name: Open Higgsfield AI
 url: 'https://github.com/Anil-matcha/Open-Higgsfield-AI'
-category: 'Prompts, Art & Video'
+category: Prompts & generación visual con IA
 tags:
   - generative-ai
   - text-to-video
@@ -18,7 +18,8 @@ author_handle: yuliaisc
 entry_type: tool
 company: Anil Matcha
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Open Higgsfield AI
 

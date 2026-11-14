@@ -1,7 +1,7 @@
 ---
 name: Cutting Mat Background Generator
 url: 'https://cutting-mat-generator.vercel.app/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - svg
   - generador
@@ -16,7 +16,8 @@ author: Harshil Tomar
 author_handle: Hartdrawss
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Cutting Mat Background Generator
 

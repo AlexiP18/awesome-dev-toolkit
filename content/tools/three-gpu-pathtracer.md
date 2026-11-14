@@ -1,7 +1,7 @@
 ---
 name: Three GPU Pathtracer
 url: 'https://github.com/gkjohnson/three-gpu-pathtracer'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - 3d
   - three-js
@@ -19,7 +19,8 @@ author: rachit
 author_handle: rachiitgr
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Three GPU Pathtracer
 

@@ -1,7 +1,7 @@
 ---
 name: OfficeCLI
 url: 'https://github.com/iOfficeAI/OfficeCLI'
-category: CLI & Terminal
+category: 'Terminal, IDE & hardware'
 tags:
   - cli
   - office
@@ -19,7 +19,8 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: iOfficeAI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # OfficeCLI
 

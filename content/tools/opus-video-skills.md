@@ -1,9 +1,9 @@
 ---
 name: opus-video-skills
 url: 'https://github.com/tuzhechen2005/opus-video-skills'
-category: 'Prompts, Art & Video'
+category: Animación & motion web
 tags:
-  - animation
+  - animacion
   - claude-code
   - claude-code-plugin
   - claude-opus
@@ -26,7 +26,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: tuzhechen2005
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # opus-video-skills
 

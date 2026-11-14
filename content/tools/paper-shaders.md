@@ -1,13 +1,13 @@
 ---
 name: Paper Shaders
 url: 'https://github.com/paper-design/shaders'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - shaders
   - webgl
   - glsl
   - ui
-  - animations
+  - animacion
   - frontend
 status: to_try
 date_added: '2026-11-05'
@@ -18,7 +18,8 @@ author_handle: RoundtableSpace
 entry_type: tool
 company: Paper Design
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Paper Shaders
 

@@ -1,12 +1,12 @@
 ---
 name: LlamaIndex
 url: 'https://github.com/run-llama/llama_index'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
+  - python
   - rag
   - documentos
-  - agents
-  - python
+  - agentes
   - vector-database
 stars: 52825
 status: to_try
@@ -18,7 +18,8 @@ author_handle: mdancho84
 entry_type: tool
 company: LlamaIndex
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # LlamaIndex
 

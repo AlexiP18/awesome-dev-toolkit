@@ -1,10 +1,10 @@
 ---
 name: Vaultwarden
 url: 'https://github.com/dani-garcia/vaultwarden'
-category: Backend & APIs
+category: Seguridad & privacidad
 tags:
-  - passwords
   - rust
+  - passwords
   - self-hosted
   - seguridad
 status: to_try
@@ -16,7 +16,8 @@ author_handle: sentient_agency
 entry_type: tool
 company: dani-garcia
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # Vaultwarden
 

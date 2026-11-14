@@ -1,13 +1,13 @@
 ---
 name: meetily
 url: 'https://github.com/zaid-maker/meetily'
-category: AI & Machine Learning
+category: 'Voz, visión & IA aplicada'
 tags:
+  - rust
   - transcription
   - whisper
   - ollama
   - local
-  - rust
   - privacy
 status: to_try
 date_added: '2026-11-06'
@@ -18,7 +18,8 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: zaid-maker
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # meetily
 

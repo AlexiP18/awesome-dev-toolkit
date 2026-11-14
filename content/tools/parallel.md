@@ -1,11 +1,11 @@
 ---
 name: Parallel
 url: 'https://parallel.ai/'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai
-  - agents
-  - web infrastructure
+  - ia
+  - agentes
+  - web-infrastructure
   - search
   - extract
   - monitor
@@ -18,7 +18,8 @@ author: Yash
 author_handle: dewyashtwts
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # Parallel
 

@@ -1,7 +1,7 @@
 ---
 name: 'Claude Desktop: 7 Prompts para Diagnosticar y Acelerar tu Red WiFi'
 url: 'https://x.com/SantiTorAI/status/2114760255121063981'
-category: Consejos & Buenas Prácticas
+category: 'Guías, tips & buenas prácticas'
 tags:
   - claude
   - wifi
@@ -18,6 +18,7 @@ entry_type: tech_tip
 classified_by: Google Gemini (3.8 Flash)
 created_at: '2026-10-26T21:20:04.631Z'
 conjunto: consejos
+area: aprendizaje
 ---
 # 💡 Claude Desktop: 7 Prompts para Diagnosticar y Acelerar tu Red WiFi
 

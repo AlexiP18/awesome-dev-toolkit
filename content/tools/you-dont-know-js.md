@@ -1,7 +1,7 @@
 ---
 name: You-Dont-Know-JS
 url: 'https://github.com/getify/You-Dont-Know-JS'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - javascript
   - book
@@ -16,7 +16,8 @@ author: Shruti Codes
 author_handle: Shruti_0810
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # You-Dont-Know-JS
 

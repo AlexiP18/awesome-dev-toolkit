@@ -1,11 +1,11 @@
 ---
 name: Lucide Animated
 url: 'https://lucide-animated.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
-  - icons
-  - animaciones
   - react
+  - icons
+  - animacion
   - svg
   - mit
   - motion
@@ -17,7 +17,8 @@ author: Dev Patel
 author_handle: DevDsgn
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Lucide Animated
 

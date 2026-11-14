@@ -1,12 +1,12 @@
 ---
 name: Toprank
 url: 'https://github.com/nowork-studio/toprank'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - seo
   - geo
   - marketing
-  - agentes-ia
+  - agentes
   - automatizacion
 status: to_try
 date_added: '2026-11-06'
@@ -17,7 +17,8 @@ author_handle: yuliaisc
 entry_type: tool
 company: nowork studio
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: productividad-utilidades
 ---
 # Toprank
 

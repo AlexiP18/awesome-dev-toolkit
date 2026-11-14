@@ -1,10 +1,10 @@
 ---
 name: TinEye
 url: 'https://tineye.com/'
-category: Productivity & Tools
+category: 'Video, audio, imagen & 3D'
 tags:
   - imagenes
-  - busqueda inversa
+  - busqueda-inversa
   - copyright
 status: to_try
 date_added: '2026-11-06'
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # TinEye
 

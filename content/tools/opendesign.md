@@ -1,10 +1,10 @@
 ---
 name: OpenDesign
 url: 'https://open-design.ai/'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
-  - ai
-  - design
+  - ia
+  - diseno
   - open-source
   - workspace
   - prototyping
@@ -18,7 +18,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # OpenDesign
 

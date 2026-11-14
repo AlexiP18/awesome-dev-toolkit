@@ -1,17 +1,17 @@
 ---
 name: JCodesMore AI Website Cloner Template
 url: 'https://github.com/JCodesMore/ai-website-cloner-template'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
-  - nextjs
   - react
+  - tailwind
+  - nextjs
   - tailwindcss
   - shadcn-ui
   - template
-  - ai-agents
+  - agentes
   - web-scraping
   - clonador-web
-  - tailwind
   - frontend
   - claude-code
   - open-source
@@ -24,12 +24,13 @@ author_handle: sweexx9
 entry_type: tool
 company: JCodesMore
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
 stars: 38746
 source_tweets:
   - 'https://x.com/sweexx9/status/2087773229930656127'
   - 'https://x.com/katsudev/status/2077021776412897641'
 updated_at: '2026-11-13T05:00:36.263Z'
+area: diseno-creatividad
 ---
 # JCodesMore AI Website Cloner Template
 

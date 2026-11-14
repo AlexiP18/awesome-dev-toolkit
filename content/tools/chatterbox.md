@@ -1,13 +1,13 @@
 ---
 name: Chatterbox
 url: 'https://github.com/resemble-ai/chatterbox'
-category: AI & Machine Learning
+category: 'Voz, visión & IA aplicada'
 tags:
+  - python
   - text-to-speech
   - tts
-  - ai
+  - ia
   - voiceovers
-  - python
   - open-source
   - speech-synthesis
 stars: 27514
@@ -20,7 +20,8 @@ author_handle: e1genqq
 entry_type: tool
 company: resemble-ai
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Chatterbox
 

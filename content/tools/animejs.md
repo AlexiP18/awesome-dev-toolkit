@@ -2,9 +2,9 @@
 name: Anime.js
 url: 'https://github.com/juliangarnier/anime'
 website_url: 'https://animejs.com/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - animation
+  - animacion
   - svg
   - javascript
   - lightweight
@@ -18,7 +18,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Julian Garnier
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Anime.js
 

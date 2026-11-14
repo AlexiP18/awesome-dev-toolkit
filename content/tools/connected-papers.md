@@ -1,7 +1,7 @@
 ---
 name: Connected Papers
 url: 'https://www.connectedpapers.com/'
-category: Documentation & Resources
+category: Investigación & papers
 tags:
   - investigacion
   - papers
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: Connected Papers
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # Connected Papers
 

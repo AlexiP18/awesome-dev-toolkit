@@ -1,7 +1,7 @@
 ---
 name: Web-to-App
 url: 'https://github.com/shiaho777/web-to-app'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - android
   - apk
@@ -18,7 +18,8 @@ author_handle: DivyanshT91162
 entry_type: tool
 company: shiaho777
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: productividad-utilidades
 ---
 # Web-to-App
 

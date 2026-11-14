@@ -1,7 +1,7 @@
 ---
 name: OSSU Computer Science
 url: 'https://github.com/ossu/computer-science'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - awesome-list
   - computer-science
@@ -20,7 +20,8 @@ entry_type: tool
 company: Open Source Society University
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # OSSU Computer Science
 

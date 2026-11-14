@@ -1,13 +1,13 @@
 ---
 name: Open Notebook
 url: 'https://github.com/lfnovo/open-notebook'
-category: AI & Machine Learning
+category: 'RAG, búsqueda & datos para IA'
 tags:
+  - typescript
   - rag
   - llm
   - notebooklm
   - self-hosted
-  - typescript
 stars: 41680
 status: to_try
 date_added: '2026-11-06'
@@ -18,7 +18,8 @@ author_handle: DivyanshT91162
 entry_type: tool
 company: lfnovo
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Open Notebook
 

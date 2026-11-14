@@ -1,12 +1,12 @@
 ---
 name: Graphiti
 url: 'https://github.com/getzep/graphiti'
-category: Agentes & Protocolo MCP
+category: 'RAG, búsqueda & datos para IA'
 tags:
+  - python
   - knowledge-graph
   - agent-memory
   - rag
-  - python
   - temporal-graph
 stars: 32556
 status: to_try
@@ -18,7 +18,8 @@ author_handle: Shruti_0810
 entry_type: tool
 company: Zep
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Graphiti
 

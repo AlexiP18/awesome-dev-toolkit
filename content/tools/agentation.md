@@ -1,11 +1,11 @@
 ---
 name: Agentation
 url: 'https://www.agentation.com/'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - agents
+  - agentes
   - visual-feedback
-  - ai
+  - ia
   - debugging
   - devtools
 status: to_try
@@ -17,7 +17,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Agentation
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # Agentation
 

@@ -1,10 +1,9 @@
 ---
 name: DesignforB2B
 url: 'https://www.designforb2b.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - inspiracion
-  - diseño-web
+  - diseno-web
   - b2b
   - galeria
   - ui
@@ -17,6 +16,7 @@ author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # DesignforB2B
 

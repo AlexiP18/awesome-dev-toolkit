@@ -1,7 +1,7 @@
 ---
 name: React Postprocessing
 url: 'https://github.com/pmndrs/react-postprocessing'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - 3d
   - postprocessing
@@ -18,7 +18,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: Poimandres (pmndrs)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # React Postprocessing
 

@@ -1,7 +1,7 @@
 ---
 name: Mistral AI (plan gratuito)
 url: 'https://mistral.ai/pricing'
-category: AI & Machine Learning
+category: 'Créditos, planes gratis & programas'
 tags:
   - llm
   - mistral
@@ -17,7 +17,8 @@ author_handle: exploraX_
 entry_type: tool
 company: Mistral AI
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: trabajo-oportunidades
 ---
 # Mistral AI (plan gratuito)
 

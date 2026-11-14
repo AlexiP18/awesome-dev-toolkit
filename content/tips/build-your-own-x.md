@@ -1,7 +1,7 @@
 ---
 name: build-your-own-x
 url: 'https://github.com/codecrafters-io/build-your-own-x'
-category: Documentation & Resources
+category: 'Guías, tips & buenas prácticas'
 tags:
   - tutorials
   - awesome-list
@@ -17,6 +17,7 @@ author_handle: Shruti_0810
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: consejos
+area: aprendizaje
 ---
 # build-your-own-x
 

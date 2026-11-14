@@ -2,7 +2,7 @@
 name: Fireworks AI — $50 en créditos de API (AMD × Fireworks)
 url: 'https://api.fireworks.ai/inference/v1'
 website_url: 'https://fireworks.ai/'
-category: AI & Machine Learning
+category: 'Créditos, planes gratis & programas'
 tags:
   - inferencia
   - llm
@@ -20,7 +20,8 @@ entry_type: tool
 company: Fireworks AI
 price: $50 USD en créditos gratuitos (90 días)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: trabajo-oportunidades
 ---
 # Fireworks AI — $50 en créditos de API (AMD × Fireworks)
 

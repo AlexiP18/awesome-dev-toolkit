@@ -1,11 +1,11 @@
 ---
 name: BrowserSkill
 url: 'https://github.com/Tencent/BrowserSkill'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
-  - agents
-  - browser-automation
   - typescript
+  - agentes
+  - browser-automation
   - cli
   - extension
 stars: 10013
@@ -18,7 +18,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Tencent
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # BrowserSkill
 

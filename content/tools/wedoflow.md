@@ -1,11 +1,10 @@
 ---
 name: WeDoFlow
 url: 'https://www.wedoflow.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - plantillas
   - paginas-web
-  - inspiracion
   - ui
   - landings
 status: to_try
@@ -18,6 +17,7 @@ entry_type: tool
 company: WeDoFlow
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # WeDoFlow
 

@@ -1,10 +1,9 @@
 ---
 name: Whipsaw
 url: 'https://www.whipsaw.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - product-design
-  - inspiracion
   - industrial-design
   - ux
   - referencias
@@ -18,6 +17,7 @@ entry_type: tool
 company: Whipsaw
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Whipsaw
 

@@ -2,7 +2,7 @@
 name: prompts.chat (antes Awesome ChatGPT Prompts)
 url: 'https://github.com/f/prompts.chat'
 website_url: 'https://prompts.chat/'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
   - prompts
   - llm
@@ -30,6 +30,7 @@ source_tweets:
   - 'https://x.com/Nona_xai/status/2108594811196625386'
   - 'https://x.com/0xJokker/status/2078242242142011624'
 updated_at: '2026-11-13T05:00:36.264Z'
+area: inteligencia-artificial
 ---
 # prompts.chat (antes Awesome ChatGPT Prompts)
 

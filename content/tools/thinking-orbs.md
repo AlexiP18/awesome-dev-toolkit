@@ -2,11 +2,11 @@
 name: Thinking Orbs
 url: 'https://orbs.jakubantalik.com/'
 website_url: 'https://libraries.dev/orbs'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - frontend
   - ui
-  - animaciones
+  - animacion
   - componentes
   - npm
   - zero-dependencies
@@ -19,7 +19,8 @@ author_handle: Jakubantalik
 entry_type: tool
 company: Jakub Antalik
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Thinking Orbs
 

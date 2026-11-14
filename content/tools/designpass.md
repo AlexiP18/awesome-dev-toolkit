@@ -1,11 +1,11 @@
 ---
 name: DesignPass
 url: 'https://designpass.dev/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
   - shadcn
-  - animaciones
+  - animacion
   - webgl
   - 3d
   - spring-physics
@@ -19,7 +19,8 @@ author_handle: kasuncfdo
 entry_type: tool
 company: Ernest Liu (ernestliu.com)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # DesignPass
 

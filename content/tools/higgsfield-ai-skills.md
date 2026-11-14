@@ -1,16 +1,16 @@
 ---
 name: Higgsfield AI Skills
 url: 'https://github.com/higgsfield-ai/skills'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
-  - ai
+  - ia
   - skills
-  - coding_agents
-  - generative_ai
-  - video_generation
-  - image_generation
-  - web_development
-  - open_source
+  - coding-agents
+  - generative-ai
+  - video-generation
+  - image-generation
+  - web-development
+  - open-source
 status: to_try
 date_added: '2026-11-02'
 created_at: '2026-11-02T17:31:04.423Z'
@@ -20,7 +20,8 @@ author_handle: rammcodes
 entry_type: tool
 company: Higgsfield
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Higgsfield AI Skills
 

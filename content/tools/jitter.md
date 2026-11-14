@@ -1,13 +1,13 @@
 ---
 name: Jitter
 url: 'https://jitter.video/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - motion-design
-  - animaciones
+  - animacion
   - ui
   - prototipado
-  - diseño
+  - diseno
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T16:05:29.344Z'
@@ -16,7 +16,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Jitter
 

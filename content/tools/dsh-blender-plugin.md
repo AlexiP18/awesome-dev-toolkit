@@ -1,13 +1,13 @@
 ---
 name: dsh-blender-plugin
 url: 'https://github.com/sixtysevenlf/dsh-blender-plugin'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
+  - python
   - blender
   - ai-agent
   - 3d-modeling
   - automation
-  - python
   - plugin
   - tooling
 stars: 1564
@@ -21,7 +21,8 @@ entry_type: tool
 company: sixtysevenlf
 price: Gratis
 classified_by: Google Gemini (Flash)
-conjunto: producto
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # dsh-blender-plugin
 

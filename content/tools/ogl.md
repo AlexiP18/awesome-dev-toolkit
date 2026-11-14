@@ -1,7 +1,7 @@
 ---
 name: OGL
 url: 'https://github.com/oframe/ogl'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - webgl
   - graphics
@@ -19,7 +19,8 @@ author_handle: e1genqq
 entry_type: tool
 company: oframe
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # OGL
 

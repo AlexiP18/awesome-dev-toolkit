@@ -1,11 +1,11 @@
 ---
 name: Tweakpane
 url: 'https://github.com/cocopon/tweakpane'
-category: Frontend & UI
+category: Animación & motion web
 tags:
+  - typescript
   - gui
   - creative-coding
-  - typescript
   - zero-dependency
   - live-controls
 stars: 4634
@@ -17,7 +17,8 @@ author: rachit
 author_handle: rachiitgr
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Tweakpane
 

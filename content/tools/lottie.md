@@ -2,9 +2,9 @@
 name: Lottie
 url: 'https://github.com/airbnb/lottie-web'
 website_url: 'https://airbnb.io/lottie'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - animation
+  - animacion
   - vector-graphics
   - web-animation
   - json
@@ -21,11 +21,12 @@ author: rachit
 author_handle: rachiitgr
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
 source_tweets:
   - 'https://x.com/rachiitgr/status/2116982774846419287'
   - 'https://x.com/Marlenuii/status/2111419391271186795'
 updated_at: '2026-11-13T05:00:36.270Z'
+area: diseno-creatividad
 ---
 # Lottie
 

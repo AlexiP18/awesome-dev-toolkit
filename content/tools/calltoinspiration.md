@@ -1,9 +1,8 @@
 ---
 name: CallToInspiration
 url: 'https://calltoinspiration.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - inspiracion
   - ui-patterns
   - formularios
   - dashboards
@@ -17,6 +16,7 @@ author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # CallToInspiration
 

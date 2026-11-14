@@ -1,7 +1,7 @@
 ---
 name: awesome-claude-code
 url: 'https://github.com/hesreallyhim/awesome-claude-code'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - claude-code
   - agent-skills
@@ -16,7 +16,8 @@ author: 山羊赚钱笔记
 author_handle: shanyanggm
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # awesome-claude-code
 

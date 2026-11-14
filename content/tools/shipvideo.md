@@ -1,13 +1,13 @@
 ---
 name: shipvideo
 url: 'https://github.com/diggerhq/shipvideo'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
+  - typescript
   - video-generation
   - html
   - claude-opus
   - serverless
-  - typescript
   - ai-agent
 stars: 378
 status: to_try
@@ -19,7 +19,8 @@ author_handle: RodmanAi
 entry_type: tool
 company: diggerhq
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # shipvideo
 

@@ -1,9 +1,9 @@
 ---
 name: Carbon
 url: 'http://carbon.now.sh/'
-category: Productivity & Tools
+category: 'Video, audio, imagen & 3D'
 tags:
-  - capturas de codigo
+  - capturas-de-codigo
   - snippets
   - imagenes
 status: to_try
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: diseno-creatividad
 ---
 # Carbon
 

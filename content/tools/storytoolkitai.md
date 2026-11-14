@@ -1,9 +1,9 @@
 ---
 name: StoryToolkitAI
 url: 'https://github.com/octimot/StoryToolkitAI'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - ai
+  - ia
   - video-processing
   - editing
   - storytelling
@@ -23,7 +23,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: octimot
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # StoryToolkitAI
 

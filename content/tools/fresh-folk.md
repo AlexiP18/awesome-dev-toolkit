@@ -1,7 +1,7 @@
 ---
 name: Fresh Folk
 url: 'https://fresh-folk.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - ilustraciones
   - personas
@@ -16,7 +16,8 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Fresh Folk
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Fresh Folk
 

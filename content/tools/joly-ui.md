@@ -1,15 +1,15 @@
 ---
 name: Joly UI
 url: 'https://www.jolyui.dev/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
+  - react
+  - typescript
+  - tailwind
   - shadcn
   - ui
   - componentes
-  - react
   - nextjs
-  - typescript
-  - tailwind
   - frontend
   - open-source
 status: to_try
@@ -20,7 +20,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Joly UI
 

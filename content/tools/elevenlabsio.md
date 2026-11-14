@@ -1,13 +1,13 @@
 ---
 name: elevenlabs.io
 url: 'https://elevenlabs.io/'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - ai
+  - ia
   - clonacion-voz
   - generacion-audio
   - sintesis-voz
-  - multilingüe
+  - multilingue
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:53:53.076Z'
@@ -16,7 +16,8 @@ author: chaos
 author_handle: konig0000
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: producto
+conjunto: app
+area: diseno-creatividad
 ---
 # elevenlabs.io
 

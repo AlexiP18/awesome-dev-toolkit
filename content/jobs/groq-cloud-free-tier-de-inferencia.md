@@ -2,7 +2,7 @@
 name: Groq Cloud (free tier de inferencia)
 url: 'https://console.groq.com/'
 website_url: 'https://groq.com/'
-category: AI & Machine Learning
+category: 'Créditos, planes gratis & programas'
 tags:
   - inference
   - llm
@@ -18,7 +18,8 @@ author_handle: exploraX_
 entry_type: tool
 company: Groq
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: trabajo-oportunidades
 ---
 # Groq Cloud (free tier de inferencia)
 

@@ -1,7 +1,7 @@
 ---
 name: postprocessing
 url: 'https://github.com/pmndrs/postprocessing'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - three-js
   - post-processing
@@ -18,7 +18,8 @@ author: rachit
 author_handle: rachiitgr
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # postprocessing
 

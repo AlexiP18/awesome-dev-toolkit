@@ -1,17 +1,15 @@
 ---
 name: t3code
 url: 'https://github.com/pingdotgg/t3code'
-category: Productivity & Tools
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai
-  - agents
+  - typescript
+  - ia
+  - agentes
   - coding
   - open-source
   - control-plane
-  - agentes
   - dashboard
-  - ia
-  - typescript
   - gratis
 stars: 38343
 status: to_try
@@ -25,11 +23,12 @@ company: pingdotgg
 price: Gratis
 classified_by: Google Gemini (Flash)
 updated_at: '2026-11-13T05:00:36.272Z'
-conjunto: recursos
+conjunto: codigo
 website_url: 'https://t3.codes/'
 source_tweets:
   - 'https://x.com/csaba_kissi/status/2116071103206724053'
   - 'https://x.com/dewyashtwts/status/2114337945427857916'
+area: inteligencia-artificial
 ---
 # t3code
 

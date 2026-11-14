@@ -2,7 +2,7 @@
 name: ClawRouter
 url: 'https://github.com/BlockRunAI/ClawRouter'
 website_url: 'https://www.npmjs.com/package/@blockrun/clawrouter'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
   - llm
   - router
@@ -18,7 +18,8 @@ author: yuulia ✟
 author_handle: yuliaisc
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # ClawRouter
 

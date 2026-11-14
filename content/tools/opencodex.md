@@ -1,7 +1,7 @@
 ---
 name: opencodex
 url: 'https://github.com/lidge-jun/opencodex'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - llm
   - proxy
@@ -19,7 +19,8 @@ author_handle: brenzhills
 entry_type: tool
 company: lidge-jun
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # opencodex
 

@@ -2,7 +2,7 @@
 name: OpenShorts
 url: 'https://github.com/mutonby/openshorts'
 website_url: 'https://openshorts.app'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
   - open-source
   - video
@@ -20,7 +20,8 @@ author: Alba
 author_handle: albacnt
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # OpenShorts
 

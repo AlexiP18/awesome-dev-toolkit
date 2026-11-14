@@ -1,8 +1,9 @@
 ---
 name: Supabase
 url: 'https://github.com/supabase/supabase'
-category: Backend & APIs
+category: 'Backend, APIs & datos'
 tags:
+  - typescript
   - backend
   - database
   - firebase-alternative
@@ -10,8 +11,7 @@ tags:
   - postgresql
   - auth
   - realtime
-  - ai
-  - typescript
+  - ia
 stars: 114442
 status: to_try
 date_added: '2026-11-02'
@@ -23,7 +23,8 @@ entry_type: tool
 company: supabase
 price: Gratis
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # Supabase
 

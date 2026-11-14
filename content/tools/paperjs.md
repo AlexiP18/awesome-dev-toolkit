@@ -1,7 +1,7 @@
 ---
 name: Paper.js
 url: 'https://github.com/paperjs/paper.js'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - vector-graphics
   - javascript
@@ -20,7 +20,8 @@ author_handle: e1genqq
 entry_type: tool
 company: paperjs
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Paper.js
 

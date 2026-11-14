@@ -1,7 +1,7 @@
 ---
 name: Workout Guide
 url: 'https://bryllim.github.io/workout-guide'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - npm
   - svg
@@ -19,7 +19,8 @@ author_handle: MoureDev
 entry_type: tool
 company: Bryl Lim
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Workout Guide
 

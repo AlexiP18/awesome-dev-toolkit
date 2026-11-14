@@ -2,13 +2,13 @@
 name: ExpoKit
 url: 'https://github.com/Anshkaran7/expokit'
 website_url: 'https://expokit.in/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
+  - typescript
   - expo
   - react-native
-  - ui-components
-  - animations
-  - typescript
+  - componentes
+  - animacion
   - component-library
   - charts
 stars: 42
@@ -21,7 +21,8 @@ author_handle: itsmeekaran
 entry_type: tool
 company: Anshkaran7 (expo_kit)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # ExpoKit
 

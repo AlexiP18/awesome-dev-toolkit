@@ -1,13 +1,13 @@
 ---
 name: FireRed-OpenStoryline
 url: 'https://github.com/FireRedTeam/FireRed-OpenStoryline'
-category: 'Prompts, Art & Video'
+category: 'Video, audio, imagen & 3D'
 tags:
-  - ai
+  - ia
   - video-editing
   - natural-language
   - llm
-  - agent
+  - agentes
   - storytelling
   - video-cut
   - chatbot
@@ -22,7 +22,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: FireRedTeam
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # FireRed-OpenStoryline
 

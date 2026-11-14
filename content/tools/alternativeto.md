@@ -1,11 +1,11 @@
 ---
 name: AlternativeTo
 url: 'https://alternativeto.net/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - alternativas
   - software
-  - open source
+  - open-source
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:45:43.921Z'
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: inspiracion
+area: productividad-utilidades
 ---
 # AlternativeTo
 

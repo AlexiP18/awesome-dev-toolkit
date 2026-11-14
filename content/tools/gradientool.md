@@ -1,7 +1,7 @@
 ---
 name: Gradientool
 url: 'https://www.gradientool.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - gradientes
   - css
@@ -16,7 +16,8 @@ author: Harshil Tomar
 author_handle: Hartdrawss
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Gradientool
 

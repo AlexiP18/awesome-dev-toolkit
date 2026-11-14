@@ -1,7 +1,7 @@
 ---
 name: FLUX.2
 url: 'https://github.com/black-forest-labs/flux2'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - image-generation
   - diffusion
@@ -17,7 +17,8 @@ author_handle: heyrimsha
 entry_type: tool
 company: Black Forest Labs
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # FLUX.2
 

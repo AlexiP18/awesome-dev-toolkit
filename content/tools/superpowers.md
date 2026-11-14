@@ -1,11 +1,11 @@
 ---
 name: Superpowers
 url: 'https://github.com/obra/superpowers'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
-  - ai
+  - ia
   - skills
-  - agents
+  - agentes
   - sdlc
   - self-hosted
   - framework
@@ -19,7 +19,8 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: obra
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Superpowers
 

@@ -1,14 +1,14 @@
 ---
 name: SkillClaw
 url: 'https://github.com/AMAP-ML/SkillClaw'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
+  - python
   - skills
   - llm
-  - agents
+  - agentes
   - continual-learning
   - self-evolving
-  - python
 stars: 2746
 status: to_try
 date_added: '2026-11-06'
@@ -19,7 +19,8 @@ author_handle: katsudev
 entry_type: tool
 company: AMAP-ML
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # SkillClaw
 

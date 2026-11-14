@@ -1,10 +1,10 @@
 ---
 name: Sci-Hub
 url: 'http://sci-hub.se/'
-category: Documentation & Resources
+category: Investigación & papers
 tags:
   - papers
-  - acceso abierto
+  - acceso-abierto
   - investigacion
 status: to_try
 date_added: '2026-11-06'
@@ -14,7 +14,8 @@ author: Alejo
 author_handle: ecommartinez
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # Sci-Hub
 

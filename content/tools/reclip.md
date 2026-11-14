@@ -1,7 +1,7 @@
 ---
 name: Reclip
 url: 'https://github.com/averygan/reclip'
-category: Productivity & Tools
+category: 'DevOps, cloud & self-hosting'
 tags:
   - yt-dlp
   - descargas
@@ -18,7 +18,8 @@ author_handle: DivyanshT91162
 entry_type: tool
 company: averygan
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # Reclip
 

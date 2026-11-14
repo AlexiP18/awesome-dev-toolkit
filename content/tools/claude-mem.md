@@ -1,11 +1,11 @@
 ---
 name: claude-mem
 url: 'https://github.com/thedotmack/claude-mem'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - memory
   - claude-code
-  - agents
+  - agentes
   - context
 status: to_try
 date_added: '2026-11-05'
@@ -15,7 +15,8 @@ author: niko.
 author_handle: nikosolenne
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # claude-mem
 

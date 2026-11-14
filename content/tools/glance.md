@@ -1,7 +1,7 @@
 ---
 name: Glance
 url: 'https://glance.md/'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
   - macos
   - markdown
@@ -18,7 +18,8 @@ author_handle: noahelhadedy
 entry_type: tool
 price: $9.99 USD (edición; lectura gratis)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: productividad-utilidades
 ---
 # Glance
 

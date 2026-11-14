@@ -1,8 +1,8 @@
 ---
 name: Sure
 url: 'https://github.com/we-promise/sure'
-category: Productivity & Tools
-conjunto: recursos
+category: 'DevOps, cloud & self-hosting'
+conjunto: codigo
 tags:
   - finanzas-personales
   - self-hosted
@@ -17,6 +17,7 @@ author_handle: TiagerBao
 entry_type: tool
 company: 旺旺
 classified_by: Importado del vault
+area: desarrollo-software
 ---
 # Sure
 

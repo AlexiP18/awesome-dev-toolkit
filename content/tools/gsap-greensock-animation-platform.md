@@ -2,13 +2,13 @@
 name: GSAP (GreenSock Animation Platform)
 url: 'https://github.com/greensock/gsap-skills'
 website_url: 'https://gsap.com/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
+  - react
   - agent-skills
   - gsap
-  - react
-  - animation
-  - ai
+  - animacion
+  - ia
   - svg
   - timeline
   - javascript
@@ -23,8 +23,9 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: GreenSock
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
 updated_at: '2026-11-13T05:00:36.269Z'
+area: diseno-creatividad
 ---
 # GSAP (GreenSock Animation Platform)
 

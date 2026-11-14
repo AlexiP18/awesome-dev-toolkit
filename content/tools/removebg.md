@@ -1,7 +1,7 @@
 ---
 name: remove.bg
 url: 'https://www.remove.bg/'
-category: Productivity & Tools
+category: 'Backend, APIs & datos'
 tags:
   - imagen
   - background-removal
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: remove.bg (Kaleido AI)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # remove.bg
 

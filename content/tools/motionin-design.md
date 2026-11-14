@@ -1,23 +1,20 @@
 ---
 name: MotionIn Design
 url: 'https://motionin.design/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - motion
   - web-design
-  - ai
-  - animaciones
+  - ia
+  - animacion
   - ui
-  - inspiracion
   - frontend
-  - diseño de movimiento
-  - animación
-  - inspiración
+  - diseno-de-movimiento
   - ux
   - animacion-web
   - ui-ux
   - interactivo
-  - diseño-web
+  - diseno-web
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:49:28.172Z'
@@ -26,13 +23,14 @@ author: Vullnet Ademaj
 author_handle: VullnetAdemaj
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: producto
+conjunto: inspiracion
 source_tweets:
   - 'https://x.com/VullnetAdemaj/status/2112101526336364705'
   - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
   - 'https://x.com/VullnetAdemaj/status/2108281499686478021'
   - 'https://x.com/BardhylBytyqi/status/2117273221808452041'
 updated_at: '2026-11-13T05:00:36.259Z'
+area: diseno-creatividad
 ---
 # MotionIn Design
 

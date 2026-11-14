@@ -1,9 +1,9 @@
 ---
 name: ai-job-search
 url: 'https://github.com/ai-job-search-dev/ai-job-search'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
-  - ai-agents
+  - agentes
   - claude-code
   - job-search
   - automation
@@ -18,7 +18,8 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: MadsLorentzen
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # ai-job-search
 

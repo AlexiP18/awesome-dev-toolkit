@@ -1,12 +1,12 @@
 ---
 name: Superdesign
 url: 'https://github.com/superdesigndev/superdesign'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
+  - typescript
   - ai-design
   - ui
   - open-source
-  - typescript
   - design-agent
 stars: 7584
 status: to_try
@@ -18,7 +18,8 @@ author_handle: RoundtableSpace
 entry_type: tool
 company: Superdesigndev
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Superdesign
 

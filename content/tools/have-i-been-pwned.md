@@ -1,7 +1,7 @@
 ---
 name: Have I Been Pwned
 url: 'https://haveibeenpwned.com/'
-category: DevOps & Cloud
+category: Seguridad & privacidad
 tags:
   - seguridad
   - brechas-de-datos
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: Have I Been Pwned (HIBP)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # Have I Been Pwned
 

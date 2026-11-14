@@ -1,12 +1,12 @@
 ---
 name: ppt-master
 url: 'https://github.com/hugohe3/ppt-master'
-category: Productivity & Tools
+category: Apps de productividad & negocio
 tags:
+  - python
   - powerpoint
   - pptx
   - ai-agent
-  - python
   - automation
 stars: 73589
 status: to_try
@@ -17,7 +17,8 @@ author: niko.
 author_handle: nikosolenne
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: productividad-utilidades
 ---
 # ppt-master
 

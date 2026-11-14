@@ -1,7 +1,7 @@
 ---
 name: Google Cloud Free Tier ($300 crédito)
 url: 'https://cloud.google.com/free'
-category: DevOps & Cloud
+category: 'Créditos, planes gratis & programas'
 tags:
   - cloud
   - gcp
@@ -18,7 +18,8 @@ entry_type: tool
 company: Google
 price: $300 USD de crédito por 90 días
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: trabajo-oportunidades
 ---
 # Google Cloud Free Tier ($300 crédito)
 

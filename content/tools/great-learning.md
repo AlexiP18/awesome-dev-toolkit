@@ -1,8 +1,8 @@
 ---
 name: Great Learning
 url: 'https://mygreatlearning.com/'
-category: Documentation & Resources
-conjunto: recursos
+category: 'Cursos, libros & rutas'
+conjunto: aprender
 tags:
   - cursos
   - ia
@@ -17,6 +17,7 @@ author_handle: omoalhajaabiola
 entry_type: tool
 company: Omoalhaja
 classified_by: Importado del vault
+area: aprendizaje
 ---
 # Great Learning
 

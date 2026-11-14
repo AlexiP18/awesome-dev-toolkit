@@ -1,12 +1,12 @@
 ---
 name: TermUI Registry
 url: 'https://arindam200.github.io/termui/'
-category: CLI & Terminal
+category: 'Terminal, IDE & hardware'
 tags:
   - cli
   - terminal
   - tui
-  - components
+  - componentes
 status: to_try
 date_added: '2026-11-07'
 created_at: '2026-11-07T20:38:59.245Z'
@@ -16,7 +16,8 @@ author_handle: noahelhadedy
 entry_type: tool
 company: Arindam
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # TermUI Registry
 

@@ -1,8 +1,8 @@
 ---
 name: Win11Debloat
 url: 'https://github.com/Raphire/Win11Debloat'
-category: Productivity & Tools
-conjunto: recursos
+category: Seguridad & privacidad
+conjunto: codigo
 tags:
   - windows
   - powershell
@@ -17,6 +17,7 @@ author_handle: Fluyeporlaweb
 entry_type: tool
 company: PA13L0
 classified_by: Importado del vault
+area: desarrollo-software
 ---
 # Win11Debloat
 

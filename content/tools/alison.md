@@ -1,8 +1,8 @@
 ---
 name: Alison
 url: 'https://alison.com/'
-category: Documentation & Resources
-conjunto: recursos
+category: 'Cursos, libros & rutas'
+conjunto: aprender
 tags:
   - cursos
   - aprendizaje
@@ -16,6 +16,7 @@ author_handle: omoalhajaabiola
 entry_type: tool
 company: Omoalhaja
 classified_by: Importado del vault
+area: aprendizaje
 ---
 # Alison
 

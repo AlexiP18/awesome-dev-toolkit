@@ -1,11 +1,11 @@
 ---
 name: PixelColor
 url: 'https://pixelcolor.app/'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - macos
   - color-picker
-  - design
+  - diseno
   - ui
   - designers
 status: to_try
@@ -16,7 +16,8 @@ author: "\U0001D40D\U0001D428\U0001D41A\U0001D421"
 author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # PixelColor
 

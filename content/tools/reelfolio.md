@@ -1,7 +1,7 @@
 ---
 name: Reelfolio
 url: 'https://reelfolio.io/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
   - portfolio
   - diseno
@@ -16,6 +16,7 @@ author_handle: Skirook
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Reelfolio
 

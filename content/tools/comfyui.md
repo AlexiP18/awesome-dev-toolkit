@@ -1,12 +1,12 @@
 ---
 name: ComfyUI
 url: 'https://github.com/Comfy-Org/ComfyUI'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
-  - ai
+  - python
+  - ia
   - stable-diffusion
   - diffusion-models
-  - python
   - pytorch
   - inference-engine
   - nodes-interface
@@ -19,7 +19,8 @@ author: rachit
 author_handle: rachiitgr
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # ComfyUI
 

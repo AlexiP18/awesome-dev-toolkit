@@ -1,10 +1,10 @@
 ---
 name: animateicons
 url: 'https://github.com/Avijit07x/animateicons'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - animated-icons
-  - animation
+  - animacion
   - framer-motion
   - icons
   - lucide-icons
@@ -18,7 +18,8 @@ author_handle: midudev
 entry_type: tool
 classified_by: Fallback (Sin IA)
 updated_at: '2026-11-02T17:39:37.798Z'
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # animateicons
 

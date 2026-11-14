@@ -1,7 +1,7 @@
 ---
 name: agent-skills
 url: 'https://github.com/addyosmani/agent-skills'
-category: AI & Machine Learning
+category: Asistentes de código & skills
 tags:
   - claude-code
   - skills
@@ -17,7 +17,8 @@ author_handle: brenzhills
 entry_type: tool
 company: Addy Osmani
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # agent-skills
 

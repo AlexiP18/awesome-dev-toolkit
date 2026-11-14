@@ -2,10 +2,10 @@
 name: xAI (Careers)
 url: 'https://x.ai/careers'
 website_url: 'https://x.ai/'
-category: Trabajo & Freelance
+category: Empleo remoto & bolsas
 tags:
   - remoto
-  - ai
+  - ia
   - careers
   - tutoring
   - llm
@@ -21,7 +21,7 @@ location: Remoto (Mundial) / Presencial (EE.UU.)
 salary: $40 - $80 USD/h
 job_type: remote_job
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+area: trabajo-oportunidades
 ---
 # 💼 xAI (Careers)
 

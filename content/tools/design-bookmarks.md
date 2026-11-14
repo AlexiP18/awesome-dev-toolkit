@@ -1,14 +1,11 @@
 ---
 name: Design Bookmarks
 url: 'https://designbookmark.com/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - design
+  - diseno
   - resources
   - bookmarks
-  - inspiration
-  - inspiracion
-  - diseno
   - recursos
   - ui
 status: to_try
@@ -24,6 +21,7 @@ source_tweets:
   - 'https://x.com/noahelhadedy/status/2108461831928811941'
   - 'https://x.com/noahelhadedy/status/2118750897454944486'
 updated_at: '2026-11-13T05:00:36.260Z'
+area: diseno-creatividad
 ---
 # Design Bookmarks
 

@@ -2,7 +2,7 @@
 name: Curso de Ciberseguridad de Station X (Google Drive)
 url: >-
   https://drive.google.com/drive/folders/1ecjqC6uBOv-Dx0s1laGsSjkmV9vbPB4l?usp=sharing
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - ciberseguridad
   - curso
@@ -18,7 +18,8 @@ author_handle: madamayo_
 entry_type: tool
 company: Station X (@ved4vyasan)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: consejos
+conjunto: aprender
+area: aprendizaje
 ---
 # Curso de Ciberseguridad de Station X (Google Drive)
 

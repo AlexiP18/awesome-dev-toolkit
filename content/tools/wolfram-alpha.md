@@ -1,7 +1,7 @@
 ---
 name: Wolfram Alpha
 url: 'https://www.wolframalpha.com/'
-category: Productivity & Tools
+category: 'Backend, APIs & datos'
 tags:
   - matematicas
   - computacion
@@ -16,7 +16,8 @@ author_handle: precisox
 entry_type: tool
 company: Wolfram Research
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: desarrollo-software
 ---
 # Wolfram Alpha
 

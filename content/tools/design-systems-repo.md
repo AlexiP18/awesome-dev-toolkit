@@ -1,7 +1,7 @@
 ---
 name: Design Systems Repo
 url: 'https://designsystemsrepo.com/'
-category: Documentation & Resources
+category: 'Cursos, libros & rutas'
 tags:
   - design-system
   - resources
@@ -15,7 +15,8 @@ author: Abraham John
 author_handle: Abmankendrick
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: aprender
+area: aprendizaje
 ---
 # Design Systems Repo
 

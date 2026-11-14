@@ -1,10 +1,9 @@
 ---
 name: Arche Directory
 url: 'https://arche.directory/'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - diseño-web
-  - inspiracion
+  - diseno-web
   - portafolio
   - landing-pages
   - frontend
@@ -19,6 +18,7 @@ author_handle: csaba_kissi
 entry_type: tool
 classified_by: Google Gemini (Flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Arche Directory
 

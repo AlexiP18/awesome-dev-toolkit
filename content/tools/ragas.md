@@ -1,7 +1,7 @@
 ---
 name: Ragas
 url: 'https://github.com/vibrantlabsai/ragas'
-category: AI & Machine Learning
+category: 'RAG, búsqueda & datos para IA'
 tags:
   - evaluation
   - rag
@@ -17,7 +17,8 @@ author_handle: mdancho84
 entry_type: tool
 company: Vibrant Labs
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # Ragas
 

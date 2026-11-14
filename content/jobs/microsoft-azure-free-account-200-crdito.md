@@ -1,7 +1,7 @@
 ---
 name: Microsoft Azure Free Account ($200 crédito)
 url: 'https://azure.microsoft.com/free'
-category: DevOps & Cloud
+category: 'Créditos, planes gratis & programas'
 tags:
   - cloud
   - azure
@@ -18,7 +18,8 @@ entry_type: tool
 company: Microsoft
 price: $200 USD por 30 días + servicios gratuitos 12 meses
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: trabajo-oportunidades
 ---
 # Microsoft Azure Free Account ($200 crédito)
 

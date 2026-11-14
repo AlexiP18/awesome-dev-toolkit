@@ -1,12 +1,12 @@
 ---
 name: Astryx
 url: 'https://github.com/meta/astryx'
-category: Frontend & UI
+category: 'Inspiración, UX & design systems'
 tags:
-  - design-system
-  - ui-components
   - typescript
   - react
+  - design-system
+  - componentes
   - open-source
   - theming
   - agent-ready
@@ -21,7 +21,8 @@ author_handle: marcusyul
 entry_type: tool
 company: Meta
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Astryx
 

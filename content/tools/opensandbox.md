@@ -1,15 +1,15 @@
 ---
 name: OpenSandbox
 url: 'https://github.com/opensandbox-group/OpenSandbox'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai
+  - python
+  - ia
   - ai-agent
   - sandbox
   - kubernetes
   - docker
   - mcp
-  - python
   - ai-infra
 stars: 16468
 status: to_try
@@ -21,7 +21,8 @@ author_handle: UnTalNixon_exe
 entry_type: tool
 company: Alibaba
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # OpenSandbox
 

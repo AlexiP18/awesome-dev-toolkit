@@ -2,12 +2,12 @@
 name: Amicro
 url: 'https://github.com/Subhan-code/Amicro--Micro-transitions-'
 website_url: 'https://amicro.vercel.app/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
   - react
-  - animaciones
-  - micro-interacciones
   - tailwind
+  - animacion
+  - micro-interacciones
   - motion
   - ui-kit
   - open-source
@@ -21,7 +21,8 @@ author: Abraham John
 author_handle: Abmankendrick
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # Amicro
 

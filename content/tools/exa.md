@@ -1,12 +1,12 @@
 ---
 name: Exa
 url: 'https://exa.ai/'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai
-  - agents
-  - search api
-  - web data
+  - ia
+  - agentes
+  - search-api
+  - web-data
   - real-time
   - research
 status: to_try
@@ -17,7 +17,8 @@ author: Yash
 author_handle: dewyashtwts
 entry_type: tool
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: inteligencia-artificial
 ---
 # Exa
 

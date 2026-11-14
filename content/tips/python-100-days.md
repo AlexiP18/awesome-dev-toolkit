@@ -1,7 +1,7 @@
 ---
 name: Python-100-Days
 url: 'https://github.com/jackfrued/Python-100-Days'
-category: Documentation & Resources
+category: 'Guías, tips & buenas prácticas'
 tags:
   - python
   - educacion
@@ -19,6 +19,7 @@ company: jackfrued
 has_academic_promo: true
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: consejos
+area: aprendizaje
 ---
 # Python-100-Days
 

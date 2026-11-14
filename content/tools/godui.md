@@ -1,16 +1,16 @@
 ---
 name: GodUI
 url: 'https://godui.design/'
-category: Frontend & UI
-conjunto: recursos
+category: Animación & motion web
+conjunto: app
 tags:
+  - react
+  - tailwind
   - frontend
   - ui
   - componentes
-  - react
   - shadcn
-  - tailwind
-  - animaciones
+  - animacion
   - gratis
   - open-source
   - mcp
@@ -28,6 +28,7 @@ entry_type: tool
 company: Csaba Kissi
 price: Gratis
 classified_by: Importado del vault
+area: diseno-creatividad
 ---
 # GodUI
 

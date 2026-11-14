@@ -1,7 +1,7 @@
 ---
 name: uisfx
 url: 'https://x.com/Manixh02/status/2094285536324383137'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
   - ui
   - audio
@@ -19,7 +19,8 @@ author_handle: Manixh02
 entry_type: tool
 company: uisfx
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # uisfx
 

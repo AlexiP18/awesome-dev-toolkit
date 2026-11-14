@@ -1,7 +1,7 @@
 ---
 name: coding-interview-university
 url: 'https://github.com/jwasham/coding-interview-university'
-category: Documentation & Resources
+category: 'Guías, tips & buenas prácticas'
 tags:
   - interview
   - algorithms
@@ -16,7 +16,8 @@ author: Shruti Codes
 author_handle: Shruti_0810
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: consejos
+area: aprendizaje
 ---
 # coding-interview-university
 

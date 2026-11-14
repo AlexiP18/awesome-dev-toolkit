@@ -2,7 +2,7 @@
 name: AMD AI Developer Program
 url: 'https://www.amd.com/en/developer/ai.html'
 website_url: 'https://www.studentoffers.co/offer/amd-ai-developer-program'
-category: Empresas & Productos
+category: 'Créditos, planes gratis & programas'
 tags:
   - amd
   - gpu
@@ -26,7 +26,8 @@ academic_promo_details: >-
   StudentOffers.co, orientado a estudiantes y builders que acrediten condición
   académica.
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+conjunto: app
+area: trabajo-oportunidades
 ---
 # AMD AI Developer Program
 

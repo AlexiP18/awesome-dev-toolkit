@@ -1,15 +1,15 @@
 ---
 name: MiroFish
 url: 'https://github.com/666ghj/MiroFish'
-category: AI & Machine Learning
+category: 'RAG, búsqueda & datos para IA'
 tags:
+  - python
   - multi-agent-simulation
   - swarm-intelligence
   - future-prediction
   - knowledge-graph
   - llms
   - agent-memory
-  - python
   - public-opinion-analysis
   - financial-forecasting
 stars: 84335
@@ -21,7 +21,8 @@ author: 山羊赚钱笔记
 author_handle: shanyanggm
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # MiroFish
 

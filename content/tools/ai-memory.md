@@ -1,13 +1,13 @@
 ---
 name: ai-memory
 url: 'https://github.com/akitaonrails/ai-memory'
-category: AI & Machine Learning
+category: 'Agentes, MCP & automatización'
 tags:
-  - ai
-  - memory
-  - agents
-  - cli
   - rust
+  - ia
+  - memory
+  - agentes
+  - cli
   - open-source
 stars: 15011
 status: to_try
@@ -19,7 +19,8 @@ author_handle: csaba_kissi
 entry_type: tool
 company: akitaonrails
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # ai-memory
 

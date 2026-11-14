@@ -1,7 +1,7 @@
 ---
 name: LLMs From Scratch
 url: 'https://github.com/rasbt/LLMs-from-scratch'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
   - llm
   - pytorch
@@ -17,7 +17,8 @@ author_handle: dkare1009
 entry_type: tool
 company: Sebastian Raschka (rasbt)
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # LLMs From Scratch
 

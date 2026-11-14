@@ -6,6 +6,8 @@ import { GitHubMetadata } from './github.js';
 import { getCachedTools, setCachedTools } from './catalog_state.js';
 import { markRepoPathDeleted, unmarkRepoPathDeleted } from './github_sync.js';
 import { coerceCategory } from './category_manager.js';
+import { assignConjunto } from './classify_rules.js';
+import { areaIdForCategory, categoryOmitsConjunto, normalizeTags, sectionForCategory } from './taxonomy.js';
 import { canonicalUrlKey, preferredDisplayUrl, productKeys, sameProduct } from './url_normalize.js';
 
 export function contentRoot(): string {
@@ -34,21 +36,20 @@ export function ensureToolsDirExists(): void {
 
 const VALID_ENTRY_TYPES: EntryType[] = ['tool', 'product_showcase', 'tech_tip', 'job_remote', 'tech_product'];
 
-/** Conserva tech_product y product_showcase; el tipo de empleo y el de consejo siguen mandando en su categoría. */
+/** Conserva tech_product y product_showcase. El empleo (salvo créditos) y las guías mandan en la carpeta. */
 export function resolveEntryType(requested: string | undefined, category: string): EntryType {
   const req = (requested || '').trim() as EntryType;
-  if (category === 'Trabajo & Freelance' || req === 'job_remote') return 'job_remote';
+  if (categoryOmitsConjunto(category) || req === 'job_remote') return 'job_remote';
   if (req === 'tech_product' || req === 'product_showcase') return req;
-  if (category === 'Productos Tecnológicos & Hardware') return 'tech_product';
-  if (category === 'Empresas & Productos') return 'product_showcase';
-  if (req === 'tech_tip' || category === 'Consejos & Buenas Prácticas') return 'tech_tip';
+  if (req === 'tech_tip' || category === 'Guías, tips & buenas prácticas') return 'tech_tip';
   if (VALID_ENTRY_TYPES.includes(req)) return req;
   return 'tool';
 }
 
 export function directoryForEntry(entry: EntryType, category: string): string {
-  if (entry === 'job_remote' || category === 'Trabajo & Freelance') return jobsDir();
-  if (entry === 'tech_tip' || category === 'Consejos & Buenas Prácticas') return tipsDir();
+  const section = sectionForCategory(category);
+  if (section === 'jobs' || entry === 'job_remote') return jobsDir();
+  if (section === 'tips' || entry === 'tech_tip') return tipsDir();
   return toolsDir();
 }
 
@@ -279,7 +280,15 @@ export function createOrUpdateToolNote(
     );
   }
 
-  const category = coerceCategory(params.classification.category, params.classification.entryType);
+  const category = coerceCategory(params.classification.category, params.classification.entryType, {
+    slug: duplicate?.slug || slugify(params.classification.name),
+    name: params.classification.name,
+    tags: params.classification.tags,
+    summary: params.classification.oneLiner,
+    conjunto: params.classification.conjunto,
+    url: params.classification.canonicalUrl,
+  });
+  const review = !category;
   const entryType = resolveEntryType(params.classification.entryType, category);
   const isJob = entryType === 'job_remote';
   const isTip = entryType === 'tech_tip';
@@ -316,6 +325,15 @@ export function createOrUpdateToolNote(
     ...(duplicate?.frontmatter.source_tweets || []),
     params.sourceTweet,
   ]);
+  const conjunto = categoryOmitsConjunto(category) || review
+    ? undefined
+    : (assignConjunto({
+        category,
+        conjunto: params.classification.conjunto || duplicate?.frontmatter.conjunto,
+        entryType,
+        url: finalUrl,
+        review,
+      }) as ToolConjunto | undefined);
 
   const frontmatter: ToolFrontmatter = {
     name: duplicate?.frontmatter.name || params.classification.name,
@@ -328,8 +346,10 @@ export function createOrUpdateToolNote(
         : undefined,
     ]) || undefined,
     category,
-    conjunto: params.classification.conjunto || duplicate?.frontmatter.conjunto || (isTip ? 'consejos' : 'recursos'),
-    tags: mergedTags,
+    area: areaIdForCategory(category),
+    conjunto,
+    review: review || undefined,
+    tags: normalizeTags(mergedTags, conjunto, 6),
     stars: params.githubMeta?.stars ?? duplicate?.frontmatter.stars,
     status: duplicate?.frontmatter.status || params.initialStatus || 'to_try',
     date_added: duplicate?.frontmatter.date_added || today,
@@ -350,7 +370,7 @@ export function createOrUpdateToolNote(
     classified_by: params.providerUsed || duplicate?.frontmatter.classified_by,
   };
 
-  const isProduct = entryType === 'tech_product' || entryType === 'product_showcase' || (!isJob && !isTip && (frontmatter.conjunto === 'producto' || (!!frontmatter.price && !isBlankishString(frontmatter.price))));
+  const isProduct = entryType === 'tech_product' || entryType === 'product_showcase' || (!isJob && !isTip && !!frontmatter.price && !isBlankishString(frontmatter.price));
 
   const highlightsMd = params.classification.keyHighlights.length
     ? params.classification.keyHighlights
@@ -493,9 +513,6 @@ export function loadAllTools(): ToolItem[] {
       const data = { ...(parsed.data as ToolFrontmatter) };
       if (!data.entry_type) {
         data.entry_type = defaultType;
-      }
-      if (!data.conjunto) {
-        data.conjunto = data.entry_type === 'tech_tip' ? 'consejos' : data.entry_type === 'tech_product' || data.entry_type === 'product_showcase' ? 'producto' : 'recursos';
       }
 
       const stat = fs.statSync(filePath);

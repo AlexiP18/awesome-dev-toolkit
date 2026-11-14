@@ -1,7 +1,7 @@
 ---
 name: FreeDomain
 url: 'https://github.com/DigitalPlatDev/FreeDomain'
-category: DevOps & Cloud
+category: 'DevOps, cloud & self-hosting'
 tags:
   - dns
   - dominios
@@ -18,7 +18,8 @@ author_handle: DivyanshT91162
 entry_type: tool
 company: DigitalPlatDev
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # FreeDomain
 

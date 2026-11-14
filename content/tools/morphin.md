@@ -1,16 +1,15 @@
 ---
 name: Morphin
 url: 'https://morphin.dev/'
-category: Frontend & UI
+category: Animación & motion web
 tags:
-  - ui
-  - components
-  - frontend
-  - design
-  - animaciones
-  - componentes
   - react
   - tailwind
+  - ui
+  - componentes
+  - frontend
+  - diseno
+  - animacion
   - framer-motion
   - gratis
 status: to_try
@@ -22,11 +21,12 @@ author_handle: csaba_kissi
 entry_type: tool
 price: Gratis
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
 source_tweets:
   - 'https://x.com/csaba_kissi/status/2116071103206724053'
   - 'https://x.com/kasuncfdo/status/2108779027796472178'
 updated_at: '2026-11-13T05:00:36.268Z'
+area: diseno-creatividad
 ---
 # Morphin
 

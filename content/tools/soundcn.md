@@ -1,12 +1,12 @@
 ---
 name: soundcn
 url: 'https://github.com/kapishdima/soundcn'
-category: Frontend & UI
+category: Componentes & frameworks UI
 tags:
+  - react
   - ui
   - sonidos
   - shadcn
-  - react
   - open-source
 stars: 930
 status: to_try
@@ -17,7 +17,8 @@ author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: diseno-creatividad
 ---
 # soundcn
 

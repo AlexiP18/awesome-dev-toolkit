@@ -1,13 +1,13 @@
 ---
 name: Fontshare
 url: 'https://fontshare.com/'
-category: Frontend & UI
+category: Recursos gráficos
 tags:
   - fonts
   - typography
   - frontend
   - ui
-  - design
+  - diseno
   - free-resources
 status: to_try
 date_added: '2026-11-03'
@@ -18,7 +18,8 @@ author_handle: amananimates
 entry_type: tool
 company: Indian Type Foundry (ITF)
 classified_by: Google Gemini (Flash)
-conjunto: recursos
+conjunto: app
+area: diseno-creatividad
 ---
 # Fontshare
 

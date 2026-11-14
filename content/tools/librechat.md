@@ -1,14 +1,14 @@
 ---
 name: LibreChat
 url: 'https://github.com/danny-avila/LibreChat'
-category: AI & Machine Learning
+category: 'Modelos, inferencia & APIs de IA'
 tags:
+  - typescript
   - chatgpt
   - claude
   - gemini
   - multi-modelo
-  - self-hosting
-  - typescript
+  - self-hosted
 stars: 46785
 status: to_try
 date_added: '2026-11-06'
@@ -19,7 +19,8 @@ author_handle: brenzhills
 entry_type: tool
 company: LibreChat
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: inteligencia-artificial
 ---
 # LibreChat
 

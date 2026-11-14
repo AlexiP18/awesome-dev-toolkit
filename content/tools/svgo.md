@@ -1,7 +1,7 @@
 ---
 name: SVGO
 url: 'https://github.com/svg/svgo'
-category: CLI & Terminal
+category: 'Terminal, IDE & hardware'
 tags:
   - svg
   - cli
@@ -18,7 +18,8 @@ author_handle: Lucy_love_AI
 entry_type: tool
 company: SVG
 classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+conjunto: codigo
+area: desarrollo-software
 ---
 # SVGO
 

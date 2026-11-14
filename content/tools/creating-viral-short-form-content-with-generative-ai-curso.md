@@ -1,7 +1,7 @@
 ---
 name: Creating Viral Short Form Content with Generative AI (Curso)
 url: 'https://drive.google.com/drive/folders/1wIcOQgQvFul7NhxD29a6jIhcmmS0Zdpl'
-category: 'Prompts, Art & Video'
+category: Prompts & generación visual con IA
 tags:
   - video
   - ia-generativa
@@ -18,6 +18,7 @@ entry_type: tool
 company: AHM7TECH (@Ahm7Tech)
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: consejos
+area: diseno-creatividad
 ---
 # Creating Viral Short Form Content with Generative AI (Curso)
 

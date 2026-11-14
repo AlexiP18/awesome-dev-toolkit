@@ -1,9 +1,9 @@
 ---
 name: Motion Crackers
 url: 'https://motioncrackers.com/'
-category: 'Prompts, Art & Video'
+category: Prompts & generación visual con IA
 tags:
-  - ai
+  - ia
   - motion-design
   - prompts
   - gallery
@@ -18,6 +18,7 @@ author_handle: AdamHincu
 entry_type: tool
 classified_by: Google Gemini (Flash)
 conjunto: inspiracion
+area: diseno-creatividad
 ---
 # Motion Crackers
 

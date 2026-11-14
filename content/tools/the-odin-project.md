@@ -1,8 +1,8 @@
 ---
 name: The Odin Project
 url: 'https://theodinproject.com/'
-category: Documentation & Resources
-conjunto: recursos
+category: 'Cursos, libros & rutas'
+conjunto: aprender
 tags:
   - desarrollo-web
   - javascript
@@ -17,6 +17,7 @@ author_handle: omoalhajaabiola
 entry_type: tool
 company: Omoalhaja
 classified_by: Importado del vault
+area: aprendizaje
 ---
 # The Odin Project
 

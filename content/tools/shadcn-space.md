@@ -1,12 +1,12 @@
 ---
 name: Shadcn Space
 url: 'https://github.com/shadcnspace/shadcnspace'
-category: Frontend & UI
-conjunto: recursos
+category: Componentes & frameworks UI
+conjunto: codigo
 tags:
-  - shadcn
   - react
   - tailwind
+  - shadcn
   - componentes
 status: to_try
 date_added: '2026-11-14'
@@ -17,6 +17,7 @@ author_handle: csaba_kissi
 entry_type: tool
 company: Csaba Kissi
 classified_by: Importado del vault
+area: diseno-creatividad
 ---
 # Shadcn Space
 
