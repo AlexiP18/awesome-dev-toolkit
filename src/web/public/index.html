@@ -2,8 +2,31 @@
 <html lang="es" class="dark">
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('toolkit_theme');
+        var theme = stored === 'light' || stored === 'dark'
+          ? stored
+          : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.classList.toggle('dark', theme !== 'light');
+        document.documentElement.classList.toggle('light', theme === 'light');
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1016">
   <title>Awesome Dev Toolkit - Segundo Cerebro & Catálogo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./catalog.css">
+  <script type="module">
+    import { flagToolsNeedingReview, sortTools, pageWindow } from './catalog-logic.js';
+    window.CatalogLogic = { flagToolsNeedingReview, sortTools, pageWindow };
+    window.dispatchEvent(new Event('catalog-logic-ready'));
+  </script>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
@@ -35,10 +58,11 @@
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-sky-500 selection:text-white">
+  <a class="skip-link" href="#catalogMain">Saltar al catálogo</a>
 
   <!-- Header -->
-  <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur sticky top-0 z-30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+  <header class="site-header border-b border-slate-800 bg-slate-900/60 backdrop-blur sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-3">
       <div class="flex items-center space-x-3">
         <div class="p-2 bg-sky-500/10 border border-sky-500/20 rounded-xl text-sky-400">
           <i data-lucide="sparkles" class="w-6 h-6"></i>
@@ -52,8 +76,12 @@
         </div>
       </div>
 
-      <div class="flex items-center space-x-2 sm:space-x-3">
-        <button onclick="openAuthorsModal()" class="text-xs px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5 text-slate-200">
+      <div class="header-actions items-center">
+        <button type="button" id="themeToggle" onclick="toggleTheme()" class="text-xs px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center justify-center gap-1.5 text-slate-200" aria-label="Cambiar tema claro u oscuro">
+          <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-300"></i>
+          <span class="hidden sm:inline">Tema</span>
+        </button>
+        <button type="button" onclick="openAuthorsModal()" class="text-xs px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center justify-center gap-1.5 text-slate-200">
           <i data-lucide="users" class="w-3.5 h-3.5 text-sky-400"></i>
           <span class="hidden sm:inline">Autores</span>
           <span id="headerAuthorCount" class="px-1.5 py-0.2 rounded-full bg-slate-700 text-[10px] text-sky-300 font-mono">0</span>
@@ -62,11 +90,11 @@
           <i data-lucide="bookmark" class="w-3.5 h-3.5 text-sky-400"></i>
           <span class="hidden sm:inline">Bookmarklet</span> 1-Clic
         </a>
-        <button onclick="exportCatalogBackupJson()" class="text-xs px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5 text-slate-200" title="Descargar copia de seguridad en JSON de todas las fichas guardadas en el navegador">
+        <button type="button" onclick="exportCatalogBackupJson()" class="text-xs px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center justify-center gap-1.5 text-slate-200" title="Descargar copia de seguridad en JSON de todas las fichas guardadas en el navegador">
           <i data-lucide="download" class="w-3.5 h-3.5 text-emerald-400"></i>
           <span class="hidden sm:inline">Exportar</span> JSON
         </button>
-        <button onclick="openIngestModal()" class="text-xs px-3.5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 font-semibold transition flex items-center gap-1.5 shadow-lg shadow-sky-600/20">
+        <button type="button" onclick="openIngestModal()" class="header-primary text-xs px-3.5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 font-semibold transition flex items-center justify-center gap-1.5 shadow-lg shadow-sky-600/20">
           <i data-lucide="plus" class="w-3.5 h-3.5"></i>
           <span id="headerAddBtnText">Añadir Recurso</span>
         </button>
@@ -75,15 +103,19 @@
   </header>
 
   <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full flex flex-col">
+  <main id="catalogMain" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full flex flex-col" tabindex="-1">
     
     <!-- 3 APARTADOS SELECTOR TABS -->
     <div class="mb-6">
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl">
+      <div id="sectionTabs" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl" role="tablist" aria-label="Apartados del catálogo">
         
         <!-- Tab 0: Todos los Apartados -->
         <button 
           id="tabSectionAll" 
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="toolsGrid"
           onclick="switchSection('all')" 
           class="relative p-3 rounded-xl border text-left transition flex items-center justify-between group bg-indigo-500/15 border-indigo-500/40 text-indigo-300 shadow-inner"
         >
@@ -106,6 +138,10 @@
         <!-- Tab 1: Herramientas -->
         <button 
           id="tabSectionTools" 
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="toolsGrid"
           onclick="switchSection('tools')" 
           class="relative p-3 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40"
         >
@@ -128,6 +164,10 @@
         <!-- Tab 2: Consejos Técnicos -->
         <button 
           id="tabSectionTips" 
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="toolsGrid"
           onclick="switchSection('tips')" 
           class="relative p-3 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40"
         >
@@ -150,6 +190,10 @@
         <!-- Tab 3: Empleo & Freelance -->
         <button 
           id="tabSectionJobs" 
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="toolsGrid"
           onclick="switchSection('jobs')" 
           class="relative p-3 rounded-xl border text-left transition flex items-center justify-between group bg-slate-950/60 border-slate-800/80 hover:bg-slate-800/40"
         >
@@ -200,21 +244,25 @@
       </button>
     </div>
 
+    <div id="categoryStats" class="category-stats" aria-label="Recuento por categoría"></div>
+
     <!-- Search & Quick Stats -->
     <div class="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center mb-6">
       <!-- Search Input -->
-      <div class="relative flex-1 max-w-xl">
+      <div class="relative flex-1 max-w-xl" role="search">
         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
           <i data-lucide="search" class="w-4 h-4"></i>
         </div>
         <input 
           id="searchInput"
-          type="text" 
+          type="search"
+          enterkeyhint="search"
+          aria-label="Buscar en el catálogo"
           placeholder="Buscar herramienta, tecnología, tag o comando... (Presiona Ctrl/Cmd + K)"
-          class="w-full pl-10 pr-12 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-slate-200 placeholder-slate-500 transition shadow-inner"
-          oninput="filterTools()"
+          class="w-full pl-10 pr-4 sm:pr-12 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-slate-200 placeholder-slate-500 transition shadow-inner"
+          oninput="scheduleFilterTools()"
         />
-        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+        <div class="search-kbd absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
           <kbd class="text-[10px] font-mono px-1.5 py-0.5 bg-slate-800 text-slate-400 rounded border border-slate-700">⌘K</kbd>
         </div>
       </div>
@@ -304,6 +352,36 @@
         <button id="batchSelectAllBtn" onclick="toggleSelectAllVisible()" class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 transition flex items-center gap-1.5" title="Seleccionar todos los recursos visibles para acciones por lotes">
           <i data-lucide="check-square" class="w-3.5 h-3.5 text-sky-400"></i>
           <span id="batchSelectAllBtnText">Seleccionar varios</span>
+        </button>
+
+        <label class="inline-flex items-center gap-1.5" for="sortSelect">
+          <span class="font-medium">Orden:</span>
+          <select id="sortSelect" onchange="setSort(this.value)" aria-label="Ordenar catálogo" class="bg-slate-900 border border-slate-800 text-xs rounded-lg px-2.5 py-1 text-slate-300 focus:outline-none focus:border-sky-500">
+            <option value="newest">Más recientes</option>
+            <option value="name">Nombre</option>
+            <option value="stars">Estrellas</option>
+          </select>
+        </label>
+        <label class="inline-flex items-center gap-1.5" for="entryTypeSelect">
+          <span class="font-medium">Tipo:</span>
+          <select id="entryTypeSelect" onchange="setEntryTypeFilter(this.value)" aria-label="Filtrar por tipo de ficha" class="bg-slate-900 border border-slate-800 text-xs rounded-lg px-2.5 py-1 text-slate-300 focus:outline-none focus:border-sky-500">
+            <option value="all">Todos</option>
+            <option value="tool">Herramientas</option>
+            <option value="tech_tip">Consejos</option>
+            <option value="job_remote">Trabajo</option>
+            <option value="product_showcase">Producto</option>
+            <option value="tech_product">Hardware</option>
+          </select>
+        </label>
+        <label class="inline-flex items-center gap-1.5" for="tagFilterSelect">
+          <span class="font-medium">Etiqueta:</span>
+          <select id="tagFilterSelect" onchange="setTagFilter(this.value)" aria-label="Filtrar por etiqueta" class="bg-slate-900 border border-slate-800 text-xs rounded-lg px-2.5 py-1 text-slate-300 focus:outline-none focus:border-sky-500 max-w-[180px]">
+            <option value="all">Todas las etiquetas</option>
+          </select>
+        </label>
+        <button type="button" id="reviewFilterBtn" onclick="toggleReviewFilter()" aria-pressed="false" class="px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800 transition flex items-center gap-1.5" title="Fichas que comparten URL con otro producto o están marcadas para revisión manual">
+          <span>Revisión</span>
+          <span id="reviewCount" class="font-mono">0</span>
         </button>
 
         <span class="text-slate-700 hidden sm:inline">|</span>
@@ -407,20 +485,23 @@
       </div>
     </div>
 
+    <p id="resultsMeta" class="results-meta" aria-live="polite">Cargando catálogo…</p>
+
     <!-- Items Grid for Active Section -->
-    <div id="toolsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div id="toolsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" aria-live="polite" aria-busy="true">
       <!-- Loading Skeleton or empty state -->
-      <div class="col-span-full py-16 text-center text-slate-500">
+      <div class="catalog-state" role="status">
         <i data-lucide="loader" class="w-8 h-8 animate-spin mx-auto mb-3 text-sky-400"></i>
         <p>Cargando catálogo del Segundo Cerebro...</p>
       </div>
     </div>
+    <nav id="catalogPager" class="catalog-pager" aria-label="Paginación del catálogo" hidden></nav>
 
   </main>
 
   <!-- Modal / Drawer: Ver y Editar Nota (Segundo Cerebro) -->
-  <div id="noteModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex justify-end">
-    <div class="bg-slate-900 border-l border-slate-800 w-full max-w-xl h-full flex flex-col shadow-2xl animate-in slide-in-from-right duration-200">
+  <div id="noteModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex justify-end" role="dialog" aria-modal="true" aria-labelledby="modalToolName">
+    <div class="bg-slate-900 border-l border-slate-800 w-full max-w-2xl h-full flex flex-col shadow-2xl">
       
       <div class="p-5 border-b border-slate-800 flex items-center justify-between">
         <div>
@@ -441,7 +522,7 @@
             <span id="modalConjuntoBadge" class="hidden text-[10px] px-2 py-0.5 rounded-full font-semibold border"></span>
           </div>
         </div>
-        <button onclick="closeNoteModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800">
+        <button type="button" onclick="closeNoteModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800" aria-label="Cerrar ficha">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
@@ -467,6 +548,14 @@
             </a>
           </div>
         </div>
+
+        <div id="modalReviewCallout" class="hidden review-callout" role="status"></div>
+        <div id="modalTagRow" class="modal-tags"></div>
+        <section id="modalSourceBlock" class="source-block" aria-label="Enlaces y tweets de origen">
+          <h3>Enlaces y tweets de origen</h3>
+          <ul id="modalSourceList"></ul>
+        </section>
+        <div id="modalShots" class="hidden detail-shots"></div>
 
         <!-- Academic Promo Alert inside Modal -->
         <div id="modalAcademicAlert" class="hidden p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300 flex items-start gap-2.5">
@@ -1179,6 +1268,19 @@
     let selectedAiProvider = localStorage.getItem('toolkit_selected_ai_provider') || 'deepseek';
     let allAiProviders = [];
     let allCategoriesList = [];
+    let currentSort = 'newest';
+    let currentEntryType = 'all';
+    let currentTag = 'all';
+    let filterNeedsReview = false;
+    let currentPage = 1;
+    let reviewReasons = {};
+    let bootFilters = null;
+    let pendingNoteSlug = '';
+    let searchTimer = null;
+    let tagOptionsSig = '';
+    let noteReturnFocus = null;
+    const PAGE_SIZE_CARDS = 24;
+    const PAGE_SIZE_LIST = 48;
 
     const COLOR_THEMES = {
       emerald: { badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30', dot: 'bg-emerald-400', border: 'border-emerald-500/30 hover:border-emerald-400/60', topBorder: 'border-t-emerald-500', bgTint: 'from-emerald-950/20 via-slate-900 to-slate-900', titleHover: 'group-hover:text-emerald-300', dateColor: 'text-emerald-300/70' },
@@ -1479,6 +1581,17 @@
       currentSection = sectionId;
       currentCategory = 'all';
       currentAuthor = 'all';
+      currentConjunto = 'all';
+      currentPage = 1;
+      if (bootFilters) {
+        const boot = bootFilters;
+        bootFilters = null;
+        if (boot.category) currentCategory = boot.category;
+        if (boot.conjunto) currentConjunto = boot.conjunto;
+        if (boot.author) currentAuthor = boot.author;
+        if (boot.status) currentStatus = boot.status;
+        if (boot.page) currentPage = boot.page;
+      }
 
       // Actualizar estilo visual de las 4 tabs
       const tabs = [
@@ -1572,13 +1685,25 @@
         }
       }
 
-      currentConjunto = 'all';
       renderConjuntoFilters();
       renderCategoryFilters();
       renderAuthorFilterSelect();
+      updateSectionTabAria();
       updateStats();
       renderTools();
       lucide.createIcons();
+    }
+
+    function updateSectionTabAria() {
+      [
+        ['all', 'tabSectionAll'],
+        ['tools', 'tabSectionTools'],
+        ['tips', 'tabSectionTips'],
+        ['jobs', 'tabSectionJobs'],
+      ].forEach(([id, elId]) => {
+        const el = document.getElementById(elId);
+        if (el) el.setAttribute('aria-selected', id === currentSection ? 'true' : 'false');
+      });
     }
 
     async function fetchAuthorProfiles() {
@@ -1613,14 +1738,8 @@
 
     function toggleRecentFilter() {
       filterRecent = !filterRecent;
-      const btn = document.getElementById('recentFilterBtn');
-      if (btn) {
-        btn.className = `px-2.5 py-1 rounded-md transition flex items-center gap-1.5 ${
-          filterRecent
-            ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40 hover:bg-sky-500/30 font-medium shadow-sm'
-            : 'bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800'
-        }`;
-      }
+      currentSort = filterRecent ? 'newest' : 'stars';
+      currentPage = 1;
       renderTools();
     }
 
@@ -1833,6 +1952,7 @@
     }
 
     function toggleAcademicFilter() {
+      currentPage = 1;
       filterOnlyAcademic = !filterOnlyAcademic;
       const btn = document.getElementById('academicFilterBtn');
       if (btn) {
@@ -1924,6 +2044,7 @@
 
     function setAuthorFilter(author) {
       currentAuthor = author;
+      currentPage = 1;
       renderAuthorFilterSelect();
       updateAuthorProfileBanner();
       renderTools();
@@ -2450,6 +2571,8 @@
         }
 
         allTools = Array.from(finalMap.values());
+        await ensureCatalogLogic();
+        rebuildCatalogIndex();
         saveLocalToolsBackup(allTools);
 
         // Limpiar de la selección elementos que ya no existan
@@ -2462,17 +2585,28 @@
         await fetchCategories();
         await fetchAuthorProfiles();
         switchSection(currentSection);
+        if (pendingNoteSlug) {
+          const slug = pendingNoteSlug;
+          pendingNoteSlug = '';
+          openNoteModal(slug);
+        }
       } catch (err) {
         console.error('Error fetching tools:', err);
         const fallbackBackup = getLocalToolsBackup();
         if (fallbackBackup.length > 0) {
           allTools = fallbackBackup;
+          await ensureCatalogLogic();
+          rebuildCatalogIndex();
           switchSection(currentSection);
           return;
         }
-        document.getElementById('toolsGrid').innerHTML = `
-          <div class="col-span-full py-12 text-center text-red-400">
-            Error cargando recursos del catálogo.
+        const grid = document.getElementById('toolsGrid');
+        grid.setAttribute('aria-busy', 'false');
+        grid.innerHTML = `
+          <div class="catalog-state" role="alert">
+            <p class="text-sm font-medium text-rose-300">No se pudo cargar el catálogo.</p>
+            <p class="text-xs text-slate-400 mt-1">Revisa la conexión con el servidor o el archivo data/tools.json.</p>
+            <button type="button" onclick="fetchTools()" class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700">Reintentar</button>
           </div>
         `;
       }
@@ -2763,6 +2897,7 @@
 
     function setConjuntoFilter(conjunto) {
       currentConjunto = conjunto;
+      currentPage = 1;
       renderConjuntoFilters();
       renderTools();
     }
@@ -2806,12 +2941,15 @@
 
     function setCategoryFilter(cat) {
       currentCategory = cat;
+      currentPage = 1;
       renderCategoryFilters();
+      updateStats();
       renderTools();
     }
 
     function setStatusFilter(status) {
       currentStatus = status;
+      currentPage = 1;
       document.querySelectorAll('.status-btn').forEach(btn => {
         const match = btn.dataset.status === status;
         btn.className = `status-btn px-2.5 py-1 rounded-md transition ${
@@ -2819,12 +2957,331 @@
             ? 'bg-sky-500/20 text-sky-400 border border-sky-500/30' 
             : 'bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800'
         }`;
+        btn.setAttribute('aria-pressed', match ? 'true' : 'false');
       });
       renderTools();
     }
 
+    function scheduleFilterTools() {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => filterTools(), 140);
+    }
+
     function filterTools() {
+      currentPage = 1;
       renderTools();
+    }
+
+    function setSort(mode) {
+      currentSort = mode === 'name' || mode === 'stars' ? mode : 'newest';
+      filterRecent = currentSort === 'newest';
+      currentPage = 1;
+      renderTools();
+    }
+
+    function setEntryTypeFilter(value) {
+      currentEntryType = value || 'all';
+      currentPage = 1;
+      renderTools();
+    }
+
+    function setTagFilter(value) {
+      currentTag = value || 'all';
+      currentPage = 1;
+      renderTools();
+    }
+
+    function toggleReviewFilter() {
+      filterNeedsReview = !filterNeedsReview;
+      currentPage = 1;
+      renderTools();
+    }
+
+    function clearCatalogFilters() {
+      currentCategory = 'all';
+      currentConjunto = 'all';
+      currentStatus = 'all';
+      currentAuthor = 'all';
+      currentEntryType = 'all';
+      currentTag = 'all';
+      filterNeedsReview = false;
+      filterOnlyAcademic = false;
+      currentPage = 1;
+      const input = document.getElementById('searchInput');
+      if (input) input.value = '';
+      renderConjuntoFilters();
+      renderCategoryFilters();
+      renderAuthorFilterSelect();
+      setStatusFilter('all');
+    }
+
+    function pageSize() {
+      return currentViewMode === 'list' ? PAGE_SIZE_LIST : PAGE_SIZE_CARDS;
+    }
+
+    async function ensureCatalogLogic() {
+      if (window.CatalogLogic) return;
+      await new Promise((resolve) => {
+        const done = () => resolve();
+        window.addEventListener('catalog-logic-ready', done, { once: true });
+        setTimeout(done, 2000);
+      });
+    }
+
+    function rebuildCatalogIndex() {
+      for (const tool of allTools) {
+        const fm = tool.frontmatter || {};
+        const tags = Array.isArray(fm.tags) ? fm.tags.join(' ') : '';
+        tool._haystack = [
+          fm.name, tags, fm.url, fm.website_url, fm.company, fm.location,
+          fm.salary, fm.price, fm.author, fm.author_handle, fm.category,
+          fm.entry_type, fm.conjunto, tool.content,
+        ].join('\n').toLowerCase();
+      }
+      reviewReasons = window.CatalogLogic
+        ? window.CatalogLogic.flagToolsNeedingReview(allTools)
+        : {};
+      const countEl = document.getElementById('reviewCount');
+      if (countEl) countEl.textContent = String(Object.keys(reviewReasons).length);
+    }
+
+    function toolEntryType(tool) {
+      const fm = tool?.frontmatter || {};
+      if (fm.entry_type) return fm.entry_type;
+      const section = getItemSection(tool);
+      if (section === 'jobs') return 'job_remote';
+      if (section === 'tips') return 'tech_tip';
+      return 'tool';
+    }
+
+    function toolAvatarHtml(fm) {
+      const name = (fm && fm.name) || '?';
+      const letter = escapeHtml(name.trim().charAt(0).toUpperCase() || '?');
+      const url = (fm && (fm.url || fm.website_url)) || '';
+      const gh = String(url).match(/github\.com\/([^\/?#]+)/i);
+      const ignored = ['settings', 'topics', 'collections', 'features', 'orgs'];
+      if (gh && gh[1] && !ignored.includes(gh[1].toLowerCase())) {
+        const src = `https://github.com/${encodeURIComponent(gh[1])}.png?size=64`;
+        return `<span class="tool-avatar"><img src="${src}" alt="" width="36" height="36" loading="lazy" decoding="async" onerror="this.remove()"><span class="tool-avatar-fallback" aria-hidden="true">${letter}</span></span>`;
+      }
+      return `<span class="tool-avatar" aria-hidden="true"><span class="tool-avatar-fallback">${letter}</span></span>`;
+    }
+
+    function collectSourceLinks(tool) {
+      const fm = tool.frontmatter || {};
+      const items = [];
+      const push = (kind, href, label) => {
+        if (!href || href === 'null' || href === 'undefined' || href === '#') return;
+        if (items.some((item) => item.href === href)) return;
+        items.push({ kind, href, label });
+      };
+      push('recurso', fm.url, 'Enlace principal');
+      push('web', fm.website_url, 'Sitio web');
+      push('tweet', fm.source_tweet, 'Tweet de origen');
+      (Array.isArray(fm.source_tweets) ? fm.source_tweets : []).forEach((href, index) => {
+        push('tweet', href, `Tweet adicional ${index + 1}`);
+      });
+      return items;
+    }
+
+    function readUrlState() {
+      const params = new URLSearchParams(window.location.search);
+      const savedSection = sessionStorage.getItem('toolkit_active_section');
+      if (savedSection) sessionStorage.removeItem('toolkit_active_section');
+      const allowedSections = ['all', 'tools', 'tips', 'jobs'];
+      const section = allowedSections.includes(params.get('section'))
+        ? params.get('section')
+        : (allowedSections.includes(savedSection) ? savedSection : currentSection);
+      const sort = ['newest', 'name', 'stars'].includes(params.get('sort')) ? params.get('sort') : 'newest';
+      const view = params.get('view') === 'list' ? 'list' : (params.get('view') === 'cards' ? 'cards' : null);
+      currentSection = section;
+      currentSort = sort;
+      filterRecent = sort === 'newest';
+      currentEntryType = params.get('type') || 'all';
+      currentTag = params.get('tag') || 'all';
+      currentStatus = params.get('status') || 'all';
+      filterNeedsReview = params.get('review') === '1';
+      filterOnlyAcademic = params.get('academic') === '1';
+      if (view) currentViewMode = view;
+      pendingNoteSlug = params.get('note') || '';
+      const page = parseInt(params.get('page') || '1', 10);
+      bootFilters = {
+        category: params.get('cat') || 'all',
+        conjunto: params.get('conjunto') || 'all',
+        author: params.get('author') || 'all',
+        status: currentStatus,
+        page: Number.isFinite(page) && page > 0 ? page : 1,
+      };
+      const input = document.getElementById('searchInput');
+      if (input) input.value = params.get('q') || '';
+    }
+
+    function writeUrlState() {
+      const params = new URLSearchParams();
+      const query = (document.getElementById('searchInput')?.value || '').trim();
+      if (currentSection !== 'all') params.set('section', currentSection);
+      if (currentCategory !== 'all') params.set('cat', currentCategory);
+      if (currentConjunto !== 'all') params.set('conjunto', currentConjunto);
+      if (currentStatus !== 'all') params.set('status', currentStatus);
+      if (currentAuthor !== 'all') params.set('author', currentAuthor);
+      if (currentEntryType !== 'all') params.set('type', currentEntryType);
+      if (currentTag !== 'all') params.set('tag', currentTag);
+      if (currentSort !== 'newest') params.set('sort', currentSort);
+      if (currentViewMode === 'list') params.set('view', 'list');
+      if (filterNeedsReview) params.set('review', '1');
+      if (filterOnlyAcademic) params.set('academic', '1');
+      if (query) params.set('q', query);
+      if (currentPage > 1) params.set('page', String(currentPage));
+      if (activeEditingSlug) params.set('note', activeEditingSlug);
+      const next = params.toString();
+      const url = next ? `${window.location.pathname}?${next}` : window.location.pathname;
+      const current = `${window.location.pathname}${window.location.search}`;
+      if (current !== url) history.replaceState(null, '', url);
+    }
+
+    function applyTheme(theme) {
+      const light = theme === 'light';
+      document.documentElement.classList.toggle('light', light);
+      document.documentElement.classList.toggle('dark', !light);
+      document.documentElement.style.colorScheme = light ? 'light' : 'dark';
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', light ? '#f4f0e6' : '#0b1016');
+      try { localStorage.setItem('toolkit_theme', light ? 'light' : 'dark'); } catch (e) {}
+      const btn = document.getElementById('themeToggle');
+      if (btn) {
+        btn.setAttribute('aria-label', light ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro');
+        const label = btn.querySelector('span');
+        if (label) label.textContent = light ? 'Oscuro' : 'Claro';
+      }
+    }
+
+    function toggleTheme() {
+      applyTheme(document.documentElement.classList.contains('light') ? 'dark' : 'light');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function syncFilterControls() {
+      const sortSelect = document.getElementById('sortSelect');
+      if (sortSelect) sortSelect.value = currentSort;
+      const typeSelect = document.getElementById('entryTypeSelect');
+      if (typeSelect) typeSelect.value = currentEntryType;
+      const recentBtn = document.getElementById('recentFilterBtn');
+      if (recentBtn) {
+        recentBtn.className = `px-2.5 py-1 rounded-md transition flex items-center gap-1.5 ${
+          filterRecent
+            ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40 hover:bg-sky-500/30 font-medium shadow-sm'
+            : 'bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800'
+        }`;
+        recentBtn.setAttribute('aria-pressed', filterRecent ? 'true' : 'false');
+      }
+      const reviewBtn = document.getElementById('reviewFilterBtn');
+      if (reviewBtn) {
+        reviewBtn.className = `px-2.5 py-1 rounded-md transition flex items-center gap-1.5 ${
+          filterNeedsReview
+            ? 'bg-amber-500/20 text-amber-200 border border-amber-500/50 font-semibold'
+            : 'bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800'
+        }`;
+        reviewBtn.setAttribute('aria-pressed', filterNeedsReview ? 'true' : 'false');
+      }
+      const academicBtn = document.getElementById('academicFilterBtn');
+      if (academicBtn) {
+        academicBtn.setAttribute('aria-pressed', filterOnlyAcademic ? 'true' : 'false');
+        academicBtn.className = `px-2.5 py-1 rounded-md transition flex items-center gap-1.5 ${
+          filterOnlyAcademic
+            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-medium'
+            : 'bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800'
+        }`;
+      }
+      syncTagSelect();
+    }
+
+    function syncTagSelect() {
+      const select = document.getElementById('tagFilterSelect');
+      if (!select) return;
+      const counts = new Map();
+      for (const tool of allTools) {
+        if (currentSection !== 'all' && getItemSection(tool) !== currentSection) continue;
+        for (const tag of tool.frontmatter?.tags || []) {
+          const key = String(tag);
+          counts.set(key, (counts.get(key) || 0) + 1);
+        }
+      }
+      const sig = `${currentSection}|${counts.size}|${currentTag}`;
+      if (sig !== tagOptionsSig) {
+        tagOptionsSig = sig;
+        const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'es'));
+        const options = ['<option value="all">Todas las etiquetas</option>'];
+        if (currentTag !== 'all' && !counts.has(currentTag)) {
+          options.push(`<option value="${escapeHtml(currentTag)}">#${escapeHtml(currentTag)}</option>`);
+        }
+        for (const [tag, count] of tags) {
+          options.push(`<option value="${escapeHtml(tag)}">#${escapeHtml(tag)} (${count})</option>`);
+        }
+        select.innerHTML = options.join('');
+      }
+      select.value = currentTag;
+    }
+
+    function renderCategoryStats(sectionItems) {
+      const el = document.getElementById('categoryStats');
+      if (!el) return;
+      const counts = new Map();
+      for (const tool of sectionItems) {
+        const name = tool.frontmatter?.category || 'Other';
+        counts.set(name, (counts.get(name) || 0) + 1);
+      }
+      const rows = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'es'));
+      el.innerHTML = rows.map(([name, count]) => {
+        const active = currentCategory === name;
+        return `<button type="button" class="stat-chip${active ? ' is-active' : ''}" onclick="setCategoryFilter('${escapeJsString(name)}')" aria-pressed="${active ? 'true' : 'false'}"><span>${escapeHtml(name)}</span><strong>${count}</strong></button>`;
+      }).join('');
+    }
+
+    function renderResultsMeta(total, start, count) {
+      const el = document.getElementById('resultsMeta');
+      if (!el) return;
+      el.textContent = total === 0
+        ? 'Ningún recurso coincide con los filtros.'
+        : `Mostrando ${start + 1}–${start + count} de ${total}`;
+    }
+
+    function renderPager(total, pages) {
+      const nav = document.getElementById('catalogPager');
+      if (!nav) return;
+      if (!total || pages <= 1) {
+        nav.hidden = true;
+        nav.innerHTML = '';
+        return;
+      }
+      nav.hidden = false;
+      const buttons = [];
+      buttons.push(`<button type="button" onclick="setPage(${currentPage - 1})" ${currentPage <= 1 ? 'disabled' : ''}>Anterior</button>`);
+      const windowStart = Math.max(1, currentPage - 2);
+      const windowEnd = Math.min(pages, windowStart + 4);
+      for (let page = windowStart; page <= windowEnd; page += 1) {
+        buttons.push(`<button type="button" onclick="setPage(${page})" ${page === currentPage ? 'aria-current="page"' : ''}>${page}</button>`);
+      }
+      buttons.push(`<button type="button" onclick="setPage(${currentPage + 1})" ${currentPage >= pages ? 'disabled' : ''}>Siguiente</button>`);
+      nav.innerHTML = buttons.join('');
+    }
+
+    function setPage(page) {
+      const size = pageSize();
+      const total = getFilteredTools().length;
+      const pages = Math.max(1, Math.ceil(total / size) || 1);
+      currentPage = Math.min(Math.max(1, page), pages);
+      renderTools();
+      document.getElementById('resultsMeta')?.scrollIntoView({ block: 'nearest' });
+    }
+
+    function getPagedTools() {
+      const matched = getFilteredTools();
+      const size = pageSize();
+      const pages = Math.max(1, Math.ceil(matched.length / size) || 1);
+      if (currentPage > pages) currentPage = pages;
+      if (currentPage < 1) currentPage = 1;
+      const start = (currentPage - 1) * size;
+      return { matched, pageItems: matched.slice(start, start + size), pages, start };
     }
 
     function getToolRecency(tool) {
@@ -2886,37 +3343,32 @@
           return false;
         }
 
+        // 5b. Tipo de ficha, etiqueta y revisión manual
+        if (currentEntryType !== 'all' && toolEntryType(tool) !== currentEntryType) {
+          return false;
+        }
+        if (currentTag !== 'all') {
+          const tags = tool.frontmatter?.tags || [];
+          if (!tags.some((tag) => String(tag).toLowerCase() === currentTag.toLowerCase())) return false;
+        }
+        if (filterNeedsReview && !reviewReasons[tool.slug]) {
+          return false;
+        }
+
         // 6. Búsqueda de Texto
         if (query) {
-          const fm = tool.frontmatter || {};
-          const matchName = (fm.name || '').toLowerCase().includes(query);
-          const matchTags = (fm.tags || []).some(t => t.toLowerCase().includes(query));
-          const matchContent = (tool.content || '').toLowerCase().includes(query);
-          const matchUrl = (fm.url || '').toLowerCase().includes(query);
-          const matchCompany = (fm.company || '').toLowerCase().includes(query);
-          const matchLocation = (fm.location || '').toLowerCase().includes(query);
-          const matchSalary = (fm.salary || '').toLowerCase().includes(query);
-          const matchPrice = (fm.price || '').toLowerCase().includes(query);
-          const matchAuthor = (fm.author || '').toLowerCase().includes(query);
-          return matchName || matchTags || matchContent || matchUrl || matchCompany || matchLocation || matchSalary || matchPrice || matchAuthor;
+          const haystack = tool._haystack || '';
+          if (!haystack.includes(query)) return false;
         }
 
         return true;
       });
 
-      // 7. Filtro y ordenación: si "Recientes" está activo (por defecto), los más nuevos/analizados primero
-      if (filterRecent) {
-        filtered.sort((a, b) => {
-          const recA = getToolRecency(a);
-          const recB = getToolRecency(b);
-          if (recB !== recA) return recB - recA;
-          return (b.frontmatter?.stars || 0) - (a.frontmatter?.stars || 0);
-        });
-      } else {
-        // Si el usuario desactiva "Recientes", ordenar por estrellas / popularidad
-        filtered.sort((a, b) => (b.frontmatter?.stars || 0) - (a.frontmatter?.stars || 0));
+      if (window.CatalogLogic?.sortTools) {
+        return window.CatalogLogic.sortTools(filtered, currentSort);
       }
 
+      filtered.sort((a, b) => getToolRecency(b) - getToolRecency(a));
       return filtered;
     }
 
@@ -2967,11 +3419,15 @@
       const allAuthors = getAuthorsData(false);
       const headerAuthorCountEl = document.getElementById('headerAuthorCount');
       if (headerAuthorCountEl) headerAuthorCountEl.innerText = allAuthors.length;
+      renderCategoryStats(sectionItems);
+      const reviewCountEl = document.getElementById('reviewCount');
+      if (reviewCountEl) reviewCountEl.textContent = String(Object.keys(reviewReasons).length);
     }
 
     function setViewMode(mode) {
       currentViewMode = mode === 'list' ? 'list' : 'cards';
       localStorage.setItem('toolkit_view_mode', currentViewMode);
+      currentPage = 1;
       updateViewModeButtons();
       renderTools();
     }
@@ -2996,6 +3452,12 @@
       const isJob = itemSec === 'jobs';
       const isTip = itemSec === 'tips';
       const isTool = itemSec === 'tools';
+      const isProduct = getToolConjunto(tool) === 'producto' || fm.entry_type === 'tech_product' || fm.entry_type === 'product_showcase';
+      const reviewReason = reviewReasons[tool.slug] || '';
+      const reviewBadge = reviewReason
+        ? `<span class="review-flag" title="${escapeHtml(reviewReason)}">Revisar</span>`
+        : '';
+      const avatarHtml = toolAvatarHtml(fm);
 
       const starsBadge = fm.stars ? `
         <span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">
@@ -3203,7 +3665,7 @@
 
       return {
         fm, itemSec, isJob, isTip, isProduct, isTool,
-        conjunto, conjuntoCfg, conjuntoBadge,
+        conjunto, conjuntoCfg, conjuntoBadge, reviewBadge, avatarHtml, reviewReason,
         starsBadge, tagsHtml, summary, safeUrl, isGithub, isTwitter,
         mainLinkTitle, mainIconHtml, isAllFilter, apartadoBarTheme,
         tweetLink, websiteLink, primaryLink, isAcademic, promoDetails, academicBadge,
@@ -3254,7 +3716,7 @@
       ` : '';
 
       return `
-        <div class="bg-gradient-to-b ${ctx.catTheme.bgTint} border ${ctx.catTheme.border} ${ctx.cardSelectionRing} border-t-2 ${ctx.catTheme.topBorder} transition-all duration-200 rounded-2xl flex flex-row items-stretch group shadow-sm hover:shadow-xl relative overflow-hidden">
+        <article class="tool-card bg-gradient-to-b ${ctx.catTheme.bgTint} border ${ctx.catTheme.border} ${ctx.cardSelectionRing} border-t-2 ${ctx.catTheme.topBorder} transition-all duration-200 rounded-2xl flex flex-row items-stretch group relative overflow-hidden">
           ${apartadoVerticalBarHtml}
           <div class="p-4 flex flex-col justify-between flex-1 min-w-0 pr-8 sm:pr-9">
             <div>
@@ -3266,6 +3728,7 @@
                         type="checkbox" 
                         onchange="toggleSelectTool('${tool.slug}', this.checked)" 
                         ${ctx.isCardSelected ? 'checked' : ''} 
+                        aria-label="Seleccionar ${escapeHtml(fm.name || 'ficha')}"
                         class="w-3.5 h-3.5 rounded border-slate-700 bg-slate-950 text-sky-500 focus:ring-0 cursor-pointer accent-sky-500" 
                       />
                     </label>
@@ -3274,11 +3737,13 @@
                       <span>${fm.category || 'Other'}</span>
                     </span>
                     ${ctx.conjuntoBadge}
+                    ${ctx.reviewBadge}
                     ${ctx.academicBadge}
                   </div>
-                  <h3 class="font-bold text-slate-100 text-sm ${ctx.catTheme.titleHover} transition flex items-center gap-1.5">
+                  <h3 id="tool-title-${escapeHtml(tool.slug)}" class="font-bold text-slate-100 text-sm ${ctx.catTheme.titleHover} transition flex items-center gap-1.5">
+                    ${ctx.avatarHtml}
                     <a href="${ctx.safeUrl !== '#' ? ctx.safeUrl : 'javascript:void(0)'}" target="${ctx.safeUrl !== '#' ? '_blank' : '_self'}" class="hover:underline">
-                      ${fm.name}
+                      ${escapeHtml(fm.name)}
                     </a>
                   </h3>
                 </div>
@@ -3337,7 +3802,7 @@
 
           <!-- Barra vertical derecha de acciones (Visible SOLO al hacer hover en esa área / borde) -->
           <div 
-            class="absolute right-0 top-0 bottom-0 w-9 sm:w-10 bg-slate-950/90 backdrop-blur-md border-l border-slate-800/80 flex flex-col items-center justify-center gap-3 z-20 opacity-0 hover:opacity-100 transition-all duration-200 shadow-xl cursor-default"
+            class="card-actions absolute right-0 top-0 bottom-0 w-9 sm:w-10 bg-slate-950/90 backdrop-blur-md border-l border-slate-800/80 flex flex-col items-center justify-center gap-3 z-20 transition-all duration-200 shadow-xl cursor-default"
             title="Acciones de la ficha"
             onclick="event.stopPropagation();"
           >
@@ -3347,6 +3812,7 @@
               onclick="openEditToolModal('${tool.slug}')" 
               class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-amber-300 border border-slate-700/60 hover:border-amber-500/50 transition-all shadow-md hover:scale-110 active:scale-95" 
               title="Editar ficha técnica y metadatos"
+              aria-label="Editar ficha"
             >
               <i data-lucide="pencil" class="w-3.5 h-3.5 text-amber-400"></i>
             </button>
@@ -3357,11 +3823,12 @@
               onclick="deleteSingleTool('${tool.slug}')" 
               class="p-2 rounded-xl bg-slate-800 hover:bg-rose-950/80 text-slate-300 hover:text-rose-400 border border-slate-700/60 hover:border-rose-500/50 transition-all shadow-md hover:scale-110 active:scale-95" 
               title="Eliminar ficha de disco"
+              aria-label="Eliminar ficha"
             >
               <i data-lucide="trash-2" class="w-3.5 h-3.5 text-rose-400"></i>
             </button>
           </div>
-        </div>
+        </article>
       `;
     }
 
@@ -3388,6 +3855,7 @@
                 type="checkbox" 
                 onchange="toggleSelectTool('${tool.slug}', this.checked)" 
                 ${ctx.isCardSelected ? 'checked' : ''} 
+                aria-label="Seleccionar ${escapeHtml(fm.name || 'ficha')}"
                 class="w-3.5 h-3.5 rounded border-slate-700 bg-slate-950 text-sky-500 focus:ring-0 cursor-pointer accent-sky-500" 
               />
             </label>
@@ -3400,6 +3868,7 @@
               <span>${ctx.conjuntoCfg.icon}</span>
               <span class="hidden sm:inline">${ctx.conjuntoCfg.name}</span>
             </span>
+            ${ctx.reviewBadge}
 
             <!-- Nombre de la herramienta -->
             <a 
@@ -3507,21 +3976,30 @@
     function renderTools() {
       updateAuthorProfileBanner();
       updateViewModeButtons();
+      syncFilterControls();
       const grid = document.getElementById('toolsGrid');
-      const filtered = getFilteredTools();
+      const paging = getPagedTools();
+      const filtered = paging.pageItems;
+      renderResultsMeta(paging.matched.length, paging.start, filtered.length);
+      renderPager(paging.matched.length, paging.pages);
+      grid.setAttribute('aria-busy', 'false');
+      writeUrlState();
 
-      if (filtered.length === 0) {
+      if (paging.matched.length === 0) {
         const config = SECTION_CONFIG[currentSection] || SECTION_CONFIG.tools;
         grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4';
         grid.innerHTML = `
-          <div class="col-span-full py-16 text-center text-slate-500 border border-dashed border-slate-800 rounded-2xl">
+          <div class="catalog-state" role="status">
             <span class="text-3xl block mb-2">${config.icon}</span>
             <p class="text-sm font-medium text-slate-300">No hay ${config.name.toLowerCase()} con los filtros actuales.</p>
-            <p class="text-xs text-slate-500 mt-1">Prueba con otra búsqueda o añade un nuevo recurso desde el botón superior.</p>
-            <button onclick="openIngestModalForCurrentSection()" class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 transition">
-              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-              <span>${config.addBtnText}</span>
-            </button>
+            <p class="text-xs text-slate-500 mt-1">Prueba con otra búsqueda, limpia los filtros o añade un recurso.</p>
+            <div class="mt-4 flex items-center justify-center gap-2">
+              <button type="button" onclick="clearCatalogFilters()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">Limpiar filtros</button>
+              <button type="button" onclick="openIngestModalForCurrentSection()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 transition">
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                <span>${config.addBtnText}</span>
+              </button>
+            </div>
           </div>
         `;
         lucide.createIcons();
@@ -3668,7 +4146,7 @@
     }
 
     function toggleSelectAllVisible() {
-      const visible = getFilteredTools();
+      const visible = getPagedTools().pageItems;
       if (visible.length === 0) return;
 
       const allVisibleSelected = visible.every(t => selectedSlugs.has(t.slug));
@@ -4514,13 +4992,67 @@
         switchNoteView('raw');
       }
 
+      const reviewEl = document.getElementById('modalReviewCallout');
+      if (reviewEl) {
+        const reason = reviewReasons[tool.slug];
+        if (reason) {
+          reviewEl.textContent = `Necesita revisión. ${reason}`;
+          reviewEl.classList.remove('hidden');
+        } else {
+          reviewEl.classList.add('hidden');
+        }
+      }
+
+      const tagRow = document.getElementById('modalTagRow');
+      if (tagRow) {
+        const tags = tool.frontmatter.tags || [];
+        tagRow.innerHTML = tags.map((tag) => `
+          <button type="button" onclick="setTagFilter('${escapeJsString(String(tag))}'); closeNoteModal();">${escapeHtml('#' + tag)}</button>
+        `).join('');
+      }
+
+      const sourceList = document.getElementById('modalSourceList');
+      if (sourceList) {
+        const links = collectSourceLinks(tool);
+        sourceList.innerHTML = links.length
+          ? links.map((item) => `
+            <li>
+              <span class="source-kind">${escapeHtml(item.kind)}</span>
+              <a href="${escapeHtml(item.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.label)} · ${escapeHtml(item.href)}</a>
+            </li>
+          `).join('')
+          : '<li class="text-xs text-slate-500">Esta ficha no tiene enlaces de origen.</li>';
+      }
+
+      const shots = document.getElementById('modalShots');
+      if (shots) {
+        const urls = [...new Set((tool.content || '').match(/https?:\/\/\S+\.(?:png|jpe?g|gif|webp)/gi) || [])];
+        if (urls.length) {
+          shots.classList.remove('hidden');
+          shots.innerHTML = `<h3>Imágenes de la ficha</h3>` + urls.map((url) => `
+            <img src="${escapeHtml(url)}" alt="" loading="lazy" decoding="async" class="detail-shot">
+          `).join('');
+        } else {
+          shots.classList.add('hidden');
+          shots.innerHTML = '';
+        }
+      }
+
+      noteReturnFocus = document.activeElement;
       document.getElementById('noteModal').classList.remove('hidden');
+      document.querySelector('#noteModal button[aria-label="Cerrar ficha"]')?.focus();
       lucide.createIcons();
+      writeUrlState();
     }
 
     function closeNoteModal() {
       document.getElementById('noteModal').classList.add('hidden');
       activeEditingSlug = null;
+      writeUrlState();
+      if (noteReturnFocus && typeof noteReturnFocus.focus === 'function') {
+        noteReturnFocus.focus();
+      }
+      noteReturnFocus = null;
     }
 
     async function saveCurrentNote() {
@@ -4719,6 +5251,13 @@
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         document.getElementById('searchInput').focus();
+      } else if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && document.activeElement?.closest('#sectionTabs')) {
+        e.preventDefault();
+        const order = ['all', 'tools', 'tips', 'jobs'];
+        const index = Math.max(0, order.indexOf(currentSection));
+        const next = e.key === 'ArrowRight' ? order[(index + 1) % order.length] : order[(index + order.length - 1) % order.length];
+        switchSection(next);
+        document.getElementById(next === 'all' ? 'tabSectionAll' : next === 'tools' ? 'tabSectionTools' : next === 'tips' ? 'tabSectionTips' : 'tabSectionJobs')?.focus();
       } else if (e.key === 'Escape') {
         closeCategoryManagerModal();
         closeSaveConfirmModal();
@@ -4732,11 +5271,22 @@
     });
 
     // Carga inicial
-    const savedSection = sessionStorage.getItem('toolkit_active_section');
-    if (savedSection) {
-      currentSection = savedSection;
-      sessionStorage.removeItem('toolkit_active_section');
-    }
+    readUrlState();
+    applyTheme(document.documentElement.classList.contains('light') ? 'light' : 'dark');
+    window.addEventListener('popstate', () => {
+      const note = new URLSearchParams(window.location.search).get('note');
+      if (!note) {
+        document.getElementById('noteModal')?.classList.add('hidden');
+        activeEditingSlug = null;
+      }
+      readUrlState();
+      switchSection(currentSection);
+      if (pendingNoteSlug) {
+        const slug = pendingNoteSlug;
+        pendingNoteSlug = '';
+        openNoteModal(slug);
+      }
+    });
     const savedToast = sessionStorage.getItem('toolkit_toast_notice');
     const savedToastIcon = sessionStorage.getItem('toolkit_toast_icon') || '✅';
     if (savedToast) {
@@ -4748,6 +5298,7 @@
     }
 
     updateViewModeButtons();
+    if (window.lucide) lucide.createIcons();
     fetchTools();
   </script>
 </body>

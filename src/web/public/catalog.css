@@ -1,0 +1,469 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b1016;
+  --surface: #121922;
+  --surface-2: #1a2330;
+  --ink: #f4f1ea;
+  --muted: #b7c0cc;
+  --line: #2a3646;
+  --accent: #38bdf8;
+  --accent-ink: #082f49;
+  --review: #fbbf24;
+  --review-bg: rgba(251, 191, 36, 0.14);
+  --focus: #67e8f9;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  --header-h: 4.25rem;
+}
+
+html.light {
+  color-scheme: light;
+  --bg: #f4f0e6;
+  --surface: #fffdf8;
+  --surface-2: #f7f1e6;
+  --ink: #1c1917;
+  --muted: #57534e;
+  --line: #e4dccb;
+  --accent: #0f766e;
+  --accent-ink: #f0fdfa;
+  --review: #92400e;
+  --review-bg: #fef3c7;
+  --focus: #0f766e;
+  --shadow: 0 10px 28px rgba(68, 48, 24, 0.08);
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  letter-spacing: -0.011em;
+}
+
+.font-mono, code, kbd, pre {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  z-index: 80;
+  transform: translateY(-120%);
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 0.55rem 0.8rem;
+  border-radius: 0.6rem;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0.6rem);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--focus) !important;
+  outline-offset: 2px;
+}
+
+.site-header {
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border-color: var(--line);
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+
+.category-stats {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.15rem;
+  margin: -0.35rem 0 1rem;
+}
+
+.stat-chip,
+.review-flag,
+.catalog-pager button,
+.results-meta {
+  font-size: 0.75rem;
+}
+
+.stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.28rem 0.65rem;
+  font-weight: 600;
+}
+
+.stat-chip strong {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.stat-chip.is-active {
+  background: color-mix(in srgb, var(--accent) 18%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+  color: var(--ink);
+}
+
+.results-meta {
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.tool-card {
+  box-shadow: var(--shadow);
+  background: var(--surface);
+}
+
+.tool-avatar {
+  position: relative;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 auto;
+  border-radius: 0.7rem;
+  overflow: hidden;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+
+.tool-avatar img,
+.detail-shot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tool-avatar-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.tool-avatar img {
+  position: relative;
+  z-index: 1;
+}
+
+.review-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--review-bg);
+  color: var(--review);
+  border: 1px solid color-mix(in srgb, var(--review) 45%, transparent);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.card-actions {
+  opacity: 0;
+}
+
+.tool-card:hover .card-actions,
+.tool-card:focus-within .card-actions {
+  opacity: 1;
+}
+
+.catalog-pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-top: 1.25rem;
+}
+
+.catalog-pager button {
+  min-width: 2.1rem;
+  min-height: 2.1rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  padding: 0 0.65rem;
+  font-weight: 650;
+}
+
+.catalog-pager button[aria-current="page"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: transparent;
+}
+
+.catalog-pager button:disabled {
+  opacity: 0.45;
+}
+
+.catalog-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  border: 1px dashed var(--line);
+  border-radius: 1rem;
+  padding: 3.5rem 1rem;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+}
+
+.source-block,
+.review-callout,
+.detail-shots {
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--surface-2) 80%, transparent);
+  padding: 0.8rem 0.9rem;
+}
+
+.source-block h3,
+.detail-shots h3 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+.source-block ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.source-block a {
+  color: var(--accent);
+  word-break: break-all;
+  font-size: 0.75rem;
+}
+
+.source-kind {
+  display: inline-block;
+  min-width: 5.5rem;
+  margin-right: 0.35rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.review-callout {
+  background: var(--review-bg);
+  color: var(--review);
+  border-color: color-mix(in srgb, var(--review) 40%, var(--line));
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.detail-shots {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.detail-shots img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 0.7rem;
+  background: var(--surface);
+}
+
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.modal-tags button {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  padding: 0.15rem 0.45rem;
+}
+
+@media (max-width: 720px) {
+  .site-header .max-w-7xl {
+    align-items: stretch;
+  }
+
+  .header-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .header-actions .header-primary {
+    grid-column: 1 / -1;
+  }
+
+  .card-actions {
+    opacity: 1;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    flex-direction: row !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 0.75rem 0.75rem;
+  }
+
+  .search-kbd {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Tema claro: las utilidades de Tailwind están pensadas para oscuro. */
+html.light body,
+html.light .bg-slate-950,
+html.light .bg-slate-950\/40,
+html.light .bg-slate-950\/60,
+html.light .bg-slate-950\/70,
+html.light .bg-slate-950\/80,
+html.light .bg-slate-950\/90 {
+  background-color: var(--bg) !important;
+  color: var(--ink);
+}
+
+html.light .bg-slate-900,
+html.light .bg-slate-900\/40,
+html.light .bg-slate-900\/50,
+html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/90,
+html.light .bg-slate-900\/95,
+html.light .tool-card {
+  background-color: var(--surface) !important;
+  color: var(--ink);
+}
+
+html.light .bg-slate-800,
+html.light .bg-slate-800\/40,
+html.light .bg-slate-800\/60,
+html.light .bg-slate-800\/80,
+html.light .bg-slate-800\/90 {
+  background-color: var(--surface-2) !important;
+}
+
+html.light .text-slate-100,
+html.light .text-slate-200 {
+  color: var(--ink) !important;
+}
+
+html.light .tool-card {
+  background-image: none !important;
+  background-color: var(--surface) !important;
+}
+
+html.light .text-slate-300,
+html.light .text-slate-400,
+html.light .text-slate-500,
+html.light .text-slate-600 {
+  color: var(--muted) !important;
+}
+
+html.light .border-slate-800,
+html.light .border-slate-800\/50,
+html.light .border-slate-800\/60,
+html.light .border-slate-800\/70,
+html.light .border-slate-800\/80,
+html.light .border-slate-700,
+html.light .border-slate-700\/60,
+html.light .border-slate-700\/70,
+html.light .border-slate-700\/80,
+html.light .divide-slate-800\/50 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--line) !important;
+}
+
+html.light .text-sky-300,
+html.light .text-sky-400,
+html.light .text-cyan-300,
+html.light .hover\:text-sky-300:hover,
+html.light .hover\:text-sky-400:hover {
+  color: #0f766e !important;
+}
+
+html.light .text-emerald-300,
+html.light .text-emerald-400 {
+  color: #047857 !important;
+}
+
+html.light .text-amber-300,
+html.light .text-amber-400,
+html.light .text-amber-200 {
+  color: #92400e !important;
+}
+
+html.light .text-violet-300,
+html.light .text-violet-400,
+html.light .text-fuchsia-300 {
+  color: #6d28d9 !important;
+}
+
+html.light .text-indigo-300,
+html.light .text-indigo-400,
+html.light .text-blue-300,
+html.light .text-blue-200 {
+  color: #1d4ed8 !important;
+}
+
+html.light .text-rose-300,
+html.light .text-rose-400 {
+  color: #be123c !important;
+}
+
+html.light .bg-sky-600,
+html.light .bg-indigo-600,
+html.light .bg-violet-600,
+html.light .bg-blue-600,
+html.light .bg-emerald-600 {
+  background-color: #0f766e !important;
+  color: #f0fdfa !important;
+}
+
+html.light .from-slate-900 {
+  --tw-gradient-from: var(--surface) var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgb(255 253 248 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+html.light .to-slate-900,
+html.light .via-slate-900 {
+  --tw-gradient-to: var(--surface) var(--tw-gradient-to-position) !important;
+}
+
+html.light ::-webkit-scrollbar-track { background: var(--bg); }
+html.light ::-webkit-scrollbar-thumb { background: #d6d3d1; }
