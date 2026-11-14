@@ -1,82 +1,60 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('toolkit_theme');
+        var theme = stored === 'light' || stored === 'dark'
+          ? stored
+          : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.classList.toggle('dark', theme !== 'light');
+        document.documentElement.classList.toggle('light', theme === 'light');
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instalador del Bookmarklet - Awesome Dev Toolkit</title>
+  <link rel="stylesheet" href="./catalog.css">
   <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      max-width: 650px;
-      margin: 40px auto;
-      padding: 20px;
-      line-height: 1.6;
-      background: #0f172a;
-      color: #f1f5f9;
-    }
-    .card {
-      background: #1e293b;
-      padding: 24px;
-      border-radius: 12px;
-      border: 1px solid #334155;
-    }
+    body { max-width: 40rem; margin: 0 auto; padding: 2rem 1.1rem 3rem; }
+    .install-card { background: var(--surface); border: 1px solid var(--line); border-radius: 1.1rem; padding: 1.4rem 1.3rem 1.5rem; box-shadow: var(--shadow); }
+    h1 { font-size: 1.45rem; line-height: 1.25; margin-bottom: 0.45rem; }
+    ol { margin: 0.8rem 0 0.2rem 1.1rem; display: grid; gap: 0.45rem; }
+    .drag-wrap { text-align: center; margin: 1.1rem 0; }
     .btn {
-      display: inline-block;
-      background: #3b82f6;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      margin: 20px 0;
-      cursor: grab;
-      border: 2px dashed #93c5fd;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: #0f766e; color: #f0fdfa; padding: 0.8rem 1.2rem; border-radius: 0.8rem;
+      text-decoration: none; font-weight: 700; border: 2px dashed #99f6e4; cursor: grab;
     }
-    .btn:hover {
-      background: #2563eb;
-    }
-    code {
-      background: #334155;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: monospace;
-    }
-    .note {
-      background: #0f172a;
-      border-left: 4px solid #38bdf8;
-      padding: 12px 16px;
-      border-radius: 6px;
-      font-size: 14px;
-      color: #cbd5e1;
-      margin-top: 16px;
-    }
+    .btn:hover { background: #115e59; }
+    code { background: var(--surface-2); padding: 0.05rem 0.35rem; border-radius: 0.3rem; }
+    .note { margin-top: 0.9rem; border-left: 3px solid var(--accent); padding: 0.7rem 0.85rem; background: var(--surface-2); border-radius: 0.6rem; color: var(--muted); }
+    .back { display: inline-block; margin-bottom: 0.8rem; color: var(--accent); font-weight: 700; text-decoration: none; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>📌 Bookmarklet: 1-Clic Guardar en Toolkit</h1>
-    <p>Para guardar cualquier tweet de <strong>X (Twitter)</strong> con un solo clic mientras navegas (compatible con la política de seguridad CSP de X):</p>
-    
+  <a class="back" href="./">← Volver al catálogo</a>
+  <div class="install-card">
+    <h1>Bookmarklet: guardar en el toolkit con un clic</h1>
+    <p>Guarda un tweet de <strong>X</strong> mientras navegas. El marcador abre <code>/quick-save</code> y no choca con la política de seguridad de X.</p>
     <ol>
-      <li>Asegúrate de tener visible la <strong>Barra de marcadores</strong> en tu navegador (<code>Ctrl + Shift + B</code> o <code>Cmd + Shift + B</code>).</li>
-      <li>Si tenías una versión anterior del marcador, <strong>bórrala primero</strong>.</li>
-      <li><strong>Arrastra el siguiente botón azul</strong> hacia tu barra de marcadores:</li>
+      <li>Muestra la barra de marcadores (<code>Ctrl + Shift + B</code> o <code>Cmd + Shift + B</code>).</li>
+      <li>Si ya tenías una versión anterior del marcador, bórrala primero.</li>
+      <li>Arrastra el botón hacia la barra de marcadores. En el móvil, mantén pulsado el botón y elige copiar o compartir el enlace.</li>
     </ol>
-
-    <div style="text-align: center;">
-      <a id="bookmarkletBtn" class="btn" href="#">
-        ⚡ Guardar en Dev Toolkit
-      </a>
+    <div class="drag-wrap">
+      <a id="bookmarkletBtn" class="btn" href="#">Guardar en Dev Toolkit</a>
     </div>
-
     <div class="note">
-      💡 <strong>¿Cómo funciona?</strong> Al hacer clic mientras estás en X, se abrirá una pequeña ventana emergente durante 2 segundos que clasifica el recurso con Gemini y se cierra automáticamente al terminar.
+      <strong>Hilos.</strong> Si el tweet forma parte de un hilo del mismo autor, el bookmarklet recoge los tweets visibles, expande el texto cortado y los manda juntos como un solo recurso.
     </div>
   </div>
-
   <script>
     const host = window.location.origin;
-    const scriptCode = "javascript:(function(){const cur=window.location.href;if(!cur.includes('x.com')&&!cur.includes('twitter.com')){alert('Usa este botón mientras navegas en x.com / Twitter');return;}const art=window.getSelection()?.anchorNode?.parentElement?.closest('article[data-testid=%22tweet%22]')||document.activeElement?.closest('article[data-testid=%22tweet%22]')||document.querySelector('article[data-testid=%22tweet%22]');if(!art){alert('No se encontró ningún tweet en la pantalla.');return;}const te=art.querySelector('div[data-testid=%22tweetText%22]');let t=te?(te.innerText||''):'';const card=art.querySelector('[data-testid=%22card.wrapper%22]')||art.querySelector('[data-testid*=%22card%22]')||art.querySelector('[data-testid*=%22media%22]');const cardText=card?(card.innerText||''):'';const fullText=[t,cardText].filter(Boolean).join('\\n');const ue=art.querySelector('div[data-testid=%22User-Name%22]');const au=ue?ue.innerText.split('\\n')[0]:'';const ls=Array.from(art.querySelectorAll('a')).map(l=>l.href).filter(h=>h&&!h.includes('x.com')&&!h.includes('twitter.com')&&!h.startsWith('javascript:'));if(card){const ca=card.tagName==='A'?card:card.querySelector('a');if(ca&&ca.href&&!ca.href.includes('x.com')&&!ca.href.includes('twitter.com')){ls.unshift(ca.href);}}const dedup=Array.from(new Set(ls));const timeLink=art.querySelector('time')?.closest('a')||art.querySelector('a[href*=%22/status/%22]');let tweetUrl=(timeLink&&timeLink.href)?timeLink.href:cur;const stMatch=tweetUrl.match(/https?:\\/\\/(?:x|twitter)\\.com\\/[^/]+\\/status\\/\\d+/i);if(stMatch)tweetUrl=stMatch[0];const q=new URLSearchParams({sourceTweet:tweetUrl,rawText:fullText,author:au,url:dedup.join(',')}).toString();const w=460,h=380,left=(screen.width/2)-(w/2),top=(screen.height/2)-(h/2);window.open('" + host + "/quick-save?'+q,'ToolkitQuickSave','width='+w+',height='+h+',top='+top+',left='+left+',menubar=no,toolbar=no,location=no,status=no');})();";
+    const scriptCode = "javascript:(function(){const cur=window.location.href;if(!cur.includes('x.com')&&!cur.includes('twitter.com')){alert('Usa este botón mientras navegas en x.com / Twitter');return;}document.querySelectorAll('[data-testid=\"tweet-text-show-more-link\"]').forEach(b=>{try{b.click();}catch(e){}});const all=Array.from(document.querySelectorAll('article[data-testid=\"tweet\"]'));if(!all.length){alert('No se encontró ningún tweet en la pantalla.');return;}const m=window.location.pathname.match(/^\\/([^\\/]+)\\/status\\/(\\d+)/i);let targets=[];let au='';let mainUrl=cur;if(m&&all.length>1){const op=m[1].toLowerCase();targets=all.filter(art=>{const u=art.querySelector('div[data-testid=\"User-Name\"]');return(u?(u.innerText||''):'').toLowerCase().includes('@'+op);});if(!targets.length)targets=[all[0]];}else{const sel=window.getSelection()?.anchorNode?.parentElement?.closest('article[data-testid=\"tweet\"]')||document.activeElement?.closest('article[data-testid=\"tweet\"]')||all[0];targets=[sel];}const first=targets[0];const ue=first.querySelector('div[data-testid=\"User-Name\"]');au=ue?ue.innerText.split('\\n')[0]:'';const tl=first.querySelector('time')?.closest('a');if(tl&&tl.href)mainUrl=tl.href;const parts=[];const links=[];targets.forEach((art,idx)=>{const te=art.querySelector('div[data-testid=\"tweetText\"]');const t=te?(te.innerText||'').trim():'';const c=art.querySelector('[data-testid=\"card.wrapper\"],[data-testid*=\"card\"],[data-testid*=\"media\"]');const ct=c?(c.innerText||'').trim():'';const cb=[t,ct].filter(Boolean).join('\\n');if(cb){parts.push(targets.length>1?`[Tweet ${idx+1} del hilo]\\n${cb}`:cb);}art.querySelectorAll('a').forEach(a=>{const h=a.href;if(h&&!h.includes('x.com')&&!h.includes('twitter.com')&&!h.startsWith('javascript:'))links.push(h);});if(c){const ca=c.tagName==='A'?c:c.querySelector('a');if(ca&&ca.href&&!ca.href.includes('x.com')&&!ca.href.includes('twitter.com'))links.unshift(ca.href);}});const fullText=parts.join('\\n\\n---\\n\\n');const dedup=Array.from(new Set(links));const q=new URLSearchParams({sourceTweet:mainUrl,rawText:fullText,author:au,url:dedup.join(',')}).toString();const w=480,h=420,left=(screen.width/2)-(w/2),top=(screen.height/2)-(h/2);window.open('" + host + "/quick-save?'+q,'ToolkitQuickSave','width='+w+',height='+h+',top='+top+',left='+left+',menubar=no,toolbar=no,location=no,status=no');})();";
     document.getElementById('bookmarkletBtn').href = scriptCode;
   </script>
 </body>
