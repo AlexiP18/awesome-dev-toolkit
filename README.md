@@ -2,7 +2,7 @@
 
 > Colección curada en **3 apartados esenciales** (Herramientas, Consejos Técnicos y Trabajo Remoto/Freelance) y clasificada por **Conjuntos** (📦 Recursos, 💡 Inspiración, 🚀 Producto y 🧠 Consejos) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA.
 
-[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-576-blue?style=for-the-badge)]()
+[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-591-blue?style=for-the-badge)]()
 [![Consejos](https://img.shields.io/badge/💡_Consejos-4-8E75C2?style=for-the-badge)]()
 [![Trabajo Remoto](https://img.shields.io/badge/💼_Trabajo_Remoto-21-0284C7?style=for-the-badge)]()
 [![Obsidian Ready](https://img.shields.io/badge/Obsidian-Segundo_Cerebro-7C3AED?style=for-the-badge&logo=obsidian)]()
@@ -11,13 +11,13 @@
 
 ## 📑 Los 3 Apartados del Toolkit
 
-- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-576) (576)
+- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-591) (591)
 - [💡 Apartado 2: Consejos Técnicos & Buenas Prácticas](#-apartado-2-consejos-técnicos--buenas-prácticas-4) (4)
 - [💼 Apartado 3: Trabajo Remoto & Freelance](#-apartado-3-trabajo-remoto--oportunidades-freelance-21) (21)
 
 ---
 
-## 🛠️ Apartado 1: Herramientas & Repositorios de Software (576)
+## 🛠️ Apartado 1: Herramientas & Repositorios de Software (591)
 
 > Bibliotecas, utilidades CLI, herramientas de desarrollo, devtools, productos técnicos y hardware guardados desde X.
 
@@ -59,7 +59,16 @@
 - **[Lazygit](https://github.com/jesseduffield/lazygit)** `📦 Recursos` (`👤 Jesse Duffield`) ⭐ **52,000** [𝕏 Tweet](https://x.com/jesseduffield/status/123456789) `🟢 En uso`  
   Una interfaz de usuario de terminal simple y rápida para comandos de git, escrita en Go con gocui. [📝 Ver ficha](content/tools/lazygit.md) `#git` `#terminal` `#go` `#productivity`
 
-### 🎨 Frontend & UI (231)
+### 🎨 Frontend & UI (234)
+
+- **[Animata](https://animata.design/)** `📦 Recursos` (`🏢 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2121148030305153039) `🟡 Por probar`  
+  Componentes React animados gratuitos para copiar en tus proyectos. [📝 Ver ficha](content/tools/animata.md) `#react` `#animaciones` `#componentes`
+
+- **[Avara UI](https://avaraui.com/)** `📦 Recursos` (`🏢 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2121148030305153039) `🟡 Por probar`  
+  Colección de componentes y bloques gratuitos de Shadcn UI con servidor MCP. [📝 Ver ficha](content/tools/avara-ui.md) `#shadcn` `#componentes` `#mcp` `#react`
+
+- **[Shadcn Space](https://github.com/shadcnspace/shadcnspace)** `📦 Recursos` (`🏢 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2121148030305153039) `🟡 Por probar`  
+  Bloques, componentes, plantillas y layouts open source de shadcn/ui hechos con React, Tailwind, Radix UI y Base UI. [📝 Ver ficha](content/tools/shadcn-space.md) `#shadcn` `#react` `#tailwind` `#componentes`
 
 - **[DesignforB2B](https://www.designforb2b.com/)** `💡 Inspiración` (`👤 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2118958275320492265) `🟡 Por probar`  
   Galería curada con 102 diseños de sitios web B2B y empresas orientadas al diseño para inspirar rediseños. [📝 Ver ficha](content/tools/designforb2b.md) `#inspiracion` `#diseño-web` `#b2b` `#galeria` `#ui`
@@ -658,8 +667,8 @@
 - **[VibePrompts](https://vibeprompts.dev/)** `📦 Recursos` (`👤 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2112443894319489423) `🟡 Por probar`  
   Una biblioteca de prompts de UI específicamente diseñada para desarrolladores que utilizan asistentes de codificación para crear interfaces de usuario. [📝 Ver ficha](content/tools/vibeprompts.md) `#ui` `#prompts` `#design` `#frontend` `#ai-assisted-coding`
 
-- **[Collected](https://collected.li/)** `💡 Inspiración` (`👤 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2117522406730572218) `🟡 Por probar`  
-  Una plataforma que ofrece una colección curada de más de 5,593 diseños web para inspiración, presentando nuevas ideas con cada visita para desarrolladores y diseñadores. [📝 Ver ficha](content/tools/collected.md) `#web-design` `#inspiration` `#frontend` `#ui` `#gallery` `#curated`
+- **[Collected](https://collected.li/)** `💡 Inspiración` (`🏢 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2117522406730572218) `🟡 Por probar`  
+  Una plataforma que ofrece una colección curada de más de 5,593 diseños web para inspiración, presentando nuevas ideas con cada visita para desarrolladores y diseñadores. [📝 Ver ficha](content/tools/collected.md) `#web-design` `#inspiration` `#frontend` `#ui` `#gallery` `#curated` `#galeria` `#diseno-web` `#inspiracion`
 
 - **[Watermelon UI](https://ui.watermelon.sh/)** `📦 Recursos` (`🏢 Watermelon`) [🌐 Web](https://watermelon.sh/) [𝕏 Tweet](https://x.com/csaba_kissi/status/2117522406730572218) `🟡 Por probar`  
   Una colección gratuita y de código abierto de más de 600 componentes, animaciones, bloques y paneles de control para React, diseñados para integrarse con Tailwind CSS y shadcn/ui. [📝 Ver ficha](content/tools/watermelon-ui.md) `#react` `#ui-components` `#frontend` `#open-source` `#tailwind-css` `#shadcn` `#free`
@@ -748,8 +757,8 @@
 - **[Morphin](https://morphin.dev/)** `📦 Recursos` (`👤 Csaba Kissi`) (`💰 Gratis`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2116071103206724053) `🟡 Por probar`  
   Componentes animados de React listos para producción y microinteracciones, construidos con Tailwind CSS y Framer Motion para enriquecer la experiencia de usuario. [📝 Ver ficha](content/tools/morphin.md) `#ui` `#components` `#frontend` `#design` `#animaciones` `#componentes` `#react` `#tailwind` `#framer-motion` `#gratis`
 
-- **[GodUI](https://godui.design/)** `📦 Recursos` (`👤 Csaba Kissi`) (`💰 Gratis`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2116071103206724053) `🟡 Por probar`  
-  Colección de componentes de interfaz de usuario animados de código abierto, construidos con React, TypeScript, Tailwind CSS, Motion y shadcn/ui para interfaces web modernas. [📝 Ver ficha](content/tools/godui.md) `#frontend` `#ui` `#componentes` `#react` `#shadcn` `#tailwind` `#animaciones` `#gratis` `#open-source`
+- **[GodUI](https://godui.design/)** `📦 Recursos` (`🏢 Csaba Kissi`) (`💰 Gratis`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2116071103206724053) `🟡 Por probar`  
+  Colección de componentes de interfaz de usuario animados de código abierto, construidos con React, TypeScript, Tailwind CSS, Motion y shadcn/ui para interfaces web modernas. [📝 Ver ficha](content/tools/godui.md) `#frontend` `#ui` `#componentes` `#react` `#shadcn` `#tailwind` `#animaciones` `#gratis` `#open-source` `#mcp`
 
 - **[taste-skill](https://github.com/Leonxlnx/taste-skill)** `💡 Inspiración` (`👤 PA13L0 (@Fluyeporlaweb)`) ⭐ **102,562** [𝕏 Tweet](https://x.com/Fluyeporlaweb/status/1987654321098765432) `🟡 Por probar`  
   Herramienta que dota a los agentes de código de habilidades de dirección de arte, permitiéndoles diseñar interfaces web con un estilo más humano y referencias reales, evitando el aspecto genérico generado por la IA. [📝 Ver ficha](content/tools/taste-skill.md) `#agent-skills` `#ai-agents` `#anti-slop` `#claude-code` `#codex` `#cursor` `#design-system` `#frontend` `#landing-page` `#ui-design` `#web-design` `#design` `#code-generation`
@@ -786,7 +795,13 @@
 - **[Supabase](https://github.com/supabase/supabase)** `📦 Recursos` (`🏢 supabase`) (`💰 Gratis`) ⭐ **114,442** [𝕏 Tweet](https://x.com/Hartdrawss/status/2114235601708876102) `🟡 Por probar`  
   Una plataforma de desarrollo de código abierto basada en PostgreSQL que ofrece una alternativa a Firebase, proporcionando una base de datos dedicada y herramientas para construir aplicaciones web, móviles y de IA con autenticación y APIs en tiempo real. [📝 Ver ficha](content/tools/supabase.md) `#backend` `#database` `#firebase-alternative` `#open-source` `#postgresql` `#auth` `#realtime` `#ai` `#typescript`
 
-### 🐳 DevOps & Cloud (13)
+### 🐳 DevOps & Cloud (15)
+
+- **[Jellyfin](https://github.com/jellyfin/jellyfin)** `📦 Recursos` (`🏢 PA13L0`) [𝕏 Tweet](https://x.com/Fluyeporlaweb/status/2120952769259733282) `🟡 Por probar`  
+  Servidor multimedia autoalojado para tener tu propio "Netflix" con tus películas y series. [📝 Ver ficha](content/tools/jellyfin.md) `#self-hosted` `#media-server` `#streaming` `#open-source`
+
+- **[Pi-hole](https://github.com/pi-hole/pi-hole)** `📦 Recursos` (`🏢 PA13L0`) [𝕏 Tweet](https://x.com/Fluyeporlaweb/status/2120952769259733282) `🟡 Por probar`  
+  Servidor DNS autoalojado que bloquea anuncios en todos los dispositivos de la red de casa. [📝 Ver ficha](content/tools/pi-hole.md) `#self-hosted` `#dns` `#bloqueo-anuncios` `#red`
 
 - **[VirusTotal](https://www.virustotal.com/)** `📦 Recursos` (`🏢 VirusTotal (Google)`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
   Plataforma de análisis de archivos, URLs y dominios que los escanea con decenas de motores antivirus y servicios de reputación en paralelo. [📝 Ver ficha](content/tools/virustotal.md) `#seguridad` `#malware` `#analisis` `#api`
@@ -1232,7 +1247,10 @@
 - **[Reason](https://reasonmachines.com/)** `📦 Recursos` (`👤 Yash`) [𝕏 Tweet](https://x.com/dewyashtwts/status/2114337945427857916) `🟡 Por probar`  
   Reason Machines es un agente de codificación de vanguardia y de código abierto que se integra con otros agentes de IA como Claude Code, Codex, Cursor, Grok Bot y Muse, unificándolos en una única red. [📝 Ver ficha](content/tools/reason.md) `#ai` `#agents` `#coding` `#open-source` `#llm`
 
-### 🎬 Prompts, Art & Video (68)
+### 🎬 Prompts, Art & Video (69)
+
+- **[Upscayl](https://github.com/upscayl/upscayl)** `📦 Recursos` (`🏢 PA13L0`) [𝕏 Tweet](https://x.com/Fluyeporlaweb/status/2120952769259733282) `🟡 Por probar`  
+  App de escritorio que aumenta la resolución de fotos con IA de forma local. [📝 Ver ficha](content/tools/upscayl.md) `#upscaling` `#imagenes` `#ia` `#escritorio`
 
 - **[Paper Animation](https://paperanimation.ai/)** `🚀 Producto` (`👤 Bardhyl Bytyqi`) [𝕏 Tweet](https://x.com/BardhylBytyqi/status/2118838961602748834) `🟡 Por probar`  
   Generador de animaciones con inteligencia artificial que produce piezas de motion visual a partir de descripciones textuales, útil para intros, ilustraciones animadas y contenido de marca. [📝 Ver ficha](content/tools/paper-animation.md) `#animacion` `#ia-generativa` `#video` `#motion` `#ia`
@@ -1446,7 +1464,16 @@
 - **[Qdrant](https://github.com/qdrant/qdrant)** `📦 Recursos` (`🏢 Qdrant`) [🌐 Web](https://qdrant.tech/) [𝕏 Tweet](https://x.com/mdancho84/status/2086054601556410832) `🟡 Por probar`  
   Base de datos vectorial de alto rendimiento escrita en Rust para búsqueda por similitud y recuperación semántica a escala. [📝 Ver ficha](content/tools/qdrant.md) `#vector-database` `#rust` `#search` `#embeddings`
 
-### ⚡ Productivity & Tools (77)
+### ⚡ Productivity & Tools (80)
+
+- **[Win11Debloat](https://github.com/Raphire/Win11Debloat)** `📦 Recursos` (`🏢 PA13L0`) [𝕏 Tweet](https://x.com/Fluyeporlaweb/status/2120952769259733282) `🟡 Por probar`  
+  Script para quitar apps preinstaladas y telemetría de Windows. [📝 Ver ficha](content/tools/win11debloat.md) `#windows` `#powershell` `#privacidad` `#script`
+
+- **[NewPipe](https://github.com/TeamNewPipe/NewPipe)** `📦 Recursos` (`🏢 PA13L0`) [𝕏 Tweet](https://x.com/Fluyeporlaweb/status/2120952769259733282) `🟡 Por probar`  
+  Cliente de YouTube para Android sin anuncios y sin necesidad de cuenta. [📝 Ver ficha](content/tools/newpipe.md) `#android` `#youtube` `#privacidad` `#open-source`
+
+- **[Sure](https://github.com/we-promise/sure)** `📦 Recursos` (`🏢 旺旺`) [𝕏 Tweet](https://x.com/TiagerBao/status/2121117896634192008) `🟡 Por probar`  
+  App open source de finanzas personales (sucesora comunitaria de Maybe Finance) para gestionar activos, deudas y flujo de caja, autoalojable con Docker. [📝 Ver ficha](content/tools/sure.md) `#finanzas-personales` `#self-hosted` `#docker` `#open-source`
 
 - **[Tracedr](https://tracedr.com/)** `📦 Recursos` (`🏢 Tracedr`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2074745257099485319) `🟡 Por probar`  
   Rastreador gratuito de Domain Rating que permite consultar y seguir la autoridad de dominios para evaluar su valor SEO y competitividad. [📝 Ver ficha](content/tools/tracedr.md) `#domain-rating` `#seo` `#analytics` `#dominios`
@@ -1679,7 +1706,25 @@
 - **[t3code](https://github.com/pingdotgg/t3code)** `📦 Recursos` (`🏢 pingdotgg`) (`💰 Gratis`) ⭐ **38,343** [🌐 Web](https://t3.codes/) [𝕏 Tweet](https://x.com/csaba_kissi/status/2116071103206724053) `🟡 Por probar`  
   Un dashboard de código abierto para gestionar y visualizar agentes de IA, construido con tecnologías modernas para facilitar el desarrollo de aplicaciones basadas en inteligencia artificial. [📝 Ver ficha](content/tools/t3code.md) `#ai` `#agents` `#coding` `#open-source` `#control-plane` `#agentes` `#dashboard` `#ia` `#typescript` `#gratis`
 
-### 📚 Documentation & Resources (27)
+### 📚 Documentation & Resources (33)
+
+- **[Class Central](https://classcentral.com/)** `📦 Recursos` (`🏢 Omoalhaja`) [𝕏 Tweet](https://x.com/omoalhajaabiola/status/2121105365115052201) `🟡 Por probar`  
+  Buscador de cursos online que agrega ofertas de distintas plataformas y universidades. [📝 Ver ficha](content/tools/class-central.md) `#cursos` `#mooc` `#buscador`
+
+- **[The Odin Project](https://theodinproject.com/)** `📦 Recursos` (`🏢 Omoalhaja`) [𝕏 Tweet](https://x.com/omoalhajaabiola/status/2121105365115052201) `🟡 Por probar`  
+  Currículum gratuito y comunitario para aprender desarrollo web full stack. [📝 Ver ficha](content/tools/the-odin-project.md) `#desarrollo-web` `#javascript` `#curriculum` `#open-source`
+
+- **[DigitalDefynd](https://digitaldefynd.com/)** `📦 Recursos` (`🏢 Omoalhaja`) [𝕏 Tweet](https://x.com/omoalhajaabiola/status/2121105365115052201) `🟡 Por probar`  
+  Buscador y directorio de cursos online, incluidos gratuitos, de distintas plataformas y universidades. [📝 Ver ficha](content/tools/digitaldefynd.md) `#cursos` `#directorio` `#aprendizaje`
+
+- **[Great Learning](https://mygreatlearning.com/)** `📦 Recursos` (`🏢 Omoalhaja`) [𝕏 Tweet](https://x.com/omoalhajaabiola/status/2121105365115052201) `🟡 Por probar`  
+  Plataforma de cursos, certificados y programas de posgrado en IA, ML, data science, cloud e ingeniería de software. [📝 Ver ficha](content/tools/great-learning.md) `#cursos` `#ia` `#data-science` `#cloud`
+
+- **[Alison](https://alison.com/)** `📦 Recursos` (`🏢 Omoalhaja`) [𝕏 Tweet](https://x.com/omoalhajaabiola/status/2121105365115052201) `🟡 Por probar`  
+  Plataforma de cursos online gratuitos con certificados para formación profesional. [📝 Ver ficha](content/tools/alison.md) `#cursos` `#aprendizaje` `#certificados`
+
+- **[LearnVern](https://learnvern.com/)** `📦 Recursos` (`🏢 Omoalhaja`) [𝕏 Tweet](https://x.com/omoalhajaabiola/status/2121105365115052201) `🟡 Por probar`  
+  Plataforma de cursos online gratuitos de TI con certificado: desarrollo web, PHP, Java, C++, Android, iOS, testing y Excel. [📝 Ver ficha](content/tools/learnvern.md) `#cursos` `#aprendizaje` `#certificados`
 
 - **[Design Systems Repo](https://designsystemsrepo.com/)** `📦 Recursos` (`👤 Abraham John`) [𝕏 Tweet](https://x.com/Abmankendrick/status/2076248712418848918) `🟡 Por probar`  
   Colección organizada y actualizada de ejemplos de sistemas de diseño, recursos, herramientas, artículos y videos para equipos de diseño y desarrollo. [📝 Ver ficha](content/tools/design-systems-repo.md) `#design-system` `#resources` `#examples` `#collection`
@@ -1726,8 +1771,8 @@
 - **[Semantic Scholar](https://semanticscholar.org/)** `📦 Recursos` (`🏢 Allen Institute for AI`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Buscador académico gratuito con IA que indexa millones de papers y extrae citas, resúmenes y relaciones entre artículos. [📝 Ver ficha](content/tools/semantic-scholar.md) `#papers` `#busqueda academica` `#api`
 
-- **[Open Culture](https://openculture.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🎓 Promo Académica` `🟡 Por probar`  
-  Directorio curado de cursos gratuitos, audiolibros, eBooks y películas de dominio público de universidades de primer nivel. [📝 Ver ficha](content/tools/open-culture.md) `#cursos` `#educacion` `#aprendizaje`
+- **[Open Culture](https://openculture.com/)** `📦 Recursos` (`🏢 Omoalhaja`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🎓 Promo Académica` `🟡 Por probar`  
+  Directorio curado de cursos gratuitos, audiolibros, eBooks y películas de dominio público de universidades de primer nivel. [📝 Ver ficha](content/tools/open-culture.md) `#cursos` `#educacion` `#aprendizaje` `#ebooks`
 
 - **[OpenAI Cookbook](https://github.com/openai/openai-cookbook)** `📦 Recursos` (`🏢 OpenAI`) ⭐ **76,971** [𝕏 Tweet](https://x.com/dkare1009/status/2098056476170268760) `🟡 Por probar`  
   Colección de ejemplos y guías prácticas en notebooks para construir aplicaciones con la API de OpenAI, desde prompts hasta RAG. [📝 Ver ficha](content/tools/openai-cookbook.md) `#openai` `#gpt` `#api` `#ejemplos` `#rag`
