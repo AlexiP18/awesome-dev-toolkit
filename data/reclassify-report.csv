@@ -1,0 +1,617 @@
+path,old_category,old_conjunto,new_area,new_category,new_conjunto,review,rule_step
+content/tools/10-minute-mail.md,Productivity & Tools,producto,desarrollo-software,Seguridad & privacidad,app,false,7+vault
+content/tools/12ft.md,Productivity & Tools,producto,productividad-utilidades,Utilidades web & archivos,app,false,12.util+vault
+content/tools/21st.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/3d-icons.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/404sdesign.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/500-ai-agents-projects.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/60fps.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/abtestdesign.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/ace-step-15.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/aceternity-ui.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/advanced-capcut-course-professional-video-editing.md,"Prompts, Art & Video",consejos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/affectui.md,Frontend & UI,producto,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/agency-agents.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",consejos,false,8.agentes+vault
+content/tools/agent-reach.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/agent-skills.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/agentation.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/agentmemory.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/agentor.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/agents-towards-production.md,DevOps & Cloud,recursos,inteligencia-artificial,"Agentes, MCP & automatización",consejos,false,8.agentes+vault
+content/tools/ai-agents-for-beginners.md,Documentation & Resources,consejos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,5.guias+vault
+content/tools/ai-design-skills.md,Frontend & UI,inspiracion,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.inspiracion+vault
+content/tools/ai-engineering-from-scratch.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/ai-for-beginners.md,AI & Machine Learning,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/ai-job-search.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.asistentes+vault
+content/tools/ai-memory.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/ai-youtube-shorts-generator.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/aimran-library.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/alison.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/all-svg-icons.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/alternativeto.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,inspiracion,false,12.apps+vault
+content/tools/amd-ai-developer-program.md,Empresas & Productos,producto,trabajo-oportunidades,"Créditos, planes gratis & programas",app,false,2+vault
+content/tools/amicro.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/andrej-karpathy-skills.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,consejos,false,8.slug+vault
+content/tools/animata.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/animated-buttons-colorion.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/animateicons.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,codigo,false,14.graficos+vault
+content/tools/animejs.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/animos.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/annnimate.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/anti-slop.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/api-finder.md,Backend & APIs,recursos,desarrollo-software,"Backend, APIs & datos",inspiracion,false,9+vault
+content/tools/appllama.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/arc-ui-signature-pad.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/arc-ui-uiarcdev.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/arche-directory.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/archivebox.md,Productivity & Tools,recursos,desarrollo-software,"DevOps, cloud & self-hosting",codigo,false,12.devops+vault
+content/tools/archivetoday.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.util+vault
+content/tools/ascii-effect-componentry.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/astral-uv.md,CLI & Terminal,recursos,desarrollo-software,"Terminal, IDE & hardware",codigo,false,11+vault
+content/tools/astryx.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",codigo,false,14.inspiracion+vault
+content/tools/audacity.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,codigo,false,12.apps+vault
+content/tools/augment-code.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/aura-build.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/autoclip.md,"Prompts, Art & Video",producto,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/autosubs.md,"Prompts, Art & Video",producto,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/avara-ui.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/awesome-claude-code.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/awesome-cli-coding-agents.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",inspiracion,false,8.agentes+vault
+content/tools/awesome-llm-apps.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/awesome-mcp-servers.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/awesome-opus5-5-videos.md,"Prompts, Art & Video",recursos,diseno-creatividad,Prompts & generación visual con IA,consejos,false,13.prompts+vault
+content/tools/awesome-skills.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/aws-free-tier-hasta-200-en-6-meses.md,DevOps & Cloud,recursos,trabajo-oportunidades,"Créditos, planes gratis & programas",app,false,2+vault
+content/tools/awwwards.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/backgroundremover.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/backgrounds-supply.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/bag-ui.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/be-ui.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/beautifului.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/beforeclick.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/benchodev.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/best-ai-builder.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/best-free-fonts.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,inspiracion,false,14.graficos+vault
+content/tools/blender.md,"Prompts, Art & Video",producto,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/boardui.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.ui+vault
+content/tools/book-of-shapes.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/book-to-skill.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/brand-guidelines.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/brevio.md,Productivity & Tools,recursos,desarrollo-software,Seguridad & privacidad,app,false,7+vault
+content/tools/browser-use.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/browserskill.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/build-your-own-x.md,Documentation & Resources,consejos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,5.guias+vault
+content/tools/buzz.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/byosui.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/calligraph.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/callmd.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/calltoinspiration.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/cap.md,Productivity & Tools,producto,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,12.video+vault
+content/tools/carbon.md,Productivity & Tools,recursos,diseno-creatividad,"Video, audio, imagen & 3D",consejos,false,12.video+vault
+content/tools/cerebras-inference-5-crdito.md,AI & Machine Learning,recursos,trabajo-oportunidades,"Créditos, planes gratis & programas",app,false,2+vault
+content/tools/changedetectionio.md,Productivity & Tools,recursos,desarrollo-software,"DevOps, cloud & self-hosting",codigo,false,12.devops+vault
+content/tools/chatterbox.md,AI & Machine Learning,recursos,inteligencia-artificial,"Voz, visión & IA aplicada",codigo,false,8.voz+vault
+content/tools/class-central.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/claude-animated-shorts.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/claude-code.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,Asistentes de código & skills,app,false,8.slug+vault
+content/tools/claude-mem.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.asistentes+vault
+content/tools/claude-opus-5-5-demo.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,consejos,false,14.motion+vault
+content/tools/claudeanimationbase.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/clawrouter.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/cleanuppictures.md,Productivity & Tools,recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,12.video+vault
+content/tools/clearcam.md,AI & Machine Learning,recursos,inteligencia-artificial,"Voz, visión & IA aplicada",codigo,false,8.voz+vault
+content/tools/cli-anything-hub.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/cline.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/clipdropco.md,"Prompts, Art & Video",producto,diseno-creatividad,"Video, audio, imagen & 3D",app,false,13.video+vault
+content/tools/closeitfast.md,Productivity & Tools,recursos,desarrollo-software,Seguridad & privacidad,app,false,7+vault
+content/tools/cloudflare-workers-ai.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",app,false,8.modelos+vault
+content/tools/cmux.md,CLI & Terminal,recursos,desarrollo-software,"Terminal, IDE & hardware",codigo,false,8.agentes+vault
+content/tools/cobalt.md,Productivity & Tools,producto,diseno-creatividad,"Video, audio, imagen & 3D",app,false,12.video+vault
+content/tools/codebeautify.md,Productivity & Tools,recursos,productividad-utilidades,Utilidades web & archivos,app,false,12.util+vault
+content/tools/coding-interview-university.md,Documentation & Resources,recursos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,5+vault
+content/tools/coffitivity.md,Productivity & Tools,recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,12.video+vault
+content/tools/cognee.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"RAG, búsqueda & datos para IA",codigo,false,8.rag+vault
+content/tools/collected.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/colorion-text-effects.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/comfyui.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",codigo,false,8.modelos+vault
+content/tools/componly.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/connected-papers.md,Documentation & Resources,recursos,aprendizaje,Investigación & papers,aprender,false,3+vault
+content/tools/consensus.md,AI & Machine Learning,recursos,aprendizaje,Investigación & papers,aprender,false,3+vault
+content/tools/context-mode.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.asistentes+vault
+content/tools/context.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/convertx.md,Productivity & Tools,recursos,desarrollo-software,Seguridad & privacidad,codigo,false,7+vault
+content/tools/coolify.md,DevOps & Cloud,recursos,desarrollo-software,"DevOps, cloud & self-hosting",app,false,10+vault
+content/tools/cosyvoice.md,AI & Machine Learning,recursos,inteligencia-artificial,"Voz, visión & IA aplicada",codigo,false,8.voz+vault
+content/tools/creating-viral-short-form-content-with-generative-ai-curso.md,"Prompts, Art & Video",consejos,diseno-creatividad,Prompts & generación visual con IA,consejos,false,13.prompts+vault
+content/tools/creavit-studio.md,Productivity & Tools,producto,inteligencia-artificial,"Modelos, inferencia & APIs de IA",consejos,false,12.ia+vault
+content/tools/crewai.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/css-loader-library-colorion.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,consejos,false,14.motion+vault
+content/tools/cta-gallery.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/curated.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/curso-de-ciberseguridad-de-station-x-google-drive.md,Documentation & Resources,consejos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/curso-de-diseo-uiux-google-drive.md,Frontend & UI,consejos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/curso-de-n8n-y-automatizacin-con-ia-google-drive.md,AI & Machine Learning,consejos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/cursor-plugins.md,AI & Machine Learning,consejos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/cutting-mat-background-generator.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/dark-design.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/deckgallery.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/deerflow.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/design-bookmarks.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/design-system-checklist.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/design-systems-repo.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/design-systems-surf.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/designforb2b.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/designpass.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/detailsso.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/developer-roadmap.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/devl.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/devopness.md,DevOps & Cloud,recursos,desarrollo-software,"DevOps, cloud & self-hosting",codigo,false,10+vault
+content/tools/diagram-design.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/dify.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/digitaldefynd.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/dioramas.md,Frontend & UI,inspiracion,diseno-creatividad,Animación & motion web,codigo,false,14.inspiracion+vault
+content/tools/directoryfinder.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,inspiracion,false,12.apps+vault
+content/tools/dithercn.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/dotforge.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,13.video+vault
+content/tools/dotlottie-web.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/downdetector.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/dsh-blender-plugin.md,AI & Machine Learning,producto,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/easing-functions-cheat-sheet.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,consejos,false,14.motion+vault
+content/tools/easyui.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/ecc-everything-claude-code-20.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,app,false,8.slug+vault
+content/tools/ecc.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.asistentes+vault
+content/tools/elevenlabsio.md,"Prompts, Art & Video",producto,diseno-creatividad,"Video, audio, imagen & 3D",app,false,13.video+vault
+content/tools/elicit.md,AI & Machine Learning,recursos,aprendizaje,Investigación & papers,aprender,false,3+vault
+content/tools/epsteinmd.md,Empresas & Productos,consejos,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,8.agentes+vault
+content/tools/esponsively.md,Frontend & UI,producto,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/eve.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/every-noise-at-once.md,Productivity & Tools,recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,12.video+vault
+content/tools/exa.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/excalidraw.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/explainshell.md,CLI & Terminal,recursos,desarrollo-software,"Terminal, IDE & hardware",app,false,11+vault
+content/tools/exploitgym.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/expokit.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/fastcom.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/faster-whisper.md,AI & Machine Learning,recursos,inteligencia-artificial,"Voz, visión & IA aplicada",codigo,false,8.voz+vault
+content/tools/feralui-gradients.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/ffmpeg.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/fileio.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/fincept-terminal.md,Productivity & Tools,producto,desarrollo-software,"Terminal, IDE & hardware",codigo,false,12.terminal+vault
+content/tools/firecrawl.md,Data Engineering & ETL,recursos,desarrollo-software,"Backend, APIs & datos",codigo,false,9+vault
+content/tools/firered-openstoryline.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/fireworks-ai-50-en-crditos-de-api-amd-fireworks.md,AI & Machine Learning,recursos,trabajo-oportunidades,"Créditos, planes gratis & programas",app,false,2+vault
+content/tools/flaticon-animated-icons.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/fleetbase.md,Backend & APIs,recursos,desarrollo-software,"Backend, APIs & datos",codigo,false,9+vault
+content/tools/flightradar24.md,Productivity & Tools,recursos,desarrollo-software,"Backend, APIs & datos",app,false,12.backend+vault
+content/tools/floci.md,DevOps & Cloud,recursos,desarrollo-software,"DevOps, cloud & self-hosting",codigo,false,10+vault
+content/tools/flux2.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",codigo,false,8.modelos+vault
+content/tools/font-in-logo.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/fontshare.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/fontsource.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,codigo,false,14.graficos+vault
+content/tools/footer.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/free-programming-books.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/freedomain.md,DevOps & Cloud,recursos,desarrollo-software,"DevOps, cloud & self-hosting",codigo,false,10+vault
+content/tools/fresh-folk.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/frontagent.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/funclip.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/gallery-dl.md,CLI & Terminal,recursos,desarrollo-software,"Terminal, IDE & hardware",inspiracion,false,11+vault
+content/tools/generative-ai-for-beginners.md,AI & Machine Learning,recursos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,5+vault
+content/tools/genoffice.md,Productivity & Tools,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",codigo,false,12.ia+vault
+content/tools/getdesignai.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/gl-transitions.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/glance.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/glass-ui-samasante.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/gltf-transform.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/godlywebsite.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/gods-eye-view.md,Productivity & Tools,recursos,desarrollo-software,Seguridad & privacidad,codigo,false,7+vault
+content/tools/godui.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/google-ai-studio-gemini-api-free-tier.md,AI & Machine Learning,recursos,trabajo-oportunidades,"Créditos, planes gratis & programas",app,false,2+vault
+content/tools/google-cloud-free-tier-300-crdito.md,DevOps & Cloud,recursos,trabajo-oportunidades,"Créditos, planes gratis & programas",app,false,2+vault
+content/tools/gradient-buttons-colorion.md,Frontend & UI,inspiracion,diseno-creatividad,Recursos gráficos,inspiracion,false,14.graficos+vault
+content/tools/gradient-lab-backgrounds-supply.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/gradientool.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/grainient.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/graphify.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.asistentes+vault
+content/tools/graphiti.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"RAG, búsqueda & datos para IA",codigo,false,8.rag+vault
+content/tools/great-learning.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/groq-cloud-free-tier-de-inferencia.md,AI & Machine Learning,recursos,trabajo-oportunidades,"Créditos, planes gratis & programas",app,false,2+vault
+content/tools/gsap-greensock-animation-platform.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion
+content/tools/gsap.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/gstack.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.asistentes+vault
+content/tools/hacktemplates-landing-page-heroes.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.ui+vault
+content/tools/hairline.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/have-i-been-pwned.md,DevOps & Cloud,recursos,desarrollo-software,Seguridad & privacidad,app,false,7+vault
+content/tools/herk-edit-kit.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/heroui.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/higgsfield-ai-skills.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/holo-card-studio.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/howlerjs.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/hyperdesign.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",codigo,false,14.inspiracion+vault
+content/tools/hyperuix.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/iconaut.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/iconly.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/ifixai.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",consejos,false,8.modelos+vault
+content/tools/ikonik.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/illlustrationsco.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/ilovepdf.md,Productivity & Tools,recursos,productividad-utilidades,Utilidades web & archivos,app,false,12.util+vault
+content/tools/imageory.md,"Prompts, Art & Video",inspiracion,diseno-creatividad,Prompts & generación visual con IA,inspiracion,false,13.prompts+vault
+content/tools/img2threejs.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/impeccable.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/inspora.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/interactive-card-stack.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/internet-archive.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,5+vault
+content/tools/invoice-ninja.md,Productivity & Tools,recursos,desarrollo-software,"DevOps, cloud & self-hosting",app,false,12.devops+vault
+content/tools/ira-design.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/isreadyforlaunch.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,consejos,false,12.apps+vault
+content/tools/jcodesmore-ai-website-cloner-template.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui
+content/tools/jellee.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/jellyfin.md,DevOps & Cloud,recursos,desarrollo-software,"DevOps, cloud & self-hosting",codigo,false,10+vault
+content/tools/jiro.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,consejos,false,14.ui+vault
+content/tools/jitter.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/jolt-physics.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/joly-ui.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/json-formatter.md,Productivity & Tools,recursos,productividad-utilidades,Utilidades web & archivos,app,false,12.util+vault
+content/tools/justwatch.md,Productivity & Tools,producto,productividad-utilidades,Utilidades web & archivos,app,false,12.util+vault
+content/tools/khagwal-3d.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/kinetics.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,consejos,false,14.graficos+vault
+content/tools/kinetik-ui.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/kobra-systems.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/kokoro.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/kreaai.md,"Prompts, Art & Video",recursos,diseno-creatividad,Prompts & generación visual con IA,app,false,13.prompts+vault
+content/tools/kugiri.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/landdding.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/landingfolio.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/landinglove.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/langchain.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/langgraph.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/last-30-days.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.asistentes+vault
+content/tools/latentsync.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/lazygit.md,CLI & Terminal,recursos,desarrollo-software,"Terminal, IDE & hardware",codigo,false,11+vault
+content/tools/learn-claude-code.md,AI & Machine Learning,consejos,aprendizaje,"Cursos, libros & rutas",aprender,false,5.guias+vault
+content/tools/learn-harness-engineering.md,Documentation & Resources,consejos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,5.guias+vault
+content/tools/learnvern.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/lemo-opuscar.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",consejos,false,13.video+vault
+content/tools/lexend.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/librani-motion-library.md,"Prompts, Art & Video",recursos,diseno-creatividad,Prompts & generación visual con IA,consejos,false,13.prompts+vault
+content/tools/librariesdev.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/library-genesis.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/librechat.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",codigo,false,8.modelos+vault
+content/tools/libretranslate.md,AI & Machine Learning,recursos,inteligencia-artificial,"Voz, visión & IA aplicada",codigo,false,8.voz+vault
+content/tools/librosa.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/llamaindex.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/llm-app-serviette.md,AI & Machine Learning,recursos,inteligencia-artificial,"RAG, búsqueda & datos para IA",codigo,false,8.rag+vault
+content/tools/llm-course.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/llms-from-scratch.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",codigo,false,8.modelos+vault
+content/tools/loadingdev.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/loadmore.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/local-deep-research.md,AI & Machine Learning,recursos,inteligencia-artificial,"RAG, búsqueda & datos para IA",codigo,false,8.rag+vault
+content/tools/localcan-snapshot.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/localsend.md,Productivity & Tools,producto,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/logdy.md,DevOps & Cloud,producto,desarrollo-software,"DevOps, cloud & self-hosting",app,false,10+vault
+content/tools/logo-to-use.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/logomaker-de-modulify.md,Frontend & UI,producto,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/logosystem.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,inspiracion,false,14.graficos+vault
+content/tools/lordicon.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/losslesscut.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/lottie.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/lucian-uxui-prompt.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",consejos,false,14.inspiracion+vault
+content/tools/lucide-animated.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/lucide.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,codigo,false,14.graficos+vault
+content/tools/machine-learning-for-beginners.md,AI & Machine Learning,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/magic-ui.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/magicpattern-halftone-effect-generator.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.graficos2+vault
+content/tools/magnificai.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,13.video+vault
+content/tools/manim.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/manimgx.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,13.video+vault
+content/tools/marketing-skills.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/matterjs.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/mcp-for-blender.md,"Prompts, Art & Video",producto,inteligencia-artificial,"Modelos, inferencia & APIs de IA",codigo,false,13.video+vault
+content/tools/mediabunny.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/meetily.md,AI & Machine Learning,recursos,inteligencia-artificial,"Voz, visión & IA aplicada",codigo,false,8.voz+vault
+content/tools/mengto-skills.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/mg-styles-15.md,"Prompts, Art & Video",recursos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,5+vault
+content/tools/microsoft-azure-free-account-200-crdito.md,DevOps & Cloud,recursos,trabajo-oportunidades,"Créditos, planes gratis & programas",app,false,2+vault
+content/tools/minimal-gallery.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/mirofish.md,AI & Machine Learning,recursos,inteligencia-artificial,"RAG, búsqueda & datos para IA",codigo,false,8.rag+vault
+content/tools/mistral-ai-plan-gratuito.md,AI & Machine Learning,recursos,trabajo-oportunidades,"Créditos, planes gratis & programas",app,false,2+vault
+content/tools/mkdirdirectory.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/mnmm.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/mobbin.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/modulify-templates.md,Frontend & UI,producto,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/modulify.md,AI & Machine Learning,producto,inteligencia-artificial,Asistentes de código & skills,consejos,false,8.asistentes+vault
+content/tools/moneyprinterturbo.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/monid.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/morphin.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/morphrig.md,Frontend & UI,consejos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/motion-ai-kit.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/motion-canvas.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",consejos,false,13.video+vault
+content/tools/motion-crackers.md,"Prompts, Art & Video",inspiracion,diseno-creatividad,Prompts & generación visual con IA,inspiracion,false,13.prompts+vault
+content/tools/motion-designer-skill-para-claude.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,13.video+vault
+content/tools/motion-graphics-music-video-skill.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",consejos,false,13.video+vault
+content/tools/motion.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/motion2mixamorig.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/motionin-design.md,Frontend & UI,producto,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/motionkit.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/motionsites-studio.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,consejos,false,14.motion+vault
+content/tools/motionsites.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/motionvideo.md,"Prompts, Art & Video",recursos,diseno-creatividad,Prompts & generación visual con IA,inspiracion,false,13.prompts+vault
+content/tools/musicforprogramming.md,Productivity & Tools,recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,12.video+vault
+content/tools/mynoise.md,Productivity & Tools,recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,12.video+vault
+content/tools/name-that-ui.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,consejos,false,14.ui+vault
+content/tools/nanobot.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/narratoai.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/navbar-gallery.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/netbird.md,DevOps & Cloud,producto,desarrollo-software,Seguridad & privacidad,app,false,7+vault
+content/tools/newpipe.md,Productivity & Tools,recursos,desarrollo-software,Seguridad & privacidad,codigo,false,7+vault
+content/tools/noiced.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/notchlive.md,Productivity & Tools,producto,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/novu.md,Backend & APIs,recursos,desarrollo-software,"Backend, APIs & datos",codigo,false,9+vault
+content/tools/ntfysh.md,Backend & APIs,recursos,desarrollo-software,"Backend, APIs & datos",app,false,9+vault
+content/tools/obs-studio.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/odysseus.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/officecli.md,CLI & Terminal,recursos,desarrollo-software,"Terminal, IDE & hardware",codigo,false,11+vault
+content/tools/ogl.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/ogpedia.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.inspiracion+vault
+content/tools/ollama.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",codigo,false,8.modelos+vault
+content/tools/omniroute.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",codigo,false,8.modelos+vault
+content/tools/ondesign-community.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/one-page-love.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/one-prompt-design.md,AI & Machine Learning,inspiracion,inteligencia-artificial,"Modelos, inferencia & APIs de IA",inspiracion,false,8.modelos+vault
+content/tools/open-culture.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",inspiracion,false,5+vault
+content/tools/open-doodles.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/open-higgsfield-ai.md,"Prompts, Art & Video",recursos,diseno-creatividad,Prompts & generación visual con IA,codigo,false,13.prompts+vault
+content/tools/open-notebook.md,AI & Machine Learning,recursos,inteligencia-artificial,"RAG, búsqueda & datos para IA",codigo,false,8.rag+vault
+content/tools/open-webui.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/openai-cookbook.md,Documentation & Resources,recursos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,5+vault
+content/tools/openbot.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/openchatcut.md,"Prompts, Art & Video",producto,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/opencodex.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/opencreator.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/opencut.md,Productivity & Tools,producto,desarrollo-software,Seguridad & privacidad,codigo,false,7+vault
+content/tools/opendesign.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",app,false,8.modelos+vault
+content/tools/openhands.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/openmaic.md,AI & Machine Learning,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/openmanus.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/openreplay.md,Productivity & Tools,recursos,desarrollo-software,"DevOps, cloud & self-hosting",codigo,false,12.devops+vault
+content/tools/openrouter.md,AI & Machine Learning,producto,inteligencia-artificial,"Modelos, inferencia & APIs de IA",consejos,false,8.modelos+vault
+content/tools/opensandbox.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/openshorts.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/opensource-ui.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/opentui.md,CLI & Terminal,recursos,desarrollo-software,"Terminal, IDE & hardware",app,false,11+vault
+content/tools/openui.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/optimizerduck.md,Productivity & Tools,recursos,desarrollo-software,Seguridad & privacidad,codigo,false,7+vault
+content/tools/opus-video-skills.md,"Prompts, Art & Video",recursos,diseno-creatividad,Animación & motion web,codigo,false,13.motion+vault
+content/tools/oracle-cloud-free-tier-300-always-free.md,DevOps & Cloud,recursos,trabajo-oportunidades,"Créditos, planes gratis & programas",app,false,2+vault
+content/tools/orca.md,AI & Machine Learning,producto,inteligencia-artificial,Asistentes de código & skills,app,false,8.asistentes+vault
+content/tools/originkit.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/ortica.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/ossu-computer-science.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/otsu.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/p5js.md,"Prompts, Art & Video",recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/pageindex.md,AI & Machine Learning,recursos,inteligencia-artificial,"RAG, búsqueda & datos para IA",codigo,false,8.rag+vault
+content/tools/paper-animation.md,"Prompts, Art & Video",producto,diseno-creatividad,Prompts & generación visual con IA,app,false,13.prompts+vault
+content/tools/paper-shaders.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/paper.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/paperclip.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/paperjs.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/papermark.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,codigo,false,12.apps+vault
+content/tools/parallel.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/parcelvoy.md,Backend & APIs,recursos,desarrollo-software,"Backend, APIs & datos",app,false,9+vault
+content/tools/pdf-drive.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/pdoomvideo.md,"Prompts, Art & Video",recursos,diseno-creatividad,Animación & motion web,codigo,false,13.motion+vault
+content/tools/penpot.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/perch.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/phind.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",consejos,false,8.modelos+vault
+content/tools/photogimp.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,codigo,false,12.apps+vault
+content/tools/photopea.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/pi-hole.md,DevOps & Cloud,recursos,desarrollo-software,"DevOps, cloud & self-hosting",codigo,false,10+vault
+content/tools/pioneerui.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/pixel.md,CLI & Terminal,recursos,desarrollo-software,"Terminal, IDE & hardware",app,false,11+vault
+content/tools/pixelcolor.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/pixijs.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/podcastfy.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/polyhavencom.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,13.video+vault
+content/tools/ponytail.md,AI & Machine Learning,consejos,inteligencia-artificial,"Agentes, MCP & automatización",consejos,false,8.asistentes+vault
+content/tools/postiz.md,Productivity & Tools,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/postprocessing.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/postsdesign.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/ppt-master.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,codigo,false,12.apps+vault
+content/tools/pricing-pages.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/prime-agent.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/privnote.md,Productivity & Tools,recursos,desarrollo-software,Seguridad & privacidad,app,false,7+vault
+content/tools/project-based-learning.md,Documentation & Resources,recursos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,5+vault
+content/tools/project-gutenberg.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/prompt-motion.md,"Prompts, Art & Video",inspiracion,diseno-creatividad,Prompts & generación visual con IA,inspiracion,false,13.prompts+vault
+content/tools/promptschat-antes-awesome-chatgpt-prompts.md,AI & Machine Learning,consejos,inteligencia-artificial,"Agentes, MCP & automatización",consejos,false,5.guias+vault
+content/tools/public-apis.md,Backend & APIs,recursos,desarrollo-software,"Backend, APIs & datos",codigo,false,9+vault
+content/tools/python-100-days.md,Documentation & Resources,consejos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,5.guias+vault
+content/tools/qdrant.md,Databases & Storage,recursos,desarrollo-software,"Backend, APIs & datos",codigo,false,9+vault
+content/tools/quickpick.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,inspiracion,false,12.apps+vault
+content/tools/qwen3-asr.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",codigo,false,8.modelos+vault
+content/tools/radio-garden.md,Productivity & Tools,recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,12.video+vault
+content/tools/rag-techniques.md,AI & Machine Learning,recursos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,5+vault
+content/tools/ragas.md,AI & Machine Learning,recursos,inteligencia-artificial,"RAG, búsqueda & datos para IA",codigo,false,8.rag+vault
+content/tools/raindropio.md,Productivity & Tools,producto,productividad-utilidades,Apps de productividad & negocio,consejos,false,12.apps+vault
+content/tools/raphaelai.md,"Prompts, Art & Video",recursos,diseno-creatividad,Prompts & generación visual con IA,app,false,13.prompts+vault
+content/tools/rapier.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/raspberry-pi-5.md,Productos Tecnológicos & Hardware,producto,desarrollo-software,"Terminal, IDE & hardware",app,false,6+vault
+content/tools/rayso.md,Productivity & Tools,recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,12.video+vault
+content/tools/rea.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/react-bits.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/react-postprocessing.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/react-spring.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/react-three-drei.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/react-three-fiber.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/react-three-rapier.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/reactive-resume.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/reason.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/recent.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/reclip.md,Productivity & Tools,recursos,desarrollo-software,"DevOps, cloud & self-hosting",codigo,false,12.devops+vault
+content/tools/recordly.md,Productivity & Tools,producto,productividad-utilidades,Apps de productividad & negocio,codigo,false,12.apps+vault
+content/tools/reelfolio.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/refero-styles-librera-de-designmd.md,Frontend & UI,inspiracion,diseno-creatividad,Recursos gráficos,inspiracion,false,14.graficos+vault
+content/tools/refero.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/refsgallery.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/regex101.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/remotion-skills.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/remotion.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/removebg.md,Productivity & Tools,recursos,desarrollo-software,"Backend, APIs & datos",app,false,12.backend+vault
+content/tools/reverse-linear-sync-engine.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",codigo,false,14.inspiracion+vault
+content/tools/reverse-ui.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/rive-web.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/ronny-studio-free-font.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/satori.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/sci-hub.md,Documentation & Resources,recursos,aprendizaje,Investigación & papers,aprender,false,3+vault
+content/tools/scispace.md,AI & Machine Learning,recursos,aprendizaje,Investigación & papers,aprender,false,3+vault
+content/tools/scroll-shaders.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/scrolltide.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,consejos,false,14.motion+vault
+content/tools/scrollx-ui.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/searxng.md,Productivity & Tools,recursos,desarrollo-software,Seguridad & privacidad,codigo,false,7+vault
+content/tools/segment-anything-sam.md,AI & Machine Learning,recursos,inteligencia-artificial,"Voz, visión & IA aplicada",consejos,false,8.voz+vault
+content/tools/semantic-scholar.md,Documentation & Resources,recursos,aprendizaje,Investigación & papers,aprender,false,3+vault
+content/tools/semantica.md,AI & Machine Learning,recursos,inteligencia-artificial,"RAG, búsqueda & datos para IA",codigo,false,8.rag+vault
+content/tools/sent.md,Backend & APIs,producto,desarrollo-software,"Backend, APIs & datos",app,false,9+vault
+content/tools/sevallacom-hosting.md,Backend & APIs,recursos,desarrollo-software,"Backend, APIs & datos",app,false,9
+content/tools/shadcn-examples.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.ui+vault
+content/tools/shadcn-space.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/shadcnui.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",codigo,false,14.inspiracion+vault
+content/tools/shapefactory.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/shaper.md,Databases & Storage,recursos,desarrollo-software,"Backend, APIs & datos",codigo,false,9+vault
+content/tools/ship-studio.md,AI & Machine Learning,producto,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/shipvideo.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",consejos,false,13.video+vault
+content/tools/shoji.md,Productivity & Tools,recursos,desarrollo-software,Seguridad & privacidad,app,false,7+vault
+content/tools/short-video-factory.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",consejos,false,13.video+vault
+content/tools/shotreel.md,Productivity & Tools,inspiracion,diseno-creatividad,"Video, audio, imagen & 3D",inspiracion,false,12.video+vault
+content/tools/shots.md,Frontend & UI,producto,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/similarsites.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/skillclaw.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/skills.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,inspiracion,false,8.slug+vault
+content/tools/sky-agent.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/smallpdf.md,Productivity & Tools,recursos,productividad-utilidades,Utilidades web & archivos,app,false,12.util+vault
+content/tools/smartmockups.md,Frontend & UI,producto,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/social-media-agent.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",codigo,false,8.modelos+vault
+content/tools/social-media-research-skills.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/social-media-skills.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/soundcn.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/space-grotesk.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/space-type-generator.md,Frontend & UI,inspiracion,diseno-creatividad,Recursos gráficos,inspiracion,false,14.graficos+vault
+content/tools/spline.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/squoosh.md,Productivity & Tools,recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,12.video+vault
+content/tools/stable-diffusion.md,AI & Machine Learning,recursos,inteligencia-artificial,"Voz, visión & IA aplicada",codigo,false,8.voz+vault
+content/tools/stirling-pdf.md,Productivity & Tools,recursos,desarrollo-software,"DevOps, cloud & self-hosting",codigo,false,12.devops+vault
+content/tools/storyset.md,Frontend & UI,producto,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/storytoolkitai.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/strix.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",codigo,false,8.modelos+vault
+content/tools/summarizetech.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",app,false,8.modelos+vault
+content/tools/sunocom.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,13.video+vault
+content/tools/supabase.md,Backend & APIs,recursos,desarrollo-software,"Backend, APIs & datos",codigo,false,9+vault
+content/tools/supahero.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/superdesign.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/superpowers.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.asistentes+vault
+content/tools/sure.md,Productivity & Tools,recursos,desarrollo-software,"DevOps, cloud & self-hosting",codigo,false,12.devops+vault
+content/tools/suwayomi-server.md,Productivity & Tools,recursos,desarrollo-software,"DevOps, cloud & self-hosting",codigo,false,12.devops+vault
+content/tools/svgator.md,Frontend & UI,producto,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/svgo.md,CLI & Terminal,recursos,desarrollo-software,"Terminal, IDE & hardware",codigo,false,11+vault
+content/tools/system-design-primer.md,Documentation & Resources,consejos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,5.guias+vault
+content/tools/system-prompts-leaks.md,AI & Machine Learning,consejos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",consejos,false,8.modelos+vault
+content/tools/t3code.md,Productivity & Tools,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/tabbied-patterns.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/tabler-icons.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/tailgrids.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.ui+vault
+content/tools/taptone.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/taste-skill.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",consejos,false,14.inspiracion+vault
+content/tools/tavily.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/temp-mail.md,Productivity & Tools,recursos,desarrollo-software,Seguridad & privacidad,app,false,7+vault
+content/tools/tenuo.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/termui-registry.md,CLI & Terminal,recursos,desarrollo-software,"Terminal, IDE & hardware",app,false,11+vault
+content/tools/the-art-of-command-line.md,CLI & Terminal,consejos,desarrollo-software,"Terminal, IDE & hardware",consejos,false,11+vault
+content/tools/the-component-gallery.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/the-design-system-guide.md,Documentation & Resources,consejos,aprendizaje,"Cursos, libros & rutas",aprender,false,5.guias+vault
+content/tools/the-odin-project.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/theatrejs.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/thinking-orbs.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/three-gpu-pathtracer.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/threejs.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/threequarks.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/tidewater.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/tineye.md,Productivity & Tools,recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,12.video+vault
+content/tools/tinypng.md,Productivity & Tools,recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,12.video+vault
+content/tools/tinywow.md,Productivity & Tools,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",app,false,12.ia+vault
+content/tools/toggle-supply.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/tonejs.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,codigo,false,14.ui+vault
+content/tools/toprank.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,codigo,false,12.apps+vault
+content/tools/tracedr.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,app,false,12.apps+vault
+content/tools/tradingagents.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/transitionsdev.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/tsparticles.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/tunefind.md,Productivity & Tools,recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,12.video+vault
+content/tools/tweakpane.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/tween-ui.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/ui-layouts.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,codigo,false,14.motion+vault
+content/tools/ui-maxxing.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/uisfx.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/uiux-pro-max-skill.md,AI & Machine Learning,recursos,inteligencia-artificial,Asistentes de código & skills,codigo,false,8.slug+vault
+content/tools/uiverse.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/undraw.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/unicorn-studio.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/unscreen.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,13.video+vault
+content/tools/unsection.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/upscayl.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/usagerank.md,Productivity & Tools,recursos,inteligencia-artificial,Asistentes de código & skills,app,false,8.asistentes+vault
+content/tools/useanimations.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/uselayouts.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/ux-ui-agent-skills.md,Frontend & UI,recursos,diseno-creatividad,"Inspiración, UX & design systems",codigo,false,14.inspiracion+vault
+content/tools/valessa.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",app,false,13.video+vault
+content/tools/vault-ransom-note-effect.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/vaultwarden.md,Backend & APIs,recursos,desarrollo-software,Seguridad & privacidad,codigo,false,7+vault
+content/tools/vero.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/vibeprompts.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,consejos,false,14.ui+vault
+content/tools/video-shotcraft.md,"Prompts, Art & Video",recursos,diseno-creatividad,Prompts & generación visual con IA,codigo,false,13.prompts+vault
+content/tools/viora-ui.md,Frontend & UI,recursos,diseno-creatividad,Animación & motion web,app,false,14.motion+vault
+content/tools/virustotal.md,DevOps & Cloud,recursos,desarrollo-software,Seguridad & privacidad,app,false,7+vault
+content/tools/visual-journal.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/vllm.md,AI & Machine Learning,recursos,inteligencia-artificial,"Modelos, inferencia & APIs de IA",codigo,false,8.modelos+vault
+content/tools/voicestudio.md,AI & Machine Learning,recursos,inteligencia-artificial,"Voz, visión & IA aplicada",codigo,false,8.voz+vault
+content/tools/voxcpm.md,"Prompts, Art & Video",recursos,diseno-creatividad,"Video, audio, imagen & 3D",codigo,false,13.video+vault
+content/tools/watermelon-ui.md,Frontend & UI,recursos,diseno-creatividad,Componentes & frameworks UI,app,false,14.ui+vault
+content/tools/wayback-machine-internet-archive.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/web-to-app.md,Productivity & Tools,recursos,productividad-utilidades,Apps de productividad & negocio,codigo,false,12.apps+vault
+content/tools/webzibition-codrops.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/wedoflow.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/weknora.md,AI & Machine Learning,recursos,inteligencia-artificial,"Agentes, MCP & automatización",codigo,false,8.agentes+vault
+content/tools/whipsaw.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/whisper.md,AI & Machine Learning,recursos,inteligencia-artificial,"Voz, visión & IA aplicada",codigo,false,8.voz+vault
+content/tools/whisperx.md,AI & Machine Learning,recursos,inteligencia-artificial,"Voz, visión & IA aplicada",codigo,false,8.voz+vault
+content/tools/win11debloat.md,Productivity & Tools,recursos,desarrollo-software,Seguridad & privacidad,codigo,false,7+vault
+content/tools/wolfram-alpha.md,Productivity & Tools,recursos,desarrollo-software,"Backend, APIs & datos",app,false,12.backend+vault
+content/tools/wonderlist-design.md,Frontend & UI,inspiracion,diseno-creatividad,"Inspiración, UX & design systems",inspiracion,false,14.inspiracion+vault
+content/tools/workout-guide.md,Frontend & UI,recursos,diseno-creatividad,Recursos gráficos,app,false,14.graficos+vault
+content/tools/yoinks.md,CLI & Terminal,recursos,desarrollo-software,"Terminal, IDE & hardware",codigo,false,11+vault
+content/tools/you-dont-know-js.md,Documentation & Resources,recursos,aprendizaje,"Cursos, libros & rutas",aprender,false,5+vault
+content/tools/zencoder.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tools/zuse.md,Agentes & Protocolo MCP,recursos,inteligencia-artificial,"Agentes, MCP & automatización",app,false,8.agentes+vault
+content/tips/claude-desktop-diagnostico-wifi.md,Consejos & Buenas Prácticas,consejos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,4+vault
+content/tips/coleccin-de-prompts-para-claude-opus-55-y-ms.md,AI & Machine Learning,consejos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,4+vault
+content/tips/git-undo-commit-trick.md,Consejos & Buenas Prácticas,consejos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,4+vault
+content/tips/langextract.md,Consejos & Buenas Prácticas,consejos,aprendizaje,"Guías, tips & buenas prácticas",consejos,false,4+vault
+content/jobs/alignerr.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/appen.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/clickworker.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/dataannotation.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/imerit.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/innodata.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/invisible-technologies.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/labelbox.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/mercor.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/microworkers.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/objectways.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/oneforma.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/prolific.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/remotasks.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/remoto-fullstack-dev-latam.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Empleo remoto & bolsas,,false,1.empleo+vault
+content/jobs/rws-data-services.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/surge-ai.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/telus-international-ai.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/toloka.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/welocalize.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Entrenamiento de IA & microtareas,,false,1.rlhf+vault
+content/jobs/xai-careers.md,Trabajo & Freelance,recursos,trabajo-oportunidades,Empleo remoto & bolsas,,false,1.empleo+vault

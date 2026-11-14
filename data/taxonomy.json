@@ -1,0 +1,585 @@
+{
+  "version": "1.0.0",
+  "approved": "2026-11-14",
+  "approved_by": "Joel Peñaloza",
+  "language": "es",
+  "applies_to": [
+    "devtools-kit (segundo cerebro, Origin joel-pe-aloza/devtools-kit)",
+    "awesome-dev-toolkit (GitHub AlexiP18/awesome-dev-toolkit)"
+  ],
+  "fields": {
+    "area": "id de área (obligatorio)",
+    "category": "nombre exacto en español de la categoría (obligatorio; category_id es su slug)",
+    "conjunto": "uno de los 5 conjuntos; omitido en empleos (job_remote) y en la bandeja de revisión",
+    "entry_type": "tool | product_showcase | tech_tip | job_remote | tech_product (sin cambios)",
+    "usage": "to_try | in_use | archived (sin cambios)",
+    "review": "true para notas en la bandeja de revisión"
+  },
+  "areas": [
+    {
+      "id": "desarrollo-software",
+      "name": "Desarrollo de software",
+      "definition": "Construir, desplegar y operar software: backend, infraestructura, terminal, hardware y seguridad.",
+      "categories": [
+        "backend-apis-datos",
+        "devops-cloud-self-hosting",
+        "terminal-ide-hardware",
+        "seguridad-privacidad"
+      ]
+    },
+    {
+      "id": "inteligencia-artificial",
+      "name": "Inteligencia artificial",
+      "definition": "Modelos, agentes, asistentes de código, RAG e IA aplicada a voz o visión.",
+      "categories": [
+        "modelos-inferencia-apis-de-ia",
+        "agentes-mcp-automatizacion",
+        "asistentes-de-codigo-skills",
+        "rag-busqueda-datos-para-ia",
+        "voz-vision-ia-aplicada"
+      ]
+    },
+    {
+      "id": "diseno-creatividad",
+      "name": "Diseño & creatividad",
+      "definition": "Interfaces, animación web, recursos gráficos, inspiración y producción multimedia.",
+      "categories": [
+        "componentes-frameworks-ui",
+        "animacion-motion-web",
+        "recursos-graficos",
+        "inspiracion-ux-design-systems",
+        "video-audio-imagen-3d",
+        "prompts-generacion-visual-con-ia"
+      ]
+    },
+    {
+      "id": "productividad-utilidades",
+      "name": "Productividad & utilidades",
+      "definition": "Apps de uso diario y utilidades puntuales que no son de desarrollo.",
+      "categories": [
+        "apps-de-productividad-negocio",
+        "utilidades-web-archivos"
+      ]
+    },
+    {
+      "id": "aprendizaje",
+      "name": "Aprendizaje",
+      "definition": "Material para estudiar o aplicar: cursos, libros, guías, tips y papers.",
+      "categories": [
+        "cursos-libros-rutas",
+        "guias-tips-buenas-practicas",
+        "investigacion-papers"
+      ]
+    },
+    {
+      "id": "trabajo-oportunidades",
+      "name": "Trabajo & oportunidades",
+      "definition": "Empleos, entrenamiento de IA pagado, bounties y créditos o beneficios que caducan.",
+      "categories": [
+        "empleo-remoto-bolsas",
+        "entrenamiento-de-ia-microtareas",
+        "bounties-web3-concursos",
+        "creditos-planes-gratis-programas"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "backend-apis-datos",
+      "name": "Backend, APIs & datos",
+      "area": "desarrollo-software",
+      "definition": "Servidores, APIs, bases de datos, colas, notificaciones, scraping y ETL.",
+      "inclusion_rules": "Corre del lado servidor o mueve datos. Absorbe Databases & Storage y Data Engineering & ETL.",
+      "moc": "moc-backend-data",
+      "proposed_count": {
+        "vault": 14,
+        "toolkit": 15
+      }
+    },
+    {
+      "id": "devops-cloud-self-hosting",
+      "name": "DevOps, cloud & self-hosting",
+      "area": "desarrollo-software",
+      "definition": "Despliegue, CI, hosting, redes y apps que se autoalojan.",
+      "inclusion_rules": "Lo instalas en un servidor o homelab (Coolify, Pi-hole, Jellyfin).",
+      "moc": "moc-devops-cloud",
+      "proposed_count": {
+        "vault": 18,
+        "toolkit": 15
+      }
+    },
+    {
+      "id": "terminal-ide-hardware",
+      "name": "Terminal, IDE & hardware",
+      "area": "desarrollo-software",
+      "definition": "CLIs, TUIs, git, editores, extensiones y hardware de desarrollo.",
+      "inclusion_rules": "Absorbe CLI & Terminal, DevTools & IDEs y Productos Tecnológicos & Hardware. Hardware físico: entry_type tech_product, conjunto app.",
+      "moc": "moc-terminal-ide-hardware",
+      "proposed_count": {
+        "vault": 17,
+        "toolkit": 13
+      }
+    },
+    {
+      "id": "seguridad-privacidad",
+      "name": "Seguridad & privacidad",
+      "area": "desarrollo-software",
+      "definition": "Ciberseguridad, VPN, contraseñas, correo temporal, malware.",
+      "inclusion_rules": "El propósito principal es proteger cuentas, datos o redes.",
+      "moc": "moc-seguridad-privacidad",
+      "proposed_count": {
+        "vault": 18,
+        "toolkit": 17
+      }
+    },
+    {
+      "id": "modelos-inferencia-apis-de-ia",
+      "name": "Modelos, inferencia & APIs de IA",
+      "area": "inteligencia-artificial",
+      "definition": "LLMs locales o en la nube, gateways, chats de IA, entrenar modelos.",
+      "inclusion_rules": "Usas o sirves un modelo; no hay agente ni RAG de por medio.",
+      "moc": "moc-ia-modelos",
+      "proposed_count": {
+        "vault": 35,
+        "toolkit": 21
+      }
+    },
+    {
+      "id": "agentes-mcp-automatizacion",
+      "name": "Agentes, MCP & automatización",
+      "area": "inteligencia-artificial",
+      "definition": "Frameworks de agentes, servidores MCP, memoria, navegador automatizado, n8n.",
+      "inclusion_rules": "El software actúa por ti con herramientas. Fusiona Agentes & Protocolo MCP con la parte agéntica de AI & Machine Learning.",
+      "moc": "moc-agentes-mcp",
+      "proposed_count": {
+        "vault": 64,
+        "toolkit": 55
+      }
+    },
+    {
+      "id": "asistentes-de-codigo-skills",
+      "name": "Asistentes de código & skills",
+      "area": "inteligencia-artificial",
+      "definition": "Claude Code, Codex, Cursor y skills o plugins para agentes de código.",
+      "inclusion_rules": "Extiende un asistente de programación. Si es un procedimiento sin código, va a Guías, tips & buenas prácticas.",
+      "moc": "moc-asistentes-codigo",
+      "proposed_count": {
+        "vault": 33,
+        "toolkit": 30
+      }
+    },
+    {
+      "id": "rag-busqueda-datos-para-ia",
+      "name": "RAG, búsqueda & datos para IA",
+      "area": "inteligencia-artificial",
+      "definition": "RAG, embeddings, bases vectoriales, extracción de PDF y APIs de búsqueda para agentes.",
+      "inclusion_rules": "Alimenta a un modelo con datos. Absorbe Document AI & Extracción.",
+      "moc": "moc-rag-busqueda",
+      "proposed_count": {
+        "vault": 9,
+        "toolkit": 9
+      }
+    },
+    {
+      "id": "voz-vision-ia-aplicada",
+      "name": "Voz, visión & IA aplicada",
+      "area": "inteligencia-artificial",
+      "definition": "Voz a texto, texto a voz, visión por computadora, geoespacial, traducción.",
+      "inclusion_rules": "Modelos especializados en un tipo de dato que no es solo texto.",
+      "moc": "moc-voz-vision",
+      "proposed_count": {
+        "vault": 21,
+        "toolkit": 11
+      }
+    },
+    {
+      "id": "componentes-frameworks-ui",
+      "name": "Componentes & frameworks UI",
+      "area": "diseno-creatividad",
+      "definition": "Librerías de componentes, kits shadcn y Tailwind, CSS y frameworks web.",
+      "inclusion_rules": "Se copia o instala dentro de una interfaz.",
+      "moc": "moc-frontend-ui",
+      "proposed_count": {
+        "vault": 62,
+        "toolkit": 48
+      }
+    },
+    {
+      "id": "animacion-motion-web",
+      "name": "Animación & motion web",
+      "area": "diseno-creatividad",
+      "definition": "GSAP, WebGL, Three.js, shaders, scroll y microinteracciones.",
+      "inclusion_rules": "El valor está en el movimiento o el 3D en la web.",
+      "moc": "moc-animacion-motion",
+      "proposed_count": {
+        "vault": 79,
+        "toolkit": 70
+      }
+    },
+    {
+      "id": "recursos-graficos",
+      "name": "Recursos gráficos",
+      "area": "diseno-creatividad",
+      "definition": "Iconos, fuentes, paletas, ilustraciones, mockups y fondos.",
+      "inclusion_rules": "Es un asset que se descarga, no código.",
+      "moc": "moc-recursos-graficos",
+      "proposed_count": {
+        "vault": 51,
+        "toolkit": 50
+      }
+    },
+    {
+      "id": "inspiracion-ux-design-systems",
+      "name": "Inspiración, UX & design systems",
+      "area": "diseno-creatividad",
+      "definition": "Galerías, landings, design systems, branding y guías de UX.",
+      "inclusion_rules": "Sirve para mirar o decidir un diseño.",
+      "moc": "moc-inspiracion-ux",
+      "proposed_count": {
+        "vault": 76,
+        "toolkit": 67
+      }
+    },
+    {
+      "id": "video-audio-imagen-3d",
+      "name": "Video, audio, imagen & 3D",
+      "area": "diseno-creatividad",
+      "definition": "Edición y generación de video, música, voz en off, imagen y Blender.",
+      "inclusion_rules": "Produce piezas multimedia fuera del navegador.",
+      "moc": "moc-creative",
+      "proposed_count": {
+        "vault": 86,
+        "toolkit": 67
+      }
+    },
+    {
+      "id": "prompts-generacion-visual-con-ia",
+      "name": "Prompts & generación visual con IA",
+      "area": "diseno-creatividad",
+      "definition": "Colecciones de prompts y plataformas de imagen o video con IA.",
+      "inclusion_rules": "El centro es el prompt o la plataforma generativa.",
+      "moc": "moc-prompts-generacion",
+      "proposed_count": {
+        "vault": 12,
+        "toolkit": 12
+      }
+    },
+    {
+      "id": "apps-de-productividad-negocio",
+      "name": "Apps de productividad & negocio",
+      "area": "productividad-utilidades",
+      "definition": "Notas, finanzas, facturación, compartir archivos, directorios de apps.",
+      "inclusion_rules": "Herramienta de uso diario que no es de desarrollo.",
+      "moc": "moc-productivity",
+      "proposed_count": {
+        "vault": 32,
+        "toolkit": 26
+      }
+    },
+    {
+      "id": "utilidades-web-archivos",
+      "name": "Utilidades web & archivos",
+      "area": "productividad-utilidades",
+      "definition": "Conversores, PDF, formateadores, descargadores y archivo web.",
+      "inclusion_rules": "Tarea puntual en el navegador sobre un archivo o página.",
+      "moc": "moc-utilidades-web",
+      "proposed_count": {
+        "vault": 7,
+        "toolkit": 7
+      }
+    },
+    {
+      "id": "cursos-libros-rutas",
+      "name": "Cursos, libros & rutas",
+      "area": "aprendizaje",
+      "definition": "Cursos, libros, currículos, roadmaps y bibliotecas.",
+      "inclusion_rules": "Se estudia de principio a fin. Sustituye a Documentation & Resources.",
+      "moc": "moc-docs-resources",
+      "proposed_count": {
+        "vault": 36,
+        "toolkit": 34
+      }
+    },
+    {
+      "id": "guias-tips-buenas-practicas",
+      "name": "Guías, tips & buenas prácticas",
+      "area": "aprendizaje",
+      "definition": "Hilos de pasos, trucos de git o terminal, cheatsheets, metodología.",
+      "inclusion_rules": "Se aplica en minutos. Absorbe Flujos de Trabajo y Consejos & Buenas Prácticas.",
+      "moc": "moc-flujos-trabajo",
+      "proposed_count": {
+        "vault": 20,
+        "toolkit": 12
+      }
+    },
+    {
+      "id": "investigacion-papers",
+      "name": "Investigación & papers",
+      "area": "aprendizaje",
+      "definition": "Papers, buscadores académicos y asistentes de investigación.",
+      "inclusion_rules": "La fuente es literatura científica.",
+      "moc": "moc-investigacion-papers",
+      "proposed_count": {
+        "vault": 7,
+        "toolkit": 6
+      }
+    },
+    {
+      "id": "empleo-remoto-bolsas",
+      "name": "Empleo remoto & bolsas",
+      "area": "trabajo-oportunidades",
+      "definition": "Vacantes y bolsas de empleo, también las de otros países.",
+      "inclusion_rules": "Hay un puesto o un portal para postular. entry_type job_remote, sin conjunto.",
+      "moc": "moc-trabajo-freelance",
+      "proposed_count": {
+        "vault": 14,
+        "toolkit": 2
+      }
+    },
+    {
+      "id": "entrenamiento-de-ia-microtareas",
+      "name": "Entrenamiento de IA & microtareas",
+      "area": "trabajo-oportunidades",
+      "definition": "RLHF, anotación de datos, evaluadores y microtareas.",
+      "inclusion_rules": "Te pagan por tarea para entrenar o evaluar IA. entry_type job_remote, sin conjunto.",
+      "moc": "moc-entrenamiento-ia",
+      "proposed_count": {
+        "vault": 24,
+        "toolkit": 19
+      }
+    },
+    {
+      "id": "bounties-web3-concursos",
+      "name": "Bounties, Web3 & concursos",
+      "area": "trabajo-oportunidades",
+      "definition": "Bug bounties, auditorías, quests y concursos con premio.",
+      "inclusion_rules": "Se gana por competir o encontrar fallos. entry_type job_remote, sin conjunto.",
+      "moc": "moc-bounties-web3",
+      "proposed_count": {
+        "vault": 10,
+        "toolkit": 0
+      }
+    },
+    {
+      "id": "creditos-planes-gratis-programas",
+      "name": "Créditos, planes gratis & programas",
+      "area": "trabajo-oportunidades",
+      "definition": "Créditos cloud o de API, planes gratis, beneficios de estudiante y hackathons.",
+      "inclusion_rules": "El valor es un beneficio que caduca; revisar vigencia. Lleva conjunto (normalmente app).",
+      "moc": "moc-creditos-programas",
+      "proposed_count": {
+        "vault": 19,
+        "toolkit": 10
+      }
+    }
+  ],
+  "review_inbox": {
+    "id": "bandeja-revision",
+    "name": "Bandeja de revisión",
+    "definition": "No es categoría. Notas sin items clasificados (p. ej. revisar-bookmark-*) con review: true hasta clasificarlas.",
+    "proposed_count": {
+      "vault": 17,
+      "toolkit": 0
+    }
+  },
+  "conjuntos": [
+    {
+      "id": "codigo",
+      "name": "Código",
+      "definition": "Repo, librería, CLI o paquete que instalas o ejecutas.",
+      "rule": "La url canónica es GitHub, GitLab, Codeberg, Bitbucket, npm, PyPI, crates.io o Hugging Face."
+    },
+    {
+      "id": "app",
+      "name": "App o servicio",
+      "definition": "SaaS, web app, servicio, API comercial o hardware.",
+      "rule": "Se usa desde una web o se compra; no hay repo principal."
+    },
+    {
+      "id": "inspiracion",
+      "name": "Inspiración",
+      "definition": "Galería, showcase o directorio para mirar, no para instalar.",
+      "rule": "Igual que el conjunto actual inspiracion."
+    },
+    {
+      "id": "aprender",
+      "name": "Aprender",
+      "definition": "Curso, libro, roadmap o paper.",
+      "rule": "Nuevo; sale de recursos. Toda nota de Cursos, libros & rutas o Investigación & papers."
+    },
+    {
+      "id": "consejos",
+      "name": "Consejos",
+      "definition": "Tip, hilo de pasos, cheatsheet, prompt o skill pensada como procedimiento.",
+      "rule": "Igual que el conjunto actual consejos; entry_type tech_tip siempre va aquí."
+    }
+  ],
+  "conjunto_precedence": [
+    "inspiracion (si el conjunto actual es inspiracion o la categoría es Inspiración, UX & design systems y la url no es un host de código)",
+    "aprender (categoría Cursos, libros & rutas o Investigación & papers)",
+    "consejos (conjunto actual consejos, entry_type tech_tip o categoría Guías, tips & buenas prácticas)",
+    "codigo (url en host de código)",
+    "app (resto)"
+  ],
+  "code_hosts_regex": "github\\.com|gitlab\\.com|codeberg|bitbucket|npmjs|pypi\\.org|huggingface\\.co|crates\\.io",
+  "tag_facets": [
+    {
+      "facet": "stack",
+      "examples": [
+        "react",
+        "python",
+        "rust",
+        "tailwind",
+        "typescript"
+      ],
+      "why": "Atraviesa todas las categorías"
+    },
+    {
+      "facet": "licencia-alojamiento",
+      "examples": [
+        "open-source",
+        "self-hosted"
+      ],
+      "why": "Propiedad, no tema"
+    },
+    {
+      "facet": "precio",
+      "examples": [
+        "gratis",
+        "freemium",
+        "pago"
+      ],
+      "why": "Cambia con el tiempo"
+    },
+    {
+      "facet": "plataforma",
+      "examples": [
+        "macos",
+        "web",
+        "android",
+        "windows",
+        "linux"
+      ],
+      "why": "Una herramienta puede tener varias"
+    },
+    {
+      "facet": "proveedor-ia",
+      "examples": [
+        "claude",
+        "openai",
+        "gemini",
+        "deepseek"
+      ],
+      "why": "Filtrar dentro de IA"
+    },
+    {
+      "facet": "formato-lista",
+      "examples": [
+        "awesome-list"
+      ],
+      "why": "Una lista puede ser de cualquier tema"
+    }
+  ],
+  "tag_rules": {
+    "format": "minúsculas, kebab-case, sin acentos, sin espacios ni guion bajo; 2 a 6 tags",
+    "remove": [
+      "tool",
+      "tags conjunto-<x> (en el toolkit; en la bóveda se mantienen solo si validate_vault.py los exige)",
+      "tags que repiten el conjunto (p. ej. inspiracion cuando conjunto=inspiracion)"
+    ],
+    "order": "stack antes que adjetivos vagos"
+  },
+  "tag_synonyms": {
+    "ia": [
+      "ai",
+      "ia",
+      "inteligencia-artificial",
+      "artificial-intelligence"
+    ],
+    "agentes": [
+      "agents",
+      "agentes",
+      "ai-agents",
+      "agentes-ia",
+      "agent",
+      "agente"
+    ],
+    "animacion": [
+      "animaciones",
+      "animation",
+      "animations",
+      "animacion",
+      "animación"
+    ],
+    "diseno": [
+      "design",
+      "diseno",
+      "diseño"
+    ],
+    "inspiracion": [
+      "inspiracion",
+      "inspiración",
+      "inspiration"
+    ],
+    "componentes": [
+      "componentes",
+      "components",
+      "ui-components"
+    ],
+    "self-hosted": [
+      "self-hosted",
+      "selfhosted",
+      "self-hosting"
+    ],
+    "gratis": [
+      "gratis",
+      "free",
+      "gratuito"
+    ]
+  },
+  "tag_synonym_map": {
+    "ai": "ia",
+    "inteligencia-artificial": "ia",
+    "artificial-intelligence": "ia",
+    "agents": "agentes",
+    "ai-agents": "agentes",
+    "agentes-ia": "agentes",
+    "agent": "agentes",
+    "agente": "agentes",
+    "animaciones": "animacion",
+    "animation": "animacion",
+    "animations": "animacion",
+    "animación": "animacion",
+    "design": "diseno",
+    "diseño": "diseno",
+    "inspiración": "inspiracion",
+    "inspiration": "inspiracion",
+    "components": "componentes",
+    "ui-components": "componentes",
+    "selfhosted": "self-hosted",
+    "self-hosting": "self-hosted",
+    "free": "gratis",
+    "gratuito": "gratis"
+  },
+  "legacy_categories": [
+    "Frontend & UI",
+    "AI & Machine Learning",
+    "Productivity & Tools",
+    "Prompts, Art & Video",
+    "Agentes & Protocolo MCP",
+    "Trabajo & Freelance",
+    "Documentation & Resources",
+    "DevOps & Cloud",
+    "CLI & Terminal",
+    "Backend & APIs",
+    "Flujos de Trabajo",
+    "DevTools & IDEs",
+    "Consejos & Buenas Prácticas",
+    "Empresas & Productos",
+    "Databases & Storage",
+    "Data Engineering & ETL",
+    "Productos Tecnológicos & Hardware",
+    "Document AI & Extracción",
+    "Other"
+  ]
+}

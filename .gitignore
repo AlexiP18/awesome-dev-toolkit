@@ -12,7 +12,11 @@ dist/
 # Raw Twitter/X data exports & downloads
 account-bookmark.js
 x_bookmarks.json
-data/
+data/*
+!data/taxonomy.json
+!data/categories.json
+!data/mapping.json
+!data/reclassify-report.csv
 *.zip
 
 # Logs
