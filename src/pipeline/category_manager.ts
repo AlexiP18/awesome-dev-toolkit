@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { unmarkRepoPathDeleted } from './github_sync.js';
 import { ToolCategory } from './types.js';
 
 export interface CategoryDefinition {
@@ -178,6 +179,7 @@ export function mapVaultCategory(raw?: string | null, entryType?: string | null)
 export function saveAllCategories(categories: CategoryDefinition[]): void {
   ensureCategoriesFile();
   fs.writeFileSync(CATEGORIES_FILE, JSON.stringify(categories, null, 2), 'utf-8');
+  unmarkRepoPathDeleted(CATEGORIES_FILE);
 }
 
 export function addCustomCategory(newCat: Partial<CategoryDefinition> & { name: string }): CategoryDefinition {
