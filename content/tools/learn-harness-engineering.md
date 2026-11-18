@@ -2,6 +2,7 @@
 name: learn-harness-engineering
 url: 'https://github.com/walkinglabs/learn-harness-engineering'
 category: Documentation & Resources
+conjunto: consejos
 tags:
   - harness-engineering
   - ai-agents
@@ -11,18 +12,24 @@ tags:
   - claude-code
   - codex
   - educacion
+  - agentes-ia
+  - curso
+  - coding-agents
 stars: 23355
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:49:06.056Z'
+updated_at: '2026-11-18T04:20:52.343Z'
 source_tweet: 'https://x.com/santtiagom_/status/2092751908922446181'
-author: santi
-author_handle: santtiagom_
+source_tweets:
+  - 'https://x.com/santtiagom_/status/2092751908922446181'
+  - 'https://x.com/tom_doerr/status/2121290353730883747'
+author: Tom Dörr
+author_handle: tom_doerr
 entry_type: tool
 company: walkinglabs
 has_academic_promo: true
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: consejos
+classified_by: Importado del vault
 ---
 # learn-harness-engineering
 

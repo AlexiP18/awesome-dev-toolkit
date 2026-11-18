@@ -2,6 +2,7 @@
 name: Fincept Terminal
 url: 'https://github.com/Fincept-Corporation/FinceptTerminal'
 category: Productivity & Tools
+conjunto: recursos
 tags:
   - finanzas
   - terminal
@@ -9,16 +10,20 @@ tags:
   - open-source
   - analisis-tecnico
   - desktop
+  - mercados
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:29:27.413Z'
+updated_at: '2026-11-18T04:20:52.975Z'
 source_tweet: 'https://x.com/yuliaisc/status/2096897540847255613'
-author: yuulia ✟
-author_handle: yuliaisc
+source_tweets:
+  - 'https://x.com/yuliaisc/status/2096897540847255613'
+  - 'https://x.com/Fluyeporlaweb/status/2121683585199440143'
+author: PA13L0
+author_handle: Fluyeporlaweb
 entry_type: tool
 company: Fincept Corporation
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+classified_by: Importado del vault
 ---
 # Fincept Terminal
 

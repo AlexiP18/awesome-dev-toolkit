@@ -3,9 +3,9 @@ import path from 'path';
 import { ensureAuthorStub } from './author_manager.js';
 import { mapVaultCategory } from './category_manager.js';
 import { VaultBookmark, VaultBookmarkItem } from './export_vault.js';
-import { createOrUpdateToolNote, loadAllTools } from './note_generator.js';
+import { createOrUpdateToolNote, loadAllTools, slugify } from './note_generator.js';
 import { ClassificationResult, EntryType, ToolConjunto, ToolItem } from './types.js';
-import { canonicalUrlKey, namesLookLikeSameProduct, preferredDisplayUrl } from './url_normalize.js';
+import { canonicalUrlKey, namesLookLikeSameProduct, preferredDisplayUrl, sameProduct } from './url_normalize.js';
 
 const ENTRY_TYPES = new Set<EntryType>(['tool', 'product_showcase', 'tech_tip', 'job_remote', 'tech_product']);
 const CONJUNTOS = new Set<ToolConjunto>(['recursos', 'inspiracion', 'producto', 'consejos']);
@@ -102,6 +102,20 @@ function remember(catalog: ToolItem[], fresh: ToolItem | undefined): void {
   else catalog.push(fresh);
 }
 
+/** Misma ficha por slug, pero la URL es de otro producto. No se pisa el archivo. */
+function differentProductOnSameSlug(name: string, item: VaultBookmarkItem, catalog: ToolItem[]): ToolItem | undefined {
+  const slug = slugify(name);
+  const incomingUrl = blank(item.url) || blank(item.website_url);
+  return catalog.find((tool) => {
+    const nameSlug = slugify(tool.frontmatter.name || '');
+    if (tool.slug !== slug && nameSlug !== slug) return false;
+    return !sameProduct(
+      { url: incomingUrl, website: blank(item.website_url) || undefined, name },
+      { url: tool.frontmatter.url, website: tool.frontmatter.website_url, name: tool.frontmatter.name }
+    );
+  });
+}
+
 /**
  * Escribe el lote del vault en content/. No llama a ningún modelo ni descarga páginas.
  * La segunda pasada del mismo archivo no crea fichas: el tweet ya guardado se omite.
@@ -140,6 +154,17 @@ export function importVaultBatch(bookmarks: VaultBookmark[], options: ImportVaul
       if (existing && tweetAlreadyRecorded(existing, tweet)) {
         stats.skipped += 1;
         continue;
+      }
+
+      if (!existing) {
+        const occupied = differentProductOnSameSlug(name, item, catalog);
+        if (occupied) {
+          stats.needsReview += 1;
+          stats.review.push(
+            `${name} <${url}> coincide en el nombre con ${occupied.frontmatter.name} <${occupied.frontmatter.url}> y la URL es de otro producto`
+          );
+          continue;
+        }
       }
 
       const classification = toClassification(item, bookmark);

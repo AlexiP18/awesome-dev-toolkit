@@ -8,12 +8,18 @@ tags:
   - imagenes
   - ia
   - escritorio
+  - imagen
+  - ia-local
 status: to_try
 date_added: '2026-11-14'
 created_at: '2026-11-14T04:14:30.887Z'
+updated_at: '2026-11-18T04:20:54.068Z'
 source_tweet: 'https://x.com/Fluyeporlaweb/status/2120952769259733282'
-author: PA13L0
-author_handle: Fluyeporlaweb
+source_tweets:
+  - 'https://x.com/Fluyeporlaweb/status/2120952769259733282'
+  - 'https://x.com/HeLi8866/status/2121510272880054718'
+author: 何笠同学
+author_handle: HeLi8866
 entry_type: tool
 company: PA13L0
 classified_by: Importado del vault

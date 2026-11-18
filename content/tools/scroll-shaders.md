@@ -1,7 +1,8 @@
 ---
 name: Scroll Shaders
 url: 'https://scrollshaders.com/'
-category: Frontend & UI
+category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - frontend
   - ui
@@ -11,15 +12,21 @@ tags:
   - css
   - react
   - backgrounds
+  - fondos-animados
+  - hero-section
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T02:44:51.960Z'
+updated_at: '2026-11-18T04:20:52.428Z'
 source_tweet: 'https://x.com/amananimates/status/2113599514103906657'
-author: Aman Singh
-author_handle: amananimates
+source_tweets:
+  - 'https://x.com/amananimates/status/2113599514103906657'
+  - 'https://x.com/nikosolenne/status/2121378167927480347'
+author: niko.
+author_handle: nikosolenne
 entry_type: tool
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+company: niko.
+classified_by: Importado del vault
 ---
 # Scroll Shaders
 

@@ -2,6 +2,7 @@
 name: Kinetik UI
 url: 'https://kinetik-ui.dev/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - frontend
   - ui
@@ -12,15 +13,21 @@ tags:
   - gesture-handler
   - skia
   - components
+  - animacion
+  - componentes-ui
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:41:34.291Z'
+updated_at: '2026-11-18T04:20:53.671Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2112068533924626841'
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2112068533924626841'
+  - 'https://x.com/csaba_kissi/status/2121524078209310803'
 author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+company: Csaba Kissi
+classified_by: Importado del vault
 ---
 # Kinetik UI
 

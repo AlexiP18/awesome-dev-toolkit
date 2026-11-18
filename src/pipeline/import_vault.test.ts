@@ -174,6 +174,60 @@ test('import:vault crea, es idempotente, anexa el tweet y no fusiona otro produc
   }
 });
 
+test('import no pisa una ficha distinta que solo comparte el nombre', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'vault-import-name-clash-'));
+  const previous = process.env.CONTENT_DIR;
+  process.env.CONTENT_DIR = dir;
+  try {
+    createOrUpdateToolNote({
+      classification: {
+        name: 'Buzz',
+        canonicalUrl: 'https://github.com/block/buzz',
+        category: 'Agentes & Protocolo MCP',
+        tags: ['ai-agents'],
+        oneLiner: 'Espacio de trabajo para agentes.',
+        keyHighlights: ['Workspace de agentes'],
+        recommendedNotes: 'Ficha original de Block.',
+        entryType: 'tool',
+      },
+      sourceTweet: 'https://x.com/csaba_kissi/status/2086711629035524562',
+      author: 'Csaba Kissi',
+    });
+    const before = fs.readFileSync(path.join(dir, 'tools', 'buzz.md'), 'utf-8');
+    const stats = importVaultBatch([
+      bookmark({
+        tweet_id: '2121683585199440143',
+        author_name: 'PA13L0',
+        author_handle: 'Fluyeporlaweb',
+        items: [
+          {
+            name: 'Buzz',
+            url: 'https://github.com/chidiwilliams/buzz',
+            website_url: null,
+            category: 'Prompts, Art & Video',
+            conjunto: 'recursos',
+            tags: ['audio'],
+            summary: 'Transcribe audio sin conexión.',
+            highlights: ['Offline'],
+            entry_type: 'tool',
+          },
+        ],
+      }),
+    ]);
+    assert.equal(stats.needsReview, 1);
+    assert.equal(stats.created, 0);
+    assert.equal(stats.updated, 0);
+    assert.match(stats.review[0], /chidiwilliams\/buzz/);
+    assert.match(stats.review[0], /block\/buzz/);
+    assert.equal(fs.readFileSync(path.join(dir, 'tools', 'buzz.md'), 'utf-8'), before);
+    assert.equal(fs.readdirSync(path.join(dir, 'tools')).filter((file) => file.endsWith('.md')).length, 1);
+  } finally {
+    if (previous === undefined) delete process.env.CONTENT_DIR;
+    else process.env.CONTENT_DIR = previous;
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 test('import no pisa un tweet que ya estaba en una ficha previa', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'vault-import-existing-'));
   const previous = process.env.CONTENT_DIR;

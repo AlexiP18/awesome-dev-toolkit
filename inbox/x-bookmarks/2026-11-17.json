@@ -1,0 +1,2869 @@
+[
+  {
+    "tweet_id": "2122508566749978953",
+    "text": "Una sola persona acaba de jubilar a los bootcamps de programación.\n\nHizo una web que enseña con animaciones cómo funcionan por dentro las apps con millones de usuarios. Un ejemplo: una estrella del pop con 50 millones de seguidores publica algo. Su publicación tarda más de 8",
+    "author_name": "CopyRebeldia",
+    "author_handle": "CopyRebeldia",
+    "created_at": "2026-11-17T01:54:11.000Z",
+    "urls": [],
+    "note_tweet": "Una sola persona acaba de jubilar a los bootcamps de programación.\n\nHizo una web que enseña con animaciones cómo funcionan por dentro las apps con millones de usuarios. Un ejemplo: una estrella del pop con 50 millones de seguidores publica algo. Su publicación tarda más de 8 minutos en llegar a todos y, mientras tanto, las publicaciones de los demás se quedan esperando. La lección te enseña cómo bajar esa espera a unos 2 segundos.\n\n40 lecciones así, animadas. Gratis, sin cuenta y en español.\n\nLo que antes era un bootcamp de miles de dólares ahora parece una pestaña del navegador.\n\n",
+    "items": []
+  },
+  {
+    "tweet_id": "2122329927248646358",
+    "text": "¿Necesitas un mapa para tu web? Este proyecto de código abierto ofrece una API para pedir el trozo que necesitas.\n\nGratuito para proyectos no comerciales, también lo puedes hospedar tú y usarlo cómo quieras.\n\n→ https://github.com/protomaps/PMTiles ",
+    "author_name": "Miguel Ángel Durán",
+    "author_handle": "midudev",
+    "created_at": "2026-11-16T14:04:20.000Z",
+    "urls": [
+      "https://github.com/protomaps/PMTiles"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "PMTiles",
+        "url": "https://github.com/protomaps/PMTiles",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "mapas",
+          "tiles",
+          "api",
+          "self-hosted",
+          "open-source"
+        ],
+        "summary": "Proyecto open source de Protomaps que permite servir mapas web pidiendo solo el trozo (tile) que necesitas mediante una API.",
+        "highlights": [
+          "Petición por fragmentos del mapa en lugar de descargar todo",
+          "Gratuito para proyectos no comerciales",
+          "Se puede autoalojar y usar libremente"
+        ],
+        "entry_type": "tool",
+        "company": "Protomaps"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2122101080485974123",
+    "text": "Hardcore achievements is coming https://github.com/darkxex/SwanStationPS5/releases/tag/1.6.3 ",
+    "author_name": "X§X | Angel Xex",
+    "author_handle": "AngelXex1",
+    "created_at": "2026-11-15T22:54:58.000Z",
+    "urls": [
+      "https://github.com/darkxex/SwanStationPS5/releases/tag/1.6.3"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "SwanStation PS5",
+        "url": "https://github.com/darkxex/SwanStationPS5/releases/tag/1.6.3",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "emulador",
+          "ps5",
+          "retro-gaming",
+          "open-source"
+        ],
+        "summary": "Port del emulador SwanStation para PS5; la versión 1.6.3 publicada en GitHub anuncia la llegada de los logros en modo hardcore.",
+        "highlights": [
+          "Release 1.6.3 en GitHub",
+          "Soporte de logros hardcore en camino"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2109989522104807705",
+    "text": "$25 in free AI credits. DeepSeek V4.1 Flash + GLM-5.3 Flash. No card.\n\nRiver AI just launched its inference API, and every new signup gets $25 in credits.\n\nWhat $25 gets you:\n\n→ DeepSeek V4.1 Flash: ~208M input or ~52M output tokens\n→ GLM-5.3 Flash: ~208M input or ~62M output ",
+    "author_name": "Student Offers",
+    "author_handle": "StudentOffersHQ",
+    "created_at": "2026-10-13T12:47:58.000Z",
+    "urls": [
+      "http://console.river.ai"
+    ],
+    "note_tweet": "$25 in free AI credits. DeepSeek V4.1 Flash + GLM-5.3 Flash. No card.\n\nRiver AI just launched its inference API, and every new signup gets $25 in credits.\n\nWhat $25 gets you:\n\n→ DeepSeek V4.1 Flash: ~208M input or ~52M output tokens\n→ GLM-5.3 Flash: ~208M input or ~62M output tokens\n→ 1M context on both\n\nUse them in your coding projects or for college work\n\nHow to claim:\n\n1. Sign up at http://console.river.ai\n2. $25 shows up in Billing\n3. Create an API key (Console → API Keys) and use either model\n\nOpen to everyone.",
+    "items": [
+      {
+        "name": "River AI Inference API",
+        "url": "http://console.river.ai",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "inferencia",
+          "api",
+          "llm",
+          "deepseek",
+          "creditos-gratis"
+        ],
+        "summary": "API de inferencia de River AI que regala 25 USD en créditos sin tarjeta para usar DeepSeek V4.1 Flash y GLM-5.3 Flash en proyectos de código.",
+        "highlights": [
+          "25 USD de créditos al registrarse, sin tarjeta",
+          "DeepSeek V4.1 Flash y GLM-5.3 Flash con contexto de 1M",
+          "Créditos en Billing y API key desde Console → API Keys",
+          "Aprox. 208M tokens de entrada por modelo con el crédito"
+        ],
+        "entry_type": "product_showcase",
+        "company": "River AI"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2122026167074963650",
+    "text": "Developers, these 7 websites deserve a spot in your bookmarks. 👀\n\n1. https://roadmap.sh — Step-by-step learning paths for developers.\n\n2. https://regex101.com — Test and understand regular expressions.\n\n3. https://transform.tools — Convert JSON, TypeScript, CSS, and",
+    "author_name": "• nanou •",
+    "author_handle": "NanouuSymeon",
+    "created_at": "2026-11-15T17:57:18.000Z",
+    "urls": [
+      "https://roadmap.sh",
+      "https://regex101.com",
+      "https://transform.tools",
+      "https://excalidraw.com",
+      "https://bundlephobia.com",
+      "https://sqlbolt.com",
+      "https://devdocs.io"
+    ],
+    "note_tweet": "Developers, these 7 websites deserve a spot in your bookmarks. 👀\n\n1. https://roadmap.sh — Step-by-step learning paths for developers.\n\n2. https://regex101.com — Test and understand regular expressions.\n\n3. https://transform.tools — Convert JSON, TypeScript, CSS, and more.\n\n4. https://excalidraw.com — Draw system architectures and technical diagrams.\n\n5. https://bundlephobia.com — Check the size of npm packages before installing them.\n\n6. https://sqlbolt.com — Learn SQL through interactive exercises.\n\n7. https://devdocs.io — Search documentation for multiple programming languages in one place.\n\nFree tools. Real value. Less time wasted.\n\nWhich developer website would you add to this list?",
+    "items": [
+      {
+        "name": "roadmap.sh",
+        "url": "https://roadmap.sh",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "consejos",
+        "tags": [
+          "roadmap",
+          "aprendizaje",
+          "carrera-dev"
+        ],
+        "summary": "Rutas de aprendizaje paso a paso para distintos perfiles de desarrollador.",
+        "highlights": [
+          "Rutas guiadas por rol y tecnología",
+          "Sirve para planificar qué estudiar después"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "regex101",
+        "url": "https://regex101.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "regex",
+          "testing",
+          "web-tool"
+        ],
+        "summary": "Herramienta web para probar expresiones regulares y entender qué hace cada parte.",
+        "highlights": [
+          "Prueba de regex contra texto en vivo",
+          "Explicación de cada token de la expresión"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "transform.tools",
+        "url": "https://transform.tools",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "json",
+          "typescript",
+          "css",
+          "conversores"
+        ],
+        "summary": "Conversor web entre formatos como JSON, TypeScript y CSS.",
+        "highlights": [
+          "Convierte JSON a tipos TypeScript y similares",
+          "Incluye transformaciones de CSS y otros formatos"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Excalidraw",
+        "url": "https://excalidraw.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "diagramas",
+          "arquitectura",
+          "pizarra"
+        ],
+        "summary": "Pizarra web para dibujar arquitecturas de sistemas y diagramas técnicos.",
+        "highlights": [
+          "Diagramas de arquitectura a mano alzada",
+          "Útil para documentar diseño de sistemas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Bundlephobia",
+        "url": "https://bundlephobia.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "npm",
+          "bundle-size",
+          "javascript"
+        ],
+        "summary": "Web que muestra el tamaño de un paquete npm antes de instalarlo.",
+        "highlights": [
+          "Consulta el peso de paquetes npm",
+          "Ayuda a evitar dependencias pesadas en el bundle"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "SQLBolt",
+        "url": "https://sqlbolt.com",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "consejos",
+        "tags": [
+          "sql",
+          "bases-de-datos",
+          "ejercicios"
+        ],
+        "summary": "Curso de SQL basado en ejercicios interactivos en el navegador.",
+        "highlights": [
+          "Lecciones con ejercicios interactivos",
+          "Aprendizaje progresivo de consultas SQL"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "DevDocs",
+        "url": "https://devdocs.io",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "documentacion",
+          "referencia",
+          "busqueda"
+        ],
+        "summary": "Buscador que reúne la documentación de múltiples lenguajes de programación en un solo lugar.",
+        "highlights": [
+          "Documentación de varios lenguajes unificada",
+          "Búsqueda centralizada de referencias"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2122013045626933360",
+    "text": "🪦 DESCANSE EN PAZ CODE REVIEW.\n\nAlibaba ha regalado su arma secreta.\n\nLa IA que lleva 2 AÑOS cazando MILLONES de bugs dentro de la empresa.\n\nGratis. Open source.\n\nSe llama Open Code Review.\n\nDurante 2 años fue su revisor de código interno oficial.\nDecenas de miles de ",
+    "author_name": "José Siles | AI | Data",
+    "author_handle": "josesilesdata",
+    "created_at": "2026-11-15T17:05:09.000Z",
+    "urls": [],
+    "note_tweet": "🪦 DESCANSE EN PAZ CODE REVIEW.\n\nAlibaba ha regalado su arma secreta.\n\nLa IA que lleva 2 AÑOS cazando MILLONES de bugs dentro de la empresa.\n\nGratis. Open source.\n\nSe llama Open Code Review.\n\nDurante 2 años fue su revisor de código interno oficial.\nDecenas de miles de desarrolladores.\nMillones de defectos encontrados.\n\nAhora cualquiera puede usarla:\n\n→ Lee tus cambios de Git y comenta línea por línea\n→ Detecta NPE, problemas de concurrencia, XSS e inyección SQL\n→ Revisa repos enteros, no solo el diff\n→ Funciona con Claude Code, Codex y Cursor\n→ Windows, macOS y Linux\n\nY lo más bestia:\n\nCon el mismo modelo, en su benchmark gasta ~1/9 de los tokens que Claude Code.\nY acierta más (más precisión, menos falsas alarmas).\n\n200 PRs reales. 50 repos. 80+ ingenieros senior validándolo.\n\nSe instala con una línea de npm.\nTú pones el modelo (OpenAI o Anthropic).\n\nguarda esto para después.\n\nLink al repo en los comentarios 👇🏻",
+    "items": [
+      {
+        "name": "Open Code Review",
+        "url": "https://x.com/josesilesdata/status/2122013045626933360",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "code-review",
+          "ia",
+          "npm",
+          "claude-code",
+          "seguridad"
+        ],
+        "summary": "Revisor de código con IA liberado como open source por Alibaba, compatible con Claude Code, Codex y Cursor; el enlace al repo no venía en el tuit (estaba en los comentarios), por eso se guarda el permalink.",
+        "highlights": [
+          "Lee los cambios de Git y comenta línea por línea, también repos enteros",
+          "Detecta NPE, concurrencia, XSS e inyección SQL",
+          "Según su benchmark usa ~1/9 de los tokens de Claude Code con el mismo modelo",
+          "Se instala con npm y usa modelos de OpenAI o Anthropic"
+        ],
+        "entry_type": "tool",
+        "company": "Alibaba"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2122049134660034936",
+    "text": "«Todo el código es basura, excepto el mío». Lauren Tan, ingeniera de GrokBot en SpaceXSI.\n\nEn el AI Engineer Code Summit acaba de mostrar toda su configuración de desarrollo.\n\nCada error de un agente se convierte en una regla de linting, no en un prompt. Los agentes verifican su ",
+    "author_name": "Alejo",
+    "author_handle": "ecommartinez",
+    "created_at": "2026-11-15T19:28:34.000Z",
+    "urls": [],
+    "note_tweet": "«Todo el código es basura, excepto el mío». Lauren Tan, ingeniera de GrokBot en SpaceXSI.\n\nEn el AI Engineer Code Summit acaba de mostrar toda su configuración de desarrollo.\n\nCada error de un agente se convierte en una regla de linting, no en un prompt. Los agentes verifican su propio trabajo con vídeos, capturas de pantalla y tests.\n\n¿El resultado? 3.000 PRs llevadas a producción en un mes.\n\nSu base de código está ahora tan limpia que los agentes fusionan la mayoría de sus propias PRs.\n\nMira esto antes de automatizar cualquier cosa.",
+    "items": [
+      {
+        "name": "Errores de agentes convertidos en reglas de linting",
+        "url": "https://x.com/ecommartinez/status/2122049134660034936",
+        "website_url": null,
+        "category": "Flujos de Trabajo",
+        "conjunto": "consejos",
+        "tags": [
+          "agentes-ia",
+          "linting",
+          "code-review",
+          "testing"
+        ],
+        "summary": "Configuración de desarrollo de Lauren Tan presentada en el AI Engineer Code Summit: cada error de un agente se transforma en una regla de linting en lugar de un prompt.",
+        "highlights": [
+          "Cada fallo del agente se codifica como regla de lint, no como instrucción en el prompt",
+          "Los agentes verifican su trabajo con vídeos, capturas y tests",
+          "Reportan 3.000 PRs a producción en un mes",
+          "Con el código limpio, los agentes fusionan la mayoría de sus propias PRs"
+        ],
+        "entry_type": "tech_tip"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121862956170506279",
+    "text": "20 bug bounties and audit creator contests PT.3\n\nMetric (Immunefi)\n $500,000\nhttps://x.com/metricxyz/status/2120186043777302896\n\nCoW Protocol (Immunefi)\n $1,000,000\nhttps://x.com/immunefi/status/2120473399189524879\n\nPlether Audit Competition\n$80,000\nhttps://x.com/immunefi/status/2121197391223439601\n\nFiredancer\n$300,000\nhttps://x.com/jump_firedancer/status/2111149587184402540\n\nHastra Bug  https://twitter.com/shelleymaeph/status/2119323955056312438",
+    "author_name": "Shelley",
+    "author_handle": "shelleymaeph",
+    "created_at": "2026-11-15T07:08:45.000Z",
+    "urls": [
+      "https://x.com/metricxyz/status/2120186043777302896",
+      "https://x.com/immunefi/status/2120473399189524879",
+      "https://x.com/immunefi/status/2121197391223439601",
+      "https://x.com/jump_firedancer/status/2111149587184402540",
+      "https://twitter.com/shelleymaeph/status/2119323955056312438",
+      "https://x.com/HastraFi/status/2118343100171239771",
+      "https://x.com/immunefi/status/2118672034888929348",
+      "https://x.com/tickoxyz/status/2116383278672511044",
+      "https://x.com/InverseFinance/status/2115072715589898696",
+      "https://x.com/BYDFi/status/2116518013495316612",
+      "https://x.com/Whitechain_io/status/2117648001183125898",
+      "https://x.com/HackenProof/status/2112484017597559113",
+      "https://x.com/WemixNetwork/status/2110188468425081018",
+      "https://x.com/redstone_defi/status/2116516610064466039",
+      "https://x.com/rhea_finance/status/2116203624842047908",
+      "https://x.com/navi_protocol/status/2115805197658165627",
+      "https://x.com/stakedotlink/status/2112984163586392096",
+      "https://x.com/sherlockdefi/status/2114724694536708425",
+      "https://x.com/sherlockdefi/status/2112249749701374020",
+      "https://x.com/immunefi/status/2111136846956933511",
+      "https://x.com/xeinternet/status/2114469350371717417"
+    ],
+    "note_tweet": "20 bug bounties and audit creator contests PT.3\n\nMetric (Immunefi)\n $500,000\nhttps://x.com/metricxyz/status/2120186043777302896\n\nCoW Protocol (Immunefi)\n $1,000,000\nhttps://x.com/immunefi/status/2120473399189524879\n\nPlether Audit Competition\n$80,000\nhttps://x.com/immunefi/status/2121197391223439601\n\nFiredancer\n$300,000\nhttps://x.com/jump_firedancer/status/2111149587184402540\n\nHastra Bug Bounty\n$100,000\nhttps://x.com/HastraFi/status/2118343100171239771\n\nGranite Protocol\n$100,000\nhttps://x.com/immunefi/status/2118672034888929348\n\nTicko Bug Bounty\n200,000 USDT\nhttps://x.com/tickoxyz/status/2116383278672511044\n\nInverse Finance\n$100,000\nhttps://x.com/InverseFinance/status/2115072715589898696\n\nBYDFi (BugEx)\n$15,000\nhttps://x.com/BYDFi/status/2116518013495316612\n\nWhitechain\n$10,000\nhttps://x.com/Whitechain_io/status/2117648001183125898\n\nBloFin (HackenProof)\n$10,000\nhttps://x.com/HackenProof/status/2112484017597559113\n\nWEMIX (CertiK Hunt)\n$10,000\nhttps://x.com/WemixNetwork/status/2110188468425081018\n\nRedStone Smart Contracts\n$250,000\nhttps://x.com/redstone_defi/status/2116516610064466039\n\nRhea Finance\nUp to $250,000\nhttps://x.com/rhea_finance/status/2116203624842047908\n\nNAVI Protocol\nUp to $300,000\nhttps://x.com/navi_protocol/status/2115805197658165627\n\nstake link\nUp to $250,000\nhttps://x.com/stakedotlink/status/2112984163586392096\n\nAero\nUp to $500,000\nhttps://x.com/sherlockdefi/status/2114724694536708425\n\nKamino\nUp to $1,000,000\nhttps://x.com/sherlockdefi/status/2112249749701374020\n\nEnzyme\nUp to $200,000\nhttps://x.com/immunefi/status/2111136846956933511\n\nXE Network Testnet Bounty\nUp to 50,000 XE per finding\nhttps://x.com/xeinternet/status/2114469350371717417",
+    "items": [
+      {
+        "name": "Bug bounty: Metric",
+        "url": "https://x.com/metricxyz/status/2120186043777302896",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de Metric en Immunefi con recompensa de $500,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: $500,000",
+          "Plataforma: Immunefi",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "Metric",
+        "salary": "$500,000"
+      },
+      {
+        "name": "Bug bounty: CoW Protocol",
+        "url": "https://x.com/immunefi/status/2120473399189524879",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de CoW Protocol en Immunefi con recompensa de $1,000,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: $1,000,000",
+          "Plataforma: Immunefi",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "CoW Protocol",
+        "salary": "$1,000,000"
+      },
+      {
+        "name": "Plether Audit Competition",
+        "url": "https://x.com/immunefi/status/2121197391223439601",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "audit-contest",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Concurso de auditoría de Plether con premio de $80,000, enlazado desde una lista de bounties web3.",
+        "highlights": [
+          "Recompensa: $80,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "Plether",
+        "salary": "$80,000"
+      },
+      {
+        "name": "Bug bounty: Firedancer",
+        "url": "https://x.com/jump_firedancer/status/2111149587184402540",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de Firedancer con recompensa de $300,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: $300,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "Firedancer",
+        "salary": "$300,000"
+      },
+      {
+        "name": "Hastra Bug Bounty",
+        "url": "https://x.com/HastraFi/status/2118343100171239771",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de Hastra con recompensa de $100,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: $100,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "Hastra",
+        "salary": "$100,000"
+      },
+      {
+        "name": "Bug bounty: Granite Protocol",
+        "url": "https://x.com/immunefi/status/2118672034888929348",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de Granite Protocol con recompensa de $100,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: $100,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "Granite Protocol",
+        "salary": "$100,000"
+      },
+      {
+        "name": "Ticko Bug Bounty",
+        "url": "https://x.com/tickoxyz/status/2116383278672511044",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de Ticko con recompensa de 200,000 USDT, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: 200,000 USDT",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "Ticko",
+        "salary": "200,000 USDT"
+      },
+      {
+        "name": "Bug bounty: Inverse Finance",
+        "url": "https://x.com/InverseFinance/status/2115072715589898696",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de Inverse Finance con recompensa de $100,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: $100,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "Inverse Finance",
+        "salary": "$100,000"
+      },
+      {
+        "name": "Bug bounty: BYDFi",
+        "url": "https://x.com/BYDFi/status/2116518013495316612",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de BYDFi en BugEx con recompensa de $15,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: $15,000",
+          "Plataforma: BugEx",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "BYDFi",
+        "salary": "$15,000"
+      },
+      {
+        "name": "Bug bounty: Whitechain",
+        "url": "https://x.com/Whitechain_io/status/2117648001183125898",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de Whitechain con recompensa de $10,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: $10,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "Whitechain",
+        "salary": "$10,000"
+      },
+      {
+        "name": "Bug bounty: BloFin",
+        "url": "https://x.com/HackenProof/status/2112484017597559113",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de BloFin en HackenProof con recompensa de $10,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: $10,000",
+          "Plataforma: HackenProof",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "BloFin",
+        "salary": "$10,000"
+      },
+      {
+        "name": "Bug bounty: WEMIX",
+        "url": "https://x.com/WemixNetwork/status/2110188468425081018",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de WEMIX en CertiK Hunt con recompensa de $10,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: $10,000",
+          "Plataforma: CertiK Hunt",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "WEMIX",
+        "salary": "$10,000"
+      },
+      {
+        "name": "Bug bounty: RedStone Smart Contracts",
+        "url": "https://x.com/redstone_defi/status/2116516610064466039",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de RedStone Smart Contracts con recompensa de $250,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: $250,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "RedStone Smart Contracts",
+        "salary": "$250,000"
+      },
+      {
+        "name": "Bug bounty: Rhea Finance",
+        "url": "https://x.com/rhea_finance/status/2116203624842047908",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de Rhea Finance con recompensa de Hasta $250,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: Hasta $250,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "Rhea Finance",
+        "salary": "Hasta $250,000"
+      },
+      {
+        "name": "Bug bounty: NAVI Protocol",
+        "url": "https://x.com/navi_protocol/status/2115805197658165627",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de NAVI Protocol con recompensa de Hasta $300,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: Hasta $300,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "NAVI Protocol",
+        "salary": "Hasta $300,000"
+      },
+      {
+        "name": "Bug bounty: stake link",
+        "url": "https://x.com/stakedotlink/status/2112984163586392096",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de stake link con recompensa de Hasta $250,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: Hasta $250,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "stake link",
+        "salary": "Hasta $250,000"
+      },
+      {
+        "name": "Bug bounty: Aero",
+        "url": "https://x.com/sherlockdefi/status/2114724694536708425",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de Aero con recompensa de Hasta $500,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: Hasta $500,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "Aero",
+        "salary": "Hasta $500,000"
+      },
+      {
+        "name": "Bug bounty: Kamino",
+        "url": "https://x.com/sherlockdefi/status/2112249749701374020",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de Kamino con recompensa de Hasta $1,000,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: Hasta $1,000,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "Kamino",
+        "salary": "Hasta $1,000,000"
+      },
+      {
+        "name": "Bug bounty: Enzyme",
+        "url": "https://x.com/immunefi/status/2111136846956933511",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "smart-contracts"
+        ],
+        "summary": "Programa de bug bounty de Enzyme con recompensa de Hasta $200,000, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: Hasta $200,000",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "Enzyme",
+        "salary": "Hasta $200,000"
+      },
+      {
+        "name": "XE Network Testnet Bounty",
+        "url": "https://x.com/xeinternet/status/2114469350371717417",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bug-bounty",
+          "web3",
+          "seguridad",
+          "testnet"
+        ],
+        "summary": "Programa de bug bounty de XE Network Testnet Bounty con recompensa de Hasta 50,000 XE por hallazgo, para cazadores de vulnerabilidades en web3.",
+        "highlights": [
+          "Recompensa: Hasta 50,000 XE por hallazgo",
+          "Parte 3 de una lista de 20 bug bounties y concursos de auditoría"
+        ],
+        "entry_type": "job_remote",
+        "company": "XE Network",
+        "salary": "Hasta 50,000 XE por hallazgo"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121541444368466169",
+    "text": "推荐一个非常新和小众的组件库 - RicoUI  Blocks.\n开源，专注于视觉和动画的 UI 组件库，视觉和交互的实验性比较强，刚刚开源，作者更新的速度不太快\n\nhttps://github.com/ricocc/ricoui-blocks\n\n（因为我是作者，所以它比较小众！视觉风格不会是单一的，想要做更多有创意的设计） ",
+    "author_name": "RicoUI",
+    "author_handle": "ricouii",
+    "created_at": "2026-11-14T09:51:11.000Z",
+    "urls": [
+      "https://github.com/ricocc/ricoui-blocks"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "RicoUI Blocks",
+        "url": "https://github.com/ricocc/ricoui-blocks",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "componentes-ui",
+          "animacion",
+          "diseno",
+          "open-source"
+        ],
+        "summary": "Librería open source de componentes UI centrada en lo visual y la animación, con un enfoque experimental en interacción; recién liberada por su autor.",
+        "highlights": [
+          "Bloques de UI con foco en visuales y animaciones",
+          "Estilo visual experimental y no uniforme",
+          "Proyecto nuevo y de nicho, con actualizaciones lentas"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121544344138371119",
+    "text": "Stop shipping generic AI interfaces. Bookmark these 5 design skills before your next build:\n\n- Impeccable. Shape, critique, and polish → https://impeccable.style \n- Taste Skill. Dials for variance and motion → https://www.tasteskill.dev/ \n- Hallmark. 21 themes and 58 checks → ",
+    "author_name": "Sujay.",
+    "author_handle": "Sujay__Raj",
+    "created_at": "2026-11-14T10:02:42.000Z",
+    "urls": [
+      "https://impeccable.style",
+      "https://www.tasteskill.dev/",
+      "http://impeccable.style",
+      "http://tasteskill.dev",
+      "http://usehallmark.com",
+      "http://uupm.cc",
+      "http://craftwork.design/skills"
+    ],
+    "note_tweet": "Stop shipping generic AI interfaces. Bookmark these 5 design skills before your next build:\n\n- Impeccable. Shape, critique, and polish → http://impeccable.style \n- Taste Skill. Dials for variance and motion → http://tasteskill.dev \n- Hallmark. 21 themes and 58 checks → http://usehallmark.com \n- UI UX Pro Max. 192 palettes and 119 UX rules → http://uupm.cc \n- Craftwork. 114 vetted design skills → http://craftwork.design/skills\n\nSave this list so your agent actually builds with good taste.",
+    "items": [
+      {
+        "name": "Impeccable",
+        "url": "https://impeccable.style",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "diseno",
+          "ui"
+        ],
+        "summary": "Skill de diseño para agentes que ayuda a dar forma, criticar y pulir interfaces antes de lanzarlas.",
+        "highlights": [
+          "Flujo de shape, critique y polish",
+          "Pensada para evitar interfaces de IA genéricas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Taste Skill",
+        "url": "https://www.tasteskill.dev/",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "diseno",
+          "motion"
+        ],
+        "summary": "Skill de diseño para agentes con controles para ajustar la variación visual y el movimiento de una interfaz.",
+        "highlights": [
+          "Diales de variance y motion",
+          "Orientada a dar criterio estético al agente"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Hallmark",
+        "url": "http://usehallmark.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "temas",
+          "ui",
+          "checks"
+        ],
+        "summary": "Skill de diseño con temas predefinidos y verificaciones automáticas de calidad visual para builds con agentes.",
+        "highlights": [
+          "21 temas",
+          "58 checks de diseño"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "UI UX Pro Max",
+        "url": "http://uupm.cc",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "ux",
+          "paletas"
+        ],
+        "summary": "Skill de diseño para agentes con paletas de color y reglas de UX listas para aplicar.",
+        "highlights": [
+          "192 paletas de color",
+          "119 reglas de UX"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Craftwork Skills",
+        "url": "http://craftwork.design/skills",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "diseno",
+          "directorio"
+        ],
+        "summary": "Colección curada de skills de diseño para que el agente construya interfaces con mejor criterio.",
+        "highlights": [
+          "114 skills de diseño revisadas",
+          "Catálogo centralizado en Craftwork"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121487040109777033",
+    "text": "⭐ Nod ⭐\nhttps://github.com/n8n-io/nod\n\n1. 워크플로 자동화 n8n 팀이 자기만의 컴퓨터와 브라우저를 가진 오픈소스 개인 비서 AI Nod를 공개함\n\n2. 내 컴퓨터에서 돌고 모델도 내가 고름. Gmail·캘린더·Slack·Notion·실제 웹사이트에서 일하고, 내 이름으로 뭔가 하기 전에 먼저 물어봄\n\n3. 청구서 독촉, ",
+    "author_name": "두디 Doodi",
+    "author_handle": "doodi_dev",
+    "created_at": "2026-11-14T06:15:00.000Z",
+    "urls": [
+      "https://github.com/n8n-io/nod"
+    ],
+    "note_tweet": "⭐ Nod ⭐\nhttps://github.com/n8n-io/nod\n\n1. 워크플로 자동화 n8n 팀이 자기만의 컴퓨터와 브라우저를 가진 오픈소스 개인 비서 AI Nod를 공개함\n\n2. 내 컴퓨터에서 돌고 모델도 내가 고름. Gmail·캘린더·Slack·Notion·실제 웹사이트에서 일하고, 내 이름으로 뭔가 하기 전에 먼저 물어봄\n\n3. 청구서 독촉, 통화 전 한 장짜리 요약 만들기, 무료 체험 해지까지 함. 비밀번호·카드는 AI 모델 몰래 사이트에 따로 입력. 한 번 알려준 건 기억하고, 기억 목록은 직접 보고 고치고 지울 수 있음\n\n4. 테스트에서 심부름 226개를 3번씩 돌려 98% 끝냄, 위험한 행동은 0건. 가짜 계정·사이트에서 잰 결과라 보장은 아님\n\n5. Apache-2.0 무료, 스타 226개. macOS 14 이상, 윈도우 11은 미리보기. ChatGPT Plus·Pro나 AI 키 필요\n\n━━━━━━━━━━\n🇺🇸\n1. The n8n team open-sourced Nod, a personal AI agent with its own computer and browser\n\n2. It runs on your machine and you pick the model. It works across Gmail, Calendar, Slack, Notion and real websites, and asks before it acts for you\n\n3. Chases invoices, writes a one-page brief before each call, even cancels free trials. Passwords and cards are typed into sites privately, out of the model's sight. It remembers what you tell it, and you can see, edit or delete every memory\n\n4. In tests, 226 errands run 3 times each: 98% finished, 0 unsafe actions. Measured in simulated accounts and sites, so not a guarantee\n\n5. Free under Apache-2.0, 226 stars. Needs macOS 14+ (Windows 11 is a preview) and ChatGPT Plus/Pro or an AI key\n\n#AI #AIAgents #OpenSource #n8n #LocalFirst",
+    "items": [
+      {
+        "name": "Nod",
+        "url": "https://github.com/n8n-io/nod",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agentes-ia",
+          "asistente-personal",
+          "local-first",
+          "n8n",
+          "open-source"
+        ],
+        "summary": "Asistente personal de IA open source del equipo de n8n, con su propio ordenador y navegador, que corre en tu máquina con el modelo que elijas.",
+        "highlights": [
+          "Trabaja en Gmail, Calendar, Slack, Notion y webs reales, y pide confirmación antes de actuar",
+          "Introduce contraseñas y tarjetas fuera de la vista del modelo; memoria editable",
+          "98% de 226 tareas completadas (x3) sin acciones inseguras en entornos simulados",
+          "Apache-2.0; macOS 14+ (Windows 11 en preview); requiere ChatGPT Plus/Pro o API key"
+        ],
+        "entry_type": "tool",
+        "company": "n8n"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121712351074476506",
+    "text": "我天！GitHub 上有个狠项目被人开源了，专盯着爆款视频到底怎么做出来！\n\n项目名 rea-video，眼下 8500 Star 已经到手，Codex、Claude Code 都能兼容。\n\n一段视频丢进去，AI 就一个镜头一个镜头往下拆：\n\n1、画面属于实拍、AI 生成还是代码渲染，它先替你判定。 ",
+    "author_name": "Gk",
+    "author_handle": "0xGky",
+    "created_at": "2026-11-14T21:10:18.000Z",
+    "urls": [
+      "https://github.com/JuneYaooo/rea-video"
+    ],
+    "note_tweet": "我天！GitHub 上有个狠项目被人开源了，专盯着爆款视频到底怎么做出来！\n\n项目名 rea-video，眼下 8500 Star 已经到手，Codex、Claude Code 都能兼容。\n\n一段视频丢进去，AI 就一个镜头一个镜头往下拆：\n\n1、画面属于实拍、AI 生成还是代码渲染，它先替你判定。\n2、灯光、运镜、字幕、转场、背景音乐，它逐项过一遍。\n3、每个镜头可能用到的 AI 提示词，它能倒着推出来。\n4、完整复刻方案它也能出，哪些靠代码实现、哪些用 AI、哪些要拍，全给你标明白。\n镜头节奏、音效位置、字幕出现时间，连这些它都拆得开！\nAI 广告、短视频、视频号的，不妨瞧瞧\n🔗：https://github.com/JuneYaooo/rea-video",
+    "items": [
+      {
+        "name": "rea-video",
+        "url": "https://github.com/JuneYaooo/rea-video",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "video",
+          "ingenieria-inversa",
+          "prompts",
+          "claude-code",
+          "codex"
+        ],
+        "summary": "Proyecto open source que analiza vídeos virales plano a plano con IA y propone cómo replicarlos; compatible con Codex y Claude Code.",
+        "highlights": [
+          "Detecta si cada plano es rodaje real, generado por IA o renderizado con código",
+          "Desglosa iluminación, movimiento de cámara, subtítulos, transiciones y música",
+          "Infiere los prompts de IA probables de cada plano",
+          "Genera un plan de réplica indicando qué hacer con código, IA o grabación"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121290353730883747",
+    "text": "Learn harness engineering with a project-based course covering environment, state management, verification, and control mechanisms for AI coding agents.\n\nhttps://github.com/walkinglabs/learn-harness-engineering ",
+    "author_name": "Tom Dörr",
+    "author_handle": "tom_doerr",
+    "created_at": "2026-11-13T17:13:26.000Z",
+    "urls": [
+      "https://github.com/walkinglabs/learn-harness-engineering"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Learn Harness Engineering",
+        "url": "https://github.com/walkinglabs/learn-harness-engineering",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "consejos",
+        "tags": [
+          "agentes-ia",
+          "harness-engineering",
+          "curso",
+          "coding-agents"
+        ],
+        "summary": "Curso basado en proyectos para aprender harness engineering aplicado a agentes de programación con IA.",
+        "highlights": [
+          "Cubre entorno y gestión de estado del agente",
+          "Incluye mecanismos de verificación y control",
+          "Formato de curso por proyectos en GitHub"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121378167927480347",
+    "text": "Si eres diseñador UI/UX, guárdate esto.\n\n1. https://www.scrolltide.co/ → más de 600 prompts con código completo para webs 3D y con scroll, además de componentes, shaders y pantallas de UI\n2. https://www.snapblocks.site/ → una biblioteca enorme de bloques de UI listos para meter en tu ",
+    "author_name": "niko.",
+    "author_handle": "nikosolenne",
+    "created_at": "2026-11-13T23:02:23.000Z",
+    "urls": [
+      "https://www.scrolltide.co/",
+      "https://www.snapblocks.site/",
+      "http://scrolltide.co",
+      "http://snapblocks.site",
+      "http://scrollshaders.com"
+    ],
+    "note_tweet": "Si eres diseñador UI/UX, guárdate esto.\n\n1. http://scrolltide.co → más de 600 prompts con código completo para webs 3D y con scroll, además de componentes, shaders y pantallas de UI\n2. http://snapblocks.site → una biblioteca enorme de bloques de UI listos para meter en tu layout y lanzar antes\n3. http://scrollshaders.com → fondos animados con shaders para hero sections, en código, vídeo o imagen\n\nGuárdatelo 🔖",
+    "items": [
+      {
+        "name": "ScrollTide",
+        "url": "https://www.scrolltide.co/",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "prompts",
+          "3d",
+          "scroll",
+          "componentes-ui"
+        ],
+        "summary": "Biblioteca con más de 600 prompts con código completo para webs 3D y con scroll, más componentes, shaders y pantallas de UI.",
+        "highlights": [
+          "600+ prompts con código completo",
+          "Incluye componentes, shaders y pantallas de UI"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "SnapBlocks",
+        "url": "https://www.snapblocks.site/",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "bloques-ui",
+          "layout",
+          "componentes-ui"
+        ],
+        "summary": "Biblioteca grande de bloques de UI listos para insertar en un layout y lanzar más rápido.",
+        "highlights": [
+          "Bloques de UI listos para usar",
+          "Pensada para acelerar el maquetado de layouts"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Scroll Shaders",
+        "url": "http://scrollshaders.com",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "shaders",
+          "fondos-animados",
+          "hero-section"
+        ],
+        "summary": "Fondos animados con shaders para hero sections, disponibles en código, vídeo o imagen.",
+        "highlights": [
+          "Shaders animados para secciones hero",
+          "Exporta como código, vídeo o imagen"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121576789755765178",
+    "text": "50 more FREE backlinks to rank on Google + AI search:\n\nhttps://clutch.co\nhttps://devpost.com\nhttps://www.trustpilot.com\nhttps://www.smartcustomer.com/\nhttps://financesonline.com/\nhttps://www.appvizer.com\nhttps://www.peerspot.com\nhttps://www.serchen.com\nhttps://tekpon.com/ https://twitter.com/wespreadjam/status/2115501442970857949",
+    "author_name": "jam",
+    "author_handle": "wespreadjam",
+    "created_at": "2026-11-14T12:11:38.000Z",
+    "urls": [
+      "https://clutch.co",
+      "https://devpost.com",
+      "https://www.trustpilot.com",
+      "https://www.smartcustomer.com/",
+      "https://financesonline.com/",
+      "https://www.appvizer.com",
+      "https://www.peerspot.com",
+      "https://www.serchen.com",
+      "https://tekpon.com/",
+      "https://twitter.com/wespreadjam/status/2115501442970857949",
+      "https://www.sitejabber.com",
+      "https://www.financesonline.com",
+      "https://www.tekpon.com",
+      "https://www.softwareworld.co",
+      "https://www.b2bstack.com.br",
+      "https://www.alternative.me",
+      "https://www.slant.co",
+      "https://www.findly.tools",
+      "https://www.saascity.io",
+      "https://www.hackernoon.com",
+      "https://www.behance.net",
+      "https://dribbble.com",
+      "https://medium.com",
+      "https://www.substack.com",
+      "https://www.about.me",
+      "https://www.carrd.co",
+      "https://www.linktr.ee",
+      "https://www.taplink.cc",
+      "https://www.gust.com",
+      "https://www.ventureradar.com",
+      "https://www.eu-startups.com",
+      "https://www.techinasia.com",
+      "https://inc42.com",
+      "https://www.magnitt.com",
+      "https://www.builtin.com",
+      "https://www.geekwire.com",
+      "https://www.techreviewer.co",
+      "https://www.topdevelopers.co",
+      "https://www.superbcompanies.com",
+      "https://www.codeproject.com",
+      "https://hackmd.io",
+      "https://www.stacker.news",
+      "https://www.designernews.co",
+      "https://www.allmyfaves.com",
+      "https://www.webwiki.com",
+      "https://www.similarsitesearch.com",
+      "https://www.launchingnext.com",
+      "https://www.tinystartups.com",
+      "https://www.launchaf.com",
+      "https://www.aixploria.com",
+      "https://www.openfuture.ai",
+      "https://www.postmake.io",
+      "https://www.saaspo.com",
+      "https://www.betapage.co"
+    ],
+    "note_tweet": "50 more FREE backlinks to rank on Google + AI search:\n\nhttps://clutch.co\nhttps://devpost.com\nhttps://www.trustpilot.com\nhttps://www.sitejabber.com\nhttps://www.financesonline.com\nhttps://www.appvizer.com\nhttps://www.peerspot.com\nhttps://www.serchen.com\nhttps://www.tekpon.com\nhttps://www.softwareworld.co\nhttps://www.b2bstack.com.br\nhttps://www.alternative.me\nhttps://www.slant.co\nhttps://www.findly.tools\nhttps://www.saascity.io\nhttps://www.hackernoon.com\nhttps://www.behance.net\nhttps://dribbble.com\nhttps://medium.com\nhttps://www.substack.com\nhttps://www.about.me\nhttps://www.carrd.co\nhttps://www.linktr.ee\nhttps://www.taplink.cc\nhttps://www.gust.com\nhttps://www.ventureradar.com\nhttps://www.eu-startups.com\nhttps://www.techinasia.com\nhttps://inc42.com\nhttps://www.magnitt.com\nhttps://www.builtin.com\nhttps://www.geekwire.com\nhttps://www.techreviewer.co\nhttps://www.topdevelopers.co\nhttps://www.superbcompanies.com\nhttps://www.codeproject.com\nhttps://hackmd.io\nhttps://www.stacker.news\nhttps://www.designernews.co\nhttps://www.allmyfaves.com\nhttps://www.webwiki.com\nhttps://www.similarsitesearch.com\nhttps://www.launchingnext.com\nhttps://www.tinystartups.com\nhttps://www.launchaf.com\nhttps://www.aixploria.com\nhttps://www.openfuture.ai\nhttps://www.postmake.io\nhttps://www.saaspo.com\nhttps://www.betapage.co",
+    "items": []
+  },
+  {
+    "tweet_id": "2121748035101426171",
+    "text": "joder, GitHub está lleno de cosas gratis que casi nadie está usando.\n\nlos 10 repos que están explotando este mes, de lo más fácil a lo más técnico:\n\nlo que puede usar cualquiera\n\n1. VoiceStudio: clona voces, dobla vídeos y transcribe en 646 idiomas, gratis y sin salir de tu ",
+    "author_name": "Santi Torres",
+    "author_handle": "SantiTorAI",
+    "created_at": "2026-11-14T23:32:06.000Z",
+    "urls": [
+      "http://github.com/debpalash/VoiceStudio",
+      "http://github.com/hugohe3/ppt-master",
+      "http://github.com/bilawalsidhu/gods-eye-view",
+      "http://github.com/morluto/rea",
+      "http://github.com/cathrynlavery/diagram-design",
+      "http://github.com/paperclipai/paperclip",
+      "http://github.com/mattpocock/skills",
+      "http://github.com/affaan-m/ECC",
+      "http://github.com/multica-ai/andrej-karpathy-skills",
+      "http://github.com/thedotmack/claude-mem"
+    ],
+    "note_tweet": "joder, GitHub está lleno de cosas gratis que casi nadie está usando.\n\nlos 10 repos que están explotando este mes, de lo más fácil a lo más técnico:\n\nlo que puede usar cualquiera\n\n1. VoiceStudio: clona voces, dobla vídeos y transcribe en 646 idiomas, gratis y sin salir de tu ordenador (57K ⭐)\nhttp://github.com/debpalash/VoiceStudio\n\n2. ppt-master: le pasas un PDF o un Word y te devuelve un PowerPoint de verdad, editable y con animaciones (59K ⭐)\nhttp://github.com/hugohe3/ppt-master\n\n3. gods-eye-view de\n@bilawalsidhu\n: un simulador de satélite espía en tu navegador, con aviones, barcos y cámaras reales sobre un globo 3D (50K ⭐)\nhttp://github.com/bilawalsidhu/gods-eye-view\n\n4. REA: le enseñas a tu IA una función de otra app y te explica cómo está hecha, sin tener el código (65K ⭐)\nhttp://github.com/morluto/rea\n\n5. diagram-design de\n@cathrynlavery\n: pides un diagrama con palabras y te lo dibuja con tu marca, 44 tipos (49K ⭐)\nhttp://github.com/cathrynlavery/diagram-design\n\n6. paperclip: como tener tu propia empresa de agentes autónomos trabajando para ti, la app open source para dirigirlos como si fueran tu plantilla (99K ⭐)\nhttp://github.com/paperclipai/paperclip\n\npara que Claude Code trabaje mejor\n\n7. skills de\n@mattpocockuk\n: las que usa a diario un ingeniero de verdad, pequeñas y fáciles de adaptar (284K ⭐)\nhttp://github.com/mattpocock/skills\n\n8. ECC: skills, memoria y seguridad en un pack para Claude Code, Codex, Cursor y OpenCode (276K ⭐)\nhttp://github.com/affaan-m/ECC\n\n9. andrej-karpathy-skills: un solo archivo con 4 reglas sacadas de lo que Karpathy dice que hacen mal los modelos programando (218K ⭐)\nhttp://github.com/multica-ai/andrej-karpathy-skills\n\n10. claude-mem: guarda lo que hizo tu agente, lo resume y se lo pasa a la siguiente sesión, para que no empiece de cero (99K ⭐)\nhttp://github.com/thedotmack/claude-mem\n\ncompártelo si te ha parecido interesante ♻️\n\ny guárdalo antes de perderlo 🔖",
+    "items": [
+      {
+        "name": "VoiceStudio",
+        "url": "http://github.com/debpalash/VoiceStudio",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "voz",
+          "clonacion-de-voz",
+          "doblaje",
+          "transcripcion",
+          "local"
+        ],
+        "summary": "Herramienta local para clonar voces, doblar vídeos y transcribir en 646 idiomas sin salir de tu ordenador.",
+        "highlights": [
+          "Clonación de voz y doblaje de vídeos",
+          "Transcripción en 646 idiomas",
+          "Funciona en local y gratis"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "ppt-master",
+        "url": "http://github.com/hugohe3/ppt-master",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "powerpoint",
+          "pdf",
+          "presentaciones",
+          "ia"
+        ],
+        "summary": "Convierte un PDF o un Word en una presentación de PowerPoint real, editable y con animaciones.",
+        "highlights": [
+          "Entrada PDF o Word",
+          "Salida PPT editable con animaciones"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "gods-eye-view",
+        "url": "http://github.com/bilawalsidhu/gods-eye-view",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "inspiracion",
+        "tags": [
+          "3d",
+          "globo",
+          "visualizacion",
+          "navegador"
+        ],
+        "summary": "Simulador de satélite espía en el navegador que muestra aviones, barcos y cámaras reales sobre un globo 3D.",
+        "highlights": [
+          "Globo 3D en el navegador",
+          "Capas de aviones, barcos y cámaras reales"
+        ],
+        "entry_type": "tool",
+        "company": "Bilawal Sidhu"
+      },
+      {
+        "name": "REA",
+        "url": "http://github.com/morluto/rea",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "ingenieria-inversa",
+          "agentes-ia",
+          "analisis-de-apps"
+        ],
+        "summary": "Le enseñas a tu IA una función de otra app y te explica cómo está construida sin tener su código.",
+        "highlights": [
+          "Ingeniería inversa de funcionalidades a partir de la app",
+          "No necesita acceso al código fuente"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "diagram-design",
+        "url": "http://github.com/cathrynlavery/diagram-design",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "diagramas",
+          "ia",
+          "branding"
+        ],
+        "summary": "Genera diagramas a partir de una descripción en lenguaje natural, aplicando la identidad de tu marca.",
+        "highlights": [
+          "44 tipos de diagramas",
+          "Estilo adaptado a tu marca"
+        ],
+        "entry_type": "tool",
+        "company": "Cathryn Lavery"
+      },
+      {
+        "name": "Paperclip",
+        "url": "http://github.com/paperclipai/paperclip",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agentes-ia",
+          "multi-agente",
+          "orquestacion",
+          "open-source"
+        ],
+        "summary": "App open source para dirigir un equipo de agentes autónomos como si fueran la plantilla de tu propia empresa.",
+        "highlights": [
+          "Gestión de agentes autónomos como empleados",
+          "Aplicación open source"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Matt Pocock Skills",
+        "url": "http://github.com/mattpocock/skills",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "claude-code",
+          "typescript"
+        ],
+        "summary": "Skills para Claude Code que Matt Pocock usa a diario, pequeñas y fáciles de adaptar.",
+        "highlights": [
+          "Skills pequeñas y adaptables",
+          "Usadas en el trabajo diario de un ingeniero"
+        ],
+        "entry_type": "tool",
+        "company": "Matt Pocock"
+      },
+      {
+        "name": "ECC",
+        "url": "http://github.com/affaan-m/ECC",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "memoria",
+          "seguridad",
+          "claude-code",
+          "cursor"
+        ],
+        "summary": "Pack de skills, memoria y seguridad para Claude Code, Codex, Cursor y OpenCode.",
+        "highlights": [
+          "Agrupa skills, memoria y seguridad",
+          "Compatible con Claude Code, Codex, Cursor y OpenCode"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "andrej-karpathy-skills",
+        "url": "http://github.com/multica-ai/andrej-karpathy-skills",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "reglas",
+          "claude-code",
+          "karpathy"
+        ],
+        "summary": "Un único archivo con 4 reglas basadas en los errores que Karpathy dice que cometen los modelos al programar.",
+        "highlights": [
+          "Un solo archivo de reglas",
+          "4 reglas derivadas de observaciones de Karpathy"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "claude-mem",
+        "url": "http://github.com/thedotmack/claude-mem",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "memoria",
+          "claude-code",
+          "agentes-ia",
+          "contexto"
+        ],
+        "summary": "Guarda lo que hizo tu agente, lo resume y se lo pasa a la siguiente sesión para no empezar de cero.",
+        "highlights": [
+          "Persistencia de memoria entre sesiones",
+          "Resúmenes automáticos de lo hecho por el agente"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121690762463388087",
+    "text": "DeepSeek V4.1 Flash is FREE in 5 places right now 😳\n\n1. Zro\nfree daily usage, resets every day\nhttps://zro.moonmath.ai/pricing\n\n2. NVIDIA NIM\nfree hosted api for testing and prototypes\nhttps://build.nvidia.com/deepseek-ai/deepseek-v4.1-flash\n\n3. OpenCode\nfree for a limited time, inside opencode only\nmodel id: ",
+    "author_name": "anya",
+    "author_handle": "anya_yfa7",
+    "created_at": "2026-11-14T19:44:31.000Z",
+    "urls": [
+      "https://zro.moonmath.ai/pricing",
+      "https://build.nvidia.com/deepseek-ai/deepseek-v4.1-flash",
+      "http://zro.moonmath.ai/pricing",
+      "http://build.nvidia.com/deepseek-ai/deepseek-v4.1-flash",
+      "http://opencode.ai",
+      "http://developer.puter.com/ai/deepseek/deepseek-v4.1-flash",
+      "http://chat.deepseek.com"
+    ],
+    "note_tweet": "DeepSeek V4.1 Flash is FREE in 5 places right now 😳\n\n1. Zro\nfree daily usage, resets every day\nhttp://zro.moonmath.ai/pricing\n\n2. NVIDIA NIM\nfree hosted api for testing and prototypes\nhttp://build.nvidia.com/deepseek-ai/deepseek-v4.1-flash\n\n3. OpenCode\nfree for a limited time, inside opencode only\nmodel id: deepseek-v4.1-flash-free\nhttp://opencode.ai\n\n4. Puter\ntry it free in the browser, every account gets a free ai allowance\nhttp://developer.puter.com/ai/deepseek/deepseek-v4.1-flash\n\n5. DeepSeek chat\nthe official app and web chat run v4.1 flash for free\nhttp://chat.deepseek.com\n\nlimits change fast so check each provider's terms before building on them",
+    "items": [
+      {
+        "name": "Zro",
+        "url": "https://zro.moonmath.ai/pricing",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "deepseek",
+          "llm",
+          "inferencia",
+          "free-tier"
+        ],
+        "summary": "Proveedor que ofrece uso diario gratuito de DeepSeek V4.1 Flash, con cuota que se reinicia cada día.",
+        "highlights": [
+          "Uso gratis diario de DeepSeek V4.1 Flash",
+          "Cuota que se reinicia cada día"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "NVIDIA NIM (DeepSeek V4.1 Flash)",
+        "url": "https://build.nvidia.com/deepseek-ai/deepseek-v4.1-flash",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "nvidia",
+          "deepseek",
+          "api",
+          "inferencia"
+        ],
+        "summary": "API alojada de NVIDIA NIM que permite probar DeepSeek V4.1 Flash gratis para pruebas y prototipos.",
+        "highlights": [
+          "API hospedada gratuita para testing",
+          "Orientada a prototipos"
+        ],
+        "entry_type": "product_showcase",
+        "company": "NVIDIA"
+      },
+      {
+        "name": "OpenCode",
+        "url": "http://opencode.ai",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "coding-agent",
+          "deepseek",
+          "free-tier"
+        ],
+        "summary": "Agente de programación que por tiempo limitado incluye DeepSeek V4.1 Flash gratis dentro de la propia herramienta.",
+        "highlights": [
+          "Model id: deepseek-v4.1-flash-free",
+          "Gratis por tiempo limitado y solo dentro de OpenCode"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Puter AI (DeepSeek V4.1 Flash)",
+        "url": "http://developer.puter.com/ai/deepseek/deepseek-v4.1-flash",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "deepseek",
+          "navegador",
+          "llm",
+          "free-tier"
+        ],
+        "summary": "Plataforma Puter para probar DeepSeek V4.1 Flash gratis desde el navegador con una asignación de IA gratuita por cuenta.",
+        "highlights": [
+          "Prueba en el navegador",
+          "Cada cuenta recibe una cuota gratuita de IA"
+        ],
+        "entry_type": "product_showcase",
+        "company": "Puter"
+      },
+      {
+        "name": "DeepSeek Chat",
+        "url": "http://chat.deepseek.com",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "deepseek",
+          "chat",
+          "llm"
+        ],
+        "summary": "App y chat web oficiales de DeepSeek, que ejecutan V4.1 Flash de forma gratuita.",
+        "highlights": [
+          "App oficial y chat web",
+          "Usa DeepSeek V4.1 Flash gratis"
+        ],
+        "entry_type": "product_showcase",
+        "company": "DeepSeek"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121683585199440143",
+    "text": "Tercera parte:\n\n5 REPOS DE IA QUE PARECEN ILEGALES PERO SON 100% LEGALES\n\n1. Open WebUI: tu propio ChatGPT en tu ordenador, con modelos que corren en local. 158.5K estrellas.\nhttps://github.com/open-webui/open-webui\n\n2. rembg: quita el fondo de cualquier foto sin subirla a ninguna web. 25.4K  https://twitter.com/Fluyeporlaweb/status/2120952769259733282",
+    "author_name": "PA13L0",
+    "author_handle": "Fluyeporlaweb",
+    "created_at": "2026-11-14T19:16:00.000Z",
+    "urls": [
+      "https://github.com/open-webui/open-webui",
+      "https://twitter.com/Fluyeporlaweb/status/2120952769259733282",
+      "https://github.com/danielgatis/rembg",
+      "https://github.com/chidiwilliams/buzz",
+      "https://github.com/LibreTranslate/LibreTranslate",
+      "https://github.com/Fincept-Corporation/FinceptTerminal"
+    ],
+    "note_tweet": "Tercera parte:\n\n5 REPOS DE IA QUE PARECEN ILEGALES PERO SON 100% LEGALES\n\n1. Open WebUI: tu propio ChatGPT en tu ordenador, con modelos que corren en local. 158.5K estrellas.\nhttps://github.com/open-webui/open-webui\n\n2. rembg: quita el fondo de cualquier foto sin subirla a ninguna web. 25.4K estrellas.\nhttps://github.com/danielgatis/rembg\n\n3. Buzz: transcribe y traduce audio sin internet, en tu ordenador. 22.7K estrellas.\nhttps://github.com/chidiwilliams/buzz\n\n4. LibreTranslate: tu propio traductor, que funciona sin conexión. 17.5K estrellas.\nhttps://github.com/LibreTranslate/LibreTranslate\n\n5. FinceptTerminal: una terminal de mercados al estilo Bloomberg, open source. 33.8K estrellas.\nhttps://github.com/Fincept-Corporation/FinceptTerminal",
+    "items": [
+      {
+        "name": "Open WebUI",
+        "url": "https://github.com/open-webui/open-webui",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "recursos",
+        "tags": [
+          "llm-local",
+          "chat",
+          "self-hosted",
+          "open-source"
+        ],
+        "summary": "Interfaz tipo ChatGPT que corre en tu ordenador con modelos ejecutados en local.",
+        "highlights": [
+          "Modelos ejecutados en local",
+          "158.5K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "rembg",
+        "url": "https://github.com/danielgatis/rembg",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "imagen",
+          "quitar-fondo",
+          "local",
+          "python"
+        ],
+        "summary": "Quita el fondo de cualquier foto en local, sin subirla a ninguna web.",
+        "highlights": [
+          "Eliminación de fondo sin servicios externos",
+          "25.4K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Buzz",
+        "url": "https://github.com/chidiwilliams/buzz",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "audio",
+          "transcripcion",
+          "traduccion",
+          "offline"
+        ],
+        "summary": "Transcribe y traduce audio sin conexión a internet, directamente en tu ordenador.",
+        "highlights": [
+          "Transcripción y traducción offline",
+          "22.7K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "LibreTranslate",
+        "url": "https://github.com/LibreTranslate/LibreTranslate",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "recursos",
+        "tags": [
+          "traduccion",
+          "self-hosted",
+          "offline",
+          "api"
+        ],
+        "summary": "Traductor autoalojado que funciona sin conexión.",
+        "highlights": [
+          "Traducción propia sin servicios de terceros",
+          "17.5K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "FinceptTerminal",
+        "url": "https://github.com/Fincept-Corporation/FinceptTerminal",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "finanzas",
+          "mercados",
+          "terminal",
+          "open-source"
+        ],
+        "summary": "Terminal de mercados financieros open source al estilo Bloomberg.",
+        "highlights": [
+          "Alternativa open source a Bloomberg Terminal",
+          "33.8K estrellas en GitHub"
+        ],
+        "entry_type": "tool",
+        "company": "Fincept Corporation"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121491956287131992",
+    "text": "WTF... Claude Code can now create animated videos using just prompts. 🤯🔥\n\nThis Claude skill turns your ideas into animated videos.\n\n~ Create animated explainers and stories.\n~ Choose from 7 animation styles.\n~ Add AI voiceovers and background music.\n~ Animate product ",
+    "author_name": "Ram Maheshwari",
+    "author_handle": "rammcodes",
+    "created_at": "2026-11-14T06:34:32.000Z",
+    "urls": [],
+    "note_tweet": "WTF... Claude Code can now create animated videos using just prompts. 🤯🔥\n\nThis Claude skill turns your ideas into animated videos.\n\n~ Create animated explainers and stories.\n~ Choose from 7 animation styles.\n~ Add AI voiceovers and background music.\n~ Animate product screenshots.\n~ Export videos in multiple aspect ratios.\n\nJust describe what you want, review the storyboard and let Claude handle the animation workflow.\n\nBasically, your AI coding agent just became a video creator. 💀\n\nFollow me for more amazing AI, Coding & Web Dev insights 💎",
+    "items": []
+  },
+  {
+    "tweet_id": "2121531136224727396",
+    "text": "做 AI 聊天产品，最浪费时间的可能不是接大模型 API。\n\n而是消息气泡、流式输出、代码高亮、文件上传这些界面。\n\nassistant-ui 直接把整套 ChatGPT 风格的交互组件开源了。\n\n支持 OpenAI、Claude、Gemini，还能连接 LangGraph Agent。\n\nGitHub：https://github.com/assistant-ui/assistant-ui",
+    "author_name": "阿零",
+    "author_handle": "awe0_io",
+    "created_at": "2026-11-14T09:10:13.000Z",
+    "urls": [
+      "https://github.com/assistant-ui/assistant-ui"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "assistant-ui",
+        "url": "https://github.com/assistant-ui/assistant-ui",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "chat-ui",
+          "componentes-ui",
+          "langgraph",
+          "streaming"
+        ],
+        "summary": "Componentes open source de interfaz estilo ChatGPT para construir productos de chat con IA sin rehacer la UI.",
+        "highlights": [
+          "Burbujas de mensajes, salida en streaming, resaltado de código y subida de archivos",
+          "Compatible con OpenAI, Claude y Gemini",
+          "Se conecta con agentes de LangGraph"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121440495276798005",
+    "text": "今週GitHubで急上昇したAIリポジトリ10選：\n\n1. security-audit-skill\nAIエージェントにコードの安全点検を何段階かに分けて任せられる。見つかった問題は裏取り済みの形で返ってくる。\nhttps://github.com/cloudflare/security-audit-skill\n\n2. astryx ",
+    "author_name": "そう@『n8nの教科書』マイナビ出版 10/22発売",
+    "author_handle": "so_ainsight",
+    "created_at": "2026-11-14T03:10:03.000Z",
+    "urls": [
+      "https://github.com/cloudflare/security-audit-skill",
+      "https://github.com/meta/astryx",
+      "https://github.com/anthropics/skills",
+      "https://github.com/vercel-labs/agent-browser",
+      "https://github.com/Graphify-Labs/graphify",
+      "https://github.com/thedotmack/claude-mem",
+      "https://github.com/Donchitos/Claude-Code-Game-Studios",
+      "https://github.com/herdrdev/herdr",
+      "https://github.com/garrytan/gstack",
+      "https://github.com/anthropics/claude-quickstarts"
+    ],
+    "note_tweet": "今週GitHubで急上昇したAIリポジトリ10選：\n\n1. security-audit-skill\nAIエージェントにコードの安全点検を何段階かに分けて任せられる。見つかった問題は裏取り済みの形で返ってくる。\nhttps://github.com/cloudflare/security-audit-skill\n\n2. astryx\n画面デザインの部品をまとめたオープンソースの土台。思いどおりに作り替えられ、AIエージェントからも扱える。\nhttps://github.com/meta/astryx\n\n3. Agent Skills（anthropics）\n新しい手順をAIエージェントに覚えさせる部品を集めた公開セット。必要な力を後から足していける。\nhttps://github.com/anthropics/skills\n\n4. agent-browser\nブラウザ操作そのものをAIエージェントに任せられる道具。ページを開いて入力やクリックを代わりに進める。\nhttps://github.com/vercel-labs/agent-browser\n\n5. graphify\nプログラムや資料のまとまりが、関係をたどれる地図に変わる。AIエージェントがどこに何があるかを問い合わせられる。\nhttps://github.com/Graphify-Labs/graphify\n\n6. claude-mem\nAIエージェントとのやり取りの記憶を残し、次の会話へ引き継げる。前回を覚えた状態で続きから始められる。\nhttps://github.com/thedotmack/claude-mem\n\n7. Claude-Code-Game-Studios\nClaude Code をまるごとゲーム開発チームに変えられる。役割の違うエージェントたちが連携して制作を進める。\nhttps://github.com/Donchitos/Claude-Code-Game-Studios\n\n8. herdr\nコードを書くAIエージェントを動かすための土台となる環境。接続が切れても作業中の端末は消えず、再接続すると元の配置に戻る。\nhttps://github.com/herdrdev/herdr\n\n9. gstack\nGarry Tan の Claude Code 設定をそのまま取り込める。経営から品質管理まで、役割ごとの道具一式がそろう。\nhttps://github.com/garrytan/gstack\n\n10. claude-quickstarts\nClaude を使ったアプリ作りをすぐ始められるサンプル集。動かせる形のひな型から試して形にできる。\nhttps://github.com/anthropics/claude-quickstarts\n\n10件の詳細はリプ欄へ👇",
+    "items": [
+      {
+        "name": "security-audit-skill",
+        "url": "https://github.com/cloudflare/security-audit-skill",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "seguridad",
+          "auditoria",
+          "cloudflare"
+        ],
+        "summary": "Skill que permite a un agente de IA auditar la seguridad del código en varias fases.",
+        "highlights": [
+          "Revisión de seguridad dividida en etapas",
+          "Devuelve los problemas ya verificados"
+        ],
+        "entry_type": "tool",
+        "company": "Cloudflare"
+      },
+      {
+        "name": "astryx",
+        "url": "https://github.com/meta/astryx",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "design-system",
+          "componentes-ui",
+          "open-source",
+          "agentes-ia"
+        ],
+        "summary": "Base open source de componentes de diseño de interfaces, personalizable y manejable también por agentes de IA.",
+        "highlights": [
+          "Componentes de UI personalizables",
+          "Operable desde agentes de IA"
+        ],
+        "entry_type": "tool",
+        "company": "Meta"
+      },
+      {
+        "name": "Agent Skills (Anthropic)",
+        "url": "https://github.com/anthropics/skills",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "claude",
+          "anthropic"
+        ],
+        "summary": "Colección pública de skills para enseñar nuevos procedimientos a agentes de IA.",
+        "highlights": [
+          "Conjunto de skills oficial y público",
+          "Permite añadir capacidades al agente después"
+        ],
+        "entry_type": "tool",
+        "company": "Anthropic"
+      },
+      {
+        "name": "agent-browser",
+        "url": "https://github.com/vercel-labs/agent-browser",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agentes-ia",
+          "automatizacion-navegador",
+          "cli",
+          "vercel"
+        ],
+        "summary": "Herramienta para que un agente de IA controle el navegador: abrir páginas, escribir y hacer clic.",
+        "highlights": [
+          "Automatiza la navegación web para agentes",
+          "Rellena formularios y hace clics por ti"
+        ],
+        "entry_type": "tool",
+        "company": "Vercel Labs"
+      },
+      {
+        "name": "graphify",
+        "url": "https://github.com/Graphify-Labs/graphify",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "knowledge-graph",
+          "agentes-ia",
+          "codebase"
+        ],
+        "summary": "Convierte código y documentos en un mapa de relaciones navegable que los agentes pueden consultar.",
+        "highlights": [
+          "Grafo de relaciones entre archivos y documentos",
+          "Los agentes preguntan dónde está cada cosa"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "claude-mem",
+        "url": "https://github.com/thedotmack/claude-mem",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "memoria",
+          "claude-code",
+          "agentes-ia"
+        ],
+        "summary": "Conserva la memoria de las conversaciones con el agente y la traslada a la siguiente sesión.",
+        "highlights": [
+          "Persistencia de contexto entre conversaciones",
+          "Retoma desde donde quedó la sesión anterior"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Claude-Code-Game-Studios",
+        "url": "https://github.com/Donchitos/Claude-Code-Game-Studios",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "claude-code",
+          "multi-agente",
+          "gamedev"
+        ],
+        "summary": "Convierte Claude Code en un equipo de desarrollo de videojuegos con agentes de roles distintos.",
+        "highlights": [
+          "Agentes con roles diferenciados",
+          "Colaboran para producir un juego"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "herdr",
+        "url": "https://github.com/herdrdev/herdr",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "coding-agents",
+          "terminal",
+          "sesiones-persistentes"
+        ],
+        "summary": "Entorno base para ejecutar agentes de programación cuyas terminales sobreviven a desconexiones.",
+        "highlights": [
+          "La terminal de trabajo no se pierde al cortarse la conexión",
+          "Al reconectar restaura la disposición anterior"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "gstack",
+        "url": "https://github.com/garrytan/gstack",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "claude-code",
+          "configuracion",
+          "agent-skills"
+        ],
+        "summary": "Configuración de Claude Code de Garry Tan lista para importar, con herramientas por rol.",
+        "highlights": [
+          "Set de herramientas por rol, de gestión a QA",
+          "Se importa tal cual en Claude Code"
+        ],
+        "entry_type": "tool",
+        "company": "Garry Tan"
+      },
+      {
+        "name": "claude-quickstarts",
+        "url": "https://github.com/anthropics/claude-quickstarts",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "recursos",
+        "tags": [
+          "claude",
+          "plantillas",
+          "anthropic",
+          "ejemplos"
+        ],
+        "summary": "Colección de ejemplos para empezar a construir aplicaciones con Claude a partir de plantillas ejecutables.",
+        "highlights": [
+          "Plantillas que funcionan desde el inicio",
+          "Base para prototipar apps con Claude"
+        ],
+        "entry_type": "tool",
+        "company": "Anthropic"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121582508034887762",
+    "text": "web3 hackathons \n\n1. BCH BLAZE 2026\n   -&gt; reward: $8,000 \n   -&gt; criteria: Online; BCH mainnet live demo \n   -&gt; link: https://bchblaze.cash/\n\n2. Dev3pack Global Hackathon 2026\n   -&gt; reward: $10,000\n   -&gt; criteria: University student\n   -&gt; link: https://hack.dev3pack.xyz/\n\n3. IXH26 ",
+    "author_name": "Orihime",
+    "author_handle": "orihimexweb3",
+    "created_at": "2026-11-14T12:34:21.000Z",
+    "urls": [
+      "https://bchblaze.cash/",
+      "https://hack.dev3pack.xyz/",
+      "https://luma.com/IXH26-xrpl-hackathon",
+      "https://hackathon.qie.digital",
+      "https://dakar-bitcoin-hack-2026.devpost.com",
+      "https://hackquest.io/en/hackathons/Bittensor-Global-Subnet-Hackathon",
+      "https://hashtagweb3.com/free-society-hackathon",
+      "https://community.tari.com/t/november-build-contest-thread-mvp/520",
+      "https://app.akindo.io/wave-hacks/OVOO0gdrVU8379D10",
+      "https://www.universityblockchain.org/programs"
+    ],
+    "note_tweet": "web3 hackathons \n\n1. BCH BLAZE 2026\n   -> reward: $8,000 \n   -> criteria: Online; BCH mainnet live demo \n   -> link: https://bchblaze.cash/\n\n2. Dev3pack Global Hackathon 2026\n   -> reward: $10,000\n   -> criteria: University student\n   -> link: https://hack.dev3pack.xyz/\n\n3. IXH26 Italian XRPL Hackathon\n   -> reward: $13,000\n   -> criteria: In-person Bari; teams 3 8\n   -> link: https://luma.com/IXH26-xrpl-hackathon\n\n4. QIE Hackathon 3.0\n   -> reward: $17,000 \n   -> criteria: QIE mainnet live product\n   -> link: https://hackathon.qie.digital\n\n5. Dakar Bitcoin Hack by BTrust  \n   -> reward: $900 \n   -> criteria: Bitcoin for african \n   -> link: https://dakar-bitcoin-hack-2026.devpost.com\n\n6.Bittensor Global Subnet Hackathon\n   -> reward: $10,000\n   -> criteria: build Bittensor subnet + testnet  \n   -> link: https://hackquest.io/en/hackathons/Bittensor-Global-Subnet-Hackathon\n\n7. Free Society Hackathon \n   -> reward: $5,000 \n   -> criteria: Zcash privacy \n   -> link: https://hashtagweb3.com/free-society-hackathon\n\n8. Tari November Build Contest: MVP\n   -> reward: ~$860 / $430 / $215 \n   -> criteria: Public code + running MVP app \n   -> link: https://community.tari.com/t/november-build-contest-thread-mvp/520\n\n9. Mezo Buildathon\n   -> reward: $7,000 \n   -> criteria: use MUSD or MEZO\n   -> link: https://app.akindo.io/wave-hacks/OVOO0gdrVU8379D10\n\n10. UBC 2026 \n    -> reward: $22,000\n    -> criteria: week then Austin finals\n    -> link: https://www.universityblockchain.org/programs\n\nnfa dyor \nbtw hackathons for fun best of luck everyone...",
+    "items": [
+      {
+        "name": "BCH BLAZE 2026",
+        "url": "https://bchblaze.cash/",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bitcoin-cash",
+          "web3",
+          "hackathon"
+        ],
+        "summary": "Hackathon web3 con premio de $8,000; requisito: online; demo en vivo en BCH mainnet.",
+        "highlights": [
+          "Premio: $8,000",
+          "Criterio: Online; demo en vivo en BCH mainnet"
+        ],
+        "entry_type": "job_remote",
+        "salary": "$8,000",
+        "location": "Online"
+      },
+      {
+        "name": "Dev3pack Global Hackathon 2026",
+        "url": "https://hack.dev3pack.xyz/",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "web3",
+          "hackathon",
+          "estudiantes"
+        ],
+        "summary": "Hackathon web3 con premio de $10,000; requisito: para estudiantes universitarios.",
+        "highlights": [
+          "Premio: $10,000",
+          "Criterio: Para estudiantes universitarios"
+        ],
+        "entry_type": "job_remote",
+        "salary": "$10,000"
+      },
+      {
+        "name": "IXH26 Italian XRPL Hackathon",
+        "url": "https://luma.com/IXH26-xrpl-hackathon",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "xrpl",
+          "web3",
+          "hackathon"
+        ],
+        "summary": "Hackathon web3 con premio de $13,000; requisito: presencial en Bari; equipos de 3 a 8.",
+        "highlights": [
+          "Premio: $13,000",
+          "Criterio: Presencial en Bari; equipos de 3 a 8"
+        ],
+        "entry_type": "job_remote",
+        "salary": "$13,000",
+        "location": "Presencial (Bari)"
+      },
+      {
+        "name": "QIE Hackathon 3.0",
+        "url": "https://hackathon.qie.digital",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "qie",
+          "web3",
+          "hackathon"
+        ],
+        "summary": "Hackathon web3 con premio de $17,000; requisito: producto en vivo en QIE mainnet.",
+        "highlights": [
+          "Premio: $17,000",
+          "Criterio: Producto en vivo en QIE mainnet"
+        ],
+        "entry_type": "job_remote",
+        "salary": "$17,000"
+      },
+      {
+        "name": "Dakar Bitcoin Hack by BTrust",
+        "url": "https://dakar-bitcoin-hack-2026.devpost.com",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bitcoin",
+          "africa",
+          "hackathon"
+        ],
+        "summary": "Hackathon web3 con premio de $900; requisito: bitcoin para África.",
+        "highlights": [
+          "Premio: $900",
+          "Criterio: Bitcoin para África"
+        ],
+        "entry_type": "job_remote",
+        "salary": "$900"
+      },
+      {
+        "name": "Bittensor Global Subnet Hackathon",
+        "url": "https://hackquest.io/en/hackathons/Bittensor-Global-Subnet-Hackathon",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bittensor",
+          "web3",
+          "hackathon"
+        ],
+        "summary": "Hackathon web3 con premio de $10,000; requisito: construir una subnet de Bittensor y desplegarla en testnet.",
+        "highlights": [
+          "Premio: $10,000",
+          "Criterio: Construir una subnet de Bittensor y desplegarla en testnet"
+        ],
+        "entry_type": "job_remote",
+        "salary": "$10,000"
+      },
+      {
+        "name": "Free Society Hackathon",
+        "url": "https://hashtagweb3.com/free-society-hackathon",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "zcash",
+          "privacidad",
+          "hackathon"
+        ],
+        "summary": "Hackathon web3 con premio de $5,000; requisito: privacidad con Zcash.",
+        "highlights": [
+          "Premio: $5,000",
+          "Criterio: Privacidad con Zcash"
+        ],
+        "entry_type": "job_remote",
+        "salary": "$5,000"
+      },
+      {
+        "name": "Tari November Build Contest: MVP",
+        "url": "https://community.tari.com/t/november-build-contest-thread-mvp/520",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "tari",
+          "web3",
+          "build-contest"
+        ],
+        "summary": "Hackathon web3 con premio de ~$860 / $430 / $215; requisito: código público y app MVP funcionando.",
+        "highlights": [
+          "Premio: ~$860 / $430 / $215",
+          "Criterio: Código público y app MVP funcionando"
+        ],
+        "entry_type": "job_remote",
+        "salary": "~$860 / $430 / $215"
+      },
+      {
+        "name": "Mezo Buildathon",
+        "url": "https://app.akindo.io/wave-hacks/OVOO0gdrVU8379D10",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "mezo",
+          "web3",
+          "buildathon"
+        ],
+        "summary": "Hackathon web3 con premio de $7,000; requisito: usar MUSD o MEZO.",
+        "highlights": [
+          "Premio: $7,000",
+          "Criterio: Usar MUSD o MEZO"
+        ],
+        "entry_type": "job_remote",
+        "salary": "$7,000"
+      },
+      {
+        "name": "UBC 2026",
+        "url": "https://www.universityblockchain.org/programs",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "blockchain",
+          "universidad",
+          "hackathon"
+        ],
+        "summary": "Hackathon web3 con premio de $22,000; requisito: una semana de competencia y luego final en Austin.",
+        "highlights": [
+          "Premio: $22,000",
+          "Criterio: Una semana de competencia y luego final en Austin"
+        ],
+        "entry_type": "job_remote",
+        "salary": "$22,000"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121524078209310803",
+    "text": "https://github.com/luongnv89/claude-howto - Free visual Claude Code guide\n\nhttps://kinetik-ui.dev - 136 animated React Native components\n\nhttps://morphin.dev - 27 free animated Shadcn components\n\nhttps://arche.directory - 3,197 free design inspiration sections\n\nhttps://github.com/JuliusBrussee/caveman - ",
+    "author_name": "Csaba Kissi",
+    "author_handle": "csaba_kissi",
+    "created_at": "2026-11-14T08:42:10.000Z",
+    "urls": [
+      "https://github.com/luongnv89/claude-howto",
+      "https://kinetik-ui.dev",
+      "https://morphin.dev",
+      "https://arche.directory",
+      "https://github.com/JuliusBrussee/caveman",
+      "http://github.com/luongnv89/claude-howto",
+      "http://kinetik-ui.dev",
+      "http://morphin.dev",
+      "http://arche.directory",
+      "http://github.com/JuliusBrussee/caveman"
+    ],
+    "note_tweet": "http://github.com/luongnv89/claude-howto - Free visual Claude Code guide\n\nhttp://kinetik-ui.dev - 136 animated React Native components\n\nhttp://morphin.dev - 27 free animated Shadcn components\n\nhttp://arche.directory - 3,197 free design inspiration sections\n\nhttp://github.com/JuliusBrussee/caveman - Open-source token-saving coding agent skill",
+    "items": [
+      {
+        "name": "claude-howto",
+        "url": "https://github.com/luongnv89/claude-howto",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "consejos",
+        "tags": [
+          "claude-code",
+          "guia",
+          "agentes-ia"
+        ],
+        "summary": "Guía visual y gratuita para aprender a usar Claude Code.",
+        "highlights": [
+          "Guía visual de Claude Code",
+          "Repositorio gratuito en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Kinetik UI",
+        "url": "https://kinetik-ui.dev",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react-native",
+          "animacion",
+          "componentes-ui"
+        ],
+        "summary": "Colección de componentes animados para React Native.",
+        "highlights": [
+          "136 componentes animados",
+          "Enfocada en React Native"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Morphin",
+        "url": "https://morphin.dev",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "shadcn",
+          "animacion",
+          "componentes-ui",
+          "react"
+        ],
+        "summary": "Componentes animados gratuitos construidos sobre Shadcn.",
+        "highlights": [
+          "27 componentes animados",
+          "Gratis y basados en Shadcn"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Arche Directory",
+        "url": "https://arche.directory",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "inspiracion",
+        "tags": [
+          "inspiracion",
+          "diseno-web",
+          "secciones"
+        ],
+        "summary": "Directorio gratuito de secciones web para inspirarse al diseñar.",
+        "highlights": [
+          "3,197 secciones de inspiración",
+          "Acceso gratuito"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "caveman",
+        "url": "https://github.com/JuliusBrussee/caveman",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "tokens",
+          "coding-agents",
+          "open-source"
+        ],
+        "summary": "Skill open source para agentes de programación orientada a ahorrar tokens.",
+        "highlights": [
+          "Reduce el consumo de tokens del agente",
+          "Skill open source"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121586518880100705",
+    "text": "Skills I use all the time to make insane demos\n\n1. https://github.com/achimala/dream-loop - 3D visuals with Blender, image gen and a critic\n2. https://hairline.lucasmarkes.com - line drawings that answer the pointer\n3. https://aiforui.dev/skills - Emil Kowalski's design engineering skills\n4. ",
+    "author_name": "Manish Kumar",
+    "author_handle": "Manixh02",
+    "created_at": "2026-11-14T12:50:17.000Z",
+    "urls": [
+      "https://github.com/achimala/dream-loop",
+      "https://hairline.lucasmarkes.com",
+      "https://aiforui.dev/skills",
+      "http://github.com/achimala/dream-loop",
+      "http://hairline.lucasmarkes.com",
+      "http://emilkowal.ski/skill",
+      "http://github.com/mengto/skills",
+      "http://fil.design/skills/html-demo"
+    ],
+    "note_tweet": "Skills I use all the time to make insane demos\n\n1. http://github.com/achimala/dream-loop - 3D visuals with Blender, image gen and a critic\n2. http://hairline.lucasmarkes.com - line drawings that answer the pointer\n3. http://emilkowal.ski/skill - Emil Kowalski's design engineering skills\n4. http://github.com/mengto/skills - my own skills for designers and builders\n5. REA (Reverse Engineer Anything) - how any app or site works\n6. http://fil.design/skills/html-demo - your app working live in HTML",
+    "items": [
+      {
+        "name": "dream-loop",
+        "url": "https://github.com/achimala/dream-loop",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "3d",
+          "blender",
+          "generacion-de-imagenes",
+          "agent-skills"
+        ],
+        "summary": "Skill para crear visuales 3D combinando Blender, generación de imágenes y un crítico automático.",
+        "highlights": [
+          "Usa Blender para la parte 3D",
+          "Bucle con generación de imágenes y crítica"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Hairline",
+        "url": "https://hairline.lucasmarkes.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "dibujo-lineal",
+          "interaccion",
+          "puntero"
+        ],
+        "summary": "Skill para crear dibujos de líneas que reaccionan al puntero en demos web.",
+        "highlights": [
+          "Dibujos lineales interactivos",
+          "Responden al movimiento del puntero"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Emil Kowalski Design Engineering Skills",
+        "url": "http://emilkowal.ski/skill",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "design-engineering",
+          "animacion"
+        ],
+        "summary": "Skills de design engineering de Emil Kowalski para que el agente construya interfaces más pulidas.",
+        "highlights": [
+          "Skills de design engineering",
+          "Creadas por Emil Kowalski"
+        ],
+        "entry_type": "tool",
+        "company": "Emil Kowalski"
+      },
+      {
+        "name": "Meng To Skills",
+        "url": "http://github.com/mengto/skills",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "diseno",
+          "builders"
+        ],
+        "summary": "Skills propias del autor pensadas para diseñadores y builders que hacen demos con agentes.",
+        "highlights": [
+          "Orientadas a diseñadores y builders",
+          "Usadas para crear demos"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "HTML Demo Skill (fil.design)",
+        "url": "http://fil.design/skills/html-demo",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "html",
+          "demos",
+          "prototipado"
+        ],
+        "summary": "Skill que muestra tu app funcionando en vivo como demo en HTML.",
+        "highlights": [
+          "Demo funcional en HTML",
+          "Útil para presentar una app en vivo"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121456841767235997",
+    "text": "⭐ improve ⭐\nhttps://github.com/shadcn/improve\n\n1. shadcn이 코드 전체를 점검하고 다른 AI가 따라 할 작업 계획서를 써주는 에이전트 스킬을 공개함\n\n2. 가장 똑똑한 비싼 모델은 코드 파악, 할 일 고르기, 계획서 쓰기만 맡음. 실제 구현은 싼 모델한테 넘김. 스킬은 코드를 직접 고치지 않음\n\n3. /improve ",
+    "author_name": "두디 Doodi",
+    "author_handle": "doodi_dev",
+    "created_at": "2026-11-14T04:15:00.000Z",
+    "urls": [
+      "https://github.com/shadcn/improve"
+    ],
+    "note_tweet": "⭐ improve ⭐\nhttps://github.com/shadcn/improve\n\n1. shadcn이 코드 전체를 점검하고 다른 AI가 따라 할 작업 계획서를 써주는 에이전트 스킬을 공개함\n\n2. 가장 똑똑한 비싼 모델은 코드 파악, 할 일 고르기, 계획서 쓰기만 맡음. 실제 구현은 싼 모델한테 넘김. 스킬은 코드를 직접 고치지 않음\n\n3. /improve 하면 저장소를 훑고 문제 목록 표를 보여줌. 고른 것만 plans/ 폴더에 마크다운 계획서로 만들어줌. 계획서에는 파일 경로, 현재 코드, 확인 명령, 멈춰야 할 조건까지 들어 있음\n\n4. /improve execute 하면 싼 모델이 따로 만든 작업 폴더에서 계획서대로 구현하고, 비싼 모델이 결과를 검토함. 합치는 건 사람이 정함. 보안·성능·테스트 등 9가지 분야를 보고 문제마다 파일과 줄 번호를 근거로 붙임\n\n5. MIT 무료, 스타 1만 개. Agent Skills 형식을 지원하는 에이전트면 사용 가능\n\n설치: npx skills add shadcn/improve\n\n비싼 모델은 계획만, 싼 모델은 작업만 시키는 구조라 토큰비 아끼고 싶은 사람한테 좋을 듯\n\n━━━━━━━━━━\n🇺🇸\n1. shadcn released an agent skill that audits a whole codebase and writes work plans for other AIs to follow\n\n2. Your most capable (expensive) model only understands the code, picks what to do, and writes the plan. Cheaper models do the actual building. The skill never edits code itself\n\n3. Run /improve and it scans the repo and shows a table of problems. Pick some and it writes each one as a markdown plan in plans/, with file paths, current code, check commands, and when to stop\n\n4. /improve execute has a cheaper model build the plan in a separate work folder, then the expensive model reviews the result. Merging is up to you. It looks at 9 areas like security, performance, and tests, and every finding cites a file and line number\n\n5. Free under MIT, 10.5k stars. Works with any agent that supports the Agent Skills format\n\nInstall: npx skills add shadcn/improve\n\nExpensive model plans, cheap model works. Sounds great for anyone trying to save on token costs\n\n#AI #AgentSkills #AIAgents #OpenSource #CodingAgents",
+    "items": [
+      {
+        "name": "improve",
+        "url": "https://github.com/shadcn/improve",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "code-review",
+          "planificacion",
+          "tokens",
+          "shadcn"
+        ],
+        "summary": "Skill de agente de shadcn que audita todo el repositorio y redacta planes de trabajo para que modelos más baratos los implementen.",
+        "highlights": [
+          "/improve escanea el repo y genera planes markdown en plans/ con rutas, código actual, comandos de verificación y condiciones de parada",
+          "/improve execute: un modelo barato implementa en carpeta aparte y el caro revisa; el merge lo decide la persona",
+          "Revisa 9 áreas (seguridad, rendimiento, tests…) citando archivo y línea",
+          "MIT; instalación con npx skills add shadcn/improve"
+        ],
+        "entry_type": "tool",
+        "company": "shadcn"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121510272880054718",
+    "text": "分享5 个看着违规，实际100%合法的 GitHub 仓库⬇️：\n\n1. Pi-hole：装在一台机器上，全屋设备一起把广告拦掉。6.18 万星。\nhttps://github.com/pi-hole/pi-hole\n\n2. Jellyfin：把你手里的片子、剧集丢到自家服务器里播，相当于私人版网飞。5.92 万星。\nhttps://github.com/jellyfin/jellyfin\n\n3. NewPipe：手机安卓端看 ",
+    "author_name": "何笠同学",
+    "author_handle": "HeLi8866",
+    "created_at": "2026-11-14T07:47:19.000Z",
+    "urls": [
+      "https://github.com/pi-hole/pi-hole",
+      "https://github.com/jellyfin/jellyfin",
+      "https://github.com/TeamNewPipe/NewPipe",
+      "https://github.com/upscayl/upscayl",
+      "https://github.com/Raphire/Win11Debloat"
+    ],
+    "note_tweet": "分享5 个看着违规，实际100%合法的 GitHub 仓库⬇️：\n\n1. Pi-hole：装在一台机器上，全屋设备一起把广告拦掉。6.18 万星。\nhttps://github.com/pi-hole/pi-hole\n\n2. Jellyfin：把你手里的片子、剧集丢到自家服务器里播，相当于私人版网飞。5.92 万星。\nhttps://github.com/jellyfin/jellyfin\n\n3. NewPipe：手机安卓端看 YouTube，既不用登录，也不夹广告。4.06 万星。\nhttps://github.com/TeamNewPipe/NewPipe\n\n4. Upscayl：想把图变得更清晰，在自己电脑里用 AI 就能拉高分辨率。5.23 万星。\nhttps://github.com/upscayl/upscayl\n\n5. Win11Debloat：一条脚本，卸掉 Windows 出厂自带软件，顺便关掉遥测。6.24 万星。\nhttps://github.com/Raphire/Win11Debloat",
+    "items": [
+      {
+        "name": "Pi-hole",
+        "url": "https://github.com/pi-hole/pi-hole",
+        "website_url": null,
+        "category": "DevOps & Cloud",
+        "conjunto": "recursos",
+        "tags": [
+          "self-hosted",
+          "dns",
+          "bloqueo-de-anuncios",
+          "red"
+        ],
+        "summary": "Bloqueador de anuncios a nivel de red que, instalado en una máquina, protege todos los dispositivos de casa.",
+        "highlights": [
+          "Bloqueo de anuncios para toda la red",
+          "61.8K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Jellyfin",
+        "url": "https://github.com/jellyfin/jellyfin",
+        "website_url": null,
+        "category": "DevOps & Cloud",
+        "conjunto": "recursos",
+        "tags": [
+          "self-hosted",
+          "media-server",
+          "streaming"
+        ],
+        "summary": "Servidor multimedia autoalojado para reproducir tus películas y series, como un Netflix privado.",
+        "highlights": [
+          "Servidor de medios en casa",
+          "59.2K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "NewPipe",
+        "url": "https://github.com/TeamNewPipe/NewPipe",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "android",
+          "sin-anuncios",
+          "privacidad"
+        ],
+        "summary": "Cliente Android para ver YouTube sin iniciar sesión y sin anuncios.",
+        "highlights": [
+          "Sin login ni anuncios",
+          "40.6K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Upscayl",
+        "url": "https://github.com/upscayl/upscayl",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "upscaling",
+          "imagen",
+          "ia-local"
+        ],
+        "summary": "Aumenta la resolución de imágenes con IA en tu propio ordenador.",
+        "highlights": [
+          "Escalado de imágenes con IA en local",
+          "52.3K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Win11Debloat",
+        "url": "https://github.com/Raphire/Win11Debloat",
+        "website_url": null,
+        "category": "CLI & Terminal",
+        "conjunto": "recursos",
+        "tags": [
+          "windows",
+          "script",
+          "debloat",
+          "telemetria"
+        ],
+        "summary": "Script que elimina el software preinstalado de Windows y desactiva la telemetría.",
+        "highlights": [
+          "Un solo script para limpiar Windows 11",
+          "Desactiva la telemetría; 62.4K estrellas"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121453569521934513",
+    "text": "🐙 이번 주 주목할 깃허브 TOP 5 (11/7~11/13)\n\n1위 auto-ontology ⭐12,365\n데이터 의미 그래프를 구축하는 파이썬 프레임워크\n의미 있는 쿼리를 자동으로 생성할 수 있습니다.\nhttps://github.com/NVIDIA/auto-ontology\n\n2위 skills ⭐193,843\n에이전트 스킬 공유 라이브러리\n다양한 에이전트 스킬을 이용할 수",
+    "author_name": "요즘IT",
+    "author_handle": "yozm_it",
+    "created_at": "2026-11-14T04:02:00.000Z",
+    "urls": [
+      "https://github.com/NVIDIA/auto-ontology",
+      "http://github.com/NVIDIA/auto-ontology",
+      "http://github.com/anthropics/skills",
+      "http://github.com/vercel-labs/agent-desktop",
+      "http://github.com/milind-soni/OpenMausBot",
+      "http://github.com/vercel-labs/agent-browser"
+    ],
+    "note_tweet": "🐙 이번 주 주목할 깃허브 TOP 5 (11/7~11/13)\n\n1위 auto-ontology ⭐12,365\n데이터 의미 그래프를 구축하는 파이썬 프레임워크\n의미 있는 쿼리를 자동으로 생성할 수 있습니다.\nhttp://github.com/NVIDIA/auto-ontology\n\n2위 skills ⭐193,843\n에이전트 스킬 공유 라이브러리\n다양한 에이전트 스킬을 이용할 수 있습니다.\nhttp://github.com/anthropics/skills\n\n3위 agent-desktop ⭐22,921\nAI 에이전트용 컴퓨터 사용 CLI\n에이전트가 데스크톱 작업을 자동화합니다.\nhttp://github.com/vercel-labs/agent-desktop\n\n4위 OpenMausBot ⭐21,874\nGrok 봇을 대신할 오픈소스 플랫폼\n가상 머신 위에서 봇이 작동할 수 있습니다.\nhttp://github.com/milind-soni/OpenMausBot\n\n5위 agent-browser ⭐50,452\nAI 에이전트용 브라우저 자동화 CLI\n에이전트가 웹 브라우징을 자동화합니다.\nhttp://github.com/vercel-labs/agent-browser\n\nAI 에이전트와 자동화 도구가 순위권을 차지합니다.\n\n저장해두고 주말에 하나씩 눌러보세요",
+    "items": [
+      {
+        "name": "auto-ontology",
+        "url": "https://github.com/NVIDIA/auto-ontology",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "knowledge-graph",
+          "ontologias",
+          "nvidia"
+        ],
+        "summary": "Framework en Python de NVIDIA para construir grafos semánticos de datos y generar consultas significativas automáticamente.",
+        "highlights": [
+          "Construye grafos de significado sobre datos",
+          "Genera consultas automáticamente; 12,365 estrellas"
+        ],
+        "entry_type": "tool",
+        "company": "NVIDIA"
+      },
+      {
+        "name": "Agent Skills (Anthropic)",
+        "url": "http://github.com/anthropics/skills",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "anthropic",
+          "claude"
+        ],
+        "summary": "Librería compartida de skills para agentes de IA.",
+        "highlights": [
+          "Variedad de skills reutilizables",
+          "193,843 estrellas"
+        ],
+        "entry_type": "tool",
+        "company": "Anthropic"
+      },
+      {
+        "name": "agent-desktop",
+        "url": "http://github.com/vercel-labs/agent-desktop",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "computer-use",
+          "cli",
+          "agentes-ia",
+          "vercel"
+        ],
+        "summary": "CLI de computer use para que agentes de IA automaticen tareas de escritorio.",
+        "highlights": [
+          "Automatización de escritorio para agentes",
+          "22,921 estrellas"
+        ],
+        "entry_type": "tool",
+        "company": "Vercel Labs"
+      },
+      {
+        "name": "OpenMausBot",
+        "url": "http://github.com/milind-soni/OpenMausBot",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agentes-ia",
+          "maquina-virtual",
+          "open-source"
+        ],
+        "summary": "Plataforma open source presentada como alternativa a Grok Bot, donde el bot opera sobre una máquina virtual.",
+        "highlights": [
+          "El bot funciona dentro de una VM",
+          "21,874 estrellas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "agent-browser",
+        "url": "http://github.com/vercel-labs/agent-browser",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "automatizacion-navegador",
+          "cli",
+          "agentes-ia",
+          "vercel"
+        ],
+        "summary": "CLI de automatización de navegador para agentes de IA.",
+        "highlights": [
+          "Automatiza la navegación web del agente",
+          "50,452 estrellas"
+        ],
+        "entry_type": "tool",
+        "company": "Vercel Labs"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121435883228573788",
+    "text": "stop applying on LinkedIn! these websites could help you find your next remote job\n\n&gt; https://hiringcafe.com/\n&gt; https://www.welcometothejungle.com/en\n&gt; https://himalayas.app\n&gt; https://gethired.devhub.co.in\n&gt; https://remotejobs.org",
+    "author_name": "Abhishek Swami",
+    "author_handle": "swamiabhishek45",
+    "created_at": "2026-11-14T02:51:43.000Z",
+    "urls": [
+      "https://hiringcafe.com/",
+      "https://www.welcometothejungle.com/en",
+      "https://himalayas.app",
+      "https://gethired.devhub.co.in",
+      "https://remotejobs.org"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Hiring Cafe",
+        "url": "https://hiringcafe.com/",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bolsa-de-empleo",
+          "remoto",
+          "busqueda-de-empleo"
+        ],
+        "summary": "Buscador de empleo recomendado como alternativa a LinkedIn para encontrar trabajo remoto.",
+        "highlights": [
+          "Alternativa a postular por LinkedIn",
+          "Enfocado en encontrar el próximo trabajo remoto"
+        ],
+        "entry_type": "job_remote",
+        "location": "Remoto"
+      },
+      {
+        "name": "Welcome to the Jungle",
+        "url": "https://www.welcometothejungle.com/en",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bolsa-de-empleo",
+          "remoto",
+          "startups"
+        ],
+        "summary": "Plataforma de empleo sugerida para buscar trabajo remoto fuera de LinkedIn.",
+        "highlights": [
+          "Portal de ofertas de empleo",
+          "Recomendado para búsqueda de trabajo remoto"
+        ],
+        "entry_type": "job_remote",
+        "location": "Remoto"
+      },
+      {
+        "name": "Himalayas",
+        "url": "https://himalayas.app",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bolsa-de-empleo",
+          "remoto"
+        ],
+        "summary": "Bolsa de empleo recomendada para encontrar trabajos remotos.",
+        "highlights": [
+          "Ofertas de trabajo remoto",
+          "Alternativa a LinkedIn"
+        ],
+        "entry_type": "job_remote",
+        "location": "Remoto"
+      },
+      {
+        "name": "GetHired (DevHub)",
+        "url": "https://gethired.devhub.co.in",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bolsa-de-empleo",
+          "remoto",
+          "desarrolladores"
+        ],
+        "summary": "Portal de empleo de DevHub incluido en una lista de sitios para conseguir trabajo remoto.",
+        "highlights": [
+          "Sitio de búsqueda de empleo",
+          "Parte de una lista de alternativas a LinkedIn"
+        ],
+        "entry_type": "job_remote",
+        "location": "Remoto"
+      },
+      {
+        "name": "RemoteJobs.org",
+        "url": "https://remotejobs.org",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "bolsa-de-empleo",
+          "remoto"
+        ],
+        "summary": "Bolsa de empleo centrada en vacantes remotas.",
+        "highlights": [
+          "Especializada en trabajos remotos",
+          "Alternativa a postular por LinkedIn"
+        ],
+        "entry_type": "job_remote",
+        "location": "Remoto"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121629478426411493",
+    "text": "还在嫌弃 antigravity 不好用的可能没有安装这几个插件 👇 \n\n1. Antigravity Panel\n\n不用等额度耗光才发现，侧栏里就能看各模型还剩多少额度、什么时候重置，还能看用量趋势和上下文占用，支持中文\nhttps://github.com/n2ns/antigravity-panel\n\n2. Antigravity Chinese",
+    "author_name": "Chasen",
+    "author_handle": "chasen_liao",
+    "created_at": "2026-11-14T15:41:00.000Z",
+    "urls": [
+      "https://github.com/n2ns/antigravity-panel",
+      "https://github.com/yiheng8023/antigravity-chinese",
+      "https://github.com/edison-land/paragravity"
+    ],
+    "note_tweet": "还在嫌弃 antigravity 不好用的可能没有安装这几个插件 👇 \n\n1. Antigravity Panel\n\n不用等额度耗光才发现，侧栏里就能看各模型还剩多少额度、什么时候重置，还能看用量趋势和上下文占用，支持中文\nhttps://github.com/n2ns/antigravity-panel\n\n2. Antigravity Chinese\n\n看英文界面费劲的，可以装这套汉化，菜单、设置、权限弹窗这些都有覆盖，支持备份还原，也已经跟进 Windows 2.31.2\nhttps://github.com/yiheng8023/antigravity-chinese\n\n3  Paragravity\n\n有多个账号的，不用反复退出登录了，每个账号单独开一个窗口，会话各自独立，也能继承部分配置，Windows 和 Mac 都能用\nhttps://github.com/edison-land/paragravity\n\n我都给大家整理好了，直接收藏吧😁",
+    "items": [
+      {
+        "name": "Antigravity Panel",
+        "url": "https://github.com/n2ns/antigravity-panel",
+        "website_url": null,
+        "category": "DevTools & IDEs",
+        "conjunto": "recursos",
+        "tags": [
+          "antigravity",
+          "extension",
+          "cuotas",
+          "ide"
+        ],
+        "summary": "Extensión para Antigravity que muestra en la barra lateral la cuota restante de cada modelo y cuándo se reinicia.",
+        "highlights": [
+          "Cuota restante y hora de reinicio por modelo",
+          "Tendencias de uso y ocupación del contexto; soporta chino"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Antigravity Chinese",
+        "url": "https://github.com/yiheng8023/antigravity-chinese",
+        "website_url": null,
+        "category": "DevTools & IDEs",
+        "conjunto": "recursos",
+        "tags": [
+          "antigravity",
+          "traduccion",
+          "chino",
+          "ide"
+        ],
+        "summary": "Paquete de traducción al chino para la interfaz de Antigravity.",
+        "highlights": [
+          "Cubre menús, ajustes y diálogos de permisos",
+          "Backup y restauración; compatible con Windows 2.31.2"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Paragravity",
+        "url": "https://github.com/edison-land/paragravity",
+        "website_url": null,
+        "category": "DevTools & IDEs",
+        "conjunto": "recursos",
+        "tags": [
+          "antigravity",
+          "multi-cuenta",
+          "ide"
+        ],
+        "summary": "Permite usar varias cuentas de Antigravity a la vez, cada una en su propia ventana con sesión independiente.",
+        "highlights": [
+          "Una ventana por cuenta con sesiones aisladas",
+          "Puede heredar parte de la configuración; Windows y Mac"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121530237225955800",
+    "text": "Need Portfolio Inspirations Thank me Later --&gt;\n\nhttps://directoryyy.com/",
+    "author_name": "harshit",
+    "author_handle": "hrstwt",
+    "created_at": "2026-11-14T09:06:39.000Z",
+    "urls": [
+      "https://directoryyy.com/"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Directoryyy",
+        "url": "https://directoryyy.com/",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "inspiracion",
+        "tags": [
+          "portfolio",
+          "inspiracion",
+          "diseno-web"
+        ],
+        "summary": "Directorio web para buscar inspiración al diseñar un portfolio.",
+        "highlights": [
+          "Colección de portfolios para inspirarse",
+          "Recurso visual para mirar, no para instalar"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121400217501388835",
+    "text": "我去，在 GitHub 上直接拿下了 13K 颗星！\n\n有人搞了个 AI 新闻雷达出来，能帮你从整个互联网里挖出特别有价值的信息！\n\n1、把 Telegram、X、GitHub、RSS、Reddit 以及 Hacker News 等一堆信息源全聚到了一起。\n\n2、AI 会自动筛选、打分、去重，把那些真正值得一看的内容给你留下来。 ",
+    "author_name": "LanfAI",
+    "author_handle": "Huahuazo",
+    "created_at": "2026-11-14T00:30:00.000Z",
+    "urls": [
+      "https://github.com/Thysrael/Horizon"
+    ],
+    "note_tweet": "我去，在 GitHub 上直接拿下了 13K 颗星！\n\n有人搞了个 AI 新闻雷达出来，能帮你从整个互联网里挖出特别有价值的信息！\n\n1、把 Telegram、X、GitHub、RSS、Reddit 以及 Hacker News 等一堆信息源全聚到了一起。\n\n2、AI 会自动筛选、打分、去重，把那些真正值得一看的内容给你留下来。\n\n3、每天的中英文简报它自己就能生成，还会顺手把事件背景和网友讨论给你补上。\n\n🔗： ⁠https://github.com/Thysrael/Horizon",
+    "items": [
+      {
+        "name": "Horizon",
+        "url": "https://github.com/Thysrael/Horizon",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "noticias",
+          "agregador",
+          "ia",
+          "rss",
+          "open-source"
+        ],
+        "summary": "Radar de noticias con IA que agrega múltiples fuentes y filtra lo más valioso, generando resúmenes diarios en chino e inglés.",
+        "highlights": [
+          "Agrega Telegram, X, GitHub, RSS, Reddit y Hacker News",
+          "La IA filtra, puntúa y deduplica el contenido",
+          "Genera briefings diarios con contexto del evento y la discusión",
+          "13K estrellas en GitHub"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2121520523591246253",
+    "text": "🔥 卧槽！原来一个域名就能拥有一大堆邮箱！😂\n\nAI 时代，多个账号需要不同邮箱，难道还要一个个注册？\n\nGitHub 开源神器 Cloud Mail，直接解决！\n\n✅ 部署到 Cloudflare\n✅ 自定义多个邮箱地址\n✅ 集中接收验证码和邮件\n✅ 支持邮件发送、附件收发\n项目：https://github.com/maillab/cloud-mail\n没域名？DNSHE",
+    "author_name": "诺诺",
+    "author_handle": "shenghouxuyao",
+    "created_at": "2026-11-14T08:28:03.000Z",
+    "urls": [
+      "https://github.com/maillab/cloud-mail",
+      "https://www.dnshe.com"
+    ],
+    "note_tweet": "🔥 卧槽！原来一个域名就能拥有一大堆邮箱！😂\n\nAI 时代，多个账号需要不同邮箱，难道还要一个个注册？\n\nGitHub 开源神器 Cloud Mail，直接解决！\n\n✅ 部署到 Cloudflare\n✅ 自定义多个邮箱地址\n✅ 集中接收验证码和邮件\n✅ 支持邮件发送、附件收发\n项目：https://github.com/maillab/cloud-mail\n没域名？DNSHE 可以免费申请！\nhttps://www.dnshe.com\n有了域名，直接让 Agent 帮你部署！\n\n⚠️ 免费资源有额度限制，DNSHE 普通免费域名也需要续期。",
+    "items": [
+      {
+        "name": "Cloud Mail",
+        "url": "https://github.com/maillab/cloud-mail",
+        "website_url": null,
+        "category": "DevOps & Cloud",
+        "conjunto": "recursos",
+        "tags": [
+          "cloudflare",
+          "email",
+          "self-hosted",
+          "dominios"
+        ],
+        "summary": "Servicio de correo open source desplegable en Cloudflare para tener muchas direcciones con un solo dominio.",
+        "highlights": [
+          "Despliegue en Cloudflare",
+          "Múltiples direcciones personalizadas con recepción centralizada de códigos",
+          "Envío de correos y adjuntos"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "DNSHE",
+        "url": "https://www.dnshe.com",
+        "website_url": null,
+        "category": "DevOps & Cloud",
+        "conjunto": "producto",
+        "tags": [
+          "dominios",
+          "dns",
+          "free-tier"
+        ],
+        "summary": "Servicio para solicitar dominios gratuitos, sugerido para usar con Cloud Mail si no tienes dominio.",
+        "highlights": [
+          "Dominios gratuitos",
+          "Los dominios gratuitos normales requieren renovación y tienen límites"
+        ],
+        "entry_type": "product_showcase"
+      }
+    ]
+  }
+]
