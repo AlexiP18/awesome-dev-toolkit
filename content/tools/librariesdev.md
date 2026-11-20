@@ -2,6 +2,7 @@
 name: Libraries.dev
 url: 'https://libraries.dev/'
 category: Frontend & UI
+conjunto: inspiracion
 tags:
   - frontend
   - librerias
@@ -14,19 +15,21 @@ tags:
   - react native
   - effects
   - front-end
+  - directorio
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T21:01:39.199Z'
+updated_at: '2026-11-20T04:21:05.236Z'
 source_tweet: 'https://x.com/k2sbhai/status/2111340914576863731'
-author: K2S
-author_handle: k2sbhai
-entry_type: tool
-classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
 source_tweets:
   - 'https://x.com/k2sbhai/status/2111340914576863731'
   - 'https://x.com/Hartdrawss/status/2108799722727059563'
-updated_at: '2026-11-13T05:00:36.268Z'
+  - 'https://x.com/BenjaminUIX/status/2123340929633550834'
+author: BenjaminUIX
+author_handle: BenjaminUIX
+entry_type: tool
+company: BenjaminUIX
+classified_by: Importado del vault
 ---
 # Libraries.dev
 

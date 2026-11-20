@@ -8,16 +8,19 @@ tags:
   - automatizacion-navegador
   - cli
   - vercel
+  - agentes
+  - browser-automation
 status: to_try
 date_added: '2026-11-18'
 created_at: '2026-11-18T04:20:53.126Z'
-updated_at: '2026-11-18T04:20:54.280Z'
+updated_at: '2026-11-20T04:21:03.949Z'
 source_tweet: 'https://x.com/so_ainsight/status/2121440495276798005'
 source_tweets:
   - 'https://x.com/so_ainsight/status/2121440495276798005'
   - 'https://x.com/yozm_it/status/2121453569521934513'
-author: 요즘IT
-author_handle: yozm_it
+  - 'https://x.com/so_ainsight/status/2123252436093829531'
+author: そう@『n8nの教科書』マイナビ出版 10/22発売
+author_handle: so_ainsight
 entry_type: tool
 company: そう@『n8nの教科書』マイナビ出版 10/22発売
 classified_by: Importado del vault

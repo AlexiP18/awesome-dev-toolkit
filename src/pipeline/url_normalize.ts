@@ -288,6 +288,12 @@ function explicitRepoLanding(repoSide: ProductRef, landingSide: ProductRef): boo
   return repoMatchesLanding(repoSide.url, repoSide.name, landingSide.url, landingSide.name);
 }
 
+function exactProductName(a?: string | null, b?: string | null): boolean {
+  const left = alnum(withoutParenthetical((a || '').trim()));
+  const right = alnum(withoutParenthetical((b || '').trim()));
+  return Boolean(left) && left === right;
+}
+
 export function sameProduct(a: ProductRef, b: ProductRef): boolean {
   const aUrl = canonicalUrlKey(a.url);
   const bUrl = canonicalUrlKey(b.url);
@@ -295,5 +301,13 @@ export function sameProduct(a: ProductRef, b: ProductRef): boolean {
   if (a.url && b.url && repoMatchesLanding(a.url, a.name, b.url, b.name)) return true;
   if (b.url && a.url && repoMatchesLanding(b.url, b.name, a.url, a.name)) return true;
   if (explicitRepoLanding(a, b) || explicitRepoLanding(b, a)) return true;
+  // La landing guardada como website_url es la misma ficha si el nombre coincide
+  // (shadcn/ui: github.com/shadcn-ui/ui + ui.shadcn.com). Un nombre parecido no basta:
+  // Refero Styles y Refero comparten sitio y siguen siendo fichas distintas.
+  const aWeb = canonicalUrlKey(a.website);
+  const bWeb = canonicalUrlKey(b.website);
+  if (!exactProductName(a.name, b.name)) return false;
+  if (aUrl && bWeb && aUrl === bWeb) return true;
+  if (bUrl && aWeb && bUrl === aWeb) return true;
   return false;
 }

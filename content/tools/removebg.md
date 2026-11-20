@@ -1,22 +1,29 @@
 ---
 name: remove.bg
-url: 'https://www.remove.bg/'
-category: Productivity & Tools
+url: 'https://remove.bg/'
+category: 'Prompts, Art & Video'
+conjunto: producto
 tags:
   - imagen
   - background-removal
   - api
   - diseno
+  - imagenes
+  - fondo
+  - ia
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:26:53.351Z'
+updated_at: '2026-11-20T04:21:04.580Z'
 source_tweet: 'https://x.com/precisox/status/2077815388725727396'
-author: Precis0x
-author_handle: precisox
+source_tweets:
+  - 'https://x.com/precisox/status/2077815388725727396'
+  - 'https://x.com/Elochoaa__/status/2123350146956112381'
+author: Ochoa
+author_handle: Elochoaa__
 entry_type: tool
 company: remove.bg (Kaleido AI)
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # remove.bg
 

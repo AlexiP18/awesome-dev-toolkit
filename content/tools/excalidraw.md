@@ -12,16 +12,18 @@ tags:
   - canvas
   - arquitectura
   - pizarra
+  - dibujo
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T16:14:15.707Z'
-updated_at: '2026-11-18T04:20:51.273Z'
+updated_at: '2026-11-20T04:21:04.191Z'
 source_tweet: 'https://x.com/DivyanshT91162/status/2079497566660821060'
 source_tweets:
   - 'https://x.com/DivyanshT91162/status/2079497566660821060'
   - 'https://x.com/NanouuSymeon/status/2122026167074963650'
-author: • nanou •
-author_handle: NanouuSymeon
+  - 'https://x.com/Elochoaa__/status/2123350146956112381'
+author: Ochoa
+author_handle: Elochoaa__
 entry_type: tool
 company: Excalidraw
 classified_by: Importado del vault

@@ -1,7 +1,8 @@
 ---
 name: Sevalla.com Hosting
 url: 'https://sevalla.com/'
-category: Backend & APIs
+category: DevOps & Cloud
+conjunto: producto
 tags:
   - deploy
   - cloud
@@ -16,16 +17,17 @@ tags:
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:41:34.289Z'
+updated_at: '2026-11-20T04:21:04.756Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2112068533924626841'
-author: Csaba Kissi
-author_handle: csaba_kissi
-entry_type: tool
-classified_by: Google Gemini (Flash)
-conjunto: recursos
 source_tweets:
   - 'https://x.com/csaba_kissi/status/2112068533924626841'
   - 'https://x.com/csaba_kissi/status/2079093085955657992'
-updated_at: '2026-11-13T05:00:36.264Z'
+  - 'https://x.com/csaba_kissi/status/2123331796217868570'
+author: Csaba Kissi
+author_handle: csaba_kissi
+entry_type: tool
+company: Csaba Kissi
+classified_by: Importado del vault
 ---
 # Sevalla.com Hosting
 

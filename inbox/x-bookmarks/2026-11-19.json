@@ -1,0 +1,1110 @@
+[
+  {
+    "tweet_id": "2123315336762228981",
+    "text": "AI做UI丑？ 这8个设计Skill，让它秒变设计总监！\n\n🔖赶紧收藏!  ( 前 3 个必装) \n\n1. ui-ux-pro-max（90.4k星）🏆\n—设计类的绝对一哥，配色、字体、布局、动效、多技术栈规则全在里面，装它等于给AI塞了一本设计学院教材。\n\n2.  taste-skill（41.4k星）🏆\n—专治AI味，提升品味判断，让它知道什么该删。",
+    "author_name": "五一同学",
+    "author_handle": "wuyi_ai",
+    "created_at": "2026-11-19T07:20:00.000Z",
+    "urls": [],
+    "note_tweet": "AI做UI丑？ 这8个设计Skill，让它秒变设计总监！\n\n🔖赶紧收藏!  ( 前 3 个必装) \n\n1. ui-ux-pro-max（90.4k星）🏆\n—设计类的绝对一哥，配色、字体、布局、动效、多技术栈规则全在里面，装它等于给AI塞了一本设计学院教材。\n\n2.  taste-skill（41.4k星）🏆\n—专治AI味，提升品味判断，让它知道什么该删。\n\n3.  huashu-design（24.2k星）🏆\n—设计哲学到高保真到视觉QA一条龙，流程最完整。\n\n4. MengTo Skills（6.1k星）\n—设计师出品，重参考、重判断；\n\n5. scroll-world（4.6k星）\n—做高端3D滚动Landing Page的神器；\n\n6. emilkowalski/skills（2.6k星）\n—动画细节大师，界面手感就靠它。\n\n7. awesome-design-skills（1.3k星）\n一份索引全搞定。\n\n8.  Frontend Design Skill\nAnthropic官方的, 强制AI先定字体、配色、版式再写代码。",
+    "items": [
+      {
+        "name": "8 skills de diseño para agentes de IA (lista de @wuyi_ai)",
+        "url": "https://x.com/wuyi_ai/status/2123315336762228981",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "diseno",
+          "ui",
+          "claude-code"
+        ],
+        "summary": "Lista de ocho skills de diseño para que los agentes de código generen interfaces con mejor criterio visual; el tuit no trae enlaces, solo nombres y estrellas.",
+        "highlights": [
+          "Las tres recomendadas: ui-ux-pro-max (90.4k★), taste-skill (41.4k★) y huashu-design (24.2k★)",
+          "También: MengTo Skills, scroll-world (landings 3D con scroll), emilkowalski/skills (animación) y awesome-design-skills (índice)",
+          "Frontend Design Skill oficial de Anthropic: fija tipografía, color y layout antes de escribir código"
+        ],
+        "entry_type": "tech_tip"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123252436093829531",
+    "text": "今週GitHubで急上昇したAIツール10選。今の開発現場で何が伸びているか一望できる🚀\n\n1. astryx\n画面デザインの部品をオープンソースでまとめた土台。思いどおりに作り替えられ、AIエージェントからも扱える。\nhttps://t.co/ICwFjUjEG6\n\n2. modern-web-guidance-src https://t.co/kqeRmplQxD",
+    "author_name": "そう@『n8nの教科書』マイナビ出版 10/22発売",
+    "author_handle": "so_ainsight",
+    "created_at": "2026-11-19T03:10:03.000Z",
+    "urls": [
+      "https://github.com/meta/astryx",
+      "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "https://github.com/dream-num/univer",
+      "https://github.com/anthropics/skills",
+      "https://github.com/google/elephant-goldfish-model",
+      "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "https://github.com/vercel-labs/agent-browser",
+      "https://github.com/Alishahryar1/free-claude-code",
+      "https://github.com/backnotprop/plannotator",
+      "https://github.com/blader/humanizer"
+    ],
+    "note_tweet": "今週GitHubで急上昇したAIツール10選。今の開発現場で何が伸びているか一望できる🚀\n\n1. astryx\n画面デザインの部品をオープンソースでまとめた土台。思いどおりに作り替えられ、AIエージェントからも扱える。\nhttps://t.co/iGEMXnUfZe\n\n2. modern-web-guidance-src\nコーディング用AIエージェントを最新のWeb開発作法に合わせる手引き。新しい指針が出ても後れずに反映できる。\nhttps://t.co/urDvrPLRiD\n\n3. univer\n文書編集や計算、共同作業、ファイル処理を自分の製品に組み込めるオフィス基盤。人とAIエージェントの両方から扱える。\nhttps://t.co/svkVXS3tAs\n\n4. skills\nAIエージェントに持たせるスキルを集めて公開した一覧。必要なものを選んで後から足していける。\nhttps://t.co/ZoYJKevxF4\n\n5. elephant-goldfish-model\nソフトウェアの設計やレビューをAIエージェントと一緒に進める拡張。オープンソースのプラグインとして組み込める。\nhttps://t.co/79w011Iqzj\n\n6. daily_stock_analysis\n複数市場の株式分析をAIに任せられるシステム。市況データやニュースをまとめ、判断用の画面と通知で届けられる。\nhttps://t.co/WI61cNliY1\n\n7. agent-browser\nAIエージェントにブラウザ操作を任せられる、文字で動かす道具。一連の操作を組んで代行させられる。\nhttps://t.co/SJip5e9Wih\n\n8. free-claude-code\n複数のコーディング用ツールを無料の枠で使い始められる仕組み。パソコンの操作画面やアプリ、ブラウザから呼び出せる。\nhttps://t.co/Vxui0TBc6K\n\n9. plannotator\nAIエージェントの進み具合を見ながら、計画や注釈、コードのレビューをまとめて渡せる作業場。やり取りを一本化できる。\nhttps://t.co/z2xmJVj6dh\n\n10. humanizer\n文章からAIが書いた痕跡を取り除けるエージェント用のスキル。仕上げの工程に差し込んで使える。\nhttps://t.co/Twr7m2Pwt8\n\n10件の詳細はリプ欄へ👇",
+    "items": [
+      {
+        "name": "Astryx",
+        "url": "https://github.com/meta/astryx",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "design-system",
+          "componentes",
+          "open-source",
+          "agentes"
+        ],
+        "summary": "Base open source de Meta con componentes de diseño de pantallas, personalizable y operable también por agentes de IA.",
+        "highlights": [
+          "Componentes de UI reutilizables y adaptables",
+          "Pensada para que agentes de IA la manipulen"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Modern Web Guidance",
+        "url": "https://github.com/GoogleChrome/modern-web-guidance-src",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "consejos",
+        "tags": [
+          "agentes",
+          "web",
+          "buenas-practicas",
+          "chrome"
+        ],
+        "summary": "Guía de Google Chrome para alinear a los agentes de código con las prácticas actuales de desarrollo web.",
+        "highlights": [
+          "Mantiene a los agentes al día con nuevas pautas web",
+          "Publicada por el equipo de Google Chrome"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Univer",
+        "url": "https://github.com/dream-num/univer",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "documentos",
+          "hojas-de-calculo",
+          "colaboracion",
+          "sdk"
+        ],
+        "summary": "Plataforma ofimática embebible (documentos, hojas de cálculo, colaboración y archivos) para integrar en productos propios, usable por personas y agentes.",
+        "highlights": [
+          "Edición de documentos y cálculo integrable en tu app",
+          "Colaboración y procesamiento de archivos",
+          "Accesible también desde agentes de IA"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Anthropic Skills",
+        "url": "https://github.com/anthropics/skills",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "claude",
+          "anthropic"
+        ],
+        "summary": "Colección pública de skills de Anthropic para dotar a los agentes de capacidades que se añaden según se necesiten.",
+        "highlights": [
+          "Catálogo de skills listas para elegir",
+          "Se agregan de forma incremental al agente"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Elephant Goldfish Model",
+        "url": "https://github.com/google/elephant-goldfish-model",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agentes",
+          "plugin",
+          "arquitectura",
+          "code-review"
+        ],
+        "summary": "Extensión open source de Google para diseñar y revisar software junto a agentes de IA, integrable como plugin.",
+        "highlights": [
+          "Diseño y revisión de software con agentes",
+          "Se instala como plugin open source"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "daily_stock_analysis",
+        "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "recursos",
+        "tags": [
+          "finanzas",
+          "llm",
+          "analisis",
+          "notificaciones"
+        ],
+        "summary": "Sistema que delega en IA el análisis de acciones de varios mercados, resumiendo datos y noticias en un panel con notificaciones.",
+        "highlights": [
+          "Cubre múltiples mercados bursátiles",
+          "Agrega datos de mercado y noticias",
+          "Dashboard y avisos para decidir"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "agent-browser",
+        "url": "https://github.com/vercel-labs/agent-browser",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agentes",
+          "browser-automation",
+          "cli",
+          "vercel"
+        ],
+        "summary": "Herramienta de Vercel Labs para que los agentes de IA controlen el navegador mediante comandos de texto.",
+        "highlights": [
+          "Automatización de navegador guiada por texto",
+          "Encadena secuencias de acciones para el agente"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "free-claude-code",
+        "url": "https://github.com/Alishahryar1/free-claude-code",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "claude-code",
+          "agentes",
+          "coding"
+        ],
+        "summary": "Proyecto para empezar a usar varias herramientas de código con IA en sus niveles gratuitos, invocables desde escritorio, apps o navegador.",
+        "highlights": [
+          "Usa capas gratuitas de varias herramientas de coding",
+          "Accesible desde escritorio, apps y navegador"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Plannotator",
+        "url": "https://github.com/backnotprop/plannotator",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agentes",
+          "planificacion",
+          "code-review",
+          "anotaciones"
+        ],
+        "summary": "Espacio de trabajo para seguir el avance de agentes de IA y devolverles planes, anotaciones y revisiones de código en un solo lugar.",
+        "highlights": [
+          "Revisión de planes y código del agente",
+          "Anotaciones centralizadas en un flujo"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Humanizer",
+        "url": "https://github.com/blader/humanizer",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "escritura",
+          "texto"
+        ],
+        "summary": "Skill para agentes que elimina las huellas de texto generado por IA como paso final de edición.",
+        "highlights": [
+          "Limpia patrones típicos de escritura de IA",
+          "Se inserta en la etapa de pulido"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123350146956112381",
+    "text": "50 sitios web que parecen 'ilegales' pero son perfectamente legales\n\n1. https://t.co/xNHH2lZJwn — Descarga cualquier video de redes sociales\n\n2. https://t.co/iTepVH8MRI — Photoshop gratis\n\n3. https://t.co/h5hnl5duiH — Correo electrónico temporal con un clic\n\n4. https://t.co/OjrUOargkK",
+    "author_name": "Ochoa",
+    "author_handle": "Elochoaa__",
+    "created_at": "2026-11-19T09:38:19.000Z",
+    "urls": [
+      "https://cobalt.tools",
+      "https://photopea.com",
+      "https://temp-mail.org",
+      "http://cobalt.tools",
+      "http://photopea.com",
+      "http://temp-mail.org",
+      "http://tinywow.com",
+      "http://archive.org",
+      "http://libgen.li",
+      "http://sci-hub.al",
+      "http://alternativeto.net",
+      "http://justwatch.com",
+      "http://gutenberg.org",
+      "http://pdfdrive.com",
+      "http://openculture.com",
+      "http://wolframalpha.com",
+      "http://remove.bg",
+      "http://cleanup.pictures",
+      "http://unscreen.com",
+      "http://squoosh.app",
+      "http://excalidraw.com",
+      "http://carbon.now.sh",
+      "http://ray.so",
+      "http://flightradar24.com",
+      "http://camelcamelcamel.com",
+      "http://haveibeenpwned.com",
+      "http://virustotal.com",
+      "http://privnote.com",
+      "http://file.io",
+      "http://archive.ph",
+      "http://accountkiller.com",
+      "http://radio.garden",
+      "http://tunefind.com",
+      "http://musicforprogramming.net",
+      "http://mynoise.net",
+      "http://annasarchive.org",
+      "http://elicit.com",
+      "http://consensus.app",
+      "http://connectedpapers.com",
+      "http://semanticscholar.org",
+      "http://scispace.com",
+      "http://summarize.tech",
+      "http://phind.com",
+      "http://regex101.com",
+      "http://codebeautify.org",
+      "http://explainshell.com",
+      "http://tldraw.com",
+      "http://downdetector.com",
+      "http://tineye.com",
+      "http://fast.com",
+      "http://smallpdf.com",
+      "http://ilovepdf.com",
+      "http://10minutemail.com"
+    ],
+    "note_tweet": "50 sitios web que parecen 'ilegales' pero son perfectamente legales\n\n1. https://t.co/fOWKBERhfn — Descarga cualquier video de redes sociales\n\n2. https://t.co/ZbLlqfxQbd — Photoshop gratis\n\n3. https://t.co/qXfZ5Ccq4B — Correo electrónico temporal con un clic\n\n4. https://t.co/Uz8oRoa522 — Más de 100 herramientas gratuitas en un solo sitio\n\n5. https://t.co/wnwN9ODh2Z — Accede a cualquier página web antigua\n\n6. https://t.co/URBDX9ymmW — Millones de libros de texto gratuitos\n\n7. https://t.co/BdWrgNVazB — Artículos de investigación gratuitos\n\n8. https://t.co/xqWdoKgTZ6 — Encuentra alternativas gratuitas a aplicaciones\n\n9. https://t.co/DSXsE5vpoA — Localiza dónde transmitir cualquier contenido\n\n10. https://t.co/xnnFH5sfrc — 70.000 libros clásicos gratuitos\n\n11. https://t.co/Rd34c57wXN — Descargas gratuitas de PDF\n\n12. https://t.co/jbISsK7EKG — Cursos gratuitos de universidades de élite\n\n13. https://t.co/vJOfdPH7v7 — Resuelve cualquier problema matemático al instante\n\n14. https://t.co/jD5w2U3RmX — Elimina el fondo con un clic\n\n15. https://t.co/7jCNJStyIc — Borra objetos de fotos\n\n16. https://t.co/VYcjKtIvjf — Elimina el fondo de videos gratis\n\n17. https://t.co/q9CnRAkszS — Comprime cualquier imagen gratis\n\n18. https://t.co/5QqOwiRXJz — Gráficos dibujados a mano gratis\n\n19. https://t.co/CJCgawCEJq — Convierte código en obras de arte\n\n20. https://t.co/TLw1WjfAxg — Capturas de pantalla de código impresionantes\n\n21. https://t.co/wfIf2MWGiM — Rastrea cualquier vuelo en tiempo real\n\n22. https://t.co/IbdQOxsI41 — Rastrea el historial de precios de Amazon\n\n23. https://t.co/J5QvQQg0ul — Verifica si has sido hackeado\n\n24. https://t.co/42MSwo4cHk — Escanea malware en cualquier archivo\n\n25. https://t.co/3c33mfplcw — Envía mensajes autodestructivos\n\n26. https://t.co/GGDyJeFtwc — Comparte archivos que se eliminan automáticamente\n\n27. https://t.co/3Buqd9RIJa — Archiva cualquier página web para siempre\n\n28. https://t.co/itSDC0wNVc — Elimina tu presencia de cualquier sitio web\n\n29. https://t.co/Dfwbb4ggZF — Escucha cualquier emisora de radio del mundo\n\n30. https://t.co/SqtvoWcd5c — Identifica las canciones de cualquier programa\n\n31. https://t.co/dGH0fW0ehV — Música para concentrarte\n\n32. https://t.co/bLMgQaWMI5 — Paisajes sonoros personalizados para enfocarte\n\n33. https://t.co/KeRM0YzY1O — Busca cada libro que se haya escrito\n\n34. https://t.co/phFuJLmxF3 — Asistente de IA para artículos de investigación\n\n35. https://t.co/9MnhqMj8rS — Busca consensos científicos\n\n36. https://t.co/gi0XFNwwEW — Mapea investigaciones de forma visual\n\n37. https://t.co/SPjChqUEPU — Búsqueda académica gratuita\n\n38. https://t.co/IQAk9LTmaC — Comprende cualquier artículo de investigación\n\n39. https://t.co/yBqLK5xbjK — Resume cualquier video de YouTube\n\n40. https://t.co/bnTkYVsDfQ — Búsqueda de IA para desarrolladores\n\n41. https://t.co/ENPQNs5Ods — Prueba cualquier expresión regular al instante\n\n42. https://t.co/0k1e9sVM1E — Formatea cualquier código de forma clara\n\n43. https://t.co/vbExtxpTX1 — Entiende comandos de terminal\n\n44. https://t.co/eCtwlKoDMu — Pizarra infinita en el navegador\n\n45. https://t.co/JDG9TTm9aI — Verifica si un sitio web está caído\n\n46. https://t.co/YIlfFOAEjK — Búsqueda inversa de imágenes\n\n47. https://t.co/pIfIOYTqwG — Prueba tu velocidad de internet\n\n48. https://t.co/KazWOnYopk — Edita PDF gratis\n\n49. https://t.co/9xYVARnJ2R — Combina y divide PDF\n\n50. https://t.co/vDAdWFtrTp — Correo temporal en segundos\n\nTodo legal. Todo gratis. \n\nGuárdalo antes de que se te olvide.🔖",
+    "items": [
+      {
+        "name": "Photopea",
+        "url": "http://photopea.com",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "editor-imagenes",
+          "photoshop",
+          "navegador"
+        ],
+        "summary": "Editor de imágenes en el navegador, alternativa gratuita a Photoshop que abre archivos PSD.",
+        "highlights": [
+          "Funciona sin instalación en el navegador",
+          "Compatible con formatos de Photoshop"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Squoosh",
+        "url": "http://squoosh.app",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "imagenes",
+          "compresion",
+          "web-performance"
+        ],
+        "summary": "App web para comprimir y convertir imágenes gratis antes de publicarlas en un sitio.",
+        "highlights": [
+          "Compresión de imágenes en el navegador",
+          "Útil para optimizar assets web"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Excalidraw",
+        "url": "http://excalidraw.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "pizarra",
+          "diagramas",
+          "dibujo"
+        ],
+        "summary": "Pizarra en el navegador para diagramas con estilo dibujado a mano.",
+        "highlights": [
+          "Gráficos de estilo hecho a mano",
+          "Ideal para bocetos de arquitectura"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Carbon",
+        "url": "http://carbon.now.sh",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "codigo",
+          "capturas",
+          "snippets"
+        ],
+        "summary": "Convierte fragmentos de código en imágenes estilizadas para compartir.",
+        "highlights": [
+          "Imágenes de código con temas",
+          "Pensado para posts y documentación"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "ray.so",
+        "url": "http://ray.so",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "codigo",
+          "capturas",
+          "snippets"
+        ],
+        "summary": "Genera capturas de pantalla atractivas de fragmentos de código.",
+        "highlights": [
+          "Capturas de código con fondos y temas",
+          "Exportación rápida para redes"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Have I Been Pwned",
+        "url": "http://haveibeenpwned.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "seguridad",
+          "filtraciones",
+          "privacidad"
+        ],
+        "summary": "Servicio para comprobar si un correo o cuenta aparece en filtraciones de datos.",
+        "highlights": [
+          "Consulta de brechas por email",
+          "Alertas de exposición de credenciales"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "VirusTotal",
+        "url": "http://virustotal.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "seguridad",
+          "malware",
+          "analisis"
+        ],
+        "summary": "Escanea archivos y URLs en busca de malware con múltiples motores.",
+        "highlights": [
+          "Análisis de archivos y enlaces",
+          "Varios antivirus a la vez"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "regex101",
+        "url": "http://regex101.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "regex",
+          "testing",
+          "depuracion"
+        ],
+        "summary": "Probador de expresiones regulares en el navegador con explicación de cada parte.",
+        "highlights": [
+          "Prueba regex al instante",
+          "Explica y depura patrones"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Code Beautify",
+        "url": "http://codebeautify.org",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "formateo",
+          "codigo",
+          "utilidades"
+        ],
+        "summary": "Colección de utilidades web para formatear y embellecer código y datos.",
+        "highlights": [
+          "Formatea código de forma legible",
+          "Varias herramientas en un sitio"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "explainshell",
+        "url": "http://explainshell.com",
+        "website_url": null,
+        "category": "CLI & Terminal",
+        "conjunto": "recursos",
+        "tags": [
+          "shell",
+          "bash",
+          "terminal"
+        ],
+        "summary": "Explica comandos de terminal desglosando cada argumento a partir de las páginas man.",
+        "highlights": [
+          "Desglose de cada flag del comando",
+          "Basado en documentación man"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "tldraw",
+        "url": "http://tldraw.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "pizarra",
+          "canvas",
+          "navegador"
+        ],
+        "summary": "Pizarra infinita en el navegador para dibujar y diagramar.",
+        "highlights": [
+          "Lienzo infinito colaborativo",
+          "Funciona directo en el navegador"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Downdetector",
+        "url": "http://downdetector.com",
+        "website_url": null,
+        "category": "DevOps & Cloud",
+        "conjunto": "producto",
+        "tags": [
+          "monitoreo",
+          "caidas",
+          "status"
+        ],
+        "summary": "Comprueba si un sitio o servicio está caído según reportes de usuarios.",
+        "highlights": [
+          "Estado de servicios en tiempo real",
+          "Mapa de reportes de caídas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Phind",
+        "url": "http://phind.com",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "busqueda",
+          "ia",
+          "desarrolladores"
+        ],
+        "summary": "Buscador con IA orientado a preguntas de desarrolladores.",
+        "highlights": [
+          "Respuestas técnicas con IA",
+          "Enfocado en programación"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "remove.bg",
+        "url": "http://remove.bg",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "imagenes",
+          "fondo",
+          "ia"
+        ],
+        "summary": "Elimina el fondo de una imagen con un clic.",
+        "highlights": [
+          "Recorte automático de fondo",
+          "Resultado listo para descargar"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "AlternativeTo",
+        "url": "http://alternativeto.net",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "inspiracion",
+        "tags": [
+          "alternativas",
+          "directorio",
+          "software"
+        ],
+        "summary": "Directorio para encontrar alternativas gratuitas a aplicaciones conocidas.",
+        "highlights": [
+          "Busca reemplazos por app",
+          "Filtra por gratis y open source"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "musicForProgramming",
+        "url": "http://musicforprogramming.net",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "inspiracion",
+        "tags": [
+          "musica",
+          "concentracion",
+          "enfoque"
+        ],
+        "summary": "Mezclas de música pensadas para concentrarse mientras programas.",
+        "highlights": [
+          "Sesiones largas sin distracción",
+          "Gratis en el navegador"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123331796217868570",
+    "text": "5 cool websites for web developers.\n\nhttps://t.co/zuqQfo0MTi - 70K+ free AI agent skills\n\nhttps://t.co/nW2b6ucQeZ - Full-stack hosting for Python, Go, Javascript, PHP...\n\nhttps://t.co/iOS9fdzIQr - 384 free AI agent resources\n\nhttps://t.co/8IqhcTWhuE - 316 open-source animated https://t.co/QlizJmBTkk",
+    "author_name": "Csaba Kissi",
+    "author_handle": "csaba_kissi",
+    "created_at": "2026-11-19T08:25:24.000Z",
+    "urls": [
+      "https://github.com/devohmycode/skills-atlas",
+      "https://sevalla.com",
+      "https://github.com/DevAnimecx/free-ai-agent-stack",
+      "https://heroicons-animated.com",
+      "http://github.com/devohmycode/skills-atlas",
+      "http://sevalla.com",
+      "http://github.com/DevAnimecx/free-ai-agent-stack",
+      "http://heroicons-animated.com",
+      "http://cult-ui.com"
+    ],
+    "note_tweet": "5 cool websites for web developers.\n\nhttps://t.co/vvPSiu9WK3 - 70K+ free AI agent skills\n\nhttps://t.co/QfIg7QY7Sn - Full-stack hosting for Python, Go, Javascript, PHP...\n\nhttps://t.co/NLD1Dzwqbd - 384 free AI agent resources\n\nhttps://t.co/PjzEfswzQT - 316 open-source animated React icons\n\nhttps://t.co/3LOzy3XKdF - 150+ free Shadcn components",
+    "items": [
+      {
+        "name": "Skills Atlas",
+        "url": "http://github.com/devohmycode/skills-atlas",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "inspiracion",
+        "tags": [
+          "agent-skills",
+          "directorio",
+          "agentes"
+        ],
+        "summary": "Directorio con más de 70K skills gratuitas para agentes de IA.",
+        "highlights": [
+          "Más de 70.000 skills catalogadas",
+          "Repositorio en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Sevalla",
+        "url": "http://sevalla.com",
+        "website_url": null,
+        "category": "DevOps & Cloud",
+        "conjunto": "producto",
+        "tags": [
+          "hosting",
+          "full-stack",
+          "python",
+          "go"
+        ],
+        "summary": "Hosting full-stack para apps en Python, Go, JavaScript, PHP y otros lenguajes.",
+        "highlights": [
+          "Despliegue multi-lenguaje",
+          "Plataforma de hosting gestionada"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Free AI Agent Stack",
+        "url": "http://github.com/DevAnimecx/free-ai-agent-stack",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "inspiracion",
+        "tags": [
+          "agentes",
+          "recursos",
+          "lista"
+        ],
+        "summary": "Lista de 384 recursos gratuitos para construir agentes de IA.",
+        "highlights": [
+          "384 recursos recopilados",
+          "Repositorio en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Heroicons Animated",
+        "url": "http://heroicons-animated.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "iconos",
+          "animacion"
+        ],
+        "summary": "316 iconos de React animados y open source basados en Heroicons.",
+        "highlights": [
+          "316 iconos animados",
+          "Componentes React open source"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Cult UI",
+        "url": "http://cult-ui.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "shadcn",
+          "componentes",
+          "react"
+        ],
+        "summary": "Más de 150 componentes gratuitos construidos sobre shadcn/ui.",
+        "highlights": [
+          "150+ componentes",
+          "Compatible con shadcn/ui"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123245627278528874",
+    "text": "Red Hat is teaching Linux from scratch for FREE.\n\n→ Linux and open source\n→ Shell and file management\n→ Vim, users and permissions\n→ Software and networking\n→ System startup and containers\n\nhttps://t.co/3ga1NhBbTJ https://t.co/rlpLXmj9A5",
+    "author_name": "Ayaan 🐧",
+    "author_handle": "twtayaan",
+    "created_at": "2026-11-19T02:43:00.000Z",
+    "urls": [
+      "https://www.redhat.com/en/services/training/rh024-red-hat-linux-technical-overview"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Red Hat RH024: Linux Technical Overview",
+        "url": "https://www.redhat.com/en/services/training/rh024-red-hat-linux-technical-overview",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "consejos",
+        "tags": [
+          "linux",
+          "curso",
+          "red-hat",
+          "shell"
+        ],
+        "summary": "Curso gratuito de Red Hat que enseña Linux desde cero: shell, archivos, permisos, red, arranque y contenedores.",
+        "highlights": [
+          "Linux y open source, shell y gestión de archivos",
+          "Vim, usuarios y permisos",
+          "Software, redes, arranque del sistema y contenedores"
+        ],
+        "entry_type": "tech_tip",
+        "company": "Red Hat"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123492253083541754",
+    "text": "5 REPOS DE GITHUB QUE NACIERON EN NOVIEMBRE Y YA PASAN DE 2K ESTRELLAS\n\n1. kiri: un runtime de contenedores para Mac, Windows y Linux, con alternativa gratis a Ngrok. 10.9K estrellas. Apache 2.0.\nhttps://t.co/CZF6p0JFcI\n\n2. agent_skills: skills para agentes, publicadas por Jane https://t.co/VwTvrg0fGI",
+    "author_name": "PA13L0",
+    "author_handle": "Fluyeporlaweb",
+    "created_at": "2026-11-19T19:03:00.000Z",
+    "urls": [
+      "https://github.com/libracoder/kiri",
+      "https://github.com/janestreet/agent_skills",
+      "https://github.com/expo/exact",
+      "https://github.com/shanselman/gputaskman",
+      "https://github.com/FrigadeHQ/yogurt",
+      "http://t.me/fluyeporlaweb"
+    ],
+    "note_tweet": "5 REPOS DE GITHUB QUE NACIERON EN NOVIEMBRE Y YA PASAN DE 2K ESTRELLAS\n\n1. kiri: un runtime de contenedores para Mac, Windows y Linux, con alternativa gratis a Ngrok. 10.9K estrellas. Apache 2.0.\nhttps://t.co/pvbEpEJ5Et\n\n2. agent_skills: skills para agentes, publicadas por Jane Street. 10.2K estrellas. MIT.\nhttps://t.co/DjSS042Tww\n\n3. exact: escribes la app una vez y corre en web, Mac, iOS y Linux. Un agente puede construirla. 4.7K estrellas. MIT.\nhttps://t.co/PKUclsm02x\n\n4. gputaskman: el administrador de GPU de Scott Hanselman, con VRAM por proceso y lo que están comiendo tus modelos. 3.5K estrellas. MIT.\nhttps://t.co/5GWiXH6ca8\n\n5. yogurt: notas de reuniones con IA que se quedan en tu ordenador. 2.5K estrellas. MIT.\nhttps://t.co/M49HHAiW2b\n\nVente al grupo gratuito:\nhttps://t.co/pchlm7F7S5",
+    "items": [
+      {
+        "name": "kiri",
+        "url": "https://github.com/libracoder/kiri",
+        "website_url": null,
+        "category": "DevOps & Cloud",
+        "conjunto": "recursos",
+        "tags": [
+          "contenedores",
+          "runtime",
+          "tunel",
+          "ngrok"
+        ],
+        "summary": "Runtime de contenedores para Mac, Windows y Linux que incluye una alternativa gratuita a Ngrok.",
+        "highlights": [
+          "Contenedores multiplataforma",
+          "Túneles tipo Ngrok gratis",
+          "Licencia Apache 2.0, 10.9K estrellas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Jane Street agent_skills",
+        "url": "https://github.com/janestreet/agent_skills",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "agentes",
+          "jane-street"
+        ],
+        "summary": "Skills para agentes de IA publicadas por Jane Street.",
+        "highlights": [
+          "Publicado por Jane Street",
+          "Licencia MIT, 10.2K estrellas"
+        ],
+        "entry_type": "tool",
+        "company": "Jane Street"
+      },
+      {
+        "name": "exact",
+        "url": "https://github.com/expo/exact",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "multiplataforma",
+          "ios",
+          "web",
+          "agentes"
+        ],
+        "summary": "Framework para escribir una app una vez y ejecutarla en web, Mac, iOS y Linux, que un agente puede construir.",
+        "highlights": [
+          "Un código para web, Mac, iOS y Linux",
+          "Diseñado para que agentes lo construyan",
+          "Licencia MIT, 4.7K estrellas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "gputaskman",
+        "url": "https://github.com/shanselman/gputaskman",
+        "website_url": null,
+        "category": "DevTools & IDEs",
+        "conjunto": "recursos",
+        "tags": [
+          "gpu",
+          "vram",
+          "monitoreo",
+          "llm"
+        ],
+        "summary": "Administrador de GPU de Scott Hanselman que muestra la VRAM por proceso y el consumo de tus modelos.",
+        "highlights": [
+          "VRAM por proceso",
+          "Ver qué consumen los modelos locales",
+          "Licencia MIT, 3.5K estrellas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Yogurt",
+        "url": "https://github.com/FrigadeHQ/yogurt",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "recursos",
+        "tags": [
+          "notas-reuniones",
+          "local-first",
+          "transcripcion"
+        ],
+        "summary": "Notas de reuniones con IA que se procesan y guardan en tu propio ordenador.",
+        "highlights": [
+          "Procesamiento local, sin nube",
+          "Licencia MIT, 2.5K estrellas"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123340929633550834",
+    "text": "10 UI libraries that kill sloppy UI:\n\n1. Libraries. dev\nhttps://t.co/HTz94frtSP\n\n2. React Bits\nhttps://t.co/vypCNThtDn\n\n3. Magic UI\nhttps://t.co/Bu03A9jZP8\n\n4. Aceternity UI\nhttps://t.co/Kkv4rFakkl\n\n5. https://t.co/3NX9PvsZDI\nhttps://t.co/3NX9PvsZDI\n\n6. shadcn/ui https://t.co/uox56WdwbK",
+    "author_name": "BenjaminUIX",
+    "author_handle": "BenjaminUIX",
+    "created_at": "2026-11-19T09:01:42.000Z",
+    "urls": [
+      "https://libraries.dev",
+      "https://reactbits.dev",
+      "https://pro.magicui.design/?ref=benjaminmo",
+      "https://ui.aceternity.com",
+      "https://21st.dev",
+      "http://libraries.dev",
+      "http://reactbits.dev",
+      "http://ui.aceternity.com",
+      "http://21st.dev",
+      "http://ui.shadcn.com",
+      "http://motion-primitives.com",
+      "http://cult-ui.com",
+      "http://animate-ui.com",
+      "http://kibo-ui.com"
+    ],
+    "note_tweet": "10 UI libraries that kill sloppy UI:\n\n1. Libraries. dev\nhttps://t.co/h1PFzsgEAS\n\n2. React Bits\nhttps://t.co/ZdjpCyvJdh\n\n3. Magic UI\nhttps://t.co/DEIaYrSQkw\n\n4. Aceternity UI\nhttps://t.co/fFtpiPpVl0\n\n5. https://t.co/MVhblAs1w1\nhttps://t.co/MVhblAs1w1\n\n6. shadcn/ui\nhttps://t.co/JTj3uEeVTf\n\n7. Motion Primitives\nhttps://t.co/kRoyRbDRKb\n\n8. Cult UI\nhttps://t.co/eHz44tKZQ0\n\n9. Animate UI\nhttps://t.co/S1sY9ORQRe\n\n10. Kibo UI\nhttps://t.co/98VuO7gd9R",
+    "items": [
+      {
+        "name": "Libraries.dev",
+        "url": "http://libraries.dev",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "inspiracion",
+        "tags": [
+          "ui",
+          "librerias",
+          "directorio"
+        ],
+        "summary": "Directorio de librerías de UI para encontrar componentes de calidad.",
+        "highlights": [
+          "Catálogo de librerías de interfaz",
+          "Comparar opciones para frontend"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "React Bits",
+        "url": "http://reactbits.dev",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "animacion",
+          "componentes"
+        ],
+        "summary": "Colección de componentes React animados para interfaces llamativas.",
+        "highlights": [
+          "Componentes React con animación",
+          "Copiar y pegar en tu proyecto"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Magic UI Pro",
+        "url": "https://pro.magicui.design/?ref=benjaminmo",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "producto",
+        "tags": [
+          "react",
+          "tailwind",
+          "plantillas"
+        ],
+        "summary": "Versión de pago de Magic UI con componentes y plantillas animadas para React.",
+        "highlights": [
+          "Componentes animados premium",
+          "Plantillas para landings"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Aceternity UI",
+        "url": "http://ui.aceternity.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "tailwind",
+          "framer-motion"
+        ],
+        "summary": "Componentes React con Tailwind y animaciones para landings modernas.",
+        "highlights": [
+          "Efectos animados listos",
+          "Basado en Tailwind"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "21st.dev",
+        "url": "http://21st.dev",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "inspiracion",
+        "tags": [
+          "componentes",
+          "react",
+          "marketplace"
+        ],
+        "summary": "Comunidad y registro de componentes de UI para React.",
+        "highlights": [
+          "Componentes compartidos por la comunidad",
+          "Instalación estilo shadcn"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "shadcn/ui",
+        "url": "http://ui.shadcn.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "tailwind",
+          "radix"
+        ],
+        "summary": "Componentes React accesibles con Tailwind que copias a tu proyecto.",
+        "highlights": [
+          "Código propio, no dependencia",
+          "Base de muchas otras librerías"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Motion Primitives",
+        "url": "http://motion-primitives.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "animacion",
+          "motion"
+        ],
+        "summary": "Componentes y primitivas de animación para React.",
+        "highlights": [
+          "Primitivas de movimiento reutilizables",
+          "Para interfaces con animación fina"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Cult UI",
+        "url": "http://cult-ui.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "shadcn",
+          "componentes",
+          "react"
+        ],
+        "summary": "Componentes React construidos sobre shadcn/ui.",
+        "highlights": [
+          "Extiende shadcn/ui",
+          "Componentes listos para copiar"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Animate UI",
+        "url": "http://animate-ui.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "animacion",
+          "componentes"
+        ],
+        "summary": "Librería de componentes React animados.",
+        "highlights": [
+          "Componentes con animaciones",
+          "Integración con React"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Kibo UI",
+        "url": "http://kibo-ui.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "shadcn",
+          "componentes",
+          "react"
+        ],
+        "summary": "Componentes avanzados para shadcn/ui.",
+        "highlights": [
+          "Bloques más complejos que shadcn base",
+          "Componentes React"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123144734713819321",
+    "text": "GTA VI + Claude Code = the f*cking easiest way to become rich RIGHT NOW\n\nI made repo that turns GTA 6 streams &amp; videos &amp; trends into paid vertical clips that can make up to $15k/month while you sleep, for free\n\nSend this repo to Claude Code or GrokBot. Thank me later: https://t.co/5T8w3U96Tx https://t.co/ZYDg8bb5MN",
+    "author_name": "bodila",
+    "author_handle": "51bodila",
+    "created_at": "2026-11-18T20:02:05.000Z",
+    "urls": [
+      "https://twitter.com/0xCodila/status/2120187587209896001"
+    ],
+    "note_tweet": "GTA VI + Claude Code = the f*cking easiest way to become rich RIGHT NOW\n\nI made repo that turns GTA 6 streams & videos & trends into paid vertical clips that can make up to $15k/month while you sleep, for free\n\nSend this repo to Claude Code or GrokBot. Thank me later:",
+    "items": []
+  },
+  {
+    "tweet_id": "2122978295260094534",
+    "text": "ADIOS NOTION.\nADIOS OBSIDIAN.\nADIOS PAGAR POR TOMAR NOTAS.\n\nSe llama AFFiNE. Open source. Local-first.\n\nLo que hace:\n-&gt; Docs + Whiteboards + Kanban en una sola app\n-&gt; Funciona offline, tus datos son tuyos\n-&gt; IA integrada para resumir, traducir y reescribir\n-&gt; Sincroniza entre https://t.co/5NBqkp2mRq",
+    "author_name": "José Siles | AI | Data",
+    "author_handle": "josesilesdata",
+    "created_at": "2026-11-18T09:00:43.000Z",
+    "urls": [
+      "https://github.com/toeverything/AFFiNE"
+    ],
+    "note_tweet": "ADIOS NOTION.\nADIOS OBSIDIAN.\nADIOS PAGAR POR TOMAR NOTAS.\n\nSe llama AFFiNE. Open source. Local-first.\n\nLo que hace:\n-> Docs + Whiteboards + Kanban en una sola app\n-> Funciona offline, tus datos son tuyos\n-> IA integrada para resumir, traducir y reescribir\n-> Sincroniza entre dispositivos sin nube obligatoria\n-> Importa desde Notion con un click\n\n44.000+ estrellas en GitHub. Licencia MIT.\n\nEnlace en el primer comentario",
+    "items": [
+      {
+        "name": "AFFiNE",
+        "url": "https://github.com/toeverything/AFFiNE",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "notas",
+          "local-first",
+          "kanban",
+          "open-source"
+        ],
+        "summary": "Espacio de trabajo open source y local-first que une documentos, pizarras y kanban, alternativa a Notion y Obsidian.",
+        "highlights": [
+          "Docs, whiteboards y kanban en una app",
+          "Offline y con sincronización sin nube obligatoria",
+          "IA integrada e importación desde Notion",
+          "Licencia MIT, 44.000+ estrellas"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  }
+]

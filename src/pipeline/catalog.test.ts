@@ -80,6 +80,13 @@ test('sameProduct une repo y landing, y no une un subproducto con la marca', () 
     ),
     false
   );
+  assert.equal(
+    sameProduct(
+      { url: 'https://ui.shadcn.com/', name: 'shadcn/ui' },
+      { url: 'https://github.com/shadcn-ui/ui', website: 'https://ui.shadcn.com/', name: 'shadcn/ui' }
+    ),
+    true
+  );
 });
 
 test('findExistingTool detecta la misma URL canónica y el website del repo', () => {
@@ -104,6 +111,27 @@ test('findExistingTool detecta la misma URL canónica y el website del repo', ()
 
   const other = findExistingTool({ url: 'https://godly.website/', name: 'Godly' }, catalog);
   assert.equal(other, undefined);
+
+  const shadcn = findExistingTool(
+    { url: 'http://ui.shadcn.com', name: 'shadcn/ui' },
+    [
+      fakeTool({
+        slug: 'shadcnui',
+        name: 'shadcn/ui',
+        url: 'https://github.com/shadcn-ui/ui',
+        frontmatter: {
+          name: 'shadcn/ui',
+          url: 'https://github.com/shadcn-ui/ui',
+          website_url: 'https://ui.shadcn.com/',
+          category: 'Frontend & UI',
+          tags: ['react'],
+          status: 'to_try',
+          date_added: '2026-11-06',
+        },
+      }),
+    ]
+  );
+  assert.equal(shadcn?.slug, 'shadcnui');
 });
 
 test('nombres distintos no se fusionan aunque compartan URL', () => {
