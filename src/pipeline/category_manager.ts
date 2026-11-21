@@ -23,6 +23,7 @@ export const DEFAULT_CATEGORIES: CategoryDefinition[] = [
   { name: 'Prompts, Art & Video', section: 'tools', icon: '🎬', color: 'violet', description: 'Generación de video, arte 3D y audio con inteligencia artificial', isDefault: true },
   { name: 'Databases & Storage', section: 'tools', icon: '🗄️', color: 'amber', description: 'Bases de datos SQL/NoSQL, ORMs, almacenamiento y cachés', isDefault: true },
   { name: 'Productivity & Tools', section: 'tools', icon: '⚡', color: 'teal', description: 'Utilidades para desarrolladores, métricas y optimización', isDefault: true },
+  { name: 'Sitios útiles generales', section: 'tools', icon: '🌐', color: 'emerald', description: 'Sitios web de uso general, fuera del kit de desarrollo: utilidades cotidianas, archivos, medios, compras, privacidad ligera y oficina en el navegador.', isDefault: true },
   { name: 'Documentation & Resources', section: 'tools', icon: '📚', color: 'indigo', description: 'Guías, libros, cheat sheets y documentación estática', isDefault: true },
   { name: 'Empresas & Productos', section: 'tools', icon: '🏢', color: 'indigo', description: 'Productos y herramientas desarrolladas por empresas o startups', isDefault: true },
   { name: 'Productos Tecnológicos & Hardware', section: 'tools', icon: '🖥️', color: 'amber', description: 'Placas, microcontroladores, periféricos y gadgets físicos', isDefault: true },
@@ -83,6 +84,12 @@ const CATEGORY_ALIASES: Record<string, string> = {
   // "trabajo" solo no basta: un flujo de agentes no es una vacante.
   'flujos de trabajo': 'Agentes & Protocolo MCP',
   'flujo de trabajo': 'Agentes & Protocolo MCP',
+  'sitios utiles': 'Sitios útiles generales',
+  'sitios útiles': 'Sitios útiles generales',
+  'sitios utiles generales': 'Sitios útiles generales',
+  'sitios útiles generales': 'Sitios útiles generales',
+  'utilidades generales': 'Sitios útiles generales',
+  'utilidades web': 'Sitios útiles generales',
 };
 
 export function isAllowedCategory(name?: string | null): boolean {
@@ -124,6 +131,7 @@ const CATEGORY_KEYWORDS: Record<string, string[]> = {
   'Prompts, Art & Video': ['video', 'arte', 'art', 'prompt', 'prompts', 'audio', 'imagen', 'image'],
   'Databases & Storage': ['database', 'sql', 'storage', 'postgres', 'almacen'],
   'Productivity & Tools': ['productivity', 'productividad', 'ide', 'editor'],
+  'Sitios útiles generales': ['sitios', 'utiles', 'cotidiano', 'compras'],
   'Documentation & Resources': ['docs', 'documentation', 'documentacion', 'libro', 'book', 'guia', 'guide', 'curso'],
   'Empresas & Productos': ['empresa', 'startup', 'showcase', 'saas'],
   'Productos Tecnológicos & Hardware': ['hardware', 'gadget', 'placa', 'device', 'iot'],

@@ -7,6 +7,7 @@ export type StandardCategory =
   | 'Prompts, Art & Video'
   | 'Databases & Storage'
   | 'Productivity & Tools'
+  | 'Sitios útiles generales'
   | 'Documentation & Resources'
   | 'Empresas & Productos'
   | 'Productos Tecnológicos & Hardware'

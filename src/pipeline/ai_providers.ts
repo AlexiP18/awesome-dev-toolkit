@@ -56,6 +56,7 @@ GUÍA ESPECÍFICA DE ANÁLISIS SEGÚN EL TIPO DE TWEET:
        • "Frontend & UI": Bibliotecas de componentes React/Vue/Svelte/Web Components, UI kits, librerías de diseño, iconotecas, CSS/Tailwind, animaciones, motion y galerías de inspiración web (ej. beui.dev, iconaut.design, minimal.gallery).
        • "AI & Machine Learning": Sistemas de memoria para agentes, skills para codificación asistida por IA, frameworks de agentes LLM, motores de inferencia, RAG, modelos y prompts de ingeniería (ej. claude-mem, agent-skills, vLLM, Ollama).
        • "Productivity & Tools": Monitoreo y analítica para desarrolladores, métricas de tokens/costes, extensiones de productividad, utilidades para devs (ej. usagerank.com, raycast, launchers).
+       • "Sitios útiles generales": Sitios web de uso general, fuera del kit de desarrollo (correo temporal, archivos, radio, vuelos, compras, PDF de oficina, privacidad ligera). No librerías, CLIs ni repositorios. Si el recurso es Library Genesis, Sci-Hub, PDF Drive o Anna's Archive, añade el tag "zona-gris-legal".
        • "CLI & Terminal": Herramientas de línea de comandos, interfaces TUI, atajos de terminal, utilidades para bash/zsh o git (ej. lazygit, uv, ripgrep).
        • "Backend & APIs": Frameworks de servidor, pasarelas de API, microservicios, autenticación backend, routing HTTP.
        • "Databases & Storage": Bases de datos relacionales, vectoriales, NoSQL, ORMs, cachés, sistemas de archivos.

@@ -1,8 +1,13 @@
+import { createHash } from 'crypto';
+import fs from 'fs';
 import path from 'path';
 import { isAllowedCategory } from './category_manager.js';
 import { groupDuplicateTools } from './dedup_groups.js';
 import { isBlankishString, loadAllTools } from './note_generator.js';
 import { EntryType, ToolConjunto, ToolStatus } from './types.js';
+
+/** Hash de docs/taxonomy.json en el vault (copia gemela de data/taxonomy.json). */
+export const APPROVED_TAXONOMY_SHA256 = 'c2ec85c9f53b5fde638dbc619190abdc0d2cb00db43d055dfe18851953c974c5';
 
 const ENTRY_TYPES = new Set<EntryType>(['tool', 'product_showcase', 'tech_tip', 'job_remote', 'tech_product']);
 const STATUSES = new Set<ToolStatus>(['to_try', 'in_use', 'archived']);
@@ -42,6 +47,16 @@ export function validateCatalog(): string[] {
 
   for (const group of groupDuplicateTools(tools)) {
     errors.push(`Duplicado: ${group.map((tool) => path.relative(process.cwd(), tool.filePath)).join(' + ')}`);
+  }
+
+  const taxonomyPath = path.resolve(process.cwd(), 'data/taxonomy.json');
+  if (!fs.existsSync(taxonomyPath)) {
+    errors.push('data/taxonomy.json no existe');
+  } else {
+    const digest = createHash('sha256').update(fs.readFileSync(taxonomyPath)).digest('hex');
+    if (digest !== APPROVED_TAXONOMY_SHA256) {
+      errors.push(`data/taxonomy.json sha256 ${digest} no coincide con el vault (${APPROVED_TAXONOMY_SHA256})`);
+    }
   }
 
   return errors;

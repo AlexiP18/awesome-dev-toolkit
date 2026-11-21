@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'crypto';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -16,6 +17,22 @@ import {
 } from './note_generator.js';
 import { ToolItem } from './types.js';
 import { canonicalUrlKey, namesLookLikeSameProduct, sameProduct } from './url_normalize.js';
+import { isAllowedCategory, mapVaultCategory } from './category_manager.js';
+import { APPROVED_TAXONOMY_SHA256 } from './validate_catalog.js';
+
+test('taxonomy.json coincide byte a byte con el vault y la categoría nueva está permitida', () => {
+  const raw = fs.readFileSync(path.resolve(process.cwd(), 'data/taxonomy.json'));
+  const digest = createHash('sha256').update(raw).digest('hex');
+  assert.equal(digest, APPROVED_TAXONOMY_SHA256);
+  const taxonomy = JSON.parse(raw.toString('utf8'));
+  const names = taxonomy.categories.map((category: { name: string }) => category.name);
+  const index = names.indexOf('Sitios útiles generales');
+  assert.equal(names[index - 1], 'Productivity & Tools');
+  assert.equal(names[index + 1], 'Prompts, Art & Video');
+  assert.equal(isAllowedCategory('Sitios útiles generales'), true);
+  assert.equal(mapVaultCategory('Sitios útiles generales'), 'Sitios útiles generales');
+  assert.equal(mapVaultCategory('sitios utiles generales'), 'Sitios útiles generales');
+});
 
 function fakeTool(partial: Partial<ToolItem> & { slug: string; url: string; name: string }): ToolItem {
   return {

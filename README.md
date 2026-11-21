@@ -2,7 +2,7 @@
 
 > Colección curada en **3 apartados esenciales** (Herramientas, Consejos Técnicos y Trabajo Remoto/Freelance) y clasificada por **Conjuntos** (📦 Recursos, 💡 Inspiración, 🚀 Producto y 🧠 Consejos) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA.
 
-[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-696-blue?style=for-the-badge)]()
+[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-699-blue?style=for-the-badge)]()
 [![Consejos](https://img.shields.io/badge/💡_Consejos-7-8E75C2?style=for-the-badge)]()
 [![Trabajo Remoto](https://img.shields.io/badge/💼_Trabajo_Remoto-57-0284C7?style=for-the-badge)]()
 [![Obsidian Ready](https://img.shields.io/badge/Obsidian-Segundo_Cerebro-7C3AED?style=for-the-badge&logo=obsidian)]()
@@ -11,13 +11,13 @@
 
 ## 📑 Los 3 Apartados del Toolkit
 
-- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-696) (696)
+- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-699) (699)
 - [💡 Apartado 2: Consejos Técnicos & Buenas Prácticas](#-apartado-2-consejos-técnicos--buenas-prácticas-7) (7)
 - [💼 Apartado 3: Trabajo Remoto & Freelance](#-apartado-3-trabajo-remoto--oportunidades-freelance-57) (57)
 
 ---
 
-## 🛠️ Apartado 1: Herramientas & Repositorios de Software (696)
+## 🛠️ Apartado 1: Herramientas & Repositorios de Software (699)
 
 > Bibliotecas, utilidades CLI, herramientas de desarrollo, devtools, productos técnicos y hardware guardados desde X.
 
@@ -935,7 +935,7 @@
 - **[Sevalla.com Hosting](https://sevalla.com/)** `🚀 Producto` (`🏢 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2112068533924626841) `🟡 Por probar`  
   Un servicio de hosting full-stack que soporta múltiples lenguajes de programación como PHP, JavaScript, Go y Python, ideal para desplegar aplicaciones completas. [📝 Ver ficha](content/tools/sevallacom-hosting.md) `#deploy` `#cloud` `#infraestructura` `#hosting` `#full-stack` `#php` `#javascript` `#go` `#python` `#backend`
 
-### 🤖 AI & Machine Learning (109)
+### 🤖 AI & Machine Learning (105)
 
 - **[Cent AI](https://cent-ai.dev/)** `🚀 Producto` (`🏢 𝙳𝚛𝚊𝚟𝚎𝚗`) [𝕏 Tweet](https://x.com/itsjdraven/status/2123656850344431790) `🟡 Por probar`  
   Servicio de API de modelos que, según el tuit, ofrece HY4 Flash gratis e ilimitado y DeepSeek V4.1 Flash gratis con límite diario, compatible con herramientas de código. [📝 Ver ficha](content/tools/cent-ai.md) `#llm` `#api` `#coding-agents`
@@ -1080,18 +1080,6 @@
 
 - **[Phind](https://phind.com/)** `🚀 Producto` (`🏢 Phind`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Buscador con IA orientado a desarrolladores que responde preguntas técnicas citando documentación y fuentes del resultado. [📝 Ver ficha](content/tools/phind.md) `#buscador ia` `#desarrollo` `#debugging` `#busqueda` `#ia` `#desarrolladores` `#buscador` `#programacion`
-
-- **[Consensus](https://consensus.app/)** `📦 Recursos` (`🏢 Consensus`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Buscador con IA que responde preguntas científicas indicando el grado de consenso en la literatura con citas de los papers. [📝 Ver ficha](content/tools/consensus.md) `#busqueda cientifica` `#ia` `#evidencia`
-
-- **[SciSpace](https://scispace.com/)** `📦 Recursos` (`🏢 SciSpace`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Copiloto de lectura académica que explica párrafos, fórmulas y términos técnicos de cualquier paper en contexto. [📝 Ver ficha](content/tools/scispace.md) `#papers` `#lectura` `#ia`
-
-- **[Elicit](https://elicit.org/)** `📦 Recursos` (`🏢 Elicit`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Asistente de investigación con IA que extrae datos de papers académicos y sintetiza respuestas citando las fuentes originales. [📝 Ver ficha](content/tools/elicit.md) `#investigacion` `#llm` `#papers`
-
-- **[Summarize.tech](https://summarize.tech/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Herramienta basada en IA que genera resúmenes con marcas de tiempo de cualquier vídeo largo de YouTube a partir de su transcripción. [📝 Ver ficha](content/tools/summarizetech.md) `#youtube` `#resumen` `#llm`
 
 - **[Dify](https://github.com/langgenius/dify)** `📦 Recursos` (`🏢 LangGenius`) [🌐 Web](https://dify.ai/) [𝕏 Tweet](https://x.com/hasantoxr/status/2096255783415779684) `🟡 Por probar`  
   Plataforma open source para construir, desplegar y operar agentes de IA y workflows con modelos de lenguaje. [📝 Ver ficha](content/tools/dify.md) `#llm` `#ai-agents` `#workflows` `#rag` `#open-source`
@@ -1445,7 +1433,7 @@
 - **[skills](https://github.com/mattpocock/skills)** `📦 Recursos` (`🏢 Santi Torres`) ⭐ **309,352** [𝕏 Tweet](https://x.com/csaba_kissi/status/2115357959341703241) `🟡 Por probar`  
   Una colección de 'skills' o habilidades para agentes de IA, diseñada específicamente para ingenieros y extraída de directorios personales para optimizar sus flujos de trabajo de desarrollo. [📝 Ver ficha](content/tools/skills.md) `#claude-code` `#agent-skills` `#prompts` `#ai` `#ai-agents` `#workflows` `#shell` `#engineering` `#typescript`
 
-### 🎬 Prompts, Art & Video (86)
+### 🎬 Prompts, Art & Video (84)
 
 - **[Cinecode](https://github.com/sarpstar/cinecode)** `📦 Recursos` (`🏢 Juan`) [𝕏 Tweet](https://x.com/7uanF/status/2123774823381807117) `🟡 Por probar`  
   Herramienta que, a partir de una idea, hace que tu agente de código devuelva un MP4 terminado con guion, frames construidos en código y diseño de sonido. [📝 Ver ficha](content/tools/cinecode.md) `#claude-code` `#video` `#agentes`
@@ -1506,12 +1494,6 @@
 
 - **[MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo)** `📦 Recursos` (`🏢 harry0703`) ⭐ **143,011** [𝕏 Tweet](https://x.com/albacnt/status/2086901875979559130) `🟡 Por probar`  
   Proyecto open source que automatiza la creación completa de vídeos cortos a partir de un simple tema: la IA redacta el guion, selecciona clips HD, sintetiza la voz, añade subtítulos y música, y entrega el vídeo final listo para publicar. [📝 Ver ficha](content/tools/moneyprinterturbo.md) `#video` `#ia` `#open-source` `#shorts` `#automatizacion` `#tiktok` `#youtube`
-
-- **[Cleanup.pictures](https://cleanup.pictures/)** `🚀 Producto` (`🏢 Ochoa`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Editor con IA que borra objetos, personas o texto de una fotografía rellenando el hueco de forma coherente con el fondo. [📝 Ver ficha](content/tools/cleanuppictures.md) `#imagenes` `#inpainting` `#ia` `#edicion`
-
-- **[Unscreen](https://unscreen.com/)** `📦 Recursos` (`🏢 Kaleido AI`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Herramienta que elimina automáticamente el fondo de vídeos sin croma usando segmentación por IA en la nube. [📝 Ver ficha](content/tools/unscreen.md) `#video` `#fondo` `#edicion`
 
 - **[holo-card-studio](https://github.com/EverettFish/holo-card-studio)** `📦 Recursos` (`🏢 EverettFish`) ⭐ **2,061** [𝕏 Tweet](https://x.com/ErickSky/status/2097105534797111441) `🟡 Por probar`  
   Skill para Codex que convierte una descripción o imagen de referencia en una carta coleccionable 3D: genera 4 capas de arte (sujeto, fondo, lineart y texto), un archivo .blend editable y una página interactiva en Three.js con paralaje, efecto foil y estrellas que reacciona al mouse. [📝 Ver ficha](content/tools/holo-card-studio.md) `#blender` `#threejs` `#codex` `#skill` `#3d` `#arte-generativo` `#cartas-coleccionables`
@@ -1713,7 +1695,7 @@
 - **[Qdrant](https://github.com/qdrant/qdrant)** `📦 Recursos` (`🏢 Qdrant`) [🌐 Web](https://qdrant.tech/) [𝕏 Tweet](https://x.com/mdancho84/status/2086054601556410832) `🟡 Por probar`  
   Base de datos vectorial de alto rendimiento escrita en Rust para búsqueda por similitud y recuperación semántica a escala. [📝 Ver ficha](content/tools/qdrant.md) `#vector-database` `#rust` `#search` `#embeddings`
 
-### ⚡ Productivity & Tools (87)
+### ⚡ Productivity & Tools (69)
 
 - **[Jasper](https://jasper.ai/free)** `🚀 Producto` (`🏢 Ochoa`) [𝕏 Tweet](https://x.com/Elochoaa__/status/2123859657747812733) `🟡 Por probar`  
   Asistente de escritura con IA con versión gratuita para uso diario. [📝 Ver ficha](content/tools/jasper.md) `#ia` `#escritura` `#copywriting`
@@ -1757,12 +1739,6 @@
 - **[Recordly](https://github.com/webadderallorg/Recordly)** `🚀 Producto` (`🏢 webadderallorg`) ⭐ **36,207** [𝕏 Tweet](https://x.com/katsudev/status/2077021776412897641) `🟡 Por probar`  
   Grabador de pantalla open source para Mac, Windows y Linux que añade zoom automático y cursor suavizado para crear vídeos demo sin editar. [📝 Ver ficha](content/tools/recordly.md) `#screen-recorder` `#electron` `#demo-video` `#open-source` `#macos` `#windows` `#linux`
 
-- **[Flightradar24](https://www.flightradar24.com/)** `📦 Recursos` (`🏢 Flightradar24`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Rastreador global de vuelos en tiempo real que muestra posición, altitud y ruta de aeronaves sobre un mapa, con API de datos para desarrolladores. [📝 Ver ficha](content/tools/flightradar24.md) `#datos` `#api` `#tiempo-real` `#tracking`
-
-- **[Wolfram Alpha](https://www.wolframalpha.com/)** `📦 Recursos` (`🏢 Wolfram Research`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Motor de conocimiento computacional que resuelve ecuaciones, integrales, conversiones y consultas de datos devolviendo la respuesta con pasos intermedios. [📝 Ver ficha](content/tools/wolfram-alpha.md) `#matematicas` `#computacion` `#calculadora` `#api`
-
 - **[TinyPNG](https://tinypng.com/)** `📦 Recursos` (`🏢 TinyPNG`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
   Optimizador de imágenes online con compresión lossy inteligente para PNG, JPEG y WebP que reduce el peso sin pérdida perceptible de calidad. [📝 Ver ficha](content/tools/tinypng.md) `#imagenes` `#optimizacion` `#web-performance` `#compresion`
 
@@ -1771,18 +1747,6 @@
 
 - **[Have I Been Pwned](https://haveibeenpwned.com/)** `🚀 Producto` (`🏢 Have I Been Pwned (HIBP)`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
   Servicio de consulta de brechas de datos que verifica si un correo o dominio corporativo apareció en filtraciones conocidas y expone una API para automatizar la vigilancia. [📝 Ver ficha](content/tools/have-i-been-pwned.md) `#seguridad` `#brechas-de-datos` `#api` `#observabilidad` `#filtraciones` `#privacidad`
-
-- **[JustWatch](https://www.justwatch.com/)** `🚀 Producto` (`🏢 JustWatch`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Guía de streaming que indica en qué plataforma está disponible una película o serie por país, con filtros por precio, calidad y servicio de suscripción. [📝 Ver ficha](content/tools/justwatch.md) `#streaming` `#busqueda` `#entretenimiento` `#utilidades`
-
-- **[Temp-Mail](https://temp-mail.org/)** `📦 Recursos` (`🏢 Temp-Mail`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Generador de direcciones de correo electrónico temporales desechables con bandeja de entrada en tiempo real, ideal para registros efímeros y pruebas de flujos de verificación. [📝 Ver ficha](content/tools/temp-mail.md) `#email` `#privacidad` `#testing` `#utilidades`
-
-- **[TinyWow](https://tinywow.com/)** `📦 Recursos` (`🏢 TinyWow`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Suite web con más de 100 utilidades gratuitas para PDF, imagen, video, escritura con IA y conversión de archivos sin instalar nada. [📝 Ver ficha](content/tools/tinywow.md) `#pdf` `#utilidades` `#conversion` `#ia`
-
-- **[Cobalt](https://cobalt.tools/)** `🚀 Producto` (`🏢 cobalt`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Servicio web minimalista y de código abierto que descarga video y audio de redes sociales pegando únicamente la URL, sin anuncios, rastreo ni muros de pago. [📝 Ver ficha](content/tools/cobalt.md) `#descarga` `#video` `#open-source` `#utilidades`
 
 - **[LocalCan Snapshot](https://www.localcan.com/)** `📦 Recursos` (`🏢 LocalCan`) [𝕏 Tweet](https://x.com/jarekceborski/status/2078148793602539966) `🟡 Por probar`  
   Herramienta que expone un servidor local en localhost a una URL pública y estable, permitiendo probar webhooks, OAuth y callbacks de pago o compartir una preview en vivo de un proyecto en desarrollo. [📝 Ver ficha](content/tools/localcan-snapshot.md) `#tunneling` `#localhost` `#preview` `#webhooks` `#compartir-prototipos`
@@ -1823,32 +1787,17 @@
 - **[Invoice Ninja](https://nosubscription.org/software/invoice-ninja)** `📦 Recursos` (`🏢 Invoice Ninja`) [🌐 Web](https://www.invoiceninja.com/) [𝕏 Tweet](https://x.com/Cypher1984/status/2087186038892470584) `🟡 Por probar`  
   Plataforma de facturación y gestión empresarial source-available que permite crear facturas y presupuestos, controlar gastos, proyectos, inventario y pagos, con despliegue autoalojado para mantener los datos bajo tu propio control sin suscripciones mensuales. [📝 Ver ficha](content/tools/invoice-ninja.md) `#facturacion` `#self-hosted` `#open-source` `#gestion-empresarial` `#alternativa-freshbooks`
 
-- **[10 Minute Mail](https://10minutemail.com/)** `🚀 Producto` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Generador instantáneo de direcciones de correo temporales con bandeja de entrada accesible durante diez minutos renovables. [📝 Ver ficha](content/tools/10-minute-mail.md) `#email temporal` `#privacidad` `#testing`
-
-- **[archive.today](http://archive.ph/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Servicio de preservación que guarda capturas permanentes de páginas web con sus recursos, incluso de contenido dinámico. [📝 Ver ficha](content/tools/archivetoday.md) `#archivo web` `#capturas` `#preservacion`
-
 - **[Carbon](https://carbon.now.sh/)** `📦 Recursos` (`🏢 Ochoa`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Herramienta que convierte fragmentos de código en imágenes estilizadas con temas, ventana simulada y fondo personalizable. [📝 Ver ficha](content/tools/carbon.md) `#capturas de codigo` `#snippets` `#imagenes` `#codigo` `#capturas`
 
 - **[SimilarSites](https://similarsites.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Extensión y web que descubre sitios similares a uno dado usando datos de tráfico y audiencia compartida. [📝 Ver ficha](content/tools/similarsites.md) `#descubrimiento` `#sitios web` `#competencia`
 
-- **[PrivNote](https://privnote.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Servicio para enviar notas cifradas que se autodestruyen tras su primera lectura y opcionalmente con contraseña. [📝 Ver ficha](content/tools/privnote.md) `#seguridad` `#mensajes` `#autodestruccion`
-
-- **[iLovePDF](https://ilovepdf.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Suite de utilidades para unir, dividir, comprimir, rotar y proteger archivos PDF desde el navegador o su API. [📝 Ver ficha](content/tools/ilovepdf.md) `#pdf` `#union` `#procesamiento`
-
 - **[JSON Formatter](https://jsonformatter.org/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Herramienta web que formatea, valida y minifica JSON, mostrando la ruta de error exacta cuando la sintaxis falla. [📝 Ver ficha](content/tools/json-formatter.md) `#json` `#formateo` `#validacion`
 
 - **[AlternativeTo](https://alternativeto.net/)** `💡 Inspiración` (`🏢 Ochoa`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Directorio colaborativo que sugiere alternativas a cualquier aplicación filtrando por plataforma, licencia y precio. [📝 Ver ficha](content/tools/alternativeto.md) `#alternativas` `#software` `#open source` `#directorio`
-
-- **[file.io](https://file.io/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Servicio de intercambio de archivos con enlaces de un solo uso que se autodestruyen tras la primera descarga. [📝 Ver ficha](content/tools/fileio.md) `#archivos` `#transferencia` `#efimero`
 
 - **[musicForProgramming](https://musicforprogramming.net/)** `💡 Inspiración` (`🏢 Ochoa`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Colección de mezclas de música ambiental seleccionadas para mantener la concentración durante sesiones largas de programación. [📝 Ver ficha](content/tools/musicforprogramming.md) `#musica` `#concentracion` `#audio` `#enfoque`
@@ -1859,15 +1808,6 @@
 - **[Ray.so](https://ray.so/)** `📦 Recursos` (`🏢 Raycast`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Generador de capturas de código con resaltado de sintaxis, temas y fondos listos para compartir en redes o documentación. [📝 Ver ficha](content/tools/rayso.md) `#capturas de codigo` `#imagenes` `#difusion` `#codigo` `#capturas` `#snippets`
 
-- **[TinEye](https://tineye.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Motor de búsqueda inversa de imágenes que localiza dónde se ha publicado una imagen y sus versiones modificadas. [📝 Ver ficha](content/tools/tineye.md) `#imagenes` `#busqueda inversa` `#copyright`
-
-- **[Smallpdf](https://smallpdf.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Conjunto de utilidades online para editar, comprimir, convertir y firmar documentos PDF directamente desde el navegador. [📝 Ver ficha](content/tools/smallpdf.md) `#pdf` `#edicion` `#conversion`
-
-- **[Fast.com](https://fast.com/)** `📦 Recursos` (`🏢 Netflix`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Test de velocidad de descarga minimalista basado en la infraestructura de Netflix Open Connect para medir el ancho de banda real. [📝 Ver ficha](content/tools/fastcom.md) `#red` `#velocidad` `#diagnostico`
-
 - **[Coffitivity](https://coffitivity.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Reproductor de sonido ambiente de cafetería diseñado para mejorar la creatividad y la concentración en tareas cognitivas. [📝 Ver ficha](content/tools/coffitivity.md) `#audio` `#productividad` `#ambiente`
 
@@ -1877,20 +1817,8 @@
 - **[Every Noise at Once](https://everynoise.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Mapa interactivo que visualiza miles de géneros musicales con muestras de audio y artistas representativos de cada uno. [📝 Ver ficha](content/tools/every-noise-at-once.md) `#musica` `#generos` `#visualizacion`
 
-- **[Tunefind](http://tunefind.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Buscador que identifica la música que suena en cada episodio de series y películas, con enlaces a las pistas. [📝 Ver ficha](content/tools/tunefind.md) `#musica` `#series` `#catalogo`
-
-- **[myNoise](https://mynoise.net/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Generador de paisajes sonoros personalizables con ecualizadores para crear ambiente de concentración durante el trabajo. [📝 Ver ficha](content/tools/mynoise.md) `#audio` `#concentracion` `#generador`
-
-- **[Radio Garden](http://radio.garden/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Globo interactivo que permite sintonizar emisoras de radio en directo de cualquier ciudad del mundo moviendo el cursor. [📝 Ver ficha](content/tools/radio-garden.md) `#radio` `#audio` `#exploracion`
-
 - **[Raindrop.io](https://raindrop.io/)** `🚀 Producto` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Gestor de marcadores multiplataforma que organiza enlaces, colecciones y capturas con búsqueda de texto completo. [📝 Ver ficha](content/tools/raindropio.md) `#bookmarks` `#gestion` `#snippets`
-
-- **[Internet Archive](https://archive.org/)** `📦 Recursos` (`🏢 Internet Archive`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Biblioteca digital sin ánimo de lucro que conserva versiones históricas de páginas web mediante Wayback Machine además de textos y multimedia. [📝 Ver ficha](content/tools/internet-archive.md) `#wayback-machine` `#archivo web` `#biblioteca digital`
 
 - **[12ft](https://12ft.io/)** `🚀 Producto` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Servicio web que intenta eliminar los muros de pago de artículos para leer el contenido completo sin suscripción. [📝 Ver ficha](content/tools/12ft.md) `#paywall` `#lectura` `#utilidades`
@@ -1976,7 +1904,114 @@
 - **[t3code](https://github.com/pingdotgg/t3code)** `📦 Recursos` (`🏢 pingdotgg`) (`💰 Gratis`) ⭐ **38,343** [🌐 Web](https://t3.codes/) [𝕏 Tweet](https://x.com/csaba_kissi/status/2116071103206724053) `🟡 Por probar`  
   Un dashboard de código abierto para gestionar y visualizar agentes de IA, construido con tecnologías modernas para facilitar el desarrollo de aplicaciones basadas en inteligencia artificial. [📝 Ver ficha](content/tools/t3code.md) `#ai` `#agents` `#coding` `#open-source` `#control-plane` `#agentes` `#dashboard` `#ia` `#typescript` `#gratis`
 
-### 📚 Documentation & Resources (42)
+### 🌐 Sitios útiles generales (35)
+
+- **[AccountKiller](http://accountkiller.com)** `📦 Recursos` (`👤 Ochoa`) [𝕏 Tweet](https://x.com/Elochoaa__/status/2123350146956112381) `🟡 Por probar`  
+  Sitio para eliminar tu presencia de cuentas en otros servicios web. [📝 Ver ficha](content/tools/accountkiller.md) `#privacidad` `#cuentas`
+
+- **[Anna's Archive](http://annasarchive.org)** `📦 Recursos` (`👤 Ochoa`) [𝕏 Tweet](https://x.com/Elochoaa__/status/2123350146956112381) `🟡 Por probar`  
+  Buscador que la lista describe como un índice de cada libro que se haya escrito. [📝 Ver ficha](content/tools/annas-archive.md) `#libros` `#buscador` `#zona-gris-legal`
+
+- **[CamelCamelCamel](http://camelcamelcamel.com)** `📦 Recursos` (`👤 Ochoa`) [𝕏 Tweet](https://x.com/Elochoaa__/status/2123350146956112381) `🟡 Por probar`  
+  Sitio para rastrear el historial de precios de productos en Amazon. [📝 Ver ficha](content/tools/camelcamelcamel.md) `#amazon` `#precios` `#compras`
+
+- **[Flightradar24](https://www.flightradar24.com/)** `📦 Recursos` (`🏢 Flightradar24`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Rastreador global de vuelos en tiempo real que muestra posición, altitud y ruta de aeronaves sobre un mapa, con API de datos para desarrolladores. [📝 Ver ficha](content/tools/flightradar24.md) `#datos` `#api` `#tiempo-real` `#tracking`
+
+- **[Wolfram Alpha](https://www.wolframalpha.com/)** `📦 Recursos` (`🏢 Wolfram Research`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Motor de conocimiento computacional que resuelve ecuaciones, integrales, conversiones y consultas de datos devolviendo la respuesta con pasos intermedios. [📝 Ver ficha](content/tools/wolfram-alpha.md) `#matematicas` `#computacion` `#calculadora` `#api`
+
+- **[Connected Papers](https://www.connectedpapers.com/)** `📦 Recursos` (`🏢 Connected Papers`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Herramienta de exploración académica que genera un grafo visual de artículos relacionados a partir de un paper semilla para descubrir literatura previa y derivada. [📝 Ver ficha](content/tools/connected-papers.md) `#investigacion` `#papers` `#grafo` `#academia`
+
+- **[JustWatch](https://www.justwatch.com/)** `🚀 Producto` (`🏢 JustWatch`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Guía de streaming que indica en qué plataforma está disponible una película o serie por país, con filtros por precio, calidad y servicio de suscripción. [📝 Ver ficha](content/tools/justwatch.md) `#streaming` `#busqueda` `#entretenimiento` `#utilidades`
+
+- **[Project Gutenberg](https://www.gutenberg.org/)** `📦 Recursos` (`🏢 Project Gutenberg`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Biblioteca digital con más de 75.000 libros de dominio público en formato EPUB, Kindle y texto plano, descargables sin registro ni coste alguno. [📝 Ver ficha](content/tools/project-gutenberg.md) `#ebooks` `#dominio-publico` `#biblioteca` `#lectura`
+
+- **[PDF Drive](https://www.pdfdrive.com/)** `📦 Recursos` (`🏢 PDF Drive`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Biblioteca en línea con millones de libros y documentos PDF de acceso gratuito, con búsqueda por título, autor y vista previa rápida en el navegador. [📝 Ver ficha](content/tools/pdf-drive.md) `#libros` `#pdf` `#biblioteca` `#lectura` `#zona-gris-legal`
+
+- **[Wayback Machine (Internet Archive)](https://web.archive.org/)** `📦 Recursos` (`🏢 Internet Archive`) [🌐 Web](https://archive.org/) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Archivo histórico de la web que permite recuperar versiones antiguas o borradas de cualquier página y consultar su evolución a lo largo del tiempo. [📝 Ver ficha](content/tools/wayback-machine-internet-archive.md) `#archivo` `#wayback` `#documentacion` `#investigacion`
+
+- **[Temp-Mail](https://temp-mail.org/)** `📦 Recursos` (`🏢 Temp-Mail`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Generador de direcciones de correo electrónico temporales desechables con bandeja de entrada en tiempo real, ideal para registros efímeros y pruebas de flujos de verificación. [📝 Ver ficha](content/tools/temp-mail.md) `#email` `#privacidad` `#testing` `#utilidades`
+
+- **[TinyWow](https://tinywow.com/)** `📦 Recursos` (`🏢 TinyWow`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Suite web con más de 100 utilidades gratuitas para PDF, imagen, video, escritura con IA y conversión de archivos sin instalar nada. [📝 Ver ficha](content/tools/tinywow.md) `#pdf` `#utilidades` `#conversion` `#ia`
+
+- **[Cobalt](https://cobalt.tools/)** `🚀 Producto` (`🏢 cobalt`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Servicio web minimalista y de código abierto que descarga video y audio de redes sociales pegando únicamente la URL, sin anuncios, rastreo ni muros de pago. [📝 Ver ficha](content/tools/cobalt.md) `#descarga` `#video` `#open-source` `#utilidades`
+
+- **[10 Minute Mail](https://10minutemail.com/)** `🚀 Producto` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Generador instantáneo de direcciones de correo temporales con bandeja de entrada accesible durante diez minutos renovables. [📝 Ver ficha](content/tools/10-minute-mail.md) `#email temporal` `#privacidad` `#testing`
+
+- **[archive.today](http://archive.ph/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Servicio de preservación que guarda capturas permanentes de páginas web con sus recursos, incluso de contenido dinámico. [📝 Ver ficha](content/tools/archivetoday.md) `#archivo web` `#capturas` `#preservacion`
+
+- **[PrivNote](https://privnote.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Servicio para enviar notas cifradas que se autodestruyen tras su primera lectura y opcionalmente con contraseña. [📝 Ver ficha](content/tools/privnote.md) `#seguridad` `#mensajes` `#autodestruccion`
+
+- **[Consensus](https://consensus.app/)** `📦 Recursos` (`🏢 Consensus`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Buscador con IA que responde preguntas científicas indicando el grado de consenso en la literatura con citas de los papers. [📝 Ver ficha](content/tools/consensus.md) `#busqueda cientifica` `#ia` `#evidencia`
+
+- **[Sci-Hub](http://sci-hub.se/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Repositorio que da acceso al texto completo de artículos científicos mediante su DOI o URL del editor. [📝 Ver ficha](content/tools/sci-hub.md) `#papers` `#acceso abierto` `#investigacion` `#zona-gris-legal`
+
+- **[Cleanup.pictures](https://cleanup.pictures/)** `🚀 Producto` (`🏢 Ochoa`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Editor con IA que borra objetos, personas o texto de una fotografía rellenando el hueco de forma coherente con el fondo. [📝 Ver ficha](content/tools/cleanuppictures.md) `#imagenes` `#inpainting` `#ia` `#edicion`
+
+- **[iLovePDF](https://ilovepdf.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Suite de utilidades para unir, dividir, comprimir, rotar y proteger archivos PDF desde el navegador o su API. [📝 Ver ficha](content/tools/ilovepdf.md) `#pdf` `#union` `#procesamiento`
+
+- **[file.io](https://file.io/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Servicio de intercambio de archivos con enlaces de un solo uso que se autodestruyen tras la primera descarga. [📝 Ver ficha](content/tools/fileio.md) `#archivos` `#transferencia` `#efimero`
+
+- **[Library Genesis](https://libgen.is/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Repositorio de libros y artículos de texto completo que permite localizar manuales técnicos y bibliografía universitaria. [📝 Ver ficha](content/tools/library-genesis.md) `#libros` `#textos academicos` `#biblioteca` `#zona-gris-legal`
+
+- **[TinEye](https://tineye.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Motor de búsqueda inversa de imágenes que localiza dónde se ha publicado una imagen y sus versiones modificadas. [📝 Ver ficha](content/tools/tineye.md) `#imagenes` `#busqueda inversa` `#copyright`
+
+- **[SciSpace](https://scispace.com/)** `📦 Recursos` (`🏢 SciSpace`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Copiloto de lectura académica que explica párrafos, fórmulas y términos técnicos de cualquier paper en contexto. [📝 Ver ficha](content/tools/scispace.md) `#papers` `#lectura` `#ia`
+
+- **[Elicit](https://elicit.org/)** `📦 Recursos` (`🏢 Elicit`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Asistente de investigación con IA que extrae datos de papers académicos y sintetiza respuestas citando las fuentes originales. [📝 Ver ficha](content/tools/elicit.md) `#investigacion` `#llm` `#papers`
+
+- **[Smallpdf](https://smallpdf.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Conjunto de utilidades online para editar, comprimir, convertir y firmar documentos PDF directamente desde el navegador. [📝 Ver ficha](content/tools/smallpdf.md) `#pdf` `#edicion` `#conversion`
+
+- **[Fast.com](https://fast.com/)** `📦 Recursos` (`🏢 Netflix`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Test de velocidad de descarga minimalista basado en la infraestructura de Netflix Open Connect para medir el ancho de banda real. [📝 Ver ficha](content/tools/fastcom.md) `#red` `#velocidad` `#diagnostico`
+
+- **[Unscreen](https://unscreen.com/)** `📦 Recursos` (`🏢 Kaleido AI`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Herramienta que elimina automáticamente el fondo de vídeos sin croma usando segmentación por IA en la nube. [📝 Ver ficha](content/tools/unscreen.md) `#video` `#fondo` `#edicion`
+
+- **[Semantic Scholar](https://semanticscholar.org/)** `📦 Recursos` (`🏢 Allen Institute for AI`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Buscador académico gratuito con IA que indexa millones de papers y extrae citas, resúmenes y relaciones entre artículos. [📝 Ver ficha](content/tools/semantic-scholar.md) `#papers` `#busqueda academica` `#api`
+
+- **[Tunefind](http://tunefind.com/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Buscador que identifica la música que suena en cada episodio de series y películas, con enlaces a las pistas. [📝 Ver ficha](content/tools/tunefind.md) `#musica` `#series` `#catalogo`
+
+- **[myNoise](https://mynoise.net/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Generador de paisajes sonoros personalizables con ecualizadores para crear ambiente de concentración durante el trabajo. [📝 Ver ficha](content/tools/mynoise.md) `#audio` `#concentracion` `#generador`
+
+- **[Open Culture](https://openculture.com/)** `📦 Recursos` (`🏢 Omoalhaja`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🎓 Promo Académica` `🟡 Por probar`  
+  Directorio curado de cursos gratuitos, audiolibros, eBooks y películas de dominio público de universidades de primer nivel. [📝 Ver ficha](content/tools/open-culture.md) `#cursos` `#educacion` `#aprendizaje` `#ebooks`
+
+- **[Radio Garden](http://radio.garden/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Globo interactivo que permite sintonizar emisoras de radio en directo de cualquier ciudad del mundo moviendo el cursor. [📝 Ver ficha](content/tools/radio-garden.md) `#radio` `#audio` `#exploracion`
+
+- **[Summarize.tech](https://summarize.tech/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Herramienta basada en IA que genera resúmenes con marcas de tiempo de cualquier vídeo largo de YouTube a partir de su transcripción. [📝 Ver ficha](content/tools/summarizetech.md) `#youtube` `#resumen` `#llm`
+
+- **[Internet Archive](https://archive.org/)** `📦 Recursos` (`🏢 Internet Archive`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
+  Biblioteca digital sin ánimo de lucro que conserva versiones históricas de páginas web mediante Wayback Machine además de textos y multimedia. [📝 Ver ficha](content/tools/internet-archive.md) `#wayback-machine` `#archivo web` `#biblioteca digital`
+
+### 📚 Documentation & Resources (34)
 
 - **[Free AI Agents Resources](https://github.com/avinash201199/free-ai-agents-resources)** `📦 Recursos` (`🏢 Avinash Singh`) [𝕏 Tweet](https://x.com/AvinashSingh_20/status/2123656184179876292) `🟡 Por probar`  
   Repositorio con recursos gratuitos para aprender sobre agentes de IA. [📝 Ver ficha](content/tools/free-ai-agents-resources.md) `#agentes-ia` `#recursos` `#aprendizaje`
@@ -2032,18 +2067,6 @@
 - **[The Design System Guide](https://thedesignsystem.guide/)** `🧠 Consejos` (`👤 Abraham John`) [𝕏 Tweet](https://x.com/Abmankendrick/status/2076248712418848918) `🟡 Por probar`  
   Guía completa en línea para configurar y mantener un sistema de diseño, con recursos, herramientas y checklists prácticas para equipos de producto. [📝 Ver ficha](content/tools/the-design-system-guide.md) `#design-system` `#guide` `#resource` `#documentation`
 
-- **[Connected Papers](https://www.connectedpapers.com/)** `📦 Recursos` (`🏢 Connected Papers`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Herramienta de exploración académica que genera un grafo visual de artículos relacionados a partir de un paper semilla para descubrir literatura previa y derivada. [📝 Ver ficha](content/tools/connected-papers.md) `#investigacion` `#papers` `#grafo` `#academia`
-
-- **[Project Gutenberg](https://www.gutenberg.org/)** `📦 Recursos` (`🏢 Project Gutenberg`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Biblioteca digital con más de 75.000 libros de dominio público en formato EPUB, Kindle y texto plano, descargables sin registro ni coste alguno. [📝 Ver ficha](content/tools/project-gutenberg.md) `#ebooks` `#dominio-publico` `#biblioteca` `#lectura`
-
-- **[PDF Drive](https://www.pdfdrive.com/)** `📦 Recursos` (`🏢 PDF Drive`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Biblioteca en línea con millones de libros y documentos PDF de acceso gratuito, con búsqueda por título, autor y vista previa rápida en el navegador. [📝 Ver ficha](content/tools/pdf-drive.md) `#libros` `#pdf` `#biblioteca` `#lectura`
-
-- **[Wayback Machine (Internet Archive)](https://web.archive.org/)** `📦 Recursos` (`🏢 Internet Archive`) [🌐 Web](https://archive.org/) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Archivo histórico de la web que permite recuperar versiones antiguas o borradas de cualquier página y consultar su evolución a lo largo del tiempo. [📝 Ver ficha](content/tools/wayback-machine-internet-archive.md) `#archivo` `#wayback` `#documentacion` `#investigacion`
-
 - **[OSSU Computer Science](https://github.com/ossu/computer-science)** `📦 Recursos` (`🏢 Open Source Society University`) ⭐ **210,827** [𝕏 Tweet](https://x.com/ErickSky/status/2078158192173781087) `🎓 Promo Académica` `🟡 Por probar`  
   Currículo completo de Computer Science de autoaprendizaje gratuito, estructurado con cursos de universidades como MIT, Harvard y Princeton para obtener una formación equivalente a una carrera universitaria. [📝 Ver ficha](content/tools/ossu-computer-science.md) `#awesome-list` `#computer-science` `#curriculum` `#courses` `#educacion` `#open-source`
 
@@ -2058,18 +2081,6 @@
 
 - **[learn-harness-engineering](https://github.com/walkinglabs/learn-harness-engineering)** `🧠 Consejos` (`🏢 walkinglabs`) ⭐ **23,355** [𝕏 Tweet](https://x.com/santtiagom_/status/2092751908922446181) `🎓 Promo Académica` `🟡 Por probar`  
   Curso gratuito de harness engineering en español con 14 lecciones y 8 proyectos prácticos que enseña a estructurar repositorios optimizados para agentes de código (Claude Code, Codex, Pi y DeepSeek). [📝 Ver ficha](content/tools/learn-harness-engineering.md) `#harness-engineering` `#ai-agents` `#agentes` `#tutorial` `#typescript` `#claude-code` `#codex` `#educacion` `#agentes-ia` `#curso` `#coding-agents`
-
-- **[Sci-Hub](http://sci-hub.se/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Repositorio que da acceso al texto completo de artículos científicos mediante su DOI o URL del editor. [📝 Ver ficha](content/tools/sci-hub.md) `#papers` `#acceso abierto` `#investigacion`
-
-- **[Library Genesis](https://libgen.is/)** `📦 Recursos` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Repositorio de libros y artículos de texto completo que permite localizar manuales técnicos y bibliografía universitaria. [📝 Ver ficha](content/tools/library-genesis.md) `#libros` `#textos academicos` `#biblioteca`
-
-- **[Semantic Scholar](https://semanticscholar.org/)** `📦 Recursos` (`🏢 Allen Institute for AI`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
-  Buscador académico gratuito con IA que indexa millones de papers y extrae citas, resúmenes y relaciones entre artículos. [📝 Ver ficha](content/tools/semantic-scholar.md) `#papers` `#busqueda academica` `#api`
-
-- **[Open Culture](https://openculture.com/)** `📦 Recursos` (`🏢 Omoalhaja`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🎓 Promo Académica` `🟡 Por probar`  
-  Directorio curado de cursos gratuitos, audiolibros, eBooks y películas de dominio público de universidades de primer nivel. [📝 Ver ficha](content/tools/open-culture.md) `#cursos` `#educacion` `#aprendizaje` `#ebooks`
 
 - **[OpenAI Cookbook](https://github.com/openai/openai-cookbook)** `📦 Recursos` (`🏢 OpenAI`) ⭐ **76,971** [𝕏 Tweet](https://x.com/dkare1009/status/2098056476170268760) `🟡 Por probar`  
   Colección de ejemplos y guías prácticas en notebooks para construir aplicaciones con la API de OpenAI, desde prompts hasta RAG. [📝 Ver ficha](content/tools/openai-cookbook.md) `#openai` `#gpt` `#api` `#ejemplos` `#rag`

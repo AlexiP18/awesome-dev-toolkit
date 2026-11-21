@@ -2,7 +2,7 @@
 name: Wayback Machine (Internet Archive)
 url: 'https://web.archive.org/'
 website_url: 'https://archive.org/'
-category: Documentation & Resources
+category: 'Sitios útiles generales'
 tags:
   - archivo
   - wayback
@@ -11,7 +11,11 @@ tags:
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:26:53.350Z'
+updated_at: '2026-11-21T04:20:00.000Z'
 source_tweet: 'https://x.com/precisox/status/2077815388725727396'
+source_tweets:
+  - 'https://x.com/precisox/status/2077815388725727396'
+  - 'https://x.com/Elochoaa__/status/2123350146956112381'
 author: Precis0x
 author_handle: precisox
 entry_type: tool
@@ -41,3 +45,10 @@ conjunto: recursos
 - Enlace de referencia: [https://web.archive.org/](https://web.archive.org/)
 - Sitio Web oficial: [https://archive.org/](https://archive.org/)
 - Tweet origen: [Ver en X](https://x.com/precisox/status/2077815388725727396)
+
+### Mención adicional (2026-11-21)
+
+- **👤 Publicado / Recomendado por:** Ochoa ([@Elochoaa__](https://x.com/Elochoaa__))
+- Tweet origen adicional: [https://x.com/Elochoaa__/status/2123350146956112381](https://x.com/Elochoaa__/status/2123350146956112381)
+- En la lista: «Accede a cualquier página web antigua».
+- URL citada en el tuit: [http://archive.org](http://archive.org)
