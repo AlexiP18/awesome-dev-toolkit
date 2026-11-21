@@ -6,6 +6,7 @@ services:
     plan: free
     buildCommand: npm install
     startCommand: npm start
+    healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production
@@ -15,6 +16,14 @@ services:
         value: main
       - key: GITHUB_TOKEN
         sync: false
+      - key: ADMIN_TOKEN
+        sync: false
+      - key: GITHUB_WEBHOOK_SECRET
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: GITHUB_PULL_INTERVAL_MS
+        value: "300000"
       - key: DEFAULT_AI_PROVIDER
         sync: false
       - key: NVIDIA_API_KEY
@@ -46,6 +55,4 @@ services:
       - key: OPENROUTER_API_KEY
         sync: false
       - key: OPENAI_API_KEY
-        sync: false
-      - key: GITHUB_TOKEN
         sync: false

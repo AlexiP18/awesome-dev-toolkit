@@ -15,7 +15,8 @@
     "parse:archive": "tsx src/parsers/x_archive_parser.ts",
     "build:readme": "tsx src/pipeline/generate_readme.ts",
     "classify:conjuntos": "tsx src/pipeline/classify_conjuntos.ts",
-    "test": "tsx --test src/pipeline/catalog.test.ts src/pipeline/import_vault.test.ts src/web/catalog-logic.test.ts",
+    "test": "tsx --test src/pipeline/catalog.test.ts src/pipeline/import_vault.test.ts src/pipeline/github_sync.test.ts src/server/api.test.ts src/web/catalog-logic.test.ts",
+    "typecheck": "tsc --noEmit",
     "validate": "tsx src/pipeline/validate_catalog.ts",
     "merge:duplicates": "tsx src/pipeline/merge_duplicates.ts",
     "export:vault": "tsx src/pipeline/export_vault.ts",
@@ -44,7 +45,9 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.5",
+    "@types/supertest": "^7.2.1",
     "gh-pages": "^6.3.0",
+    "supertest": "^7.3.2",
     "typescript": "^7.0.2"
   }
 }
