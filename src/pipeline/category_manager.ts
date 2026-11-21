@@ -80,6 +80,9 @@ const CATEGORY_ALIASES: Record<string, string> = {
   'document ai': 'Document AI & Extracción',
   'document ai & extraccion': 'Document AI & Extracción',
   'document ai & extracción': 'Document AI & Extracción',
+  // "trabajo" solo no basta: un flujo de agentes no es una vacante.
+  'flujos de trabajo': 'Agentes & Protocolo MCP',
+  'flujo de trabajo': 'Agentes & Protocolo MCP',
 };
 
 export function isAllowedCategory(name?: string | null): boolean {

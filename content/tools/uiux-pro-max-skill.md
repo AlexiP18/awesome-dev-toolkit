@@ -1,7 +1,8 @@
 ---
 name: UI/UX Pro Max Skill
 url: 'https://github.com/nextlevelbuilder/ui-ux-pro-max-skill'
-category: AI & Machine Learning
+category: Frontend & UI
+conjunto: recursos
 tags:
   - ai
   - ui-design
@@ -11,16 +12,23 @@ tags:
   - tailwindcss
   - ai-skill
   - free
+  - agent-skills
+  - ui
+  - diseno
 stars: 144657
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:27:28.260Z'
+updated_at: '2026-11-21T04:16:51.055Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2117522406730572218'
-author: Csaba Kissi
-author_handle: csaba_kissi
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2117522406730572218'
+  - 'https://x.com/saurav_tweets/status/2123724003781255599'
+author: Saurav
+author_handle: saurav_tweets
 entry_type: tool
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+company: Saurav
+classified_by: Importado del vault
 ---
 # UI/UX Pro Max Skill
 

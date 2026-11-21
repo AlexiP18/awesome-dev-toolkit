@@ -1,20 +1,26 @@
 ---
 name: Cleanup.pictures
-url: 'http://cleanup.pictures/'
-category: Productivity & Tools
+url: 'https://cleanup.pictures/'
+category: 'Prompts, Art & Video'
+conjunto: producto
 tags:
   - imagenes
   - inpainting
   - ia
+  - edicion
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:45:44.012Z'
+updated_at: '2026-11-21T04:16:52.388Z'
 source_tweet: 'https://x.com/ecommartinez/status/2093765893381595627'
-author: Alejo
-author_handle: ecommartinez
-entry_type: tool
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+source_tweets:
+  - 'https://x.com/ecommartinez/status/2093765893381595627'
+  - 'https://x.com/Elochoaa__/status/2123859657747812733'
+author: Ochoa
+author_handle: Elochoaa__
+entry_type: product_showcase
+company: Ochoa
+classified_by: Importado del vault
 ---
 # Cleanup.pictures
 

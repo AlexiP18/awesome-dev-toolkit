@@ -27,6 +27,7 @@ test('mapVaultCategory acerca una categoría desconocida a la lista permitida', 
   assert.equal(mapVaultCategory('IDEs & Development Software'), 'Productivity & Tools');
   assert.equal(mapVaultCategory('Machine Learning Models'), 'AI & Machine Learning');
   assert.equal(mapVaultCategory('Remote hiring board'), 'Trabajo & Freelance');
+  assert.equal(mapVaultCategory('Flujos de Trabajo', 'tool'), 'Agentes & Protocolo MCP');
   assert.equal(mapVaultCategory('Zzz desconocida', 'tech_tip'), 'Consejos & Buenas Prácticas');
 });
 

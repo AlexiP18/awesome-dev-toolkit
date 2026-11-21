@@ -11,17 +11,19 @@ tags:
   - imagenes
   - fondo
   - ia
+  - fondos
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:26:53.351Z'
-updated_at: '2026-11-20T04:21:04.580Z'
+updated_at: '2026-11-21T04:16:52.348Z'
 source_tweet: 'https://x.com/precisox/status/2077815388725727396'
 source_tweets:
   - 'https://x.com/precisox/status/2077815388725727396'
   - 'https://x.com/Elochoaa__/status/2123350146956112381'
+  - 'https://x.com/Elochoaa__/status/2123859657747812733'
 author: Ochoa
 author_handle: Elochoaa__
-entry_type: tool
+entry_type: product_showcase
 company: remove.bg (Kaleido AI)
 classified_by: Importado del vault
 ---

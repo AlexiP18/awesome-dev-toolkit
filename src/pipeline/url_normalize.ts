@@ -227,8 +227,9 @@ export function namesLookLikeSameProduct(a?: string | null, b?: string | null): 
   const share = ta.some((token) => tb.some((other) => tokensNear(token, other)));
   if (!share) return false;
 
+  // Un token corto también distingue: "code-review" y "security-review" no son el mismo producto.
   const exclusive = (tokens: string[], other: string[]) =>
-    tokens.filter((token) => token.length >= 5 && !other.some((candidate) => tokensNear(token, candidate)));
+    tokens.filter((token) => token.length >= 3 && !other.some((candidate) => tokensNear(token, candidate)));
   return exclusive(ta, tb).length === 0 || exclusive(tb, ta).length === 0;
 }
 

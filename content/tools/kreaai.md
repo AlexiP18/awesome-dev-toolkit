@@ -1,21 +1,28 @@
 ---
 name: krea.ai
-url: 'https://www.krea.ai/'
+url: 'https://krea.ai/'
 category: 'Prompts, Art & Video'
+conjunto: producto
 tags:
   - ai
   - generacion-imagenes
   - tiempo-real
   - diseño-interactivo
+  - ia
+  - imagenes
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:53:53.073Z'
+updated_at: '2026-11-21T04:16:51.341Z'
 source_tweet: 'https://x.com/konig0000/status/2111804913416331448'
-author: chaos
-author_handle: konig0000
-entry_type: tool
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+source_tweets:
+  - 'https://x.com/konig0000/status/2111804913416331448'
+  - 'https://x.com/Elochoaa__/status/2123859657747812733'
+author: Ochoa
+author_handle: Elochoaa__
+entry_type: product_showcase
+company: Ochoa
+classified_by: Importado del vault
 ---
 # krea.ai
 

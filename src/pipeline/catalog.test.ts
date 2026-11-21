@@ -141,6 +141,8 @@ test('nombres distintos no se fusionan aunque compartan URL', () => {
   assert.equal(namesLookLikeSameProduct('cmux', 'shaper'), false);
   assert.equal(namesLookLikeSameProduct('OpenShorts', 'MoneyPrinterTurbo'), false);
   assert.equal(namesLookLikeSameProduct('ClawRouter', 'context-mode (clawrouter)'), false);
+  assert.equal(namesLookLikeSameProduct('security-review (Sentry)', 'code-review (Sentry)'), false);
+  assert.equal(namesLookLikeSameProduct('UI UX Pro Max', 'UI/UX Pro Max Skill'), true);
 
   const shared = 'https://github.com/taleshape-com/shaper';
   assert.equal(
