@@ -15,11 +15,6 @@ source_tweet: 'https://x.com/RobKnight__/status/2112210866020245615'
 author: Rob Pruzan
 author_handle: RobKnight__
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
 conjunto: recursos
 ---

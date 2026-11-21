@@ -18,11 +18,6 @@ source_tweet: 'https://x.com/Zakariaweb1/status/2112102633947238788'
 author: Zakaria
 author_handle: Zakariaweb1
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---

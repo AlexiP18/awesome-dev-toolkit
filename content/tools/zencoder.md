@@ -13,11 +13,6 @@ source_tweet: 'https://x.com/dewyashtwts/status/2114337945427857916'
 author: Yash
 author_handle: dewyashtwts
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
 conjunto: recursos
 ---

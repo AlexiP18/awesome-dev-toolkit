@@ -1,23 +1,33 @@
 ---
 name: VoiceStudio
 url: 'https://github.com/debpalash/VoiceStudio'
-category: AI & Machine Learning
+category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - tts
   - voice-cloning
   - transcription
   - local-first
   - python
+  - voz
+  - clonacion-de-voz
+  - doblaje
+  - transcripcion
+  - local
 stars: 101127
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:54:59.859Z'
+updated_at: '2026-11-18T04:20:52.456Z'
 source_tweet: 'https://x.com/nikosolenne/status/2109316695617573241'
-author: niko.
-author_handle: nikosolenne
+source_tweets:
+  - 'https://x.com/nikosolenne/status/2109316695617573241'
+  - 'https://x.com/SantiTorAI/status/2121748035101426171'
+author: Santi Torres
+author_handle: SantiTorAI
 entry_type: tool
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+company: Santi Torres
+classified_by: Importado del vault
 ---
 # VoiceStudio
 

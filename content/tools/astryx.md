@@ -2,6 +2,7 @@
 name: Astryx
 url: 'https://github.com/meta/astryx'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - design-system
   - ui-components
@@ -11,17 +12,25 @@ tags:
   - theming
   - agent-ready
   - mit
+  - componentes-ui
+  - agentes-ia
+  - componentes
+  - agentes
 stars: 13956
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T04:32:11.783Z'
+updated_at: '2026-11-20T04:21:03.722Z'
 source_tweet: 'https://x.com/marcusyul/status/2083189700022636822'
-author: marcus
-author_handle: marcusyul
+source_tweets:
+  - 'https://x.com/marcusyul/status/2083189700022636822'
+  - 'https://x.com/so_ainsight/status/2121440495276798005'
+  - 'https://x.com/so_ainsight/status/2123252436093829531'
+author: そう@『n8nの教科書』マイナビ出版 10/22発売
+author_handle: so_ainsight
 entry_type: tool
 company: Meta
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Astryx
 

@@ -1,0 +1,1340 @@
+[
+  {
+    "tweet_id": "2123724003781255599",
+    "text": "been exploring vibecoding lately  \n\nthis is pretty much all you need tbh\n\ngrill-with-docs - https://t.co/PLg87UE1D2\n\nresearch - https://t.co/8Lq0UZVDGl\n\nto-spec - https://t.co/wlsKzyH2WT\n\nimpeccable - https://t.co/CroKjQ1zu2\n\nui-ux-pro-max - https://t.co/a92wQ4BlDn",
+    "author_name": "Saurav",
+    "author_handle": "saurav_tweets",
+    "created_at": "2026-11-20T10:23:54.000Z",
+    "urls": [
+      "https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs",
+      "https://github.com/mattpocock/skills/tree/main/skills/engineering/research",
+      "https://github.com/mattpocock/skills/tree/main/skills/engineering/to-spec",
+      "https://github.com/pbakaus/impeccable",
+      "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
+      "https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices",
+      "https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns",
+      "https://github.com/supabase/agent-skills/tree/main/skills/supabase-postgres-best-practices",
+      "https://github.com/getsentry/skills/tree/main/skills/code-review",
+      "https://github.com/getsentry/skills/tree/main/skills/find-bugs",
+      "https://github.com/obra/superpowers/tree/main/skills/test-driven-development",
+      "https://github.com/anthropics/skills/tree/main/skills/webapp-testing",
+      "https://github.com/obra/superpowers/tree/main/skills/systematic-debugging",
+      "https://github.com/getsentry/skills/tree/main/skills/security-review",
+      "https://github.com/obra/superpowers/tree/main/skills/verification-before-completion"
+    ],
+    "note_tweet": "been exploring vibecoding lately  \n\nthis is pretty much all you need tbh\n\ngrill-with-docs - https://t.co/Pn8MyOhh6K\n\nresearch - https://t.co/8tHOnU0KXo\n\nto-spec - https://t.co/9r3sFTWfaE\n\nimpeccable - https://t.co/SvdQ6i5YcS\n\nui-ux-pro-max - https://t.co/9y04vMnW6Q\n\nfrontend-design - https://t.co/544l78ZZs9\n\nreact-best-practices - https://t.co/uiwEoPqRay\n\ncomposition-patterns - https://t.co/sXjm5gvDaA\n\nsupabase-postgres-best-practices - https://t.co/XV7t1YBEpf\n\ncode-review - https://t.co/8S31otvXU6\n\nfind-bugs - https://t.co/HE094ynCQW\n\ntest-driven-development - https://t.co/LSlhInOcOv\n\nwebapp-testing - https://t.co/3NwzHAtmlk\n\nsystematic-debugging - https://t.co/ZB5GR5hY9h\n\nsecurity-review - https://t.co/rfToOdvzg8\n\nverification-before-completion - https://t.co/hkrSHITvCj",
+    "items": [
+      {
+        "name": "grill-with-docs",
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "claude-code",
+          "documentacion"
+        ],
+        "summary": "Skill de agente de la colección de Matt Pocock para interrogar un plan o idea apoyándose en la documentación antes de programar.",
+        "highlights": [
+          "Forma parte del repo mattpocock/skills, sección engineering",
+          "Recomendada en una lista de skills para vibecoding"
+        ],
+        "entry_type": "tool",
+        "company": "Matt Pocock"
+      },
+      {
+        "name": "research (skill)",
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/research",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "claude-code",
+          "investigacion"
+        ],
+        "summary": "Skill de agente de Matt Pocock para que el agente investigue un tema o una base de código antes de proponer cambios.",
+        "highlights": [
+          "Incluida en mattpocock/skills (engineering)",
+          "Pensada como paso previo a especificar o implementar"
+        ],
+        "entry_type": "tool",
+        "company": "Matt Pocock"
+      },
+      {
+        "name": "to-spec",
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/to-spec",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "claude-code",
+          "especificacion"
+        ],
+        "summary": "Skill de agente de Matt Pocock para convertir una idea o conversación en una especificación escrita.",
+        "highlights": [
+          "Incluida en mattpocock/skills (engineering)",
+          "Útil para pasar de idea a spec antes de codificar"
+        ],
+        "entry_type": "tool",
+        "company": "Matt Pocock"
+      },
+      {
+        "name": "Impeccable",
+        "url": "https://github.com/pbakaus/impeccable",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "ui",
+          "diseno",
+          "frontend"
+        ],
+        "summary": "Skill de diseño para agentes de código que busca interfaces frontend más cuidadas y menos genéricas.",
+        "highlights": [
+          "Repositorio pbakaus/impeccable",
+          "Se usa junto a agentes como Claude Code al generar UI"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "UI UX Pro Max",
+        "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "ui",
+          "ux",
+          "diseno"
+        ],
+        "summary": "Skill de agente con criterios de diseño UI/UX para que el agente genere interfaces más profesionales.",
+        "highlights": [
+          "Repositorio nextlevelbuilder/ui-ux-pro-max-skill",
+          "Recomendada para vibecoding de interfaces"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "frontend-design (Anthropic)",
+        "url": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "claude",
+          "frontend",
+          "diseno"
+        ],
+        "summary": "Skill oficial de Anthropic para que Claude diseñe interfaces frontend con mejor criterio visual.",
+        "highlights": [
+          "Parte del repo anthropics/skills",
+          "Orientada a generar UI distintiva, no plantillas genéricas"
+        ],
+        "entry_type": "tool",
+        "company": "Anthropic"
+      },
+      {
+        "name": "react-best-practices",
+        "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "react",
+          "buenas-practicas"
+        ],
+        "summary": "Skill de Vercel Labs con buenas prácticas de React para que el agente escriba componentes más correctos y eficientes.",
+        "highlights": [
+          "Parte de vercel-labs/agent-skills",
+          "Guía al agente en patrones de React"
+        ],
+        "entry_type": "tool",
+        "company": "Vercel"
+      },
+      {
+        "name": "composition-patterns",
+        "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "react",
+          "componentes"
+        ],
+        "summary": "Skill de Vercel Labs sobre patrones de composición de componentes para que el agente estructure mejor la UI.",
+        "highlights": [
+          "Parte de vercel-labs/agent-skills",
+          "Enfocada en componer componentes reutilizables"
+        ],
+        "entry_type": "tool",
+        "company": "Vercel"
+      },
+      {
+        "name": "supabase-postgres-best-practices",
+        "url": "https://github.com/supabase/agent-skills/tree/main/skills/supabase-postgres-best-practices",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "supabase",
+          "postgres",
+          "sql"
+        ],
+        "summary": "Skill oficial de Supabase con buenas prácticas de Postgres para que el agente diseñe esquemas y consultas correctas.",
+        "highlights": [
+          "Parte de supabase/agent-skills",
+          "Centrada en Postgres sobre Supabase"
+        ],
+        "entry_type": "tool",
+        "company": "Supabase"
+      },
+      {
+        "name": "code-review (Sentry)",
+        "url": "https://github.com/getsentry/skills/tree/main/skills/code-review",
+        "website_url": null,
+        "category": "Flujos de Trabajo",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "code-review",
+          "calidad"
+        ],
+        "summary": "Skill de Sentry que guía al agente para hacer revisiones de código siguiendo un procedimiento.",
+        "highlights": [
+          "Parte de getsentry/skills",
+          "Procedimiento de revisión de cambios"
+        ],
+        "entry_type": "tool",
+        "company": "Sentry"
+      },
+      {
+        "name": "find-bugs",
+        "url": "https://github.com/getsentry/skills/tree/main/skills/find-bugs",
+        "website_url": null,
+        "category": "Flujos de Trabajo",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "debugging",
+          "bugs"
+        ],
+        "summary": "Skill de Sentry para que el agente busque bugs de forma sistemática en el código.",
+        "highlights": [
+          "Parte de getsentry/skills",
+          "Enfocada en detectar errores antes de publicar"
+        ],
+        "entry_type": "tool",
+        "company": "Sentry"
+      },
+      {
+        "name": "test-driven-development (Superpowers)",
+        "url": "https://github.com/obra/superpowers/tree/main/skills/test-driven-development",
+        "website_url": null,
+        "category": "Flujos de Trabajo",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "tdd",
+          "testing"
+        ],
+        "summary": "Skill de la colección Superpowers que obliga al agente a seguir TDD: test primero, luego implementación.",
+        "highlights": [
+          "Parte de obra/superpowers",
+          "Flujo rojo-verde-refactor para agentes"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "webapp-testing (Anthropic)",
+        "url": "https://github.com/anthropics/skills/tree/main/skills/webapp-testing",
+        "website_url": null,
+        "category": "Flujos de Trabajo",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "testing",
+          "webapp"
+        ],
+        "summary": "Skill oficial de Anthropic para que Claude pruebe aplicaciones web y verifique su comportamiento.",
+        "highlights": [
+          "Parte de anthropics/skills",
+          "Pensada para probar apps web locales"
+        ],
+        "entry_type": "tool",
+        "company": "Anthropic"
+      },
+      {
+        "name": "systematic-debugging (Superpowers)",
+        "url": "https://github.com/obra/superpowers/tree/main/skills/systematic-debugging",
+        "website_url": null,
+        "category": "Flujos de Trabajo",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "debugging",
+          "metodologia"
+        ],
+        "summary": "Skill de Superpowers que da al agente un método de depuración sistemático en lugar de probar a ciegas.",
+        "highlights": [
+          "Parte de obra/superpowers",
+          "Procedimiento paso a paso para encontrar la causa raíz"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "security-review (Sentry)",
+        "url": "https://github.com/getsentry/skills/tree/main/skills/security-review",
+        "website_url": null,
+        "category": "Flujos de Trabajo",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "seguridad",
+          "code-review"
+        ],
+        "summary": "Skill de Sentry para que el agente revise el código en busca de problemas de seguridad.",
+        "highlights": [
+          "Parte de getsentry/skills",
+          "Revisión de seguridad como procedimiento"
+        ],
+        "entry_type": "tool",
+        "company": "Sentry"
+      },
+      {
+        "name": "verification-before-completion (Superpowers)",
+        "url": "https://github.com/obra/superpowers/tree/main/skills/verification-before-completion",
+        "website_url": null,
+        "category": "Flujos de Trabajo",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "verificacion",
+          "calidad"
+        ],
+        "summary": "Skill de Superpowers que exige al agente verificar su trabajo antes de darlo por terminado.",
+        "highlights": [
+          "Parte de obra/superpowers",
+          "Evita declarar tareas completas sin comprobarlas"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123809452101124491",
+    "text": "Dude... Someone built an all-in-one PC optimizer using Claude. 🪐\n\nIt's called StellarHub, and it brings a bunch of Windows maintenance tools together in one desktop app.\n\nYou can use it to:\n\n~ Monitor CPU, GPU and RAM. \n~ Manage drivers and software updates. \n~ Uninstall apps https://t.co/7PTlkTlBYv",
+    "author_name": "Ram Maheshwari",
+    "author_handle": "rammcodes",
+    "created_at": "2026-11-20T16:03:26.000Z",
+    "urls": [
+      "https://x.com/rammcodes/status/2123809452101124491/photo/1"
+    ],
+    "note_tweet": "Dude... Someone built an all-in-one PC optimizer using Claude. 🪐\n\nIt's called StellarHub, and it brings a bunch of Windows maintenance tools together in one desktop app.\n\nYou can use it to:\n\n~ Monitor CPU, GPU and RAM. \n~ Manage drivers and software updates. \n~ Uninstall apps and remove leftovers. \n~ Analyze disk space. \n~ Clean unnecessary files. \n~ Manage Windows privacy and security. \n~ Run hardware benchmarks. \n~ Automate maintenance routines.\n\nAnd it's FREE and open-source...We're witnessing some crazy stuff every day. 🤯\n\nFollow me for more amazing AI, Coding & Web Dev insights 💎",
+    "items": [
+      {
+        "name": "StellarHub",
+        "url": "https://github.com/estebanarosemena/StellarHub",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "windows",
+          "desktop",
+          "mantenimiento",
+          "open-source"
+        ],
+        "summary": "App de escritorio gratuita y open source que reúne herramientas de mantenimiento de Windows en un solo lugar; según el tuit, construida con Claude.",
+        "highlights": [
+          "Monitoreo de CPU, GPU y RAM, drivers y actualizaciones",
+          "Desinstalación con limpieza de restos, análisis de disco y archivos innecesarios",
+          "Ajustes de privacidad, benchmarks y rutinas de mantenimiento automáticas"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123859657747812733",
+    "text": "30 SITIOS WEB DE IA QUE PARECEN ILEGALES PERO SON TOTALMENTE LEGALES, TODOS TE AYUDAN A AHORRAR DINERO.\n\n1. https://t.co/sUDBDTpOKa — Generación de imágenes ilimitada y gratuita, calidad cercana a Midjourney\n\n2. https://t.co/wqHtT7TksO — Generación de imágenes en tiempo real,",
+    "author_name": "Ochoa",
+    "author_handle": "Elochoaa__",
+    "created_at": "2026-11-20T19:22:56.000Z",
+    "urls": [
+      "https://raphael.ai",
+      "https://www.krea.ai/",
+      "http://raphael.ai",
+      "http://krea.ai",
+      "http://magnific.ai",
+      "http://clipdrop.co",
+      "http://elevenlabs.io",
+      "http://suno.com",
+      "http://runwayml.com",
+      "http://klingai.kuaishou.com",
+      "http://d-id.com",
+      "http://sadtalker.ai",
+      "http://cursor.com",
+      "http://bolt.new",
+      "http://v0.app",
+      "http://replit.com",
+      "http://napkin.ai",
+      "http://gamma.app",
+      "http://notion.com/product/ai",
+      "http://uizard.io",
+      "http://perplexity.ai",
+      "http://phind.com",
+      "http://otter.ai",
+      "http://opus.pro",
+      "http://poe.com",
+      "http://huggingface.co/spaces",
+      "http://remove.bg",
+      "http://cleanup.pictures",
+      "http://deepswap.ai",
+      "http://musiio.com",
+      "http://jasper.ai/free",
+      "http://claude.ai"
+    ],
+    "note_tweet": "30 SITIOS WEB DE IA QUE PARECEN ILEGALES PERO SON TOTALMENTE LEGALES, TODOS TE AYUDAN A AHORRAR DINERO.\n\n1. https://t.co/HBmLg8nAYU — Generación de imágenes ilimitada y gratuita, calidad cercana a Midjourney\n\n2. https://t.co/yzROA4CyK5 — Generación de imágenes en tiempo real, dibuja y aparece al instante\n\n3. https://t.co/oq7kVeEzAT — Ampliación ilimitada de imágenes con IA, detalles completados automáticamente\n\n4. https://t.co/wKUkbCOGUp — Eliminación de fondo, corrección de luz y borrado con un clic\n\n5. https://t.co/mbw9c0NZtu — Clonación de cualquier voz en 5 segundos\n\n6. https://t.co/bKimf2JRsF — Ingresa letras y genera canciones completas automáticamente\n\n7. https://t.co/z8uoEhIoq0 — Pionero en generación de videos con IA, prueba gratuita de Gen-3\n\n8. https://t.co/6pteustVsm — Kuaishou Keling, la generación de videos en chino más fluida\n\n9. https://t.co/4aDtsVZe6v — Una foto más un audio equivale a un avatar digital hablando\n\n10. https://t.co/KFMp4RQTH0 — Convierte fotos estáticas en videos parlantes\n\n11. https://t.co/jmC9u559MV — IA que escribe código, cuota gratuita suficiente para uso diario\n\n12. https://t.co/X4zYEULziP — Crea sitios web solo hablando, sin código\n\n13. https://t.co/PoOrazqY5r — Generador de frontend de Vercel, describe y obtén la página\n\n14. https://t.co/odvPkzLbgZ — Código en el navegador con asistencia de IA y despliegue con un clic\n\n15. https://t.co/p25sG2Ld6F — Pega texto y genera infografías automáticamente\n\n16. https://t.co/TAtvQ8p5sq — Genera PPT con IA en un clic, despídete del infierno de PPT\n\n17. https://t.co/4uE5BKl9MC — Escritura, resúmenes y traducciones con Notion AI\n\n18. https://t.co/qy6v11czmf — Dibuja un boceto y la IA genera un sitio web real\n\n19. https://t.co/83fCJHYHrL — Buscador con IA, respuestas instantáneas con fuentes para cualquier pregunta\n\n20. https://t.co/bnTkYVsDfQ — Búsqueda con IA exclusiva para desarrolladores, resuelve problemas de código al instante\n\n21. https://t.co/0j9giVIi1S — Transcripción en tiempo real de reuniones, 300 minutos gratis al mes\n\n22. https://t.co/w3SEUmspnJ — Edición de videos cortos con IA, encuentra clips destacados automáticamente\n\n23. https://t.co/5J4TuGe4dg — Un sitio web que usa GPT-4o, Claude y Gemini\n\n24. https://t.co/CZe4S5BF9A — Prueba gratuita de modelos de IA de código abierto\n\n25. https://t.co/jD5w2U3RmX — Eliminación de fondo con un clic, imagen lista en 1 segundo\n\n26. https://t.co/7jCNJStyIc — Borra cualquier objeto de fotos con IA\n\n27. https://t.co/hqNrRVTvdy — Intercambio de rostros con IA, video listo en 1 minuto\n\n28. https://t.co/RpDr2T8ZXz — Etiquetas y recomendaciones de música con IA\n\n29. https://t.co/ApWfdW9R4C — Asistente de escritura con IA, versión gratuita suficiente para uso diario\n\n30. https://t.co/4cwsTgyIjJ — Asistente gratuito de Anthropic, el techo para procesar textos largos\n\nGuarda este post para tenerlo a mano 🔖",
+    "items": [
+      {
+        "name": "Raphael AI",
+        "url": "https://raphael.ai",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "imagenes",
+          "generacion"
+        ],
+        "summary": "Generador de imágenes con IA gratuito e ilimitado, con calidad que el tuit compara con Midjourney.",
+        "highlights": [
+          "Generación de imágenes sin límite",
+          "Listado en una recopilación de 30 sitios de IA"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Krea",
+        "url": "https://www.krea.ai/",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "imagenes",
+          "tiempo-real"
+        ],
+        "summary": "Herramienta de generación de imágenes con IA en tiempo real: dibujas y la imagen aparece al instante.",
+        "highlights": [
+          "Generación en tiempo real a partir de bocetos",
+          "Parte de una lista de 30 sitios de IA"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Magnific",
+        "url": "http://magnific.ai",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "upscaling",
+          "imagenes"
+        ],
+        "summary": "Servicio de ampliación de imágenes con IA que completa detalles automáticamente.",
+        "highlights": [
+          "Upscaling de imágenes con IA",
+          "Relleno automático de detalle"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Clipdrop",
+        "url": "http://clipdrop.co",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "imagenes",
+          "edicion"
+        ],
+        "summary": "Editor de imágenes con IA para quitar fondos, corregir luz y borrar elementos con un clic.",
+        "highlights": [
+          "Eliminación de fondo",
+          "Corrección de iluminación y borrado de objetos"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "ElevenLabs",
+        "url": "http://elevenlabs.io",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "voz",
+          "audio"
+        ],
+        "summary": "Plataforma de voz con IA que, según el tuit, clona cualquier voz en segundos.",
+        "highlights": [
+          "Clonación de voz",
+          "Síntesis de voz con IA"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Suno",
+        "url": "http://suno.com",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "musica",
+          "audio"
+        ],
+        "summary": "Generador de canciones con IA: escribes la letra y crea la canción completa.",
+        "highlights": [
+          "Canciones completas desde texto",
+          "Generación musical automática"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Runway",
+        "url": "http://runwayml.com",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "video",
+          "generacion"
+        ],
+        "summary": "Plataforma pionera de generación de video con IA, con prueba gratuita de Gen-3 según el tuit.",
+        "highlights": [
+          "Generación de video con IA",
+          "Modelo Gen-3"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Kling AI",
+        "url": "http://klingai.kuaishou.com",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "video",
+          "generacion"
+        ],
+        "summary": "Generador de video con IA de Kuaishou (Keling).",
+        "highlights": [
+          "Generación de video fluida",
+          "Producto de Kuaishou"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "D-ID",
+        "url": "http://d-id.com",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "avatares",
+          "video"
+        ],
+        "summary": "Crea avatares digitales que hablan a partir de una foto y un audio.",
+        "highlights": [
+          "Foto + audio a avatar parlante",
+          "Video generado con IA"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "SadTalker",
+        "url": "http://sadtalker.ai",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "avatares",
+          "video"
+        ],
+        "summary": "Convierte fotos estáticas en videos parlantes con IA.",
+        "highlights": [
+          "Animación facial desde una foto",
+          "Videos de cabezas parlantes"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Cursor",
+        "url": "http://cursor.com",
+        "website_url": null,
+        "category": "DevTools & IDEs",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "ide",
+          "editor"
+        ],
+        "summary": "Editor de código con IA; el tuit destaca que su cuota gratuita alcanza para el uso diario.",
+        "highlights": [
+          "IDE con asistencia de IA",
+          "Plan gratuito"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Bolt.new",
+        "url": "http://bolt.new",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "app-builder",
+          "no-code"
+        ],
+        "summary": "Constructor de sitios y apps con IA en el que describes lo que quieres sin escribir código.",
+        "highlights": [
+          "Crea webs conversando",
+          "Sin código"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "v0",
+        "url": "http://v0.app",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "frontend",
+          "vercel"
+        ],
+        "summary": "Generador de frontend de Vercel: describes la interfaz y obtienes la página.",
+        "highlights": [
+          "Genera UI desde una descripción",
+          "Producto de Vercel"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Replit",
+        "url": "http://replit.com",
+        "website_url": null,
+        "category": "DevTools & IDEs",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "ide",
+          "navegador",
+          "deploy"
+        ],
+        "summary": "Entorno de programación en el navegador con asistencia de IA y despliegue con un clic.",
+        "highlights": [
+          "IDE en el navegador",
+          "Deploy con un clic"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Napkin AI",
+        "url": "http://napkin.ai",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "infografias",
+          "visualizacion"
+        ],
+        "summary": "Pega un texto y genera infografías automáticamente con IA.",
+        "highlights": [
+          "Texto a infografía",
+          "Generación automática de visuales"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Gamma",
+        "url": "http://gamma.app",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "presentaciones",
+          "slides"
+        ],
+        "summary": "Genera presentaciones con IA en un clic.",
+        "highlights": [
+          "Presentaciones automáticas",
+          "Alternativa a armar PPT a mano"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Notion AI",
+        "url": "http://notion.com/product/ai",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "notion",
+          "escritura"
+        ],
+        "summary": "Funciones de IA dentro de Notion para escribir, resumir y traducir.",
+        "highlights": [
+          "Escritura y resúmenes",
+          "Traducción dentro de Notion"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Uizard",
+        "url": "http://uizard.io",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "prototipado",
+          "diseno"
+        ],
+        "summary": "Convierte un boceto dibujado en un diseño de sitio web con IA.",
+        "highlights": [
+          "Boceto a diseño",
+          "Prototipado rápido de UI"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Perplexity",
+        "url": "http://perplexity.ai",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "buscador",
+          "llm"
+        ],
+        "summary": "Buscador con IA que responde al instante citando fuentes.",
+        "highlights": [
+          "Respuestas con fuentes",
+          "Búsqueda conversacional"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Phind",
+        "url": "http://phind.com",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "buscador",
+          "programacion"
+        ],
+        "summary": "Buscador con IA orientado a desarrolladores para resolver problemas de código.",
+        "highlights": [
+          "Búsqueda técnica con IA",
+          "Respuestas para dudas de código"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Otter.ai",
+        "url": "http://otter.ai",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "transcripcion",
+          "reuniones"
+        ],
+        "summary": "Transcripción de reuniones en tiempo real; el tuit menciona 300 minutos gratis al mes.",
+        "highlights": [
+          "Transcripción en vivo",
+          "Plan gratuito de 300 min/mes según el tuit"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "OpusClip",
+        "url": "http://opus.pro",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "video",
+          "clips"
+        ],
+        "summary": "Edición de videos cortos con IA que detecta automáticamente los fragmentos destacados.",
+        "highlights": [
+          "Clips automáticos desde videos largos",
+          "Detección de momentos destacados"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Poe",
+        "url": "http://poe.com",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "chatbots",
+          "llm"
+        ],
+        "summary": "Plataforma que da acceso a varios modelos como GPT-4o, Claude y Gemini en un solo sitio.",
+        "highlights": [
+          "Varios modelos en una app",
+          "Chat con distintos LLM"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Hugging Face Spaces",
+        "url": "http://huggingface.co/spaces",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "open-source",
+          "modelos"
+        ],
+        "summary": "Espacio de Hugging Face para probar gratis modelos de IA de código abierto.",
+        "highlights": [
+          "Demos de modelos open source",
+          "Prueba sin instalar nada"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "remove.bg",
+        "url": "http://remove.bg",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "imagenes",
+          "fondos"
+        ],
+        "summary": "Elimina el fondo de una imagen con un clic en segundos.",
+        "highlights": [
+          "Quitar fondo automáticamente",
+          "Resultado en ~1 segundo según el tuit"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Cleanup.pictures",
+        "url": "http://cleanup.pictures",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "imagenes",
+          "edicion"
+        ],
+        "summary": "Borra cualquier objeto de una foto con IA.",
+        "highlights": [
+          "Eliminación de objetos",
+          "Retoque fotográfico automático"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Deepswap",
+        "url": "http://deepswap.ai",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "video",
+          "face-swap"
+        ],
+        "summary": "Intercambio de rostros con IA en video.",
+        "highlights": [
+          "Face swap en video",
+          "Resultado en ~1 minuto según el tuit"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Musiio",
+        "url": "http://musiio.com",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "musica",
+          "etiquetado"
+        ],
+        "summary": "Etiquetado y recomendación de música con IA.",
+        "highlights": [
+          "Etiquetas automáticas de música",
+          "Recomendaciones musicales"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Jasper",
+        "url": "http://jasper.ai/free",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "escritura",
+          "copywriting"
+        ],
+        "summary": "Asistente de escritura con IA con versión gratuita para uso diario.",
+        "highlights": [
+          "Redacción asistida por IA",
+          "Plan gratuito"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Claude",
+        "url": "http://claude.ai",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "llm",
+          "anthropic"
+        ],
+        "summary": "Asistente de IA de Anthropic, destacado en el tuit por procesar textos largos.",
+        "highlights": [
+          "Asistente gratuito de Anthropic",
+          "Fuerte en textos largos"
+        ],
+        "entry_type": "product_showcase"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123916388314321108",
+    "text": "Build a full app from one prompt. Free for a month (normally $25). Claim it while it lasts.\n\nCaffeine is an AI app builder, a bit like Lovable, where agents build and host your app. This is its Studio plan.\n\nOpen to anyone without a paid plan, not only students. We claimed it https://t.co/m3ueBjLQf5",
+    "author_name": "Student Offers",
+    "author_handle": "StudentOffersHQ",
+    "created_at": "2026-11-20T23:08:22.000Z",
+    "urls": [
+      "https://x.com/StudentOffersHQ/status/2123916388314321108/photo/1",
+      "https://x.com/StudentOffersHQ/status/2123916388314321108/photo/2",
+      "https://x.com/StudentOffersHQ/status/2123916388314321108/photo/3",
+      "https://x.com/StudentOffersHQ/status/2123916388314321108/photo/4",
+      "https://x.com/StudentOffersHQ/status/2123916388314321108/photo/5",
+      "http://caffeine.ai"
+    ],
+    "note_tweet": "Build a full app from one prompt. Free for a month (normally $25). Claim it while it lasts.\n\nCaffeine is an AI app builder, a bit like Lovable, where agents build and host your app. This is its Studio plan.\n\nOpen to anyone without a paid plan, not only students. We claimed it ourselves and it works.\n\nStudio gives you:\n\n→ 115 credits, pick your model\n→ Exportable code\n\nWhat 115 credits buys (tokens in / out):\n\n• DeepSeek V4.1 Flash: 287M / 115M\n• Mistral Large 4: 42M / 13.8M\n• Kimi K3: 30M / 6M\n• Sonnet 5.5 & GPT-6 Sol: 28.7M / 5.7M\n• Opus 5.5: 14.4M / 2.9M\n\nHow to claim:\n\n1. Sign in at https://t.co/llFrrMIERR with Google\n2. Name (bottom left) → Account settings → Plans & billing\n3. Use code → enter HALLOWEEN26\n4. Check out with a card ($1 charge, refunded in minutes)\n\nCancel right after so it doesn’t renew: Plans & billing → Cancel → Cancel at period end (skip “Switch to Host”). You keep Studio for the month.\n\nWorks till Nov 30. Card required. Not our promo, and it can end anytime.",
+    "items": [
+      {
+        "name": "Caffeine",
+        "url": "http://caffeine.ai",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "producto",
+        "tags": [
+          "ia",
+          "app-builder",
+          "agentes"
+        ],
+        "summary": "Constructor de apps con IA, parecido a Lovable, donde agentes construyen y alojan tu app a partir de un prompt.",
+        "highlights": [
+          "Plan Studio: 115 créditos y elección de modelo, con código exportable",
+          "Promo del tuit: un mes gratis con el código HALLOWEEN26 hasta el 30 de noviembre (requiere tarjeta)",
+          "Cancelar al final del periodo para que no se renueve"
+        ],
+        "entry_type": "product_showcase"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123752991694205295",
+    "text": "Here is Live version with Opus 5.5 \n\nI used these two skills to make it \n\nBetter UI by Jakub Krehel\nhttps://t.co/Gt8mjvOsJ8\nAnimations by Emil Kowalski\nhttps://t.co/D2VCqHI7Rj https://t.co/apmhv3QKP0 https://t.co/Bd7G4cFy0I",
+    "author_name": "Salman",
+    "author_handle": "saluiux",
+    "created_at": "2026-11-20T12:19:05.000Z",
+    "urls": [
+      "https://github.com/jakubkrehel/skills/tree/main/skills/better-ui",
+      "https://github.com/emilkowalski/skills",
+      "https://x.com/saluiux/status/2123752991694205295/video/1",
+      "https://twitter.com/saluiux/status/2123041564071252071"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Better UI (skill)",
+        "url": "https://github.com/jakubkrehel/skills/tree/main/skills/better-ui",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "ui",
+          "diseno"
+        ],
+        "summary": "Skill de agente de Jakub Krehel para mejorar el acabado visual de las interfaces que genera el agente.",
+        "highlights": [
+          "Usada junto a Opus 5.5 para rehacer una UI en vivo",
+          "Parte del repo jakubkrehel/skills"
+        ],
+        "entry_type": "tool",
+        "company": "Jakub Krehel"
+      },
+      {
+        "name": "Emil Kowalski skills (animaciones)",
+        "url": "https://github.com/emilkowalski/skills",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "animacion",
+          "ui"
+        ],
+        "summary": "Colección de skills de Emil Kowalski para que el agente añada animaciones de UI cuidadas.",
+        "highlights": [
+          "Enfocada en animaciones de interfaz",
+          "Combinada con Better UI en el ejemplo del tuit"
+        ],
+        "entry_type": "tool",
+        "company": "Emil Kowalski"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123793236254654801",
+    "text": "Esta skill de Claude te monta un corto animado de un minuto en tu propio ordenador sin pasar por un generador de vídeo de IA.\n\nSe llama claude-animated-shorts.\n\n4.3K estrellas y licencia MIT.\n\n✅ Cortos verticales de 55 a 70 s, con three.js y Remotion\n✅ Personajes en 2D sobre un https://t.co/novGoyrp8A https://t.co/5AYzid5VFc",
+    "author_name": "PA13L0",
+    "author_handle": "Fluyeporlaweb",
+    "created_at": "2026-11-20T14:59:00.000Z",
+    "urls": [
+      "https://x.com/Fluyeporlaweb/status/2123793236254654801/photo/1",
+      "https://twitter.com/Fluyeporlaweb/status/2122770497448583177"
+    ],
+    "note_tweet": "Esta skill de Claude te monta un corto animado de un minuto en tu propio ordenador sin pasar por un generador de vídeo de IA.\n\nSe llama claude-animated-shorts.\n\n4.3K estrellas y licencia MIT.\n\n✅ Cortos verticales de 55 a 70 s, con three.js y Remotion\n✅ Personajes en 2D sobre un decorado en 3D, renderizados en local\n✅ Trae el flujo completo: guion, planos, render y mezcla de sonido\n✅ Necesitas Claude Code, Node, Python 3, ffmpeg y Remotion\n✅ Nació el 1 de noviembre\n\nRepo en el primer comentario⬇️",
+    "items": [
+      {
+        "name": "claude-animated-shorts",
+        "url": "https://github.com/mromidev/claude-animated-shorts",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "claude-code",
+          "remotion",
+          "threejs",
+          "video"
+        ],
+        "summary": "Skill de Claude que genera en local cortos animados verticales de un minuto con three.js y Remotion, sin generadores de video de IA.",
+        "highlights": [
+          "Cortos de 55 a 70 s con personajes 2D sobre decorado 3D renderizado en local",
+          "Flujo completo: guion, planos, render y mezcla de sonido",
+          "Requiere Claude Code, Node, Python 3, ffmpeg y Remotion; licencia MIT"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123751964735602905",
+    "text": "🚨 KARPATHY ACABA DE FIRMAR EL CERTIFICADO DE DEFUNCIÓN DE CLAUDE PRO, CHATGPT PRO Y GEMINI PRO\n\nY lo ha hecho con una sola frase:\n\n\"Todos están alquilando modelos de vanguardia para trabajos que un modelo local de 3B podría hacer. Los LLM locales pequeños son el futuro.\"\n\nEste https://t.co/LzsPtdRPfs https://t.co/w9uirJDk5O",
+    "author_name": "ismael.",
+    "author_handle": "n0tisma",
+    "created_at": "2026-11-20T12:15:00.000Z",
+    "urls": [
+      "https://x.com/n0tisma/status/2123751964735602905/photo/1",
+      "https://twitter.com/i/status/2114335960053821538"
+    ],
+    "note_tweet": "🚨 KARPATHY ACABA DE FIRMAR EL CERTIFICADO DE DEFUNCIÓN DE CLAUDE PRO, CHATGPT PRO Y GEMINI PRO\n\nY lo ha hecho con una sola frase:\n\n\"Todos están alquilando modelos de vanguardia para trabajos que un modelo local de 3B podría hacer. Los LLM locales pequeños son el futuro.\"\n\nEste PDF de 18 páginas explica su idea: ejecutar la IA en tu propia máquina.\n\nSin suscripción.\nSin pagar por cada token.\n\nLa verdadera pregunta no es \"¿el modelo local es igual de inteligente?\"\n\nEs \"¿cuántas de mis 1000 llamadas necesitaban de verdad al inteligente?\"\n\nTe dejo el PDF abajo 👇",
+    "items": [
+      {
+        "name": "PDF: LLMs locales pequeños",
+        "url": "https://drive.google.com/file/d/1bPfAgQOAUb9NzTjOn1BkboqIlByjTTT0/view",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "consejos",
+        "tags": [
+          "llm-local",
+          "ia",
+          "pdf"
+        ],
+        "summary": "PDF de 18 páginas compartido en el tuit sobre ejecutar modelos de IA pequeños en tu propia máquina, a raíz de una idea atribuida a Karpathy.",
+        "highlights": [
+          "Plantea usar modelos locales de ~3B para tareas que no necesitan un modelo de vanguardia",
+          "Sin suscripción ni pago por token",
+          "Enlace al PDF publicado por el autor en la respuesta al tuit"
+        ],
+        "entry_type": "tech_tip"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123656184179876292",
+    "text": "Not gonna share these free kits again → bookmark them now before they disappear.\n\nFounders Kit https://t.co/yYCwIrxelO\n\nDSA-KIT https://t.co/RwkYUHC1QF\n\nPython-KIT https://t.co/bQe3cR9Quv\n\nJava-KIT https://t.co/Tjzh7O603G\n\nData-Science-KIT https://t.co/Sl5y4zsbAO",
+    "author_name": "Avinash Singh",
+    "author_handle": "AvinashSingh_20",
+    "created_at": "2026-11-20T05:54:24.000Z",
+    "urls": [
+      "https://github.com/avinash201199/founders-kit",
+      "https://github.com/avinash201199/DSA-KIT",
+      "https://github.com/avinash201199/Python-KIT",
+      "https://github.com/avinash201199/Java-KIT",
+      "https://github.com/avinash201199/Data-Science-KIT",
+      "https://github.com/avinash201199/System-Design-KIT",
+      "https://github.com/avinash201199/free-ai-agents-resources"
+    ],
+    "note_tweet": "Not gonna share these free kits again → bookmark them now before they disappear.\n\nFounders Kit https://t.co/A12xzBEx8P\n\nDSA-KIT https://t.co/QpAHwuo3Z7\n\nPython-KIT https://t.co/hxunhtME0f\n\nJava-KIT https://t.co/FOfYrxOrvI\n\nData-Science-KIT https://t.co/Q8Wmea5Ei3\n\nSystem-Design-KIT https://t.co/CRBH5xRI2Y\n\nFree AI Agents Resources https://t.co/XlbOBUV4HZ\n\nLike & repost for others!",
+    "items": [
+      {
+        "name": "Founders Kit",
+        "url": "https://github.com/avinash201199/founders-kit",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "recursos",
+          "startups",
+          "emprendimiento"
+        ],
+        "summary": "Repositorio con una recopilación gratuita de recursos para fundadores de startups.",
+        "highlights": [
+          "Lista curada en GitHub",
+          "Parte de una serie de kits gratuitos de Avinash Singh"
+        ],
+        "entry_type": "tool",
+        "company": "Avinash Singh"
+      },
+      {
+        "name": "DSA-KIT",
+        "url": "https://github.com/avinash201199/DSA-KIT",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "dsa",
+          "algoritmos",
+          "entrevistas"
+        ],
+        "summary": "Repositorio con recursos para aprender estructuras de datos y algoritmos.",
+        "highlights": [
+          "Material de estudio de DSA",
+          "Útil para preparar entrevistas técnicas"
+        ],
+        "entry_type": "tool",
+        "company": "Avinash Singh"
+      },
+      {
+        "name": "Python-KIT",
+        "url": "https://github.com/avinash201199/Python-KIT",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "aprendizaje",
+          "recursos"
+        ],
+        "summary": "Repositorio con recursos gratuitos para aprender Python.",
+        "highlights": [
+          "Lista de material de Python",
+          "Parte de la serie de kits"
+        ],
+        "entry_type": "tool",
+        "company": "Avinash Singh"
+      },
+      {
+        "name": "Java-KIT",
+        "url": "https://github.com/avinash201199/Java-KIT",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "java",
+          "aprendizaje",
+          "recursos"
+        ],
+        "summary": "Repositorio con recursos gratuitos para aprender Java.",
+        "highlights": [
+          "Lista de material de Java",
+          "Parte de la serie de kits"
+        ],
+        "entry_type": "tool",
+        "company": "Avinash Singh"
+      },
+      {
+        "name": "Data-Science-KIT",
+        "url": "https://github.com/avinash201199/Data-Science-KIT",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "data-science",
+          "machine-learning",
+          "recursos"
+        ],
+        "summary": "Repositorio con recursos para aprender ciencia de datos.",
+        "highlights": [
+          "Material de data science",
+          "Parte de la serie de kits"
+        ],
+        "entry_type": "tool",
+        "company": "Avinash Singh"
+      },
+      {
+        "name": "System-Design-KIT",
+        "url": "https://github.com/avinash201199/System-Design-KIT",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "system-design",
+          "arquitectura",
+          "entrevistas"
+        ],
+        "summary": "Repositorio con recursos para aprender diseño de sistemas.",
+        "highlights": [
+          "Material de system design",
+          "Útil para entrevistas de backend"
+        ],
+        "entry_type": "tool",
+        "company": "Avinash Singh"
+      },
+      {
+        "name": "Free AI Agents Resources",
+        "url": "https://github.com/avinash201199/free-ai-agents-resources",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "recursos",
+        "tags": [
+          "agentes-ia",
+          "recursos",
+          "aprendizaje"
+        ],
+        "summary": "Repositorio con recursos gratuitos para aprender sobre agentes de IA.",
+        "highlights": [
+          "Lista curada sobre agentes de IA",
+          "Parte de la serie de kits"
+        ],
+        "entry_type": "tool",
+        "company": "Avinash Singh"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123656850344431790",
+    "text": "HY4 Flash is free with unlimited usage.\n\nyou can use also DeepSeek V4.1 Flash for free with daily limit\n\nyou can use it like Claude Code, OpenCode, Cursor, Cline, Codex and more\n\nSetup:\n\n1. Sign up here: https://t.co/D6I3xUfReg\n2. Get your API key.\n3. Open your coding tool and https://t.co/LNU5M6yZQS",
+    "author_name": "𝙳𝚛𝚊𝚟𝚎𝚗",
+    "author_handle": "itsjdraven",
+    "created_at": "2026-11-20T05:57:03.000Z",
+    "urls": [
+      "https://cent-ai.dev",
+      "https://x.com/itsjdraven/status/2123656850344431790/photo/1",
+      "http://cent-ai.dev",
+      "https://api.cent-ai.dev/v1"
+    ],
+    "note_tweet": "HY4 Flash is free with unlimited usage.\n\nyou can use also DeepSeek V4.1 Flash for free with daily limit\n\nyou can use it like Claude Code, OpenCode, Cursor, Cline, Codex and more\n\nSetup:\n\n1. Sign up here: https://t.co/CvgCmaiN34\n2. Get your API key.\n3. Open your coding tool and add:\n\"https://t.co/mlslvPPOsP\"\n4. Choose model and start coding\n\nand HY4 Flash unlimited free until november 30",
+    "items": [
+      {
+        "name": "Cent AI",
+        "url": "https://cent-ai.dev",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "llm",
+          "api",
+          "coding-agents"
+        ],
+        "summary": "Servicio de API de modelos que, según el tuit, ofrece HY4 Flash gratis e ilimitado y DeepSeek V4.1 Flash gratis con límite diario, compatible con herramientas de código.",
+        "highlights": [
+          "Se usa en Claude Code, OpenCode, Cursor, Cline o Codex configurando la base URL https://api.cent-ai.dev/v1",
+          "Registro, API key y elección de modelo",
+          "HY4 Flash ilimitado gratis hasta el 30 de noviembre según el tuit"
+        ],
+        "entry_type": "product_showcase"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123774823381807117",
+    "text": "Cinecode: le escribes una idea a tu agente de código y te devuelve un MP4 terminado, con guion, cada frame construido en código y el sonido diseñado.\n\nIba con expectativas bajas y me cerró la boca: corre en tu máquina con Claude Code o Cursor, sin servicio de pago. https://t.co/ZicJVdo2pe",
+    "author_name": "Juan",
+    "author_handle": "7uanF",
+    "created_at": "2026-11-20T13:45:50.000Z",
+    "urls": [
+      "https://x.com/7uanF/status/2123774823381807117/photo/1"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Cinecode",
+        "url": "https://github.com/sarpstar/cinecode",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "claude-code",
+          "video",
+          "agentes"
+        ],
+        "summary": "Herramienta que, a partir de una idea, hace que tu agente de código devuelva un MP4 terminado con guion, frames construidos en código y diseño de sonido.",
+        "highlights": [
+          "Corre en local con Claude Code o Cursor",
+          "Sin servicio de pago",
+          "Repo compartido por el autor en la respuesta al tuit"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123602993702719598",
+    "text": "Para banear una cuenta de insta https://t.co/xkbet4hmeY",
+    "author_name": "OIHEC hackers",
+    "author_handle": "HackersOIHEC",
+    "created_at": "2026-11-20T02:23:02.000Z",
+    "urls": [
+      "https://twitter.com/stewardFOMO/status/2123541917619335544"
+    ],
+    "note_tweet": null,
+    "items": []
+  }
+]

@@ -3,6 +3,10 @@ name: Design Bookmarks
 url: 'https://designbookmark.com/'
 category: Frontend & UI
 tags:
+  - design
+  - resources
+  - bookmarks
+  - inspiration
   - inspiracion
   - diseno
   - recursos
@@ -16,6 +20,10 @@ author_handle: noahelhadedy
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: inspiracion
+source_tweets:
+  - 'https://x.com/noahelhadedy/status/2108461831928811941'
+  - 'https://x.com/noahelhadedy/status/2118750897454944486'
+updated_at: '2026-11-13T05:00:36.260Z'
 ---
 # Design Bookmarks
 
@@ -36,3 +44,6 @@ conjunto: inspiracion
 ## 🔗 Referencias
 - Enlace de referencia: [https://designbookmark.com/](https://designbookmark.com/)
 - Tweet origen: [Ver en X](https://x.com/noahelhadedy/status/2108461831928811941)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/noahelhadedy/status/2118750897454944486)

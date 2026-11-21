@@ -18,11 +18,6 @@ source_tweet: 'https://x.com/csaba_kissi/status/2117522406730572218'
 author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---

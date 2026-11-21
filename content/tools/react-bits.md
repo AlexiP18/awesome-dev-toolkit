@@ -2,6 +2,7 @@
 name: React Bits
 url: 'https://reactbits.dev/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - react
   - components
@@ -9,15 +10,21 @@ tags:
   - open-source
   - frontend
   - ui
+  - animacion
+  - componentes
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:29:32.343Z'
+updated_at: '2026-11-20T04:21:05.278Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2077648980528295956'
-author: Csaba Kissi
-author_handle: csaba_kissi
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2077648980528295956'
+  - 'https://x.com/BenjaminUIX/status/2123340929633550834'
+author: BenjaminUIX
+author_handle: BenjaminUIX
 entry_type: tool
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+company: BenjaminUIX
+classified_by: Importado del vault
 ---
 # React Bits
 

@@ -1,23 +1,31 @@
 ---
 name: REA
 url: 'https://github.com/morluto/rea'
-category: AI & Machine Learning
+category: Agentes & Protocolo MCP
+conjunto: recursos
 tags:
   - reverse-engineering
   - ai-agents
   - mcp
   - cli
   - security
+  - ingenieria-inversa
+  - agentes-ia
+  - analisis-de-apps
 stars: 431467
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:54:59.863Z'
+updated_at: '2026-11-18T04:20:52.539Z'
 source_tweet: 'https://x.com/nikosolenne/status/2109316695617573241'
-author: niko.
-author_handle: nikosolenne
+source_tweets:
+  - 'https://x.com/nikosolenne/status/2109316695617573241'
+  - 'https://x.com/SantiTorAI/status/2121748035101426171'
+author: Santi Torres
+author_handle: SantiTorAI
 entry_type: tool
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+company: Santi Torres
+classified_by: Importado del vault
 ---
 # REA
 

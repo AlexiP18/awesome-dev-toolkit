@@ -10,7 +10,7 @@ import {
 import { fetchGitHubRepoMetadata, GitHubMetadata } from './github.js';
 import { classifyToolsWithGemini } from './gemini.js';
 import {
-  createOrUpdateToolNote,
+  createOrUpdateToolNoteLocked,
   findExistingTool,
   loadAllTools,
 } from './note_generator.js';
@@ -421,7 +421,7 @@ export async function ingestResource(input: IngestInput) {
   const savedItems = [];
   for (const classification of classifications) {
     const ghMeta = githubMetas[classification.canonicalUrl] || null;
-    const result = createOrUpdateToolNote(
+    const result = await createOrUpdateToolNoteLocked(
       {
         classification,
         githubMeta: ghMeta,
@@ -443,11 +443,13 @@ export async function ingestResource(input: IngestInput) {
         frontmatter: {
           name: classification.name,
           url: classification.canonicalUrl,
+          website_url: classification.websiteUrl,
           category: classification.category,
           tags: classification.tags,
           status: input.status || 'to_try',
           date_added: nowIso.split('T')[0],
           created_at: nowIso,
+          entry_type: classification.entryType,
         },
         content: '',
         mtimeMs: Date.now(),

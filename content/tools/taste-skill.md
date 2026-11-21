@@ -1,7 +1,9 @@
 ---
 name: taste-skill
 url: 'https://github.com/Leonxlnx/taste-skill'
+website_url: 'https://tasteskill.dev/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - agent-skills
   - ai-agents
@@ -16,16 +18,22 @@ tags:
   - web-design
   - design
   - code-generation
+  - diseno
+  - motion
 stars: 102562
 status: to_try
 date_added: '2026-10-26'
-source_tweet: 'https://x.com/Fluyeporlaweb/status/1987654321098765432'
-author: PA13L0 (@Fluyeporlaweb)
-author_handle: Fluyeporlaweb
-entry_type: tool
-classified_by: Google Gemini (2.5 Flash)
 created_at: '2026-10-26T04:07:05.721Z'
-conjunto: inspiracion
+updated_at: '2026-11-18T04:20:52.171Z'
+source_tweet: 'https://x.com/Fluyeporlaweb/status/1987654321098765432'
+source_tweets:
+  - 'https://x.com/Fluyeporlaweb/status/1987654321098765432'
+  - 'https://x.com/Sujay__Raj/status/2121544344138371119'
+author: Sujay.
+author_handle: Sujay__Raj
+entry_type: tool
+company: Sujay.
+classified_by: Importado del vault
 ---
 # taste-skill
 

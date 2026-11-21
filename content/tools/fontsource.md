@@ -18,11 +18,6 @@ source_tweet: 'https://x.com/Marlenuii/status/2111419391271186795'
 author: Marlen
 author_handle: Marlenuii
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
 conjunto: recursos
 ---

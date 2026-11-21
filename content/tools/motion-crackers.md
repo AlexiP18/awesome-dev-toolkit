@@ -16,11 +16,6 @@ source_tweet: 'https://x.com/AdamHincu/status/2114889154836217987'
 author: Adam Hincu
 author_handle: AdamHincu
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: inspiracion
 ---
