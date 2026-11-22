@@ -2,8 +2,8 @@
 
 > Colección curada en **3 apartados esenciales** (Herramientas, Consejos Técnicos y Trabajo Remoto/Freelance) y clasificada por **Conjuntos** (📦 Recursos, 💡 Inspiración, 🚀 Producto y 🧠 Consejos) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA.
 
-[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-699-blue?style=for-the-badge)]()
-[![Consejos](https://img.shields.io/badge/💡_Consejos-7-8E75C2?style=for-the-badge)]()
+[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-718-blue?style=for-the-badge)]()
+[![Consejos](https://img.shields.io/badge/💡_Consejos-8-8E75C2?style=for-the-badge)]()
 [![Trabajo Remoto](https://img.shields.io/badge/💼_Trabajo_Remoto-57-0284C7?style=for-the-badge)]()
 [![Obsidian Ready](https://img.shields.io/badge/Obsidian-Segundo_Cerebro-7C3AED?style=for-the-badge&logo=obsidian)]()
 
@@ -11,13 +11,13 @@
 
 ## 📑 Los 3 Apartados del Toolkit
 
-- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-699) (699)
-- [💡 Apartado 2: Consejos Técnicos & Buenas Prácticas](#-apartado-2-consejos-técnicos--buenas-prácticas-7) (7)
+- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-718) (718)
+- [💡 Apartado 2: Consejos Técnicos & Buenas Prácticas](#-apartado-2-consejos-técnicos--buenas-prácticas-8) (8)
 - [💼 Apartado 3: Trabajo Remoto & Freelance](#-apartado-3-trabajo-remoto--oportunidades-freelance-57) (57)
 
 ---
 
-## 🛠️ Apartado 1: Herramientas & Repositorios de Software (699)
+## 🛠️ Apartado 1: Herramientas & Repositorios de Software (718)
 
 > Bibliotecas, utilidades CLI, herramientas de desarrollo, devtools, productos técnicos y hardware guardados desde X.
 
@@ -62,7 +62,22 @@
 - **[Lazygit](https://github.com/jesseduffield/lazygit)** `📦 Recursos` (`👤 Jesse Duffield`) ⭐ **52,000** [𝕏 Tweet](https://x.com/jesseduffield/status/123456789) `🟢 En uso`  
   Una interfaz de usuario de terminal simple y rápida para comandos de git, escrita en Go con gocui. [📝 Ver ficha](content/tools/lazygit.md) `#git` `#terminal` `#go` `#productivity`
 
-### 🎨 Frontend & UI (257)
+### 🎨 Frontend & UI (263)
+
+- **[RareUI](https://rareui.com/)** `📦 Recursos` (`🏢 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2123693090661888112) `🟡 Por probar`  
+  Más de 28 componentes React animados gratuitos. [📝 Ver ficha](content/tools/rareui.md) `#react` `#animacion` `#componentes`
+
+- **[AI Canvas](https://aicanvas.me/)** `📦 Recursos` (`🏢 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2123693090661888112) `🟡 Por probar`  
+  Design systems de React pensados para usar con Claude y ChatGPT. [📝 Ver ficha](content/tools/ai-canvas.md) `#react` `#design-system` `#claude` `#chatgpt`
+
+- **[Bluma](https://bluma.design/)** `💡 Inspiración` (`🏢 ryu 龙`) [𝕏 Tweet](https://x.com/0xgoryu/status/2123656310487224324) `🟡 Por probar`  
+  Colección de inputs y bloques de código de diseño web para probar e inspirarse. [📝 Ver ficha](content/tools/bluma.md) `#diseno-web` `#componentes` `#ui` `#codigo`
+
+- **[HyperUI](https://hyperui.dev/)** `📦 Recursos` (`🏢 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2124050003681497091) `🟡 Por probar`  
+  Más de 200 componentes gratuitos de Tailwind CSS para copiar y pegar. [📝 Ver ficha](content/tools/hyperui.md) `#tailwind` `#componentes` `#css` `#ui`
+
+- **[unslop-ui](https://x.com/fildotai/status/2123812865207632371)** `📦 Recursos` (`🏢 fil`) [𝕏 Tweet](https://x.com/fildotai/status/2123812865207632371) `🟡 Por probar`  
+  Herramienta que detecta rasgos de UI genérica generada por IA y ahora aprende tu gusto desde un archivo .unslop-ui/taste.md. [📝 Ver ficha](content/tools/unslop-ui.md) `#ui` `#agentes-ia` `#linting` `#diseno`
 
 - **[Emil Kowalski skills (animaciones)](https://github.com/emilkowalski/skills)** `📦 Recursos` (`🏢 Salman`) [𝕏 Tweet](https://x.com/saluiux/status/2123752991694205295) `🟡 Por probar`  
   Colección de skills de Emil Kowalski para que el agente añada animaciones de UI cuidadas. [📝 Ver ficha](content/tools/emil-kowalski-skills-animaciones.md) `#agent-skills` `#animacion` `#ui`
@@ -223,8 +238,8 @@
 - **[Colorion Text Effects](https://text-effects.colorion.co/)** `💡 Inspiración` (`🏢 Colorion`) [𝕏 Tweet](https://x.com/tranmautritam/status/2076963534307790926) `🟡 Por probar`  
   Galería de 123 efectos y animaciones de texto en CSS puro (glitch, neón, degradado, máquina de escribir, 3D) que puedes copiar y pegar sin añadir JavaScript a tu proyecto. [📝 Ver ficha](content/tools/colorion-text-effects.md) `#css` `#animaciones` `#texto` `#copy-paste` `#frontend` `#text-effects` `#ui`
 
-- **[Kinetics](https://kinetics.colorion.co/)** `📦 Recursos` (`🏢 Colorion`) [𝕏 Tweet](https://x.com/tranmautritam/status/2076963534307790926) `🟡 Por probar`  
-  Explorador de ejemplos de animación con física de resortes para interfaces, con snippets CSS, ejemplos en React y prompts de IA listos para previsualizar y copiar el código. [📝 Ver ficha](content/tools/kinetics.md) `#motion` `#react` `#css` `#spring` `#animaciones` `#tipografia` `#animacion`
+- **[Kinetics](https://kinetics.colorion.co/)** `💡 Inspiración` (`🏢 Colorion`) [𝕏 Tweet](https://x.com/tranmautritam/status/2076963534307790926) `🟡 Por probar`  
+  Explorador de ejemplos de animación con física de resortes para interfaces, con snippets CSS, ejemplos en React y prompts de IA listos para previsualizar y copiar el código. [📝 Ver ficha](content/tools/kinetics.md) `#motion` `#react` `#css` `#spring` `#animaciones` `#tipografia` `#animacion` `#micro-interacciones` `#ui`
 
 - **[OriginKit](https://www.originkit.dev/)** `📦 Recursos` (`👤 Tran Mau Tri Tam ✪`) [𝕏 Tweet](https://x.com/tranmautritam/status/2076963534307790926) `🟡 Por probar`  
   Biblioteca gratuita de componentes UI animados y listos para integrar en proyectos web modernos, ideal para acelerar la construcción de interfaces con movimiento sin escribir animaciones desde cero. [📝 Ver ficha](content/tools/originkit.md) `#componentes` `#animaciones` `#ui` `#design-system` `#frontend`
@@ -253,6 +268,9 @@
 - **[React Bits](https://reactbits.dev/)** `📦 Recursos` (`🏢 BenjaminUIX`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2077648980528295956) `🟡 Por probar`  
   Colección open source de componentes React animados para texto, fondos, tarjetas interactivas y microinteracciones, con demos en vivo y código fuente copiable. [📝 Ver ficha](content/tools/react-bits.md) `#react` `#components` `#animations` `#open-source` `#frontend` `#ui` `#animacion` `#componentes`
 
+- **[TinyPNG](https://tinypng.com/)** `🚀 Producto` (`🏢 TinyPNG`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Optimizador de imágenes online con compresión lossy inteligente para PNG, JPEG y WebP que reduce el peso sin pérdida perceptible de calidad. [📝 Ver ficha](content/tools/tinypng.md) `#imagenes` `#optimizacion` `#web-performance` `#compresion`
+
 - **[MagicPattern Halftone Effect Generator](https://www.magicpattern.design/tools/halftone-generator)** `📦 Recursos` (`🏢 MagicPattern`) [🌐 Web](https://www.magicpattern.design/) [𝕏 Tweet](https://x.com/d__raptis/status/2077999523822235896) `🟡 Por probar`  
   Herramienta web gratuita que convierte cualquier imagen en gráficos estilo cómic retro mediante tramado de semitono (halftone), útil para maquetar landings, posters y assets visuales sin salir del navegador. [📝 Ver ficha](content/tools/magicpattern-halftone-effect-generator.md) `#diseño` `#generador` `#imágenes` `#css` `#recursos-gráficos` `#halftone`
 
@@ -266,7 +284,7 @@
   TapTone es una colección de sonidos de interacción para interfaces web modernas, con efectos para hover y clics que añaden feedback auditivo a la experiencia de usuario. [📝 Ver ficha](content/tools/taptone.md) `#ui` `#sound` `#frontend` `#web` `#interaction`
 
 - **[Uiverse](https://uiverse.io/)** `📦 Recursos` (`🏢 Uiverse`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2079093085955657992) `🟡 Por probar`  
-  Colección gratuita de componentes de interfaz creados por la comunidad para reutilizar elementos visuales en proyectos web y acelerar el diseño frontend. [📝 Ver ficha](content/tools/uiverse.md) `#ui` `#componentes` `#css` `#frontend` `#open-source`
+  Colección gratuita de componentes de interfaz creados por la comunidad para reutilizar elementos visuales en proyectos web y acelerar el diseño frontend. [📝 Ver ficha](content/tools/uiverse.md) `#ui` `#componentes` `#css` `#frontend` `#open-source` `#tailwind` `#react`
 
 - **[Esponsively](https://esponsively.app/)** `🚀 Producto` (`🏢 Esponsively`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2079093085955657992) `🟡 Por probar`  
   Herramienta gratuita para previsualizar sitios web en múltiples dispositivos y validar el comportamiento responsive durante el desarrollo frontend. [📝 Ver ficha](content/tools/esponsively.md) `#responsive` `#preview` `#frontend` `#testing`
@@ -370,11 +388,11 @@
 - **[Reelfolio](https://reelfolio.io/)** `💡 Inspiración` (`👤 Raunak`) [𝕏 Tweet](https://x.com/Skirook/status/2108459281272205435) `🟡 Por probar`  
   Plataforma para crear portafolios web simples y visualmente cuidadosos donde diseñadores muestran sus mejores proyectos creativos. [📝 Ver ficha](content/tools/reelfolio.md) `#portfolio` `#diseno` `#showcase` `#web`
 
-- **[Magic UI](https://magicui.design/)** `📦 Recursos` (`👤 𝐍𝐨𝐚𝐡`) [𝕏 Tweet](https://x.com/noahelhadedy/status/2108461831928811941) `🟡 Por probar`  
-  Conjunto de componentes y plantillas de UI animadas para React y Tailwind CSS, pensado para dar un acabado pulido a landings y páginas de marketing sin partir de cero. [📝 Ver ficha](content/tools/magic-ui.md) `#react` `#tailwind` `#componentes` `#animaciones`
+- **[Magic UI](https://magicui.design/)** `📦 Recursos` (`🏢 Csaba Kissi`) [𝕏 Tweet](https://x.com/noahelhadedy/status/2108461831928811941) `🟡 Por probar`  
+  Conjunto de componentes y plantillas de UI animadas para React y Tailwind CSS, pensado para dar un acabado pulido a landings y páginas de marketing sin partir de cero. [📝 Ver ficha](content/tools/magic-ui.md) `#react` `#tailwind` `#componentes` `#animaciones` `#shadcn` `#animacion`
 
 - **[Aceternity UI](https://ui.aceternity.com/)** `📦 Recursos` (`🏢 Aceternity`) [𝕏 Tweet](https://x.com/noahelhadedy/status/2108461831928811941) `🟡 Por probar`  
-  Biblioteca de componentes React y Tailwind CSS con más de 200 bloques copiables, plantillas de landing y animaciones con Motion para acelerar interfaces de alto impacto visual. [📝 Ver ficha](content/tools/aceternity-ui.md) `#react` `#tailwind` `#componentes` `#motion` `#framer-motion`
+  Biblioteca de componentes React y Tailwind CSS con más de 200 bloques copiables, plantillas de landing y animaciones con Motion para acelerar interfaces de alto impacto visual. [📝 Ver ficha](content/tools/aceternity-ui.md) `#react` `#tailwind` `#componentes` `#motion` `#framer-motion` `#animacion`
 
 - **[CTA Gallery](https://www.cta.gallery/)** `💡 Inspiración` (`👤 𝐍𝐨𝐚𝐡`) [𝕏 Tweet](https://x.com/noahelhadedy/status/2108461831928811941) `🟡 Por probar`  
   Galería centrada en llamadas a la acción reales que permite comparar microcopy, contraste visual y ubicación de los CTAs para mejorar la conversión de una interfaz. [📝 Ver ficha](content/tools/cta-gallery.md) `#cta` `#ux` `#conversion` `#inspiracion`
@@ -463,8 +481,8 @@
 - **[Best Free Fonts](https://bestfreefonts.com/)** `📦 Recursos` (`🏢 Best Free Fonts`) [𝕏 Tweet](https://x.com/neropursue/status/2108798041192862144) `🟡 Por probar`  
   Directorio curado de tipografías gratuitas de alta calidad para branding, webs y diseño editorial, con previsualización de cada fuente. [📝 Ver ficha](content/tools/best-free-fonts.md) `#typography` `#fonts` `#design` `#branding` `#web-design`
 
-- **[21st](https://21st.dev/)** `💡 Inspiración` (`🏢 21st`) [𝕏 Tweet](https://x.com/neropursue/status/2108798041192862144) `🟡 Por probar`  
-  Marketplace con más de 12.000 componentes React y Tailwind CSS, plantillas y temas shadcn creados por ingenieros de diseño. [📝 Ver ficha](content/tools/21st.md) `#react` `#componentes` `#shadcn` `#marketplace` `#tailwind` `#ui-components` `#templates`
+- **[21st](https://21st.dev/)** `📦 Recursos` (`🏢 21st`) [𝕏 Tweet](https://x.com/neropursue/status/2108798041192862144) `🟡 Por probar`  
+  Marketplace con más de 12.000 componentes React y Tailwind CSS, plantillas y temas shadcn creados por ingenieros de diseño. [📝 Ver ficha](content/tools/21st.md) `#react` `#componentes` `#shadcn` `#marketplace` `#tailwind` `#ui-components` `#templates` `#ui` `#prompts`
 
 - **[Inspora](https://www.inspora.design/)** `💡 Inspiración` (`🏢 Inspora`) [𝕏 Tweet](https://x.com/neropursue/status/2108798041192862144) `🟡 Por probar`  
   Colección curada de diseños y maquetas web que sirve como fuente de inspiración visual para equipos de frontend y diseño de producto. [📝 Ver ficha](content/tools/inspora.md) `#design-inspiration` `#ui` `#gallery` `#web-design`
@@ -935,7 +953,13 @@
 - **[Sevalla.com Hosting](https://sevalla.com/)** `🚀 Producto` (`🏢 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2112068533924626841) `🟡 Por probar`  
   Un servicio de hosting full-stack que soporta múltiples lenguajes de programación como PHP, JavaScript, Go y Python, ideal para desplegar aplicaciones completas. [📝 Ver ficha](content/tools/sevallacom-hosting.md) `#deploy` `#cloud` `#infraestructura` `#hosting` `#full-stack` `#php` `#javascript` `#go` `#python` `#backend`
 
-### 🤖 AI & Machine Learning (105)
+### 🤖 AI & Machine Learning (106)
+
+- **[pyannote.audio](https://pyannote.audio/)** `📦 Recursos` (`🏢 REPO`) [𝕏 Tweet](https://x.com/JustRepo/status/2124125088098226314) `🟡 Por probar`  
+  Toolkit para diarización de hablantes: identifica quién habla y cuándo en un audio. [📝 Ver ficha](content/tools/pyannoteaudio.md) `#diarizacion` `#audio` `#python` `#speech`
+
+- **[OpenCV](https://github.com/opencv/opencv)** `📦 Recursos` (`🏢 REPO`) [𝕏 Tweet](https://x.com/JustRepo/status/2124125088098226314) `🟡 Por probar`  
+  Librería de visión por computadora para construir lógica de seguimiento y recorte de video. [📝 Ver ficha](content/tools/opencv.md) `#vision-artificial` `#cpp` `#python` `#video`
 
 - **[Cent AI](https://cent-ai.dev/)** `🚀 Producto` (`🏢 𝙳𝚛𝚊𝚟𝚎𝚗`) [𝕏 Tweet](https://x.com/itsjdraven/status/2123656850344431790) `🟡 Por probar`  
   Servicio de API de modelos que, según el tuit, ofrece HY4 Flash gratis e ilimitado y DeepSeek V4.1 Flash gratis con límite diario, compatible con herramientas de código. [📝 Ver ficha](content/tools/cent-ai.md) `#llm` `#api` `#coding-agents`
@@ -1062,9 +1086,6 @@
 
 - **[Google AI Studio / Gemini API (free tier)](https://ai.google.dev/)** `📦 Recursos` (`🏢 Google`) [𝕏 Tweet](https://x.com/exploraX_/status/2085651010018529492) `🟡 Por probar`  
   Capa gratuita permanente de la Gemini Developer API, independiente del crédito de Google Cloud, con tokens de entrada y salida sin coste en modelos Gemini Flash, Flash-Lite y modelos de embeddings. Incluye 5.000 peticiones mensuales con grounding de búsqueda. [📝 Ver ficha](content/tools/google-ai-studio-gemini-api-free-tier.md) `#gemini` `#llm` `#api` `#embeddings` `#free-tier`
-
-- **[call.md](https://github.com/video-db/call.md)** `📦 Recursos` (`🏢 video-db`) ⭐ **2,057** [𝕏 Tweet](https://x.com/josesilesdata/status/2086142896277729313) `🟡 Por probar`  
-  Herramienta open source en TypeScript que graba tus reuniones, las transcribe en dos canales separados (tú vs. los demás) y ejecuta un agente de IA que te sugiere qué decir en tiempo real mientras hablas. [📝 Ver ficha](content/tools/callmd.md) `#meeting-notes` `#transcription` `#agentic-ai` `#mcp` `#typescript` `#open-source` `#sqlite` `#n8n` `#zapier`
 
 - **[vLLM](https://github.com/vllm-project/vllm)** `📦 Recursos` (`👤 Nahid`) [🌐 Web](https://docs.vllm.ai/) [𝕏 Tweet](https://x.com/nahid_pro09/status/2087762950845284595) `🟡 Por probar`  
   Motor de inferencia open-source para servir modelos de pesos abiertos en tu propio hardware, con PagedAttention y batching continuo para maximizar el throughput sin factura por token. [📝 Ver ficha](content/tools/vllm.md) `#inferencia` `#self-hosted` `#open-source` `#pagedattention` `#gpu` `#llm`
@@ -1195,8 +1216,8 @@
 - **[BrowserSkill](https://github.com/Tencent/BrowserSkill)** `📦 Recursos` (`🏢 Tencent`) ⭐ **10,013** [𝕏 Tweet](https://x.com/csaba_kissi/status/2110993750596222986) `🟡 Por probar`  
   Herramienta open-source de Tencent que permite a agentes de IA controlar tu navegador real con sesiones ya autenticadas, sin interrumpir tu trabajo, mediante CLI y extensión. [📝 Ver ficha](content/tools/browserskill.md) `#agents` `#browser-automation` `#typescript` `#cli` `#extension`
 
-- **[Whisper](https://github.com/openai/whisper)** `📦 Recursos` (`👤 Marlen`) ⭐ **111,866** [𝕏 Tweet](https://x.com/Marlenuii/status/2111419391271186795) `🟡 Por probar`  
-  Un robusto sistema de reconocimiento de voz de OpenAI que puede generar transcripciones de audio y texto para la creación precisa de subtítulos y el cronometraje de los mismos. [📝 Ver ficha](content/tools/whisper.md) `#ai` `#speech-recognition` `#transcription` `#subtitles` `#captions` `#openai` `#machine-learning`
+- **[Whisper](https://github.com/openai/whisper)** `📦 Recursos` (`🏢 REPO`) ⭐ **111,866** [𝕏 Tweet](https://x.com/Marlenuii/status/2111419391271186795) `🟡 Por probar`  
+  Un robusto sistema de reconocimiento de voz de OpenAI que puede generar transcripciones de audio y texto para la creación precisa de subtítulos y el cronometraje de los mismos. [📝 Ver ficha](content/tools/whisper.md) `#ai` `#speech-recognition` `#transcription` `#subtitles` `#captions` `#openai` `#machine-learning` `#transcripcion` `#speech-to-text` `#python` `#audio`
 
 - **[ai-memory](https://github.com/akitaonrails/ai-memory)** `📦 Recursos` (`🏢 akitaonrails`) ⭐ **15,011** [𝕏 Tweet](https://x.com/csaba_kissi/status/2112068533924626841) `🟡 Por probar`  
   Solución de código abierto para la memoria a largo plazo en CLIs de agentes de codificación, facilitando la transferencia de contexto entre diferentes proveedores de agentes de IA. [📝 Ver ficha](content/tools/ai-memory.md) `#ai` `#memory` `#agents` `#cli` `#rust` `#open-source`
@@ -1257,13 +1278,28 @@
 - **[Firecrawl](https://github.com/firecrawl/firecrawl)** `📦 Recursos` (`🏢 Firecrawl`) ⭐ **199,183** [🌐 Web](https://firecrawl.dev/) [𝕏 Tweet](https://x.com/katsudev/status/2077021776412897641) `🟡 Por probar`  
   API y librería de crawling que convierte cualquier web en texto limpio en markdown listo para alimentar a tus agentes de IA y pipelines RAG. [📝 Ver ficha](content/tools/firecrawl.md) `#web-scraping` `#crawler` `#markdown` `#llm` `#data-extraction` `#rag`
 
-### 🤖 Agentes & Protocolo MCP (58)
+### 🤖 Agentes & Protocolo MCP (63)
+
+- **[awesome.tools](https://awesome.tools/)** `🚀 Producto` (`🏢 ILIAS ISM`) [𝕏 Tweet](https://x.com/illyism/status/2123675279210242167) `🟡 Por probar`  
+  Directorio de herramientas probadas con benchmarks, disponible como MCP. [📝 Ver ficha](content/tools/awesometools.md) `#mcp` `#directorio` `#benchmarks`
+
+- **[AI SEO Tracker](https://aiseotracker.com/)** `🚀 Producto` (`🏢 ILIAS ISM`) [𝕏 Tweet](https://x.com/illyism/status/2123675279210242167) `🟡 Por probar`  
+  MCP en vivo para medir la visibilidad de una marca en buscadores de IA. [📝 Ver ficha](content/tools/ai-seo-tracker.md) `#mcp` `#seo` `#busqueda-ia`
+
+- **[Scribiz MCP](https://scribiz.com/mcp)** `🚀 Producto` (`🏢 ILIAS ISM`) [𝕏 Tweet](https://x.com/illyism/status/2123675279210242167) `🟡 Por probar`  
+  Servidor MCP que trae subtítulos de video y YouTube más OCR de frames directo a tu agente. [📝 Ver ficha](content/tools/scribiz-mcp.md) `#mcp` `#youtube` `#transcripcion` `#ocr`
+
+- **[SEO Skills (Illyism)](https://github.com/Illyism/seo-skills)** `📦 Recursos` (`🏢 ILIAS ISM`) [🌐 Web](https://il.ly/blog/seo-skills) [𝕏 Tweet](https://x.com/illyism/status/2123675279210242167) `🟡 Por probar`  
+  30 skills open source de SEO para Claude Code y Cursor: auditorías técnicas, SEO programático, páginas BOFU y flujos con Ahrefs y GSC. [📝 Ver ficha](content/tools/seo-skills-illyism.md) `#seo` `#agent-skills` `#claude-code` `#cursor`
+
+- **[oakoss/agent-skills](https://github.com/oakoss/agent-skills)** `📦 Recursos` (`🏢 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2123693090661888112) `🟡 Por probar`  
+  Colección de 112 skills reutilizables para agentes de IA. [📝 Ver ficha](content/tools/oakossagent-skills.md) `#agent-skills` `#claude-code` `#agentes-ia`
+
+- **[BoxLite](https://github.com/boxlite-ai/boxlite)** `📦 Recursos` (`🏢 CS`) [🌐 Web](https://boxlite.ai/) [𝕏 Tweet](https://x.com/CallMeCSZ/status/2123728056913146161) `🟡 Por probar`  
+  Plataforma open source (Apache 2.0) que ejecuta agentes de IA en microVMs aisladas, con versión cloud gestionada o self-hosted. [📝 Ver ficha](content/tools/boxlite.md) `#agentes-ia` `#microvm` `#sandbox` `#self-hosted`
 
 - **[code-review (Sentry)](https://github.com/getsentry/skills)** `🧠 Consejos` (`🏢 Saurav`) [𝕏 Tweet](https://x.com/saurav_tweets/status/2123724003781255599) `🟡 Por probar`  
   Skill de Sentry que guía al agente para hacer revisiones de código siguiendo un procedimiento. [📝 Ver ficha](content/tools/code-review-sentry.md) `#agent-skills` `#code-review` `#calidad`
-
-- **[Caffeine](https://caffeine.ai/)** `🚀 Producto` (`🏢 Student Offers`) [𝕏 Tweet](https://x.com/StudentOffersHQ/status/2123916388314321108) `🟡 Por probar`  
-  Constructor de apps con IA, parecido a Lovable, donde agentes construyen y alojan tu app a partir de un prompt. [📝 Ver ficha](content/tools/caffeine.md) `#ia` `#app-builder` `#agentes`
 
 - **[Bolt.new](https://bolt.new/)** `🚀 Producto` (`🏢 Ochoa`) [𝕏 Tweet](https://x.com/Elochoaa__/status/2123859657747812733) `🟡 Por probar`  
   Constructor de sitios y apps con IA en el que describes lo que quieres sin escribir código. [📝 Ver ficha](content/tools/boltnew.md) `#ia` `#app-builder` `#no-code`
@@ -1433,7 +1469,22 @@
 - **[skills](https://github.com/mattpocock/skills)** `📦 Recursos` (`🏢 Santi Torres`) ⭐ **309,352** [𝕏 Tweet](https://x.com/csaba_kissi/status/2115357959341703241) `🟡 Por probar`  
   Una colección de 'skills' o habilidades para agentes de IA, diseñada específicamente para ingenieros y extraída de directorios personales para optimizar sus flujos de trabajo de desarrollo. [📝 Ver ficha](content/tools/skills.md) `#claude-code` `#agent-skills` `#prompts` `#ai` `#ai-agents` `#workflows` `#shell` `#engineering` `#typescript`
 
-### 🎬 Prompts, Art & Video (84)
+### 🎬 Prompts, Art & Video (89)
+
+- **[PyAV](https://github.com/PyAV-Org/PyAV)** `📦 Recursos` (`🏢 REPO`) [𝕏 Tweet](https://x.com/JustRepo/status/2124125088098226314) `🟡 Por probar`  
+  Bindings de Python sobre FFmpeg para decodificar y procesar video. [📝 Ver ficha](content/tools/pyav.md) `#python` `#ffmpeg` `#video` `#audio`
+
+- **[Kdenlive](https://github.com/KDE/kdenlive)** `📦 Recursos` (`🏢 REPO`) [𝕏 Tweet](https://x.com/JustRepo/status/2124125088098226314) `🟡 Por probar`  
+  Editor de video de escritorio open source para cortar y poner fotogramas clave en la edición final. [📝 Ver ficha](content/tools/kdenlive.md) `#video` `#edicion` `#open-source` `#desktop`
+
+- **[Editly](https://github.com/mifi/editly)** `📦 Recursos` (`🏢 REPO`) [𝕏 Tweet](https://x.com/JustRepo/status/2124125088098226314) `🟡 Por probar`  
+  Herramienta para ensamblar clips de video con código de forma declarativa. [📝 Ver ficha](content/tools/editly.md) `#video` `#nodejs` `#edicion` `#cli`
+
+- **[libass](https://github.com/libass/libass)** `📦 Recursos` (`🏢 REPO`) [𝕏 Tweet](https://x.com/JustRepo/status/2124125088098226314) `🟡 Por probar`  
+  Librería para renderizar subtítulos ASS con estilo. [📝 Ver ficha](content/tools/libass.md) `#subtitulos` `#ass` `#c` `#video`
+
+- **[yt-dlp](https://github.com/yt-dlp/yt-dlp)** `📦 Recursos` (`🏢 REPO`) [𝕏 Tweet](https://x.com/JustRepo/status/2124125088098226314) `🟡 Por probar`  
+  CLI open source para descargar videos fuente de YouTube y cientos de sitios. [📝 Ver ficha](content/tools/yt-dlp.md) `#video` `#descarga` `#cli` `#python`
 
 - **[Cinecode](https://github.com/sarpstar/cinecode)** `📦 Recursos` (`🏢 Juan`) [𝕏 Tweet](https://x.com/7uanF/status/2123774823381807117) `🟡 Por probar`  
   Herramienta que, a partir de una idea, hace que tu agente de código devuelva un MP4 terminado con guion, frames construidos en código y diseño de sonido. [📝 Ver ficha](content/tools/cinecode.md) `#claude-code` `#video` `#agentes`
@@ -1484,7 +1535,7 @@
   Servicio de eliminación automática de fondos de imágenes con IA en segundos, disponible vía web y API REST para integrarlo en pipelines de producción. [📝 Ver ficha](content/tools/removebg.md) `#imagen` `#background-removal` `#api` `#diseno` `#imagenes` `#fondo` `#ia` `#fondos`
 
 - **[Photopea](https://photopea.com/)** `🚀 Producto` (`🏢 Photopea`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Editor de imágenes profesional que corre 100% en el navegador y abre archivos PSD, XD, Sketch, Figma y RAW sin instalar Photoshop de escritorio. [📝 Ver ficha](content/tools/photopea.md) `#editor-de-imagenes` `#photoshop` `#diseno` `#web` `#editor-imagenes` `#navegador`
+  Editor de imágenes profesional que corre 100% en el navegador y abre archivos PSD, XD, Sketch, Figma y RAW sin instalar Photoshop de escritorio. [📝 Ver ficha](content/tools/photopea.md) `#editor-de-imagenes` `#photoshop` `#diseno` `#web` `#editor-imagenes` `#navegador` `#edicion-imagen`
 
 - **[Advanced CapCut Course: Professional Video Editing](https://drive.google.com/drive/folders/1B8fUeKAjYUKLe6gEwOQtR9ODOtpWhKv-)** `🧠 Consejos` (`👤 ayo.artss`) [𝕏 Tweet](https://x.com/madamayo_/status/2085839926520578313) `🟡 Por probar`  
   Curso avanzado de edición de vídeo con CapCut que cubre montaje, keyframes, corrección de color, subtítulos automáticos y efectos para producir piezas profesionales de formato corto. [📝 Ver ficha](content/tools/advanced-capcut-course-professional-video-editing.md) `#capcut` `#edicion-video` `#postproduccion` `#curso` `#short-form`
@@ -1695,7 +1746,16 @@
 - **[Qdrant](https://github.com/qdrant/qdrant)** `📦 Recursos` (`🏢 Qdrant`) [🌐 Web](https://qdrant.tech/) [𝕏 Tweet](https://x.com/mdancho84/status/2086054601556410832) `🟡 Por probar`  
   Base de datos vectorial de alto rendimiento escrita en Rust para búsqueda por similitud y recuperación semántica a escala. [📝 Ver ficha](content/tools/qdrant.md) `#vector-database` `#rust` `#search` `#embeddings`
 
-### ⚡ Productivity & Tools (69)
+### ⚡ Productivity & Tools (82)
+
+- **[fast-anything](https://github.com/EL4CTEO/fast-anything)** `📦 Recursos` (`🏢 Ram Maheshwari`) [𝕏 Tweet](https://x.com/rammcodes/status/2124218899952750662) `🟡 Por probar`  
+  Herramienta para perfilar apps Python, Node o Ruby y portar solo las funciones lentas con tu agente de código, verificando que se comporten igual. [📝 Ver ficha](content/tools/fast-anything.md) `#rendimiento` `#profiling` `#python` `#nodejs`
+
+- **[AccountKiller](https://accountkiller.com/)** `🚀 Producto` (`🏢 sergio`) [𝕏 Tweet](https://x.com/Elochoaa__/status/2123350146956112381) `🟡 Por probar`  
+  Sitio para eliminar tu presencia de cuentas en otros servicios web. [📝 Ver ficha](content/tools/accountkiller.md) `#privacidad` `#cuentas` `#web`
+
+- **[Caffeine](https://caffeine.ai/)** `🚀 Producto` (`🏢 Student Offers`) [𝕏 Tweet](https://x.com/StudentOffersHQ/status/2123916388314321108) `🟡 Por probar`  
+  Constructor de apps con IA, parecido a Lovable, donde agentes construyen y alojan tu app a partir de un prompt. [📝 Ver ficha](content/tools/caffeine.md) `#ia` `#app-builder` `#agentes` `#no-code` `#hosting`
 
 - **[Jasper](https://jasper.ai/free)** `🚀 Producto` (`🏢 Ochoa`) [𝕏 Tweet](https://x.com/Elochoaa__/status/2123859657747812733) `🟡 Por probar`  
   Asistente de escritura con IA con versión gratuita para uso diario. [📝 Ver ficha](content/tools/jasper.md) `#ia` `#escritura` `#copywriting`
@@ -1739,14 +1799,41 @@
 - **[Recordly](https://github.com/webadderallorg/Recordly)** `🚀 Producto` (`🏢 webadderallorg`) ⭐ **36,207** [𝕏 Tweet](https://x.com/katsudev/status/2077021776412897641) `🟡 Por probar`  
   Grabador de pantalla open source para Mac, Windows y Linux que añade zoom automático y cursor suavizado para crear vídeos demo sin editar. [📝 Ver ficha](content/tools/recordly.md) `#screen-recorder` `#electron` `#demo-video` `#open-source` `#macos` `#windows` `#linux`
 
-- **[TinyPNG](https://tinypng.com/)** `📦 Recursos` (`🏢 TinyPNG`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Optimizador de imágenes online con compresión lossy inteligente para PNG, JPEG y WebP que reduce el peso sin pérdida perceptible de calidad. [📝 Ver ficha](content/tools/tinypng.md) `#imagenes` `#optimizacion` `#web-performance` `#compresion`
+- **[Flightradar24](https://flightradar24.com/)** `🚀 Producto` (`🏢 Flightradar24`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Rastreador global de vuelos en tiempo real que muestra posición, altitud y ruta de aeronaves sobre un mapa, con API de datos para desarrolladores. [📝 Ver ficha](content/tools/flightradar24.md) `#datos` `#api` `#tiempo-real` `#tracking` `#vuelos` `#mapas`
+
+- **[Wolfram Alpha](https://wolframalpha.com/)** `🚀 Producto` (`🏢 Wolfram Research`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Motor de conocimiento computacional que resuelve ecuaciones, integrales, conversiones y consultas de datos devolviendo la respuesta con pasos intermedios. [📝 Ver ficha](content/tools/wolfram-alpha.md) `#matematicas` `#computacion` `#calculadora` `#api` `#calculo` `#busqueda`
 
 - **[VirusTotal](https://virustotal.com/)** `🚀 Producto` (`🏢 VirusTotal (Google)`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
   Plataforma de análisis de archivos, URLs y dominios que los escanea con decenas de motores antivirus y servicios de reputación en paralelo. [📝 Ver ficha](content/tools/virustotal.md) `#seguridad` `#malware` `#analisis` `#api`
 
+- **[Connected Papers](https://connectedpapers.com/)** `🚀 Producto` (`🏢 Connected Papers`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Herramienta de exploración académica que genera un grafo visual de artículos relacionados a partir de un paper semilla para descubrir literatura previa y derivada. [📝 Ver ficha](content/tools/connected-papers.md) `#investigacion` `#papers` `#grafo` `#academia` `#grafos`
+
 - **[Have I Been Pwned](https://haveibeenpwned.com/)** `🚀 Producto` (`🏢 Have I Been Pwned (HIBP)`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
   Servicio de consulta de brechas de datos que verifica si un correo o dominio corporativo apareció en filtraciones conocidas y expone una API para automatizar la vigilancia. [📝 Ver ficha](content/tools/have-i-been-pwned.md) `#seguridad` `#brechas-de-datos` `#api` `#observabilidad` `#filtraciones` `#privacidad`
+
+- **[JustWatch](https://justwatch.com/)** `🚀 Producto` (`🏢 JustWatch`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Guía de streaming que indica en qué plataforma está disponible una película o serie por país, con filtros por precio, calidad y servicio de suscripción. [📝 Ver ficha](content/tools/justwatch.md) `#streaming` `#busqueda` `#entretenimiento` `#utilidades` `#peliculas`
+
+- **[Project Gutenberg](https://gutenberg.org/)** `💡 Inspiración` (`🏢 Project Gutenberg`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Biblioteca digital con más de 75.000 libros de dominio público en formato EPUB, Kindle y texto plano, descargables sin registro ni coste alguno. [📝 Ver ficha](content/tools/project-gutenberg.md) `#ebooks` `#dominio-publico` `#biblioteca` `#lectura` `#libros`
+
+- **[PDF Drive](https://pdfdrive.com/)** `💡 Inspiración` (`🏢 PDF Drive`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Biblioteca en línea con millones de libros y documentos PDF de acceso gratuito, con búsqueda por título, autor y vista previa rápida en el navegador. [📝 Ver ficha](content/tools/pdf-drive.md) `#libros` `#pdf` `#biblioteca` `#lectura` `#zona-gris-legal`
+
+- **[Wayback Machine (Internet Archive)](https://web.archive.org/)** `📦 Recursos` (`🏢 Internet Archive`) [🌐 Web](https://archive.org/) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Archivo histórico de la web que permite recuperar versiones antiguas o borradas de cualquier página y consultar su evolución a lo largo del tiempo. [📝 Ver ficha](content/tools/wayback-machine-internet-archive.md) `#archivo` `#wayback` `#documentacion` `#investigacion` `#web` `#historial`
+
+- **[Temp-Mail](https://temp-mail.org/)** `🚀 Producto` (`🏢 Temp-Mail`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Generador de direcciones de correo electrónico temporales desechables con bandeja de entrada en tiempo real, ideal para registros efímeros y pruebas de flujos de verificación. [📝 Ver ficha](content/tools/temp-mail.md) `#email` `#privacidad` `#testing` `#utilidades`
+
+- **[TinyWow](https://tinywow.com/)** `🚀 Producto` (`🏢 TinyWow`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Suite web con más de 100 utilidades gratuitas para PDF, imagen, video, escritura con IA y conversión de archivos sin instalar nada. [📝 Ver ficha](content/tools/tinywow.md) `#pdf` `#utilidades` `#conversion` `#ia` `#web`
+
+- **[Cobalt](https://cobalt.tools/)** `📦 Recursos` (`🏢 cobalt`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
+  Servicio web minimalista y de código abierto que descarga video y audio de redes sociales pegando únicamente la URL, sin anuncios, rastreo ni muros de pago. [📝 Ver ficha](content/tools/cobalt.md) `#descarga` `#video` `#open-source` `#utilidades`
 
 - **[LocalCan Snapshot](https://www.localcan.com/)** `📦 Recursos` (`🏢 LocalCan`) [𝕏 Tweet](https://x.com/jarekceborski/status/2078148793602539966) `🟡 Por probar`  
   Herramienta que expone un servidor local en localhost a una URL pública y estable, permitiendo probar webhooks, OAuth y callbacks de pago o compartir una preview en vivo de un proyecto en desarrollo. [📝 Ver ficha](content/tools/localcan-snapshot.md) `#tunneling` `#localhost` `#preview` `#webhooks` `#compartir-prototipos`
@@ -1780,6 +1867,9 @@
 
 - **[Brevio](https://brevio.pro/)** `📦 Recursos` (`🏢 Brevio`) [𝕏 Tweet](https://x.com/ihteshamali/status/2080969448534774235) `🟡 Por probar`  
   Brevio es una colección web con 492 utilidades gratuitas (118 para desarrolladores, 58 de finanzas, 36 de PDF, 30 conversores) que se ejecutan sin registro y procesan los archivos localmente en el navegador del usuario. [📝 Ver ficha](content/tools/brevio.md) `#utilidades` `#multi-herramienta` `#privacidad` `#procesamiento-local` `#pdf` `#json` `#desarrollo`
+
+- **[call.md](https://github.com/video-db/call.md)** `📦 Recursos` (`🏢 video-db`) ⭐ **2,057** [𝕏 Tweet](https://x.com/josesilesdata/status/2086142896277729313) `🟡 Por probar`  
+  Herramienta open source en TypeScript que graba tus reuniones, las transcribe en dos canales separados (tú vs. los demás) y ejecuta un agente de IA que te sugiere qué decir en tiempo real mientras hablas. [📝 Ver ficha](content/tools/callmd.md) `#meeting-notes` `#transcription` `#agentic-ai` `#mcp` `#typescript` `#open-source` `#sqlite` `#n8n` `#zapier` `#reuniones` `#transcripcion` `#desktop`
 
 - **[DirectoryFinder](https://directoryfinder.com/)** `📦 Recursos` (`👤 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2086711629035524562) `🟡 Por probar`  
   Directorio curado de directorios para enviar startups y negocios, con datos de dominio, tráfico y precios para conseguir backlinks. [📝 Ver ficha](content/tools/directoryfinder.md) `#directories` `#backlinks` `#seo`
@@ -1904,46 +1994,13 @@
 - **[t3code](https://github.com/pingdotgg/t3code)** `📦 Recursos` (`🏢 pingdotgg`) (`💰 Gratis`) ⭐ **38,343** [🌐 Web](https://t3.codes/) [𝕏 Tweet](https://x.com/csaba_kissi/status/2116071103206724053) `🟡 Por probar`  
   Un dashboard de código abierto para gestionar y visualizar agentes de IA, construido con tecnologías modernas para facilitar el desarrollo de aplicaciones basadas en inteligencia artificial. [📝 Ver ficha](content/tools/t3code.md) `#ai` `#agents` `#coding` `#open-source` `#control-plane` `#agentes` `#dashboard` `#ia` `#typescript` `#gratis`
 
-### 🌐 Sitios útiles generales (35)
-
-- **[AccountKiller](http://accountkiller.com)** `📦 Recursos` (`👤 Ochoa`) [𝕏 Tweet](https://x.com/Elochoaa__/status/2123350146956112381) `🟡 Por probar`  
-  Sitio para eliminar tu presencia de cuentas en otros servicios web. [📝 Ver ficha](content/tools/accountkiller.md) `#privacidad` `#cuentas`
+### 🌐 Sitios útiles generales (24)
 
 - **[Anna's Archive](http://annasarchive.org)** `📦 Recursos` (`👤 Ochoa`) [𝕏 Tweet](https://x.com/Elochoaa__/status/2123350146956112381) `🟡 Por probar`  
   Buscador que la lista describe como un índice de cada libro que se haya escrito. [📝 Ver ficha](content/tools/annas-archive.md) `#libros` `#buscador` `#zona-gris-legal`
 
 - **[CamelCamelCamel](http://camelcamelcamel.com)** `📦 Recursos` (`👤 Ochoa`) [𝕏 Tweet](https://x.com/Elochoaa__/status/2123350146956112381) `🟡 Por probar`  
   Sitio para rastrear el historial de precios de productos en Amazon. [📝 Ver ficha](content/tools/camelcamelcamel.md) `#amazon` `#precios` `#compras`
-
-- **[Flightradar24](https://www.flightradar24.com/)** `📦 Recursos` (`🏢 Flightradar24`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Rastreador global de vuelos en tiempo real que muestra posición, altitud y ruta de aeronaves sobre un mapa, con API de datos para desarrolladores. [📝 Ver ficha](content/tools/flightradar24.md) `#datos` `#api` `#tiempo-real` `#tracking`
-
-- **[Wolfram Alpha](https://www.wolframalpha.com/)** `📦 Recursos` (`🏢 Wolfram Research`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Motor de conocimiento computacional que resuelve ecuaciones, integrales, conversiones y consultas de datos devolviendo la respuesta con pasos intermedios. [📝 Ver ficha](content/tools/wolfram-alpha.md) `#matematicas` `#computacion` `#calculadora` `#api`
-
-- **[Connected Papers](https://www.connectedpapers.com/)** `📦 Recursos` (`🏢 Connected Papers`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Herramienta de exploración académica que genera un grafo visual de artículos relacionados a partir de un paper semilla para descubrir literatura previa y derivada. [📝 Ver ficha](content/tools/connected-papers.md) `#investigacion` `#papers` `#grafo` `#academia`
-
-- **[JustWatch](https://www.justwatch.com/)** `🚀 Producto` (`🏢 JustWatch`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Guía de streaming que indica en qué plataforma está disponible una película o serie por país, con filtros por precio, calidad y servicio de suscripción. [📝 Ver ficha](content/tools/justwatch.md) `#streaming` `#busqueda` `#entretenimiento` `#utilidades`
-
-- **[Project Gutenberg](https://www.gutenberg.org/)** `📦 Recursos` (`🏢 Project Gutenberg`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Biblioteca digital con más de 75.000 libros de dominio público en formato EPUB, Kindle y texto plano, descargables sin registro ni coste alguno. [📝 Ver ficha](content/tools/project-gutenberg.md) `#ebooks` `#dominio-publico` `#biblioteca` `#lectura`
-
-- **[PDF Drive](https://www.pdfdrive.com/)** `📦 Recursos` (`🏢 PDF Drive`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Biblioteca en línea con millones de libros y documentos PDF de acceso gratuito, con búsqueda por título, autor y vista previa rápida en el navegador. [📝 Ver ficha](content/tools/pdf-drive.md) `#libros` `#pdf` `#biblioteca` `#lectura` `#zona-gris-legal`
-
-- **[Wayback Machine (Internet Archive)](https://web.archive.org/)** `📦 Recursos` (`🏢 Internet Archive`) [🌐 Web](https://archive.org/) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Archivo histórico de la web que permite recuperar versiones antiguas o borradas de cualquier página y consultar su evolución a lo largo del tiempo. [📝 Ver ficha](content/tools/wayback-machine-internet-archive.md) `#archivo` `#wayback` `#documentacion` `#investigacion`
-
-- **[Temp-Mail](https://temp-mail.org/)** `📦 Recursos` (`🏢 Temp-Mail`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Generador de direcciones de correo electrónico temporales desechables con bandeja de entrada en tiempo real, ideal para registros efímeros y pruebas de flujos de verificación. [📝 Ver ficha](content/tools/temp-mail.md) `#email` `#privacidad` `#testing` `#utilidades`
-
-- **[TinyWow](https://tinywow.com/)** `📦 Recursos` (`🏢 TinyWow`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Suite web con más de 100 utilidades gratuitas para PDF, imagen, video, escritura con IA y conversión de archivos sin instalar nada. [📝 Ver ficha](content/tools/tinywow.md) `#pdf` `#utilidades` `#conversion` `#ia`
-
-- **[Cobalt](https://cobalt.tools/)** `🚀 Producto` (`🏢 cobalt`) [𝕏 Tweet](https://x.com/precisox/status/2077815388725727396) `🟡 Por probar`  
-  Servicio web minimalista y de código abierto que descarga video y audio de redes sociales pegando únicamente la URL, sin anuncios, rastreo ni muros de pago. [📝 Ver ficha](content/tools/cobalt.md) `#descarga` `#video` `#open-source` `#utilidades`
 
 - **[10 Minute Mail](https://10minutemail.com/)** `🚀 Producto` (`👤 Alejo`) [𝕏 Tweet](https://x.com/ecommartinez/status/2093765893381595627) `🟡 Por probar`  
   Generador instantáneo de direcciones de correo temporales con bandeja de entrada accesible durante diez minutos renovables. [📝 Ver ficha](content/tools/10-minute-mail.md) `#email temporal` `#privacidad` `#testing`
@@ -2150,7 +2207,7 @@
 
 ---
 
-## 💡 Apartado 2: Consejos Técnicos & Buenas Prácticas (7)
+## 💡 Apartado 2: Consejos Técnicos & Buenas Prácticas (8)
 
 > Trucos prácticos, comandos, snippets de código y lecciones de arquitectura e ingeniería de software.
 
@@ -2163,6 +2220,11 @@
 
 - **[Colección de Prompts para Claude Opus 5.5 (y más)](https://note.com/okapi_fukugyo/n/n10efb0c51723?sub_rt=share_pw)** `🧠 Consejos` (`👤 おかぴ｜@AI副業40代会社員`) [𝕏 Tweet](https://x.com/okapi_fukugyo/status/2111262269887971459) `🟡 Por probar`  
   Guía completa y actualizada con 60 prompts avanzados para Claude Opus 5.5, Sonnet 5.5 y Haiku 5.5, diseñados para generar contenido, incluyendo videos, posts de redes sociales y material de marketing. [📝 Ver ficha](content/tips/coleccin-de-prompts-para-claude-opus-55-y-ms.md) `#ai` `#llm` `#prompts` `#claude` `#prompt_engineering` `#content_generation` `#marketing` `#video`
+
+### 🤖 Agentes & Protocolo MCP (1)
+
+- **[Cómo empezar a construir agentes de IA desde cero](https://x.com/santtiagom_/status/2124243921882517649)** `🧠 Consejos` (`🏢 santi`) [𝕏 Tweet](https://x.com/santtiagom_/status/2124243921882517649) `🟡 Por probar`  
+  Guía para aprender agentes de IA entendiendo primero los fundamentos antes de usar frameworks como LangChain o CrewAI. [📝 Ver ficha](content/tips/cmo-empezar-a-construir-agentes-de-ia-desde-cero.md) `#agentes-ia` `#llm` `#tool-calling` `#agent-loop`
 
 ### 📚 Documentation & Resources (2)
 

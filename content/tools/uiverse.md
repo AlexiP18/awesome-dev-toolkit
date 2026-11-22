@@ -2,22 +2,28 @@
 name: Uiverse
 url: 'https://uiverse.io/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - ui
   - componentes
   - css
   - frontend
   - open-source
+  - tailwind
+  - react
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T16:21:25.283Z'
+updated_at: '2026-11-22T04:14:34.192Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2079093085955657992'
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2079093085955657992'
+  - 'https://x.com/csaba_kissi/status/2124050003681497091'
 author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 company: Uiverse
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Uiverse
 

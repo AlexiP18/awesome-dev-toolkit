@@ -2,6 +2,7 @@
 name: Kinetics
 url: 'https://kinetics.colorion.co/'
 category: Frontend & UI
+conjunto: inspiracion
 tags:
   - motion
   - react
@@ -10,20 +11,22 @@ tags:
   - animaciones
   - tipografia
   - animacion
+  - micro-interacciones
+  - ui
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:52:51.924Z'
+updated_at: '2026-11-22T04:14:34.225Z'
 source_tweet: 'https://x.com/tranmautritam/status/2076963534307790926'
-author: Tran Mau Tri Tam ✪
-author_handle: tranmautritam
-entry_type: tool
-company: Colorion
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
 source_tweets:
   - 'https://x.com/tranmautritam/status/2076963534307790926'
   - 'https://x.com/noahelhadedy/status/2108461831928811941'
-updated_at: '2026-11-13T05:00:36.263Z'
+  - 'https://x.com/csaba_kissi/status/2124050003681497091'
+author: Csaba Kissi
+author_handle: csaba_kissi
+entry_type: tool
+company: Colorion
+classified_by: Importado del vault
 ---
 # Kinetics
 

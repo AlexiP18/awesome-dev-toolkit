@@ -1,0 +1,1130 @@
+[
+  {
+    "tweet_id": "2124259198640808190",
+    "text": "Bajar vídeos de internet ya no tiene ningún misterio.\n\nCobalt es open source y ya va por 46.400 estrellas en GitHub.\n\nCopias el enlace de YouTube, TikTok, Instagram o Reddit, lo pegas y tienes el archivo. Sin anuncios, sin trackers, sin pop-ups.\n\nhttps://t.co/r6GHv3Ru0M https://t.co/VQBpmmNxC6",
+    "author_name": "niko.",
+    "author_handle": "nikosolenne",
+    "created_at": "2026-11-21T21:50:34.000Z",
+    "urls": [
+      "https://cobalt.tools",
+      "http://cobalt.tools"
+    ],
+    "note_tweet": "Bajar vídeos de internet ya no tiene ningún misterio.\n\nCobalt es open source y ya va por 46.400 estrellas en GitHub.\n\nCopias el enlace de YouTube, TikTok, Instagram o Reddit, lo pegas y tienes el archivo. Sin anuncios, sin trackers, sin pop-ups.\n\nhttps://t.co/B7zizXyHWV\n\nGuárdatelo 🔖",
+    "items": [
+      {
+        "name": "Cobalt",
+        "url": "https://cobalt.tools",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "descarga",
+          "video",
+          "open-source",
+          "utilidades"
+        ],
+        "summary": "Descargador web open source de videos y audio de YouTube, TikTok, Instagram o Reddit: pegas el enlace y obtienes el archivo.",
+        "highlights": [
+          "Sin anuncios, trackers ni pop-ups",
+          "Proyecto open source con más de 46 mil estrellas en GitHub según el tuit"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2124243921882517649",
+    "text": "si querés aprender a construir agentes de IA, te recomiendo empezar por entender cómo funcionan antes de meterte con frameworks como LangChain o CrewAI.\n\nun agente es un sistema donde un modelo de IA puede decidir qué acciones realizar, utilizar tools y analizar sus resultados",
+    "author_name": "santi",
+    "author_handle": "santtiagom_",
+    "created_at": "2026-11-21T20:49:52.000Z",
+    "urls": [],
+    "note_tweet": "si querés aprender a construir agentes de IA, te recomiendo empezar por entender cómo funcionan antes de meterte con frameworks como LangChain o CrewAI.\n\nun agente es un sistema donde un modelo de IA puede decidir qué acciones realizar, utilizar tools y analizar sus resultados para completar una tarea.\n\nhay 5 conceptos clave:\n\n1) LLMs -> cómo procesan el contexto, generan respuestas y cuáles son sus limitaciones.\n\n2) tool calling -> cómo el modelo solicita ejecutar funciones y tu código se encarga de validarlas, ejecutarlas y devolver los resultados.\n\n3) estado y contexto -> cómo administrar el historial, los resultados de las tools y el progreso para que el agente pueda continuar trabajando.\n\n4) agent loop -> el ciclo donde el modelo decide qué hacer, solicita tools, analiza los resultados y repite hasta completar la tarea.\n\n5) manejo de errores -> qué pasa cuando una tool falla, el modelo toma una mala decisión o el agente queda atrapado en un loop. cómo implementar límites, timeouts y reintentos.\n\nmi recomendación es construir primero un agente sencillo desde cero, con un loop y un par de tools.\n\npor ejemplo, uno que investigue errores en una aplicación consultando logs y datos. el modelo decide qué revisar y utiliza los resultados para investigar las causas.\n\ndespués podés profundizar en memoria, orquestación, guardrails y evals.",
+    "items": [
+      {
+        "name": "Cómo empezar a construir agentes de IA desde cero",
+        "url": "https://x.com/santtiagom_/status/2124243921882517649",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "consejos",
+        "tags": [
+          "agentes-ia",
+          "llm",
+          "tool-calling",
+          "agent-loop"
+        ],
+        "summary": "Guía para aprender agentes de IA entendiendo primero los fundamentos antes de usar frameworks como LangChain o CrewAI.",
+        "highlights": [
+          "Cinco conceptos clave: LLMs, tool calling, estado y contexto, agent loop y manejo de errores",
+          "Construir primero un agente simple con un loop y un par de tools, por ejemplo uno que investigue errores en logs",
+          "Implementar límites, timeouts y reintentos para evitar loops",
+          "Después profundizar en memoria, orquestación, guardrails y evals"
+        ],
+        "entry_type": "tech_tip"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123812865207632371",
+    "text": "unslop-ui now learns your taste.\n\ndrop a .unslop-ui/taste.md in your project with two lists.\n\n&gt; bans become extra tells it hunts on every run, like exclamation marks, all caps, or anything else you can't stand.\n\n&gt; keeps never get cut, and the report lists them as kept on purpose. https://t.co/rEZXdJTqag https://t.co/8KgKPGhoRP",
+    "author_name": "fil",
+    "author_handle": "fildotai",
+    "created_at": "2026-11-20T16:17:00.000Z",
+    "urls": [
+      "https://twitter.com/fildotai/status/2123086579388277020"
+    ],
+    "note_tweet": "unslop-ui now learns your taste.\n\ndrop a .unslop-ui/taste.md in your project with two lists.\n\n> bans become extra tells it hunts on every run, like exclamation marks, all caps, or anything else you can't stand.\n\n> keeps never get cut, and the report lists them as kept on purpose.\n\nit also used to flag things that weren't slop, a \"New\" button read as a badge, a timestamp like \"Jan 3 · 14:02\" read as a status pill, and != in code counted as an exclamation mark. \n\neach of those fixes is now saved as a test that replays the case with no agent and no tokens, so the same mistake can't sneak back in",
+    "items": [
+      {
+        "name": "unslop-ui",
+        "url": "https://x.com/fildotai/status/2123812865207632371",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "ui",
+          "agentes-ia",
+          "linting",
+          "diseno"
+        ],
+        "summary": "Herramienta que detecta rasgos de UI genérica generada por IA y ahora aprende tu gusto desde un archivo .unslop-ui/taste.md.",
+        "highlights": [
+          "Lista de bans que se vuelven señales extra a buscar en cada ejecución",
+          "Lista de keeps que nunca se recortan y el reporte los marca como intencionales",
+          "Falsos positivos corregidos se guardan como tests reproducibles sin agente ni tokens"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2124080629642154476",
+    "text": "This time, I tried more block elements created with Gemini 4 Neon https://t.co/TAJfKBSFOa https://t.co/vKUjyFwUHR",
+    "author_name": "Csaba Kissi",
+    "author_handle": "csaba_kissi",
+    "created_at": "2026-11-21T10:01:00.000Z",
+    "urls": [
+      "https://twitter.com/csaba_kissi/status/2123839733688119496"
+    ],
+    "note_tweet": null,
+    "items": []
+  },
+  {
+    "tweet_id": "2124007965716058397",
+    "text": "This is one of the biggest collections of real React components I’ve come across. You can browse thousands of them, copy a prompt, and drop it straight into Claude or Cursor - actual source that lands in your project instead of generic AI output.\n\nlink: https://t.co/zcUuEPsO3O https://t.co/DIa4MiUgnI",
+    "author_name": "Manish Kumar",
+    "author_handle": "Manixh02",
+    "created_at": "2026-11-21T05:12:15.000Z",
+    "urls": [
+      "https://21st.dev"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "21st.dev",
+        "url": "https://21st.dev",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "componentes",
+          "ui",
+          "prompts"
+        ],
+        "summary": "Colección de miles de componentes React reales: copias un prompt y lo pegas en Claude o Cursor para traer el código fuente a tu proyecto.",
+        "highlights": [
+          "Navegación por miles de componentes",
+          "Prompts listos para Claude o Cursor con código real en vez de salida genérica"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2124125088098226314",
+    "text": "¡JODER, GTA 6 clips studio en 22 repos!\n\nHice más de $18K con Opus 5.5 y GTA VI Reels, TikToks, Shorts.\n\nDestacados. Seguimiento facial. Subtítulos. Audio. Exportar.\n\n01 yt-dlp → Descargar videos fuente\nhttps://t.co/CAX7qrb4Sb\n\n02 OpenCut → Editar clips en una línea de tiempo https://t.co/TOc764LS3t",
+    "author_name": "REPO",
+    "author_handle": "JustRepo",
+    "created_at": "2026-11-21T12:57:39.000Z",
+    "urls": [
+      "https://github.com/yt-dlp/yt-dlp",
+      "http://github.com/yt-dlp/yt-dlp",
+      "http://github.com/OpenCut-app/Op",
+      "http://github.com/opencv/opencv",
+      "http://github.com/obsproject/obs",
+      "http://github.com/Anil-matcha/AI",
+      "http://github.com/Vanilagy/media",
+      "http://github.com/openai/whisper",
+      "http://github.com/ggml-org/whisp",
+      "http://github.com/jianfch/stable",
+      "http://pyannote.audio",
+      "http://github.com/pyannote/pyann",
+      "http://github.com/roboflow/super",
+      "http://github.com/tryolabs/norfa",
+      "http://github.com/Rikorose/DeepF",
+      "http://github.com/facebookresear",
+      "http://github.com/tkarabela/pysu",
+      "http://github.com/libass/libass",
+      "http://github.com/mifi/editly",
+      "http://github.com/KDE/kdenlive",
+      "http://github.com/mltframework/s",
+      "http://github.com/xinntao/Real-E",
+      "http://github.com/hzwer/ECCV2022",
+      "http://github.com/PyAV-Org/PyAV"
+    ],
+    "note_tweet": "¡JODER, GTA 6 clips studio en 22 repos!\n\nHice más de $18K con Opus 5.5 y GTA VI Reels, TikToks, Shorts.\n\nDestacados. Seguimiento facial. Subtítulos. Audio. Exportar.\n\n01 yt-dlp → Descargar videos fuente\nhttps://t.co/guVBj59fmr\n\n02 OpenCut → Editar clips en una línea de tiempo\nhttps://t.co/g8RW9pUbzy…\n\n03 OpenCV → Construir lógica de seguimiento y recorte\nhttps://t.co/EpbLNXGKZB\n\n04 OBS Studio → Grabar jugabilidad y reacciones\nhttps://t.co/e2jFnb7oDP…\n\n05 AI Shorts Generator → Encontrar destacados y recortar clips verticales\nhttps://t.co/oaxokuff7d…\n\n06 Mediabunny → Convertir y exportar medios en el navegador\nhttps://t.co/rknxUoQEX2…\n\n07 Whisper → Convertir diálogo en transcripciones\nhttps://t.co/PUx3neShEf\n\n08 whisper.cpp → Ejecutar transcripción en tu laptop\nhttps://t.co/ipO7uLJGYa…\n\n09 stable-ts → Refinar marcas de tiempo a nivel de palabra\nhttps://t.co/NNcGU4Jw5l…\n\n10 https://t.co/htdhsHIM75 → Identificar quién habla cuándo\nhttps://t.co/JozjGhEdXh…\n\n11 Supervision → Construir superposiciones de seguimiento y detección\nhttps://t.co/vzuMQ3mpEl…\n\n12 Norfair → Rastrear sujetos entre fotogramas\nhttps://t.co/d8Zp25Rzft…\n\n13 DeepFilterNet → Limpiar audio de micrófono ruidoso\nhttps://t.co/4nE2LGsOVF…\n\n14 Demucs → Separar voces y tallos musicales\nhttps://t.co/8rsO8dG1Io…\n\n15 pysubs2 → Editar en lote el tiempo y estilos de subtítulos\nhttps://t.co/Inz9nsnMnO…\n\n16 libass → Renderizar subtítulos ASS con estilo\nhttps://t.co/rNuEGFWQEr\n\n17 Editly → Ensamblar clips con código\nhttps://t.co/69DsCNiYni\n\n18 Kdenlive → Cortar y poner fotogramas clave en tu edición final\nhttps://t.co/EZaNWXiKfo\n\n19 Shotcut → Mezclar pistas y aplicar filtros de video\nhttps://t.co/rICkyQIrua…\n\n20 Real-ESRGAN → Restaurar y escalar fotogramas de video\nhttps://t.co/k2di0OQbR3…\n\n21 RIFE → Interpolar fotogramas intermedios\nhttps://t.co/lk1ruN8xUn…\n\n22 PyAV → Decodificar y procesar video en Python\nhttps://t.co/j3WTcV8MTm\n\nVOD → encontrar la reacción → cortar → acercar → subtitular → enviar.\n\nGuarda esto. Ve a construir algo que valga la pena ver ↓",
+    "items": [
+      {
+        "name": "yt-dlp",
+        "url": "http://github.com/yt-dlp/yt-dlp",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "video",
+          "descarga",
+          "cli",
+          "python"
+        ],
+        "summary": "CLI open source para descargar videos fuente de YouTube y cientos de sitios.",
+        "highlights": [
+          "Primer paso del pipeline de clips: descargar el VOD",
+          "Se usa desde terminal o como librería Python"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "OpenCV",
+        "url": "http://github.com/opencv/opencv",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "recursos",
+        "tags": [
+          "vision-artificial",
+          "cpp",
+          "python",
+          "video"
+        ],
+        "summary": "Librería de visión por computadora para construir lógica de seguimiento y recorte de video.",
+        "highlights": [
+          "Seguimiento facial y recorte en el pipeline de clips",
+          "Bindings para Python y C++"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Whisper",
+        "url": "http://github.com/openai/whisper",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "recursos",
+        "tags": [
+          "transcripcion",
+          "speech-to-text",
+          "python",
+          "audio"
+        ],
+        "summary": "Modelo open source de OpenAI para convertir diálogo en transcripciones.",
+        "highlights": [
+          "Genera la transcripción base para subtítulos",
+          "Ejecutable localmente en Python"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "pyannote.audio",
+        "url": "http://pyannote.audio",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "recursos",
+        "tags": [
+          "diarizacion",
+          "audio",
+          "python",
+          "speech"
+        ],
+        "summary": "Toolkit para diarización de hablantes: identifica quién habla y cuándo en un audio.",
+        "highlights": [
+          "Separa intervenciones por hablante",
+          "Paso del pipeline para subtitular reacciones"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "libass",
+        "url": "http://github.com/libass/libass",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "subtitulos",
+          "ass",
+          "c",
+          "video"
+        ],
+        "summary": "Librería para renderizar subtítulos ASS con estilo.",
+        "highlights": [
+          "Renderizado de subtítulos estilizados sobre el video",
+          "Base de muchos reproductores y editores"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Editly",
+        "url": "http://github.com/mifi/editly",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "video",
+          "nodejs",
+          "edicion",
+          "cli"
+        ],
+        "summary": "Herramienta para ensamblar clips de video con código de forma declarativa.",
+        "highlights": [
+          "Edición de video programática",
+          "Útil para automatizar el montaje de shorts"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Kdenlive",
+        "url": "http://github.com/KDE/kdenlive",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "video",
+          "edicion",
+          "open-source",
+          "desktop"
+        ],
+        "summary": "Editor de video de escritorio open source para cortar y poner fotogramas clave en la edición final.",
+        "highlights": [
+          "Línea de tiempo multipista",
+          "Fotogramas clave para zoom y efectos"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "PyAV",
+        "url": "http://github.com/PyAV-Org/PyAV",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "ffmpeg",
+          "video",
+          "audio"
+        ],
+        "summary": "Bindings de Python sobre FFmpeg para decodificar y procesar video.",
+        "highlights": [
+          "Acceso a frames y streams desde Python",
+          "Paso final del pipeline de procesamiento"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123955189270880748",
+    "text": "Open-source desktop application that records, transcribes, and analyzes meetings using real-time AI.\n\nhttps://t.co/ruOUTIzurr https://t.co/tGwmi0uiJO",
+    "author_name": "Tom Dörr",
+    "author_handle": "tom_doerr",
+    "created_at": "2026-11-21T01:42:32.000Z",
+    "urls": [
+      "https://github.com/video-db/call.md"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "call.md",
+        "url": "https://github.com/video-db/call.md",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "reuniones",
+          "transcripcion",
+          "desktop",
+          "open-source"
+        ],
+        "summary": "App de escritorio open source que graba, transcribe y analiza reuniones con IA en tiempo real.",
+        "highlights": [
+          "Grabación y transcripción de reuniones",
+          "Análisis en tiempo real con IA"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2124050003681497091",
+    "text": "3,500+ UI components you can copy-paste\n\nhttps://t.co/wFVN19Y8B8 - 3,000+ open-source UI elements (CSS, Tailwind, React)\n\nhttps://t.co/G1ufoQn9VE - 162 micro interactions\n\nhttps://t.co/P3lihIiQT4 - 200+ free Tailwind CSS components\n\nhttps://t.co/nINfTg7I8w - 200+ animated https://t.co/HG7aH8aARi",
+    "author_name": "Csaba Kissi",
+    "author_handle": "csaba_kissi",
+    "created_at": "2026-11-21T07:59:18.000Z",
+    "urls": [
+      "https://uiverse.io",
+      "https://kinetics.colorion.co",
+      "https://hyperui.dev",
+      "https://ui.aceternity.com",
+      "http://uiverse.io",
+      "http://kinetics.colorion.co",
+      "http://hyperui.dev",
+      "http://ui.aceternity.com",
+      "http://magicui.design"
+    ],
+    "note_tweet": "3,500+ UI components you can copy-paste\n\nhttps://t.co/uMNUQg9pPe - 3,000+ open-source UI elements (CSS, Tailwind, React)\n\nhttps://t.co/mUYgji0d39 - 162 micro interactions\n\nhttps://t.co/D94XtjjBe7 - 200+ free Tailwind CSS components\n\nhttps://t.co/hOkoctPbHe - 200+ animated components & blocks\n\nhttps://t.co/uAzMtcK4HF - 150+ free animated Shadcn components",
+    "items": [
+      {
+        "name": "Uiverse",
+        "url": "https://uiverse.io",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "css",
+          "tailwind",
+          "react",
+          "componentes"
+        ],
+        "summary": "Más de 3.000 elementos de UI open source en CSS, Tailwind y React para copiar y pegar.",
+        "highlights": [
+          "Componentes open source listos para copiar",
+          "Variantes en CSS, Tailwind y React"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Kinetics",
+        "url": "https://kinetics.colorion.co",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "inspiracion",
+        "tags": [
+          "micro-interacciones",
+          "animacion",
+          "ui",
+          "css"
+        ],
+        "summary": "Galería de 162 micro interacciones para interfaces web.",
+        "highlights": [
+          "Colección de micro interacciones",
+          "Pensada como referencia visual"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "HyperUI",
+        "url": "https://hyperui.dev",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "tailwind",
+          "componentes",
+          "css",
+          "ui"
+        ],
+        "summary": "Más de 200 componentes gratuitos de Tailwind CSS para copiar y pegar.",
+        "highlights": [
+          "Componentes Tailwind gratuitos",
+          "Sin dependencias de JavaScript para copiar"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Aceternity UI",
+        "url": "https://ui.aceternity.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "animacion",
+          "tailwind",
+          "componentes"
+        ],
+        "summary": "Más de 200 componentes y bloques animados para React.",
+        "highlights": [
+          "Componentes y bloques animados",
+          "Copiar y pegar en proyectos React"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Magic UI",
+        "url": "http://magicui.design",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "shadcn",
+          "react",
+          "animacion",
+          "componentes"
+        ],
+        "summary": "Más de 150 componentes animados gratuitos construidos sobre Shadcn.",
+        "highlights": [
+          "Componentes animados para Shadcn",
+          "Gratuitos y open source"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2124218899952750662",
+    "text": "Source 🔗: github. com/EL4CTEO/fast-anything",
+    "author_name": "Ram Maheshwari",
+    "author_handle": "rammcodes",
+    "created_at": "2026-11-21T19:10:26.000Z",
+    "urls": [],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "fast-anything",
+        "url": "https://github.com/EL4CTEO/fast-anything",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "rendimiento",
+          "profiling",
+          "python",
+          "nodejs"
+        ],
+        "summary": "Herramienta para perfilar apps Python, Node o Ruby y portar solo las funciones lentas con tu agente de código, verificando que se comporten igual.",
+        "highlights": [
+          "Enfoque: reescribir el 5% lento en vez de todo en Rust",
+          "Profiling para localizar hot paths",
+          "Pruebas de equivalencia del comportamiento tras el port"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123728056913146161",
+    "text": "FREE CLOUD CREDITS? YOUR AI AGENTS ARE EATING GOOD TODAY 🫣\n\nmeeting BoxLite a managed cloud platform that runs AI agents inside isolated microVMs\n\nwhat u get:\n- $100 free credits for new accounts\n- Up to 4 vCPU per microVM\n- Up to 32 GiB RAM per microVM\n- Around 10 GiB https://t.co/AQTNQgrDe9",
+    "author_name": "CS",
+    "author_handle": "CallMeCSZ",
+    "created_at": "2026-11-20T10:40:00.000Z",
+    "urls": [
+      "http://boxlite.ai",
+      "http://docs.boxlite.ai",
+      "http://github.com/boxlite-ai/boxlite"
+    ],
+    "note_tweet": "FREE CLOUD CREDITS? YOUR AI AGENTS ARE EATING GOOD TODAY 🫣\n\nmeeting BoxLite a managed cloud platform that runs AI agents inside isolated microVMs\n\nwhat u get:\n- $100 free credits for new accounts\n- Up to 4 vCPU per microVM\n- Up to 32 GiB RAM per microVM\n- Around 10 GiB persistent disk per box\n- Public URLs to deploy and share your apps\n- Managed storage that survives box deletion\n- Up to 1,000 concurrent boxes on the Max plan\n\nwhat u can build with it:\n- Run Claude Code in isolated environments\n- Execute Python & Node.js code\n- Build AI coding agents and code interpreters\n- Run Playwright browser automation\n- Build data analysis and web research agents\n\ndon't want cloud? BoxLite is also open-source (Apache 2.0), so u can self-host it for free\n\n> website: https://t.co/XJU9UNnNEX\n> docs: https://t.co/EOnTjJIu98\n> gitHub: https://t.co/tejwzPGuJm",
+    "items": [
+      {
+        "name": "BoxLite",
+        "url": "https://github.com/boxlite-ai/boxlite",
+        "website_url": "http://boxlite.ai",
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agentes-ia",
+          "microvm",
+          "sandbox",
+          "self-hosted"
+        ],
+        "summary": "Plataforma open source (Apache 2.0) que ejecuta agentes de IA en microVMs aisladas, con versión cloud gestionada o self-hosted.",
+        "highlights": [
+          "Hasta 4 vCPU y 32 GiB de RAM por microVM con disco persistente",
+          "URLs públicas para desplegar y compartir apps",
+          "Sirve para correr Claude Code, intérpretes de código o automatización con Playwright",
+          "100 USD de créditos gratis para cuentas nuevas según el tuit"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123993272137789769",
+    "text": "Si ya pagas ChatGPT, Claude, Gemini, Cursor, ElevenLabs o telegram, puedes recuperar hasta el 50% cada mes.\n\nSolo paga la suscripción directa con tu OKX Card y recibe hasta 10 USDT mensuales de reembolso.\n\nÚnete ahora 👇\n\nhttps://t.co/08SMdUWgGp https://t.co/LbS81qcNCt",
+    "author_name": "Yorman |📱⛏️",
+    "author_handle": "yormanlat",
+    "created_at": "2026-11-21T04:13:52.000Z",
+    "urls": [
+      "https://money.okx.com/join/NHFC6BY6"
+    ],
+    "note_tweet": null,
+    "items": []
+  },
+  {
+    "tweet_id": "2123851997120229526",
+    "text": "🚨Te traigo 15 páginas web que a primera vista parecen de dudosa legalidad… pero son completamente legales y gratuitas \n\n1 https://t.co/MoeYmjPFJY → Baja cualquier video de redes sociales en un clic\n\n2 https://t.co/X8RE9rWKLB → Borra tu presencia de casi cualquier sitio de https://t.co/ngmUTE6poj",
+    "author_name": "sergio",
+    "author_handle": "sergiorocaa",
+    "created_at": "2026-11-20T18:52:30.000Z",
+    "urls": [
+      "https://cobalt.tools",
+      "https://accountkiller.com",
+      "http://cobalt.tools",
+      "http://accountkiller.com",
+      "http://web.archive.org",
+      "http://tinywow.com",
+      "http://temp-mail.org",
+      "http://pdfdrive.com",
+      "http://elicit.com",
+      "http://gutenberg.org",
+      "http://justwatch.com",
+      "http://haveibeenpwned.com",
+      "http://connectedpapers.com",
+      "http://tinypng.com",
+      "http://photopea.com",
+      "http://wolframalpha.com",
+      "http://flightradar24.com"
+    ],
+    "note_tweet": "🚨Te traigo 15 páginas web que a primera vista parecen de dudosa legalidad… pero son completamente legales y gratuitas \n\n1 https://t.co/iIhQmCGsef → Baja cualquier video de redes sociales en un clic\n\n2 https://t.co/xG2NywCrdg → Borra tu presencia de casi cualquier sitio de internet\n\n3 https://t.co/JlYJTCdgFx → Entra a versiones antiguas o ya eliminadas de cualquier web\n\n4 https://t.co/eUsQXizjOD → Más de 100 herramientas online gratis en un solo lugar\n\n5 https://t.co/MnndETzwdf → Crea un correo temporal al instante\n\n6 https://t.co/gDzl8Bii2d → Millones de libros y PDFs para descargar gratis\n\n7 https://t.co/7ReJfmqs2f → IA especializada en ayudarte con papers de investigación\n\n8 https://t.co/KZMwIassVR → Más de 70.000 libros clásicos completamente gratis\n\n9 https://t.co/MmgEGbAdzc → Te dice exactamente dónde ver cualquier película o serie\n\n10 https://t.co/79OI0dDqD8 → Comprueba si tus cuentas han sido filtradas\n\n11 https://t.co/1zxrVZvmEN → Visualiza conexiones entre papers de forma gráfica\n\n12 https://t.co/wBU0cLv7B0 → Comprime imágenes sin perder calidad\n\n13 https://t.co/4UIcSRzhAs → Photoshop completo online y sin instalar nada\n\n14 https://t.co/FQRvWwLrry → Resuelve problemas matemáticos al momento\n\n15 https://t.co/A6xqinKrZi → Sigue vuelos en tiempo real de todo el planeta\n\nTodo legal. Todo gratis.\n Guárdalo antes de que se te olvide 🔖",
+    "items": [
+      {
+        "name": "Cobalt",
+        "url": "https://cobalt.tools",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "descarga",
+          "video",
+          "open-source",
+          "utilidades"
+        ],
+        "summary": "Descargador web open source de videos y audio de YouTube, TikTok, Instagram o Reddit: pegas el enlace y obtienes el archivo.",
+        "highlights": [
+          "Sin anuncios, trackers ni pop-ups",
+          "Proyecto open source con más de 46 mil estrellas en GitHub según el tuit"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "AccountKiller",
+        "url": "https://accountkiller.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "privacidad",
+          "cuentas",
+          "web"
+        ],
+        "summary": "Guías para borrar tu cuenta y presencia en casi cualquier sitio de internet.",
+        "highlights": [
+          "Instrucciones de eliminación por sitio",
+          "Ayuda a reducir la huella digital"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Wayback Machine",
+        "url": "http://web.archive.org",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "archivo",
+          "web",
+          "historial"
+        ],
+        "summary": "Archivo de Internet para consultar versiones antiguas o eliminadas de cualquier web.",
+        "highlights": [
+          "Instantáneas históricas de sitios",
+          "Útil para recuperar páginas borradas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "TinyWow",
+        "url": "http://tinywow.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "utilidades",
+          "pdf",
+          "web"
+        ],
+        "summary": "Más de 100 herramientas online gratuitas reunidas en un solo sitio.",
+        "highlights": [
+          "Conversión de PDF, imagen y video",
+          "Sin instalar nada"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Temp Mail",
+        "url": "http://temp-mail.org",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "email",
+          "privacidad",
+          "testing"
+        ],
+        "summary": "Crea un correo temporal desechable al instante.",
+        "highlights": [
+          "Buzón temporal sin registro",
+          "Útil para pruebas o registros puntuales"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "PDF Drive",
+        "url": "http://pdfdrive.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "inspiracion",
+        "tags": [
+          "libros",
+          "pdf",
+          "lectura"
+        ],
+        "summary": "Buscador de libros y PDFs para descargar.",
+        "highlights": [
+          "Catálogo de millones de documentos según el tuit",
+          "Revisar licencia de cada documento"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Elicit",
+        "url": "http://elicit.com",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "investigacion",
+          "papers",
+          "llm"
+        ],
+        "summary": "IA especializada en ayudarte con papers de investigación.",
+        "highlights": [
+          "Búsqueda y resumen de papers",
+          "Extracción de datos de estudios"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Project Gutenberg",
+        "url": "http://gutenberg.org",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "inspiracion",
+        "tags": [
+          "libros",
+          "dominio-publico",
+          "lectura"
+        ],
+        "summary": "Más de 70.000 libros clásicos de dominio público gratis.",
+        "highlights": [
+          "Libros en dominio público",
+          "Descarga en varios formatos"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "JustWatch",
+        "url": "http://justwatch.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "streaming",
+          "peliculas",
+          "busqueda"
+        ],
+        "summary": "Te dice dónde ver cualquier película o serie en plataformas de streaming.",
+        "highlights": [
+          "Buscador por título",
+          "Disponibilidad por país y plataforma"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Have I Been Pwned",
+        "url": "http://haveibeenpwned.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "seguridad",
+          "filtraciones",
+          "privacidad"
+        ],
+        "summary": "Comprueba si tus cuentas o correos aparecen en filtraciones de datos.",
+        "highlights": [
+          "Búsqueda por correo",
+          "Alertas de nuevas filtraciones"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Connected Papers",
+        "url": "http://connectedpapers.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "investigacion",
+          "papers",
+          "grafos"
+        ],
+        "summary": "Visualiza de forma gráfica las conexiones entre papers académicos.",
+        "highlights": [
+          "Grafo de papers relacionados",
+          "Ayuda a explorar literatura"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "TinyPNG",
+        "url": "http://tinypng.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "producto",
+        "tags": [
+          "imagenes",
+          "compresion",
+          "web-performance"
+        ],
+        "summary": "Comprime imágenes PNG y JPG sin pérdida visible de calidad.",
+        "highlights": [
+          "Reduce el peso de assets web",
+          "Uso en el navegador o vía API"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Photopea",
+        "url": "http://photopea.com",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "edicion-imagen",
+          "diseno",
+          "web"
+        ],
+        "summary": "Editor de imágenes tipo Photoshop completo en el navegador, sin instalar nada.",
+        "highlights": [
+          "Compatible con archivos PSD",
+          "Funciona online"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "WolframAlpha",
+        "url": "http://wolframalpha.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "matematicas",
+          "calculo",
+          "busqueda"
+        ],
+        "summary": "Motor computacional que resuelve problemas matemáticos al momento.",
+        "highlights": [
+          "Resolución paso a paso",
+          "Cálculo simbólico y numérico"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Flightradar24",
+        "url": "http://flightradar24.com",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "vuelos",
+          "mapas",
+          "tiempo-real"
+        ],
+        "summary": "Seguimiento en tiempo real de vuelos de todo el planeta.",
+        "highlights": [
+          "Mapa de vuelos en vivo",
+          "Datos por vuelo y aeropuerto"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123656310487224324",
+    "text": "buat suka desain website, banyak code input yang bisa kalian cobain disini\n\ngas langsung:\nhttps://t.co/LKz51IdeAG https://t.co/ZAjm46CAyj",
+    "author_name": "ryu 龙",
+    "author_handle": "0xgoryu",
+    "created_at": "2026-11-20T05:54:54.000Z",
+    "urls": [
+      "https://bluma.design"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Bluma",
+        "url": "https://bluma.design",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "inspiracion",
+        "tags": [
+          "diseno-web",
+          "componentes",
+          "ui",
+          "codigo"
+        ],
+        "summary": "Colección de inputs y bloques de código de diseño web para probar e inspirarse.",
+        "highlights": [
+          "Ejemplos de UI con código",
+          "Pensado para quienes disfrutan diseñar webs"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123693090661888112",
+    "text": "Awesome resources, not just for vibe coders\n\nhttps://t.co/rc1ceRDTbM - React design systems for Claude, ChatGPT\n\nhttps://t.co/hSKbYioagE - Open-source AI interface design skills\n\nhttps://t.co/KzUMVD0vcr - 112 reusable AI agent skills\n\nhttps://t.co/L5vWfcffQm - 28+ free animated https://t.co/PKXwdSfwY4",
+    "author_name": "Csaba Kissi",
+    "author_handle": "csaba_kissi",
+    "created_at": "2026-11-20T08:21:03.000Z",
+    "urls": [
+      "https://aicanvas.me",
+      "https://github.com/jakubkrehel/skills",
+      "https://github.com/oakoss/agent-skills",
+      "https://rareui.com",
+      "http://aicanvas.me",
+      "http://github.com/jakubkrehel/skills",
+      "http://github.com/oakoss/agent-skills",
+      "http://rareui.com",
+      "http://reactbits.dev"
+    ],
+    "note_tweet": "Awesome resources, not just for vibe coders\n\nhttps://t.co/Grl7qYH1kO - React design systems for Claude, ChatGPT\n\nhttps://t.co/VJgwYsccOT - Open-source AI interface design skills\n\nhttps://t.co/tt90lPno3d - 112 reusable AI agent skills\n\nhttps://t.co/UCVXEwkXgs - 28+ free animated React components\n\nhttps://t.co/o0ZOSvlOgW - Free animated React UI components",
+    "items": [
+      {
+        "name": "AI Canvas",
+        "url": "https://aicanvas.me",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "design-system",
+          "claude",
+          "chatgpt"
+        ],
+        "summary": "Design systems de React pensados para usar con Claude y ChatGPT.",
+        "highlights": [
+          "Design systems listos para prompts",
+          "Orientado a vibe coding con React"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "jakubkrehel/skills",
+        "url": "https://github.com/jakubkrehel/skills",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "diseno",
+          "ui",
+          "ia"
+        ],
+        "summary": "Skills open source de diseño de interfaces para agentes de IA.",
+        "highlights": [
+          "Skills de UI para agentes",
+          "Repositorio open source"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "oakoss/agent-skills",
+        "url": "https://github.com/oakoss/agent-skills",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "claude-code",
+          "agentes-ia"
+        ],
+        "summary": "Colección de 112 skills reutilizables para agentes de IA.",
+        "highlights": [
+          "112 skills reutilizables",
+          "Repositorio open source en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "RareUI",
+        "url": "https://rareui.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "animacion",
+          "componentes"
+        ],
+        "summary": "Más de 28 componentes React animados gratuitos.",
+        "highlights": [
+          "Componentes animados",
+          "Gratuitos para React"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "React Bits",
+        "url": "http://reactbits.dev",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "animacion",
+          "componentes",
+          "ui"
+        ],
+        "summary": "Componentes de UI animados y gratuitos para React.",
+        "highlights": [
+          "Componentes animados copiables",
+          "Gratuitos"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123675279210242167",
+    "text": "Open-sourced my full SEO and AI-search stack for Claude Code and Cursor (30 skills + 4 live MCP servers I actually use every day)\n\n1. 30 open-source SEO skills (technical audits, programmatic SEO, BOFU pages, directory submissions, Ahrefs/GSC workflows):\nhttps://t.co/ldZcQkH85Z",
+    "author_name": "ILIAS ISM",
+    "author_handle": "illyism",
+    "created_at": "2026-11-20T07:10:17.000Z",
+    "urls": [
+      "https://github.com/Illyism/seo-skills",
+      "https://il.ly/blog/seo-skills",
+      "https://scribiz.com/mcp",
+      "https://aiseotracker.com",
+      "https://awesome.tools"
+    ],
+    "note_tweet": "Open-sourced my full SEO and AI-search stack for Claude Code and Cursor (30 skills + 4 live MCP servers I actually use every day)\n\n1. 30 open-source SEO skills (technical audits, programmatic SEO, BOFU pages, directory submissions, Ahrefs/GSC workflows):\nhttps://t.co/7ZOsGjdJY0\n\n2. Full walkthrough and chained workflows for how I run them:\nhttps://t.co/ffNFXKoa31\n\n3. Video and YouTube transcript MCP (pulls captions + frame OCR right into your agent):\nhttps://t.co/RAEsLWdERe\n\n4. Live AI search visibility tracker MCP:\nhttps://t.co/tcgMZjDuxB\n\n5. Hands-on tool directory & benchmark MCP:\nhttps://t.co/pBsPDnwnAh\n\nInstall all 30 skills in one line:\nnpx skills add Illyism/seo-skills\n\nMost SEO agency retainers are basically 5 of these checklists run manually once a month tbh. Easier to just hand them to your coding agent and merge the PRs yourself!",
+    "items": [
+      {
+        "name": "SEO Skills (Illyism)",
+        "url": "https://github.com/Illyism/seo-skills",
+        "website_url": "https://il.ly/blog/seo-skills",
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "seo",
+          "agent-skills",
+          "claude-code",
+          "cursor"
+        ],
+        "summary": "30 skills open source de SEO para Claude Code y Cursor: auditorías técnicas, SEO programático, páginas BOFU y flujos con Ahrefs y GSC.",
+        "highlights": [
+          "Instalación en una línea con npx skills add Illyism/seo-skills",
+          "Incluye envío a directorios y flujos encadenados",
+          "Guía completa en https://il.ly/blog/seo-skills"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Scribiz MCP",
+        "url": "https://scribiz.com/mcp",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "producto",
+        "tags": [
+          "mcp",
+          "youtube",
+          "transcripcion",
+          "ocr"
+        ],
+        "summary": "Servidor MCP que trae subtítulos de video y YouTube más OCR de frames directo a tu agente.",
+        "highlights": [
+          "Transcripciones de YouTube en el agente",
+          "OCR de fotogramas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "AI SEO Tracker",
+        "url": "https://aiseotracker.com",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "producto",
+        "tags": [
+          "mcp",
+          "seo",
+          "busqueda-ia"
+        ],
+        "summary": "MCP en vivo para medir la visibilidad de una marca en buscadores de IA.",
+        "highlights": [
+          "Seguimiento de visibilidad en AI search",
+          "Accesible como servidor MCP"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "awesome.tools",
+        "url": "https://awesome.tools",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "producto",
+        "tags": [
+          "mcp",
+          "directorio",
+          "benchmarks"
+        ],
+        "summary": "Directorio de herramientas probadas con benchmarks, disponible como MCP.",
+        "highlights": [
+          "Directorio de herramientas con pruebas prácticas",
+          "Consultable desde el agente vía MCP"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2123848994417943002",
+    "text": "FOUND A WAY TO UNLOCK CAFFEINE PREMIUM FOR FREE 🫣\n\n1 month of premium access on Caffeine!\n\nwhat u get:\n- Claude Opus and Sonnet 5, 5.5 and fable 5.1\n- GPT-6 Astra and Sol \n- 100 credits every month\n- Create apps from scratch\n- Go live and publish your apps\n- Bring your own https://t.co/KRCMpK3iMg",
+    "author_name": "CS",
+    "author_handle": "CallMeCSZ",
+    "created_at": "2026-11-20T18:40:34.000Z",
+    "urls": [
+      "http://caffeine.ai"
+    ],
+    "note_tweet": "FOUND A WAY TO UNLOCK CAFFEINE PREMIUM FOR FREE 🫣\n\n1 month of premium access on Caffeine!\n\nwhat u get:\n- Claude Opus and Sonnet 5, 5.5 and fable 5.1\n- GPT-6 Astra and Sol \n- 100 credits every month\n- Create apps from scratch\n- Go live and publish your apps\n- Bring your own custom domain\n- Send emails to your users\n- App insights & analytics\n- Buy domains directly on Caffeine\n- Publish unlimited apps on the App Market\n\nhow to take it:\n1. Sign up: https://t.co/1YMHKiqT72\n2. Go to Profile → Membership / Upgrade\n3. Select Use Code\n4. Enter promo code: HALLOWEEN26\n\n> card is required\n\ngoodluck and have fun.",
+    "items": [
+      {
+        "name": "Caffeine",
+        "url": "http://caffeine.ai",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "producto",
+        "tags": [
+          "app-builder",
+          "ia",
+          "no-code",
+          "hosting"
+        ],
+        "summary": "Plataforma para crear y publicar apps desde cero con modelos de IA, dominio propio, emails y analítica.",
+        "highlights": [
+          "Promo HALLOWEEN26 de un mes premium según el tuit; requiere tarjeta",
+          "Publicación de apps y App Market",
+          "Compra de dominios integrada"
+        ],
+        "entry_type": "product_showcase"
+      }
+    ]
+  }
+]

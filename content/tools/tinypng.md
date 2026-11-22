@@ -1,7 +1,8 @@
 ---
 name: TinyPNG
 url: 'https://tinypng.com/'
-category: Productivity & Tools
+category: Frontend & UI
+conjunto: producto
 tags:
   - imagenes
   - optimizacion
@@ -10,13 +11,16 @@ tags:
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:26:53.395Z'
+updated_at: '2026-11-22T04:14:34.778Z'
 source_tweet: 'https://x.com/precisox/status/2077815388725727396'
-author: Precis0x
-author_handle: precisox
+source_tweets:
+  - 'https://x.com/precisox/status/2077815388725727396'
+  - 'https://x.com/sergiorocaa/status/2123851997120229526'
+author: sergio
+author_handle: sergiorocaa
 entry_type: tool
 company: TinyPNG
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # TinyPNG
 

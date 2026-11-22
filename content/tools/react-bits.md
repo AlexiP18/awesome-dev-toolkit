@@ -15,13 +15,14 @@ tags:
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:29:32.343Z'
-updated_at: '2026-11-20T04:21:05.278Z'
+updated_at: '2026-11-22T04:14:35.067Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2077648980528295956'
 source_tweets:
   - 'https://x.com/csaba_kissi/status/2077648980528295956'
   - 'https://x.com/BenjaminUIX/status/2123340929633550834'
-author: BenjaminUIX
-author_handle: BenjaminUIX
+  - 'https://x.com/csaba_kissi/status/2123693090661888112'
+author: Csaba Kissi
+author_handle: csaba_kissi
 entry_type: tool
 company: BenjaminUIX
 classified_by: Importado del vault

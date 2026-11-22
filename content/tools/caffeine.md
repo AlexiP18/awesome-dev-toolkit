@@ -1,18 +1,24 @@
 ---
 name: Caffeine
 url: 'https://caffeine.ai/'
-category: Agentes & Protocolo MCP
+category: Productivity & Tools
 conjunto: producto
 tags:
   - ia
   - app-builder
   - agentes
+  - no-code
+  - hosting
 status: to_try
 date_added: '2026-11-21'
 created_at: '2026-11-21T04:16:52.638Z'
+updated_at: '2026-11-22T04:14:35.259Z'
 source_tweet: 'https://x.com/StudentOffersHQ/status/2123916388314321108'
-author: Student Offers
-author_handle: StudentOffersHQ
+source_tweets:
+  - 'https://x.com/StudentOffersHQ/status/2123916388314321108'
+  - 'https://x.com/CallMeCSZ/status/2123848994417943002'
+author: CS
+author_handle: CallMeCSZ
 entry_type: product_showcase
 company: Student Offers
 classified_by: Importado del vault

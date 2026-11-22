@@ -13,13 +13,14 @@ tags:
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:26:53.393Z'
-updated_at: '2026-11-20T04:21:04.301Z'
+updated_at: '2026-11-22T04:14:34.713Z'
 source_tweet: 'https://x.com/precisox/status/2077815388725727396'
 source_tweets:
   - 'https://x.com/precisox/status/2077815388725727396'
   - 'https://x.com/Elochoaa__/status/2123350146956112381'
-author: Ochoa
-author_handle: Elochoaa__
+  - 'https://x.com/sergiorocaa/status/2123851997120229526'
+author: sergio
+author_handle: sergiorocaa
 entry_type: tool
 company: Have I Been Pwned (HIBP)
 classified_by: Importado del vault

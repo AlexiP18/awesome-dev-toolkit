@@ -1,26 +1,28 @@
 ---
 name: Project Gutenberg
-url: 'https://www.gutenberg.org/'
-category: 'Sitios útiles generales'
+url: 'https://gutenberg.org/'
+category: Productivity & Tools
+conjunto: inspiracion
 tags:
   - ebooks
   - dominio-publico
   - biblioteca
   - lectura
+  - libros
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:26:53.351Z'
-updated_at: '2026-11-21T04:20:00.000Z'
+updated_at: '2026-11-22T04:14:34.647Z'
 source_tweet: 'https://x.com/precisox/status/2077815388725727396'
 source_tweets:
   - 'https://x.com/precisox/status/2077815388725727396'
   - 'https://x.com/Elochoaa__/status/2123350146956112381'
-author: Precis0x
-author_handle: precisox
+  - 'https://x.com/sergiorocaa/status/2123851997120229526'
+author: sergio
+author_handle: sergiorocaa
 entry_type: tool
 company: Project Gutenberg
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Project Gutenberg
 

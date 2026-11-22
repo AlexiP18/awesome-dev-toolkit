@@ -1,22 +1,25 @@
 ---
 name: AccountKiller
-url: 'http://accountkiller.com'
-category: 'Sitios útiles generales'
+url: 'https://accountkiller.com/'
+category: Productivity & Tools
+conjunto: producto
 tags:
   - privacidad
   - cuentas
+  - web
 status: to_try
 date_added: '2026-11-21'
 created_at: '2026-11-21T04:20:00.000Z'
-updated_at: '2026-11-21T04:20:00.000Z'
+updated_at: '2026-11-22T04:14:34.485Z'
 source_tweet: 'https://x.com/Elochoaa__/status/2123350146956112381'
 source_tweets:
   - 'https://x.com/Elochoaa__/status/2123350146956112381'
-author: Ochoa
-author_handle: Elochoaa__
+  - 'https://x.com/sergiorocaa/status/2123851997120229526'
+author: sergio
+author_handle: sergiorocaa
 entry_type: tool
-conjunto: recursos
-classified_by: Lista de @Elochoaa__
+company: sergio
+classified_by: Importado del vault
 ---
 # AccountKiller
 

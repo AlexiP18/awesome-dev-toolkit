@@ -1,7 +1,8 @@
 ---
 name: call.md
 url: 'https://github.com/video-db/call.md'
-category: AI & Machine Learning
+category: Productivity & Tools
+conjunto: recursos
 tags:
   - meeting-notes
   - transcription
@@ -12,17 +13,23 @@ tags:
   - sqlite
   - n8n
   - zapier
+  - reuniones
+  - transcripcion
+  - desktop
 stars: 2057
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T04:23:06.733Z'
+updated_at: '2026-11-22T04:14:34.159Z'
 source_tweet: 'https://x.com/josesilesdata/status/2086142896277729313'
-author: José Siles | AI | Data
-author_handle: josesilesdata
+source_tweets:
+  - 'https://x.com/josesilesdata/status/2086142896277729313'
+  - 'https://x.com/tom_doerr/status/2123955189270880748'
+author: Tom Dörr
+author_handle: tom_doerr
 entry_type: tool
 company: video-db
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # call.md
 

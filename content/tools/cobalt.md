@@ -1,7 +1,8 @@
 ---
 name: Cobalt
 url: 'https://cobalt.tools/'
-category: 'Sitios útiles generales'
+category: Productivity & Tools
+conjunto: recursos
 tags:
   - descarga
   - video
@@ -10,17 +11,18 @@ tags:
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:26:53.347Z'
-updated_at: '2026-11-21T04:20:00.000Z'
+updated_at: '2026-11-22T04:14:34.450Z'
 source_tweet: 'https://x.com/precisox/status/2077815388725727396'
 source_tweets:
   - 'https://x.com/precisox/status/2077815388725727396'
   - 'https://x.com/Elochoaa__/status/2123350146956112381'
-author: Precis0x
-author_handle: precisox
+  - 'https://x.com/nikosolenne/status/2124259198640808190'
+  - 'https://x.com/sergiorocaa/status/2123851997120229526'
+author: sergio
+author_handle: sergiorocaa
 entry_type: tool
 company: cobalt
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+classified_by: Importado del vault
 ---
 # Cobalt
 
