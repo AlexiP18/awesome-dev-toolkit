@@ -1476,6 +1476,7 @@
      * Cambia el apartado activo: Todos, Herramientas, Consejos o Empleo.
      */
     function switchSection(sectionId) {
+      if (!SECTION_CONFIG[sectionId]) sectionId = 'all';
       currentSection = sectionId;
       currentCategory = 'all';
       currentAuthor = 'all';
@@ -2465,10 +2466,14 @@
       } catch (err) {
         console.error('Error fetching tools:', err);
         const fallbackBackup = getLocalToolsBackup();
-        if (fallbackBackup.length > 0) {
-          allTools = fallbackBackup;
-          switchSection(currentSection);
-          return;
+        if (fallbackBackup.length > 0 && allTools.length === 0) {
+          try {
+            allTools = fallbackBackup;
+            switchSection(currentSection);
+            return;
+          } catch (fallbackErr) {
+            console.error('Error rendering fallback backup:', fallbackErr);
+          }
         }
         document.getElementById('toolsGrid').innerHTML = `
           <div class="col-span-full py-12 text-center text-red-400">
@@ -2996,6 +3001,8 @@
       const isJob = itemSec === 'jobs';
       const isTip = itemSec === 'tips';
       const isTool = itemSec === 'tools';
+      const conjunto = getToolConjunto(tool);
+      const isProduct = !isJob && !isTip && (conjunto === 'producto' || Boolean(fm.price));
 
       const starsBadge = fm.stars ? `
         <span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">
@@ -3192,7 +3199,6 @@
       const isCardSelected = selectedSlugs.has(tool.slug);
       const cardSelectionRing = isCardSelected ? 'ring-2 ring-sky-500 shadow-lg shadow-sky-950/60 bg-sky-950/20' : '';
 
-      const conjunto = getToolConjunto(tool);
       const conjuntoCfg = CONJUNTO_CONFIG[conjunto] || CONJUNTO_CONFIG.recursos;
       const conjuntoBadge = `
         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold border ${conjuntoCfg.badge}" title="Conjunto: ${conjuntoCfg.name}">
@@ -4579,7 +4585,6 @@
       const toolBtn = document.getElementById('modalDestToolBtn');
       const tipBtn = document.getElementById('modalDestTipBtn');
       const jobBtn = document.getElementById('modalDestJobBtn');
-      const productBtn = document.getElementById('modalDestProductBtn');
       const modalTitle = document.getElementById('ingestModalTitle');
       const urlLabel = document.getElementById('ingestUrlLabel');
       const urlInput = document.getElementById('ingestUrlInput');
