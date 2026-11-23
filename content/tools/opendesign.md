@@ -1,7 +1,9 @@
 ---
 name: OpenDesign
-url: 'https://open-design.ai/'
-category: AI & Machine Learning
+url: 'https://github.com/nexu-io/open-design'
+website_url: 'https://open-design.ai/'
+category: Frontend & UI
+conjunto: recursos
 tags:
   - ai
   - design
@@ -10,15 +12,21 @@ tags:
   - prototyping
   - coding-agent
   - frontend
+  - diseno
+  - ia
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:37:11.177Z'
+updated_at: '2026-11-23T04:20:20.116Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2112443894319489423'
-author: Csaba Kissi
-author_handle: csaba_kissi
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2112443894319489423'
+  - 'https://x.com/flxrnc/status/2124231511499026436'
+author: Florence
+author_handle: flxrnc
 entry_type: tool
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+company: Florence
+classified_by: Importado del vault
 ---
 # OpenDesign
 

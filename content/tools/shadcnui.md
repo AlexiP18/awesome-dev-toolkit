@@ -11,16 +11,19 @@ tags:
   - radix-ui
   - design-system
   - radix
+  - componentes
+  - accesibilidad
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:37:11.200Z'
-updated_at: '2026-11-20T04:23:05.463Z'
+updated_at: '2026-11-23T04:20:20.492Z'
 source_tweet: 'https://x.com/hasantoxr/status/2096255783415779684'
 source_tweets:
   - 'https://x.com/hasantoxr/status/2096255783415779684'
   - 'https://x.com/BenjaminUIX/status/2123340929633550834'
-author: BenjaminUIX
-author_handle: BenjaminUIX
+  - 'https://x.com/Dionisselamii/status/2124246724319297825'
+author: Dionis
+author_handle: Dionisselamii
 entry_type: tool
 company: shadcn
 classified_by: Importado del vault

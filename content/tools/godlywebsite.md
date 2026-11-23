@@ -2,6 +2,7 @@
 name: Godly.website
 url: 'https://godly.website/'
 category: Frontend & UI
+conjunto: inspiracion
 tags:
   - inspiracion
   - webs-premiadas
@@ -13,19 +14,22 @@ tags:
   - galardones
   - ux
   - ui
+  - diseno-web
+  - layouts
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:49:28.175Z'
+updated_at: '2026-11-23T04:20:20.423Z'
 source_tweet: 'https://x.com/VullnetAdemaj/status/2112101526336364705'
-author: Vullnet Ademaj
-author_handle: VullnetAdemaj
-entry_type: tool
-classified_by: Google Gemini (Flash)
-conjunto: inspiracion
 source_tweets:
   - 'https://x.com/VullnetAdemaj/status/2112101526336364705'
   - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
-updated_at: '2026-11-13T05:00:36.258Z'
+  - 'https://x.com/Dionisselamii/status/2124246724319297825'
+author: Dionis
+author_handle: Dionisselamii
+entry_type: tool
+company: Dionis
+classified_by: Importado del vault
 ---
 # Godly.website
 

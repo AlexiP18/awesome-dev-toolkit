@@ -1,7 +1,8 @@
 ---
 name: ComfyUI
 url: 'https://github.com/Comfy-Org/ComfyUI'
-category: AI & Machine Learning
+category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - ai
   - stable-diffusion
@@ -10,16 +11,23 @@ tags:
   - pytorch
   - inference-engine
   - nodes-interface
+  - imagen
+  - nodos
+  - ia
 stars: 144627
 status: to_try
 date_added: '2026-11-02'
 created_at: '2026-11-02T16:58:17.574Z'
+updated_at: '2026-11-23T04:20:19.877Z'
 source_tweet: 'https://x.com/rachiitgr/status/2116982774846419287'
-author: rachit
-author_handle: rachiitgr
+source_tweets:
+  - 'https://x.com/rachiitgr/status/2116982774846419287'
+  - 'https://x.com/flxrnc/status/2124231511499026436'
+author: Florence
+author_handle: flxrnc
 entry_type: tool
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+company: Florence
+classified_by: Importado del vault
 ---
 # ComfyUI
 
