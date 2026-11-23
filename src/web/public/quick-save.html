@@ -2,11 +2,25 @@
 <html lang="es" class="dark">
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('toolkit_theme');
+        var theme = stored === 'light' || stored === 'dark'
+          ? stored
+          : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.classList.toggle('dark', theme !== 'light');
+        document.documentElement.classList.toggle('light', theme === 'light');
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Analizar con IA - Dev Toolkit</title>
+  <link rel="stylesheet" href="./catalog.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-3 font-sans select-none">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-3 font-sans">
   <div id="card" class="bg-slate-900 border border-slate-800 rounded-2xl p-5 w-full max-w-md shadow-2xl transition-all">
     
     <!-- Top Header -->
@@ -20,7 +34,7 @@
           <p id="resourcePreview" class="text-[10px] text-slate-400 truncate max-w-[260px]">Detectando recurso...</p>
         </div>
       </div>
-      <button onclick="window.close()" class="text-slate-500 hover:text-slate-300 p-1 text-xs transition" title="Cerrar">✕</button>
+      <button type="button" onclick="window.close()" class="text-slate-500 hover:text-slate-300 p-1 text-xs transition" title="Cerrar" aria-label="Cerrar">✕</button>
     </div>
 
     <!-- VIEW 1: Model Selection & Launch -->
@@ -119,7 +133,7 @@
     </div>
 
     <!-- VIEW 2: In Progress -->
-    <div id="viewLoading" class="hidden py-6 text-center space-y-3">
+    <div id="viewLoading" class="hidden py-6 text-center space-y-3" role="status" aria-live="polite">
       <div id="spinner" class="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
       <div>
         <h2 id="loadingTitle" class="text-sm font-bold text-slate-100">Analizando...</h2>
@@ -144,7 +158,7 @@
     </div>
 
     <!-- VIEW 4: Error & Switch Retry -->
-    <div id="viewError" class="hidden space-y-3 text-left">
+    <div id="viewError" class="hidden space-y-3 text-left" role="alert">
       <div class="p-3 rounded-xl bg-amber-950/30 border border-amber-500/30 text-amber-200">
         <div class="flex items-center gap-1.5 font-bold text-xs text-amber-300 mb-1">
           <span>⚠️</span>
