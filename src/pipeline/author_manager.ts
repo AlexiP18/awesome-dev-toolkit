@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { unmarkRepoPathDeleted } from './github_sync.js';
 import { slugify, loadAllTools, contentRoot } from './note_generator.js';
 import { analyzeAuthorWithCascade, AuthorProfileResult } from './ai_providers.js';
 
@@ -85,6 +86,7 @@ ${linksMd ? `## 🔗 Enlaces\n${linksMd}\n` : ''}
 
   const fileContent = matter.stringify(markdownBody.trim() + '\n', cleanFrontmatter(frontmatter));
   fs.writeFileSync(filePath, fileContent, 'utf-8');
+  unmarkRepoPathDeleted(filePath);
 
   return {
     ...profile,

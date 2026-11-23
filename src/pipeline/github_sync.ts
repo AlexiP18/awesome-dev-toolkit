@@ -1,29 +1,120 @@
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
+import { invalidateCatalogCache } from './catalog_state.js';
+import { envInt } from './http_util.js';
+import { logEvent, redact } from './log.js';
+import {
+  createPushCoalescer,
+  createSerialQueue,
+  isRetryableGitHubStatus,
+  pushWithRetries,
+  retryDelayMs,
+  shouldClearLocalSyncState,
+  type HeaderBag,
+  type SyncResult,
+} from './sync_policy.js';
 
 const DEFAULT_REPO = 'AlexiP18/awesome-dev-toolkit';
 const DEFAULT_BRANCH = 'main';
 
 const deletedRepoPaths = new Set<string>();
-let syncQueue: Promise<any> = Promise.resolve();
+const dirtyPaths = new Set<string>();
+let catalogGeneration = 0;
+let journalWanted = false;
+let lastRemoteHead: string | null = null;
+let pullTimer: ReturnType<typeof setInterval> | null = null;
+let retryTimer: ReturnType<typeof setTimeout> | null = null;
+
+export interface GitResponse {
+  status: number;
+  headers: HeaderBag;
+  text(): Promise<string>;
+  json(): Promise<unknown>;
+}
+
+export type GitRequest = (
+  url: string,
+  init?: { method?: string; body?: string }
+) => Promise<GitResponse>;
+
+function contentRoot(): string {
+  return process.env.CONTENT_DIR
+    ? path.resolve(process.env.CONTENT_DIR)
+    : path.resolve(process.cwd(), 'content');
+}
 
 function toRepoRelativePath(filePath: string): string {
   const abs = path.resolve(process.cwd(), filePath);
-  const rel = path.relative(process.cwd(), abs).replace(/\\/g, '/');
-  return rel;
+  return path.relative(process.cwd(), abs).replace(/\\/g, '/');
 }
 
-export function markRepoPathDeleted(filePath: string): void {
-  const rel = toRepoRelativePath(filePath);
-  if (rel && !rel.startsWith('..')) {
-    deletedRepoPaths.add(rel);
+function acceptRel(rel: string): boolean {
+  return Boolean(rel) && !rel.startsWith('../') && !rel.startsWith('..') && !path.isAbsolute(rel);
+}
+
+function bumpGeneration(): void {
+  catalogGeneration += 1;
+  invalidateCatalogCache();
+}
+
+function journalPath(): string {
+  return process.env.SYNC_JOURNAL_PATH
+    ? path.resolve(process.env.SYNC_JOURNAL_PATH)
+    : path.resolve(process.cwd(), 'data', '.sync-pending.json');
+}
+
+function journalEnabled(): boolean {
+  return isGitHubSyncConfigured() && process.env.SYNC_JOURNAL !== '0';
+}
+
+function persistJournal(): void {
+  if (!journalEnabled()) return;
+  journalWanted = true;
+  try {
+    const file = journalPath();
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, `${JSON.stringify({ pending: true, at: new Date().toISOString() })}\n`, 'utf-8');
+  } catch (err) {
+    logEvent('warn', 'No se pudo guardar el diario de sincronización', { error: err instanceof Error ? err.message : String(err) });
   }
 }
 
-export function unmarkRepoPathDeleted(filePath: string): void {
+export function journalPending(): boolean {
+  if (journalWanted) return true;
+  try {
+    return fs.existsSync(journalPath());
+  } catch {
+    return false;
+  }
+}
+
+function clearJournal(): void {
+  journalWanted = false;
+  try {
+    if (fs.existsSync(journalPath())) fs.unlinkSync(journalPath());
+  } catch {
+    // el siguiente arranque volverá a intentarlo
+  }
+}
+
+function noteMutation(filePath: string, deleted: boolean): void {
   const rel = toRepoRelativePath(filePath);
-  deletedRepoPaths.delete(rel);
+  if (acceptRel(rel)) {
+    if (deleted) deletedRepoPaths.add(rel);
+    else deletedRepoPaths.delete(rel);
+    dirtyPaths.add(rel);
+    persistJournal();
+  }
+  bumpGeneration();
+}
+
+export function markRepoPathDeleted(filePath: string): void {
+  noteMutation(filePath, true);
+}
+
+export function unmarkRepoPathDeleted(filePath: string): void {
+  noteMutation(filePath, false);
 }
 
 function computeGitBlobSha(contentBuffer: Buffer): string {
@@ -43,290 +134,427 @@ export function isGitHubSyncConfigured(): boolean {
   return Boolean(token);
 }
 
-/**
- * Al iniciar el servidor (por ejemplo tras un reinicio o hibernación en Render),
- * descarga desde la rama principal de GitHub cualquier archivo de `content/` o `data/categories.json`
- * que se haya guardado previamente en el repositorio pero no esté en el contenedor efímero.
- */
-export async function syncFromGitHubRepoOnStartup(): Promise<{ downloaded: number }> {
-  const { repo, branch, token } = getRepoConfig();
-  const headers: Record<string, string> = {
-    Accept: 'application/vnd.github.v3+json',
-    'User-Agent': 'awesome-dev-toolkit-sync',
+export function getSyncStatus(): {
+  configured: boolean;
+  pendingJournal: boolean;
+  dirtyFiles: number;
+  lastRemoteHead: string | null;
+} {
+  return {
+    configured: isGitHubSyncConfigured(),
+    pendingJournal: journalPending(),
+    dirtyFiles: dirtyPaths.size,
+    lastRemoteHead,
   };
-  if (token) {
-    headers.Authorization = `Bearer ${token}`;
-  }
+}
 
-  let downloaded = 0;
-  try {
-    const treeUrl = `https://api.github.com/repos/${repo}/git/trees/${branch}?recursive=1`;
-    const res = await fetch(treeUrl, { headers });
-    if (!res.ok) {
-      console.warn(`[GitHub Sync] No se pudo consultar el árbol remoto (${res.status}).`);
-      return { downloaded: 0 };
-    }
+function syncAttempts(): number {
+  const raw = process.env.GITHUB_SYNC_ATTEMPTS;
+  if (!raw) return 4;
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n < 1) return 4;
+  return Math.min(Math.floor(n), 8);
+}
 
-    const data = (await res.json()) as {
-      tree?: Array<{ path: string; type: string; sha: string }>;
-    };
-    if (!Array.isArray(data.tree)) return { downloaded: 0 };
-
-    const targetPrefixes = [
-      'content/tools/',
-      'content/tips/',
-      'content/jobs/',
-      'content/authors/',
-    ];
-
-    const candidates = data.tree.filter((item) => {
-      if (item.type !== 'blob') return false;
-      if (item.path === 'data/categories.json') return true;
-      return targetPrefixes.some((p) => item.path.startsWith(p) && item.path.endsWith('.md'));
-    });
-
-    for (const item of candidates) {
-      if (deletedRepoPaths.has(item.path)) continue;
-      const localAbs = path.resolve(process.cwd(), item.path);
-
-      if (fs.existsSync(localAbs)) {
-        const existingBuf = fs.readFileSync(localAbs);
-        const localSha = computeGitBlobSha(existingBuf);
-        if (localSha === item.sha) {
-          continue;
-        }
-      }
-
-      // Descargar archivo desde raw.githubusercontent.com
-      const rawUrl = `https://raw.githubusercontent.com/${repo}/${branch}/${item.path}`;
-      const rawRes = await fetch(rawUrl, {
-        headers: token ? { Authorization: `Bearer ${token}` } : {},
-      });
-      if (rawRes.ok) {
-        const text = await rawRes.text();
-        const dir = path.dirname(localAbs);
-        if (!fs.existsSync(dir)) {
-          fs.mkdirSync(dir, { recursive: true });
-        }
-        fs.writeFileSync(localAbs, text, 'utf-8');
-        downloaded++;
-      }
-    }
-
-    if (downloaded > 0) {
-      console.log(`[GitHub Sync] 📥 Recuperados ${downloaded} archivo(s) desde ${repo}@${branch} al iniciar.`);
-    }
-  } catch (err: any) {
-    console.warn(`[GitHub Sync] Aviso al sincronizar desde GitHub en el arranque:`, err?.message || err);
-  }
-
-  return { downloaded };
+export function pullIntervalMs(): number {
+  const raw = process.env.GITHUB_PULL_INTERVAL_MS;
+  if (raw === undefined || raw.trim() === '') return 5 * 60 * 1000;
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n <= 0) return 0;
+  return n;
 }
 
 function collectLocalCatalogFiles(): string[] {
-  const dirs = [
-    'content/tools',
-    'content/tips',
-    'content/jobs',
-    'content/authors',
-  ];
+  const dirs = ['tools', 'tips', 'jobs', 'authors'].map((name) => path.join(contentRoot(), name));
   const files: string[] = [];
 
-  for (const relDir of dirs) {
-    const absDir = path.resolve(process.cwd(), relDir);
+  for (const absDir of dirs) {
     if (!fs.existsSync(absDir)) continue;
-    const entries = fs.readdirSync(absDir).filter((f) => f.endsWith('.md'));
-    for (const entry of entries) {
-      files.push(`${relDir}/${entry}`);
+    for (const entry of fs.readdirSync(absDir)) {
+      if (!entry.endsWith('.md')) continue;
+      const rel = toRepoRelativePath(path.join(absDir, entry));
+      if (acceptRel(rel)) files.push(rel);
     }
   }
 
-  if (fs.existsSync(path.resolve(process.cwd(), 'data/categories.json'))) {
-    files.push('data/categories.json');
+  const categories = path.resolve(process.cwd(), 'data/categories.json');
+  if (fs.existsSync(categories)) {
+    const rel = toRepoRelativePath(categories);
+    if (acceptRel(rel)) files.push(rel);
   }
-  if (fs.existsSync(path.resolve(process.cwd(), 'README.md'))) {
-    files.push('README.md');
-  }
-
+  const readme = path.resolve(process.cwd(), 'README.md');
+  if (fs.existsSync(readme)) files.push('README.md');
   return files;
 }
 
-async function performGitHubPush(commitMessage: string): Promise<{
-  synced: boolean;
-  changedFiles: number;
-  commitSha?: string;
-  reason?: string;
-}> {
+function markAllLocalCatalogDirty(): void {
+  for (const rel of collectLocalCatalogFiles()) dirtyPaths.add(rel);
+}
+
+async function githubRequest(url: string, token: string | undefined, init?: { method?: string; body?: string }): Promise<GitResponse> {
+  const headers: Record<string, string> = {
+    Accept: 'application/vnd.github+json',
+    'User-Agent': 'awesome-dev-toolkit-sync',
+    'X-GitHub-Api-Version': '2022-11-28',
+  };
+  if (token) headers.Authorization = `Bearer ${token}`;
+  if (init?.body) headers['Content-Type'] = 'application/json';
+
+  const controller = new AbortController();
+  const timeoutMs = envInt('GITHUB_HTTP_TIMEOUT_MS', 20_000);
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, {
+      method: init?.method || 'GET',
+      headers,
+      body: init?.body,
+      signal: controller.signal,
+    });
+    const text = await res.text();
+    return {
+      status: res.status,
+      headers: { get: (name) => res.headers.get(name) },
+      text: async () => text,
+      json: async () => (text ? JSON.parse(text) as unknown : {}),
+    };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function failureFrom(status: number, headers: HeaderBag, body: string, fallback: string): SyncResult {
+  const retryable = isRetryableGitHubStatus(status, headers, body);
+  const retryAfter = headers.get('retry-after');
+  return {
+    synced: false,
+    changedFiles: 0,
+    reason: redact(body.slice(0, 240) || fallback),
+    retryable,
+    retryAfterMs: retryable && retryAfter ? retryDelayMs(1, retryAfter) : undefined,
+  };
+}
+
+export interface PushOnceInput {
+  message: string;
+  request: GitRequest;
+  repo: string;
+  branch: string;
+  token: string;
+  listFiles: () => string[];
+  readFile: (rel: string) => Buffer | null;
+  deletedPaths: Set<string>;
+  generation?: number;
+}
+
+export async function pushCatalogOnce(input: PushOnceInput): Promise<SyncResult & { generationAtRead: number }> {
+  const { repo, branch, request } = input;
+  const api = `https://api.github.com/repos/${repo}`;
+  const generationAtRead = input.generation ?? catalogGeneration;
+
+  const refRes = await request(`${api}/git/ref/heads/${branch}`);
+  if (refRes.status !== 200) {
+    const body = await refRes.text();
+    return { ...failureFrom(refRes.status, refRes.headers, body, `HTTP ${refRes.status}`), generationAtRead };
+  }
+  const refData = (await refRes.json()) as { object?: { sha?: string } };
+  const headCommitSha = refData.object?.sha;
+  if (!headCommitSha) {
+    return { synced: false, changedFiles: 0, reason: 'La referencia de la rama no trae SHA', retryable: true, generationAtRead };
+  }
+
+  const commitRes = await request(`${api}/git/commits/${headCommitSha}`);
+  if (commitRes.status !== 200) {
+    const body = await commitRes.text();
+    return { ...failureFrom(commitRes.status, commitRes.headers, body, `Commit HTTP ${commitRes.status}`), generationAtRead };
+  }
+  const commitData = (await commitRes.json()) as { tree?: { sha?: string } };
+  const baseTreeSha = commitData.tree?.sha;
+  if (!baseTreeSha) {
+    return { synced: false, changedFiles: 0, reason: 'El commit remoto no trae árbol', retryable: true, generationAtRead };
+  }
+
+  const treeRes = await request(`${api}/git/trees/${baseTreeSha}?recursive=1`);
+  const remoteShas = new Map<string, string>();
+  if (treeRes.status === 200) {
+    const treeData = (await treeRes.json()) as { tree?: Array<{ path: string; type: string; sha: string }>; truncated?: boolean };
+    if (treeData.truncated) {
+      logEvent('warn', 'El árbol remoto de GitHub vino truncado', { repo, branch });
+    }
+    for (const item of treeData.tree || []) {
+      if (item.type === 'blob') remoteShas.set(item.path, item.sha);
+    }
+  } else {
+    const body = await treeRes.text();
+    return { ...failureFrom(treeRes.status, treeRes.headers, body, `Tree HTTP ${treeRes.status}`), generationAtRead };
+  }
+
+  const localFiles = input.listFiles();
+  const treeChanges: Array<{ path: string; mode: '100644'; type: 'blob'; content?: string; sha?: string | null }> = [];
+
+  for (const relPath of localFiles) {
+    const buf = input.readFile(relPath);
+    if (!buf) continue;
+    const localSha = computeGitBlobSha(buf);
+    if (remoteShas.get(relPath) !== localSha) {
+      treeChanges.push({ path: relPath, mode: '100644', type: 'blob', content: buf.toString('utf-8') });
+    }
+  }
+
+  for (const delPath of input.deletedPaths) {
+    if (remoteShas.has(delPath) && !localFiles.includes(delPath)) {
+      treeChanges.push({ path: delPath, mode: '100644', type: 'blob', sha: null });
+    }
+  }
+
+  const readGeneration = input.generation ?? catalogGeneration;
+
+  if (treeChanges.length === 0) {
+    lastRemoteHead = headCommitSha;
+    return { synced: true, changedFiles: 0, commitSha: headCommitSha, generationAtRead: readGeneration };
+  }
+
+  const newTreeRes = await request(`${api}/git/trees`, {
+    method: 'POST',
+    body: JSON.stringify({ base_tree: baseTreeSha, tree: treeChanges }),
+  });
+  if (newTreeRes.status !== 201 && newTreeRes.status !== 200) {
+    const body = await newTreeRes.text();
+    return { ...failureFrom(newTreeRes.status, newTreeRes.headers, body, `Tree HTTP ${newTreeRes.status}`), generationAtRead: readGeneration };
+  }
+  const newTreeData = (await newTreeRes.json()) as { sha?: string };
+  if (!newTreeData.sha) {
+    return { synced: false, changedFiles: 0, reason: 'GitHub no devolvió el SHA del árbol', retryable: true, generationAtRead: readGeneration };
+  }
+
+  const finalMessage = `${input.message} [skip render] [skip ci]`;
+  const newCommitRes = await request(`${api}/git/commits`, {
+    method: 'POST',
+    body: JSON.stringify({ message: finalMessage, tree: newTreeData.sha, parents: [headCommitSha] }),
+  });
+  if (newCommitRes.status !== 201 && newCommitRes.status !== 200) {
+    const body = await newCommitRes.text();
+    return { ...failureFrom(newCommitRes.status, newCommitRes.headers, body, `CreateCommit HTTP ${newCommitRes.status}`), generationAtRead: readGeneration };
+  }
+  const newCommitData = (await newCommitRes.json()) as { sha?: string };
+  if (!newCommitData.sha) {
+    return { synced: false, changedFiles: 0, reason: 'GitHub no devolvió el SHA del commit', retryable: true, generationAtRead: readGeneration };
+  }
+
+  const updateRefRes = await request(`${api}/git/refs/heads/${branch}`, {
+    method: 'PATCH',
+    body: JSON.stringify({ sha: newCommitData.sha, force: false }),
+  });
+  if (updateRefRes.status !== 200) {
+    const body = await updateRefRes.text();
+    return { ...failureFrom(updateRefRes.status, updateRefRes.headers, body, `UpdateRef HTTP ${updateRefRes.status}`), generationAtRead: readGeneration };
+  }
+
+  lastRemoteHead = newCommitData.sha;
+  logEvent('info', 'catálogo sincronizado con GitHub', {
+    repo,
+    branch,
+    changedFiles: treeChanges.length,
+    commit: newCommitData.sha.slice(0, 7),
+  });
+  return {
+    synced: true,
+    changedFiles: treeChanges.length,
+    commitSha: newCommitData.sha,
+    generationAtRead: readGeneration,
+  };
+}
+
+async function runPush(message: string): Promise<SyncResult> {
   const { repo, branch, token } = getRepoConfig();
   if (!token) {
     return {
       synced: false,
       changedFiles: 0,
+      retryable: false,
       reason: 'GITHUB_TOKEN no configurado (usando respaldo persistente en navegador + disco local)',
     };
   }
 
-  const headers: Record<string, string> = {
-    Accept: 'application/vnd.github.v3+json',
-    Authorization: `Bearer ${token}`,
-    'Content-Type': 'application/json',
-    'User-Agent': 'awesome-dev-toolkit-sync',
-  };
-
-  try {
-    // 1. Obtener referencia actual de la rama
-    const refRes = await fetch(`https://api.github.com/repos/${repo}/git/ref/heads/${branch}`, { headers });
-    if (!refRes.ok) {
-      const errTxt = await refRes.text();
-      console.warn(`[GitHub Sync] Error obteniendo ref heads/${branch} (${refRes.status}): ${errTxt}`);
-      return { synced: false, changedFiles: 0, reason: `HTTP ${refRes.status}` };
-    }
-    const refData = (await refRes.json()) as { object: { sha: string } };
-    const headCommitSha = refData.object.sha;
-
-    // 2. Obtener el commit actual y su tree SHA
-    const commitRes = await fetch(`https://api.github.com/repos/${repo}/git/commits/${headCommitSha}`, { headers });
-    if (!commitRes.ok) {
-      return { synced: false, changedFiles: 0, reason: `Commit HTTP ${commitRes.status}` };
-    }
-    const commitData = (await commitRes.json()) as { tree: { sha: string } };
-    const baseTreeSha = commitData.tree.sha;
-
-    // 3. Obtener el árbol recursivo actual para comparar SHAs
-    const treeRes = await fetch(`https://api.github.com/repos/${repo}/git/trees/${baseTreeSha}?recursive=1`, { headers });
-    const remoteShas = new Map<string, string>();
-    if (treeRes.ok) {
-      const treeData = (await treeRes.json()) as { tree?: Array<{ path: string; type: string; sha: string }> };
-      for (const item of treeData.tree || []) {
-        if (item.type === 'blob') {
-          remoteShas.set(item.path, item.sha);
+  return pushWithRetries(
+    async () => {
+      try {
+        const result = await pushCatalogOnce({
+          message,
+          request: (url, init) => githubRequest(url, token, init),
+          repo,
+          branch,
+          token,
+          listFiles: collectLocalCatalogFiles,
+          readFile: (rel) => {
+            const abs = path.resolve(process.cwd(), rel);
+            if (!fs.existsSync(abs)) return null;
+            return fs.readFileSync(abs);
+          },
+          deletedPaths: deletedRepoPaths,
+        });
+        if (shouldClearLocalSyncState(result.synced, result.generationAtRead, catalogGeneration)) {
+          dirtyPaths.clear();
+          deletedRepoPaths.clear();
+          clearJournal();
         }
+        const publicResult: SyncResult = {
+          synced: result.synced,
+          changedFiles: result.changedFiles,
+          commitSha: result.commitSha,
+          reason: result.reason,
+          retryable: result.retryable,
+          retryAfterMs: result.retryAfterMs,
+        };
+        return publicResult;
+      } catch (err) {
+        logEvent('warn', 'Error sincronizando con GitHub', { error: err instanceof Error ? err.message : String(err) });
+        return { synced: false, changedFiles: 0, reason: err instanceof Error ? err.message : 'Error desconocido', retryable: true };
       }
-    }
-
-    // 4. Construir lista de cambios (archivos nuevos/modificados y eliminados)
-    const treeChanges: Array<{
-      path: string;
-      mode: '100644';
-      type: 'blob';
-      content?: string;
-      sha?: string | null;
-    }> = [];
-
-    const localFiles = collectLocalCatalogFiles();
-    for (const relPath of localFiles) {
-      const absPath = path.resolve(process.cwd(), relPath);
-      if (!fs.existsSync(absPath)) continue;
-      const buf = fs.readFileSync(absPath);
-      const localSha = computeGitBlobSha(buf);
-      if (remoteShas.get(relPath) !== localSha) {
-        treeChanges.push({
-          path: relPath,
-          mode: '100644',
-          type: 'blob',
-          content: buf.toString('utf-8'),
-        });
-      }
-    }
-
-    const processedDeletes: string[] = [];
-    for (const delPath of deletedRepoPaths) {
-      const absPath = path.resolve(process.cwd(), delPath);
-      if (!fs.existsSync(absPath) && remoteShas.has(delPath)) {
-        treeChanges.push({
-          path: delPath,
-          mode: '100644',
-          type: 'blob',
-          sha: null,
-        });
-      }
-      processedDeletes.push(delPath);
-    }
-
-    if (treeChanges.length === 0) {
-      for (const d of processedDeletes) deletedRepoPaths.delete(d);
-      return { synced: true, changedFiles: 0 };
-    }
-
-    // 5. Crear nuevo árbol en GitHub
-    const newTreeRes = await fetch(`https://api.github.com/repos/${repo}/git/trees`, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({
-        base_tree: baseTreeSha,
-        tree: treeChanges,
-      }),
-    });
-
-    if (!newTreeRes.ok) {
-      const errTxt = await newTreeRes.text();
-      console.warn(`[GitHub Sync] Error creando árbol en GitHub (${newTreeRes.status}): ${errTxt}`);
-      return { synced: false, changedFiles: 0, reason: `Tree HTTP ${newTreeRes.status}` };
-    }
-    const newTreeData = (await newTreeRes.json()) as { sha: string };
-
-    // 6. Crear nuevo commit con [skip render] [skip ci] para no reiniciar el contenedor activo en Render
-    const finalMessage = `${commitMessage} [skip render] [skip ci]`;
-    const newCommitRes = await fetch(`https://api.github.com/repos/${repo}/git/commits`, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({
-        message: finalMessage,
-        tree: newTreeData.sha,
-        parents: [headCommitSha],
-      }),
-    });
-
-    if (!newCommitRes.ok) {
-      const errTxt = await newCommitRes.text();
-      console.warn(`[GitHub Sync] Error creando commit en GitHub (${newCommitRes.status}): ${errTxt}`);
-      return { synced: false, changedFiles: 0, reason: `CreateCommit HTTP ${newCommitRes.status}` };
-    }
-    const newCommitData = (await newCommitRes.json()) as { sha: string };
-
-    // 7. Actualizar la referencia de la rama
-    const updateRefRes = await fetch(`https://api.github.com/repos/${repo}/git/refs/heads/${branch}`, {
-      method: 'PATCH',
-      headers,
-      body: JSON.stringify({
-        sha: newCommitData.sha,
-        force: false,
-      }),
-    });
-
-    if (!updateRefRes.ok) {
-      const errTxt = await updateRefRes.text();
-      console.warn(`[GitHub Sync] Error actualizando ref en GitHub (${updateRefRes.status}): ${errTxt}`);
-      return { synced: false, changedFiles: 0, reason: `UpdateRef HTTP ${updateRefRes.status}` };
-    }
-
-    for (const d of processedDeletes) deletedRepoPaths.delete(d);
-    console.log(
-      `[GitHub Sync] ☁️ Sincronizados ${treeChanges.length} archivo(s) en ${repo}@${branch} (commit ${newCommitData.sha.slice(0, 7)})`
-    );
-
-    return {
-      synced: true,
-      changedFiles: treeChanges.length,
-      commitSha: newCommitData.sha,
-    };
-  } catch (err: any) {
-    console.warn(`[GitHub Sync] Error sincronizando con GitHub:`, err?.message || err);
-    return { synced: false, changedFiles: 0, reason: err?.message || 'Error desconocido' };
-  }
+    },
+    { maxAttempts: syncAttempts() }
+  );
 }
 
-/**
- * Encola una sincronización atómica hacia el repositorio de GitHub para que las fichas
- * queden guardadas permanentemente en el repo.
- */
-export function syncCatalogToGitHubRepo(commitMessage: string): Promise<{
-  synced: boolean;
-  changedFiles: number;
-  commitSha?: string;
-  reason?: string;
-}> {
-  const next = syncQueue.then(() => performGitHubPush(commitMessage));
-  syncQueue = next.catch(() => {});
-  return next;
+const ioQueue = createSerialQueue();
+const pushes = createPushCoalescer({
+  push: (message) => ioQueue.run(() => runPush(message)),
+});
+
+function scheduleBackgroundRetry(message: string, delayMs: number): void {
+  if (retryTimer || !isGitHubSyncConfigured()) return;
+  const wait = Math.min(Math.max(delayMs, 5_000), 120_000);
+  retryTimer = setTimeout(() => {
+    retryTimer = null;
+    void syncCatalogToGitHubRepo(message);
+  }, wait);
+  retryTimer.unref?.();
+}
+
+export function syncCatalogToGitHubRepo(commitMessage: string): Promise<SyncResult> {
+  persistJournal();
+  return pushes.enqueue(commitMessage).then((result) => {
+    if (!result.synced && result.retryable) {
+      scheduleBackgroundRetry(commitMessage, result.retryAfterMs ?? 15_000);
+    }
+    return result;
+  });
+}
+
+const PULL_PREFIXES = ['content/tools/', 'content/tips/', 'content/jobs/', 'content/authors/'];
+
+export function shouldWritePulledFile(rel: string, dirty: { has(value: string): boolean }, deleted: { has(value: string): boolean }): boolean {
+  if (deleted.has(rel) || dirty.has(rel)) return false;
+  return true;
+}
+
+async function pullOnce(reason: string): Promise<{ downloaded: number; unchanged?: boolean }> {
+  const { repo, branch, token } = getRepoConfig();
+  const headers: Record<string, string> = {
+    Accept: 'application/vnd.github+json',
+    'User-Agent': 'awesome-dev-toolkit-sync',
+  };
+  if (token) headers.Authorization = `Bearer ${token}`;
+
+  let downloaded = 0;
+  let failed = 0;
+  try {
+    const refRes = await fetch(`https://api.github.com/repos/${repo}/git/ref/heads/${branch}`, { headers });
+    if (!refRes.ok) {
+      logEvent('warn', 'No se pudo leer la rama remota', { status: refRes.status, reason });
+      return { downloaded: 0 };
+    }
+    const refData = (await refRes.json()) as { object?: { sha?: string } };
+    const head = refData.object?.sha || '';
+    if (head && head === lastRemoteHead && reason === 'interval') {
+      return { downloaded: 0, unchanged: true };
+    }
+
+    const treeUrl = `https://api.github.com/repos/${repo}/git/trees/${branch}?recursive=1`;
+    const res = await fetch(treeUrl, { headers });
+    if (!res.ok) {
+      logEvent('warn', 'No se pudo consultar el árbol remoto', { status: res.status, reason });
+      return { downloaded: 0 };
+    }
+    const data = (await res.json()) as { tree?: Array<{ path: string; type: string; sha: string }>; truncated?: boolean };
+    if (data.truncated) logEvent('warn', 'Árbol remoto truncado al descargar content/', { reason });
+    if (!Array.isArray(data.tree)) return { downloaded: 0 };
+
+    const candidates = data.tree.filter((item) => {
+      if (item.type !== 'blob') return false;
+      if (item.path === 'data/categories.json') return true;
+      return PULL_PREFIXES.some((prefix) => item.path.startsWith(prefix) && item.path.endsWith('.md'));
+    });
+
+    for (const item of candidates) {
+      if (!shouldWritePulledFile(item.path, dirtyPaths, deletedRepoPaths)) continue;
+      const localAbs = path.resolve(process.cwd(), item.path);
+      if (fs.existsSync(localAbs)) {
+        const localSha = computeGitBlobSha(fs.readFileSync(localAbs));
+        if (localSha === item.sha) continue;
+      }
+      const rawUrl = `https://raw.githubusercontent.com/${repo}/${branch}/${item.path}`;
+      const rawRes = await fetch(rawUrl, { headers: token ? { Authorization: `Bearer ${token}` } : {} });
+      if (!rawRes.ok) {
+        failed += 1;
+        continue;
+      }
+      if (!shouldWritePulledFile(item.path, dirtyPaths, deletedRepoPaths)) continue;
+      const text = await rawRes.text();
+      fs.mkdirSync(path.dirname(localAbs), { recursive: true });
+      fs.writeFileSync(localAbs, text, 'utf-8');
+      downloaded += 1;
+    }
+
+    if (head && failed === 0) lastRemoteHead = head;
+    if (downloaded > 0) {
+      invalidateCatalogCache();
+      logEvent('info', 'content/ actualizado desde GitHub', { downloaded, reason, repo, branch });
+    }
+  } catch (err) {
+    logEvent('warn', 'Fallo al traer content/ desde GitHub', { reason, error: err instanceof Error ? err.message : String(err) });
+  }
+  return { downloaded };
+}
+
+export function pullContentFromGitHub(reason: string): Promise<{ downloaded: number; unchanged?: boolean }> {
+  return ioQueue.run(() => pullOnce(reason));
+}
+
+export async function syncFromGitHubRepoOnStartup(): Promise<{ downloaded: number }> {
+  if (journalPending()) markAllLocalCatalogDirty();
+  const pulled = await pullContentFromGitHub('startup');
+  if (journalPending() && isGitHubSyncConfigured()) {
+    await syncCatalogToGitHubRepo('chore(catalog): reanudar sincronización pendiente');
+  }
+  return { downloaded: pulled.downloaded };
+}
+
+export function startGitHubMaintenance(): void {
+  if (pullTimer) return;
+  const interval = pullIntervalMs();
+  if (interval <= 0) {
+    logEvent('info', 'Pull periódico de content/ desactivado');
+    return;
+  }
+  pullTimer = setInterval(() => {
+    void pullContentFromGitHub('interval');
+  }, interval);
+  pullTimer.unref?.();
+  logEvent('info', 'Pull periódico de content/ activo', { intervalMs: interval });
+}
+
+export async function flushGitHubSync(timeoutMs = 8000): Promise<void> {
+  if (!isGitHubSyncConfigured()) return;
+  if (!journalPending() && dirtyPaths.size === 0) return;
+  await Promise.race([
+    syncCatalogToGitHubRepo('chore(catalog): guardar cambios antes de apagar'),
+    new Promise<void>((resolve) => setTimeout(resolve, timeoutMs)),
+  ]);
+}
+
+export function stopGitHubMaintenanceForTests(): void {
+  if (pullTimer) clearInterval(pullTimer);
+  pullTimer = null;
+  if (retryTimer) clearTimeout(retryTimer);
+  retryTimer = null;
 }

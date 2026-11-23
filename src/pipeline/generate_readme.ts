@@ -244,6 +244,15 @@ needs-review: 0
 \`\`\`
 
 En simulación el prefijo es \`[Import vault] simulación\`. Repetir el mismo archivo no crea fichas: lo ya importado sale en \`skipped\`. Un tweet nuevo de un producto que ya estaba se anexa (\`updated\`).
+
+### 7. Servidor, salud y acceso de escritura
+\`GET /health\` responde \`{ "ok": true }\` para el health check de Render. El catálogo se lee de memoria y se invalida al guardar o al traer \`content/\` desde GitHub.
+
+Si \`ADMIN_TOKEN\` está vacío, los \`POST\`, \`PATCH\` y \`DELETE\` siguen abiertos. Si lo defines, esas rutas exigen la cabecera \`x-admin-token\` (o \`Authorization: Bearer\`). Las páginas que sirve el propio servidor —catálogo, \`/quick-save\` y \`/bookmarklet\`— inyectan ese token en \`fetch\`, así que el bookmarklet no hay que reinstalarlo. \`GET\` del catálogo sigue siendo público. CORS solo refleja el mismo host y los orígenes de \`CORS_ORIGINS\`.
+
+\`/api/ingest\`, \`/api/authors/analyze\` y \`/api/tools/:slug/thread\` tienen un límite por IP (\`AI_RATE_LIMIT_MAX\`, por defecto 30 cada 10 minutos).
+
+La sincronización con GitHub va en una cola: reintenta 409, 422 y rate limit, no borra un cambio local si el push falla, y al apagarse intenta vaciar la cola. Al arrancar, y cada \`GITHUB_PULL_INTERVAL_MS\` (5 minutos), trae commits nuevos de \`content/\` sin reiniciar. Un webhook \`POST /api/github/webhook\` (secreto \`GITHUB_WEBHOOK_SECRET\`, evento push) hace lo mismo. Los archivos locales aún no subidos no se pisan.
 `;
 }
 
