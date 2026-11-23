@@ -1,11 +1,13 @@
 ---
 name: Lottie
 url: 'https://github.com/airbnb/lottie-web'
-website_url: 'http://airbnb.io/lottie/'
+website_url: 'https://airbnb.io/lottie'
 category: Frontend & UI
 tags:
   - animation
   - vector-graphics
+  - web-animation
+  - json
   - after-effects
   - web
   - mobile
@@ -18,13 +20,12 @@ source_tweet: 'https://x.com/rachiitgr/status/2116982774846419287'
 author: rachit
 author_handle: rachiitgr
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
+source_tweets:
+  - 'https://x.com/rachiitgr/status/2116982774846419287'
+  - 'https://x.com/Marlenuii/status/2111419391271186795'
+updated_at: '2026-11-13T05:00:36.270Z'
 ---
 # Lottie
 
@@ -46,3 +47,6 @@ conjunto: recursos
 - Repositorio de código (GitHub): [https://github.com/airbnb/lottie-web](https://github.com/airbnb/lottie-web)
 - Sitio Web oficial: [http://airbnb.io/lottie/](http://airbnb.io/lottie/)
 - Tweet origen: [Ver en X](https://x.com/rachiitgr/status/2116982774846419287)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/Marlenuii/status/2111419391271186795)

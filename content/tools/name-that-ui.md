@@ -4,10 +4,13 @@ url: 'https://namethatui.com/'
 category: Frontend & UI
 tags:
   - ui
+  - diseno
+  - referencia
+  - qa
+  - frontend
   - design
   - prompts
   - ia
-  - frontend
   - diccionario
 status: to_try
 date_added: '2026-11-06'
@@ -18,6 +21,10 @@ author_handle: midudev
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: recursos
+source_tweets:
+  - 'https://x.com/midudev/status/2077379128811020433'
+  - 'https://x.com/tranmautritam/status/2076963534307790926'
+updated_at: '2026-11-13T05:00:36.262Z'
 ---
 # Name That UI
 
@@ -40,3 +47,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://namethatui.com/](https://namethatui.com/)
 - Tweet origen: [Ver en X](https://x.com/midudev/status/2077379128811020433)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/tranmautritam/status/2076963534307790926)

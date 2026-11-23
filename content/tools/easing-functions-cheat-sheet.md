@@ -17,11 +17,6 @@ source_tweet: 'https://x.com/amananimates/status/2113599514103906657'
 author: Aman Singh
 author_handle: amananimates
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---

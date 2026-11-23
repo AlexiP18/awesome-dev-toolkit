@@ -8,6 +8,7 @@ tags:
   - no-code
   - landing-pages
   - generacion-web
+  - directorio
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:13:18.773Z'
@@ -17,6 +18,10 @@ author_handle: VullnetAdemaj
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: recursos
+source_tweets:
+  - 'https://x.com/VullnetAdemaj/status/2108281499686478021'
+  - 'https://x.com/VullnetAdemaj/status/2108894975635423306'
+updated_at: '2026-11-13T05:00:36.267Z'
 ---
 # Best AI Builder
 
@@ -37,3 +42,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://bestaibuilder.website/](https://bestaibuilder.website/)
 - Tweet origen: [Ver en X](https://x.com/VullnetAdemaj/status/2108281499686478021)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/VullnetAdemaj/status/2108894975635423306)

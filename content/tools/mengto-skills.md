@@ -1,24 +1,31 @@
 ---
 name: MengTo Skills
-url: 'https://github.com/MengTo/Skills'
+url: 'https://github.com/mengto/skills'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - claude
   - agentes
   - skills
   - web-design
   - frontend
+  - agent-skills
+  - diseno
+  - builders
 stars: 7278
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:52:51.926Z'
+updated_at: '2026-11-18T04:20:53.892Z'
 source_tweet: 'https://x.com/tranmautritam/status/2076963534307790926'
-author: Tran Mau Tri Tam ✪
-author_handle: tranmautritam
+source_tweets:
+  - 'https://x.com/tranmautritam/status/2076963534307790926'
+  - 'https://x.com/Manixh02/status/2121586518880100705'
+author: Manish Kumar
+author_handle: Manixh02
 entry_type: tool
 company: MengTo
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # MengTo Skills
 

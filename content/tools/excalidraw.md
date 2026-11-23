@@ -2,23 +2,31 @@
 name: Excalidraw
 url: 'https://github.com/excalidraw/excalidraw'
 website_url: 'https://excalidraw.com/'
-category: Frontend & UI
+category: Productivity & Tools
+conjunto: recursos
 tags:
   - whiteboard
   - diagramas
   - react
   - colaboracion
   - canvas
+  - arquitectura
+  - pizarra
+  - dibujo
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T16:14:15.707Z'
+updated_at: '2026-11-20T04:21:04.191Z'
 source_tweet: 'https://x.com/DivyanshT91162/status/2079497566660821060'
-author: divyansh tiwari
-author_handle: DivyanshT91162
+source_tweets:
+  - 'https://x.com/DivyanshT91162/status/2079497566660821060'
+  - 'https://x.com/NanouuSymeon/status/2122026167074963650'
+  - 'https://x.com/Elochoaa__/status/2123350146956112381'
+author: Ochoa
+author_handle: Elochoaa__
 entry_type: tool
 company: Excalidraw
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Excalidraw
 

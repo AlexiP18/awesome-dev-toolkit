@@ -2,21 +2,28 @@
 name: Aceternity UI
 url: 'https://ui.aceternity.com/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - react
   - tailwind
   - componentes
   - motion
+  - framer-motion
+  - animacion
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:14:31.406Z'
+updated_at: '2026-11-22T04:14:34.299Z'
 source_tweet: 'https://x.com/noahelhadedy/status/2108461831928811941'
-author: "\U0001D40D\U0001D428\U0001D41A\U0001D421"
-author_handle: noahelhadedy
+source_tweets:
+  - 'https://x.com/noahelhadedy/status/2108461831928811941'
+  - 'https://x.com/BenjaminUIX/status/2123340929633550834'
+  - 'https://x.com/csaba_kissi/status/2124050003681497091'
+author: Csaba Kissi
+author_handle: csaba_kissi
 entry_type: tool
 company: Aceternity
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Aceternity UI
 

@@ -1,8 +1,8 @@
 ---
 name: Scrolltide
-url: 'https://www.scrolltide.co/'
-website_url: 'https://scrolltide.co/'
+url: 'https://scrolltide.co/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - design
   - prompts
@@ -10,16 +10,21 @@ tags:
   - 3d
   - templates
   - frontend
+  - scroll
+  - componentes-ui
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:08:38.649Z'
+updated_at: '2026-11-18T04:20:52.370Z'
 source_tweet: 'https://x.com/himanshubuildss/status/2108738253239255073'
-author: Himanshu Hingorani
-author_handle: himanshubuildss
+source_tweets:
+  - 'https://x.com/himanshubuildss/status/2108738253239255073'
+  - 'https://x.com/nikosolenne/status/2121378167927480347'
+author: niko.
+author_handle: nikosolenne
 entry_type: tool
 company: Scrolltide
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Scrolltide
 

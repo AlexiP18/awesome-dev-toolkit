@@ -3,6 +3,7 @@ name: FFmpeg
 url: 'https://github.com/FFmpeg/FFmpeg'
 website_url: 'https://ffmpeg.org/'
 category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - video
   - encoding
@@ -12,13 +13,16 @@ tags:
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:40:13.052Z'
+updated_at: '2026-11-23T04:20:20.154Z'
 source_tweet: 'https://x.com/Lucy_love_AI/status/2110203192831303920'
-author: 露西的百宝箱
-author_handle: Lucy_love_AI
+source_tweets:
+  - 'https://x.com/Lucy_love_AI/status/2110203192831303920'
+  - 'https://x.com/flxrnc/status/2124231511499026436'
+author: Florence
+author_handle: flxrnc
 entry_type: tool
 company: FFmpeg
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # FFmpeg
 

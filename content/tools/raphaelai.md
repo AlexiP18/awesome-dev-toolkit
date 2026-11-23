@@ -2,25 +2,28 @@
 name: raphael.ai
 url: 'https://raphael.ai/'
 category: 'Prompts, Art & Video'
+conjunto: producto
 tags:
   - ai
   - generacion-imagenes
   - arte-digital
   - gratis
+  - ia
+  - imagenes
+  - generacion
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:53:53.070Z'
+updated_at: '2026-11-21T04:16:51.300Z'
 source_tweet: 'https://x.com/konig0000/status/2111804913416331448'
-author: chaos
-author_handle: konig0000
-entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+source_tweets:
+  - 'https://x.com/konig0000/status/2111804913416331448'
+  - 'https://x.com/Elochoaa__/status/2123859657747812733'
+author: Ochoa
+author_handle: Elochoaa__
+entry_type: product_showcase
+company: Ochoa
+classified_by: Importado del vault
 ---
 # raphael.ai
 

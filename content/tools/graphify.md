@@ -2,6 +2,7 @@
 name: Graphify
 url: 'https://github.com/Graphify-Labs/graphify'
 category: Agentes & Protocolo MCP
+conjunto: recursos
 tags:
   - knowledge-graph
   - ai-agents
@@ -13,17 +14,22 @@ tags:
   - code-search
   - graphrag
   - local-first
+  - agentes-ia
+  - codebase
 stars: 143397
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:27:25.238Z'
+updated_at: '2026-11-18T04:20:53.152Z'
 source_tweet: 'https://x.com/heyfredds/status/2077711063605203283'
-author: fred
-author_handle: heyfredds
+source_tweets:
+  - 'https://x.com/heyfredds/status/2077711063605203283'
+  - 'https://x.com/so_ainsight/status/2121440495276798005'
+author: そう@『n8nの教科書』マイナビ出版 10/22発売
+author_handle: so_ainsight
 entry_type: tool
 company: Graphify Labs
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Graphify
 

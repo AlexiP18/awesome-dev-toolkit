@@ -16,6 +16,10 @@ author_handle: BardhylBytyqi
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: recursos
+source_tweets:
+  - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
+  - 'https://x.com/VullnetAdemaj/status/2108894975635423306'
+updated_at: '2026-11-13T05:00:36.259Z'
 ---
 # Font in Logo
 
@@ -36,3 +40,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://fontinlogo.com/](https://fontinlogo.com/)
 - Tweet origen: [Ver en X](https://x.com/BardhylBytyqi/status/2118838961602748834)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/VullnetAdemaj/status/2108894975635423306)

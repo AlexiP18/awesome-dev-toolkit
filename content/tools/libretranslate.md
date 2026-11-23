@@ -3,21 +3,26 @@ name: LibreTranslate
 url: 'https://github.com/LibreTranslate/LibreTranslate'
 website_url: 'https://libretranslate.com/'
 category: AI & Machine Learning
+conjunto: recursos
 tags:
   - traduccion
   - nlp
   - self-hosted
   - offline
+  - api
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:16:04.720Z'
+updated_at: '2026-11-18T04:20:52.948Z'
 source_tweet: 'https://x.com/sentient_agency/status/2098719224252514744'
-author: Sentient
-author_handle: sentient_agency
+source_tweets:
+  - 'https://x.com/sentient_agency/status/2098719224252514744'
+  - 'https://x.com/Fluyeporlaweb/status/2121683585199440143'
+author: PA13L0
+author_handle: Fluyeporlaweb
 entry_type: tool
 company: LibreTranslate
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # LibreTranslate
 

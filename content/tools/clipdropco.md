@@ -2,26 +2,29 @@
 name: clipdrop.co
 url: 'https://clipdrop.co/'
 category: 'Prompts, Art & Video'
+conjunto: producto
 tags:
   - ai
   - edicion-imagenes
   - eliminar-fondo
   - retoque-fotografico
   - productividad
+  - ia
+  - imagenes
+  - edicion
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:53:53.075Z'
+updated_at: '2026-11-21T04:16:51.422Z'
 source_tweet: 'https://x.com/konig0000/status/2111804913416331448'
-author: chaos
-author_handle: konig0000
-entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
-classified_by: Google Gemini (Flash)
-conjunto: producto
+source_tweets:
+  - 'https://x.com/konig0000/status/2111804913416331448'
+  - 'https://x.com/Elochoaa__/status/2123859657747812733'
+author: Ochoa
+author_handle: Elochoaa__
+entry_type: product_showcase
+company: Ochoa
+classified_by: Importado del vault
 ---
 # clipdrop.co
 

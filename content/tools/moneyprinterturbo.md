@@ -20,6 +20,7 @@ entry_type: tool
 company: harry0703
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: recursos
+stars: 143011
 ---
 # MoneyPrinterTurbo
 

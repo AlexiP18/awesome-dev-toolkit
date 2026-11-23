@@ -1,14 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { slugify, loadAllTools } from './note_generator.js';
+import { slugify, loadAllTools, contentRoot } from './note_generator.js';
 import { analyzeAuthorWithCascade, AuthorProfileResult } from './ai_providers.js';
 
-export const AUTHORS_DIR = path.resolve(process.cwd(), 'content/authors');
+export function authorsDir(): string {
+  return path.join(contentRoot(), 'authors');
+}
 
 export function ensureAuthorsDirExists(): void {
-  if (!fs.existsSync(AUTHORS_DIR)) {
-    fs.mkdirSync(AUTHORS_DIR, { recursive: true });
+  if (!fs.existsSync(authorsDir())) {
+    fs.mkdirSync(authorsDir(), { recursive: true });
   }
 }
 
@@ -33,7 +35,7 @@ export function saveAuthorProfile(profile: AuthorProfileResult, providerUsed?: s
   ensureAuthorsDirExists();
 
   const slug = slugify(profile.handle || profile.name);
-  const filePath = path.join(AUTHORS_DIR, `${slug}.md`);
+  const filePath = path.join(authorsDir(), `${slug}.md`);
   const today = new Date().toISOString().split('T')[0];
   const twitterUrl = profile.handle ? `https://x.com/${profile.handle.replace(/^@/, '')}` : undefined;
 
@@ -97,13 +99,13 @@ export function loadAllAuthorProfiles(): Record<string, AuthorProfile> {
   ensureAuthorsDirExists();
   const map: Record<string, AuthorProfile> = {};
 
-  if (!fs.existsSync(AUTHORS_DIR)) return map;
+  if (!fs.existsSync(authorsDir())) return map;
 
-  const files = fs.readdirSync(AUTHORS_DIR).filter((f) => f.endsWith('.md'));
+  const files = fs.readdirSync(authorsDir()).filter((f) => f.endsWith('.md'));
 
   for (const file of files) {
     try {
-      const filePath = path.join(AUTHORS_DIR, file);
+      const filePath = path.join(authorsDir(), file);
       const raw = fs.readFileSync(filePath, 'utf-8');
       const parsed = matter(raw);
       const data = parsed.data as any;
@@ -148,6 +150,35 @@ export function loadAllAuthorProfiles(): Record<string, AuthorProfile> {
   }
 
   return map;
+}
+
+/**
+ * Crea un perfil mínimo sin llamar a la IA. Si el autor ya existe, no reescribe el archivo.
+ */
+export function ensureAuthorStub(input: { name?: string | null; handle?: string | null }): 'created' | 'skipped' {
+  const name = (input.name || '').trim();
+  const handle = (input.handle || '').replace(/^@/, '').trim();
+  if (!name && !handle) return 'skipped';
+
+  const profiles = loadAllAuthorProfiles();
+  if (handle && profiles[handle.toLowerCase()]) return 'skipped';
+  if (name && profiles[name.toLowerCase()]) return 'skipped';
+  const slug = slugify(handle || name);
+  if (profiles[slug]) return 'skipped';
+
+  saveAuthorProfile(
+    {
+      name: name || handle,
+      handle: handle || undefined,
+      role: 'Autor en X',
+      bio: 'Perfil importado desde el vault, sin análisis de IA.',
+      specialties: [],
+      whyFollow: 'Comparte recursos guardados en el catálogo.',
+      suggestedTags: [],
+    },
+    'vault-import'
+  );
+  return 'created';
 }
 
 export async function analyzeAuthorWithAI(

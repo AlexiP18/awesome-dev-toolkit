@@ -2,7 +2,8 @@
 name: Browser Use
 url: 'https://github.com/browser-use/browser-use'
 website_url: 'https://browser-use.com/'
-category: AI & Machine Learning
+category: Agentes & Protocolo MCP
+conjunto: recursos
 tags:
   - ai-agents
   - browser-automation
@@ -12,17 +13,22 @@ tags:
   - mcp
   - playwright
   - open-source
+  - navegador
+  - agentes
 stars: 120198
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T18:16:03.757Z'
+updated_at: '2026-11-23T04:20:20.693Z'
 source_tweet: 'https://x.com/robiartec/status/2075996518918606859'
-author: rob.
-author_handle: robiartec
+source_tweets:
+  - 'https://x.com/robiartec/status/2075996518918606859'
+  - 'https://x.com/DivyanshT91162/status/2124198404024901922'
+author: divyansh tiwari
+author_handle: DivyanshT91162
 entry_type: tool
 company: Browser Use (Y Combinator)
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Browser Use
 

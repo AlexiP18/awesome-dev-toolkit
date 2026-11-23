@@ -23,6 +23,7 @@ export const DEFAULT_CATEGORIES: CategoryDefinition[] = [
   { name: 'Prompts, Art & Video', section: 'tools', icon: '🎬', color: 'violet', description: 'Generación de video, arte 3D y audio con inteligencia artificial', isDefault: true },
   { name: 'Databases & Storage', section: 'tools', icon: '🗄️', color: 'amber', description: 'Bases de datos SQL/NoSQL, ORMs, almacenamiento y cachés', isDefault: true },
   { name: 'Productivity & Tools', section: 'tools', icon: '⚡', color: 'teal', description: 'Utilidades para desarrolladores, métricas y optimización', isDefault: true },
+  { name: 'Sitios útiles generales', section: 'tools', icon: '🌐', color: 'emerald', description: 'Sitios web de uso general, fuera del kit de desarrollo: utilidades cotidianas, archivos, medios, compras, privacidad ligera y oficina en el navegador.', isDefault: true },
   { name: 'Documentation & Resources', section: 'tools', icon: '📚', color: 'indigo', description: 'Guías, libros, cheat sheets y documentación estática', isDefault: true },
   { name: 'Empresas & Productos', section: 'tools', icon: '🏢', color: 'indigo', description: 'Productos y herramientas desarrolladas por empresas o startups', isDefault: true },
   { name: 'Productos Tecnológicos & Hardware', section: 'tools', icon: '🖥️', color: 'amber', description: 'Placas, microcontroladores, periféricos y gadgets físicos', isDefault: true },
@@ -70,6 +71,119 @@ export function getAllCategories(): CategoryDefinition[] {
 
 export function getAllCategoryNames(): string[] {
   return getAllCategories().map((c) => c.name);
+}
+
+/** Nombres que la IA o un respaldo escribieron y que no están en la taxonomía. */
+const CATEGORY_ALIASES: Record<string, string> = {
+  'ides & development software': 'Productivity & Tools',
+  'ides and development software': 'Productivity & Tools',
+  'ides': 'Productivity & Tools',
+  'document ai': 'Document AI & Extracción',
+  'document ai & extraccion': 'Document AI & Extracción',
+  'document ai & extracción': 'Document AI & Extracción',
+  // "trabajo" solo no basta: un flujo de agentes no es una vacante.
+  'flujos de trabajo': 'Agentes & Protocolo MCP',
+  'flujo de trabajo': 'Agentes & Protocolo MCP',
+  'sitios utiles': 'Sitios útiles generales',
+  'sitios útiles': 'Sitios útiles generales',
+  'sitios utiles generales': 'Sitios útiles generales',
+  'sitios útiles generales': 'Sitios útiles generales',
+  'utilidades generales': 'Sitios útiles generales',
+  'utilidades web': 'Sitios útiles generales',
+};
+
+export function isAllowedCategory(name?: string | null): boolean {
+  if (!name) return false;
+  const target = name.trim().toLowerCase();
+  return getAllCategoryNames().some((category) => category.toLowerCase() === target);
+}
+
+/**
+ * Devuelve una categoría de la lista permitida.
+ * Un alias conocido se migra; si el nombre no existe, manda el tipo de ficha y, en último caso, Other.
+ */
+export function coerceCategory(raw?: string | null, entryType?: string | null): string {
+  const allowed = getAllCategoryNames();
+  const trimmed = (raw || '').trim();
+  const direct = allowed.find((category) => category.toLowerCase() === trimmed.toLowerCase());
+  if (direct && direct.toLowerCase() !== 'other') return direct;
+
+  const alias = CATEGORY_ALIASES[trimmed.toLowerCase()];
+  if (alias && allowed.includes(alias)) return alias;
+
+  if (entryType === 'job_remote') return 'Trabajo & Freelance';
+  if (entryType === 'tech_tip') return 'Consejos & Buenas Prácticas';
+  if (entryType === 'tech_product') return 'Productos Tecnológicos & Hardware';
+  if (entryType === 'product_showcase') return 'Empresas & Productos';
+  if (direct) return direct;
+  return 'Other';
+}
+
+const CATEGORY_KEYWORDS: Record<string, string[]> = {
+  'CLI & Terminal': ['cli', 'terminal', 'shell', 'bash', 'tui', 'consola', 'comando'],
+  'Frontend & UI': ['frontend', 'ui', 'css', 'react', 'interfaz', 'diseno', 'design', 'web'],
+  'Backend & APIs': ['backend', 'api', 'apis', 'servidor', 'server', 'http'],
+  'DevOps & Cloud': ['devops', 'cloud', 'docker', 'kubernetes', 'infra', 'nube', 'deploy'],
+  'AI & Machine Learning': ['ai', 'ml', 'llm', 'machine', 'learning', 'modelo', 'inteligencia', 'neural'],
+  'Data Engineering & ETL': ['etl', 'elt', 'pipeline', 'warehouse', 'ingesta'],
+  'Document AI & Extracción': ['pdf', 'ocr', 'invoice', 'factura', 'extraccion', 'documento'],
+  'Agentes & Protocolo MCP': ['mcp', 'agente', 'agentes', 'agent', 'agents'],
+  'Prompts, Art & Video': ['video', 'arte', 'art', 'prompt', 'prompts', 'audio', 'imagen', 'image'],
+  'Databases & Storage': ['database', 'sql', 'storage', 'postgres', 'almacen'],
+  'Productivity & Tools': ['productivity', 'productividad', 'ide', 'editor'],
+  'Sitios útiles generales': ['sitios', 'utiles', 'cotidiano', 'compras'],
+  'Documentation & Resources': ['docs', 'documentation', 'documentacion', 'libro', 'book', 'guia', 'guide', 'curso'],
+  'Empresas & Productos': ['empresa', 'startup', 'showcase', 'saas'],
+  'Productos Tecnológicos & Hardware': ['hardware', 'gadget', 'placa', 'device', 'iot'],
+  'Consejos & Buenas Prácticas': ['tip', 'tips', 'consejo', 'consejos', 'practica', 'practice'],
+  'Trabajo & Freelance': ['job', 'jobs', 'trabajo', 'empleo', 'freelance', 'hiring', 'remoto', 'remote', 'vacante'],
+};
+
+function foldTokens(value: string): string[] {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((token) => token.length >= 2);
+}
+
+/**
+ * Categoría del vault → una de DEFAULT_CATEGORIES.
+ * Coincidencia exacta o alias primero; si no, la categoría cuyo nombre y palabras clave se parecen más.
+ */
+export function mapVaultCategory(raw?: string | null, entryType?: string | null): string {
+  const trimmed = (raw || '').trim();
+  if (trimmed && isAllowedCategory(trimmed)) {
+    return getAllCategoryNames().find((category) => category.toLowerCase() === trimmed.toLowerCase()) || trimmed;
+  }
+  const alias = CATEGORY_ALIASES[trimmed.toLowerCase()];
+  if (alias) return alias;
+
+  if (trimmed) {
+    const query = new Set(foldTokens(trimmed));
+    let bestName = '';
+    let bestScore = 0;
+    for (const category of getAllCategories()) {
+      if (category.name === 'Other') continue;
+      const blob = new Set([
+        ...foldTokens(category.name),
+        ...foldTokens(category.description || ''),
+        ...(CATEGORY_KEYWORDS[category.name] || []),
+      ]);
+      let score = 0;
+      for (const token of query) {
+        if (blob.has(token)) score += token.length >= 5 ? 3 : 1;
+      }
+      if (score > bestScore) {
+        bestScore = score;
+        bestName = category.name;
+      }
+    }
+    if (bestName && bestScore > 0) return bestName;
+  }
+
+  return coerceCategory(undefined, entryType);
 }
 
 export function saveAllCategories(categories: CategoryDefinition[]): void {

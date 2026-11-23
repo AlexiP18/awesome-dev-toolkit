@@ -7,6 +7,7 @@ export type StandardCategory =
   | 'Prompts, Art & Video'
   | 'Databases & Storage'
   | 'Productivity & Tools'
+  | 'Sitios útiles generales'
   | 'Documentation & Resources'
   | 'Empresas & Productos'
   | 'Productos Tecnológicos & Hardware'
@@ -35,6 +36,8 @@ export interface ToolFrontmatter {
   created_at?: string;
   updated_at?: string;
   source_tweet?: string;
+  /** Tweets de origen adicionales cuando varias fichas del mismo producto se unieron. */
+  source_tweets?: string[];
   author?: string;
   author_handle?: string;
   entry_type?: EntryType;

@@ -1,22 +1,30 @@
 ---
 name: Photopea
-url: 'https://www.photopea.com/'
-category: Productivity & Tools
+url: 'https://photopea.com/'
+category: 'Prompts, Art & Video'
+conjunto: producto
 tags:
   - editor-de-imagenes
   - photoshop
   - diseno
   - web
+  - editor-imagenes
+  - navegador
+  - edicion-imagen
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:26:53.348Z'
+updated_at: '2026-11-22T04:14:34.809Z'
 source_tweet: 'https://x.com/precisox/status/2077815388725727396'
-author: Precis0x
-author_handle: precisox
+source_tweets:
+  - 'https://x.com/precisox/status/2077815388725727396'
+  - 'https://x.com/Elochoaa__/status/2123350146956112381'
+  - 'https://x.com/sergiorocaa/status/2123851997120229526'
+author: sergio
+author_handle: sergiorocaa
 entry_type: tool
 company: Photopea
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Photopea
 

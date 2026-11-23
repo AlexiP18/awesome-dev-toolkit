@@ -2,6 +2,7 @@
 name: Hairline
 url: 'https://hairline.lucasmarkes.com/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - react
   - animations
@@ -11,17 +12,22 @@ tags:
   - free
   - figures
   - components
+  - dibujo-lineal
+  - interaccion
+  - puntero
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:37:11.194Z'
+updated_at: '2026-11-18T04:20:53.833Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2112443894319489423'
-author: Csaba Kissi
-author_handle: csaba_kissi
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2112443894319489423'
+  - 'https://x.com/Manixh02/status/2121586518880100705'
+author: Manish Kumar
+author_handle: Manixh02
 entry_type: tool
 company: Lucas Marques
-academic_promo_details: 'null'
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Hairline
 

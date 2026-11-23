@@ -6,7 +6,9 @@ tags:
   - ai
   - design
   - frontend
+  - cursor
   - ui
+  - skills
   - landing-page
   - automation
   - github
@@ -21,12 +23,12 @@ author: Shlcy
 author_handle: CY160909
 entry_type: tool
 company: elayadesign
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: inspiracion
+source_tweets:
+  - 'https://x.com/CY160909/status/2114213361982296227'
+  - 'https://x.com/elayadesigns/status/2088200103719059700'
+updated_at: '2026-11-13T05:00:36.265Z'
 ---
 # AI Design Skills
 
@@ -49,3 +51,6 @@ conjunto: inspiracion
 ## 🔗 Referencias
 - Repositorio de código (GitHub): [https://github.com/elayadesign/ai-design-skills](https://github.com/elayadesign/ai-design-skills)
 - Tweet origen: [Ver en X](https://x.com/CY160909/status/2114213361982296227)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/elayadesigns/status/2088200103719059700)

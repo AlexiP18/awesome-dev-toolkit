@@ -3,22 +3,30 @@ name: shadcn/ui
 url: 'https://github.com/shadcn-ui/ui'
 website_url: 'https://ui.shadcn.com/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - react
   - ui-components
   - tailwind
   - radix-ui
   - design-system
+  - radix
+  - componentes
+  - accesibilidad
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:37:11.200Z'
+updated_at: '2026-11-23T04:20:20.492Z'
 source_tweet: 'https://x.com/hasantoxr/status/2096255783415779684'
-author: Hasan Toor
-author_handle: hasantoxr
+source_tweets:
+  - 'https://x.com/hasantoxr/status/2096255783415779684'
+  - 'https://x.com/BenjaminUIX/status/2123340929633550834'
+  - 'https://x.com/Dionisselamii/status/2124246724319297825'
+author: Dionis
+author_handle: Dionisselamii
 entry_type: tool
 company: shadcn
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # shadcn/ui
 

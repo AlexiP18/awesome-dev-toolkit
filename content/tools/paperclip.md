@@ -2,22 +2,31 @@
 name: paperclip
 url: 'https://github.com/paperclipai/paperclip'
 category: Agentes & Protocolo MCP
+conjunto: recursos
 tags:
   - multi-agent
   - orchestration
   - mcp
   - automation
   - typescript
+  - agentes-ia
+  - multi-agente
+  - orquestacion
+  - open-source
 stars: 111160
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:54:59.865Z'
+updated_at: '2026-11-18T04:20:52.597Z'
 source_tweet: 'https://x.com/nikosolenne/status/2109316695617573241'
-author: niko.
-author_handle: nikosolenne
+source_tweets:
+  - 'https://x.com/nikosolenne/status/2109316695617573241'
+  - 'https://x.com/SantiTorAI/status/2121748035101426171'
+author: Santi Torres
+author_handle: SantiTorAI
 entry_type: tool
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+company: Santi Torres
+classified_by: Importado del vault
 ---
 # paperclip
 

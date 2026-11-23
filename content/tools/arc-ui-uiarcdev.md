@@ -3,13 +3,15 @@ name: Arc UI (uiarc.dev)
 url: 'https://uiarc.dev/'
 category: Frontend & UI
 tags:
+  - frontend
+  - react
+  - nextjs
+  - shadcn
+  - mcp
   - ai-ready
   - ui components
-  - react
   - next.js
-  - shadcn
   - ai agents
-  - mcp
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:04:42.095Z'
@@ -19,6 +21,10 @@ author_handle: HoudayfaDesign
 entry_type: tool
 classified_by: Google Gemini (Flash)
 conjunto: recursos
+source_tweets:
+  - 'https://x.com/HoudayfaDesign/status/2112166735826579845'
+  - 'https://x.com/Hartdrawss/status/2108799722727059563'
+updated_at: '2026-11-13T05:00:36.268Z'
 ---
 # Arc UI (uiarc.dev)
 
@@ -41,3 +47,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://uiarc.dev/](https://uiarc.dev/)
 - Tweet origen: [Ver en X](https://x.com/HoudayfaDesign/status/2112166735826579845)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/Hartdrawss/status/2108799722727059563)

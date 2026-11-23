@@ -2,20 +2,27 @@
 name: 60fps
 url: 'https://60fps.design/'
 category: Frontend & UI
+conjunto: inspiracion
 tags:
   - animaciones
   - mobile
   - ui
   - motion
+  - animacion
+  - micro-interacciones
 status: to_try
 date_added: '2026-11-07'
 created_at: '2026-11-07T20:40:41.442Z'
+updated_at: '2026-11-23T04:20:20.457Z'
 source_tweet: 'https://x.com/BardhylBytyqi/status/2118838961602748834'
-author: Bardhyl Bytyqi
-author_handle: BardhylBytyqi
+source_tweets:
+  - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
+  - 'https://x.com/Dionisselamii/status/2124246724319297825'
+author: Dionis
+author_handle: Dionisselamii
 entry_type: tool
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: inspiracion
+company: Dionis
+classified_by: Importado del vault
 ---
 # 60fps
 

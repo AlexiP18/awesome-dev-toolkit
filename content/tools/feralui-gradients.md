@@ -18,7 +18,6 @@ source_tweet: 'https://x.com/neropursue/status/2112134259095810530'
 author: Nero
 author_handle: neropursue
 entry_type: tool
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---
