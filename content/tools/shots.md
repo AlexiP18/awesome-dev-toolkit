@@ -2,6 +2,7 @@
 name: Shots
 url: 'https://shots.so/'
 category: Frontend & UI
+conjunto: producto
 tags:
   - mockups
   - diseno
@@ -9,12 +10,16 @@ tags:
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:45:43.712Z'
+updated_at: '2026-11-24T04:17:08.876Z'
 source_tweet: 'https://x.com/ecommartinez/status/2093765893381595627'
-author: Alejo
-author_handle: ecommartinez
-entry_type: tool
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: producto
+source_tweets:
+  - 'https://x.com/ecommartinez/status/2093765893381595627'
+  - 'https://x.com/Antonio_RodriIA/status/2124890752832434604'
+author: Antonio Rodríguez
+author_handle: Antonio_RodriIA
+entry_type: product_showcase
+company: Antonio Rodríguez
+classified_by: Importado del vault
 ---
 # Shots
 

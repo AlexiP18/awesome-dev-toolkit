@@ -1,25 +1,28 @@
 ---
 name: Unscreen
 url: 'https://unscreen.com/'
-category: 'Sitios útiles generales'
+category: 'Prompts, Art & Video'
+conjunto: producto
 tags:
   - video
   - fondo
   - edicion
+  - fondos
+  - ia
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:45:43.822Z'
-updated_at: '2026-11-21T04:20:00.000Z'
+updated_at: '2026-11-24T04:17:08.749Z'
 source_tweet: 'https://x.com/ecommartinez/status/2093765893381595627'
 source_tweets:
   - 'https://x.com/ecommartinez/status/2093765893381595627'
   - 'https://x.com/Elochoaa__/status/2123350146956112381'
-author: Alejo
-author_handle: ecommartinez
-entry_type: tool
+  - 'https://x.com/Antonio_RodriIA/status/2124890752832434604'
+author: Antonio Rodríguez
+author_handle: Antonio_RodriIA
+entry_type: product_showcase
 company: Kaleido AI
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Unscreen
 

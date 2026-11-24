@@ -1,23 +1,29 @@
 ---
 name: Social Media Research Skills
 url: 'https://github.com/ScrapeCreators/social-media-research-skills'
-category: AI & Machine Learning
+category: Agentes & Protocolo MCP
+conjunto: recursos
 tags:
   - agent-skills
   - social-media
   - investigacion
   - claude-code
+  - redes-sociales
+  - scraping
 stars: 5619
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:38:58.349Z'
+updated_at: '2026-11-24T04:17:09.014Z'
 source_tweet: 'https://x.com/heyrimsha/status/2110687947423088920'
-author: Rimsha Bhardwaj
-author_handle: heyrimsha
+source_tweets:
+  - 'https://x.com/heyrimsha/status/2110687947423088920'
+  - 'https://x.com/ChantoziQ/status/2124513984984555683'
+author: 牛叔叔
+author_handle: ChantoziQ
 entry_type: tool
 company: ScrapeCreators
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Social Media Research Skills
 

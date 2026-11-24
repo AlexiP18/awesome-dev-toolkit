@@ -12,16 +12,18 @@ tags:
   - ia
   - voz
   - audio
+  - tts
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:53:53.076Z'
-updated_at: '2026-11-21T04:16:51.460Z'
+updated_at: '2026-11-24T04:17:09.378Z'
 source_tweet: 'https://x.com/konig0000/status/2111804913416331448'
 source_tweets:
   - 'https://x.com/konig0000/status/2111804913416331448'
   - 'https://x.com/Elochoaa__/status/2123859657747812733'
-author: Ochoa
-author_handle: Elochoaa__
+  - 'https://x.com/AlinaDavy20/status/2124858370134057167'
+author: Alina Davy
+author_handle: AlinaDavy20
 entry_type: product_showcase
 company: Ochoa
 classified_by: Importado del vault
