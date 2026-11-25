@@ -1,0 +1,1178 @@
+[
+  {
+    "tweet_id": "2125211110509105443",
+    "text": "FREE ACCESS TO PREMIUM AI MODELS!\n\nYou can now try several powerful AI models on Genspark for free.\n\nAvailable models include:\n\n- Gemini 4 Argon\n- GPT-6.2 Sol\n- Claude Sonnet 5.5\n- Kimi K3.1 Pro\n- GLM-5.3\n\nBut that's not all!\n\nYou can also use Genspark GenCode CLI to code https://t.co/2T7VPcrICw",
+    "author_name": "Shohan",
+    "author_handle": "Shohank9n1",
+    "created_at": "2026-11-24T12:53:07.000Z",
+    "urls": [
+      "https://genspark.ai/agents?type=ai"
+    ],
+    "note_tweet": "FREE ACCESS TO PREMIUM AI MODELS!\n\nYou can now try several powerful AI models on Genspark for free.\n\nAvailable models include:\n\n- Gemini 4 Argon\n- GPT-6.2 Sol\n- Claude Sonnet 5.5\n- Kimi K3.1 Pro\n- GLM-5.3\n\nBut that's not all!\n\nYou can also use Genspark GenCode CLI to code directly from your terminal.\n\nHow to get started:\n\n1. Create an account on Genspark.\n2. Open the AI Chat section.\n3. Select your preferred AI model.\n4. Start chatting, coding, and building!\n\nSince free access is limited, it's worth checking out and using these models for your everyday tasks.\n\nTry it here 👇\nhttps://t.co/dhnOobRExU",
+    "items": [
+      {
+        "name": "Genspark",
+        "url": "https://genspark.ai/agents?type=ai",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "llm",
+          "chat-ia",
+          "cli",
+          "gratis"
+        ],
+        "summary": "Plataforma de agentes y chat de IA que ofrece acceso gratuito limitado a varios modelos premium, además de GenCode CLI para programar desde la terminal.",
+        "highlights": [
+          "Modelos disponibles: Gemini 4 Argon, GPT-6.2 Sol, Claude Sonnet 5.5, Kimi K3.1 Pro y GLM-5.3",
+          "Genspark GenCode CLI para programar desde la terminal",
+          "Acceso gratuito limitado: crear cuenta, abrir AI Chat y elegir modelo"
+        ],
+        "entry_type": "product_showcase",
+        "company": "Genspark"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125172005632692502",
+    "text": "https://t.co/m5EcmE67NT",
+    "author_name": "HashVibe | AI",
+    "author_handle": "hashvibedev",
+    "created_at": "2026-11-24T10:17:44.000Z",
+    "urls": [
+      "https://github.com/google-gemini/gemini-api-cli"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Gemini API CLI",
+        "url": "https://github.com/google-gemini/gemini-api-cli",
+        "website_url": "https://ai.google.dev/gemini-api/docs",
+        "category": "CLI & Terminal",
+        "conjunto": "recursos",
+        "tags": [
+          "go",
+          "gemini",
+          "cli",
+          "google"
+        ],
+        "summary": "CLI experimental escrita en Go para usar la API de Gemini desde la terminal.",
+        "highlights": [
+          "Proyecto oficial de google-gemini, marcado como experimental",
+          "Escrita en Go",
+          "Documentación en ai.google.dev/gemini-api/docs"
+        ],
+        "entry_type": "tool",
+        "company": "Google"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125167545850155353",
+    "text": "repo: https://t.co/I9CvDw2gFX",
+    "author_name": "mireia.",
+    "author_handle": "heymireia",
+    "created_at": "2026-11-24T10:00:01.000Z",
+    "urls": [
+      "https://github.com/zhouxiaoka/autoclip"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "AutoClip",
+        "url": "https://github.com/zhouxiaoka/autoclip",
+        "website_url": "https://zhouxiaoka.github.io/autoclip_intro/",
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "video",
+          "ia",
+          "shorts"
+        ],
+        "summary": "Herramienta de escritorio open source en Python que recorta videos largos (podcasts, entrevistas, cursos) en clips cortos con IA.",
+        "highlights": [
+          "Genera subtítulos, portadas y textos de publicación",
+          "Formatos para TikTok, Reels, YouTube Shorts, Douyin y Xiaohongshu",
+          "Flujo de un enlace a clips listos"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125206636717654497",
+    "text": "Huge kudos to @genevieve__h leading this experimental skill creation 🙌\n\nInstall in @antigravity:\nnpx skills add google-gemini/demolab --skill gemini-frontend-design\n\nRepo: https://t.co/R7h5MGxlgX",
+    "author_name": "Philipp Schmid",
+    "author_handle": "_philschmid",
+    "created_at": "2026-11-24T12:35:21.000Z",
+    "urls": [
+      "https://github.com/google-gemini/demolab/tree/main/skills/gemini-frontend-design"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Gemini Frontend Design (skill)",
+        "url": "https://github.com/google-gemini/demolab/tree/main/skills/gemini-frontend-design",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "frontend",
+          "gemini",
+          "antigravity"
+        ],
+        "summary": "Skill experimental de agente de Google Gemini para diseño frontend, instalable en Antigravity.",
+        "highlights": [
+          "Instalación: npx skills add google-gemini/demolab --skill gemini-frontend-design",
+          "Vive en el repo google-gemini/demolab",
+          "Creación experimental liderada por @genevieve__h"
+        ],
+        "entry_type": "tool",
+        "company": "Google"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125172107160227920",
+    "text": "https://t.co/h6dzqLo2yz",
+    "author_name": "诺诺",
+    "author_handle": "shenghouxuyao",
+    "created_at": "2026-11-24T10:18:08.000Z",
+    "urls": [
+      "https://github.com/ffroliva/gflow-cli"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "gflow-cli",
+        "url": "https://github.com/ffroliva/gflow-cli",
+        "website_url": "https://ffroliva.github.io/gflow-cli/",
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "mcp",
+          "python",
+          "video",
+          "imagen"
+        ],
+        "summary": "Servidor MCP y CLI en Python para Google Flow: genera video con Veo 3.1 y Omni e imágenes con Nano Banana/Imagen desde Claude Code, Cursor, Codex o la terminal.",
+        "highlights": [
+          "Funciona como servidor MCP y como CLI",
+          "Licencia MIT y publicado en PyPI",
+          "Proyecto independiente, no afiliado a Google"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125141623050752324",
+    "text": "200+ components and 1200+ inspirations for web developers\n\nhttps://t.co/R3FbPJlBOj - Free AI design prompt playbook\n\nhttps://t.co/nW2b6ucipr - Full-stack hosting for Python, JavaScript, Go, PHP...\n\nhttps://t.co/otffUkRJAf - 130+ free animated React components https://t.co/ln849o0ADi",
+    "author_name": "Csaba Kissi",
+    "author_handle": "csaba_kissi",
+    "created_at": "2026-11-24T08:17:00.000Z",
+    "urls": [
+      "https://github.com/admud/taste-index",
+      "https://sevalla.com",
+      "https://ui.watermelon.sh",
+      "http://github.com/admud/taste-index",
+      "http://sevalla.com",
+      "http://ui.watermelon.sh",
+      "http://kryptonite-ui.vercel.app",
+      "http://selectedscreens.com"
+    ],
+    "note_tweet": "200+ components and 1200+ inspirations for web developers\n\nhttps://t.co/IMIyINMfQr - Free AI design prompt playbook\n\nhttps://t.co/QfIg7QXA2P - Full-stack hosting for Python, JavaScript, Go, PHP...\n\nhttps://t.co/BIaTF9kAbB - 130+ free animated React components\n\nhttps://t.co/biWEaPlES0 - 85 free animated Shadcn components\n\nhttps://t.co/sogWorfNPe - 1,276 curated design screenshots",
+    "items": [
+      {
+        "name": "Taste Index",
+        "url": "https://github.com/admud/taste-index",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "inspiracion",
+        "tags": [
+          "diseno-web",
+          "landing-pages",
+          "prompts",
+          "awesome-list"
+        ],
+        "summary": "Lista curada para hacer landing pages bonitas: galerías de inspiración, prompts de diseño con IA, checklist de buen gusto y un playbook.",
+        "highlights": [
+          "Playbook gratuito de prompts de diseño con IA",
+          "Referencias de diseño web y datasets de UI"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Sevalla",
+        "url": "https://sevalla.com",
+        "website_url": null,
+        "category": "DevOps & Cloud",
+        "conjunto": "producto",
+        "tags": [
+          "hosting",
+          "paas",
+          "python",
+          "go"
+        ],
+        "summary": "Servicio de hosting full-stack para aplicaciones en Python, JavaScript, Go, PHP y otros lenguajes.",
+        "highlights": [
+          "Hosting de apps de varios lenguajes",
+          "Presentado como hosting full-stack"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Watermelon UI",
+        "url": "https://ui.watermelon.sh",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "componentes",
+          "animacion"
+        ],
+        "summary": "Colección de más de 130 componentes React animados y gratuitos.",
+        "highlights": [
+          "130+ componentes React animados",
+          "Gratis"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Kryptonite UI",
+        "url": "https://kryptonite-ui.vercel.app",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "shadcn",
+          "componentes",
+          "animacion",
+          "react"
+        ],
+        "summary": "Colección de 85 componentes animados gratuitos basados en shadcn.",
+        "highlights": [
+          "85 componentes animados",
+          "Compatibles con shadcn"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Selected Screens",
+        "url": "https://selectedscreens.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "inspiracion",
+        "tags": [
+          "diseno",
+          "inspiracion-ui",
+          "screenshots"
+        ],
+        "summary": "Galería con 1.276 capturas de diseño curadas para inspiración de interfaces.",
+        "highlights": [
+          "1.276 capturas de diseño curadas",
+          "Para mirar referencias, no para instalar"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125212588505976879",
+    "text": "TOP 10 FREE DevOps Learning Resources\n\n1 DevOps Fundamentals (Abhishek Veeramalla) https://t.co/fEST9K1uUF\n\n2 Linux + DevOps Prerequisites (freeCodeCamp)\nhttps://t.co/BpbTavoneO\n\n3 Git &amp; GitHub (freeCodeCamp) https://t.co/swDa7VVBbd\n\n4 Docker (TechWorld with Nana)",
+    "author_name": "Branko",
+    "author_handle": "brankopetric00",
+    "created_at": "2026-11-24T12:59:00.000Z",
+    "urls": [
+      "https://www.youtube.com/playlist?list=PLdpzxOOAlwvIKMhk8WhzN1pYoJ1YU8Csa",
+      "https://www.youtube.com/watch?v=Wvf0mBNGjXY&feature=youtu.be",
+      "https://www.youtube.com/watch?v=RGOj5yH7evk&feature=youtu.be",
+      "https://youtu.be/Wvf0mBNGjXY",
+      "https://youtu.be/RGOj5yH7evk",
+      "https://youtu.be/3c-iBn73dDE",
+      "https://youtu.be/7l_n97Mt0ko",
+      "https://youtu.be/7xngnjfIlK4",
+      "https://youtu.be/R8_veQiYBjI",
+      "https://www.jeffgeerling.com/blog/2020/ansible-101-jeff-geerling-youtube-streaming-series/",
+      "https://youtu.be/SOTamWNgDKc",
+      "https://youtu.be/yyUHQIec83I"
+    ],
+    "note_tweet": "TOP 10 FREE DevOps Learning Resources\n\n1 DevOps Fundamentals (Abhishek Veeramalla) https://t.co/bZCkbexfQi\n\n2 Linux + DevOps Prerequisites (freeCodeCamp)\nhttps://t.co/aHXdBBT0TU\n\n3 Git & GitHub (freeCodeCamp) https://t.co/S201BubbZ1\n\n4 Docker (TechWorld with Nana) https://t.co/WgSpp0pjmD\n\n5 Kubernetes (freeCodeCamp x Saiyam Pathak) https://t.co/rrQ79R36B0\n\n6 Terraform (DevOps Directive) https://t.co/LgFfXCddlH\n\n7 GitHub Actions (TechWorld with Nana) https://t.co/b5EDmClrnd\n\n8 Ansible (Jeff Geerling) https://t.co/RRtn37rqbF\n\n9 AWS (freeCodeCamp) https://t.co/8dRXMS2IbB\n\n10 Go for DevOps (TechWorld with Nana) https://t.co/Yt3MV0G5dY\n\nbookmark this and save yourself months",
+    "items": [
+      {
+        "name": "Top 10 recursos gratis para aprender DevOps",
+        "url": "https://x.com/brankopetric00/status/2125212588505976879",
+        "website_url": null,
+        "category": "Documentation & Resources",
+        "conjunto": "consejos",
+        "tags": [
+          "devops",
+          "kubernetes",
+          "docker",
+          "terraform",
+          "aws"
+        ],
+        "summary": "Lista de 10 cursos gratuitos para aprender DevOps, desde fundamentos y Linux hasta Kubernetes, Terraform, Ansible y AWS.",
+        "highlights": [
+          "Fundamentos (Abhishek Veeramalla), Linux, Git y AWS (freeCodeCamp)",
+          "Docker, GitHub Actions y Go para DevOps (TechWorld with Nana)",
+          "Kubernetes (freeCodeCamp x Saiyam Pathak) y Terraform (DevOps Directive)",
+          "Ansible 101 de Jeff Geerling"
+        ],
+        "entry_type": "tech_tip"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2124956200450052431",
+    "text": "I made more animations this month than all of last year, these 18 GitHub repos are why\n\na f*cking gold list for Fable 5.2 and Opus 5.5\n\nFonts. Layouts. Contrast. Icons. Canvas. Fluid.\n\nui-ux-pro-max → 80 styles, palettes and font combos, ready to use\nhttps://t.co/1PByhQr1iv https://t.co/MldIDBjItV https://t.co/QLfoJe16Qn",
+    "author_name": "seeco",
+    "author_handle": "seeconvm",
+    "created_at": "2026-11-23T20:00:12.000Z",
+    "urls": [
+      "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "https://twitter.com/seeconvm/status/2122405510779375668",
+      "http://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "http://github.com/anthropics/skills/tree/main/skills/frontend-design",
+      "http://github.com/pbakaus/impeccable",
+      "http://github.com/Nutlope/hallmark",
+      "http://github.com/google-labs-code/design.md",
+      "http://github.com/meta/astryx",
+      "http://github.com/shadcn-ui/ui",
+      "http://github.com/tailwindlabs/tailwindcss",
+      "http://github.com/google-labs-code/stitch-skills",
+      "http://github.com/GLips/Figma-Context-MCP",
+      "http://github.com/magicuidesign/magicui",
+      "http://github.com/lucide-icons/lucide",
+      "http://github.com/adobe/leonardo",
+      "http://github.com/excalidraw/excalidraw",
+      "http://github.com/tldraw/tldraw",
+      "http://github.com/rough-stuff/rough",
+      "http://github.com/PavelDoGreat/WebGL-Fluid-Simulation",
+      "http://github.com/danielgatis/rembg"
+    ],
+    "note_tweet": "I made more animations this month than all of last year, these 18 GitHub repos are why\n\na f*cking gold list for Fable 5.2 and Opus 5.5\n\nFonts. Layouts. Contrast. Icons. Canvas. Fluid.\n\nui-ux-pro-max → 80 styles, palettes and font combos, ready to use\nhttps://t.co/g50Orgtjya\n\nfrontend-design → Anthropic's skill for UI that feels hand-made\nhttps://t.co/WVDrTCjAHx\n\nImpeccable → the design critic that never misses\nhttps://t.co/oZwFVw16It\n\nHallmark → real design, no AI fingerprints\nhttps://t.co/ZLMm1a1IAz\n\nDESIGN.md → explains your brand look to any agent\nhttps://t.co/MT41JnurNO\n\nAstryx → Meta's open design rules your agent can follow\nhttps://t.co/cKVVdYAeNQ\n\nshadcn/ui → components that live in your own code\nhttps://t.co/UrvK1Urq3S\n\nTailwind CSS → style anything without leaving your HTML\nhttps://t.co/kBkeEUlISY\n\nstitch-skills → write a prompt, get UI screens\nhttps://t.co/ZmTsEXCjGw\n\nFigma Context MCP → your agent reads Figma files directly\nhttps://t.co/5I4Pb8cGhr\n\nMagic UI → moving components, just copy and paste\nhttps://t.co/muqZVeO05A\n\nLucide → clean icons that always match\nhttps://t.co/XZpECtb2hv\n\nLeonardo → color palettes that always pass contrast\nhttps://t.co/oomsQqHTlQ\n\nExcalidraw → sketchy diagrams and quick wireframes\nhttps://t.co/tXDvEdeIYJ\n\ntldraw → an endless canvas for your ideas\nhttps://t.co/Lx9TGRhEa3\n\nRough.js → gives anything a hand-drawn feel\nhttps://t.co/no8jQzT2Rz\n\nWebGL Fluid → smoke and ink that really move\nhttps://t.co/8MXOftqNWt\n\nrembg → cuts out any subject in one line\nhttps://t.co/qJVtR94XG9\n\nStyle → layout → contrast → sketch → animate.\n\nBookmark this, then the guide below shows how Fable 5.2 runs all of these repos together ↓",
+    "items": [
+      {
+        "name": "UI UX Pro Max (skill)",
+        "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+        "website_url": "https://www.uupm.cc/",
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "ui-ux",
+          "paletas",
+          "tipografia"
+        ],
+        "summary": "Skill de IA que aporta criterio de diseño para construir UI/UX profesional en varias plataformas.",
+        "highlights": [
+          "80 estilos, paletas y combinaciones de fuentes listas para usar",
+          "Escrita en Python"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Frontend Design (skill de Anthropic)",
+        "url": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "frontend",
+          "claude"
+        ],
+        "summary": "Skill oficial de Anthropic para que el agente genere interfaces que se sienten hechas a mano.",
+        "highlights": [
+          "Parte del repo anthropics/skills",
+          "Orientada a evitar UI genérica"
+        ],
+        "entry_type": "tool",
+        "company": "Anthropic"
+      },
+      {
+        "name": "Impeccable",
+        "url": "https://github.com/pbakaus/impeccable",
+        "website_url": "https://impeccable.style",
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "diseno",
+          "rust",
+          "critica-ui"
+        ],
+        "summary": "Vocabulario de diseño para agentes de código: guía con polish y bolder, revisa con critique y audit y detecta el AI slop antes de publicar.",
+        "highlights": [
+          "Escrito en Rust",
+          "Comandos de crítica y auditoría de diseño"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Hallmark",
+        "url": "https://github.com/Nutlope/hallmark",
+        "website_url": "https://www.usehallmark.com/",
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "diseno",
+          "claude-code",
+          "cursor"
+        ],
+        "summary": "Skill de diseño anti AI-slop para Claude Code, Cursor y Codex.",
+        "highlights": [
+          "Busca diseño real sin huellas de IA",
+          "Compatible con Claude Code, Cursor y Codex"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "DESIGN.md",
+        "url": "https://github.com/google-labs-code/design.md",
+        "website_url": "https://stitch.withgoogle.com/docs/design-md/specification",
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "design-systems",
+          "agentes",
+          "especificacion"
+        ],
+        "summary": "Especificación de formato para describir una identidad visual a agentes de código y darles un entendimiento persistente del design system.",
+        "highlights": [
+          "Formato estructurado DESIGN.md",
+          "Proyecto de Google Labs"
+        ],
+        "entry_type": "tool",
+        "company": "Google"
+      },
+      {
+        "name": "Astryx",
+        "url": "https://github.com/meta/astryx",
+        "website_url": "http://astryx.atmeta.com",
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "design-system",
+          "typescript",
+          "agentes"
+        ],
+        "summary": "Design system open source de Meta, totalmente personalizable y preparado para agentes.",
+        "highlights": [
+          "Escrito en TypeScript",
+          "Reglas de diseño que el agente puede seguir"
+        ],
+        "entry_type": "tool",
+        "company": "Meta"
+      },
+      {
+        "name": "shadcn/ui",
+        "url": "https://github.com/shadcn-ui/ui",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "componentes",
+          "tailwind"
+        ],
+        "summary": "Componentes de UI que se copian y viven dentro de tu propio código.",
+        "highlights": [
+          "Componentes dentro del código del proyecto",
+          "Base para muchas librerías derivadas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Tailwind CSS",
+        "url": "https://github.com/tailwindlabs/tailwindcss",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "css",
+          "tailwind",
+          "utility-first"
+        ],
+        "summary": "Framework CSS utility-first para dar estilo sin salir del HTML.",
+        "highlights": [
+          "Clases utilitarias en el marcado",
+          "Uno de los repos de la lista de 18"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Stitch Skills",
+        "url": "https://github.com/google-labs-code/stitch-skills",
+        "website_url": "https://stitch.withgoogle.com/docs/mcp/setup",
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skills",
+          "mcp",
+          "stitch",
+          "ui"
+        ],
+        "summary": "Librería de Agent Skills para el servidor MCP de Stitch: escribes un prompt y obtienes pantallas de UI.",
+        "highlights": [
+          "Sigue el estándar abierto Agent Skills",
+          "Compatible con Antigravity, Gemini CLI, Claude Code y Cursor"
+        ],
+        "entry_type": "tool",
+        "company": "Google"
+      },
+      {
+        "name": "Figma Context MCP",
+        "url": "https://github.com/GLips/Figma-Context-MCP",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "mcp",
+          "figma",
+          "agentes"
+        ],
+        "summary": "Servidor MCP que permite al agente leer archivos de Figma directamente.",
+        "highlights": [
+          "Lleva el contexto de diseño de Figma al agente",
+          "Servidor MCP"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Magic UI",
+        "url": "https://github.com/magicuidesign/magicui",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "animacion",
+          "componentes"
+        ],
+        "summary": "Componentes animados para copiar y pegar.",
+        "highlights": [
+          "Componentes con movimiento",
+          "Copiar y pegar"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Lucide",
+        "url": "https://github.com/lucide-icons/lucide",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "iconos",
+          "svg"
+        ],
+        "summary": "Set de iconos limpios y consistentes entre sí.",
+        "highlights": [
+          "Iconos con estilo uniforme",
+          "Proyecto open source"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Leonardo",
+        "url": "https://github.com/adobe/leonardo",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "color",
+          "accesibilidad",
+          "contraste"
+        ],
+        "summary": "Herramienta de Adobe para generar paletas de color que cumplen contraste.",
+        "highlights": [
+          "Paletas que pasan contraste",
+          "Proyecto de Adobe"
+        ],
+        "entry_type": "tool",
+        "company": "Adobe"
+      },
+      {
+        "name": "Excalidraw",
+        "url": "https://github.com/excalidraw/excalidraw",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "diagramas",
+          "wireframes",
+          "pizarra"
+        ],
+        "summary": "Pizarra para diagramas con estilo de boceto y wireframes rápidos.",
+        "highlights": [
+          "Diagramas estilo dibujado a mano",
+          "Útil para wireframes rápidos"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "tldraw",
+        "url": "https://github.com/tldraw/tldraw",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "canvas",
+          "pizarra",
+          "react"
+        ],
+        "summary": "Canvas infinito para ideas y diagramas.",
+        "highlights": [
+          "Lienzo infinito",
+          "SDK open source"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Rough.js",
+        "url": "https://github.com/rough-stuff/rough",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "canvas",
+          "svg",
+          "dibujo"
+        ],
+        "summary": "Librería que da a cualquier gráfico un aspecto dibujado a mano.",
+        "highlights": [
+          "Estilo hand-drawn",
+          "Uso en canvas y SVG"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "WebGL Fluid Simulation",
+        "url": "https://github.com/PavelDoGreat/WebGL-Fluid-Simulation",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "webgl",
+          "simulacion",
+          "shaders"
+        ],
+        "summary": "Simulación de fluidos en WebGL con humo y tinta que se mueven.",
+        "highlights": [
+          "Efectos de humo y tinta",
+          "Corre en el navegador con WebGL"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "rembg",
+        "url": "https://github.com/danielgatis/rembg",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "imagen",
+          "quitar-fondo"
+        ],
+        "summary": "Herramienta para recortar cualquier sujeto de una imagen en una sola línea.",
+        "highlights": [
+          "Elimina fondos de imágenes",
+          "Uso en una línea"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125135621677052288",
+    "text": "10 PLATFORMS GIVING AWAY FREE API CREDITS \n\nuseful offers for AI builders and developers:\n\nAgentRouter: $25 daily + referral credits https://t.co/x0DDURQyHV\n\nYepAPI: $5 signup credit https://t.co/XfX4WPAYu6\n\nVercel AI Gateway:  $5 monthly https://t.co/wHkzChh41I\n\nDeepgram: $200",
+    "author_name": "kadd",
+    "author_handle": "kaddisdeployed",
+    "created_at": "2026-11-24T07:53:09.000Z",
+    "urls": [
+      "https://agentrouter.org",
+      "https://www.yepapi.com/",
+      "https://vercel.com/ai-gateway",
+      "http://agentrouter.org",
+      "http://yepapi.com",
+      "http://vercel.com/ai-gateway",
+      "http://deepgram.com",
+      "http://speechmatics.com",
+      "http://assemblyai.com",
+      "http://hume.ai",
+      "http://elevenlabs.io",
+      "http://scaleway.com/en/",
+      "http://cartesia.ai",
+      "https://elevenlabs.io/"
+    ],
+    "note_tweet": "10 PLATFORMS GIVING AWAY FREE API CREDITS \n\nuseful offers for AI builders and developers:\n\nAgentRouter: $25 daily + referral credits https://t.co/TMVshd2e2B\n\nYepAPI: $5 signup credit https://t.co/9SwOoCdMon\n\nVercel AI Gateway:  $5 monthly https://t.co/XX6SRwnGgs\n\nDeepgram: $200 https://t.co/3HTaSzsR5p\n\nSpeechmatics: $100 https://t.co/RX6O17ODcc\n\nAssemblyAI: $50 https://t.co/hcoN9mzRl2\n\nHume AI: $20 https://t.co/Q2bk6g5HsQ\n\nElevenLabs: 10k monthly credits https://t.co/5lL1cSCCKW\n\nScaleway: 1M free tokens https://t.co/9tKt8NOfK7\n\nCartesia: 20k monthly credits https://t.co/u6G8GjJprp\n\nsome are one-time offers, others renew monthly or have eligibility requirements\n\ncheck the terms before signing up\n\nhttps://t.co/bbbNxUFs45",
+    "items": [
+      {
+        "name": "AgentRouter",
+        "url": "https://agentrouter.org",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "llm",
+          "api",
+          "creditos"
+        ],
+        "summary": "Plataforma de acceso a modelos de IA que regala $25 diarios en créditos más créditos por referidos.",
+        "highlights": [
+          "$25 diarios + referidos",
+          "Revisa términos antes de registrarte"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "YepAPI",
+        "url": "https://www.yepapi.com/",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "producto",
+        "tags": [
+          "api",
+          "creditos"
+        ],
+        "summary": "Servicio de API que da $5 de crédito al registrarse.",
+        "highlights": [
+          "$5 de crédito al registrarse",
+          "Oferta para builders de IA"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Vercel AI Gateway",
+        "url": "https://vercel.com/ai-gateway",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "vercel",
+          "llm",
+          "gateway"
+        ],
+        "summary": "Gateway de IA de Vercel con $5 mensuales de crédito gratis.",
+        "highlights": [
+          "$5 mensuales",
+          "Producto de Vercel"
+        ],
+        "entry_type": "product_showcase",
+        "company": "Vercel"
+      },
+      {
+        "name": "Deepgram",
+        "url": "http://deepgram.com",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "voz",
+          "speech-to-text",
+          "api"
+        ],
+        "summary": "API de voz con $200 en créditos gratis según la lista.",
+        "highlights": [
+          "$200 de crédito",
+          "Revisa elegibilidad"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Speechmatics",
+        "url": "http://speechmatics.com",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "voz",
+          "speech-to-text",
+          "api"
+        ],
+        "summary": "API de voz con $100 en créditos gratis según la lista.",
+        "highlights": [
+          "$100 de crédito"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "AssemblyAI",
+        "url": "http://assemblyai.com",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "voz",
+          "speech-to-text",
+          "api"
+        ],
+        "summary": "API de voz con $50 en créditos gratis según la lista.",
+        "highlights": [
+          "$50 de crédito"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Hume AI",
+        "url": "http://hume.ai",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "voz",
+          "ia",
+          "api"
+        ],
+        "summary": "Plataforma de IA de voz con $20 en créditos gratis según la lista.",
+        "highlights": [
+          "$20 de crédito"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "ElevenLabs",
+        "url": "https://elevenlabs.io/",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "voz",
+          "tts",
+          "audio"
+        ],
+        "summary": "Plataforma de voz con IA con 10k créditos mensuales gratis.",
+        "highlights": [
+          "10k créditos mensuales"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Scaleway",
+        "url": "http://scaleway.com/en/",
+        "website_url": null,
+        "category": "DevOps & Cloud",
+        "conjunto": "producto",
+        "tags": [
+          "cloud",
+          "llm",
+          "creditos"
+        ],
+        "summary": "Proveedor cloud que ofrece 1M de tokens gratis según la lista.",
+        "highlights": [
+          "1M de tokens gratis"
+        ],
+        "entry_type": "product_showcase"
+      },
+      {
+        "name": "Cartesia",
+        "url": "http://cartesia.ai",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "producto",
+        "tags": [
+          "voz",
+          "tts",
+          "audio"
+        ],
+        "summary": "Plataforma de voz con IA con 20k créditos mensuales gratis.",
+        "highlights": [
+          "20k créditos mensuales"
+        ],
+        "entry_type": "product_showcase"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125179036171444395",
+    "text": "GitHub repositories to build with AI\n\nSave for later🔖",
+    "author_name": "Shefali",
+    "author_handle": "Shefali__J",
+    "created_at": "2026-11-24T10:45:40.000Z",
+    "urls": [],
+    "note_tweet": null,
+    "items": []
+  },
+  {
+    "tweet_id": "2124999022666543477",
+    "text": "this is f***ing gem\n\nSpaceXAI engineer Lauren Tan shared how her Grok Bot agents verify their own fixes automatically\n\nshe built the loop so a failed check sends the agent back to the code\n\nuse these 10 GitHub repos to build her workflow:\n\n→ Issue context\n\n&gt; github MCP server https://t.co/y7Ec05JpVz https://t.co/L60p2pNpNV",
+    "author_name": "Chase",
+    "author_handle": "0xChaseTM",
+    "created_at": "2026-11-23T22:50:22.000Z",
+    "urls": [
+      "https://twitter.com/0xChaseTM/status/2109980695787454803",
+      "https://github.com/github/github-mcp-server",
+      "https://github.com/github/spec-kit",
+      "https://github.com/cursor/plugins/tree/main/pstack",
+      "https://github.com/mattpocock/skills",
+      "https://github.com/microsoft/playwright-mcp",
+      "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "https://github.com/microsoft/playwright",
+      "https://github.com/ast-grep/ast-grep",
+      "https://github.com/meta/jscodeshift",
+      "https://github.com/eslint/eslint"
+    ],
+    "note_tweet": "this is f***ing gem\n\nSpaceXAI engineer Lauren Tan shared how her Grok Bot agents verify their own fixes automatically\n\nshe built the loop so a failed check sends the agent back to the code\n\nuse these 10 GitHub repos to build her workflow:\n\n→ Issue context\n\n> github MCP server (34,7k) - gives the coding agent the issue, PR diff and CI results\nhttps://t.co/AAr4j3T07m\n\n> spec Kit (151k) - sets the task scope and acceptance criteria before coding starts\nhttps://t.co/GGsxpj56Dh\n\n→ Verification skills\n\n> pstack (18,8k) - packages Lauren Tan’s replay steps and pass criteria into a reusable skill\nhttps://t.co/sJRsJQdg9E\n\n> matt pocock Skills (331k) - guides the agent from bug diagnosis to a failing test\nhttps://t.co/COw1Eg8csr\n\n→ Browser replay and profiling\n\n> playwright MCP (40,1k) - drives the same browser actions before and after the patch\nhttps://t.co/lGlDxEh1iv\n\n> chrome devtools MCP (59k) - records the traces used to compare frame times\nhttps://t.co/smeQjIBpDM\n\n> playwright (101k) - runs the saved regression test in CI\nhttps://t.co/8gRg2s3Bk0\n\n→ Codebase maintenance\n\n> ast-grep (16,7k) - finds other instances of a problematic code pattern\nhttps://t.co/5eWyqQlxwp\n\n> jscodeshift (10k) - applies the same API or import migration across the repo\nhttps://t.co/jAExERgdeG\n\n> eslint (27,6k) - catches forbidden imports and recurring violations in CI\nhttps://t.co/BeKltCWeOH\n\nHow it works:\n\n1. grok bot routes the report to cursor\n2. lauren’s pstack skill saves the replay steps and what counts as a pass\n\n3. playwright MCP repeats the interaction\n4. chrome devtools MCP captures the trace\n\n38 ms baseline → 22 ms still over the 16 ms budget → 14 ms passes\n\n5. second agent reruns the check on the exact commit and attaches both traces to the PR\n\nSave this to build a verification loop your agents can run on their own",
+    "items": [
+      {
+        "name": "GitHub MCP Server",
+        "url": "https://github.com/github/github-mcp-server",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "mcp",
+          "github",
+          "agentes"
+        ],
+        "summary": "Servidor MCP oficial de GitHub que da al agente el issue, el diff del PR y los resultados de CI.",
+        "highlights": [
+          "Contexto de issues, PRs y CI para el agente",
+          "Paso 'Issue context' del flujo de verificación"
+        ],
+        "entry_type": "tool",
+        "company": "GitHub"
+      },
+      {
+        "name": "Spec Kit",
+        "url": "https://github.com/github/spec-kit",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "spec-driven",
+          "agentes",
+          "github"
+        ],
+        "summary": "Toolkit de GitHub que fija el alcance de la tarea y los criterios de aceptación antes de programar.",
+        "highlights": [
+          "Spec-driven development",
+          "Criterios de aceptación previos al código"
+        ],
+        "entry_type": "tool",
+        "company": "GitHub"
+      },
+      {
+        "name": "pstack",
+        "url": "https://github.com/cursor/plugins/tree/main/pstack",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "cursor",
+          "verificacion"
+        ],
+        "summary": "Plugin de Cursor que empaqueta pasos de reproducción y criterios de éxito en una skill reutilizable.",
+        "highlights": [
+          "Guarda los pasos de replay y qué cuenta como pass",
+          "Parte del repo cursor/plugins"
+        ],
+        "entry_type": "tool",
+        "company": "Cursor"
+      },
+      {
+        "name": "Matt Pocock Skills",
+        "url": "https://github.com/mattpocock/skills",
+        "website_url": "https://aihero.dev/skills",
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "testing",
+          "debugging"
+        ],
+        "summary": "Skills de agente de Matt Pocock que guían desde el diagnóstico de un bug hasta un test que falla.",
+        "highlights": [
+          "Skills sacadas de su directorio .agents",
+          "Web: aihero.dev/skills"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Playwright MCP",
+        "url": "https://github.com/microsoft/playwright-mcp",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "mcp",
+          "playwright",
+          "navegador"
+        ],
+        "summary": "Servidor MCP de Microsoft que permite al agente repetir las mismas acciones de navegador antes y después del parche.",
+        "highlights": [
+          "Automatización de navegador desde el agente",
+          "Paso de replay del flujo"
+        ],
+        "entry_type": "tool",
+        "company": "Microsoft"
+      },
+      {
+        "name": "Chrome DevTools MCP",
+        "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "mcp",
+          "chrome",
+          "performance"
+        ],
+        "summary": "Servidor MCP de Chrome DevTools que graba trazas para comparar tiempos de frame.",
+        "highlights": [
+          "Captura de trazas de rendimiento",
+          "Ejemplo: 38 ms → 22 ms → 14 ms frente a un presupuesto de 16 ms"
+        ],
+        "entry_type": "tool",
+        "company": "Google"
+      },
+      {
+        "name": "Playwright",
+        "url": "https://github.com/microsoft/playwright",
+        "website_url": null,
+        "category": "DevTools & IDEs",
+        "conjunto": "recursos",
+        "tags": [
+          "testing",
+          "e2e",
+          "ci"
+        ],
+        "summary": "Framework de Microsoft para tests end-to-end que ejecuta el test de regresión guardado en CI.",
+        "highlights": [
+          "Tests E2E de navegador",
+          "Integración en CI"
+        ],
+        "entry_type": "tool",
+        "company": "Microsoft"
+      },
+      {
+        "name": "ast-grep",
+        "url": "https://github.com/ast-grep/ast-grep",
+        "website_url": null,
+        "category": "CLI & Terminal",
+        "conjunto": "recursos",
+        "tags": [
+          "ast",
+          "busqueda-codigo",
+          "refactor"
+        ],
+        "summary": "Herramienta para buscar otras instancias de un patrón de código problemático usando el AST.",
+        "highlights": [
+          "Búsqueda estructural de código",
+          "Paso de mantenimiento del código"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "jscodeshift",
+        "url": "https://github.com/meta/jscodeshift",
+        "website_url": null,
+        "category": "DevTools & IDEs",
+        "conjunto": "recursos",
+        "tags": [
+          "codemods",
+          "javascript",
+          "refactor"
+        ],
+        "summary": "Toolkit de codemods para aplicar la misma migración de API o imports en todo el repo.",
+        "highlights": [
+          "Migraciones masivas con codemods",
+          "Proyecto de Meta"
+        ],
+        "entry_type": "tool",
+        "company": "Meta"
+      },
+      {
+        "name": "ESLint",
+        "url": "https://github.com/eslint/eslint",
+        "website_url": null,
+        "category": "DevTools & IDEs",
+        "conjunto": "recursos",
+        "tags": [
+          "javascript",
+          "linter",
+          "ci"
+        ],
+        "summary": "Linter de JavaScript que detecta imports prohibidos y violaciones recurrentes en CI.",
+        "highlights": [
+          "Reglas personalizables",
+          "Ejecución en CI"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2124994053687083260",
+    "text": "STOP COLLECTING AWS CERTIFICATIONS. BUILD THESE 15 PROJECTS INSTEAD. ☁️\n\nBEGINNER LEVEL\n\n1. Static Website\n→ S3 + CloudFront\nLearn: Hosting, CDN, HTTPS\n\n2. EC2 Web Server\n→ EC2 + EBS + Security Groups\nLearn: Linux, compute, networking\n\n3. Secure Cloud Network\n→ VPC + Subnets +",
+    "author_name": "YourCloudDude | AWS & Python",
+    "author_handle": "yourclouddude",
+    "created_at": "2026-11-23T22:30:37.000Z",
+    "urls": [],
+    "note_tweet": "STOP COLLECTING AWS CERTIFICATIONS. BUILD THESE 15 PROJECTS INSTEAD. ☁️\n\nBEGINNER LEVEL\n\n1. Static Website\n→ S3 + CloudFront\nLearn: Hosting, CDN, HTTPS\n\n2. EC2 Web Server\n→ EC2 + EBS + Security Groups\nLearn: Linux, compute, networking\n\n3. Secure Cloud Network\n→ VPC + Subnets + NAT Gateway\nLearn: Routing, isolation, security\n\n4. Serverless REST API\n→ API Gateway + Lambda + DynamoDB\nLearn: APIs, serverless, NoSQL\n\n5. File Upload Application\n→ S3 + Presigned URLs\nLearn: Secure uploads, object storage\n\nINTERMEDIATE LEVEL\n\n6. Image Processing Pipeline\n→ S3 + Lambda\nLearn: Events, automation, triggers\n\n7. Scalable Web Application\n→ ALB + EC2 Auto Scaling\nLearn: Load balancing, scalability\n\n8. 3-Tier Web Architecture\n→ ALB + EC2 + RDS\nLearn: Application architecture, databases\n\n9. Cloud Monitoring System\n→ CloudWatch + SNS\nLearn: Metrics, logs, alerts\n\n10. CI/CD Deployment Pipeline\n→ CodePipeline + CodeBuild + ECS\nLearn: Automated builds and deployment\n\nADVANCED LEVEL\n\n11. Containerized Application\n→ ECS + Fargate + ECR\nLearn: Docker, containers, orchestration\n\n12. Event-Driven Order System\n→ SQS + Lambda + DynamoDB\nLearn: Queues, retries, decoupling\n\n13. Data Analytics Pipeline\n→ S3 + Glue + Athena\nLearn: ETL, SQL, data lakes\n\n14. Secure User Authentication\n→ Cognito + API Gateway + Lambda\nLearn: Authentication, JWT, API security\n\n15. Highly Available Web App\n→ Route 53 + ALB + Auto Scaling + RDS\nLearn: Multi-AZ design, failover, resilience\n\nHERE'S THE DIFFERENCE:\n\nA certification shows what you've studied.\n\nA working project shows what you can BUILD.\n\nDon't just memorize AWS services.\n\n→ DEPLOY applications.\n→ SECURE infrastructure.\n→ DEBUG failures.\n→ DOCUMENT architectures.\n\nYour GitHub should prove your AWS skills.",
+    "items": [
+      {
+        "name": "15 proyectos de AWS en lugar de certificaciones",
+        "url": "https://x.com/yourclouddude/status/2124994053687083260",
+        "website_url": null,
+        "category": "DevOps & Cloud",
+        "conjunto": "consejos",
+        "tags": [
+          "aws",
+          "cloud",
+          "proyectos",
+          "serverless"
+        ],
+        "summary": "Hoja de ruta de 15 proyectos prácticos de AWS por nivel para demostrar habilidades en lugar de acumular certificaciones.",
+        "highlights": [
+          "Principiante: S3 + CloudFront, EC2, VPC, API Gateway + Lambda + DynamoDB, subidas con URLs prefirmadas",
+          "Intermedio: pipelines con Lambda, ALB + Auto Scaling, 3 capas con RDS, CloudWatch + SNS, CI/CD con CodePipeline y ECS",
+          "Avanzado: ECS + Fargate, SQS event-driven, S3 + Glue + Athena, Cognito y alta disponibilidad multi-AZ"
+        ],
+        "entry_type": "tech_tip"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125226343369457816",
+    "text": "Free $100+ in AI credits from Nebius Builder Program\n\nyou get:\n\n&gt; $25 AI Cloud credits (B300 for an afternoon or H100 for a day on Spot)  \n&gt; $25 Token Factory credits (open models inference)  \n&gt; $25 Tavily credits (web search for agents)  \n&gt; $50 Toloka credits (human evaluation) https://t.co/suM0NsNhZB",
+    "author_name": "Nexx",
+    "author_handle": "nex_ify",
+    "created_at": "2026-11-24T13:53:39.000Z",
+    "urls": [
+      "https://dev.nebius.com/builders"
+    ],
+    "note_tweet": "Free $100+ in AI credits from Nebius Builder Program\n\nyou get:\n\n> $25 AI Cloud credits (B300 for an afternoon or H100 for a day on Spot)  \n> $25 Token Factory credits (open models inference)  \n> $25 Tavily credits (web search for agents)  \n> $50 Toloka credits (human evaluation)  \n\nno credit card required for the GPU credit.\n\nhow to claim:\n1. go to https://t.co/NWChoKNdZ7\n2. join the free builder program\n3. credits land after signup / verification\n\nmost people are only taking the $25, you should grab the full package.",
+    "items": [
+      {
+        "name": "Nebius Builder Program",
+        "url": "https://dev.nebius.com/builders",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "gpu",
+          "creditos",
+          "inferencia",
+          "llm"
+        ],
+        "summary": "Programa gratuito de Nebius que da más de $100 en créditos de IA: GPU cloud, inferencia de modelos abiertos, búsqueda web para agentes y evaluación humana.",
+        "highlights": [
+          "$25 AI Cloud (B300 una tarde o H100 un día en Spot) y $25 Token Factory",
+          "$25 en Tavily y $50 en Toloka",
+          "Sin tarjeta de crédito para el crédito de GPU"
+        ],
+        "entry_type": "product_showcase",
+        "company": "Nebius"
+      }
+    ]
+  }
+]

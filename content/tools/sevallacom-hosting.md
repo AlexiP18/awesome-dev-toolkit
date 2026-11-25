@@ -14,18 +14,20 @@ tags:
   - go
   - python
   - backend
+  - paas
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:41:34.289Z'
-updated_at: '2026-11-20T04:21:04.756Z'
+updated_at: '2026-11-25T04:11:50.093Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2112068533924626841'
 source_tweets:
   - 'https://x.com/csaba_kissi/status/2112068533924626841'
   - 'https://x.com/csaba_kissi/status/2079093085955657992'
   - 'https://x.com/csaba_kissi/status/2123331796217868570'
+  - 'https://x.com/csaba_kissi/status/2125141623050752324'
 author: Csaba Kissi
 author_handle: csaba_kissi
-entry_type: tool
+entry_type: product_showcase
 company: Csaba Kissi
 classified_by: Importado del vault
 ---

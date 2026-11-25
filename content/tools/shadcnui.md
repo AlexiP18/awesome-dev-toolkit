@@ -16,14 +16,15 @@ tags:
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:37:11.200Z'
-updated_at: '2026-11-23T04:20:20.492Z'
+updated_at: '2026-11-25T04:11:50.524Z'
 source_tweet: 'https://x.com/hasantoxr/status/2096255783415779684'
 source_tweets:
   - 'https://x.com/hasantoxr/status/2096255783415779684'
   - 'https://x.com/BenjaminUIX/status/2123340929633550834'
   - 'https://x.com/Dionisselamii/status/2124246724319297825'
-author: Dionis
-author_handle: Dionisselamii
+  - 'https://x.com/seeconvm/status/2124956200450052431'
+author: seeco
+author_handle: seeconvm
 entry_type: tool
 company: shadcn
 classified_by: Importado del vault

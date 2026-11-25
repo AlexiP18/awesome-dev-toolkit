@@ -10,9 +10,13 @@ tags:
 status: to_try
 date_added: '2026-11-23'
 created_at: '2026-11-23T04:20:20.616Z'
+updated_at: '2026-11-25T04:11:51.594Z'
 source_tweet: 'https://x.com/DivyanshT91162/status/2124198404024901922'
-author: divyansh tiwari
-author_handle: DivyanshT91162
+source_tweets:
+  - 'https://x.com/DivyanshT91162/status/2124198404024901922'
+  - 'https://x.com/0xChaseTM/status/2124999022666543477'
+author: Chase
+author_handle: 0xChaseTM
 entry_type: tool
 company: divyansh tiwari
 classified_by: Importado del vault

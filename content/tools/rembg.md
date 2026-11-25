@@ -11,9 +11,13 @@ tags:
 status: to_try
 date_added: '2026-11-18'
 created_at: '2026-11-18T04:20:52.921Z'
+updated_at: '2026-11-25T04:11:50.985Z'
 source_tweet: 'https://x.com/Fluyeporlaweb/status/2121683585199440143'
-author: PA13L0
-author_handle: Fluyeporlaweb
+source_tweets:
+  - 'https://x.com/Fluyeporlaweb/status/2121683585199440143'
+  - 'https://x.com/seeconvm/status/2124956200450052431'
+author: seeco
+author_handle: seeconvm
 entry_type: tool
 company: PA13L0
 classified_by: Importado del vault

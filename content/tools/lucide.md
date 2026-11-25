@@ -2,6 +2,7 @@
 name: Lucide
 url: 'https://github.com/lucide-icons/lucide'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - icons
   - svg
@@ -10,16 +11,21 @@ tags:
   - open-source
   - react
   - vue
+  - iconos
 stars: 25503
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:59:00.154Z'
+updated_at: '2026-11-25T04:11:50.748Z'
 source_tweet: 'https://x.com/Marlenuii/status/2111419391271186795'
-author: Marlen
-author_handle: Marlenuii
+source_tweets:
+  - 'https://x.com/Marlenuii/status/2111419391271186795'
+  - 'https://x.com/seeconvm/status/2124956200450052431'
+author: seeco
+author_handle: seeconvm
 entry_type: tool
-classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
+company: seeco
+classified_by: Importado del vault
 ---
 # Lucide
 

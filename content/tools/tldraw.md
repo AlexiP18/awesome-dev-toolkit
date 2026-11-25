@@ -1,18 +1,24 @@
 ---
 name: tldraw
-url: 'https://tldraw.com/'
+url: 'https://github.com/tldraw/tldraw'
+website_url: 'https://tldraw.com/'
 category: Frontend & UI
 conjunto: recursos
 tags:
   - pizarra
   - canvas
   - navegador
+  - react
 status: to_try
 date_added: '2026-11-20'
 created_at: '2026-11-20T04:21:04.474Z'
+updated_at: '2026-11-25T04:11:50.859Z'
 source_tweet: 'https://x.com/Elochoaa__/status/2123350146956112381'
-author: Ochoa
-author_handle: Elochoaa__
+source_tweets:
+  - 'https://x.com/Elochoaa__/status/2123350146956112381'
+  - 'https://x.com/seeconvm/status/2124956200450052431'
+author: seeco
+author_handle: seeconvm
 entry_type: tool
 company: Ochoa
 classified_by: Importado del vault

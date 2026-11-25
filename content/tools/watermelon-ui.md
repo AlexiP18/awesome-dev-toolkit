@@ -3,6 +3,7 @@ name: Watermelon UI
 url: 'https://ui.watermelon.sh/'
 website_url: 'https://watermelon.sh/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - react
   - ui-components
@@ -11,16 +12,21 @@ tags:
   - tailwind-css
   - shadcn
   - free
+  - componentes
+  - animacion
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:27:28.261Z'
+updated_at: '2026-11-25T04:11:50.137Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2117522406730572218'
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2117522406730572218'
+  - 'https://x.com/csaba_kissi/status/2125141623050752324'
 author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
 company: Watermelon
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Watermelon UI
 

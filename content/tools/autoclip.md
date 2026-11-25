@@ -1,7 +1,9 @@
 ---
 name: AutoClip
 url: 'https://github.com/zhouxiaoka/autoclip'
+website_url: 'https://zhouxiaoka.github.io/autoclip_intro'
 category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - ai
   - video-clipping
@@ -14,17 +16,24 @@ tags:
   - tiktok
   - douyin
   - instagram-reels
+  - python
+  - video
+  - ia
+  - shorts
 stars: 9955
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T21:13:44.731Z'
+updated_at: '2026-11-25T04:11:49.902Z'
 source_tweet: 'https://x.com/heyrimsha/status/2111407556929425790'
-author: Rimsha Bhardwaj
-author_handle: heyrimsha
+source_tweets:
+  - 'https://x.com/heyrimsha/status/2111407556929425790'
+  - 'https://x.com/heymireia/status/2125167545850155353'
+author: mireia.
+author_handle: heymireia
 entry_type: tool
 company: zhouxiaoka
-classified_by: Google Gemini (Flash)
-conjunto: producto
+classified_by: Importado del vault
 ---
 # AutoClip
 

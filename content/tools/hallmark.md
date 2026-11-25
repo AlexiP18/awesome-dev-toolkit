@@ -1,6 +1,7 @@
 ---
 name: Hallmark
-url: 'https://usehallmark.com/'
+url: 'https://github.com/Nutlope/hallmark'
+website_url: 'https://usehallmark.com/'
 category: Frontend & UI
 conjunto: recursos
 tags:
@@ -8,12 +9,19 @@ tags:
   - temas
   - ui
   - checks
+  - diseno
+  - claude-code
+  - cursor
 status: to_try
 date_added: '2026-11-18'
 created_at: '2026-11-18T04:20:52.199Z'
+updated_at: '2026-11-25T04:11:50.398Z'
 source_tweet: 'https://x.com/Sujay__Raj/status/2121544344138371119'
-author: Sujay.
-author_handle: Sujay__Raj
+source_tweets:
+  - 'https://x.com/Sujay__Raj/status/2121544344138371119'
+  - 'https://x.com/seeconvm/status/2124956200450052431'
+author: seeco
+author_handle: seeconvm
 entry_type: tool
 company: Sujay.
 classified_by: Importado del vault

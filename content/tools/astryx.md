@@ -1,6 +1,7 @@
 ---
 name: Astryx
 url: 'https://github.com/meta/astryx'
+website_url: 'https://astryx.atmeta.com/'
 category: Frontend & UI
 conjunto: recursos
 tags:
@@ -20,14 +21,15 @@ stars: 13956
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T04:32:11.783Z'
-updated_at: '2026-11-20T04:21:03.722Z'
+updated_at: '2026-11-25T04:11:50.486Z'
 source_tweet: 'https://x.com/marcusyul/status/2083189700022636822'
 source_tweets:
   - 'https://x.com/marcusyul/status/2083189700022636822'
   - 'https://x.com/so_ainsight/status/2121440495276798005'
   - 'https://x.com/so_ainsight/status/2123252436093829531'
-author: そう@『n8nの教科書』マイナビ出版 10/22発売
-author_handle: so_ainsight
+  - 'https://x.com/seeconvm/status/2124956200450052431'
+author: seeco
+author_handle: seeconvm
 entry_type: tool
 company: Meta
 classified_by: Importado del vault

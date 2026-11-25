@@ -1,18 +1,26 @@
 ---
 name: Leonardo.ai
-url: 'https://leonardo.ai/'
-category: 'Prompts, Art & Video'
-conjunto: producto
+url: 'https://github.com/adobe/leonardo'
+website_url: 'https://leonardo.ai/'
+category: Frontend & UI
+conjunto: recursos
 tags:
   - imagenes
   - ia
+  - color
+  - accesibilidad
+  - contraste
 status: to_try
 date_added: '2026-11-24'
 created_at: '2026-11-24T04:17:09.335Z'
+updated_at: '2026-11-25T04:11:50.781Z'
 source_tweet: 'https://x.com/AlinaDavy20/status/2124858370134057167'
-author: Alina Davy
-author_handle: AlinaDavy20
-entry_type: product_showcase
+source_tweets:
+  - 'https://x.com/AlinaDavy20/status/2124858370134057167'
+  - 'https://x.com/seeconvm/status/2124956200450052431'
+author: seeco
+author_handle: seeconvm
+entry_type: tool
 company: Alina Davy
 classified_by: Importado del vault
 ---
