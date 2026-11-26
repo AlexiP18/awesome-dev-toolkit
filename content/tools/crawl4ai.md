@@ -8,12 +8,18 @@ tags:
   - markdown
   - llm
   - mcp
+  - python
+  - web-scraping
 status: to_try
 date_added: '2026-11-23'
 created_at: '2026-11-23T04:20:20.574Z'
+updated_at: '2026-11-26T04:17:17.190Z'
 source_tweet: 'https://x.com/DivyanshT91162/status/2124198404024901922'
-author: divyansh tiwari
-author_handle: DivyanshT91162
+source_tweets:
+  - 'https://x.com/DivyanshT91162/status/2124198404024901922'
+  - 'https://x.com/Lucy_love_AI/status/2125396894784561159'
+author: 露西的百宝箱
+author_handle: Lucy_love_AI
 entry_type: tool
 company: divyansh tiwari
 classified_by: Importado del vault

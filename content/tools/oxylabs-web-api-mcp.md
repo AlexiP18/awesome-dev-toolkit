@@ -7,10 +7,16 @@ tags:
   - mcp
   - scraping
   - web-data
+  - web-scraping
+  - agentes-ia
 status: to_try
 date_added: '2026-11-23'
 created_at: '2026-11-23T04:20:20.657Z'
+updated_at: '2026-11-26T04:17:15.967Z'
 source_tweet: 'https://x.com/DivyanshT91162/status/2124198404024901922'
+source_tweets:
+  - 'https://x.com/DivyanshT91162/status/2124198404024901922'
+  - 'https://x.com/DivyanshT91162/status/2125582361987518837'
 author: divyansh tiwari
 author_handle: DivyanshT91162
 entry_type: tool

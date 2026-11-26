@@ -2,7 +2,7 @@
 
 > Colección curada en **3 apartados esenciales** (Herramientas, Consejos Técnicos y Trabajo Remoto/Freelance) y clasificada por **Conjuntos** (📦 Recursos, 💡 Inspiración, 🚀 Producto y 🧠 Consejos) descubiertos en **X/Twitter**, sincronizados automáticamente con notas individuales de **Obsidian** y un catálogo interactivo con IA.
 
-[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-811-blue?style=for-the-badge)]()
+[![Herramientas](https://img.shields.io/badge/🛠️_Herramientas-834-blue?style=for-the-badge)]()
 [![Consejos](https://img.shields.io/badge/💡_Consejos-12-8E75C2?style=for-the-badge)]()
 [![Trabajo Remoto](https://img.shields.io/badge/💼_Trabajo_Remoto-57-0284C7?style=for-the-badge)]()
 [![Obsidian Ready](https://img.shields.io/badge/Obsidian-Segundo_Cerebro-7C3AED?style=for-the-badge&logo=obsidian)]()
@@ -11,17 +11,26 @@
 
 ## 📑 Los 3 Apartados del Toolkit
 
-- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-811) (811)
+- [🛠️ Apartado 1: Herramientas de Desarrollo](#-apartado-1-herramientas--repositorios-de-software-834) (834)
 - [💡 Apartado 2: Consejos Técnicos & Buenas Prácticas](#-apartado-2-consejos-técnicos--buenas-prácticas-12) (12)
 - [💼 Apartado 3: Trabajo Remoto & Freelance](#-apartado-3-trabajo-remoto--oportunidades-freelance-57) (57)
 
 ---
 
-## 🛠️ Apartado 1: Herramientas & Repositorios de Software (811)
+## 🛠️ Apartado 1: Herramientas & Repositorios de Software (834)
 
 > Bibliotecas, utilidades CLI, herramientas de desarrollo, devtools, productos técnicos y hardware guardados desde X.
 
-### 🛠️ CLI & Terminal (15)
+### 🛠️ CLI & Terminal (18)
+
+- **[Google Colab CLI](https://github.com/googlecolab/google-colab-cli)** `📦 Recursos` (`🏢 あきらパパ【生成AI活用エンジニア&３児のパパ】`) [𝕏 Tweet](https://x.com/akira_papa_IT/status/2125318736030957904) `🟡 Por probar`  
+  CLI open source para interactuar con runtimes de Google Colab, usable desde agentes como Antigravity, Codex o Claude Code. [📝 Ver ficha](content/tools/google-colab-cli.md) `#cli` `#google-colab` `#agentes-ia`
+
+- **[curl-impersonate](https://github.com/lwthiker/curl-impersonate)** `📦 Recursos` (`🏢 露西的百宝箱`) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2125396894784561159) `🟡 Por probar`  
+  Versión de curl que imita por completo la huella de navegadores reales como Chrome. [📝 Ver ficha](content/tools/curl-impersonate.md) `#curl` `#cli` `#web-scraping`
+
+- **[Katana](https://github.com/projectdiscovery/katana)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2125582361987518837) `🟡 Por probar`  
+  Crawler web rápido de línea de comandos para descubrir URLs y contenido. [📝 Ver ficha](content/tools/katana.md) `#go` `#crawler` `#cli`
 
 - **[ast-grep](https://github.com/ast-grep/ast-grep)** `📦 Recursos` (`🏢 Chase`) [𝕏 Tweet](https://x.com/0xChaseTM/status/2124999022666543477) `🟡 Por probar`  
   Herramienta para buscar otras instancias de un patrón de código problemático usando el AST. [📝 Ver ficha](content/tools/ast-grep.md) `#ast` `#busqueda-codigo` `#refactor`
@@ -68,7 +77,16 @@
 - **[Lazygit](https://github.com/jesseduffield/lazygit)** `📦 Recursos` (`👤 Jesse Duffield`) ⭐ **52,000** [𝕏 Tweet](https://x.com/jesseduffield/status/123456789) `🟢 En uso`  
   Una interfaz de usuario de terminal simple y rápida para comandos de git, escrita en Go con gocui. [📝 Ver ficha](content/tools/lazygit.md) `#git` `#terminal` `#go` `#productivity`
 
-### 🎨 Frontend & UI (286)
+### 🎨 Frontend & UI (288)
+
+- **[Designment](https://designment.co/intro)** `🚀 Producto` (`🏢 Rahul Luthra`) [𝕏 Tweet](https://x.com/rahulluthra22/status/2125583049723346976) `🟡 Por probar`  
+  Servicio de diseño (design partner) que abre reservas para diciembre mediante una llamada de introducción. [📝 Ver ficha](content/tools/designment.md) `#diseno` `#agencia` `#ui-ux`
+
+- **[Vercel Web Design Guidelines](https://github.com/vercel-labs)** `🧠 Consejos` (`🏢 Dionis`) [𝕏 Tweet](https://x.com/Dionisselamii/status/2125608317187682479) `🟡 Por probar`  
+  Skill de agente con las guías de diseño web de Vercel para revisar y mejorar interfaces. [📝 Ver ficha](content/tools/vercel-web-design-guidelines.md) `#agent-skills` `#vercel` `#web-design` `#guias`
+
+- **[Emil Design Engineering](https://github.com/emilkowalski)** `🧠 Consejos` (`🏢 Dionis`) [𝕏 Tweet](https://x.com/Dionisselamii/status/2125608317187682479) `🟡 Por probar`  
+  Skill de agente basada en el enfoque de design engineering de Emil Kowalski para pulir UI y animaciones. [📝 Ver ficha](content/tools/emil-design-engineering.md) `#agent-skills` `#design-engineering` `#animacion` `#ui`
 
 - **[Rough.js](https://github.com/rough-stuff/rough)** `📦 Recursos` (`🏢 seeco`) [𝕏 Tweet](https://x.com/seeconvm/status/2124956200450052431) `🟡 Por probar`  
   Librería que da a cualquier gráfico un aspecto dibujado a mano. [📝 Ver ficha](content/tools/roughjs.md) `#canvas` `#svg` `#dibujo`
@@ -123,6 +141,9 @@
 
 - **[Land-book](https://land-book.com/)** `💡 Inspiración` (`🏢 Dionis`) [𝕏 Tweet](https://x.com/Dionisselamii/status/2124246724319297825) `🟡 Por probar`  
   Galería curada de landing pages como inspiración. [📝 Ver ficha](content/tools/land-book.md) `#landing-pages` `#inspiracion` `#diseno-web`
+
+- **[ThinkUI](https://thinkui.xyz/)** `🧠 Consejos` (`🏢 Dionis`) [𝕏 Tweet](https://x.com/Dionisselamii/status/2124246724319297825) `🟡 Por probar`  
+  Servidor MCP con capturas reales, componentes e iconos animados para alimentar al agente de código. [📝 Ver ficha](content/tools/thinkui.md) `#mcp` `#ui` `#componentes` `#iconos` `#agent-skills` `#diseno`
 
 - **[Uizze](https://uizze.com/)** `💡 Inspiración` (`🏢 Dionis`) [𝕏 Tweet](https://x.com/Dionisselamii/status/2124246724319297825) `🟡 Por probar`  
   Referencias de UI reales, materiales y flujos completos para que un agente de código no tenga que adivinar. [📝 Ver ficha](content/tools/uizze.md) `#ui` `#referencias` `#flujos` `#agentes`
@@ -679,9 +700,6 @@
 - **[Satori](https://github.com/vercel/satori)** `📦 Recursos` (`🏢 Vercel`) ⭐ **14,164** [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
   Librería de Vercel que convierte HTML y CSS (o JSX) en SVG de forma instantánea, pensada para generar imágenes Open Graph y tarjetas de título en el servidor. [📝 Ver ficha](content/tools/satori.md) `#svg` `#jsx` `#og-image` `#vercel` `#image-generation`
 
-- **[React Postprocessing](https://github.com/pmndrs/react-postprocessing)** `📦 Recursos` (`🏢 Poimandres (pmndrs)`) ⭐ **1,501** [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
-  Envoltorio declarativo del pipeline de postprocesado de Three.js para React Three Fiber, con efectos como bloom, profundidad de campo, viñeta y antialiasing. [📝 Ver ficha](content/tools/react-postprocessing.md) `#3d` `#postprocessing` `#react-three-fiber` `#webgl` `#effects`
-
 - **[React Three Rapier](https://github.com/pmndrs/react-three-rapier)** `📦 Recursos` (`🏢 Poimandres (pmndrs)`) ⭐ **1,526** [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
   Integración del motor de físicas Rapier (Rust/WASM) con React Three Fiber para añadir colisiones, cuerpos rígidos y joints a escenas 3D declarativas. [📝 Ver ficha](content/tools/react-three-rapier.md) `#physics` `#3d` `#react-three-fiber` `#rapier` `#wasm`
 
@@ -695,7 +713,7 @@
   Runtime web (JS/WASM) de Rive que conecta animaciones vectoriales interactivas con el estado real de la aplicación mediante state machines. [📝 Ver ficha](content/tools/rive-web.md) `#animation` `#vector` `#wasm` `#runtime` `#interactive`
 
 - **[Anime.js](https://github.com/juliangarnier/anime)** `📦 Recursos` (`🏢 Julian Garnier`) [🌐 Web](https://animejs.com/) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
-  Librería de animación ligera en JavaScript para animar rutas SVG, texto, propiedades CSS y objetos JS con una API sencilla de keyframes y stagger. [📝 Ver ficha](content/tools/animejs.md) `#animation` `#svg` `#javascript` `#lightweight` `#ui`
+  Librería de animación ligera en JavaScript para animar rutas SVG, texto, propiedades CSS y objetos JS con una API sencilla de keyframes y stagger. [📝 Ver ficha](content/tools/animejs.md) `#animation` `#svg` `#javascript` `#lightweight` `#ui` `#animacion` `#web`
 
 - **[GSAP (GreenSock Animation Platform)](https://github.com/greensock/gsap-skills)** `📦 Recursos` (`🏢 GreenSock`) ⭐ **17,889** [🌐 Web](https://gsap.com/) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
   Motor de animación JavaScript de alto rendimiento para timelines complejas, animaciones de SVG, texto y propiedades CSS con control preciso de easing y secuencias. [📝 Ver ficha](content/tools/gsap-greensock-animation-platform.md) `#agent-skills` `#gsap` `#react` `#animation` `#ai` `#svg` `#timeline` `#javascript` `#frontend`
@@ -856,9 +874,6 @@
 - **[AI Design Skills](https://github.com/elayadesign/ai-design-skills)** `💡 Inspiración` (`🏢 elayadesign`) ⭐ **13,629** [𝕏 Tweet](https://x.com/CY160909/status/2114213361982296227) `🟡 Por probar`  
   Colección de habilidades de diseño de UI/UX de código abierto para herramientas de programación impulsadas por IA, centrada en la generación de landing pages con un enfoque estético y funcional. [📝 Ver ficha](content/tools/ai-design-skills.md) `#ai` `#design` `#frontend` `#cursor` `#ui` `#skills` `#landing-page` `#automation` `#github` `#ia` `#coding-assistant`
 
-- **[Tone.js](https://github.com/Tonejs/Tone.js)** `📦 Recursos` (`🏢 Tonejs`) ⭐ **14,873** [𝕏 Tweet](https://x.com/e1genqq/status/2114445900131013003) `🟡 Por probar`  
-  Un framework de audio web para crear música interactiva y efectos de sonido directamente en el navegador, ofreciendo sintetizadores, samplers y herramientas de programación de audio avanzadas. [📝 Ver ficha](content/tools/tonejs.md) `#web-audio` `#music` `#synthesis` `#sound-effects` `#javascript` `#typescript` `#interactive-audio` `#midi`
-
 - **[glTF Transform](https://github.com/donmccurdy/glTF-Transform)** `📦 Recursos` (`🏢 donmccurdy`) ⭐ **2,058** [𝕏 Tweet](https://x.com/e1genqq/status/2114445900131013003) `🟡 Por probar`  
   Un SDK para JavaScript y TypeScript que permite la optimización, compresión y manipulación de assets 3D en formato glTF 2.0, tanto en el navegador como en Node.js, para mejorar el rendimiento. [📝 Ver ficha](content/tools/gltf-transform.md) `#gltf` `#3d` `#optimization` `#compression` `#typescript` `#node.js` `#mesh-processing` `#scene-graph`
 
@@ -928,19 +943,49 @@
 - **[taste-skill](https://github.com/Leonxlnx/taste-skill)** `📦 Recursos` (`🏢 Sujay.`) ⭐ **102,562** [🌐 Web](https://tasteskill.dev/) [𝕏 Tweet](https://x.com/Fluyeporlaweb/status/1987654321098765432) `🟡 Por probar`  
   Herramienta que dota a los agentes de código de habilidades de dirección de arte, permitiéndoles diseñar interfaces web con un estilo más humano y referencias reales, evitando el aspecto genérico generado por la IA. [📝 Ver ficha](content/tools/taste-skill.md) `#agent-skills` `#ai-agents` `#anti-slop` `#claude-code` `#codex` `#cursor` `#design-system` `#frontend` `#landing-page` `#ui-design` `#web-design` `#design` `#code-generation` `#diseno` `#motion` `#estilo`
 
-### ⚙️ Backend & APIs (18)
+### ⚙️ Backend & APIs (29)
+
+- **[AutoScraper](https://github.com/alirezamika/autoscraper)** `📦 Recursos` (`🏢 露西的百宝箱`) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2125396894784561159) `🟡 Por probar`  
+  Scraper en Python que aprende reglas a partir de un ejemplo y extrae el resto del sitio sin selectores. [📝 Ver ficha](content/tools/autoscraper.md) `#python` `#web-scraping` `#automatizacion`
+
+- **[Scrapling](https://github.com/D4Vinci/Scrapling)** `📦 Recursos` (`🏢 露西的百宝箱`) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2125396894784561159) `🟡 Por probar`  
+  Scraper sigiloso que se adapta a cambios en los sitios y evade detección anti-bots. [📝 Ver ficha](content/tools/scrapling.md) `#python` `#web-scraping` `#anti-bot`
+
+- **[Crawlee](https://github.com/apify/crawlee)** `📦 Recursos` (`🏢 露西的百宝箱`) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2125396894784561159) `🟡 Por probar`  
+  Framework profesional de crawling con rotación de proxies, reintentos, huellas de navegador y colas. [📝 Ver ficha](content/tools/crawlee.md) `#web-scraping` `#nodejs` `#crawler`
+
+- **[jsoup](https://github.com/jhy/jsoup)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2125582361987518837) `🟡 Por probar`  
+  Librería de Java para extraer, parsear y manipular HTML. [📝 Ver ficha](content/tools/jsoup.md) `#java` `#html` `#web-scraping`
+
+- **[Beautiful Soup](https://crummy.com/software/BeautifulSoup)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2125582361987518837) `🟡 Por probar`  
+  Librería de Python para parsear HTML y extraer información de sitios web. [📝 Ver ficha](content/tools/beautiful-soup.md) `#python` `#html` `#web-scraping`
+
+- **[Colly](https://github.com/gocolly/colly)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2125582361987518837) `🟡 Por probar`  
+  Framework de scraping y crawling web para Go. [📝 Ver ficha](content/tools/colly.md) `#go` `#web-scraping` `#crawler`
+
+- **[Jina Reader](https://github.com/jina-ai/reader)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2125582361987518837) `🟡 Por probar`  
+  Convierte páginas web en contenido limpio y amigable para LLMs. [📝 Ver ficha](content/tools/jina-reader.md) `#llm` `#web-scraping` `#markdown`
+
+- **[Newspaper4k](https://github.com/AndyTheFactory/newspaper4k)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2125582361987518837) `🟡 Por probar`  
+  Librería de Python para extraer y analizar artículos de noticias automáticamente. [📝 Ver ficha](content/tools/newspaper4k.md) `#python` `#web-scraping` `#noticias`
+
+- **[Maxun](https://github.com/getmaxun/maxun)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2125582361987518837) `🟡 Por probar`  
+  Plataforma open source que convierte sitios web en APIs estructuradas sin escribir código. [📝 Ver ficha](content/tools/maxun.md) `#web-scraping` `#no-code` `#api` `#open-source`
 
 - **[YepAPI](https://yepapi.com/)** `🚀 Producto` (`🏢 kadd`) [𝕏 Tweet](https://x.com/kaddisdeployed/status/2125135621677052288) `🟡 Por probar`  
   Servicio de API que da $5 de crédito al registrarse. [📝 Ver ficha](content/tools/yepapi.md) `#api` `#creditos`
 
+- **[MarkItDown](https://github.com/microsoft/markitdown)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2124198404024901922) `🟡 Por probar`  
+  Herramienta de Microsoft que convierte PDF, Word, Excel, PowerPoint, HTML y más a Markdown para LLMs. [📝 Ver ficha](content/tools/markitdown.md) `#markdown` `#conversion` `#llm` `#python`
+
 - **[Trafilatura](https://github.com/adbar/trafilatura)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2124198404024901922) `🟡 Por probar`  
-  Extrae texto principal, metadatos y comentarios de HTML crudo. [📝 Ver ficha](content/tools/trafilatura.md) `#python` `#html` `#extraccion` `#rag`
+  Extrae texto principal, metadatos y comentarios de HTML crudo. [📝 Ver ficha](content/tools/trafilatura.md) `#python` `#html` `#extraccion` `#rag` `#web-scraping` `#extraccion-texto`
 
 - **[Crawl4AI](https://github.com/unclecode/crawl4ai)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2124198404024901922) `🟡 Por probar`  
-  Convierte cualquier web en Markdown limpio listo para LLMs, filtrando menús y footers. [📝 Ver ficha](content/tools/crawl4ai.md) `#scraping` `#markdown` `#llm` `#mcp`
+  Convierte cualquier web en Markdown limpio listo para LLMs, filtrando menús y footers. [📝 Ver ficha](content/tools/crawl4ai.md) `#scraping` `#markdown` `#llm` `#mcp` `#python` `#web-scraping`
 
 - **[Scrapy](https://github.com/scrapy/scrapy)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2124198404024901922) `🟡 Por probar`  
-  Framework clásico de Python para rastrear miles de páginas de forma programada. [📝 Ver ficha](content/tools/scrapy.md) `#python` `#scraping` `#crawler`
+  Framework clásico de Python para rastrear miles de páginas de forma programada. [📝 Ver ficha](content/tools/scrapy.md) `#python` `#scraping` `#crawler` `#web-scraping`
 
 - **[supabase-postgres-best-practices](https://github.com/supabase/agent-skills)** `🧠 Consejos` (`🏢 Saurav`) [𝕏 Tweet](https://x.com/saurav_tweets/status/2123724003781255599) `🟡 Por probar`  
   Skill oficial de Supabase con buenas prácticas de Postgres para que el agente diseñe esquemas y consultas correctas. [📝 Ver ficha](content/tools/supabase-postgres-best-practices.md) `#agent-skills` `#supabase` `#postgres` `#sql`
@@ -959,6 +1004,9 @@
 
 - **[Sent](https://www.sent.dm/)** `🚀 Producto` (`🏢 Sent`) [𝕏 Tweet](https://x.com/BardhylBytyqi/status/2118838961602748834) `🟡 Por probar`  
   API de envío de SMS a precio muy bajo pensada para integrar notificaciones, verificación de teléfono y alertas transaccionales desde el backend de cualquier aplicación. [📝 Ver ficha](content/tools/sent.md) `#sms` `#api` `#notificaciones` `#backend`
+
+- **[Firecrawl](https://github.com/firecrawl/firecrawl)** `📦 Recursos` (`🏢 Firecrawl`) ⭐ **199,183** [🌐 Web](https://firecrawl.dev/) [𝕏 Tweet](https://x.com/katsudev/status/2077021776412897641) `🟡 Por probar`  
+  API y librería de crawling que convierte cualquier web en texto limpio en markdown listo para alimentar a tus agentes de IA y pipelines RAG. [📝 Ver ficha](content/tools/firecrawl.md) `#web-scraping` `#crawler` `#markdown` `#llm` `#data-extraction` `#rag`
 
 - **[API Finder](https://apifinder.io/)** `📦 Recursos` (`👤 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2077648980528295956) `🟡 Por probar`  
   Directorio navegable de APIs públicas organizadas por categoría que detalla autenticación, soporte CORS y modelo de precios de cada endpoint. [📝 Ver ficha](content/tools/api-finder.md) `#apis` `#directory` `#public-apis` `#cors` `#backend`
@@ -1046,7 +1094,10 @@
 - **[Sevalla.com Hosting](https://sevalla.com/)** `🚀 Producto` (`🏢 Csaba Kissi`) [𝕏 Tweet](https://x.com/csaba_kissi/status/2112068533924626841) `🟡 Por probar`  
   Un servicio de hosting full-stack que soporta múltiples lenguajes de programación como PHP, JavaScript, Go y Python, ideal para desplegar aplicaciones completas. [📝 Ver ficha](content/tools/sevallacom-hosting.md) `#deploy` `#cloud` `#infraestructura` `#hosting` `#full-stack` `#php` `#javascript` `#go` `#python` `#backend` `#paas`
 
-### 🤖 AI & Machine Learning (116)
+### 🤖 AI & Machine Learning (117)
+
+- **[Dahl Inference](https://inference.dahl.global/)** `🚀 Producto` (`🏢 Moeez`) [𝕏 Tweet](https://x.com/Moeez_o/status/2125535911366840551) `🟡 Por probar`  
+  Servicio de inferencia de LLMs que regala 100 millones de tokens a cada cuenta nueva, sin tarjeta. [📝 Ver ficha](content/tools/dahl-inference.md) `#llm` `#inferencia` `#api` `#creditos-gratis`
 
 - **[Nebius Builder Program](https://dev.nebius.com/builders)** `🚀 Producto` (`🏢 Nexx`) [𝕏 Tweet](https://x.com/nex_ify/status/2125226343369457816) `🟡 Por probar`  
   Programa gratuito de Nebius que da más de $100 en créditos de IA: GPU cloud, inferencia de modelos abiertos, búsqueda web para agentes y evaluación humana. [📝 Ver ficha](content/tools/nebius-builder-program.md) `#gpu` `#creditos` `#inferencia` `#llm`
@@ -1396,12 +1447,7 @@
 - **[Cursor Plugins](https://github.com/cursor/plugins)** `🧠 Consejos` (`🏢 Cursor`) (`💰 Gratis`) ⭐ **15,035** [𝕏 Tweet](https://x.com/csaba_kissi/status/2116071103206724053) `🟡 Por probar`  
   Colección de plugins de codificación asistida por IA para la plataforma Cursor, diseñados para mejorar la productividad del desarrollador con funcionalidades inteligentes. [📝 Ver ficha](content/tools/cursor-plugins.md) `#ai` `#coding` `#plugins` `#ia` `#desarrollo` `#typescript` `#gratis`
 
-### 🔄 Data Engineering & ETL (1)
-
-- **[Firecrawl](https://github.com/firecrawl/firecrawl)** `📦 Recursos` (`🏢 Firecrawl`) ⭐ **199,183** [🌐 Web](https://firecrawl.dev/) [𝕏 Tweet](https://x.com/katsudev/status/2077021776412897641) `🟡 Por probar`  
-  API y librería de crawling que convierte cualquier web en texto limpio en markdown listo para alimentar a tus agentes de IA y pipelines RAG. [📝 Ver ficha](content/tools/firecrawl.md) `#web-scraping` `#crawler` `#markdown` `#llm` `#data-extraction` `#rag`
-
-### 🤖 Agentes & Protocolo MCP (76)
+### 🤖 Agentes & Protocolo MCP (75)
 
 - **[Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp)** `📦 Recursos` (`🏢 Chase`) [𝕏 Tweet](https://x.com/0xChaseTM/status/2124999022666543477) `🟡 Por probar`  
   Servidor MCP de Chrome DevTools que graba trazas para comparar tiempos de frame. [📝 Ver ficha](content/tools/chrome-devtools-mcp.md) `#mcp` `#chrome` `#performance`
@@ -1428,13 +1474,10 @@
   SDK de agente de navegador con tres primitivas: Act, Extract y Observe. [📝 Ver ficha](content/tools/stagehand.md) `#navegador` `#agentes` `#sdk`
 
 - **[Oxylabs Web API MCP](https://github.com/oxylabs/web-api-mcp)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2124198404024901922) `🟡 Por probar`  
-  Servidor MCP que conecta Claude Code, Codex o Claude Desktop con la Web API de Oxylabs para traer datos web en vivo. [📝 Ver ficha](content/tools/oxylabs-web-api-mcp.md) `#mcp` `#scraping` `#web-data`
+  Servidor MCP que conecta Claude Code, Codex o Claude Desktop con la Web API de Oxylabs para traer datos web en vivo. [📝 Ver ficha](content/tools/oxylabs-web-api-mcp.md) `#mcp` `#scraping` `#web-data` `#web-scraping` `#agentes-ia`
 
 - **[Playwright MCP](https://github.com/microsoft/playwright-mcp)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2124198404024901922) `🟡 Por probar`  
   Servidor MCP de Microsoft que deja a un LLM usar el navegador mediante snapshots de accesibilidad estructurados. [📝 Ver ficha](content/tools/playwright-mcp.md) `#mcp` `#playwright` `#navegador`
-
-- **[ThinkUI](https://thinkui.xyz/)** `📦 Recursos` (`🏢 Dionis`) [𝕏 Tweet](https://x.com/Dionisselamii/status/2124246724319297825) `🟡 Por probar`  
-  Servidor MCP con capturas reales, componentes e iconos animados para alimentar al agente de código. [📝 Ver ficha](content/tools/thinkui.md) `#mcp` `#ui` `#componentes` `#iconos`
 
 - **[Blender MCP](https://github.com/ahujasid/mcp-for-blender)** `📦 Recursos` (`🏢 Florence`) [𝕏 Tweet](https://x.com/flxrnc/status/2124231511499026436) `🟡 Por probar`  
   Servidor MCP que permite a Claude controlar Blender y hacer el trabajo 3D pesado. [📝 Ver ficha](content/tools/blender-mcp.md) `#mcp` `#blender` `#3d` `#claude`
@@ -1539,7 +1582,7 @@
   Agente de IA open source construido en Python por el equipo de MetaGPT que planifica tareas, navega por la web y ejecuta herramientas de forma autónoma, posicionándose como alternativa gratuita a Manus sin invite code. [📝 Ver ficha](content/tools/openmanus.md) `#agentes` `#open-source` `#mcp` `#llm` `#python` `#automatizacion` `#metagpt`
 
 - **[Browser Use](https://github.com/browser-use/browser-use)** `📦 Recursos` (`🏢 Browser Use (Y Combinator)`) ⭐ **120,198** [🌐 Web](https://browser-use.com/) [𝕏 Tweet](https://x.com/robiartec/status/2075996518918606859) `🟡 Por probar`  
-  Librería open source en Python que permite a agentes de IA controlar un navegador real mediante instrucciones en lenguaje natural, sin Selenium ni selectores CSS frágiles, para automatizar tareas web de principio a fin. [📝 Ver ficha](content/tools/browser-use.md) `#ai-agents` `#browser-automation` `#python` `#llm` `#web-scraping` `#mcp` `#playwright` `#open-source` `#navegador` `#agentes`
+  Librería open source en Python que permite a agentes de IA controlar un navegador real mediante instrucciones en lenguaje natural, sin Selenium ni selectores CSS frágiles, para automatizar tareas web de principio a fin. [📝 Ver ficha](content/tools/browser-use.md) `#ai-agents` `#browser-automation` `#python` `#llm` `#web-scraping` `#mcp` `#playwright` `#open-source` `#navegador` `#agentes` `#agentes-ia` `#automatizacion`
 
 - **[Agent-Reach](https://github.com/Panniantong/Agent-Reach)** `📦 Recursos` (`🏢 Panniantong`) ⭐ **109,614** [𝕏 Tweet](https://x.com/katsudev/status/2077021776412897641) `🟡 Por probar`  
   CLI open source que da a tu agente de IA capacidad de lectura y búsqueda en X, Reddit, YouTube, GitHub, Bilibili y XiaoHongShu sin pagar APIs. [📝 Ver ficha](content/tools/agent-reach.md) `#mcp` `#ai-agent` `#cli` `#twitter-scraper` `#reddit` `#youtube` `#github` `#free-api`
@@ -1631,7 +1674,22 @@
 - **[skills](https://github.com/mattpocock/skills)** `🧠 Consejos` (`🏢 Santi Torres`) ⭐ **309,352** [🌐 Web](https://aihero.dev/skills) [𝕏 Tweet](https://x.com/csaba_kissi/status/2115357959341703241) `🟡 Por probar`  
   Una colección de 'skills' o habilidades para agentes de IA, diseñada específicamente para ingenieros y extraída de directorios personales para optimizar sus flujos de trabajo de desarrollo. [📝 Ver ficha](content/tools/skills.md) `#claude-code` `#agent-skills` `#prompts` `#ai` `#ai-agents` `#workflows` `#shell` `#engineering` `#typescript` `#testing` `#debugging`
 
-### 🎬 Prompts, Art & Video (113)
+### 🎬 Prompts, Art & Video (120)
+
+- **[ffmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm)** `📦 Recursos` (`🏢 nicco`) [𝕏 Tweet](https://x.com/0xnicc0/status/2125567907522379841) `🟡 Por probar`  
+  Port de FFmpeg a WebAssembly para procesar video en el navegador. [📝 Ver ficha](content/tools/ffmpegwasm.md) `#wasm` `#ffmpeg` `#video`
+
+- **[gl-react](https://github.com/gre/gl-react)** `📦 Recursos` (`🏢 nicco`) [𝕏 Tweet](https://x.com/0xnicc0/status/2125567907522379841) `🟡 Por probar`  
+  Librería para componer shaders WebGL como componentes de React. [📝 Ver ficha](content/tools/gl-react.md) `#react` `#webgl` `#shaders`
+
+- **[three-mesh-bvh](https://github.com/gkjohnson/three-mesh-bvh)** `📦 Recursos` (`🏢 nicco`) [𝕏 Tweet](https://x.com/0xnicc0/status/2125567907522379841) `🟡 Por probar`  
+  Extensión de three.js con BVH para acelerar raycasts y consultas espaciales. [📝 Ver ficha](content/tools/three-mesh-bvh.md) `#threejs` `#3d` `#raycasting`
+
+- **[Bullet Physics](https://github.com/bulletphysics/bullet3)** `📦 Recursos` (`🏢 nicco`) [𝕏 Tweet](https://x.com/0xnicc0/status/2125567907522379841) `🟡 Por probar`  
+  Motor de física para cuerpos rígidos y colisiones. [📝 Ver ficha](content/tools/bullet-physics.md) `#cpp` `#fisica` `#3d`
+
+- **[Canvix](https://github.com/mir-ashiq/canvix)** `📦 Recursos` (`🏢 Shoumya Vishwakarma`) [𝕏 Tweet](https://x.com/Shoumya23/status/2125606772694212809) `🟡 Por probar`  
+  Alternativa libre y open source a Canva, sin marcas de agua, con edición asistida por IA y soporte MCP. [📝 Ver ficha](content/tools/canvix.md) `#diseno-grafico` `#open-source` `#mcp` `#canva-alternativa`
 
 - **[Cartesia](https://cartesia.ai/)** `🚀 Producto` (`🏢 kadd`) [𝕏 Tweet](https://x.com/kaddisdeployed/status/2125135621677052288) `🟡 Por probar`  
   Plataforma de voz con IA con 20k créditos mensuales gratis. [📝 Ver ficha](content/tools/cartesia.md) `#voz` `#tts` `#audio`
@@ -1799,18 +1857,21 @@
   Herramienta open source que analiza vídeos largos para detectar automáticamente los mejores momentos y exportarlos como clips verticales con subtítulos listos para redes sociales. [📝 Ver ficha](content/tools/openshorts.md) `#open-source` `#video` `#clips` `#subtitulos` `#shorts` `#tiktok` `#reels`
 
 - **[FFmpeg](https://github.com/FFmpeg/FFmpeg)** `📦 Recursos` (`🏢 FFmpeg`) [🌐 Web](https://ffmpeg.org/) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
-  Suite multimedia de referencia para codificar, decodificar, escalar, recortar y convertir vídeo y audio desde línea de comandos o como biblioteca. [📝 Ver ficha](content/tools/ffmpeg.md) `#video` `#encoding` `#cli` `#audio` `#transcoding`
+  Suite multimedia de referencia para codificar, decodificar, escalar, recortar y convertir vídeo y audio desde línea de comandos o como biblioteca. [📝 Ver ficha](content/tools/ffmpeg.md) `#video` `#encoding` `#cli` `#audio` `#transcoding` `#codificacion`
 
 - **[Mediabunny](https://github.com/Vanilagy/mediabunny)** `📦 Recursos` (`🏢 Vanilagy`) ⭐ **7,431** [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
   Toolkit de medios en TypeScript puro para leer, escribir, demuxar y convertir vídeo y audio directamente en el navegador usando WebCodecs. [📝 Ver ficha](content/tools/mediabunny.md) `#video` `#audio` `#typescript` `#webcodecs` `#encoding`
+
+- **[React Postprocessing](https://github.com/pmndrs/react-postprocessing)** `📦 Recursos` (`🏢 Poimandres (pmndrs)`) ⭐ **1,501** [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
+  Envoltorio declarativo del pipeline de postprocesado de Three.js para React Three Fiber, con efectos como bloom, profundidad de campo, viñeta y antialiasing. [📝 Ver ficha](content/tools/react-postprocessing.md) `#3d` `#postprocessing` `#react-three-fiber` `#webgl` `#effects` `#react` `#threejs` `#postprocesado`
 
 - **[Three.js](https://github.com/mrdoob/three.js)** `📦 Recursos` (`🏢 Three.js`) [🌐 Web](https://threejs.org/) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
   Librería JavaScript de referencia para crear escenas 3D en el navegador con WebGL/WebGPU: cámaras, luces, materiales, geometrías y animación por frame. [📝 Ver ficha](content/tools/threejs.md) `#3d` `#webgl` `#javascript` `#scenes` `#rendering`
 
 - **[Motion Canvas](https://github.com/motion-canvas/motion-canvas)** `📦 Recursos` (`🏢 Motion Canvas`) ⭐ **19,692** [🌐 Web](https://motioncanvas.io/) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
-  Herramienta en TypeScript para crear vídeos de explicación, gráficos animados y presentaciones técnicas escribiendo la animación como código con previsualización en tiempo real. [📝 Ver ficha](content/tools/motion-canvas.md) `#typescript` `#animation` `#video` `#visualization` `#presentation`
+  Herramienta en TypeScript para crear vídeos de explicación, gráficos animados y presentaciones técnicas escribiendo la animación como código con previsualización en tiempo real. [📝 Ver ficha](content/tools/motion-canvas.md) `#typescript` `#animation` `#video` `#visualization` `#presentation` `#motion-graphics`
 
-- **[Remotion Skills](https://github.com/remotion-dev/skills)** `📦 Recursos` (`🏢 Remotion`) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
+- **[Remotion Skills](https://github.com/remotion-dev/skills)** `🧠 Consejos` (`🏢 Remotion`) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
   Paquete de skills oficiales que enseña a agentes de código como Claude Code el flujo correcto para estructurar, animar y renderizar proyectos de vídeo con Remotion. [📝 Ver ficha](content/tools/remotion-skills.md) `#agent-skills` `#claude-code` `#video` `#workflow` `#ai` `#remotion`
 
 - **[Remotion](https://github.com/remotion-dev/remotion)** `📦 Recursos` (`🏢 Remotion`) [🌐 Web](https://remotion.dev/) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2110203192831303920) `🟡 Por probar`  
@@ -1867,8 +1928,8 @@
 - **[OpenChatCut](https://github.com/0xsline/OpenChatCut)** `🚀 Producto` (`🏢 0xsline`) ⭐ **2,890** [𝕏 Tweet](https://x.com/heyrimsha/status/2111407556929425790) `🟡 Por probar`  
   Un editor de video conversacional de código abierto y local-first que permite editar videos charlando con IA para ajustar clips, transiciones, subtítulos, efectos y audio, manteniendo la línea de tiempo totalmente editable. [📝 Ver ficha](content/tools/openchatcut.md) `#ai` `#video-editing` `#conversational-ai` `#open-source` `#desktop-app` `#agent-skills` `#mcp` `#remotion` `#chat-editing` `#timeline-editor`
 
-- **[Blender](https://github.com/blender/blender)** `🚀 Producto` (`👤 Marlen`) ⭐ **21,589** [🌐 Web](https://blender.org/) [𝕏 Tweet](https://x.com/Marlenuii/status/2111419391271186795) `🟡 Por probar`  
-  Un potente software de código abierto para modelado 3D, escultura, animación, renderizado y composición, esencial para crear objetos detallados y entornos visuales complejos. [📝 Ver ficha](content/tools/blender.md) `#3d` `#modeling` `#animation` `#rendering` `#open-source` `#computer-graphics` `#dev` `#tool`
+- **[Blender](https://github.com/blender/blender)** `📦 Recursos` (`🏢 nicco`) ⭐ **21,589** [🌐 Web](https://blender.org/) [𝕏 Tweet](https://x.com/Marlenuii/status/2111419391271186795) `🟡 Por probar`  
+  Un potente software de código abierto para modelado 3D, escultura, animación, renderizado y composición, esencial para crear objetos detallados y entornos visuales complejos. [📝 Ver ficha](content/tools/blender.md) `#3d` `#modeling` `#animation` `#rendering` `#open-source` `#computer-graphics` `#dev` `#tool` `#animacion` `#render`
 
 - **[suno.com](https://suno.com/)** `🚀 Producto` (`🏢 Ochoa`) [𝕏 Tweet](https://x.com/konig0000/status/2111804913416331448) `🟡 Por probar`  
   Generador de música con inteligencia artificial que permite crear canciones completas automáticamente a partir de letras proporcionadas por el usuario, ideal para artistas, creadores de contenido y cualquiera que desee producir música original de forma sencilla. [📝 Ver ficha](content/tools/sunocom.md) `#ai` `#generacion-musica` `#composicion-musical` `#audio` `#creatividad` `#ia` `#musica`
@@ -1920,6 +1981,9 @@
 
 - **[mcp-for-blender](https://github.com/ahujasid/blender-mcp)** `🚀 Producto` (`👤 Dumble`) ⭐ **33,068** [𝕏 Tweet](https://x.com/Y0urDumble/status/2114084322227503206) `🟡 Por probar`  
   Community plugin to control Blender 3D with any LLM of your choice. Not affiliated with the official Blender Foundation. [📝 Ver ficha](content/tools/mcp-for-blender.md) `#3d-modeling` `#ai` `#blender` `#blender-addon` `#blender-mcp`
+
+- **[Tone.js](https://github.com/Tonejs/Tone.js)** `📦 Recursos` (`🏢 Tonejs`) ⭐ **14,873** [𝕏 Tweet](https://x.com/e1genqq/status/2114445900131013003) `🟡 Por probar`  
+  Un framework de audio web para crear música interactiva y efectos de sonido directamente en el navegador, ofreciendo sintetizadores, samplers y herramientas de programación de audio avanzadas. [📝 Ver ficha](content/tools/tonejs.md) `#web-audio` `#music` `#synthesis` `#sound-effects` `#javascript` `#typescript` `#interactive-audio` `#midi` `#audio`
 
 - **[GL Transitions](https://github.com/gl-transitions/gl-transitions)** `📦 Recursos` (`🏢 gl-transitions`) ⭐ **2,221** [𝕏 Tweet](https://x.com/e1genqq/status/2114445900131013003) `🟡 Por probar`  
   Una colección abierta de transiciones gráficas implementadas como shaders GLSL, diseñada para ser utilizada en aplicaciones que requieren efectos de transición visuales fluidos y complejos en tiempo real. [📝 Ver ficha](content/tools/gl-transitions.md) `#glsl` `#transitions` `#shaders` `#webgl` `#video-effects`
@@ -1982,6 +2046,9 @@
 
 ### ⚡ Productivity & Tools (91)
 
+- **[HTTrack](https://github.com/xroche/httrack)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2125582361987518837) `🟡 Por probar`  
+  Herramienta para descargar y replicar sitios web completos para navegarlos sin conexión. [📝 Ver ficha](content/tools/httrack.md) `#mirror` `#offline` `#web`
+
 - **[Stream Tube Desktop](https://x.com/rammcodes/status/2124759066698195386)** `📦 Recursos` (`🏢 Ram Maheshwari`) [𝕏 Tweet](https://x.com/rammcodes/status/2124759066698195386) `🟡 Por probar`  
   Cliente nativo de YouTube para escritorio escrito en Rust, para Windows y Linux. [📝 Ver ficha](content/tools/stream-tube-desktop.md) `#rust` `#youtube` `#desktop` `#mpv`
 
@@ -2008,9 +2075,6 @@
 
 - **[App multiplataforma de streaming de películas, series y anime (nombre por confirmar)](https://x.com/GithubProjects/status/2124191450745483657)** `📦 Recursos` (`🏢 GitHub Projects Community`) [𝕏 Tweet](https://x.com/GithubProjects/status/2124191450745483657) `🟡 Por probar`  
   App multiplataforma para ver y descargar películas, series y anime, sin anuncios ni rastreo. [📝 Ver ficha](content/tools/app-multiplataforma-de-streaming-de-pelculas-series-y-anime-nombre-por-confirmar.md) `#streaming` `#multiplataforma` `#sin-anuncios`
-
-- **[MarkItDown](https://github.com/microsoft/markitdown)** `📦 Recursos` (`🏢 divyansh tiwari`) [𝕏 Tweet](https://x.com/DivyanshT91162/status/2124198404024901922) `🟡 Por probar`  
-  Herramienta de Microsoft que convierte PDF, Word, Excel, PowerPoint, HTML y más a Markdown para LLMs. [📝 Ver ficha](content/tools/markitdown.md) `#markdown` `#conversion` `#llm` `#python`
 
 - **[BatteryHub](https://x.com/Fluyeporlaweb/status/2124451574248354174)** `📦 Recursos` (`🏢 PA13L0`) [𝕏 Tweet](https://x.com/Fluyeporlaweb/status/2124451574248354174) `🟡 Por probar`  
   App de ~350 KB para Windows que muestra en la barra de tareas la batería del ratón, teclado y cascos sin el software de cada marca. [📝 Ver ficha](content/tools/batteryhub.md) `#windows` `#bateria` `#perifericos` `#open-source`
@@ -2461,7 +2525,10 @@
 - **[Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/)** `🚀 Producto` (`🏢 Raspberry Pi`) (`💰 $60 - $80 USD`) [𝕏 Tweet](https://x.com/Raspberry_Pi/status/1707300000000000000) `🟡 Por probar`  
   Computadora monoplaca (SBC) de nueva generación con procesador Arm Cortex-A76 quad-core de 2.4GHz, PCIe 2.0 y rendimiento 2-3x superior para servidores caseros y proyectos de hardware. [📝 Ver ficha](content/tools/raspberry-pi-5.md) `#hardware` `#sbc` `#raspberrypi` `#iot` `#linux`
 
-### 📦 Other (7)
+### 📦 Other (8)
+
+- **[scrcpy](https://github.com/Genymobile/scrcpy)** `📦 Recursos` (`🏢 露西的百宝箱`) [𝕏 Tweet](https://x.com/Lucy_love_AI/status/2125396894784561159) `🟡 Por probar`  
+  Controla cualquier teléfono Android desde el ordenador para extraer datos o automatizar apps móviles. [📝 Ver ficha](content/tools/scrcpy.md) `#android` `#control-remoto` `#automatizacion`
 
 - **[ESLint](https://github.com/eslint/eslint)** `📦 Recursos` (`🏢 Chase`) [𝕏 Tweet](https://x.com/0xChaseTM/status/2124999022666543477) `🟡 Por probar`  
   Linter de JavaScript que detecta imports prohibidos y violaciones recurrentes en CI. [📝 Ver ficha](content/tools/eslint.md) `#javascript` `#linter` `#ci`
