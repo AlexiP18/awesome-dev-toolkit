@@ -1,6 +1,7 @@
 ---
 name: UI/UX Pro Max Skill
 url: 'https://github.com/nextlevelbuilder/ui-ux-pro-max-skill'
+website_url: 'https://uupm.cc/'
 category: Frontend & UI
 conjunto: recursos
 tags:
@@ -18,20 +19,21 @@ tags:
   - paletas
   - ui-ux
   - tipografia
-website_url: 'https://uupm.cc/'
+  - agent-skill
 stars: 144657
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:27:28.260Z'
-updated_at: '2026-11-25T04:20:00.000Z'
+updated_at: '2026-11-27T04:14:38.087Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2117522406730572218'
 source_tweets:
   - 'https://x.com/csaba_kissi/status/2117522406730572218'
   - 'https://x.com/saurav_tweets/status/2123724003781255599'
   - 'https://x.com/Sujay__Raj/status/2121544344138371119'
   - 'https://x.com/seeconvm/status/2124956200450052431'
-author: Saurav
-author_handle: saurav_tweets
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+author: Alhimik
+author_handle: 0xAlhimik
 entry_type: tool
 company: Saurav
 classified_by: Importado del vault

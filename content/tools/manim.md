@@ -2,22 +2,29 @@
 name: Manim
 url: 'https://github.com/ManimCommunity/manim'
 category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - animations
   - python
   - math
   - educational-content
   - explainer-videos
+  - animacion
+  - matematicas
 stars: 42142
 status: to_try
 date_added: '2026-11-02'
 created_at: '2026-11-02T16:58:17.533Z'
+updated_at: '2026-11-27T04:14:38.297Z'
 source_tweet: 'https://x.com/rachiitgr/status/2116982774846419287'
-author: rachit
-author_handle: rachiitgr
+source_tweets:
+  - 'https://x.com/rachiitgr/status/2116982774846419287'
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+author: Alhimik
+author_handle: 0xAlhimik
 entry_type: tool
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+company: Alhimik
+classified_by: Importado del vault
 ---
 # Manim
 

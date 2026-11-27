@@ -7,12 +7,17 @@ tags:
   - canvas
   - svg
   - dibujo
+  - javascript
 status: to_try
 date_added: '2026-11-25'
 created_at: '2026-11-25T04:11:50.903Z'
+updated_at: '2026-11-27T04:14:38.032Z'
 source_tweet: 'https://x.com/seeconvm/status/2124956200450052431'
-author: seeco
-author_handle: seeconvm
+source_tweets:
+  - 'https://x.com/seeconvm/status/2124956200450052431'
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+author: Alhimik
+author_handle: 0xAlhimik
 entry_type: tool
 company: seeco
 classified_by: Importado del vault

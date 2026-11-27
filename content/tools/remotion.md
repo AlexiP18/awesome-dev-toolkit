@@ -13,13 +13,14 @@ tags:
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:40:13.001Z'
-updated_at: '2026-11-23T04:20:19.959Z'
+updated_at: '2026-11-27T04:14:38.521Z'
 source_tweet: 'https://x.com/Lucy_love_AI/status/2110203192831303920'
 source_tweets:
   - 'https://x.com/Lucy_love_AI/status/2110203192831303920'
   - 'https://x.com/flxrnc/status/2124231511499026436'
-author: Florence
-author_handle: flxrnc
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+author: Alhimik
+author_handle: 0xAlhimik
 entry_type: tool
 company: Remotion
 classified_by: Importado del vault

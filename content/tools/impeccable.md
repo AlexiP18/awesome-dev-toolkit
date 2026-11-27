@@ -15,11 +15,13 @@ tags:
   - frontend
   - pulido
   - critica-ui
+  - agent-skill
+  - calidad
 stars: 102958
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:19:51.928Z'
-updated_at: '2026-11-25T04:11:50.355Z'
+updated_at: '2026-11-27T04:14:38.623Z'
 source_tweet: 'https://x.com/midudev/status/2117981377878524133'
 source_tweets:
   - 'https://x.com/midudev/status/2117981377878524133'
@@ -27,8 +29,9 @@ source_tweets:
   - 'https://x.com/saurav_tweets/status/2123724003781255599'
   - 'https://x.com/flxrnc/status/2124231511499026436'
   - 'https://x.com/seeconvm/status/2124956200450052431'
-author: seeco
-author_handle: seeconvm
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+author: Alhimik
+author_handle: 0xAlhimik
 entry_type: tool
 company: Sujay.
 classified_by: Importado del vault

@@ -2,7 +2,7 @@
 name: Excalidraw
 url: 'https://github.com/excalidraw/excalidraw'
 website_url: 'https://excalidraw.com/'
-category: Frontend & UI
+category: Productivity & Tools
 conjunto: recursos
 tags:
   - whiteboard
@@ -14,18 +14,20 @@ tags:
   - pizarra
   - dibujo
   - wireframes
+  - bocetos
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T16:14:15.707Z'
-updated_at: '2026-11-25T04:11:50.820Z'
+updated_at: '2026-11-27T04:14:37.986Z'
 source_tweet: 'https://x.com/DivyanshT91162/status/2079497566660821060'
 source_tweets:
   - 'https://x.com/DivyanshT91162/status/2079497566660821060'
   - 'https://x.com/NanouuSymeon/status/2122026167074963650'
   - 'https://x.com/Elochoaa__/status/2123350146956112381'
   - 'https://x.com/seeconvm/status/2124956200450052431'
-author: seeco
-author_handle: seeconvm
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+author: Alhimik
+author_handle: 0xAlhimik
 entry_type: tool
 company: Excalidraw
 classified_by: Importado del vault

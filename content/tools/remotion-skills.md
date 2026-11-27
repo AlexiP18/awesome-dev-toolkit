@@ -2,7 +2,7 @@
 name: Remotion Skills
 url: 'https://github.com/remotion-dev/skills'
 category: 'Prompts, Art & Video'
-conjunto: consejos
+conjunto: recursos
 tags:
   - agent-skills
   - claude-code
@@ -10,17 +10,19 @@ tags:
   - workflow
   - ai
   - remotion
+  - agent-skill
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:40:13.003Z'
-updated_at: '2026-11-26T04:17:16.842Z'
+updated_at: '2026-11-27T04:14:38.573Z'
 source_tweet: 'https://x.com/Lucy_love_AI/status/2110203192831303920'
 source_tweets:
   - 'https://x.com/Lucy_love_AI/status/2110203192831303920'
   - 'https://x.com/flxrnc/status/2124231511499026436'
   - 'https://x.com/0xnicc0/status/2125567907522379841'
-author: nicco
-author_handle: 0xnicc0
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+author: Alhimik
+author_handle: 0xAlhimik
 entry_type: tool
 company: Remotion
 classified_by: Importado del vault

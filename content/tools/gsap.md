@@ -11,17 +11,19 @@ tags:
   - web-animation
   - animacion
   - timelines
+  - web
 stars: 30117
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:59:00.157Z'
-updated_at: '2026-11-23T04:20:19.758Z'
+updated_at: '2026-11-27T04:14:38.247Z'
 source_tweet: 'https://x.com/Marlenuii/status/2111419391271186795'
 source_tweets:
   - 'https://x.com/Marlenuii/status/2111419391271186795'
   - 'https://x.com/flxrnc/status/2124231511499026436'
-author: Florence
-author_handle: flxrnc
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+author: Alhimik
+author_handle: 0xAlhimik
 entry_type: tool
 company: Florence
 classified_by: Importado del vault

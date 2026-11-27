@@ -1,0 +1,637 @@
+[
+  {
+    "tweet_id": "2125944687664017469",
+    "text": "Building your first API?\n\nThese 6 tools are worth knowing:\n\n1. https://t.co/aXHsFz26Td — Test HTTP requests\n2. https://t.co/0FkJY0eKWi — Explore API documentation\n3. https://t.co/rZg4xvaOr4 — Practice with a fake REST API\n4. https://t.co/66QIpGbYMY — Inspect HTTP requests\n5.",
+    "author_name": "• nanou •",
+    "author_handle": "NanouuSymeon",
+    "created_at": "2026-11-26T13:28:06.000Z",
+    "urls": [
+      "https://hoppscotch.io",
+      "https://swagger.io",
+      "https://jsonplaceholder.typicode.com",
+      "https://httpbin.org",
+      "http://hoppscotch.io",
+      "http://swagger.io",
+      "http://jsonplaceholder.typicode.com",
+      "http://httpbin.org",
+      "http://mockoon.com",
+      "http://postman.com"
+    ],
+    "note_tweet": "Building your first API?\n\nThese 6 tools are worth knowing:\n\n1. https://t.co/jk9XfHDSDt — Test HTTP requests\n2. https://t.co/AVK5Yv4wao — Explore API documentation\n3. https://t.co/43o11fNz5c — Practice with a fake REST API\n4. https://t.co/a4bylPDzWY — Inspect HTTP requests\n5. https://t.co/noWvRcFMCL — Create mock APIs\n6. https://t.co/wG97ILoiKP — Organize API requests and tests",
+    "items": [
+      {
+        "name": "Hoppscotch",
+        "url": "https://hoppscotch.io",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "api",
+          "http",
+          "testing"
+        ],
+        "summary": "Cliente web para probar peticiones HTTP a una API mientras la desarrollas.",
+        "highlights": [
+          "Recomendado para probar requests HTTP",
+          "Primera de 6 herramientas para construir tu primera API"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Swagger",
+        "url": "https://swagger.io",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "api",
+          "openapi",
+          "documentacion"
+        ],
+        "summary": "Herramientas para explorar y documentar APIs a partir de su especificación.",
+        "highlights": [
+          "Sirve para explorar la documentación de una API",
+          "Parte de una lista de herramientas para iniciarse en APIs"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "JSONPlaceholder",
+        "url": "https://jsonplaceholder.typicode.com",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "api",
+          "rest",
+          "mock"
+        ],
+        "summary": "API REST falsa y pública para practicar llamadas desde el frontend o el backend.",
+        "highlights": [
+          "API REST de prueba lista para usar",
+          "Útil para practicar sin montar un servidor"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "httpbin",
+        "url": "https://httpbin.org",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "http",
+          "debugging",
+          "api"
+        ],
+        "summary": "Servicio para inspeccionar peticiones HTTP: devuelve lo que envías para depurar clientes.",
+        "highlights": [
+          "Inspección de requests HTTP",
+          "Útil para depurar headers, cuerpos y métodos"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Mockoon",
+        "url": "http://mockoon.com",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "api",
+          "mock",
+          "testing"
+        ],
+        "summary": "Herramienta para crear APIs mock y simular endpoints durante el desarrollo.",
+        "highlights": [
+          "Creación de APIs simuladas",
+          "Permite avanzar el frontend sin el backend listo"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Postman",
+        "url": "http://postman.com",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "producto",
+        "tags": [
+          "api",
+          "testing",
+          "colecciones"
+        ],
+        "summary": "Plataforma para organizar peticiones de API en colecciones y automatizar sus pruebas.",
+        "highlights": [
+          "Organiza requests y tests de API",
+          "Recomendada en la lista de 6 herramientas para APIs"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125591625812574552",
+    "text": "3 platforms where you can earn in $\n\n1. https://t.co/zqpoPkCddu\n2. https://t.co/gvd0QWAo0a\n3. https://t.co/Y9jUexzzYN\n\nThanks me later.",
+    "author_name": "ʀᴀᴍ",
+    "author_handle": "ramdevkar07",
+    "created_at": "2026-11-25T14:05:09.000Z",
+    "urls": [
+      "https://contra.com",
+      "https://wishup.co",
+      "https://turing.com"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Contra",
+        "url": "https://contra.com",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "freelance",
+          "pagos-usd",
+          "remoto"
+        ],
+        "summary": "Plataforma freelance para conseguir proyectos y cobrar en dólares.",
+        "highlights": [
+          "Citada como plataforma para ganar en USD",
+          "Orientada a trabajo independiente"
+        ],
+        "entry_type": "job_remote",
+        "company": "Contra"
+      },
+      {
+        "name": "Wishup",
+        "url": "https://wishup.co",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "remoto",
+          "pagos-usd",
+          "asistente-virtual"
+        ],
+        "summary": "Plataforma de trabajo remoto mencionada para ganar en dólares.",
+        "highlights": [
+          "Citada como opción para ganar en USD",
+          "Trabajo remoto"
+        ],
+        "entry_type": "job_remote",
+        "company": "Wishup"
+      },
+      {
+        "name": "Turing",
+        "url": "https://turing.com",
+        "website_url": null,
+        "category": "Trabajo & Freelance",
+        "conjunto": null,
+        "tags": [
+          "remoto",
+          "desarrollador",
+          "pagos-usd"
+        ],
+        "summary": "Plataforma que conecta desarrolladores con empleos remotos pagados en dólares.",
+        "highlights": [
+          "Citada como plataforma para ganar en USD",
+          "Enfocada en perfiles de software remotos"
+        ],
+        "entry_type": "job_remote",
+        "company": "Turing"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125965707842322630",
+    "text": "1,000,000+ GITHUB STARS. ONE SKETCHBOOK. $0 A MONTH.\n\n15 open-source repos that take Fable 5.2 from a napkin sketch to a finished MP4\n\nSketch. Design. Motion. 3D. Film. Ship.\n\n01 Excalidraw → sketch the idea, your agent builds on top of it\nhttps://t.co/s9nQcb1kJx\n\n02 Rough.js → https://t.co/S3IjQ5Ja0S https://t.co/dzPRuevlBP",
+    "author_name": "Alhimik",
+    "author_handle": "0xAlhimik",
+    "created_at": "2026-11-26T14:51:37.000Z",
+    "urls": [
+      "https://github.com/excalidraw/excalidraw",
+      "https://x.com/0xAlhimik/status/2125965707842322630/video/1",
+      "https://twitter.com/flxrnc/status/2120207374250049675",
+      "http://github.com/excalidraw/excalidraw",
+      "http://github.com/rough-stuff/rough",
+      "http://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "http://github.com/Leonxlnx/taste-skill",
+      "http://github.com/magicuidesign/magicui",
+      "http://github.com/greensock/GSAP",
+      "http://github.com/ManimCommunity/manim",
+      "http://github.com/mrdoob/three.js",
+      "http://github.com/ahujasid/mcp-for-blender",
+      "http://github.com/alchaincyf/huashu-motion",
+      "http://github.com/heygen-com/hyperframes",
+      "http://github.com/remotion-dev/remotion",
+      "http://github.com/remotion-dev/skills",
+      "http://github.com/pbakaus/impeccable",
+      "http://github.com/FFmpeg/FFmpeg"
+    ],
+    "note_tweet": "1,000,000+ GITHUB STARS. ONE SKETCHBOOK. $0 A MONTH.\n\n15 open-source repos that take Fable 5.2 from a napkin sketch to a finished MP4\n\nSketch. Design. Motion. 3D. Film. Ship.\n\n01 Excalidraw → sketch the idea, your agent builds on top of it\nhttps://t.co/KVjNV5GeUv\n\n02 Rough.js → every line looks drawn by hand\nhttps://t.co/nfHlPnbRRr\n\n03 ui-ux-pro-max → 80 UI styles, 194 palettes, 74 font pairings\nhttps://t.co/picvH03hKh\n\n04 Taste Skill → art direction so it stops looking generic\nhttps://t.co/rAZ8VYYold\n\n05 Magic UI → animated UI pieces, copy and paste\nhttps://t.co/SRotIrSLxO\n\n06 GSAP → timing for every moving part, now 100% free incl. SplitText + MorphSVG\nhttps://t.co/fQeJv6W5wS\n\n07 Manim → math that moves like a 3Blue1Brown video\nhttps://t.co/BXleEiDa5e\n\n08 Three.js → 3D scenes that run in any tab\nhttps://t.co/9bENVABVPM\n\n09 Blender MCP → Claude builds the Blender scene for you\nhttps://t.co/p62jE8wFEi\n\n10 huashu-motion → launch films with a score made just for them\nhttps://t.co/yvuhfJV66R\n\n11 HyperFrames → write it as a web page, export it as video\nhttps://t.co/MpTQRVlbf5\n\n12 Remotion → build a video like you build a website\nhttps://t.co/BHRN9lgM91\n\n13 Remotion Skills → teaches your agent video the way pros do it\nhttps://t.co/leyU8aMN7K\n\n14 Impeccable → catches every flaw before you render\nhttps://t.co/xfOKfkU9Ae\n\n15 FFmpeg → final cut into a clean MP4\nhttps://t.co/MWD1SZGJPi\n\n1,050,392 stars combined. ui-ux-pro-max and Excalidraw alone are 290K.\n\n11 of 15 are MIT or Apache-2.0, GSAP is free even for commercial use. the one license to read: Remotion is free for individuals and small teams, bigger for-profit companies need a company license.\n\npaste this into Claude Code ↓\n\n\"Sketch a 20s launch film for [product] in Excalidraw and show me the storyboard first. Then pick a look from ui-ux-pro-max, run it through Taste Skill, animate with GSAP, add one Three.js hero shot, build it in HyperFrames, run Impeccable on the key frames and export 1080x1350 at 30fps with FFmpeg.\"\n\nidea → sketch → motion → polish → export\n\nthe full Fable 5.2 motion playbook below ↓",
+    "items": [
+      {
+        "name": "Excalidraw",
+        "url": "https://github.com/excalidraw/excalidraw",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "pizarra",
+          "diagramas",
+          "bocetos"
+        ],
+        "summary": "Pizarra open source de estilo dibujado a mano para bocetar ideas y storyboards.",
+        "highlights": [
+          "Paso 1 del flujo: bocetar la idea para que el agente construya encima",
+          "Junto a ui-ux-pro-max suma unas 290K estrellas, según el tuit"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Rough.js",
+        "url": "http://github.com/rough-stuff/rough",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "javascript",
+          "canvas",
+          "svg"
+        ],
+        "summary": "Librería JavaScript para dibujar gráficos con aspecto hecho a mano en canvas o SVG.",
+        "highlights": [
+          "Cada línea parece dibujada a mano",
+          "Parte de una lista de 15 repos open source para diseño y video"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "UI UX Pro Max Skill",
+        "url": "http://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skill",
+          "ui",
+          "diseno"
+        ],
+        "summary": "Skill para agentes de código con estilos de UI, paletas y combinaciones tipográficas.",
+        "highlights": [
+          "80 estilos de UI, 194 paletas y 74 pares de fuentes, según el tuit",
+          "Se usa para elegir el look antes de animar"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Taste Skill",
+        "url": "http://github.com/Leonxlnx/taste-skill",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skill",
+          "diseno",
+          "ui"
+        ],
+        "summary": "Skill de dirección de arte para que las interfaces generadas por agentes no se vean genéricas.",
+        "highlights": [
+          "Aporta dirección de arte al agente",
+          "Se aplica después de elegir estilo con ui-ux-pro-max"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Magic UI",
+        "url": "http://github.com/magicuidesign/magicui",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "componentes",
+          "animacion"
+        ],
+        "summary": "Colección de componentes de UI animados para copiar y pegar.",
+        "highlights": [
+          "Piezas de UI animadas copy-paste",
+          "Parte del flujo diseño → motion"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "GSAP",
+        "url": "http://github.com/greensock/GSAP",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "javascript",
+          "animacion",
+          "web"
+        ],
+        "summary": "Librería JavaScript de animación web para controlar el timing de cada elemento.",
+        "highlights": [
+          "Ahora 100% gratis, incluidos SplitText y MorphSVG, según el tuit",
+          "Gratis incluso para uso comercial"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Manim",
+        "url": "http://github.com/ManimCommunity/manim",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "animacion",
+          "matematicas"
+        ],
+        "summary": "Motor en Python para animaciones matemáticas al estilo de 3Blue1Brown.",
+        "highlights": [
+          "Animaciones matemáticas programáticas",
+          "Versión mantenida por la comunidad"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Three.js",
+        "url": "http://github.com/mrdoob/three.js",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "javascript",
+          "3d",
+          "webgl"
+        ],
+        "summary": "Librería JavaScript para escenas 3D que corren en cualquier navegador.",
+        "highlights": [
+          "Escenas 3D en cualquier pestaña",
+          "En el flujo sirve para un plano hero en 3D"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Blender MCP",
+        "url": "http://github.com/ahujasid/mcp-for-blender",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "mcp",
+          "blender",
+          "3d"
+        ],
+        "summary": "Servidor MCP que permite a Claude construir escenas en Blender.",
+        "highlights": [
+          "Claude arma la escena de Blender por ti",
+          "Conecta un agente con una herramienta 3D"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "huashu-motion",
+        "url": "http://github.com/alchaincyf/huashu-motion",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "video",
+          "motion",
+          "agent-skill"
+        ],
+        "summary": "Repo para crear videos de lanzamiento con música hecha a medida.",
+        "highlights": [
+          "Launch films con banda sonora propia",
+          "Parte de la lista de 15 repos de motion"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "HyperFrames",
+        "url": "http://github.com/heygen-com/hyperframes",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "video",
+          "html",
+          "render"
+        ],
+        "summary": "Herramienta de HeyGen para escribir un video como página web y exportarlo como video.",
+        "highlights": [
+          "Se escribe como web y se exporta a video",
+          "En el flujo es donde se construye la pieza final"
+        ],
+        "entry_type": "tool",
+        "company": "HeyGen"
+      },
+      {
+        "name": "Remotion",
+        "url": "http://github.com/remotion-dev/remotion",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "video",
+          "typescript"
+        ],
+        "summary": "Framework para crear videos programáticamente igual que construyes un sitio web.",
+        "highlights": [
+          "Videos construidos como sitios web",
+          "Gratis para individuos y equipos pequeños; empresas grandes necesitan licencia"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Remotion Skills",
+        "url": "http://github.com/remotion-dev/skills",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skill",
+          "remotion",
+          "video"
+        ],
+        "summary": "Skills que enseñan a tu agente de código a producir video con Remotion como un profesional.",
+        "highlights": [
+          "Enseña video al agente",
+          "Complemento oficial del repo de Remotion"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Impeccable",
+        "url": "http://github.com/pbakaus/impeccable",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "agent-skill",
+          "diseno",
+          "calidad"
+        ],
+        "summary": "Skill que revisa el diseño y detecta fallos antes de renderizar.",
+        "highlights": [
+          "Detecta defectos antes del render",
+          "En el flujo se corre sobre los frames clave"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "FFmpeg",
+        "url": "http://github.com/FFmpeg/FFmpeg",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "video",
+          "cli",
+          "ffmpeg"
+        ],
+        "summary": "Herramienta de línea de comandos para procesar y exportar video y audio.",
+        "highlights": [
+          "Corte final a un MP4 limpio",
+          "El tuit propone exportar 1080x1350 a 30fps"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125954095949185211",
+    "text": "👋🏼ADIOS VERCEL.\n👋🏼ADIOS HEROKU.\n\nSe llama Coolify. Open source. En tu propio servidor.\n\nLo que hace:\n-&gt; Publica webs, apps y bases de datos\n-&gt; Node, Python, PHP, Go, Docker...\n-&gt; Certificado SSL automatico\n-&gt; Tu dominio en 1 clic\n-&gt; Copias de seguridad automaticas\n-&gt; Panel como https://t.co/o1bfq6zOMr",
+    "author_name": "José Siles | AI | Data",
+    "author_handle": "josesilesdata",
+    "created_at": "2026-11-26T14:05:29.000Z",
+    "urls": [
+      "https://x.com/josesilesdata/status/2125954095949185211/photo/1"
+    ],
+    "note_tweet": "👋🏼ADIOS VERCEL.\n👋🏼ADIOS HEROKU.\n\nSe llama Coolify. Open source. En tu propio servidor.\n\nLo que hace:\n-> Publica webs, apps y bases de datos\n-> Node, Python, PHP, Go, Docker...\n-> Certificado SSL automatico\n-> Tu dominio en 1 clic\n-> Copias de seguridad automaticas\n-> Panel como el de Vercel, pero en TU servidor\n\nUn servidor de 5 euros/mes + Coolify = todas las webs que quieras.\n\n66.000+ estrellas en GitHub. Licencia Apache 2.0.\n\nEnlace en el primer comentario",
+    "items": [
+      {
+        "name": "Coolify",
+        "url": "https://x.com/josesilesdata/status/2125954095949185211",
+        "website_url": null,
+        "category": "DevOps & Cloud",
+        "conjunto": "recursos",
+        "tags": [
+          "self-hosting",
+          "docker",
+          "paas"
+        ],
+        "summary": "Plataforma open source para desplegar webs, apps y bases de datos en tu propio servidor, como alternativa a Vercel y Heroku.",
+        "highlights": [
+          "Soporta Node, Python, PHP, Go y Docker",
+          "SSL automático, dominio en 1 clic y backups automáticos",
+          "Licencia Apache 2.0 y más de 66.000 estrellas, según el tuit; el enlace al repo no venía en el tuit"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125822966042866069",
+    "text": "FREE CLAUDE OPUS 5.5, SONNET 5.5 AND MORE\n\nAXTAPI is giving $3 free credits on signup, no card required\n\nhow to get it:\n\n- visit: https://t.co/9pCu059znF\n- sign up and claim your $3 credits\n- create your API key and start using it\n\ngrab it while the launch bonus is live https://t.co/6BnTXxTqwJ",
+    "author_name": "Alan",
+    "author_handle": "alannnfx",
+    "created_at": "2026-11-26T05:24:25.000Z",
+    "urls": [
+      "https://axtapi.com",
+      "https://x.com/alannnfx/status/2125822966042866069/photo/1"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "AXTAPI",
+        "url": "https://axtapi.com",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "api",
+          "llm",
+          "creditos"
+        ],
+        "summary": "Servicio de API para modelos de IA que regala 3 USD de crédito al registrarse, sin tarjeta.",
+        "highlights": [
+          "3 USD de crédito gratis al registrarte, sin tarjeta",
+          "Se crea una API key y se usa de inmediato"
+        ],
+        "entry_type": "product_showcase",
+        "company": "AXTAPI"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125858343445225978",
+    "text": "200 EUR to try VPS\n\nI have already purchased one and that might be the reason why it does not work for me\n\nIn case it works for you, lemme know if that helps\n\nhttps://t.co/sqqajKDHlL https://t.co/6l3h0VCmWX https://t.co/XjHWSZRhz5",
+    "author_name": "Dmytro Bavykin",
+    "author_handle": "DmytroBavykin",
+    "created_at": "2026-11-26T07:45:00.000Z",
+    "urls": [
+      "https://www.ovhcloud.com/en-ie/lp/cloud-storage-trial-offer/",
+      "https://x.com/DmytroBavykin/status/2125858343445225978/photo/1",
+      "https://twitter.com/i/status/2125851378627338563"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "OVHcloud Cloud Storage (prueba)",
+        "url": "https://www.ovhcloud.com/en-ie/lp/cloud-storage-trial-offer/",
+        "website_url": null,
+        "category": "DevOps & Cloud",
+        "conjunto": "producto",
+        "tags": [
+          "cloud",
+          "vps",
+          "prueba-gratis"
+        ],
+        "summary": "Oferta de prueba de OVHcloud con 200 EUR de crédito para probar sus servicios cloud.",
+        "highlights": [
+          "200 EUR para probar VPS, según el tuit",
+          "El autor no pudo usarla porque ya era cliente"
+        ],
+        "entry_type": "product_showcase",
+        "company": "OVHcloud"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2126011712692224264",
+    "text": "If you pay for a Gemini or Google AI subscription, you're sitting on a 96 GB RTX PRO 6000 Blackwell in Colab and probably haven't touched it.\n\n1 script launches GLM-5.3-Flash Uncensored (321B) at 102 tok/s in ~10 minutes and gives you a local API endpoint for your coding harness. https://t.co/nu84RXUCY9",
+    "author_name": "Alexey Fateev",
+    "author_handle": "superalesha",
+    "created_at": "2026-11-26T17:54:26.000Z",
+    "urls": [
+      "https://x.com/superalesha/status/2126011712692224264/video/1"
+    ],
+    "note_tweet": "If you pay for a Gemini or Google AI subscription, you're sitting on a 96 GB RTX PRO 6000 Blackwell in Colab and probably haven't touched it.\n\n1 script launches GLM-5.3-Flash Uncensored (321B) at 102 tok/s in ~10 minutes and gives you a local API endpoint for your coding harness.\n\nGoogle bundles Colab compute units straight into Google AI plans, and a G4 instance (RTX PRO 6000 Blackwell 96 GB + 176 GB RAM + Zen 5 EPYC) only burns 10.05 CU/hr. That's cheaper than H100 (~18.05 CU/hr) with 16 GB more VRAM:\n\n- Google AI Pro ($20/mo, 200 CU): ~20 hours\n- Google AI Ultra 5x ($100/mo, 1,000 CU): ~99 hours\n- Google AI Ultra 20x ($200/mo, 2,000 CU): ~199 hours\n\nI tested 3 public abliterated EXL3 tiers on Project Maya + DFlash2 and packed them into 1 launcher with SSH port forwarding to 127.0.0.1:18100 (OpenAI /v1 and Anthropic /v1/messages, with tool calls, thinking, vision, and 0 refusals):\n\n- 2.51 bpw (default, 98.1 GiB, 131K ctx): 102.3 tok/s decode, 1,190 / 2,255 tok/s prefill (~10 min cold start, ~22s warm)\n- 2.51 bpw at 262K ctx: 98.9 tok/s decode\n- 3.05 bpw (117.5 GiB, 131K ctx): 89.0 tok/s decode\n- 4.05 bpw (153.8 GiB, 131K ctx): 71.8 tok/s decode\n\nIt prints your local URL, port, model ID, and ready-to-paste snippets for Claude Code, Codex, or OpenCode as soon as the tunnel is live, and ships with stop(.)sh so you don't burn units while idle. Link to the repo in the reply.",
+    "items": [
+      {
+        "name": "GLM en Colab con suscripción Google AI",
+        "url": "https://x.com/superalesha/status/2126011712692224264",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "consejos",
+        "tags": [
+          "colab",
+          "llm",
+          "gpu",
+          "inferencia"
+        ],
+        "summary": "Consejo para aprovechar las unidades de cómputo de Colab incluidas en Google AI y servir un LLM grande como API local para agentes de código.",
+        "highlights": [
+          "Instancia G4 con RTX PRO 6000 Blackwell 96 GB a 10,05 CU/h",
+          "Un script lanza el modelo y expone endpoints OpenAI y Anthropic en 127.0.0.1:18100",
+          "Imprime snippets para Claude Code, Codex u OpenCode; el repo está en una respuesta y no venía en el tuit"
+        ],
+        "entry_type": "tech_tip"
+      }
+    ]
+  }
+]

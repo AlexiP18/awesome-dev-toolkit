@@ -14,14 +14,15 @@ tags:
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:14:31.407Z'
-updated_at: '2026-11-25T04:11:50.706Z'
+updated_at: '2026-11-27T04:14:38.198Z'
 source_tweet: 'https://x.com/noahelhadedy/status/2108461831928811941'
 source_tweets:
   - 'https://x.com/noahelhadedy/status/2108461831928811941'
   - 'https://x.com/csaba_kissi/status/2124050003681497091'
   - 'https://x.com/seeconvm/status/2124956200450052431'
-author: seeco
-author_handle: seeconvm
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+author: Alhimik
+author_handle: 0xAlhimik
 entry_type: tool
 company: Csaba Kissi
 classified_by: Importado del vault
