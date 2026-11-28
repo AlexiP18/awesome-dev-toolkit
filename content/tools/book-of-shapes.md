@@ -2,21 +2,27 @@
 name: Book of Shapes
 url: 'https://bookofshapes.com/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - patrones
   - generativo
   - arte-algoritmico
   - inspiracion
   - diseno
+  - svg
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:10:48.501Z'
+updated_at: '2026-11-28T04:21:14.333Z'
 source_tweet: 'https://x.com/Hartdrawss/status/2108437333603156409'
-author: Harshil Tomar
-author_handle: Hartdrawss
+source_tweets:
+  - 'https://x.com/Hartdrawss/status/2108437333603156409'
+  - 'https://x.com/basit_designs/status/2126350942396411955'
+author: Basit A. Khan
+author_handle: basit_designs
 entry_type: tool
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: inspiracion
+company: Basit A. Khan
+classified_by: Importado del vault
 ---
 # Book of Shapes
 

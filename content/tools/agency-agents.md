@@ -2,6 +2,7 @@
 name: agency-agents
 url: 'https://github.com/msitarzewski/agency-agents'
 category: Agentes & Protocolo MCP
+conjunto: recursos
 tags:
   - agentes-ia
   - multi-agente
@@ -12,17 +13,23 @@ tags:
   - frontend
   - qa
   - prompts
+  - agentes
+  - claude-code
+  - subagents
 stars: 166903
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T18:21:55.789Z'
+updated_at: '2026-11-28T04:21:15.461Z'
 source_tweet: 'https://x.com/Fluyeporlaweb/status/2075641449274626138'
-author: PA13L0
-author_handle: Fluyeporlaweb
+source_tweets:
+  - 'https://x.com/Fluyeporlaweb/status/2075641449274626138'
+  - 'https://x.com/deanwperkins/status/2125951357580460265'
+author: Dean W. Perkins
+author_handle: deanwperkins
 entry_type: tool
 company: msitarzewski
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # agency-agents
 

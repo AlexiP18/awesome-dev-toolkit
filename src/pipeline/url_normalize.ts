@@ -242,10 +242,17 @@ function namesCompatible(repoToken: string, repoName: string, landingName: strin
   return extra(nameLand, repoToken) || extra(nameRepo, repoToken) || extra(nameLand, nameRepo) || extra(nameRepo, nameLand);
 }
 
+function closeBrand(a: string, b: string): boolean {
+  return a.length >= 4 && (a === b || (b.startsWith(a) && b.length - a.length <= 4));
+}
+
 /**
  * Une github.com/owner/repo con la landing del mismo producto.
- * El host tiene que coincidir con el repo, o el nombre tiene que ser el mismo y el dominio casi igual
- * (t3code ↔ t3.codes). No alcanza con que un nombre contenga al otro ("motion" no es "motionkit").
+ * El host tiene que coincidir con el repo y el owner tiene que ser esa marca
+ * (blender/blender ↔ blender.org). Un repo genérico de otro owner no es esa web
+ * (getsentry/skills no es skills.sh). Si el nombre es el mismo y el dominio casi igual,
+ * también une (t3code ↔ t3.codes). No alcanza con que un nombre contenga al otro
+ * ("motion" no es "motionkit").
  */
 export function repoMatchesLanding(
   repoUrl?: string | null,
@@ -265,8 +272,10 @@ export function repoMatchesLanding(
   const label = alnum(host.split('.')[0] || '');
   const flat = alnum(host);
   const namesOk = namesCompatible(repoToken, repoNoteName || '', landingName || '');
+  const ownerToken = alnum(parts.owner);
+  const ownerIsBrand = closeBrand(label, ownerToken) || closeBrand(ownerToken, label);
 
-  if (label.length >= 4 && label === repoToken) return namesOk;
+  if (label.length >= 4 && label === repoToken) return ownerIsBrand && namesOk;
 
   const nameRepo = alnum(repoNoteName || '');
   const nameLand = alnum(landingName || '');

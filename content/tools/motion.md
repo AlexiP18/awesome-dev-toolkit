@@ -1,7 +1,9 @@
 ---
 name: Motion
 url: 'https://github.com/motiondivision/motion'
+website_url: 'https://motion.dev/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - react
   - animation
@@ -12,21 +14,22 @@ tags:
   - typescript
   - motion-design
   - ui-animation
+  - animacion
 stars: 34846
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:59:00.155Z'
+updated_at: '2026-11-28T04:21:16.763Z'
 source_tweet: 'https://x.com/Marlenuii/status/2111419391271186795'
-author: Marlen
-author_handle: Marlenuii
-entry_type: tool
-classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
-website_url: 'https://motion.dev/'
 source_tweets:
   - 'https://x.com/Marlenuii/status/2111419391271186795'
   - 'https://x.com/Lucy_love_AI/status/2110203192831303920'
-updated_at: '2026-11-13T05:00:36.270Z'
+  - 'https://x.com/WasimShips/status/2126356476700610837'
+author: Wasim
+author_handle: WasimShips
+entry_type: tool
+company: Wasim
+classified_by: Importado del vault
 ---
 # Motion
 

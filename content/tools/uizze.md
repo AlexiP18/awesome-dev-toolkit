@@ -2,16 +2,22 @@
 name: Uizze
 url: 'https://uizze.com/'
 category: Frontend & UI
-conjunto: inspiracion
+conjunto: producto
 tags:
   - ui
   - referencias
   - flujos
   - agentes
+  - agent-skills
+  - diseno
 status: to_try
 date_added: '2026-11-23'
 created_at: '2026-11-23T04:20:20.274Z'
+updated_at: '2026-11-28T04:21:14.862Z'
 source_tweet: 'https://x.com/Dionisselamii/status/2124246724319297825'
+source_tweets:
+  - 'https://x.com/Dionisselamii/status/2124246724319297825'
+  - 'https://x.com/Dionisselamii/status/2126253798230224990'
 author: Dionis
 author_handle: Dionisselamii
 entry_type: tool

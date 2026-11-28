@@ -1,19 +1,25 @@
 ---
 name: claude-quickstarts
 url: 'https://github.com/anthropics/claude-quickstarts'
-category: AI & Machine Learning
+category: Agentes & Protocolo MCP
 conjunto: recursos
 tags:
   - claude
   - plantillas
   - anthropic
   - ejemplos
+  - agentes
+  - quickstart
 status: to_try
 date_added: '2026-11-18'
 created_at: '2026-11-18T04:20:53.302Z'
+updated_at: '2026-11-28T04:21:15.601Z'
 source_tweet: 'https://x.com/so_ainsight/status/2121440495276798005'
-author: そう@『n8nの教科書』マイナビ出版 10/22発売
-author_handle: so_ainsight
+source_tweets:
+  - 'https://x.com/so_ainsight/status/2121440495276798005'
+  - 'https://x.com/deanwperkins/status/2125951357580460265'
+author: Dean W. Perkins
+author_handle: deanwperkins
 entry_type: tool
 company: そう@『n8nの教科書』マイナビ出版 10/22発売
 classified_by: Importado del vault

@@ -13,13 +13,14 @@ tags:
 status: to_try
 date_added: '2026-11-07'
 created_at: '2026-11-07T20:40:41.442Z'
-updated_at: '2026-11-23T04:20:20.457Z'
+updated_at: '2026-11-28T04:21:15.963Z'
 source_tweet: 'https://x.com/BardhylBytyqi/status/2118838961602748834'
 source_tweets:
   - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
   - 'https://x.com/Dionisselamii/status/2124246724319297825'
-author: Dionis
-author_handle: Dionisselamii
+  - 'https://x.com/nikosolenne/status/2126078111473074572'
+author: niko.
+author_handle: nikosolenne
 entry_type: tool
 company: Dionis
 classified_by: Importado del vault

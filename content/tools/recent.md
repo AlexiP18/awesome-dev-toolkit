@@ -2,6 +2,7 @@
 name: Recent
 url: 'https://recent.design/'
 category: Frontend & UI
+conjunto: inspiracion
 tags:
   - inspiracion
   - tendencias
@@ -10,19 +11,21 @@ tags:
   - inspiración
   - curaduría
   - ui
+  - diseno
 status: to_try
 date_added: '2026-11-07'
 created_at: '2026-11-07T20:40:41.443Z'
+updated_at: '2026-11-28T04:21:16.043Z'
 source_tweet: 'https://x.com/BardhylBytyqi/status/2118838961602748834'
-author: Bardhyl Bytyqi
-author_handle: BardhylBytyqi
-entry_type: tool
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: inspiracion
 source_tweets:
   - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
   - 'https://x.com/tranmautritam/status/2080583043929223469'
-updated_at: '2026-11-13T05:00:36.258Z'
+  - 'https://x.com/nikosolenne/status/2126078111473074572'
+author: niko.
+author_handle: nikosolenne
+entry_type: tool
+company: niko.
+classified_by: Importado del vault
 ---
 # Recent
 

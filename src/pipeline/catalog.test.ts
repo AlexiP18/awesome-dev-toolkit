@@ -78,6 +78,20 @@ test('sameProduct une repo y landing, y no une un subproducto con la marca', () 
   );
   assert.equal(
     sameProduct(
+      { url: 'https://github.com/getsentry/skills', name: 'code-review (Sentry)' },
+      { url: 'https://skills.sh/', name: 'skills.sh' }
+    ),
+    false
+  );
+  assert.equal(
+    sameProduct(
+      { url: 'https://github.com/mattpocock/skills', name: 'skills' },
+      { url: 'https://www.skills.sh/', name: 'skills.sh' }
+    ),
+    false
+  );
+  assert.equal(
+    sameProduct(
       { url: 'https://styles.refero.design/', website: 'https://refero.design/', name: 'Refero Styles' },
       { url: 'https://refero.design/', name: 'Refero' }
     ),

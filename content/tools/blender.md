@@ -19,14 +19,15 @@ stars: 21589
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:59:00.231Z'
-updated_at: '2026-11-26T04:17:16.420Z'
+updated_at: '2026-11-28T04:21:17.297Z'
 source_tweet: 'https://x.com/Marlenuii/status/2111419391271186795'
 source_tweets:
   - 'https://x.com/Marlenuii/status/2111419391271186795'
   - 'https://x.com/Y0urDumble/status/2114084322227503206'
   - 'https://x.com/0xnicc0/status/2125567907522379841'
-author: nicco
-author_handle: 0xnicc0
+  - 'https://x.com/WasimShips/status/2126356476700610837'
+author: Wasim
+author_handle: WasimShips
 entry_type: tool
 company: nicco
 classified_by: Importado del vault

@@ -275,3 +275,58 @@ test('import no pisa un tweet que ya estaba en una ficha previa', () => {
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('import no trata skills.sh como la landing de un repo ajeno llamado skills', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'vault-import-skills-sh-'));
+  const previous = process.env.CONTENT_DIR;
+  process.env.CONTENT_DIR = dir;
+  try {
+    createOrUpdateToolNote({
+      classification: {
+        name: 'code-review (Sentry)',
+        canonicalUrl: 'https://github.com/getsentry/skills',
+        category: 'Agentes & Protocolo MCP',
+        conjunto: 'consejos',
+        tags: ['agent-skills', 'code-review'],
+        oneLiner: 'Skill de Sentry para revisar código.',
+        keyHighlights: ['Procedimiento de revisión'],
+        recommendedNotes: 'Ficha de Sentry.',
+        entryType: 'tool',
+      },
+      sourceTweet: 'https://x.com/saurav_tweets/status/2123724003781255599',
+      author: 'Saurav',
+    });
+    const before = fs.readFileSync(path.join(dir, 'tools', 'code-review-sentry.md'), 'utf-8');
+    const stats = importVaultBatch([
+      bookmark({
+        tweet_id: '2126235523513483528',
+        author_name: 'Noah',
+        author_handle: 'noahelhadedy',
+        items: [
+          {
+            name: 'skills.sh',
+            url: 'https://www.skills.sh/',
+            website_url: null,
+            category: 'Agentes & Protocolo MCP',
+            conjunto: 'inspiracion',
+            tags: ['agent-skills', 'claude'],
+            summary: 'Directorio de agent skills.',
+            highlights: ['Catálogo de skills de agentes'],
+            entry_type: 'tool',
+          },
+        ],
+      }),
+    ]);
+    assert.equal(stats.created, 1);
+    assert.equal(stats.updated, 0);
+    assert.equal(stats.needsReview, 0);
+    assert.equal(fs.readFileSync(path.join(dir, 'tools', 'code-review-sentry.md'), 'utf-8'), before);
+    const skills = matter(fs.readFileSync(path.join(dir, 'tools', 'skillssh.md'), 'utf-8'));
+    assert.equal(skills.data.url, 'https://skills.sh/');
+    assert.equal(skills.data.name, 'skills.sh');
+  } finally {
+    if (previous === undefined) delete process.env.CONTENT_DIR;
+    else process.env.CONTENT_DIR = previous;
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});

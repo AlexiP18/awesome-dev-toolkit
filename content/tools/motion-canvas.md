@@ -11,17 +11,19 @@ tags:
   - visualization
   - presentation
   - motion-graphics
+  - animacion
 stars: 19692
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:40:13.005Z'
-updated_at: '2026-11-26T04:17:16.781Z'
+updated_at: '2026-11-28T04:21:16.716Z'
 source_tweet: 'https://x.com/Lucy_love_AI/status/2110203192831303920'
 source_tweets:
   - 'https://x.com/Lucy_love_AI/status/2110203192831303920'
   - 'https://x.com/0xnicc0/status/2125567907522379841'
-author: nicco
-author_handle: 0xnicc0
+  - 'https://x.com/WasimShips/status/2126356476700610837'
+author: Wasim
+author_handle: WasimShips
 entry_type: tool
 company: Motion Canvas
 classified_by: Importado del vault

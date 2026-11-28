@@ -2,6 +2,7 @@
 name: Be UI
 url: 'https://beui.dev/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - componentes
   - react
@@ -10,19 +11,22 @@ tags:
   - frontend
   - nextjs
   - react-native
+  - animacion
+  - ui
 status: to_try
 date_added: '2026-11-07'
 created_at: '2026-11-07T20:40:41.446Z'
+updated_at: '2026-11-28T04:21:16.163Z'
 source_tweet: 'https://x.com/BardhylBytyqi/status/2118838961602748834'
-author: Bardhyl Bytyqi
-author_handle: BardhylBytyqi
-entry_type: tool
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
 source_tweets:
   - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
   - 'https://x.com/Hartdrawss/status/2108799722727059563'
-updated_at: '2026-11-13T05:00:36.257Z'
+  - 'https://x.com/nikosolenne/status/2126078111473074572'
+author: niko.
+author_handle: nikosolenne
+entry_type: tool
+company: niko.
+classified_by: Importado del vault
 ---
 # Be UI
 

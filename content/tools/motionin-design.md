@@ -2,6 +2,7 @@
 name: MotionIn Design
 url: 'https://motionin.design/'
 category: Frontend & UI
+conjunto: producto
 tags:
   - motion
   - web-design
@@ -18,21 +19,25 @@ tags:
   - ui-ux
   - interactivo
   - diseño-web
+  - ia
+  - generador-web
+  - diseno
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:49:28.172Z'
+updated_at: '2026-11-28T04:21:15.777Z'
 source_tweet: 'https://x.com/VullnetAdemaj/status/2112101526336364705'
-author: Vullnet Ademaj
-author_handle: VullnetAdemaj
-entry_type: tool
-classified_by: Google Gemini (Flash)
-conjunto: producto
 source_tweets:
   - 'https://x.com/VullnetAdemaj/status/2112101526336364705'
   - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
   - 'https://x.com/VullnetAdemaj/status/2108281499686478021'
   - 'https://x.com/BardhylBytyqi/status/2117273221808452041'
-updated_at: '2026-11-13T05:00:36.259Z'
+  - 'https://x.com/nikosolenne/status/2126078111473074572'
+author: niko.
+author_handle: nikosolenne
+entry_type: tool
+company: niko.
+classified_by: Importado del vault
 ---
 # MotionIn Design
 
