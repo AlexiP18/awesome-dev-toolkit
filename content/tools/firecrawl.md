@@ -2,7 +2,8 @@
 name: Firecrawl
 url: 'https://github.com/firecrawl/firecrawl'
 website_url: 'https://firecrawl.dev/'
-category: Data Engineering & ETL
+category: Backend & APIs
+conjunto: recursos
 tags:
   - web-scraping
   - crawler
@@ -14,13 +15,16 @@ stars: 199183
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:51:34.455Z'
+updated_at: '2026-11-26T04:17:17.139Z'
 source_tweet: 'https://x.com/katsudev/status/2077021776412897641'
-author: KATSU
-author_handle: katsudev
+source_tweets:
+  - 'https://x.com/katsudev/status/2077021776412897641'
+  - 'https://x.com/Lucy_love_AI/status/2125396894784561159'
+author: 露西的百宝箱
+author_handle: Lucy_love_AI
 entry_type: tool
 company: Firecrawl
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Firecrawl
 

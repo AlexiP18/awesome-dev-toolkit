@@ -2,7 +2,8 @@
 name: Three.js
 url: 'https://github.com/mrdoob/three.js'
 website_url: 'https://threejs.org/'
-category: Frontend & UI
+category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - 3d
   - webgl
@@ -12,13 +13,19 @@ tags:
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:40:13.038Z'
+updated_at: '2026-11-28T04:21:17.345Z'
 source_tweet: 'https://x.com/Lucy_love_AI/status/2110203192831303920'
-author: 露西的百宝箱
-author_handle: Lucy_love_AI
+source_tweets:
+  - 'https://x.com/Lucy_love_AI/status/2110203192831303920'
+  - 'https://x.com/flxrnc/status/2124231511499026436'
+  - 'https://x.com/0xnicc0/status/2125567907522379841'
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+  - 'https://x.com/WasimShips/status/2126356476700610837'
+author: Wasim
+author_handle: WasimShips
 entry_type: tool
 company: Three.js
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Three.js
 

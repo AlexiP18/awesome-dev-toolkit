@@ -14,11 +14,6 @@ source_tweet: 'https://x.com/konig0000/status/2111804913416331448'
 author: chaos
 author_handle: konig0000
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---

@@ -8,6 +8,10 @@ tags:
   - 3d
   - assets
   - ui
+  - iconos-3d
+  - recursos-graficos
+  - frontend
+  - diseno
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:08:38.654Z'
@@ -17,6 +21,10 @@ author_handle: himanshubuildss
 entry_type: tool
 classified_by: DeepSeek Directo (deepseek-flash)
 conjunto: recursos
+source_tweets:
+  - 'https://x.com/himanshubuildss/status/2108738253239255073'
+  - 'https://x.com/iamtanzil_/status/2110941301344481761'
+updated_at: '2026-11-13T05:00:36.268Z'
 ---
 # 3D Icons
 
@@ -37,3 +45,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://3dicons.co/](https://3dicons.co/)
 - Tweet origen: [Ver en X](https://x.com/himanshubuildss/status/2108738253239255073)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/iamtanzil_/status/2110941301344481761)

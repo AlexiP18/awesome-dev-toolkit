@@ -1,23 +1,30 @@
 ---
 name: agent-skills
 url: 'https://github.com/addyosmani/agent-skills'
-category: AI & Machine Learning
+category: Agentes & Protocolo MCP
+conjunto: consejos
 tags:
   - claude-code
   - skills
   - agentes
   - ia
   - automatizacion
+  - agent-skills
+  - tdd
+  - workflow
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T03:10:27.213Z'
+updated_at: '2026-11-28T04:21:15.645Z'
 source_tweet: 'https://x.com/brenzhills/status/2100222045535731755'
-author: brenz.
-author_handle: brenzhills
+source_tweets:
+  - 'https://x.com/brenzhills/status/2100222045535731755'
+  - 'https://x.com/deanwperkins/status/2125951357580460265'
+author: Dean W. Perkins
+author_handle: deanwperkins
 entry_type: tool
 company: Addy Osmani
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # agent-skills
 

@@ -18,10 +18,6 @@ author: eigen
 author_handle: e1genqq
 entry_type: tool
 company: pmndrs
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---

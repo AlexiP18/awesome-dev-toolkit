@@ -1,7 +1,8 @@
 ---
 name: Tone.js
 url: 'https://github.com/Tonejs/Tone.js'
-category: Frontend & UI
+category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - web-audio
   - music
@@ -11,21 +12,21 @@ tags:
   - typescript
   - interactive-audio
   - midi
+  - audio
 stars: 14873
 status: to_try
 date_added: '2026-11-02'
 created_at: '2026-11-02T17:19:17.281Z'
+updated_at: '2026-11-26T04:17:16.904Z'
 source_tweet: 'https://x.com/e1genqq/status/2114445900131013003'
-author: eigen
-author_handle: e1genqq
+source_tweets:
+  - 'https://x.com/e1genqq/status/2114445900131013003'
+  - 'https://x.com/0xnicc0/status/2125567907522379841'
+author: nicco
+author_handle: 0xnicc0
 entry_type: tool
 company: Tonejs
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Tone.js
 

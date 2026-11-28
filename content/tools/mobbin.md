@@ -2,21 +2,29 @@
 name: Mobbin
 url: 'https://mobbin.com/'
 category: Frontend & UI
+conjunto: inspiracion
 tags:
   - mobile
   - ux
   - referencia
   - app-screens
+  - ui
+  - user-flows
+  - referencias
 status: to_try
 date_added: '2026-11-07'
 created_at: '2026-11-07T20:40:41.541Z'
+updated_at: '2026-11-28T04:21:16.247Z'
 source_tweet: 'https://x.com/BardhylBytyqi/status/2118838961602748834'
-author: Bardhyl Bytyqi
-author_handle: BardhylBytyqi
+source_tweets:
+  - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
+  - 'https://x.com/Dionisselamii/status/2124246724319297825'
+  - 'https://x.com/nikosolenne/status/2126078111473074572'
+author: niko.
+author_handle: nikosolenne
 entry_type: tool
 company: Mobbin
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: inspiracion
+classified_by: Importado del vault
 ---
 # Mobbin
 

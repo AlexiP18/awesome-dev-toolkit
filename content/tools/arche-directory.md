@@ -2,6 +2,7 @@
 name: Arche Directory
 url: 'https://arche.directory/'
 category: Frontend & UI
+conjunto: inspiracion
 tags:
   - diseño-web
   - inspiracion
@@ -10,20 +11,21 @@ tags:
   - frontend
   - ui
   - curated
+  - diseno-web
+  - secciones
 status: to_try
 date_added: '2026-11-02'
 created_at: '2026-11-02T03:10:00.323Z'
+updated_at: '2026-11-18T04:20:53.734Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2116071103206724053'
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2116071103206724053'
+  - 'https://x.com/csaba_kissi/status/2121524078209310803'
 author: Csaba Kissi
 author_handle: csaba_kissi
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
-classified_by: Google Gemini (Flash)
-conjunto: inspiracion
+company: Csaba Kissi
+classified_by: Importado del vault
 ---
 # Arche Directory
 

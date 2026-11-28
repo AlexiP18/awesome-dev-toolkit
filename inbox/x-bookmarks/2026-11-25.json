@@ -1,0 +1,901 @@
+[
+  {
+    "tweet_id": "2125535911366840551",
+    "text": "free 100m tokens for deepseek and glm 😳\n\ndahl inference gives every new account 100 million tokens\n\ndeepseek v4 flash\nglm 5.3 flash\nminimax m2.7\n\nno card needed, \nthere is no email login\n\nhttps://t.co/vo50DUSr9m https://t.co/6hWQGisgkk",
+    "author_name": "Moeez",
+    "author_handle": "Moeez_o",
+    "created_at": "2026-11-25T10:23:46.000Z",
+    "urls": [
+      "https://inference.dahl.global/"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Dahl Inference",
+        "url": "https://inference.dahl.global/",
+        "website_url": null,
+        "category": "AI & Machine Learning",
+        "conjunto": "producto",
+        "tags": [
+          "llm",
+          "inferencia",
+          "api",
+          "creditos-gratis"
+        ],
+        "summary": "Servicio de inferencia de LLMs que regala 100 millones de tokens a cada cuenta nueva, sin tarjeta.",
+        "highlights": [
+          "Modelos: DeepSeek V4 Flash, GLM 5.3 Flash y MiniMax M2.7",
+          "100M tokens gratis por cuenta nueva",
+          "No pide tarjeta de crédito"
+        ],
+        "entry_type": "product_showcase",
+        "company": "Dahl"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125606772694212809",
+    "text": "Canvix is a free, open-source Canva alternative with no watermarks.\n\n366 templates, AI editing, multiple export formats and MCP support for AI-powered designing.\n\nGitHub: https://t.co/LdVcqv3nPr https://t.co/CHpna8GSc7",
+    "author_name": "Shoumya Vishwakarma",
+    "author_handle": "Shoumya23",
+    "created_at": "2026-11-25T15:05:21.000Z",
+    "urls": [
+      "https://github.com/mir-ashiq/canvix"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Canvix",
+        "url": "https://github.com/mir-ashiq/canvix",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "diseno-grafico",
+          "open-source",
+          "mcp",
+          "canva-alternativa"
+        ],
+        "summary": "Alternativa libre y open source a Canva, sin marcas de agua, con edición asistida por IA y soporte MCP.",
+        "highlights": [
+          "366 plantillas incluidas",
+          "Edición con IA y varios formatos de exportación",
+          "Soporte MCP para diseñar desde agentes de IA"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125608317187682479",
+    "text": "5 skills that kill AI slop:\n\n1. ThinkUI\nhttps://t.co/qHzFOuktnB\n\n2. Anti UI Slop\nhttps://t.co/DsoyRd1iJU\n\n3. Taste Skill\nhttps://t.co/gKTaoGCIiS\n\n4. Emil Design Engineering\nhttps://t.co/QlM85EfiZd\n\n5. Vercel Web Design Guidelines\nhttps://t.co/XcnMO8jDcA https://t.co/gWmHooe0og",
+    "author_name": "Dionis",
+    "author_handle": "Dionisselamii",
+    "created_at": "2026-11-25T15:11:29.000Z",
+    "urls": [
+      "https://thinkui.xyz",
+      "https://uizze.com",
+      "https://github.com/Leonxlnx/",
+      "https://github.com/emilkowalski",
+      "https://github.com/vercel-labs"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "ThinkUI",
+        "url": "https://thinkui.xyz",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "ui",
+          "diseno"
+        ],
+        "summary": "Skill para agentes de IA orientada a evitar interfaces genéricas (\"AI slop\") al generar UI.",
+        "highlights": [
+          "Listada entre 5 skills contra el AI slop",
+          "Pensada para mejorar la calidad visual de UI generada por agentes"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Anti UI Slop",
+        "url": "https://uizze.com",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "ui",
+          "diseno"
+        ],
+        "summary": "Skill para agentes que busca eliminar los patrones visuales genéricos en interfaces generadas con IA.",
+        "highlights": [
+          "Listada entre 5 skills contra el AI slop",
+          "Enfocada en diseño de interfaces web"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Taste Skill",
+        "url": "https://github.com/Leonxlnx/",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "ui",
+          "diseno"
+        ],
+        "summary": "Skill de agente para dar mejor criterio estético a las interfaces que genera la IA.",
+        "highlights": [
+          "Publicada en el GitHub de Leonxlnx",
+          "Parte de una lista de 5 skills contra el AI slop"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Emil Design Engineering",
+        "url": "https://github.com/emilkowalski",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "design-engineering",
+          "animacion",
+          "ui"
+        ],
+        "summary": "Skill de agente basada en el enfoque de design engineering de Emil Kowalski para pulir UI y animaciones.",
+        "highlights": [
+          "Publicada en el GitHub de Emil Kowalski",
+          "Parte de una lista de 5 skills contra el AI slop"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Vercel Web Design Guidelines",
+        "url": "https://github.com/vercel-labs",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "vercel",
+          "web-design",
+          "guias"
+        ],
+        "summary": "Skill de agente con las guías de diseño web de Vercel para revisar y mejorar interfaces.",
+        "highlights": [
+          "Publicada en Vercel Labs",
+          "Parte de una lista de 5 skills contra el AI slop"
+        ],
+        "entry_type": "tool",
+        "company": "Vercel"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125582361987518837",
+    "text": "10 Open-Source Tools for Collecting and Extracting Web Data 👇\n\n1. Maxun\nConvert websites into structured APIs without writing any code.\nhttps://t.co/9z9fgr1dlr\n\n2. Trafilatura\nExtract clean text, metadata, and content from webpages. https://t.co/iyZZEIzjtA\n\n3. Newspaper4k https://t.co/6Muz8iyJ9D",
+    "author_name": "divyansh tiwari",
+    "author_handle": "DivyanshT91162",
+    "created_at": "2026-11-25T13:28:21.000Z",
+    "urls": [
+      "https://github.com/getmaxun/maxun",
+      "https://github.com/adbar/trafilatura",
+      "https://github.com/AndyTheFactory/newspaper4k",
+      "https://github.com/jina-ai/reader",
+      "https://github.com/oxylabs/web-api-mcp",
+      "https://github.com/projectdiscovery/katana",
+      "https://github.com/gocolly/colly",
+      "https://www.crummy.com/software/BeautifulSoup/",
+      "https://github.com/xroche/httrack",
+      "https://github.com/jhy/jsoup"
+    ],
+    "note_tweet": "10 Open-Source Tools for Collecting and Extracting Web Data 👇\n\n1. Maxun\nConvert websites into structured APIs without writing any code.\nhttps://t.co/uOLSRwT4BW\n\n2. Trafilatura\nExtract clean text, metadata, and content from webpages. https://t.co/lzMUYlqA1M\n\n3. Newspaper4k\nAutomatically extract and analyze news articles.\nhttps://t.co/f4GKJvzCid\n\n4. Jina Reader\nConvert webpages into clean, LLM-friendly content.\nhttps://t.co/ccF0bz58pM\n\n5. Oxylabs Web API MCP\nGive AI agents access to web search and scraping via the MCP.\nhttps://t.co/OIlRFypLDe\n\n6. Katana\nA fast web crawler for searching URLs and web content. https://t.co/MDYxkasaF1\n\n7. GoColly\nA web scraping and crawling framework for Go.\nhttps://t.co/rBWQX4RSuq\n\n8. Beautiful Soup\nParse HTML and extract information from websites using Python.\nhttps://t.co/P5gYgrUkD8\n\n9. HTTrack\nDownload and mirror entire websites for offline browsing.\nhttps://t.co/Mtdj6WlFkw\n\n10. Jsoup\nExtract, parse, and manipulate HTML using Java.\nhttps://t.co/ZHKLQwWFOL\n\nIf you're building web data pipelines, AI tools, or research workflows, bookmark this list.",
+    "items": [
+      {
+        "name": "Maxun",
+        "url": "https://github.com/getmaxun/maxun",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "web-scraping",
+          "no-code",
+          "api",
+          "open-source"
+        ],
+        "summary": "Plataforma open source que convierte sitios web en APIs estructuradas sin escribir código.",
+        "highlights": [
+          "Extracción de datos web sin código",
+          "Expone los datos como APIs estructuradas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Trafilatura",
+        "url": "https://github.com/adbar/trafilatura",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "web-scraping",
+          "extraccion-texto"
+        ],
+        "summary": "Librería de Python para extraer texto limpio, metadatos y contenido de páginas web.",
+        "highlights": [
+          "Extrae texto principal y metadatos",
+          "Útil para pipelines de datos e investigación"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Newspaper4k",
+        "url": "https://github.com/AndyTheFactory/newspaper4k",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "web-scraping",
+          "noticias"
+        ],
+        "summary": "Librería de Python para extraer y analizar artículos de noticias automáticamente.",
+        "highlights": [
+          "Extracción automática de artículos",
+          "Análisis del contenido de noticias"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Jina Reader",
+        "url": "https://github.com/jina-ai/reader",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "llm",
+          "web-scraping",
+          "markdown"
+        ],
+        "summary": "Convierte páginas web en contenido limpio y amigable para LLMs.",
+        "highlights": [
+          "Salida lista para consumir por modelos de lenguaje",
+          "Útil en flujos RAG y agentes"
+        ],
+        "entry_type": "tool",
+        "company": "Jina AI"
+      },
+      {
+        "name": "Oxylabs Web API MCP",
+        "url": "https://github.com/oxylabs/web-api-mcp",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "mcp",
+          "web-scraping",
+          "agentes-ia"
+        ],
+        "summary": "Servidor MCP que da a los agentes de IA acceso a búsqueda web y scraping.",
+        "highlights": [
+          "Integra búsqueda y scraping vía MCP",
+          "Pensado para agentes de IA"
+        ],
+        "entry_type": "tool",
+        "company": "Oxylabs"
+      },
+      {
+        "name": "Katana",
+        "url": "https://github.com/projectdiscovery/katana",
+        "website_url": null,
+        "category": "CLI & Terminal",
+        "conjunto": "recursos",
+        "tags": [
+          "go",
+          "crawler",
+          "cli"
+        ],
+        "summary": "Crawler web rápido de línea de comandos para descubrir URLs y contenido.",
+        "highlights": [
+          "Rastreo rápido de URLs",
+          "Herramienta CLI de ProjectDiscovery"
+        ],
+        "entry_type": "tool",
+        "company": "ProjectDiscovery"
+      },
+      {
+        "name": "Colly",
+        "url": "https://github.com/gocolly/colly",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "go",
+          "web-scraping",
+          "crawler"
+        ],
+        "summary": "Framework de scraping y crawling web para Go.",
+        "highlights": [
+          "Escrito en Go",
+          "Scraping y crawling programático"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Beautiful Soup",
+        "url": "https://www.crummy.com/software/BeautifulSoup/",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "html",
+          "web-scraping"
+        ],
+        "summary": "Librería de Python para parsear HTML y extraer información de sitios web.",
+        "highlights": [
+          "Parseo de HTML en Python",
+          "Clásico para extracción de datos web"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "HTTrack",
+        "url": "https://github.com/xroche/httrack",
+        "website_url": null,
+        "category": "Productivity & Tools",
+        "conjunto": "recursos",
+        "tags": [
+          "mirror",
+          "offline",
+          "web"
+        ],
+        "summary": "Herramienta para descargar y replicar sitios web completos para navegarlos sin conexión.",
+        "highlights": [
+          "Mirror completo de sitios",
+          "Navegación offline"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "jsoup",
+        "url": "https://github.com/jhy/jsoup",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "java",
+          "html",
+          "web-scraping"
+        ],
+        "summary": "Librería de Java para extraer, parsear y manipular HTML.",
+        "highlights": [
+          "Parser HTML para Java",
+          "Extracción y manipulación del DOM"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125567907522379841",
+    "text": "a f*cking goldmine for anyone animating 3D with Fable 5.2\n\nthese 12 GitHub repos give your agent real gravity, real light and real sound\n\nBlender. Bullet. Bloom. Easing. Music. MP4.\n\nthree.js → interactive 3D scenes\nhttps://t.co/FoxBCSQQ0d\n\nBlender → 3D animation and rendering https://t.co/D7CPoSW3dY https://t.co/wAfi1NySkI",
+    "author_name": "nicco",
+    "author_handle": "0xnicc0",
+    "created_at": "2026-11-25T12:30:54.000Z",
+    "urls": [
+      "https://github.com/mrdoob/three.js",
+      "https://twitter.com/seeconvm/status/2122405510779375668",
+      "http://github.com/mrdoob/three.js",
+      "http://github.com/blender/blender",
+      "http://github.com/bulletphysics/bullet3",
+      "http://github.com/gkjohnson/three-mesh-bvh",
+      "http://github.com/pmndrs/react-postprocessing",
+      "http://github.com/gre/gl-react",
+      "http://github.com/juliangarnier/anime",
+      "http://github.com/motion-canvas/motion-canvas",
+      "http://github.com/remotion-dev/skills",
+      "http://github.com/Tonejs/Tone.js",
+      "http://github.com/ffmpegwasm/ffmpeg.wasm",
+      "http://github.com/FFmpeg/FFmpeg"
+    ],
+    "note_tweet": "a f*cking goldmine for anyone animating 3D with Fable 5.2\n\nthese 12 GitHub repos give your agent real gravity, real light and real sound\n\nBlender. Bullet. Bloom. Easing. Music. MP4.\n\nthree.js → interactive 3D scenes\nhttps://t.co/NY1PNtYeju\n\nBlender → 3D animation and rendering\nhttps://t.co/FJAIvIeJCS\n\nBullet Physics → rigid bodies and collisions\nhttps://t.co/K6cv45FGgk\n\nthree-mesh-bvh → accelerated raycasts and queries\nhttps://t.co/VKsw7RBGs7\n\nReact Postprocessing → bloom, depth of field and film looks\nhttps://t.co/TF5GlkpIHf\n\ngl-react → compose WebGL shaders in React\nhttps://t.co/adVFnprPXQ\n\nanime.js → timelines and staggered motion\nhttps://t.co/LqSnPs9wkL\n\nMotion Canvas → code-driven motion graphics\nhttps://t.co/Vb1zuJdnkd\n\nRemotion Skills → agent guidance for video\nhttps://t.co/omniaicbTZ\n\nTone.js → synths, sequencing and sound\nhttps://t.co/dh4v8wOt8T\n\nffmpeg.wasm → video processing in the browser\nhttps://t.co/TF3y12ScKE\n\nFFmpeg → encoding, filters and delivery\nhttps://t.co/D1qZhDrOYO\n\nSketch → shape → physics → polish → render.\n\nBookmark it, then open the guide below and let Fable 5.2 build a 3D shot people replay ↓",
+    "items": [
+      {
+        "name": "three.js",
+        "url": "https://github.com/mrdoob/three.js",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "javascript",
+          "3d",
+          "webgl"
+        ],
+        "summary": "Librería JavaScript para crear escenas 3D interactivas en el navegador.",
+        "highlights": [
+          "Escenas 3D interactivas con WebGL",
+          "Base de la lista de 12 repos para animar 3D con agentes"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Blender",
+        "url": "http://github.com/blender/blender",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "3d",
+          "animacion",
+          "render"
+        ],
+        "summary": "Suite open source de modelado, animación 3D y renderizado.",
+        "highlights": [
+          "Animación y render 3D",
+          "Repositorio oficial en GitHub"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Bullet Physics",
+        "url": "http://github.com/bulletphysics/bullet3",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "cpp",
+          "fisica",
+          "3d"
+        ],
+        "summary": "Motor de física para cuerpos rígidos y colisiones.",
+        "highlights": [
+          "Simulación de cuerpos rígidos",
+          "Detección de colisiones"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "three-mesh-bvh",
+        "url": "http://github.com/gkjohnson/three-mesh-bvh",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "threejs",
+          "3d",
+          "raycasting"
+        ],
+        "summary": "Extensión de three.js con BVH para acelerar raycasts y consultas espaciales.",
+        "highlights": [
+          "Raycasts acelerados",
+          "Consultas espaciales sobre mallas"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "React Postprocessing",
+        "url": "http://github.com/pmndrs/react-postprocessing",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "threejs",
+          "postprocesado"
+        ],
+        "summary": "Efectos de postprocesado para escenas 3D en React: bloom, profundidad de campo y look de película.",
+        "highlights": [
+          "Bloom y depth of field",
+          "Ecosistema pmndrs / react-three-fiber"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "gl-react",
+        "url": "http://github.com/gre/gl-react",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "react",
+          "webgl",
+          "shaders"
+        ],
+        "summary": "Librería para componer shaders WebGL como componentes de React.",
+        "highlights": [
+          "Shaders WebGL en React",
+          "Composición declarativa de efectos"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "anime.js",
+        "url": "http://github.com/juliangarnier/anime",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "recursos",
+        "tags": [
+          "javascript",
+          "animacion",
+          "web"
+        ],
+        "summary": "Librería JavaScript de animación con timelines y movimientos escalonados.",
+        "highlights": [
+          "Timelines de animación",
+          "Animaciones staggered"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Motion Canvas",
+        "url": "http://github.com/motion-canvas/motion-canvas",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "typescript",
+          "motion-graphics",
+          "video"
+        ],
+        "summary": "Herramienta para crear motion graphics y animaciones mediante código.",
+        "highlights": [
+          "Animaciones programáticas",
+          "Orientada a video explicativo"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Remotion Skills",
+        "url": "http://github.com/remotion-dev/skills",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "consejos",
+        "tags": [
+          "agent-skills",
+          "remotion",
+          "video"
+        ],
+        "summary": "Skills de agente con guías para generar video con Remotion.",
+        "highlights": [
+          "Guía a agentes de IA para crear video",
+          "Del equipo de Remotion"
+        ],
+        "entry_type": "tool",
+        "company": "Remotion"
+      },
+      {
+        "name": "Tone.js",
+        "url": "http://github.com/Tonejs/Tone.js",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "javascript",
+          "audio",
+          "web-audio"
+        ],
+        "summary": "Framework de Web Audio para sintetizadores, secuenciación y sonido en el navegador.",
+        "highlights": [
+          "Sintetizadores y secuenciación",
+          "Basado en Web Audio API"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "ffmpeg.wasm",
+        "url": "http://github.com/ffmpegwasm/ffmpeg.wasm",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "wasm",
+          "ffmpeg",
+          "video"
+        ],
+        "summary": "Port de FFmpeg a WebAssembly para procesar video en el navegador.",
+        "highlights": [
+          "Procesamiento de video client-side",
+          "FFmpeg compilado a WASM"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "FFmpeg",
+        "url": "http://github.com/FFmpeg/FFmpeg",
+        "website_url": null,
+        "category": "Prompts, Art & Video",
+        "conjunto": "recursos",
+        "tags": [
+          "video",
+          "audio",
+          "codificacion"
+        ],
+        "summary": "Herramienta y librerías para codificar, filtrar y distribuir audio y video.",
+        "highlights": [
+          "Codificación y filtros",
+          "Estándar para procesamiento multimedia"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125583049723346976",
+    "text": "Need a design partner? \n\nTaking bookings for December.\n\nBook a call here👇\n\nhttps://t.co/WjAuQhC7Fi",
+    "author_name": "Rahul Luthra",
+    "author_handle": "rahulluthra22",
+    "created_at": "2026-11-25T13:31:05.000Z",
+    "urls": [
+      "https://www.designment.co/intro/"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Designment",
+        "url": "https://www.designment.co/intro/",
+        "website_url": null,
+        "category": "Frontend & UI",
+        "conjunto": "producto",
+        "tags": [
+          "diseno",
+          "agencia",
+          "ui-ux"
+        ],
+        "summary": "Servicio de diseño (design partner) que abre reservas para diciembre mediante una llamada de introducción.",
+        "highlights": [
+          "Reservas abiertas para diciembre",
+          "Contratación agendando una llamada"
+        ],
+        "entry_type": "product_showcase",
+        "company": "Designment"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125396894784561159",
+    "text": "10个GitHub仓库帮你爬取整个互联网\n\n1.firecrawl\n丢一个网址进去，它能把每个页面都爬下来，JavaScript也照渲染，直接吐出AI能读的干净结构化数据。13万星，进了GitHub百大仓库，不少AI创业公司背地里跑的就是它。\nhttps://t.co/zJu2tFnpaB\n\n2.crawl4ai https://t.co/IWPSkkbFQM",
+    "author_name": "露西的百宝箱",
+    "author_handle": "Lucy_love_AI",
+    "created_at": "2026-11-25T01:11:22.000Z",
+    "urls": [
+      "https://github.com/firecrawl/firecrawl",
+      "https://github.com/unclecode/crawl4ai",
+      "http://github.com/browser-use/browser-use",
+      "http://github.com/apify/crawlee",
+      "http://github.com/scrapy/scrapy",
+      "http://github.com/microsoft/markitdown",
+      "http://github.com/D4Vinci/Scrapling",
+      "http://github.com/Genymobile/scrcpy",
+      "http://github.com/alirezamika/autoscraper",
+      "http://github.com/lwthiker/curl-impersonate"
+    ],
+    "note_tweet": "10个GitHub仓库帮你爬取整个互联网\n\n1.firecrawl\n丢一个网址进去，它能把每个页面都爬下来，JavaScript也照渲染，直接吐出AI能读的干净结构化数据。13万星，进了GitHub百大仓库，不少AI创业公司背地里跑的就是它。\nhttps://t.co/rNvFxlszKj\n\n2.crawl4ai\nGitHub排名第一的爬虫项目。把网站转成干净的markdown给大模型用，比付费服务还快，不用API密钥、不用注册、不按页收费。有开发者被16美元的付费爬虫气到，几天就自己写了一个。5.1万星，Apache 2.0。\nhttps://t.co/j93MmIWNzu\n\n3.browser-use\n让AI像真人一样操作浏览器，点击、滚动、登录、填表，陌生网站也能把数据抠出来。两位苏黎世ETH的研究员做的，一年冲到9.5万星。那些简单爬虫够不着的页面，它能进。MIT协议。\nhttps://t.co/UA4GAQP483\n\n4.crawlee\n一套完整的专业爬虫框架，轮换代理、自动重试、浏览器指纹伪装、队列管理全都有。防封禁的整套机制，爬虫公司收几千块的技术栈，现在白给。\nhttps://t.co/XYCjgK7qWL\n\n5.scrapy\n工业级爬虫，十多年来数据团队一直在用。百万级页面照样爬，内容随便提，导出干净利落。规模和稳定性都是实战检验过的，一直免费。\nhttps://t.co/WhdHyC9RdW\n\n6.markitdown\n微软自家开源的，把网页、PDF、Office文档、HTML、图片统统转成AI能用的干净markdown。一整条数据管道公司围着它做产品，微软直接开源了。\nhttps://t.co/8PTPlhMs7J\n\n7.Scrapling\n隐形爬虫，网站改版它能自己适应，反爬检测也能绕。防爬厂商当高级功能卖的那套猫鼠游戏，现在免费开源。\nhttps://t.co/DPX6WLhXXg\n\n8.scrcpy\n用电脑远程控制任何安卓手机，提取数据、做自动化，那些没有网页版的应用也能搞定。等于搭了一座桥，通到爬虫平时进不去的纯移动端。13万+星，Apache 2.0。\nhttps://t.co/2M3DkTLTxV\n\n9.autoscraper\n给它一个示例，它自己找出规律，把网站剩下的内容全爬了。不用写选择器，不用维护代码，几行Python就是一个“直接给我数据”按钮。\nhttps://t.co/O2EKeQRsAI\n\n10.curl-impersonate\ncurl的加强版，能完整模拟真实浏览器的指纹，请求发出去就像Chrome后面坐着个真人。那些贵的爬虫API底层偷偷用的就是这招，现在免费。\nhttps://t.co/0lRVfrfkSA\n\n这些公司一个月收2000美元的东西，源码全在上面。",
+    "items": [
+      {
+        "name": "Firecrawl",
+        "url": "https://github.com/firecrawl/firecrawl",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "web-scraping",
+          "llm",
+          "crawler"
+        ],
+        "summary": "Crawler que recorre todas las páginas de un sitio, renderiza JavaScript y devuelve datos limpios y estructurados para IA.",
+        "highlights": [
+          "Renderiza JavaScript",
+          "Salida estructurada lista para LLMs",
+          "Unas 130k estrellas según el tuit"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Crawl4AI",
+        "url": "https://github.com/unclecode/crawl4ai",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "web-scraping",
+          "llm",
+          "markdown"
+        ],
+        "summary": "Crawler open source que convierte sitios en markdown limpio para modelos de lenguaje, sin API key ni registro.",
+        "highlights": [
+          "Salida en markdown para LLMs",
+          "Sin API key ni cobro por página",
+          "Licencia Apache 2.0"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Browser Use",
+        "url": "http://github.com/browser-use/browser-use",
+        "website_url": null,
+        "category": "Agentes & Protocolo MCP",
+        "conjunto": "recursos",
+        "tags": [
+          "agentes-ia",
+          "navegador",
+          "automatizacion"
+        ],
+        "summary": "Permite que la IA opere el navegador como una persona: clic, scroll, login y formularios.",
+        "highlights": [
+          "Automatiza navegación en sitios desconocidos",
+          "Licencia MIT"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "Crawlee",
+        "url": "http://github.com/apify/crawlee",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "web-scraping",
+          "nodejs",
+          "crawler"
+        ],
+        "summary": "Framework profesional de crawling con rotación de proxies, reintentos, huellas de navegador y colas.",
+        "highlights": [
+          "Rotación de proxies y reintentos automáticos",
+          "Fingerprinting de navegador anti-bloqueo"
+        ],
+        "entry_type": "tool",
+        "company": "Apify"
+      },
+      {
+        "name": "Scrapy",
+        "url": "http://github.com/scrapy/scrapy",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "web-scraping",
+          "crawler"
+        ],
+        "summary": "Framework de scraping industrial en Python, probado a escala de millones de páginas.",
+        "highlights": [
+          "Escala a millones de páginas",
+          "Exportación de datos limpia"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "MarkItDown",
+        "url": "http://github.com/microsoft/markitdown",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "markdown",
+          "llm",
+          "conversion"
+        ],
+        "summary": "Herramienta de Microsoft que convierte páginas web, PDF, documentos Office, HTML e imágenes en markdown para IA.",
+        "highlights": [
+          "Soporta PDF, Office, HTML e imágenes",
+          "Salida markdown para LLMs"
+        ],
+        "entry_type": "tool",
+        "company": "Microsoft"
+      },
+      {
+        "name": "Scrapling",
+        "url": "http://github.com/D4Vinci/Scrapling",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "web-scraping",
+          "anti-bot"
+        ],
+        "summary": "Scraper sigiloso que se adapta a cambios en los sitios y evade detección anti-bots.",
+        "highlights": [
+          "Se adapta a rediseños del sitio",
+          "Evasión de detección anti-scraping"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "scrcpy",
+        "url": "http://github.com/Genymobile/scrcpy",
+        "website_url": null,
+        "category": "DevTools & IDEs",
+        "conjunto": "recursos",
+        "tags": [
+          "android",
+          "control-remoto",
+          "automatizacion"
+        ],
+        "summary": "Controla cualquier teléfono Android desde el ordenador para extraer datos o automatizar apps móviles.",
+        "highlights": [
+          "Control remoto de Android desde el PC",
+          "Licencia Apache 2.0"
+        ],
+        "entry_type": "tool",
+        "company": "Genymobile"
+      },
+      {
+        "name": "AutoScraper",
+        "url": "http://github.com/alirezamika/autoscraper",
+        "website_url": null,
+        "category": "Backend & APIs",
+        "conjunto": "recursos",
+        "tags": [
+          "python",
+          "web-scraping",
+          "automatizacion"
+        ],
+        "summary": "Scraper en Python que aprende reglas a partir de un ejemplo y extrae el resto del sitio sin selectores.",
+        "highlights": [
+          "Aprende el patrón desde un ejemplo",
+          "Sin escribir selectores"
+        ],
+        "entry_type": "tool"
+      },
+      {
+        "name": "curl-impersonate",
+        "url": "http://github.com/lwthiker/curl-impersonate",
+        "website_url": null,
+        "category": "CLI & Terminal",
+        "conjunto": "recursos",
+        "tags": [
+          "curl",
+          "cli",
+          "web-scraping"
+        ],
+        "summary": "Versión de curl que imita por completo la huella de navegadores reales como Chrome.",
+        "highlights": [
+          "Emula fingerprints TLS/HTTP de navegadores",
+          "Útil contra bloqueos anti-bot"
+        ],
+        "entry_type": "tool"
+      }
+    ]
+  },
+  {
+    "tweet_id": "2125318736030957904",
+    "text": "Google AI Proプラン以上の方はこのColab CLIを入れてみてください。AntigravityからでもCodexからもClaude CodeからでもColab動かせるんです。そしてオープンソースどゆこと笑\n\n🔗googlecolab/google-colab-cli: A CLI for interacting with Google Colab runtimes\n　　URL: https://t.co/lPG6i5nchY",
+    "author_name": "あきらパパ【生成AI活用エンジニア&３児のパパ】",
+    "author_handle": "akira_papa_IT",
+    "created_at": "2026-11-24T20:00:47.000Z",
+    "urls": [
+      "https://github.com/googlecolab/google-colab-cli"
+    ],
+    "note_tweet": null,
+    "items": [
+      {
+        "name": "Google Colab CLI",
+        "url": "https://github.com/googlecolab/google-colab-cli",
+        "website_url": null,
+        "category": "CLI & Terminal",
+        "conjunto": "recursos",
+        "tags": [
+          "cli",
+          "google-colab",
+          "agentes-ia"
+        ],
+        "summary": "CLI open source para interactuar con runtimes de Google Colab, usable desde agentes como Antigravity, Codex o Claude Code.",
+        "highlights": [
+          "Controla runtimes de Colab desde la terminal",
+          "Según el tuit, aprovecha planes Google AI Pro o superiores"
+        ],
+        "entry_type": "tool",
+        "company": "Google"
+      }
+    ]
+  }
+]

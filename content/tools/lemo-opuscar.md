@@ -2,6 +2,7 @@
 name: lemo-opuscar
 url: 'https://github.com/lemomo-ai/lemo-opuscar'
 category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - claude-code
   - agent-skills
@@ -11,16 +12,24 @@ tags:
   - threejs
   - ffmpeg
   - motion-graphics
+  - video
+  - film-looks
+  - agentes
+  - codigo
 stars: 5730
 status: to_try
 date_added: '2026-10-23'
+created_at: '2026-10-23T04:36:05.083Z'
+updated_at: '2026-11-23T04:20:19.676Z'
 source_tweet: 'https://x.com/7uanF/status/2111816121548447790'
-author: Juan
-author_handle: 7uanF
+source_tweets:
+  - 'https://x.com/7uanF/status/2111816121548447790'
+  - 'https://x.com/flxrnc/status/2124231511499026436'
+author: Florence
+author_handle: flxrnc
 entry_type: tool
 company: Lemomo
-created_at: '2026-10-23T04:36:05.083Z'
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # lemo-opuscar
 

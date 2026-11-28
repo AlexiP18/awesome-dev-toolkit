@@ -1,8 +1,9 @@
 ---
 name: Remotion
 url: 'https://github.com/remotion-dev/remotion'
-website_url: 'https://www.remotion.dev/'
+website_url: 'https://remotion.dev/'
 category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - video
   - react
@@ -12,13 +13,17 @@ tags:
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:40:13.001Z'
+updated_at: '2026-11-27T04:14:38.521Z'
 source_tweet: 'https://x.com/Lucy_love_AI/status/2110203192831303920'
-author: 露西的百宝箱
-author_handle: Lucy_love_AI
+source_tweets:
+  - 'https://x.com/Lucy_love_AI/status/2110203192831303920'
+  - 'https://x.com/flxrnc/status/2124231511499026436'
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+author: Alhimik
+author_handle: 0xAlhimik
 entry_type: tool
 company: Remotion
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Remotion
 

@@ -1,7 +1,8 @@
 ---
 name: Superpowers
 url: 'https://github.com/obra/superpowers'
-category: AI & Machine Learning
+category: Agentes & Protocolo MCP
+conjunto: recursos
 tags:
   - ai
   - skills
@@ -9,17 +10,23 @@ tags:
   - sdlc
   - self-hosted
   - framework
+  - agent-skills
+  - claude-code
+  - workflow
 stars: 313426
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T16:09:02.849Z'
+updated_at: '2026-11-28T04:21:14.566Z'
 source_tweet: 'https://x.com/Fluyeporlaweb/status/2079943003964096621'
-author: PA13L0
-author_handle: Fluyeporlaweb
+source_tweets:
+  - 'https://x.com/Fluyeporlaweb/status/2079943003964096621'
+  - 'https://x.com/noahelhadedy/status/2126235523513483528'
+author: "\U0001D40D\U0001D428\U0001D41A\U0001D421"
+author_handle: noahelhadedy
 entry_type: tool
 company: obra
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Superpowers
 

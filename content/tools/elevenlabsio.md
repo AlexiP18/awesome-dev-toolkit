@@ -2,26 +2,32 @@
 name: elevenlabs.io
 url: 'https://elevenlabs.io/'
 category: 'Prompts, Art & Video'
+conjunto: producto
 tags:
   - ai
   - clonacion-voz
   - generacion-audio
   - sintesis-voz
   - multilingüe
+  - ia
+  - voz
+  - audio
+  - tts
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:53:53.076Z'
+updated_at: '2026-11-25T04:11:51.333Z'
 source_tweet: 'https://x.com/konig0000/status/2111804913416331448'
-author: chaos
-author_handle: konig0000
-entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
-classified_by: Google Gemini (Flash)
-conjunto: producto
+source_tweets:
+  - 'https://x.com/konig0000/status/2111804913416331448'
+  - 'https://x.com/Elochoaa__/status/2123859657747812733'
+  - 'https://x.com/AlinaDavy20/status/2124858370134057167'
+  - 'https://x.com/kaddisdeployed/status/2125135621677052288'
+author: kadd
+author_handle: kaddisdeployed
+entry_type: product_showcase
+company: Ochoa
+classified_by: Importado del vault
 ---
 # elevenlabs.io
 

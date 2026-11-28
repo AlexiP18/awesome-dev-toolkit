@@ -1,21 +1,31 @@
 ---
 name: Magic UI
-url: 'https://magicui.design/'
+url: 'https://github.com/magicuidesign/magicui'
+website_url: 'https://magicui.design/'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - react
   - tailwind
   - componentes
   - animaciones
+  - shadcn
+  - animacion
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T20:14:31.407Z'
+updated_at: '2026-11-27T04:14:38.198Z'
 source_tweet: 'https://x.com/noahelhadedy/status/2108461831928811941'
-author: "\U0001D40D\U0001D428\U0001D41A\U0001D421"
-author_handle: noahelhadedy
+source_tweets:
+  - 'https://x.com/noahelhadedy/status/2108461831928811941'
+  - 'https://x.com/csaba_kissi/status/2124050003681497091'
+  - 'https://x.com/seeconvm/status/2124956200450052431'
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+author: Alhimik
+author_handle: 0xAlhimik
 entry_type: tool
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+company: Csaba Kissi
+classified_by: Importado del vault
 ---
 # Magic UI
 

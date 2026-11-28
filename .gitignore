@@ -12,7 +12,8 @@ dist/
 # Raw Twitter/X data exports & downloads
 account-bookmark.js
 x_bookmarks.json
-data/
+data/*
+!data/taxonomy.json
 *.zip
 
 # Logs

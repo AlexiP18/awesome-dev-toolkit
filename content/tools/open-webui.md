@@ -2,6 +2,7 @@
 name: Open WebUI
 url: 'https://github.com/open-webui/open-webui'
 category: AI & Machine Learning
+conjunto: recursos
 tags:
   - llm-ui
   - self-hosted
@@ -10,17 +11,23 @@ tags:
   - rag
   - svelte
   - mcp
+  - llm-local
+  - chat
+  - open-source
 stars: 157843
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T15:23:31.506Z'
+updated_at: '2026-11-18T04:20:52.888Z'
 source_tweet: 'https://x.com/Shruti_0810/status/2109350829081985129'
-author: Shruti Codes
-author_handle: Shruti_0810
+source_tweets:
+  - 'https://x.com/Shruti_0810/status/2109350829081985129'
+  - 'https://x.com/Fluyeporlaweb/status/2121683585199440143'
+author: PA13L0
+author_handle: Fluyeporlaweb
 entry_type: tool
 company: Open WebUI
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Open WebUI
 

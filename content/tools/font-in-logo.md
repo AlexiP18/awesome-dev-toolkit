@@ -2,20 +2,27 @@
 name: Font in Logo
 url: 'https://fontinlogo.com/'
 category: Frontend & UI
+conjunto: inspiracion
 tags:
   - tipografia
   - branding
   - fuentes
   - identidad
+  - diseno
 status: to_try
 date_added: '2026-11-07'
 created_at: '2026-11-07T20:40:41.436Z'
+updated_at: '2026-11-28T04:21:15.856Z'
 source_tweet: 'https://x.com/BardhylBytyqi/status/2118838961602748834'
-author: Bardhyl Bytyqi
-author_handle: BardhylBytyqi
+source_tweets:
+  - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
+  - 'https://x.com/VullnetAdemaj/status/2108894975635423306'
+  - 'https://x.com/nikosolenne/status/2126078111473074572'
+author: niko.
+author_handle: nikosolenne
 entry_type: tool
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+company: niko.
+classified_by: Importado del vault
 ---
 # Font in Logo
 
@@ -36,3 +43,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://fontinlogo.com/](https://fontinlogo.com/)
 - Tweet origen: [Ver en X](https://x.com/BardhylBytyqi/status/2118838961602748834)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/VullnetAdemaj/status/2108894975635423306)

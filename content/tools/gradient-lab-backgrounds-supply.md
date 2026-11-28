@@ -1,7 +1,6 @@
 ---
 name: Gradient Lab (Backgrounds Supply)
 url: 'http://backgrounds.supply/gradient-lab'
-website_url: 'https://backgrounds.supply/gradient-lab'
 category: Frontend & UI
 tags:
   - gradientes

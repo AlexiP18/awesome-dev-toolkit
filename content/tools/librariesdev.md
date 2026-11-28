@@ -2,29 +2,34 @@
 name: Libraries.dev
 url: 'https://libraries.dev/'
 category: Frontend & UI
+conjunto: inspiracion
 tags:
+  - frontend
+  - librerias
+  - ml
+  - react-native
+  - swiftui
   - ui
   - animations
   - react
-  - swiftui
   - react native
-  - ml
   - effects
   - front-end
+  - directorio
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T21:01:39.199Z'
+updated_at: '2026-11-20T04:21:05.236Z'
 source_tweet: 'https://x.com/k2sbhai/status/2111340914576863731'
-author: K2S
-author_handle: k2sbhai
+source_tweets:
+  - 'https://x.com/k2sbhai/status/2111340914576863731'
+  - 'https://x.com/Hartdrawss/status/2108799722727059563'
+  - 'https://x.com/BenjaminUIX/status/2123340929633550834'
+author: BenjaminUIX
+author_handle: BenjaminUIX
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
-classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
+company: BenjaminUIX
+classified_by: Importado del vault
 ---
 # Libraries.dev
 
@@ -45,3 +50,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://libraries.dev/](https://libraries.dev/)
 - Tweet origen: [Ver en X](https://x.com/k2sbhai/status/2111340914576863731)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/Hartdrawss/status/2108799722727059563)

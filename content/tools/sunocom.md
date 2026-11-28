@@ -2,26 +2,29 @@
 name: suno.com
 url: 'https://suno.com/'
 category: 'Prompts, Art & Video'
+conjunto: producto
 tags:
   - ai
   - generacion-musica
   - composicion-musical
   - audio
   - creatividad
+  - ia
+  - musica
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:53:53.077Z'
+updated_at: '2026-11-24T04:17:09.948Z'
 source_tweet: 'https://x.com/konig0000/status/2111804913416331448'
-author: chaos
-author_handle: konig0000
-entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+source_tweets:
+  - 'https://x.com/konig0000/status/2111804913416331448'
+  - 'https://x.com/Elochoaa__/status/2123859657747812733'
+  - 'https://x.com/AlinaDavy20/status/2124858370134057167'
+author: Alina Davy
+author_handle: AlinaDavy20
+entry_type: product_showcase
+company: Ochoa
+classified_by: Importado del vault
 ---
 # suno.com
 

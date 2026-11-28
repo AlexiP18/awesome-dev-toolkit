@@ -2,6 +2,7 @@
 name: Claude Animated Shorts
 url: 'https://github.com/mromidev/claude-animated-shorts'
 category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - claude
   - ia
@@ -10,17 +11,21 @@ tags:
   - threejs
   - animacion
   - shorts
+  - claude-code
 stars: 1540
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:07:54.366Z'
+updated_at: '2026-11-21T04:16:52.787Z'
 source_tweet: 'https://x.com/Fluyeporlaweb/status/2117951495488389321'
+source_tweets:
+  - 'https://x.com/Fluyeporlaweb/status/2117951495488389321'
+  - 'https://x.com/Fluyeporlaweb/status/2123793236254654801'
 author: PA13L0
 author_handle: Fluyeporlaweb
 entry_type: tool
 company: mromidev
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Claude Animated Shorts
 

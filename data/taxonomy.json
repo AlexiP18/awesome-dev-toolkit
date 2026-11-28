@@ -1,0 +1,115 @@
+{
+  "schema": "segundo-cerebro.taxonomy.v1",
+  "categories": [
+    {
+      "name": "Frontend & UI",
+      "slug": "frontend-ui",
+      "moc": "moc-frontend-ui",
+      "area": "herramientas",
+      "folder": "wiki/resources/tools",
+      "when": "Componentes, CSS, Tailwind, animación web, design systems, galerías de UI."
+    },
+    {
+      "name": "AI & Machine Learning",
+      "slug": "ai-machine-learning",
+      "moc": "moc-ai-ml",
+      "area": "herramientas",
+      "folder": "wiki/resources/tools",
+      "when": "Modelos, inferencia, RAG, embeddings, entrenamiento. No todo lo que menciona IA."
+    },
+    {
+      "name": "Productivity & Tools",
+      "slug": "productivity-tools",
+      "moc": "moc-productivity",
+      "area": "herramientas",
+      "folder": "wiki/resources/tools",
+      "when": "Utilidades de desarrollador que no encajan en otra categoría técnica."
+    },
+    {
+      "name": "Sitios útiles generales",
+      "slug": "sitios-utiles-generales",
+      "moc": "moc-sitios-utiles",
+      "area": "herramientas",
+      "folder": "wiki/resources/tools",
+      "when": "Sitios web de uso general, fuera del kit de desarrollo: utilidades cotidianas, archivos, medios, compras, privacidad ligera y oficina en el navegador."
+    },
+    {
+      "name": "Prompts, Art & Video",
+      "slug": "prompts-art-video",
+      "moc": "moc-creative",
+      "area": "herramientas",
+      "folder": "wiki/resources/tools",
+      "when": "Video, audio, 3D, shaders y prompts de imagen o video. No interfaces web."
+    },
+    {
+      "name": "Agentes & Protocolo MCP",
+      "slug": "agentes-protocolo-mcp",
+      "moc": "moc-agentes-ia",
+      "area": "herramientas",
+      "folder": "wiki/resources/tools",
+      "when": "Servidores MCP, agent skills, Claude Code, entornos de agentes."
+    },
+    {
+      "name": "Documentation & Resources",
+      "slug": "documentation-resources",
+      "moc": "moc-docs-resources",
+      "area": "herramientas",
+      "folder": "wiki/resources/tools",
+      "when": "Libros, listas de lectura y tutoriales que no son software ejecutable."
+    },
+    {
+      "name": "DevOps & Cloud",
+      "slug": "devops-cloud",
+      "moc": "moc-devops-cloud",
+      "area": "herramientas",
+      "folder": "wiki/resources/tools",
+      "when": "Docker, CI, infraestructura, observabilidad, hosting."
+    },
+    {
+      "name": "Backend & APIs",
+      "slug": "backend-apis",
+      "moc": "moc-backend-data",
+      "area": "herramientas",
+      "folder": "wiki/resources/tools",
+      "when": "Frameworks de servidor, APIs, bases de datos, ETL, colas, almacenamiento."
+    },
+    {
+      "name": "CLI & Terminal",
+      "slug": "cli-terminal",
+      "moc": "moc-clis",
+      "area": "herramientas",
+      "folder": "wiki/resources/tools",
+      "when": "CLIs, TUIs, git en terminal, shells."
+    },
+    {
+      "name": "DevTools & IDEs",
+      "slug": "devtools-ides",
+      "moc": "moc-devtools",
+      "area": "herramientas",
+      "folder": "wiki/resources/tools",
+      "when": "Editores, IDEs, extensiones y hardware de desarrollo."
+    },
+    {
+      "name": "Flujos de Trabajo",
+      "slug": "flujos-de-trabajo",
+      "moc": "moc-flujos-trabajo",
+      "area": "herramientas",
+      "folder": "wiki/resources/tools",
+      "when": "Consejos de ingeniería: git, debugging, metodología, prompts operativos."
+    },
+    {
+      "name": "Trabajo & Freelance",
+      "slug": "trabajo-freelance",
+      "moc": "moc-trabajo-freelance",
+      "area": "trabajo",
+      "folder": "wiki/resources/jobs",
+      "when": "Vacantes, bolsas, plataformas freelance, RLHF y microtareas."
+    }
+  ],
+  "conjuntos": [
+    {"name": "recursos", "moc": "moc-conjunto-recursos", "tag": "conjunto-recursos"},
+    {"name": "inspiracion", "moc": "moc-conjunto-inspiracion", "tag": "conjunto-inspiracion"},
+    {"name": "producto", "moc": "moc-conjunto-producto", "tag": "conjunto-producto"},
+    {"name": "consejos", "moc": "moc-conjunto-consejos", "tag": "conjunto-consejos"}
+  ]
+}

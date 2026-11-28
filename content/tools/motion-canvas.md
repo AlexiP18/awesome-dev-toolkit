@@ -3,23 +3,30 @@ name: Motion Canvas
 url: 'https://github.com/motion-canvas/motion-canvas'
 website_url: 'https://motioncanvas.io/'
 category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - typescript
   - animation
   - video
   - visualization
   - presentation
+  - motion-graphics
+  - animacion
 stars: 19692
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:40:13.005Z'
+updated_at: '2026-11-28T04:21:16.716Z'
 source_tweet: 'https://x.com/Lucy_love_AI/status/2110203192831303920'
-author: 露西的百宝箱
-author_handle: Lucy_love_AI
+source_tweets:
+  - 'https://x.com/Lucy_love_AI/status/2110203192831303920'
+  - 'https://x.com/0xnicc0/status/2125567907522379841'
+  - 'https://x.com/WasimShips/status/2126356476700610837'
+author: Wasim
+author_handle: WasimShips
 entry_type: tool
 company: Motion Canvas
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Motion Canvas
 

@@ -2,6 +2,7 @@
 name: Whisper
 url: 'https://github.com/openai/whisper'
 category: AI & Machine Learning
+conjunto: recursos
 tags:
   - ai
   - speech-recognition
@@ -10,21 +11,24 @@ tags:
   - captions
   - openai
   - machine-learning
+  - transcripcion
+  - speech-to-text
+  - python
+  - audio
 stars: 111866
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:59:00.237Z'
+updated_at: '2026-11-22T04:14:33.928Z'
 source_tweet: 'https://x.com/Marlenuii/status/2111419391271186795'
-author: Marlen
-author_handle: Marlenuii
+source_tweets:
+  - 'https://x.com/Marlenuii/status/2111419391271186795'
+  - 'https://x.com/JustRepo/status/2124125088098226314'
+author: REPO
+author_handle: JustRepo
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
-classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
+company: REPO
+classified_by: Importado del vault
 ---
 # Whisper
 

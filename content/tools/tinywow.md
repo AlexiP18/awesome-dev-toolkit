@@ -2,21 +2,27 @@
 name: TinyWow
 url: 'https://tinywow.com/'
 category: Productivity & Tools
+conjunto: producto
 tags:
   - pdf
   - utilidades
   - conversion
   - ia
+  - web
 status: to_try
 date_added: '2026-11-06'
 created_at: '2026-11-06T17:26:53.349Z'
+updated_at: '2026-11-22T04:14:34.549Z'
 source_tweet: 'https://x.com/precisox/status/2077815388725727396'
-author: Precis0x
-author_handle: precisox
+source_tweets:
+  - 'https://x.com/precisox/status/2077815388725727396'
+  - 'https://x.com/Elochoaa__/status/2123350146956112381'
+  - 'https://x.com/sergiorocaa/status/2123851997120229526'
+author: sergio
+author_handle: sergiorocaa
 entry_type: tool
 company: TinyWow
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # TinyWow
 
@@ -39,3 +45,9 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://tinywow.com/](https://tinywow.com/)
 - Tweet origen: [Ver en X](https://x.com/precisox/status/2077815388725727396)
+
+### Mención adicional (2026-11-21)
+
+- **👤 Publicado / Recomendado por:** Ochoa ([@Elochoaa__](https://x.com/Elochoaa__))
+- Tweet origen adicional: [https://x.com/Elochoaa__/status/2123350146956112381](https://x.com/Elochoaa__/status/2123350146956112381)
+- En la lista: «Más de 100 herramientas gratuitas en un solo sitio».

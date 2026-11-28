@@ -2,26 +2,32 @@
 name: Wonderlist Design
 url: 'https://wonderlist.design/'
 category: Frontend & UI
+conjunto: inspiracion
 tags:
   - figma
+  - recursos
+  - ui-kit
+  - design-systems
   - diseño
   - ui kits
   - premium
   - frontend
+  - diseno
+  - inspiracion
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T16:49:28.173Z'
+updated_at: '2026-11-28T04:21:16.207Z'
 source_tweet: 'https://x.com/VullnetAdemaj/status/2112101526336364705'
-author: Vullnet Ademaj
-author_handle: VullnetAdemaj
+source_tweets:
+  - 'https://x.com/VullnetAdemaj/status/2112101526336364705'
+  - 'https://x.com/BardhylBytyqi/status/2118838961602748834'
+  - 'https://x.com/nikosolenne/status/2126078111473074572'
+author: niko.
+author_handle: nikosolenne
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
-classified_by: Google Gemini (Flash)
-conjunto: inspiracion
+company: niko.
+classified_by: Importado del vault
 ---
 # Wonderlist Design
 
@@ -42,3 +48,6 @@ conjunto: inspiracion
 ## 🔗 Referencias
 - Enlace de referencia: [https://wonderlist.design/](https://wonderlist.design/)
 - Tweet origen: [Ver en X](https://x.com/VullnetAdemaj/status/2112101526336364705)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/BardhylBytyqi/status/2118838961602748834)

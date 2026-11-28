@@ -859,6 +859,7 @@
               <option value="Prompts, Art & Video">Prompts, Art & Video</option>
               <option value="Databases & Storage">Databases & Storage</option>
               <option value="Productivity & Tools">Productivity & Tools</option>
+              <option value="Sitios útiles generales">Sitios útiles generales</option>
               <option value="Documentation & Resources">Documentation & Resources</option>
               <option value="Consejos & Buenas Prácticas">Consejos & Buenas Prácticas</option>
               <option value="Trabajo & Freelance">Trabajo & Freelance</option>
@@ -1388,6 +1389,7 @@
           'Prompts, Art & Video',
           'Databases & Storage',
           'Productivity & Tools',
+          'Sitios útiles generales',
           'Hardware & Gadgets',
           'Remoto (Mundial)',
           'Consejos & Buenas Prácticas',
@@ -1413,6 +1415,7 @@
           'Prompts, Art & Video',
           'Databases & Storage',
           'Productivity & Tools',
+          'Sitios útiles generales',
           'Documentation & Resources',
           'Empresas & Productos',
           'Other'
@@ -1743,7 +1746,12 @@
         };
       }
 
-      // 8. Productivity & Tools
+      // 8. Sitios útiles generales (antes que productividad: "útiles" no debe caer en el filtro de abajo)
+      if (cat.includes('sitios')) {
+        return COLOR_THEMES.emerald;
+      }
+
+      // 9. Productivity & Tools
       if (cat.includes('productivity') || cat.includes('productividad') || cat.includes('utilidad') || cat.includes('workflow')) {
         return {
           badge: 'bg-teal-500/15 text-teal-300 border-teal-500/30',

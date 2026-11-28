@@ -2,26 +2,31 @@
 name: GSAP
 url: 'https://github.com/greensock/GSAP'
 category: Frontend & UI
+conjunto: recursos
 tags:
   - animation
   - javascript
   - greensock
   - timeline
   - web-animation
+  - animacion
+  - timelines
+  - web
 stars: 30117
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:59:00.157Z'
+updated_at: '2026-11-27T04:14:38.247Z'
 source_tweet: 'https://x.com/Marlenuii/status/2111419391271186795'
-author: Marlen
-author_handle: Marlenuii
+source_tweets:
+  - 'https://x.com/Marlenuii/status/2111419391271186795'
+  - 'https://x.com/flxrnc/status/2124231511499026436'
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+author: Alhimik
+author_handle: 0xAlhimik
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: recursos
+company: Florence
+classified_by: Importado del vault
 ---
 # GSAP
 

@@ -1,23 +1,32 @@
 ---
 name: Remotion Skills
 url: 'https://github.com/remotion-dev/skills'
-category: AI & Machine Learning
+category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - agent-skills
   - claude-code
   - video
   - workflow
   - ai
+  - remotion
+  - agent-skill
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:40:13.003Z'
+updated_at: '2026-11-28T04:21:16.669Z'
 source_tweet: 'https://x.com/Lucy_love_AI/status/2110203192831303920'
-author: 露西的百宝箱
-author_handle: Lucy_love_AI
+source_tweets:
+  - 'https://x.com/Lucy_love_AI/status/2110203192831303920'
+  - 'https://x.com/flxrnc/status/2124231511499026436'
+  - 'https://x.com/0xnicc0/status/2125567907522379841'
+  - 'https://x.com/0xAlhimik/status/2125965707842322630'
+  - 'https://x.com/WasimShips/status/2126356476700610837'
+author: Wasim
+author_handle: WasimShips
 entry_type: tool
 company: Remotion
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # Remotion Skills
 

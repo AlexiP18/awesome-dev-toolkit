@@ -1,7 +1,9 @@
 ---
 name: Blender
 url: 'https://github.com/blender/blender'
+website_url: 'https://blender.org/'
 category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - 3d
   - modeling
@@ -9,21 +11,26 @@ tags:
   - rendering
   - open-source
   - computer-graphics
+  - dev
+  - tool
+  - animacion
+  - render
 stars: 21589
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:59:00.231Z'
+updated_at: '2026-11-28T04:21:17.297Z'
 source_tweet: 'https://x.com/Marlenuii/status/2111419391271186795'
-author: Marlen
-author_handle: Marlenuii
+source_tweets:
+  - 'https://x.com/Marlenuii/status/2111419391271186795'
+  - 'https://x.com/Y0urDumble/status/2114084322227503206'
+  - 'https://x.com/0xnicc0/status/2125567907522379841'
+  - 'https://x.com/WasimShips/status/2126356476700610837'
+author: Wasim
+author_handle: WasimShips
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
-classified_by: Google Gemini (2.5 Flash - Respaldo por sobrecarga 503)
-conjunto: producto
+company: nicco
+classified_by: Importado del vault
 ---
 # Blender
 
@@ -44,3 +51,6 @@ conjunto: producto
 ## 🔗 Referencias
 - Repositorio de código (GitHub): [https://github.com/blender/blender](https://github.com/blender/blender)
 - Tweet origen: [Ver en X](https://x.com/Marlenuii/status/2111419391271186795)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/Y0urDumble/status/2114084322227503206)

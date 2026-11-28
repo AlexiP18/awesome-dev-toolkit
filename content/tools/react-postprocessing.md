@@ -1,24 +1,31 @@
 ---
 name: React Postprocessing
 url: 'https://github.com/pmndrs/react-postprocessing'
-category: Frontend & UI
+category: 'Prompts, Art & Video'
+conjunto: recursos
 tags:
   - 3d
   - postprocessing
   - react-three-fiber
   - webgl
   - effects
+  - react
+  - threejs
+  - postprocesado
 stars: 1501
 status: to_try
 date_added: '2026-11-05'
 created_at: '2026-11-05T03:40:13.044Z'
+updated_at: '2026-11-26T04:17:16.600Z'
 source_tweet: 'https://x.com/Lucy_love_AI/status/2110203192831303920'
-author: 露西的百宝箱
-author_handle: Lucy_love_AI
+source_tweets:
+  - 'https://x.com/Lucy_love_AI/status/2110203192831303920'
+  - 'https://x.com/0xnicc0/status/2125567907522379841'
+author: nicco
+author_handle: 0xnicc0
 entry_type: tool
 company: Poimandres (pmndrs)
-classified_by: DeepSeek Directo (deepseek-flash)
-conjunto: recursos
+classified_by: Importado del vault
 ---
 # React Postprocessing
 

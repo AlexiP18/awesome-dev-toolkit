@@ -1,8 +1,12 @@
 ---
 name: Sevalla.com Hosting
 url: 'https://sevalla.com/'
-category: Backend & APIs
+category: DevOps & Cloud
+conjunto: producto
 tags:
+  - deploy
+  - cloud
+  - infraestructura
   - hosting
   - full-stack
   - php
@@ -10,20 +14,22 @@ tags:
   - go
   - python
   - backend
+  - paas
 status: to_try
 date_added: '2026-11-03'
 created_at: '2026-11-03T17:41:34.289Z'
+updated_at: '2026-11-25T04:11:50.093Z'
 source_tweet: 'https://x.com/csaba_kissi/status/2112068533924626841'
+source_tweets:
+  - 'https://x.com/csaba_kissi/status/2112068533924626841'
+  - 'https://x.com/csaba_kissi/status/2079093085955657992'
+  - 'https://x.com/csaba_kissi/status/2123331796217868570'
+  - 'https://x.com/csaba_kissi/status/2125141623050752324'
 author: Csaba Kissi
 author_handle: csaba_kissi
-entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
-classified_by: Google Gemini (Flash)
-conjunto: recursos
+entry_type: product_showcase
+company: Csaba Kissi
+classified_by: Importado del vault
 ---
 # Sevalla.com Hosting
 
@@ -44,3 +50,6 @@ conjunto: recursos
 ## 🔗 Referencias
 - Enlace de referencia: [https://sevalla.com/](https://sevalla.com/)
 - Tweet origen: [Ver en X](https://x.com/csaba_kissi/status/2112068533924626841)
+
+## Tweets de origen adicionales
+- Tweet origen adicional: [Ver en X](https://x.com/csaba_kissi/status/2079093085955657992)

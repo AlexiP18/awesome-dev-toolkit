@@ -15,11 +15,6 @@ source_tweet: 'https://x.com/VullnetAdemaj/status/2112101526336364705'
 author: Vullnet Ademaj
 author_handle: VullnetAdemaj
 entry_type: tool
-company: 'null'
-location: 'null'
-salary: 'null'
-price: 'null'
-academic_promo_details: 'null'
 classified_by: Google Gemini (Flash)
 conjunto: recursos
 ---
